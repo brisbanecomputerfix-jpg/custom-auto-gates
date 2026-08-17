@@ -15,12 +15,13 @@ import AboutUs from './components/AboutUs';
 import ServiceRepairs from './components/ServiceRepairs';
 import ContactUs from './components/ContactUs';
 import Testimonials from './components/Testimonials';
+import CouncilGuide from './components/CouncilGuide';
 import Footer from './components/Footer';
 import QuickActionBar from './components/QuickActionBar';
 import RemoteCursorEffect from './components/RemoteCursorEffect';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'about' | 'service' | 'contact' | 'testimonials'
+  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'about' | 'service' | 'contact' | 'testimonials' | 'council-guide'
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isTroubleshootOpen, setIsTroubleshootOpen] = useState(false);
@@ -44,6 +45,9 @@ export default function App() {
       } else if (hash === '#testimonials' || hash === '#reviews' || path === '/testimonials' || path === '/testimonials/' || path === '/reviews') {
         setCurrentPage('testimonials');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#council-guide' || hash === '#council' || hash === '#pool-safety' || path === '/council-guide' || path === '/council-guide/' || path === '/planning-rules') {
+        setCurrentPage('council-guide');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         setCurrentPage('home');
       }
@@ -65,6 +69,8 @@ export default function App() {
       window.location.hash = 'contact';
     } else if (page === 'testimonials') {
       window.location.hash = 'testimonials';
+    } else if (page === 'council-guide') {
+      window.location.hash = 'council-guide';
     } else {
       window.location.hash = '';
     }
@@ -140,6 +146,13 @@ export default function App() {
         ) : currentPage === 'testimonials' ? (
           /* Dedicated Testimonials & Verified Case Studies Page (Google EEAT) */
           <Testimonials 
+            onOpenQuote={handleOpenQuote}
+            onOpenContact={() => setIsContactOpen(true)}
+            onNavigateHome={() => navigateTo('home')}
+          />
+        ) : currentPage === 'council-guide' ? (
+          /* Dedicated Queensland Council & Pool Safety Guide */
+          <CouncilGuide 
             onOpenQuote={handleOpenQuote}
             onOpenContact={() => setIsContactOpen(true)}
             onNavigateHome={() => navigateTo('home')}

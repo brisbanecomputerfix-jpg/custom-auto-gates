@@ -246,14 +246,15 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                       { name: 'Commercial & Security Gates', id: 'commercial-gates' },
                       { name: 'Boom Gates & Barriers', id: 'boom-gates' },
                       { name: 'Aluminium Slat Fencing', id: 'fencing' },
-                      { name: 'Service, Repairs & Warranty Page', id: 'service', isRoute: true }
+                      { name: 'Service, Repairs & Warranty Page', id: 'service', isRoute: true },
+                      { name: 'QLD Council & Pool Safety Guide', id: 'council-guide', isRoute: true }
                     ].map((s) => (
                       <button
                         key={s.id}
                         onClick={() => {
                           setServicesDropdown(false);
                           if (s.isRoute) {
-                            onNavigate('service');
+                            onNavigate(s.id);
                           } else {
                             onSelectCategory && onSelectCategory(s.id);
                             handleNavClick('services');
@@ -530,6 +531,14 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
               >
                 <span>Verified Reviews (4.9★)</span>
                 <Star size={17} style={{ color: '#f59e0b' }} />
+              </button>
+              <button 
+                className="mobile-nav-item" 
+                onClick={() => { setMobileMenuOpen(false); onNavigate('council-guide'); }}
+                style={{ color: currentPage === 'council-guide' ? '#2563eb' : '#0f172a' }}
+              >
+                <span>QLD Council & Pool Safety Guide</span>
+                <Scale size={17} style={{ color: 'var(--accent-gold)' }} />
               </button>
               <button className="mobile-nav-item" onClick={() => handleNavClick('motors')}>
                 <span>Italian Nice & Centurion Motors</span>
