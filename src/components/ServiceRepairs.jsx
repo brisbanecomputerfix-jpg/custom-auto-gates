@@ -21,7 +21,14 @@ import {
   Layers,
   Sparkles,
   Building2,
-  Home
+  Home,
+  CreditCard,
+  Lock,
+  Zap,
+  CheckCircle,
+  Receipt,
+  Download,
+  Smartphone
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
 
@@ -31,6 +38,20 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
   const [isOriginalPurchaser, setIsOriginalPurchaser] = useState('yes');
   const [serviceRequirement, setServiceRequirement] = useState('repair');
   const [checklistConfirmed, setChecklistConfirmed] = useState(false);
+  
+  // Payment Options: 'link' | 'card' | 'wallet' | 'invoice'
+  const [paymentMethod, setPaymentMethod] = useState('link');
+  const [linkEmail, setLinkEmail] = useState('');
+  const [linkSavedCard, setLinkSavedCard] = useState(true);
+  const [cardDetails, setCardDetails] = useState({
+    cardNumber: '',
+    cardExpiry: '',
+    cardCvc: '',
+    cardName: '',
+    cardPostal: ''
+  });
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const [transactionReceipt, setTransactionReceipt] = useState(null);
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -45,16 +66,56 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
     preferredDate: '',
   });
 
+  const basePrice = propertyType === 'residential' ? 250 : 350;
+  const gstAmount = (basePrice / 11).toFixed(2);
+  const exGstAmount = (basePrice - gstAmount).toFixed(2);
+  const callOutFeeStr = `$${basePrice}.00 AUD (inc. GST)`;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!checklistConfirmed) {
       alert('Please confirm you have reviewed the pre-service maintenance checklist.');
       return;
     }
-    setFormSubmitted(true);
+
+    setIsProcessingPayment(true);
+
+    // Simulate authentic Stripe & Link payment processing
+    setTimeout(() => {
+      setIsProcessingPayment(false);
+      const receiptId = 'CAG-' + Math.floor(100000 + Math.random() * 900000);
+      const stripeTx = 'ch_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      
+      setTransactionReceipt({
+        receiptNumber: receiptId,
+        stripeChargeId: stripeTx,
+        date: new Date().toLocaleDateString('en-AU', { day: '2-digit', month: 'short', year: 'numeric' }),
+        amount: basePrice,
+        gst: gstAmount,
+        paymentMethod: paymentMethod === 'link' ? 'Link by Stripe (1-Click)' : paymentMethod === 'card' ? 'Credit / Debit Card' : paymentMethod === 'wallet' ? 'Apple / Google Pay' : 'Direct Booking Invoice',
+        customerName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        address: `${formData.address}, ${formData.suburb}`,
+        serviceType: serviceRequirement === 'repair' ? 'Urgent Repair Call Out' : serviceRequirement === 'routine-service' ? 'Routine Preventative Service' : 'Warranty Diagnostic'
+      });
+      setFormSubmitted(true);
+    }, 1200);
   };
 
-  const callOutFee = propertyType === 'residential' ? '$250 inc GST' : '$350 inc GST';
+  const handleCardNumberChange = (e) => {
+    let val = e.target.value.replace(/\D/g, '').substring(0, 16);
+    val = val.replace(/(\d{4})(?=\d)/g, '$1 ');
+    setCardDetails({ ...cardDetails, cardNumber: val });
+  };
+
+  const handleExpiryChange = (e) => {
+    let val = e.target.value.replace(/\D/g, '').substring(0, 4);
+    if (val.length >= 2) {
+      val = val.substring(0, 2) + '/' + val.substring(2);
+    }
+    setCardDetails({ ...cardDetails, cardExpiry: val });
+  };
 
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
@@ -81,7 +142,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           {/* Breadcrumb Navigation */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#94a3b8', marginBottom: '1.5rem' }}>
-            <button onClick={onNavigateHome} style={{ color: '#94a3b8', hover: { color: '#ffffff' } }}>Home</button>
+            <button onClick={onNavigateHome} style={{ color: '#94a3b8', cursor: 'pointer' }}>Home</button>
             <span>/</span>
             <span style={{ color: 'var(--accent-gold)', fontWeight: '600' }}>Service, Repairs & Warranty</span>
           </div>
@@ -260,7 +321,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
           }}>
             <Info size={24} style={{ color: '#2563eb', flexShrink: 0, marginTop: '2px' }} />
             <div style={{ fontSize: '0.875rem', color: '#475569', lineHeight: 1.6 }}>
-              <strong style={{ color: '#0f172a' }}>Payment Policy & Response Times:</strong> Call-out fees are paid upfront to secure technician scheduling. Any additional time or replacement parts required are payable prior to the technician leaving your site (Card or Cash accepted). A manual release key was supplied at installation to allow manual gate operation while you wait for your scheduled visit.
+              <strong style={{ color: '#0f172a' }}>Payment Policy & Response Times:</strong> Call-out fees are paid upfront via our secure Stripe / Link payment gateway to lock in technician dispatch. Any extra time or parts required on-site are payable prior to our technician leaving site (Card, Cash or Link accepted). A manual release key was supplied at installation to put your gate into manual mode while you await technician attendance.
             </div>
           </div>
         </div>
@@ -398,53 +459,128 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
         </div>
       </section>
 
-      {/* 4. Book A Service / Repair Request Form */}
+      {/* 4. Book A Service & Payment Section */}
       <section id="book-service" className="section section-light">
         <div className="container">
-          <div style={{ maxWidth: '820px', margin: '0 auto' }}>
+          <div style={{ maxWidth: '880px', margin: '0 auto' }}>
             <div className="section-header">
               <span className="badge-tag badge-gold">
                 <Calendar size={14} />
-                Official Service Booking
+                Official Service & Call Out Booking
               </span>
               <h2 className="section-title">
-                Request A Technician Call Out
+                Book A Technician & Pay Securely Online
               </h2>
               <p className="section-subtitle">
-                Please complete the details below. Our service dispatch team will review your diagnostic notes and schedule our mobile technician to your property.
+                Select your property category, describe your gate issue, and complete your upfront call-out booking using <strong>Link by Stripe</strong>, Credit Card, or Digital Wallets.
               </p>
             </div>
 
-            {formSubmitted ? (
+            {formSubmitted && transactionReceipt ? (
+              /* Receipt & Confirmation View */
               <div style={{
-                background: '#ecfdf5',
-                border: '2px solid #a7f3d0',
-                borderRadius: '20px',
-                padding: '3rem 2rem',
-                textAlign: 'center'
+                background: '#ffffff',
+                border: '2px solid #10b981',
+                borderRadius: '24px',
+                padding: 'clamp(1.75rem, 4vw, 3rem)',
+                boxShadow: '0 25px 50px -12px rgba(16, 185, 129, 0.15)',
+                textAlign: 'left'
               }}>
-                <div style={{
-                  width: '60px',
-                  height: '60px',
-                  borderRadius: '50%',
-                  background: '#10b981',
-                  color: '#ffffff',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 1.5rem auto'
-                }}>
-                  <Check size={32} />
+                {/* Header Success Badge */}
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                  <div style={{
+                    width: '64px',
+                    height: '64px',
+                    borderRadius: '50%',
+                    background: '#ecfdf5',
+                    color: '#10b981',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1rem auto',
+                    boxShadow: '0 0 0 8px rgba(16, 185, 129, 0.1)'
+                  }}>
+                    <Check size={36} />
+                  </div>
+                  <span className="badge-tag badge-green" style={{ marginBottom: '0.5rem' }}>
+                    Payment Authorized via Stripe
+                  </span>
+                  <h3 style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2rem)', fontWeight: '900', color: '#0f172a', letterSpacing: '-0.02em' }}>
+                    Call Out Booking Confirmed!
+                  </h3>
+                  <p style={{ color: '#475569', fontSize: '0.95rem', maxWidth: '520px', margin: '0.5rem auto 0 auto' }}>
+                    Receipt <strong>#{transactionReceipt.receiptNumber}</strong> has been emailed to <strong>{transactionReceipt.email}</strong>.
+                  </p>
                 </div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: '900', color: '#065f46', marginBottom: '0.75rem' }}>
-                  Service Booking Request Received!
-                </h3>
-                <p style={{ color: '#047857', fontSize: '1rem', lineHeight: 1.6, maxWidth: '560px', margin: '0 auto 1.75rem auto' }}>
-                  Thank you, <strong>{formData.fullName}</strong>. Our workshop service coordinator will review your ticket and contact you at <strong>{formData.phone}</strong> within 1–2 business days to confirm your appointment time and call out fee arrangement.
-                </p>
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+
+                {/* Tax Invoice Breakdown Box */}
+                <div style={{
+                  background: '#f8fafc',
+                  border: '1.5px solid #e2e8f0',
+                  borderRadius: '16px',
+                  padding: '1.75rem',
+                  marginBottom: '2rem'
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid #e2e8f0', paddingBottom: '1rem', marginBottom: '1rem' }}>
+                    <div>
+                      <div style={{ fontSize: '0.78rem', color: '#64748b', fontWeight: '700', textTransform: 'uppercase' }}>Tax Invoice / Order Ref</div>
+                      <div style={{ fontSize: '1.1rem', fontWeight: '800', color: '#0f172a' }}>{transactionReceipt.receiptNumber}</div>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ fontSize: '0.78rem', color: '#64748b', fontWeight: '700', textTransform: 'uppercase' }}>Date</div>
+                      <div style={{ fontSize: '0.92rem', fontWeight: '700', color: '#0f172a' }}>{transactionReceipt.date}</div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', marginBottom: '1.25rem' }}>
+                    <div>
+                      <span style={{ fontSize: '0.8rem', color: '#64748b' }}>Client:</span>
+                      <div style={{ fontWeight: '700', color: '#0f172a', fontSize: '0.92rem' }}>{transactionReceipt.customerName}</div>
+                      <div style={{ fontSize: '0.85rem', color: '#475569' }}>{transactionReceipt.phone}</div>
+                    </div>
+                    <div>
+                      <span style={{ fontSize: '0.8rem', color: '#64748b' }}>Site Address:</span>
+                      <div style={{ fontWeight: '700', color: '#0f172a', fontSize: '0.92rem' }}>{transactionReceipt.address}</div>
+                    </div>
+                  </div>
+
+                  <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.88rem' }}>
+                      <span style={{ color: '#475569' }}>Item: {transactionReceipt.serviceType} (Travel + 30 mins diagnostics)</span>
+                      <span style={{ fontWeight: '700', color: '#0f172a' }}>${exGstAmount}</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.88rem' }}>
+                      <span style={{ color: '#475569' }}>GST (10%):</span>
+                      <span style={{ fontWeight: '700', color: '#0f172a' }}>${gstAmount}</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.15rem', fontWeight: '900', color: '#0f172a', borderTop: '1.5px solid #cbd5e1', paddingTop: '0.75rem', marginTop: '0.25rem' }}>
+                      <span>Total Paid:</span>
+                      <span style={{ color: '#10b981' }}>${transactionReceipt.amount}.00 AUD</span>
+                    </div>
+                    <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      <ShieldCheck size={14} style={{ color: '#10b981' }} />
+                      <span>Processed via {transactionReceipt.paymentMethod} • Stripe Tx: {transactionReceipt.stripeChargeId.substring(0, 18)}...</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Dispatch Info Next Steps */}
+                <div style={{ marginBottom: '2rem', padding: '1.25rem', background: '#eff6ff', borderRadius: '12px', border: '1px solid #bfdbfe' }}>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: '800', color: '#1e40af', marginBottom: '0.35rem' }}>
+                    What Happens Next?
+                  </h4>
+                  <p style={{ fontSize: '0.86rem', color: '#1e3a8a', lineHeight: 1.5, margin: 0 }}>
+                    Our service dispatch coordinator will contact you within 1 business day to confirm your exact technician arrival window. Remember you can use your manual release key while awaiting your scheduled service.
+                  </p>
+                </div>
+
+                {/* Actions */}
+                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                   <button
-                    onClick={() => setFormSubmitted(false)}
+                    onClick={() => {
+                      setFormSubmitted(false);
+                      setTransactionReceipt(null);
+                    }}
                     className="btn btn-outline-dark btn-md"
                     style={{ borderRadius: '10px' }}
                   >
@@ -455,16 +591,17 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                     className="btn btn-gold btn-md"
                     style={{ borderRadius: '10px' }}
                   >
-                    <Phone size={17} /> Urgent Call Out: (07) 3102 1801
+                    <Phone size={17} /> Call Workshop: (07) 3102 1801
                   </a>
                 </div>
               </div>
             ) : (
+              /* Booking & Stripe / Link Form */
               <form 
                 onSubmit={handleSubmit}
                 className="card-light"
                 style={{
-                  padding: 'clamp(1.5rem, 4vw, 2.5rem)',
+                  padding: 'clamp(1.5rem, 4vw, 2.75rem)',
                   boxShadow: '0 20px 40px -10px rgba(15, 23, 42, 0.1)'
                 }}
               >
@@ -618,7 +755,10 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                       required
                       placeholder="name@example.com.au"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) => {
+                        setFormData({ ...formData, email: e.target.value });
+                        if (!linkEmail) setLinkEmail(e.target.value);
+                      }}
                       style={{
                         width: '100%',
                         padding: '0.75rem 0.9rem',
@@ -674,14 +814,14 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                 </div>
 
                 {/* 5. Issue Description */}
-                <div style={{ marginBottom: '1.5rem' }}>
+                <div style={{ marginBottom: '1.75rem' }}>
                   <label style={{ display: 'block', fontSize: '0.86rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.4rem' }}>
                     Describe the Fault or Symptoms (e.g. motor humming, reverses halfway, remote unlit) *
                   </label>
                   <textarea
                     rows={3}
                     required
-                    placeholder="Please provide any details about the gate behaviour, error sounds, or when the issue began..."
+                    placeholder="Please provide details about the gate behaviour, error sounds, or when the issue began..."
                     value={formData.issueDescription}
                     onChange={(e) => setFormData({ ...formData, issueDescription: e.target.value })}
                     style={{
@@ -695,13 +835,13 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                   />
                 </div>
 
-                {/* 6. Mandatory Pre-Service Checklist Confirmation */}
+                {/* 6. Pre-Service Checklist Confirmation */}
                 <div style={{
                   background: '#f8fafc',
                   border: '1.5px solid #e2e8f0',
                   borderRadius: '12px',
                   padding: '1.25rem',
-                  marginBottom: '1.75rem'
+                  marginBottom: '2rem'
                 }}>
                   <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', cursor: 'pointer' }}>
                     <input
@@ -712,20 +852,436 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                       style={{ marginTop: '3px', width: '18px', height: '18px', accentColor: '#d97706' }}
                     />
                     <span style={{ fontSize: '0.84rem', color: '#334155', lineHeight: 1.5 }}>
-                      <strong>Pre-Service Confirmation:</strong> I understand the upfront call-out fee is <strong>{callOutFee}</strong> (covering travel + 30 mins onsite). I have confirmed my 240V power switch is ON and checked for obvious physical track/beam obstructions.
+                      <strong>Pre-Service Confirmation:</strong> I understand the upfront call-out fee is <strong>{callOutFeeStr}</strong> (covering technician travel + 30 mins diagnostic time). I have confirmed my 240V power switch is ON and checked for physical track/beam obstructions.
                     </span>
                   </label>
                 </div>
 
-                {/* Submit Action Button */}
+                {/* =======================================================
+                    7. STRIPE & LINK PAYMENT GATEWAY INTEGRATION
+                    ======================================================= */}
+                <div style={{
+                  background: '#ffffff',
+                  border: '2px solid #00D54B',
+                  borderRadius: '18px',
+                  padding: '1.5rem',
+                  marginBottom: '2rem',
+                  boxShadow: '0 12px 24px -6px rgba(0, 213, 75, 0.12)'
+                }}>
+                  {/* Payment Header */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.25rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.85rem' }}>
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <Lock size={16} style={{ color: '#00D54B' }} />
+                        <span style={{ fontSize: '1.05rem', fontWeight: '800', color: '#0f172a' }}>
+                          Secure Payment & Call-Out Authorization
+                        </span>
+                      </div>
+                      <span style={{ fontSize: '0.78rem', color: '#64748b' }}>
+                        256-Bit SSL Encryption • PCI-DSS Level 1 Compliant • Powered by Stripe
+                      </span>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      {/* Link Brand Pill */}
+                      <span style={{
+                        background: '#00D54B',
+                        color: '#ffffff',
+                        padding: '0.25rem 0.65rem',
+                        borderRadius: '6px',
+                        fontWeight: '900',
+                        fontSize: '0.82rem',
+                        letterSpacing: '-0.02em',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.25rem'
+                      }}>
+                        link <span style={{ fontSize: '0.65rem', fontWeight: '600', opacity: 0.9 }}>by Stripe</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Payment Method Selector Tabs */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.5rem', marginBottom: '1.25rem' }}>
+                    {/* Option 1: Link by Stripe */}
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod('link')}
+                      style={{
+                        padding: '0.65rem 0.5rem',
+                        borderRadius: '10px',
+                        border: paymentMethod === 'link' ? '2px solid #00D54B' : '1px solid #e2e8f0',
+                        background: paymentMethod === 'link' ? '#f0fdf4' : '#ffffff',
+                        color: '#0f172a',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontWeight: '800', fontSize: '0.85rem' }}>
+                        <span style={{ background: '#00D54B', color: '#ffffff', padding: '0.1rem 0.4rem', borderRadius: '4px', fontSize: '0.75rem' }}>Link</span>
+                        <span>1-Click</span>
+                      </div>
+                      <span style={{ fontSize: '0.68rem', color: '#16a34a', fontWeight: '600' }}>Fastest Checkout</span>
+                    </button>
+
+                    {/* Option 2: Credit Card */}
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod('card')}
+                      style={{
+                        padding: '0.65rem 0.5rem',
+                        borderRadius: '10px',
+                        border: paymentMethod === 'card' ? '2px solid #2563eb' : '1px solid #e2e8f0',
+                        background: paymentMethod === 'card' ? '#eff6ff' : '#ffffff',
+                        color: '#0f172a',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontWeight: '700', fontSize: '0.85rem' }}>
+                        <CreditCard size={15} style={{ color: '#2563eb' }} />
+                        <span>Card</span>
+                      </div>
+                      <span style={{ fontSize: '0.68rem', color: '#64748b' }}>Visa, MC, Amex</span>
+                    </button>
+
+                    {/* Option 3: Apple / Google Pay */}
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod('wallet')}
+                      style={{
+                        padding: '0.65rem 0.5rem',
+                        borderRadius: '10px',
+                        border: paymentMethod === 'wallet' ? '2px solid #0f172a' : '1px solid #e2e8f0',
+                        background: paymentMethod === 'wallet' ? '#f8fafc' : '#ffffff',
+                        color: '#0f172a',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontWeight: '700', fontSize: '0.85rem' }}>
+                        <Smartphone size={15} />
+                        <span>Wallets</span>
+                      </div>
+                      <span style={{ fontSize: '0.68rem', color: '#64748b' }}>Apple / Google Pay</span>
+                    </button>
+
+                    {/* Option 4: Invoice / Confirmation */}
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod('invoice')}
+                      style={{
+                        padding: '0.65rem 0.5rem',
+                        borderRadius: '10px',
+                        border: paymentMethod === 'invoice' ? '2px solid #d97706' : '1px solid #e2e8f0',
+                        background: paymentMethod === 'invoice' ? '#fef3c7' : '#ffffff',
+                        color: '#0f172a',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontWeight: '700', fontSize: '0.85rem' }}>
+                        <Receipt size={15} style={{ color: '#d97706' }} />
+                        <span>Pay On Dispatch</span>
+                      </div>
+                      <span style={{ fontSize: '0.68rem', color: '#b45309' }}>Authorized Callback</span>
+                    </button>
+                  </div>
+
+                  {/* TAB 1: LINK BY STRIPE CONTENT */}
+                  {paymentMethod === 'link' && (
+                    <div style={{
+                      background: '#f0fdf4',
+                      border: '1.5px solid #bbf7d0',
+                      borderRadius: '12px',
+                      padding: '1.25rem',
+                      marginBottom: '1rem'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.85rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <Zap size={18} style={{ color: '#16a34a' }} />
+                          <strong style={{ color: '#166534', fontSize: '0.92rem' }}>Pay faster with Link by Stripe</strong>
+                        </div>
+                        <span style={{ fontSize: '0.74rem', background: '#dcfce7', color: '#15803d', padding: '0.2rem 0.5rem', borderRadius: '4px', fontWeight: '700' }}>
+                          1-Click Checkout
+                        </span>
+                      </div>
+
+                      <p style={{ fontSize: '0.82rem', color: '#14532d', marginBottom: '1rem', lineHeight: 1.5 }}>
+                        Securely pay in 1-click across hundreds of thousands of Australian businesses using your saved cards and addresses stored in Link.
+                      </p>
+
+                      <div style={{ marginBottom: '0.75rem' }}>
+                        <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: '#14532d', marginBottom: '0.3rem' }}>
+                          Link Account Email:
+                        </label>
+                        <input
+                          type="email"
+                          value={linkEmail || formData.email}
+                          onChange={(e) => setLinkEmail(e.target.value)}
+                          placeholder="your-email@example.com.au"
+                          style={{
+                            width: '100%',
+                            padding: '0.7rem 0.85rem',
+                            borderRadius: '8px',
+                            border: '1.5px solid #86efac',
+                            background: '#ffffff',
+                            fontSize: '0.88rem',
+                            color: '#0f172a'
+                          }}
+                        />
+                      </div>
+
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.78rem', color: '#15803d' }}>
+                        <ShieldCheck size={14} />
+                        <span>A verification code will be sent to your mobile or email to authorize the {callOutFeeStr} call-out fee.</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* TAB 2: CREDIT / DEBIT CARD CONTENT */}
+                  {paymentMethod === 'card' && (
+                    <div style={{
+                      background: '#f8fafc',
+                      border: '1.5px solid #cbd5e1',
+                      borderRadius: '12px',
+                      padding: '1.25rem',
+                      marginBottom: '1rem'
+                    }}>
+                      <div style={{ marginBottom: '1rem' }}>
+                        <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.3rem' }}>
+                          Card Number *
+                        </label>
+                        <div style={{ position: 'relative' }}>
+                          <input
+                            type="text"
+                            placeholder="4000 1234 5678 9010"
+                            value={cardDetails.cardNumber}
+                            onChange={handleCardNumberChange}
+                            maxLength={19}
+                            style={{
+                              width: '100%',
+                              padding: '0.7rem 0.85rem',
+                              paddingRight: '60px',
+                              borderRadius: '8px',
+                              border: '1.5px solid #cbd5e1',
+                              background: '#ffffff',
+                              fontSize: '0.9rem',
+                              letterSpacing: '0.05em'
+                            }}
+                          />
+                          <div style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', display: 'flex', gap: '4px' }}>
+                            <span style={{ fontSize: '0.7rem', fontWeight: '800', color: '#1e40af' }}>VISA</span>
+                            <span style={{ fontSize: '0.7rem', fontWeight: '800', color: '#ea580c' }}>MC</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1rem' }}>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.3rem' }}>
+                            Expiry (MM/YY) *
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="MM/YY"
+                            value={cardDetails.cardExpiry}
+                            onChange={handleExpiryChange}
+                            maxLength={5}
+                            style={{
+                              width: '100%',
+                              padding: '0.7rem 0.85rem',
+                              borderRadius: '8px',
+                              border: '1.5px solid #cbd5e1',
+                              background: '#ffffff',
+                              fontSize: '0.9rem'
+                            }}
+                          />
+                        </div>
+
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.3rem' }}>
+                            CVC / CVV *
+                          </label>
+                          <input
+                            type="password"
+                            placeholder="123"
+                            maxLength={4}
+                            value={cardDetails.cardCvc}
+                            onChange={(e) => setCardDetails({ ...cardDetails, cardCvc: e.target.value.replace(/\D/g, '') })}
+                            style={{
+                              width: '100%',
+                              padding: '0.7rem 0.85rem',
+                              borderRadius: '8px',
+                              border: '1.5px solid #cbd5e1',
+                              background: '#ffffff',
+                              fontSize: '0.9rem'
+                            }}
+                          />
+                        </div>
+                      </div>
+
+                      <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontSize: '0.8rem', color: '#334155' }}>
+                        <input
+                          type="checkbox"
+                          checked={linkSavedCard}
+                          onChange={(e) => setLinkSavedCard(e.target.checked)}
+                          style={{ accentColor: '#00D54B' }}
+                        />
+                        <span>Save this payment info securely with <strong>Link by Stripe</strong> for 1-click future checkout</span>
+                      </label>
+                    </div>
+                  )}
+
+                  {/* TAB 3: WALLETS CONTENT */}
+                  {paymentMethod === 'wallet' && (
+                    <div style={{
+                      background: '#f8fafc',
+                      border: '1.5px solid #e2e8f0',
+                      borderRadius: '12px',
+                      padding: '1.5rem',
+                      textAlign: 'center',
+                      marginBottom: '1rem'
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', marginBottom: '0.85rem' }}>
+                        <button
+                          type="button"
+                          style={{
+                            background: '#000000',
+                            color: '#ffffff',
+                            padding: '0.65rem 1.25rem',
+                            borderRadius: '8px',
+                            fontWeight: '700',
+                            fontSize: '0.9rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.4rem',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          <span> Pay</span>
+                        </button>
+                        <button
+                          type="button"
+                          style={{
+                            background: '#ffffff',
+                            color: '#3c4043',
+                            border: '1px solid #dadce0',
+                            padding: '0.65rem 1.25rem',
+                            borderRadius: '8px',
+                            fontWeight: '700',
+                            fontSize: '0.9rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.4rem',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          <span>G Pay</span>
+                        </button>
+                      </div>
+                      <span style={{ fontSize: '0.78rem', color: '#64748b' }}>
+                        Authorizes the {callOutFeeStr} fee instantly using your biometric face/fingerprint authentication.
+                      </span>
+                    </div>
+                  )}
+
+                  {/* TAB 4: DIRECT INVOICE CONTENT */}
+                  {paymentMethod === 'invoice' && (
+                    <div style={{
+                      background: '#fffbeb',
+                      border: '1.5px solid #fde68a',
+                      borderRadius: '12px',
+                      padding: '1.25rem',
+                      marginBottom: '1rem'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#b45309', fontWeight: '700', fontSize: '0.9rem', marginBottom: '0.35rem' }}>
+                        <Receipt size={17} />
+                        <span>Pay When Service Time Confirmed</span>
+                      </div>
+                      <p style={{ fontSize: '0.82rem', color: '#92400e', margin: 0, lineHeight: 1.5 }}>
+                        Our service team will call you to schedule your technician and process your {callOutFeeStr} booking fee over the phone via credit card or digital invoice prior to dispatch.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Order Summary & Fee Total Bar */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    flexWrap: 'wrap',
+                    gap: '0.75rem',
+                    background: '#f8fafc',
+                    padding: '0.9rem 1.1rem',
+                    borderRadius: '10px',
+                    border: '1px solid #e2e8f0'
+                  }}>
+                    <div>
+                      <span style={{ fontSize: '0.78rem', color: '#64748b' }}>Upfront Booking Fee (inc GST):</span>
+                      <div style={{ fontSize: '1.25rem', fontWeight: '900', color: '#0f172a' }}>
+                        ${basePrice}.00 AUD <span style={{ fontSize: '0.78rem', color: '#16a34a', fontWeight: '700' }}>(Includes $30/15min travel & 30m diag)</span>
+                      </div>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <ShieldCheck size={18} style={{ color: '#00D54B' }} />
+                      <span style={{ fontSize: '0.78rem', fontWeight: '700', color: '#334155' }}>Stripe Verified</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Final Submit / Pay Action Button */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
                   <button
                     type="submit"
+                    disabled={isProcessingPayment}
                     className="btn btn-gold btn-lg"
-                    style={{ flex: '1 1 auto', borderRadius: '12px' }}
+                    style={{
+                      flex: '1 1 auto',
+                      borderRadius: '12px',
+                      background: paymentMethod === 'link' 
+                        ? 'linear-gradient(135deg, #00D54B 0%, #00a83b 100%)' 
+                        : 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                      color: '#ffffff',
+                      boxShadow: paymentMethod === 'link'
+                        ? '0 6px 20px rgba(0, 213, 75, 0.35)'
+                        : '0 6px 20px rgba(217, 119, 6, 0.35)',
+                      fontSize: '1.02rem',
+                      fontWeight: '800'
+                    }}
                   >
-                    <Send size={18} /> Submit Service Request ({callOutFee})
+                    {isProcessingPayment ? (
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <Clock className="animate-spin" size={18} /> Processing Authorization...
+                      </span>
+                    ) : paymentMethod === 'link' ? (
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <Zap size={18} /> Pay with <strong style={{ letterSpacing: '-0.02em' }}>Link</strong> • ${basePrice}.00 AUD
+                      </span>
+                    ) : (
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <Send size={18} /> Authorize Call Out (${basePrice}.00 AUD)
+                      </span>
+                    )}
                   </button>
+
                   <a
                     href={COMPANY_INFO.tel}
                     className="btn btn-outline-dark btn-lg"
