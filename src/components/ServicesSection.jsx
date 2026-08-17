@@ -12,10 +12,16 @@ import {
 } from 'lucide-react';
 import { SERVICES } from '../data/siteData';
 
-export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigureGate, activeCategory }) {
-  const [activeTab, setActiveTab] = useState(activeCategory || 'sliding-gates');
+export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigureGate, activeCategory, selectedServiceId, onSelectService }) {
+  const [activeTab, setActiveTab] = useState(selectedServiceId || activeCategory || 'sliding-gates');
 
-  const currentService = SERVICES.find((s) => s.id === activeTab) || SERVICES[0];
+  React.useEffect(() => {
+    if (selectedServiceId) {
+      setActiveTab(selectedServiceId);
+    }
+  }, [selectedServiceId]);
+
+  const currentService = (SERVICES && SERVICES.find((s) => s.id === activeTab)) || (SERVICES && SERVICES[0]) || { highlights: [], features: [] };
 
   return (
     <section id="services" className="section" style={{ backgroundColor: '#ffffff' }}>

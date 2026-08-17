@@ -35,13 +35,11 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
   // Filter and search logic
   const filteredItems = useMemo(() => {
     return GALLERY_ITEMS.filter((item) => {
-      const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
-      const matchesSearch = 
-        !searchTerm || 
-        item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.suburb.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.description.toLowerCase().includes(searchTerm.toLowerCase());
-      return matchesCategory && matchesSearch;
+      const query = searchTerm.toLowerCase();
+      const titleMatch = (item?.title || '').toLowerCase().includes(query);
+      const locMatch = (item?.location || item?.suburb || '').toLowerCase().includes(query);
+      const descMatch = (item?.description || '').toLowerCase().includes(query);
+      return matchesCategory && (!searchTerm || titleMatch || locMatch || descMatch);
     });
   }, [activeCategory, searchTerm]);
 

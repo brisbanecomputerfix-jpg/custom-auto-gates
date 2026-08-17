@@ -627,7 +627,7 @@ export default function GateVisualizerQuote() {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <span style={{ color: '#64748b' }}>Motor:</span>
-                  <span style={{ color: '#0f172a', fontWeight: '700' }}>{MOTORS.find(m=>m.id===motor)?.name.split(' ')[0]} {MOTORS.find(m=>m.id===motor)?.name.split(' ')[1]}</span>
+                  <span style={{ color: '#0f172a', fontWeight: '700' }}>{(MOTORS.find(m=>m.id===motor)?.name || 'Nice Automation').split(' ')[0]} {(MOTORS.find(m=>m.id===motor)?.name || '').split(' ')[1] || ''}</span>
                 </div>
               </div>
 
