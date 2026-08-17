@@ -20,6 +20,7 @@ import SuburbLandingPage from './components/SuburbLandingPage';
 import Footer from './components/Footer';
 import QuickActionBar from './components/QuickActionBar';
 import RemoteCursorEffect from './components/RemoteCursorEffect';
+import { updateSeoMetadata } from './utils/seoManager';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'about' | 'service' | 'contact' | 'testimonials' | 'council-guide' | 'suburbs'
@@ -79,6 +80,11 @@ export default function App() {
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
+
+  // Update dynamic canonical tag, title, meta description, and social graph
+  useEffect(() => {
+    updateSeoMetadata(currentPage, selectedRegion);
+  }, [currentPage, selectedRegion]);
 
   const navigateTo = (page, region = 'brisbane') => {
     setCurrentPage(page);
