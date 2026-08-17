@@ -34,7 +34,7 @@ export default function FaqSection({ onOpenQuote, onOpenContact }) {
         </div>
 
         {/* Accordion Container */}
-        <div style={{ maxWidth: '820px', margin: '0 auto 3rem auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div style={{ maxWidth: '820px', margin: '0 auto 2.5rem auto', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
           {FAQS.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
@@ -53,23 +53,23 @@ export default function FaqSection({ onOpenQuote, onOpenContact }) {
                   onClick={() => toggleAccordion(idx)}
                   style={{
                     width: '100%',
-                    padding: '1.25rem 1.5rem',
+                    padding: 'clamp(0.85rem, 2.5vw, 1.15rem) clamp(1rem, 3vw, 1.35rem)',
                     textAlign: 'left',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    gap: '1rem',
+                    gap: '0.75rem',
                     color: '#0f172a',
                     fontFamily: 'Outfit, sans-serif',
-                    fontSize: '1.05rem',
+                    fontSize: 'clamp(0.92rem, 2vw, 1.05rem)',
                     fontWeight: '700',
                     cursor: 'pointer'
                   }}
                 >
                   <span>{faq.q}</span>
                   <div style={{
-                    width: '28px',
-                    height: '28px',
+                    width: '26px',
+                    height: '26px',
                     borderRadius: '50%',
                     background: isOpen ? '#2563eb' : '#f1f5f9',
                     color: isOpen ? '#ffffff' : '#475569',
@@ -80,12 +80,12 @@ export default function FaqSection({ onOpenQuote, onOpenContact }) {
                     transition: 'transform 0.25s ease',
                     flexShrink: 0
                   }}>
-                    <ChevronDown size={16} />
+                    <ChevronDown size={15} />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div style={{ padding: '0 1.5rem 1.5rem 1.5rem', color: '#475569', fontSize: '0.9375rem', lineHeight: 1.6, borderTop: '1px solid #e2e8f0', paddingTop: '1rem' }} className="animate-fadeIn">
+                  <div style={{ padding: '0 clamp(1rem, 3vw, 1.35rem) clamp(1rem, 3vw, 1.35rem) clamp(1rem, 3vw, 1.35rem)', color: '#475569', fontSize: '0.88rem', lineHeight: 1.6, borderTop: '1px solid #e2e8f0', paddingTop: '0.85rem' }} className="animate-fadeIn">
                     {faq.a}
                   </div>
                 )}
@@ -101,25 +101,25 @@ export default function FaqSection({ onOpenQuote, onOpenContact }) {
           background: '#eff6ff',
           border: '1.5px solid #bfdbfe',
           borderRadius: '16px',
-          padding: '2.25rem',
+          padding: 'clamp(1.25rem, 3.5vw, 2rem)',
           textAlign: 'center',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '1rem'
+          gap: '0.85rem'
         }}>
-          <MessageCircleQuestion size={36} style={{ color: '#2563eb' }} />
-          <h3 style={{ fontSize: '1.35rem', color: '#0f172a', fontWeight: '800' }}>
+          <MessageCircleQuestion size={32} style={{ color: '#2563eb' }} />
+          <h3 style={{ fontSize: 'clamp(1.15rem, 2.5vw, 1.35rem)', color: '#0f172a', fontWeight: '800' }}>
             Have a question about your specific property or boundary?
           </h3>
-          <p style={{ color: '#475569', fontSize: '0.9375rem', maxWidth: '580px' }}>
+          <p style={{ color: '#475569', fontSize: '0.88rem', maxWidth: '580px' }}>
             Our Brisbane gate engineers are available Monday to Friday 9am to 4pm to assist with layout advice, sloping driveway questions, and custom powdercoat matching.
           </p>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <a href={COMPANY_INFO.tel} className="btn btn-blue">
-              <Phone size={18} /> Call Us: (07) 3102 1801
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a href={COMPANY_INFO.tel} className="btn btn-blue btn-md">
+              <Phone size={17} /> Call Us: (07) 3102 1801
             </a>
-            <button onClick={onOpenContact} className="btn btn-outline-dark">
+            <button onClick={onOpenContact} className="btn btn-outline-dark btn-md">
               Send an Online Inquiry
             </button>
           </div>

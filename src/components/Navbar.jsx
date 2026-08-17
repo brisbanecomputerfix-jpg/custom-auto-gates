@@ -50,69 +50,60 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
 
   return (
     <>
-      {/* Sleek Top Notification Bar */}
+      {/* Sleek Top Notification Bar - Responsive */}
       <div style={{
         background: '#0f172a',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
         color: '#cbd5e1',
-        fontSize: '0.84rem',
-        padding: '0.55rem 0',
+        fontSize: '0.82rem',
+        padding: '0.45rem 0',
         lineHeight: 1.4
       }}>
         <div className="container" style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '0.75rem'
+          gap: '0.5rem'
         }}>
           {/* Top Bar Left: Address & Hours */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-              <MapPin size={14} style={{ color: '#fbbf24', flexShrink: 0 }} />
-              <span>Shed 2, 43-45 Belar St, Yamanto QLD 4305</span>
+              <MapPin size={13} style={{ color: '#fbbf24', flexShrink: 0 }} />
+              <span className="hidden-mobile">Shed 2, 43-45 Belar St, Yamanto QLD 4305</span>
+              <span className="visible-mobile-only" style={{ display: 'none' }}>Yamanto, QLD</span>
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }} className="hidden-mobile">
-              <Clock size={14} style={{ color: '#94a3b8', flexShrink: 0 }} />
-              <span>Mon–Fri: 9:00 AM – 4:00 PM</span>
+              <Clock size={13} style={{ color: '#94a3b8', flexShrink: 0 }} />
+              <span>Mon–Fri: 9am – 4pm</span>
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#34d399', fontWeight: '600' }} className="hidden-tablet">
-              <ShieldCheck size={14} />
-              <span>10-Year Factory Structural Warranty</span>
+              <ShieldCheck size={13} />
+              <span>10-Yr Factory Warranty</span>
             </span>
           </div>
 
           {/* Top Bar Right: DIY Troubleshoot & Direct Phone */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
             <button 
               onClick={onOpenTroubleshoot}
+              className="hidden-mobile"
               style={{
                 color: '#e2e8f0',
                 background: 'rgba(255,255,255,0.06)',
-                padding: '0.25rem 0.65rem',
+                padding: '0.2rem 0.55rem',
                 borderRadius: '6px',
                 border: '1px solid rgba(255,255,255,0.1)',
-                fontSize: '0.78rem',
+                fontSize: '0.76rem',
                 fontWeight: '600',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.4rem',
+                gap: '0.35rem',
                 transition: 'all 0.2s ease',
                 cursor: 'pointer'
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(251, 191, 36, 0.15)';
-                e.currentTarget.style.borderColor = '#fbbf24';
-                e.currentTarget.style.color = '#fbbf24';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-                e.currentTarget.style.color = '#e2e8f0';
-              }}
             >
-              <Wrench size={13} style={{ color: '#fbbf24' }} />
-              <span>Gate Stuck? Troubleshooting</span>
+              <Wrench size={12} style={{ color: '#fbbf24' }} />
+              <span>Gate Stuck?</span>
             </button>
 
             <a 
@@ -120,14 +111,14 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
               style={{
                 color: '#fbbf24',
                 fontWeight: '800',
-                fontSize: '0.9rem',
+                fontSize: '0.85rem',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.45rem',
+                gap: '0.35rem',
                 letterSpacing: '0.01em'
               }}
             >
-              <Phone size={14} />
+              <Phone size={13} />
               <span>(07) 3102 1801</span>
             </a>
           </div>
@@ -148,7 +139,8 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          height: '86px'
+          minHeight: '68px',
+          height: 'clamp(68px, 10vw, 84px)'
         }}>
           {/* Brand Logo */}
           <a 
@@ -159,17 +151,19 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
               display: 'flex',
               alignItems: 'center',
               flexShrink: 0,
-              padding: '0.25rem 0',
-              marginRight: '2rem'
+              padding: '0.2rem 0',
+              marginRight: '1rem',
+              maxWidth: '65%'
             }}
           >
             <img 
               src="/images/custom-auto-gates-logo.png" 
               alt="Custom Auto Gates & Fencing" 
               style={{
-                height: '56px',
+                height: 'auto',
+                maxHeight: 'clamp(40px, 7vw, 54px)',
                 width: 'auto',
-                maxWidth: '250px',
+                maxWidth: '100%',
                 objectFit: 'contain',
                 display: 'block'
               }}
@@ -181,7 +175,7 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
             <ul style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '1.75rem',
+              gap: '1.5rem',
               listStyle: 'none',
               margin: 0,
               padding: 0
@@ -195,15 +189,10 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                     color: currentPage === 'about' ? '#2563eb' : '#334155',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: currentPage === 'about' ? '800' : '600',
-                    fontSize: '0.96rem',
+                    fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
                     cursor: 'pointer',
-                    transition: 'color 0.15s ease',
-                    position: 'relative'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#2563eb'}
-                  onMouseLeave={(e) => {
-                    if (currentPage !== 'about') e.currentTarget.style.color = '#334155';
+                    transition: 'color 0.15s ease'
                   }}
                 >
                   About Us
@@ -218,13 +207,12 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                     color: '#334155',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: '600',
-                    fontSize: '0.96rem',
+                    fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '4px',
-                    cursor: 'pointer',
-                    transition: 'color 0.15s ease'
+                    cursor: 'pointer'
                   }}
                   onClick={() => handleNavClick('services')}
                   onMouseEnter={() => setServicesDropdown(true)}
@@ -240,12 +228,12 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                       position: 'absolute',
                       top: '100%',
                       left: 0,
-                      width: '280px',
+                      width: '270px',
                       background: '#ffffff',
                       border: '1px solid #e2e8f0',
                       borderRadius: '14px',
                       boxShadow: '0 18px 36px rgba(15,23,42,0.12)',
-                      padding: '0.65rem',
+                      padding: '0.55rem',
                       zIndex: 120,
                       animation: 'fadeIn 0.18s ease-out'
                     }}
@@ -269,12 +257,11 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                         style={{
                           width: '100%',
                           textAlign: 'left',
-                          padding: '0.65rem 0.85rem',
+                          padding: '0.6rem 0.8rem',
                           color: '#334155',
-                          fontSize: '0.88rem',
+                          fontSize: '0.86rem',
                           fontWeight: '600',
                           borderRadius: '8px',
-                          transition: 'all 0.15s ease',
                           display: 'block',
                           cursor: 'pointer'
                         }}
@@ -302,13 +289,10 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                     color: '#334155',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: '600',
-                    fontSize: '0.96rem',
+                    fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
-                    cursor: 'pointer',
-                    transition: 'color 0.15s ease'
+                    cursor: 'pointer'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#2563eb'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#334155'}
                 >
                   Project Gallery
                 </button>
@@ -322,13 +306,10 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                     color: '#334155',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: '600',
-                    fontSize: '0.96rem',
+                    fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
-                    cursor: 'pointer',
-                    transition: 'color 0.15s ease'
+                    cursor: 'pointer'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#2563eb'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#334155'}
                 >
                   Motors & Specs
                 </button>
@@ -342,13 +323,10 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                     color: '#334155',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: '600',
-                    fontSize: '0.96rem',
+                    fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
-                    cursor: 'pointer',
-                    transition: 'color 0.15s ease'
+                    cursor: 'pointer'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#2563eb'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#334155'}
                 >
                   Why Factory Direct
                 </button>
@@ -362,13 +340,10 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                     color: '#334155',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: '600',
-                    fontSize: '0.96rem',
+                    fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
-                    cursor: 'pointer',
-                    transition: 'color 0.15s ease'
+                    cursor: 'pointer'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#2563eb'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#334155'}
                 >
                   Service Areas
                 </button>
@@ -382,13 +357,10 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                     color: '#334155',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: '600',
-                    fontSize: '0.96rem',
+                    fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
-                    cursor: 'pointer',
-                    transition: 'color 0.15s ease'
+                    cursor: 'pointer'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#2563eb'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#334155'}
                 >
                   FAQs
                 </button>
@@ -396,23 +368,23 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
             </ul>
           </nav>
 
-          {/* Desktop Nav Actions */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexShrink: 0 }}>
+          {/* Desktop & Mobile Actions */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexShrink: 0 }}>
             <button 
               onClick={onOpenQuote}
-              className="btn btn-gold btn-sm btn-pulse"
-              style={{ fontWeight: '800', padding: '0.65rem 1.25rem', fontSize: '0.92rem' }}
+              className="btn btn-gold btn-sm btn-pulse hidden-mobile"
+              style={{ fontWeight: '800', padding: '0.6rem 1.1rem', fontSize: '0.9rem' }}
             >
-              <Calculator size={16} />
+              <Calculator size={15} />
               <span>Instant Quote</span>
             </button>
 
             <button 
               onClick={onOpenContact}
-              className="btn btn-outline-dark btn-sm"
-              style={{ padding: '0.65rem 1.15rem', fontSize: '0.92rem' }}
+              className="btn btn-outline-dark btn-sm hidden-mobile"
+              style={{ padding: '0.6rem 1rem', fontSize: '0.9rem' }}
             >
-              <Calendar size={15} />
+              <Calendar size={14} />
               <span>Free Measure</span>
             </button>
 
@@ -423,14 +395,19 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
               aria-label="Toggle navigation menu"
               style={{
                 background: '#f8fafc',
-                border: '1px solid #e2e8f0',
+                border: '1.5px solid #e2e8f0',
                 borderRadius: '8px',
-                padding: '0.5rem',
+                padding: '0.55rem',
                 color: '#0f172a',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minWidth: '42px',
+                minHeight: '42px'
               }}
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -440,17 +417,26 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
       {mobileMenuOpen && (
         <div className="mobile-drawer">
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid #f1f5f9', paddingBottom: '1rem' }}>
               <img 
                 src="/images/custom-auto-gates-logo.png" 
                 alt="Custom Auto Gates" 
-                style={{ height: '48px', width: 'auto', maxWidth: '200px', objectFit: 'contain' }}
+                style={{ height: '42px', width: 'auto', maxWidth: '180px', objectFit: 'contain' }}
               />
               <button 
                 onClick={() => setMobileMenuOpen(false)}
-                style={{ color: '#0f172a', padding: '0.5rem' }}
+                style={{
+                  background: '#f1f5f9',
+                  borderRadius: '50%',
+                  width: '36px',
+                  height: '36px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#0f172a'
+                }}
               >
-                <X size={26} />
+                <X size={20} />
               </button>
             </div>
 
@@ -461,15 +447,15 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                 style={{ color: currentPage === 'about' ? '#2563eb' : '#0f172a' }}
               >
                 <span>About Us & Our Team</span>
-                <Info size={18} style={{ color: 'var(--accent-gold)' }} />
+                <Info size={17} style={{ color: 'var(--accent-gold)' }} />
               </button>
               <button className="mobile-nav-item" onClick={() => handleNavClick('services')}>
                 <span>Services & Gate Styles</span>
-                <ChevronDown size={18} />
+                <ChevronDown size={17} />
               </button>
               <button className="mobile-nav-item" onClick={() => handleNavClick('gallery')}>
                 <span>Our Project Gallery (600+ Builds)</span>
-                <Sparkles size={18} style={{ color: 'var(--accent-gold)' }} />
+                <Sparkles size={17} style={{ color: 'var(--accent-gold)' }} />
               </button>
               <button className="mobile-nav-item" onClick={() => handleNavClick('motors')}>
                 <span>Italian Nice & Centurion Motors</span>
@@ -489,26 +475,26 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                 style={{ color: '#d97706' }}
               >
                 <span>Emergency Gate Troubleshooting</span>
-                <Wrench size={18} />
+                <Wrench size={17} />
               </button>
             </div>
           </div>
 
-          <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          <div style={{ marginTop: '1.75rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
             <a 
               href={COMPANY_INFO.tel} 
               className="btn btn-blue btn-lg" 
-              style={{ width: '100%' }}
+              style={{ width: '100%', borderRadius: '12px' }}
             >
-              <Phone size={19} />
+              <Phone size={18} />
               Call (07) 3102 1801
             </a>
             <button 
               onClick={() => { setMobileMenuOpen(false); onOpenQuote(); }}
               className="btn btn-gold btn-lg" 
-              style={{ width: '100%' }}
+              style={{ width: '100%', borderRadius: '12px', fontWeight: '800' }}
             >
-              <Calculator size={19} />
+              <Calculator size={18} />
               Get Instant Online Quote
             </button>
           </div>

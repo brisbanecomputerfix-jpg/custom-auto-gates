@@ -1,23 +1,27 @@
 import React from 'react';
-import { COMPANY_INFO } from '../data/siteData';
 import { 
   Phone, 
-  MapPin, 
   Mail, 
+  MapPin, 
   Clock, 
   ShieldCheck, 
-  Award,
-  ChevronRight,
-  ArrowUp
+  Award, 
+  Factory, 
+  ChevronRight, 
+  ArrowUp,
+  HeartHandshake
 } from 'lucide-react';
+import { COMPANY_INFO } from '../data/siteData';
 
-export default function Footer({ onNavigate, onOpenQuote, onOpenContact, onSelectCategory }) {
+export default function Footer({ onOpenQuote, onSelectCategory, onNavigate }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleLinkClick = (id) => {
-    onNavigate && onNavigate('home');
+    if (onNavigate) {
+      onNavigate('home');
+    }
     setTimeout(() => {
       const elem = document.getElementById(id);
       if (elem) {
@@ -27,55 +31,64 @@ export default function Footer({ onNavigate, onOpenQuote, onOpenContact, onSelec
   };
 
   return (
-    <footer style={{ background: '#0f172a', color: '#cbd5e1', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '5rem', paddingBottom: '3rem' }}>
+    <footer style={{
+      background: '#0a0f1d',
+      color: '#94a3b8',
+      paddingTop: 'clamp(2.75rem, 5vw, 4.5rem)',
+      paddingBottom: 'clamp(3rem, 6vw, 5rem)',
+      borderTop: '1px solid rgba(255,255,255,0.08)'
+    }}>
       <div className="container">
-        {/* Footer Main 4-Column Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1.4fr 1fr 1fr 1.2fr',
-          gap: '3rem',
-          marginBottom: '4rem'
-        }}
-        className="footer-grid"
+        {/* Main 4-Column Footer Grid */}
+        <div 
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1.3fr 1fr 1fr 1.2fr',
+            gap: '2.5rem',
+            marginBottom: '3.5rem'
+          }}
+          className="footer-grid"
         >
-          {/* Column 1: Company Profile & Badges */}
+          {/* Column 1: Company Profile */}
           <div>
-            <div style={{ marginBottom: '1.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
               <img 
                 src="/images/custom-auto-gates-logo.png" 
-                alt="Custom Auto Gates Logo" 
-                style={{ height: '56px', width: 'auto', background: '#ffffff', padding: '6px 14px', borderRadius: '10px', display: 'inline-block' }}
+                alt="Custom Auto Gates & Fencing" 
+                style={{ height: '48px', width: 'auto', maxWidth: '200px', objectFit: 'contain' }}
               />
             </div>
 
-            <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-              South East Queensland's trusted manufacturer of custom automatic sliding gates, swing gates, solar gates, and architectural aluminium slat fencing. Buy factory direct from our Yamanto workshop.
+            <p style={{ fontSize: '0.88rem', lineHeight: 1.6, color: '#cbd5e1', marginBottom: '1.25rem' }}>
+              South East Queensland's premier manufacturer of custom automatic driveway sliding gates, swing gates, solar off-grid gates, and aluminium slat fencing. 100% fabricated in our Yamanto workshop.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.85rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#34d399' }}>
-                <ShieldCheck size={17} /> 10-Year Factory Structural Warranty
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.8125rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#10b981' }}>
+                <ShieldCheck size={15} />
+                <span>10-Year Factory Structural Warranty</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fbbf24' }}>
-                <Award size={17} /> 100% Australian Made In Yamanto QLD
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#fbbf24' }}>
+                <Factory size={15} />
+                <span>Yamanto Direct Wholesale Pricing</span>
               </div>
             </div>
           </div>
 
-          {/* Column 2: Gate Styles & Services */}
+          {/* Column 2: Custom Gate Styles */}
           <div>
-            <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff', marginBottom: '1.4rem' }}>
-              Gate & Fencing Solutions
+            <h4 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#ffffff', marginBottom: '1.1rem' }}>
+              Custom Gate Systems
             </h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.7rem', fontSize: '0.9rem' }}>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.86rem' }}>
               {[
                 { name: 'Automatic Sliding Gates', id: 'sliding-gates' },
-                { name: 'Automatic Swing Gates', id: 'swing-gates' },
-                { name: 'Solar Powered Gates', id: 'solar-gates' },
-                { name: 'Commercial Security Gates', id: 'commercial-gates' },
-                { name: 'Boom Gates & Barriers', id: 'boom-gates' },
+                { name: 'Double Swing Gates', id: 'swing-gates' },
+                { name: 'Off-Grid Solar Gates', id: 'solar-gates' },
+                { name: 'Commercial & Boom Gates', id: 'commercial-gates' },
                 { name: 'Aluminium Slat Fencing', id: 'fencing' },
-                { name: 'Repairs & Servicing', id: 'servicing-repairs' }
+                { name: 'DecoWood Timber Finishes', id: 'decowood' },
+                { name: 'Gate Servicing & Repairs', id: 'servicing-repairs' }
               ].map((item, i) => (
                 <li key={i}>
                   <button
@@ -96,10 +109,10 @@ export default function Footer({ onNavigate, onOpenQuote, onOpenContact, onSelec
 
           {/* Column 3: Quick Navigation */}
           <div>
-            <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff', marginBottom: '1.4rem' }}>
+            <h4 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#ffffff', marginBottom: '1.1rem' }}>
               Quick Navigation
             </h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.7rem', fontSize: '0.9rem' }}>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.86rem' }}>
               <li>
                 <button 
                   onClick={() => onNavigate && onNavigate('about')} 
@@ -143,31 +156,31 @@ export default function Footer({ onNavigate, onOpenQuote, onOpenContact, onSelec
 
           {/* Column 4: Factory Contact & Operating Hours */}
           <div>
-            <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff', marginBottom: '1.4rem' }}>
+            <h4 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#ffffff', marginBottom: '1.1rem' }}>
               Yamanto Workshop & Office
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem', fontSize: '0.9rem', marginBottom: '1.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem', color: '#cbd5e1' }}>
-                <MapPin size={17} style={{ color: '#fbbf24', flexShrink: 0, marginTop: '2px' }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.86rem', marginBottom: '1.25rem' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', color: '#cbd5e1' }}>
+                <MapPin size={15} style={{ color: '#fbbf24', flexShrink: 0, marginTop: '2px' }} />
                 <span>{COMPANY_INFO.address}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: '#cbd5e1' }}>
-                <Phone size={17} style={{ color: '#fbbf24', flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: '#cbd5e1' }}>
+                <Phone size={15} style={{ color: '#fbbf24', flexShrink: 0 }} />
                 <a href={COMPANY_INFO.tel} style={{ color: '#fbbf24', fontWeight: '800' }}>
                   {COMPANY_INFO.phone}
                 </a>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: '#cbd5e1' }}>
-                <Mail size={17} style={{ color: '#fbbf24', flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: '#cbd5e1' }}>
+                <Mail size={15} style={{ color: '#fbbf24', flexShrink: 0 }} />
                 <span>{COMPANY_INFO.email}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: '#cbd5e1' }}>
-                <Clock size={17} style={{ color: '#fbbf24', flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: '#cbd5e1' }}>
+                <Clock size={15} style={{ color: '#fbbf24', flexShrink: 0 }} />
                 <span>{COMPANY_INFO.hours}</span>
               </div>
             </div>
 
-            <button onClick={onOpenQuote} className="btn btn-gold btn-sm" style={{ width: '100%', padding: '0.75rem' }}>
+            <button onClick={onOpenQuote} className="btn btn-gold btn-sm" style={{ width: '100%', padding: '0.65rem' }}>
               Get Instant Online Quote
             </button>
           </div>
@@ -176,28 +189,27 @@ export default function Footer({ onNavigate, onOpenQuote, onOpenContact, onSelec
         {/* Bottom Legal Copyright Bar */}
         <div style={{
           borderTop: '1px solid rgba(255,255,255,0.08)',
-          paddingTop: '2rem',
+          paddingTop: '1.5rem',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
           gap: '1rem',
-          fontSize: '0.85rem',
+          fontSize: '0.8125rem',
           color: '#64748b'
         }}>
           <div>
-            © {new Date().getFullYear()} Custom Auto Gates Pty Ltd & Blondies Powder Coating. All Rights Reserved. ABN & QBCC Licensed.
+            © {new Date().getFullYear()} Custom Auto Gates Pty Ltd. All Rights Reserved. ABN & QBCC Licensed.
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <span>Privacy Policy</span>
             <span>Terms & Conditions</span>
-            <span>Price Match Guarantee</span>
             <button 
               onClick={scrollToTop}
               style={{
-                width: '38px',
-                height: '38px',
+                width: '36px',
+                height: '36px',
                 borderRadius: '50%',
                 background: 'rgba(255,255,255,0.1)',
                 color: '#ffffff',
@@ -209,7 +221,7 @@ export default function Footer({ onNavigate, onOpenQuote, onOpenContact, onSelec
               }}
               aria-label="Scroll to top"
             >
-              <ArrowUp size={17} />
+              <ArrowUp size={16} />
             </button>
           </div>
         </div>
