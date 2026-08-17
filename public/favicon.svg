@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <!-- Metallic Gold Gradient for Fence Slats -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="25%" stop-color="#f59e0b" />
+      <stop offset="70%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#92400e" />
+    </linearGradient>
+
+    <!-- Gold Accent Rim -->
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#d97706" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- Golden Ambient Glow -->
+    <radialGradient id="goldGlow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#d97706" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Slat Drop Shadow Filter -->
+    <filter id="slatShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Base Squircle Container -->
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="url(#bgGrad)" stroke="url(#rimGrad)" stroke-width="6" />
+
+  <!-- Radial Glow Behind Fence -->
+  <circle cx="256" cy="240" r="180" fill="url(#goldGlow)" />
+
+  <!-- Automatic Gate Signal Wave (Above Fence) -->
+  <g stroke="url(#goldGrad)" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.9">
+    <path d="M 206 96 A 65 65 0 0 1 306 96" />
+    <path d="M 226 120 A 38 38 0 0 1 286 120" />
+    <circle cx="256" cy="144" r="4.5" fill="#fef08a" />
+  </g>
+
+  <!-- Fence & Gate Structure Group with Drop Shadow -->
+  <g filter="url(#slatShadow)">
+    
+    <!-- Top & Bottom Structural Cross Rails -->
+    <!-- Top Rail -->
+    <rect x="76" y="210" width="360" height="24" rx="6" fill="url(#goldGrad)" />
+    <!-- Bottom Rail -->
+    <rect x="76" y="370" width="360" height="24" rx="6" fill="url(#goldGrad)" />
+    
+    <!-- Heavy Duty Gate Posts (Left & Right Anchors) -->
+    <!-- Left Post -->
+    <path d="M 76 170 L 96 150 L 116 170 L 116 430 L 76 430 Z" fill="url(#goldGrad)" />
+    <!-- Right Post -->
+    <path d="M 396 170 L 416 150 L 436 170 L 436 430 L 396 430 Z" fill="url(#goldGrad)" />
+
+    <!-- Vertical Fence Slats with Spearhead / Architectural Caps -->
+    
+    <!-- Slat 1 (Outer Left) -->
+    <path d="M 136 185 L 152 165 L 168 185 L 168 420 L 136 420 Z" fill="url(#goldGrad)" />
+    
+    <!-- Slat 2 (Mid Left) -->
+    <path d="M 188 170 L 204 150 L 220 170 L 220 420 L 188 420 Z" fill="url(#goldGrad)" />
+    
+    <!-- Slat 3 (Center Apex Slat) -->
+    <path d="M 240 155 L 256 135 L 272 155 L 272 420 L 240 420 Z" fill="url(#goldGrad)" />
+    
+    <!-- Slat 4 (Mid Right) -->
+    <path d="M 292 170 L 308 150 L 324 170 L 324 420 L 292 420 Z" fill="url(#goldGrad)" />
+    
+    <!-- Slat 5 (Outer Right) -->
+    <path d="M 344 185 L 360 165 L 376 185 L 376 420 L 344 420 Z" fill="url(#goldGrad)" />
+
+    <!-- Cross Rail Rivets / Bolts (Decorative Architectural Highlights) -->
+    <g fill="#fef08a" opacity="0.9">
+      <circle cx="96" cy="222" r="3" />
+      <circle cx="152" cy="222" r="3" />
+      <circle cx="204" cy="222" r="3" />
+      <circle cx="256" cy="222" r="3" />
+      <circle cx="308" cy="222" r="3" />
+      <circle cx="360" cy="222" r="3" />
+      <circle cx="416" cy="222" r="3" />
+
+      <circle cx="96" cy="382" r="3" />
+      <circle cx="152" cy="382" r="3" />
+      <circle cx="204" cy="382" r="3" />
+      <circle cx="256" cy="382" r="3" />
+      <circle cx="308" cy="382" r="3" />
+      <circle cx="360" cy="382" r="3" />
+      <circle cx="416" cy="382" r="3" />
+    </g>
+
+    <!-- Center Automatic Gate Emblem / Shield Badge -->
+    <polygon points="256,275 278,290 278,320 256,335 234,320 234,290" fill="#0f172a" stroke="url(#goldGrad)" stroke-width="4" />
+    <!-- Center Star / Keyhole Icon -->
+    <path d="M 256 295 L 260 305 L 270 305 L 262 311 L 265 321 L 256 315 L 247 321 L 250 311 L 242 305 L 252 305 Z" fill="#fef08a" />
+  </g>
+</svg>
