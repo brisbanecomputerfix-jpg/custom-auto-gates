@@ -28,8 +28,8 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Copy production build from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Expose HTTP port
-EXPOSE 80
+# Expose HTTP ports (both standard 80 and Coolify default 3000)
+EXPOSE 80 3000
 
 # Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]
