@@ -174,6 +174,7 @@ export default function App() {
       <QuickActionBar 
         onOpenQuote={handleOpenQuote}
         onOpenContact={() => setIsContactOpen(true)}
+        onOpenTroubleshoot={() => setIsTroubleshootOpen(true)}
       />
 
       {/* Interactive Modals */}
