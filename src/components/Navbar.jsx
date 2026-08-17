@@ -1,104 +1,141 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Phone, 
-  Clock, 
-  MapPin, 
-  Calculator, 
   Menu, 
   X, 
-  ShieldCheck, 
+  ChevronDown, 
+  Calculator, 
+  Calendar, 
   Wrench, 
-  ChevronDown,
-  Sparkles,
-  Calendar,
-  Info
+  ShieldCheck, 
+  MapPin, 
+  Sparkles, 
+  Clock, 
+  Info,
+  Star,
+  Scale,
+  Sun,
+  Building2,
+  Home,
+  Layers,
+  ArrowRight,
+  ChevronRight,
+  Flame,
+  CheckCircle2
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
 
-export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenContact, onOpenTroubleshoot, onSelectCategory }) {
+export default function Navbar({ 
+  currentPage = 'home',
+  onNavigate, 
+  onOpenQuote, 
+  onOpenContact, 
+  onOpenTroubleshoot, 
+  onSelectCategory 
+}) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [servicesDropdown, setServicesDropdown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (id) => {
-    setMobileMenuOpen(false);
+  // Close drawer on escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Prevent background scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [menuOpen]);
+
+  const handleNavClick = (sectionId) => {
+    setMenuOpen(false);
     setServicesDropdown(false);
-    
     if (currentPage !== 'home') {
       onNavigate('home');
       setTimeout(() => {
-        const elem = document.getElementById(id);
-        if (elem) {
-          elem.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+        const element = document.getElementById(sectionId);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
     } else {
-      const elem = document.getElementById(id);
-      if (elem) {
-        elem.scrollIntoView({ behavior: 'smooth' });
-      }
+      const element = document.getElementById(sectionId);
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleRouteClick = (page) => {
+    setMenuOpen(false);
+    setServicesDropdown(false);
+    onNavigate(page);
   };
 
   return (
     <>
-      {/* Sleek Top Notification Bar - Responsive */}
+      {/* Top Announcements & Quick Contact Bar */}
       <div style={{
-        background: '#0f172a',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-        color: '#cbd5e1',
-        fontSize: '0.82rem',
-        padding: '0.45rem 0',
-        lineHeight: 1.4
+        background: '#090e1a',
+        color: '#ffffff',
+        fontSize: '0.78rem',
+        padding: '0.4rem 0',
+        borderBottom: '1px solid rgba(255,255,255,0.08)',
+        position: 'relative',
+        zIndex: 101
       }}>
         <div className="container" style={{
           display: 'flex',
-          justifyContent: 'space-between',
           alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
           gap: '0.5rem'
         }}>
-          {/* Top Bar Left: Address & Hours */}
+          {/* Left: Trust Badges */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-              <MapPin size={13} style={{ color: '#fbbf24', flexShrink: 0 }} />
-              <span className="hidden-mobile">Shed 2, 43-45 Belar St, Yamanto QLD 4305</span>
-              <span className="visible-mobile-only" style={{ display: 'none' }}>Yamanto, QLD</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#cbd5e1' }}>
+              <ShieldCheck size={13} style={{ color: 'var(--accent-gold)' }} />
+              <span>100% Australian Made in Yamanto</span>
             </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }} className="hidden-mobile">
-              <Clock size={13} style={{ color: '#94a3b8', flexShrink: 0 }} />
-              <span>Mon–Fri: 9am – 4pm</span>
+
+            <span className="hidden-mobile" style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#94a3b8' }}>
+              <Clock size={12} style={{ color: 'var(--accent-gold)' }} />
+              <span>Mon-Fri: 7:00 AM - 5:00 PM</span>
             </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#34d399', fontWeight: '600' }} className="hidden-tablet">
-              <ShieldCheck size={13} />
-              <span>10-Yr Factory Warranty</span>
+
+            <span className="hidden-mobile" style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#94a3b8' }}>
+              <MapPin size={12} style={{ color: 'var(--accent-gold)' }} />
+              <span>Brisbane, Ipswich & SE QLD</span>
             </span>
           </div>
 
-          {/* Top Bar Right: DIY Troubleshoot & Direct Phone */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
-            <button 
+          {/* Right: Emergency Repairs Hotline */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: 'auto' }}>
+            <button
               onClick={onOpenTroubleshoot}
-              className="hidden-mobile"
               style={{
-                color: '#e2e8f0',
-                background: 'rgba(255,255,255,0.06)',
-                padding: '0.2rem 0.55rem',
+                background: 'rgba(217, 119, 6, 0.2)',
+                color: '#fbbf24',
+                border: '1px solid rgba(251, 191, 36, 0.4)',
                 borderRadius: '6px',
-                border: '1px solid rgba(255,255,255,0.1)',
-                fontSize: '0.76rem',
-                fontWeight: '600',
+                padding: '0.18rem 0.55rem',
+                fontSize: '0.72rem',
+                fontWeight: '700',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.35rem',
-                transition: 'all 0.2s ease',
                 cursor: 'pointer'
               }}
             >
@@ -125,7 +162,7 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
         </div>
       </div>
 
-      {/* Main Sticky Navbar */}
+      {/* Main Minimalist Sticky Header */}
       <header style={{
         position: 'sticky',
         top: 0,
@@ -140,20 +177,20 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
           alignItems: 'center',
           justifyContent: 'space-between',
           minHeight: '68px',
-          height: 'clamp(68px, 10vw, 84px)'
+          height: 'clamp(68px, 9vw, 80px)'
         }}>
           {/* Brand Logo */}
           <a 
             href="#" 
-            onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
+            onClick={(e) => { e.preventDefault(); handleRouteClick('home'); }}
             aria-label="Custom Auto Gates & Fencing Home"
             style={{
               display: 'flex',
               alignItems: 'center',
               flexShrink: 0,
               padding: '0.2rem 0',
-              marginRight: '1rem',
-              maxWidth: '65%'
+              marginRight: '1.25rem',
+              maxWidth: '55%'
             }}
           >
             <img 
@@ -161,7 +198,7 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
               alt="Custom Auto Gates & Fencing" 
               style={{
                 height: 'auto',
-                maxHeight: 'clamp(40px, 7vw, 54px)',
+                maxHeight: 'clamp(38px, 6.5vw, 50px)',
                 width: 'auto',
                 maxWidth: '100%',
                 objectFit: 'contain',
@@ -170,43 +207,24 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
             />
           </a>
 
-          {/* Desktop Navigation Links */}
+          {/* Minimalist Desktop Navigation Links (Main 4 Core Items) */}
           <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center' }}>
             <ul style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '1.5rem',
+              gap: '1.75rem',
               listStyle: 'none',
               margin: 0,
               padding: 0
             }}>
-              {/* About Us Link */}
-              <li>
-                <button 
-                  className="nav-link-btn" 
-                  onClick={() => onNavigate('about')}
-                  style={{
-                    color: currentPage === 'about' ? '#2563eb' : '#334155',
-                    fontFamily: 'Outfit, sans-serif',
-                    fontWeight: currentPage === 'about' ? '800' : '600',
-                    fontSize: '0.94rem',
-                    padding: '0.5rem 0.25rem',
-                    cursor: 'pointer',
-                    transition: 'color 0.15s ease'
-                  }}
-                >
-                  About Us
-                </button>
-              </li>
-
-              {/* Services Dropdown */}
+              {/* 1. Services & Gates Dropdown */}
               <li style={{ position: 'relative' }} onMouseLeave={() => setServicesDropdown(false)}>
                 <button 
                   className="nav-link-btn"
                   style={{
-                    color: '#334155',
+                    color: '#1e293b',
                     fontFamily: 'Outfit, sans-serif',
-                    fontWeight: '600',
+                    fontWeight: '700',
                     fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
                     display: 'flex',
@@ -217,7 +235,7 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                   onClick={() => handleNavClick('services')}
                   onMouseEnter={() => setServicesDropdown(true)}
                 >
-                  <span>Services & Gates</span>
+                  <span>Services & Gate Styles</span>
                   <ChevronDown size={14} style={{ transform: servicesDropdown ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
                 </button>
 
@@ -228,9 +246,9 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                       position: 'absolute',
                       top: '100%',
                       left: 0,
-                      width: '270px',
+                      width: '280px',
                       background: '#ffffff',
-                      border: '1px solid #e2e8f0',
+                      border: '1.5px solid #e2e8f0',
                       borderRadius: '14px',
                       boxShadow: '0 18px 36px rgba(15,23,42,0.12)',
                       padding: '0.55rem',
@@ -241,12 +259,11 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                   >
                     {[
                       { name: 'Automatic Sliding Gates', id: 'sliding-gates' },
-                      { name: 'Automatic Swing Gates', id: 'swing-gates' },
+                      { name: 'Automatic Swing & Bi-Fold', id: 'swing-gates' },
                       { name: 'Off-Grid Solar Gates', id: 'solar-gates' },
-                      { name: 'Commercial & Security Gates', id: 'commercial-gates' },
-                      { name: 'Boom Gates & Barriers', id: 'boom-gates' },
+                      { name: 'Commercial Boom & Barriers', id: 'boom-gates' },
                       { name: 'Aluminium Slat Fencing', id: 'fencing' },
-                      { name: 'Service, Repairs & Warranty Page', id: 'service', isRoute: true },
+                      { name: 'Service, Repairs & Warranty', id: 'service', isRoute: true },
                       { name: 'QLD Council & Pool Safety Guide', id: 'council-guide', isRoute: true }
                     ].map((s) => (
                       <button
@@ -254,7 +271,7 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                         onClick={() => {
                           setServicesDropdown(false);
                           if (s.isRoute) {
-                            onNavigate(s.id);
+                            handleRouteClick(s.id);
                           } else {
                             onSelectCategory && onSelectCategory(s.id);
                             handleNavClick('services');
@@ -269,7 +286,8 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                           fontWeight: '600',
                           borderRadius: '8px',
                           display: 'block',
-                          cursor: 'pointer'
+                          cursor: 'pointer',
+                          transition: 'all 0.15s ease'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.background = '#eff6ff';
@@ -287,138 +305,58 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                 )}
               </li>
 
-              <li>
-                <button 
-                  className="nav-link-btn" 
-                  onClick={() => onNavigate('service')}
-                  style={{
-                    color: currentPage === 'service' ? '#2563eb' : '#334155',
-                    fontFamily: 'Outfit, sans-serif',
-                    fontWeight: currentPage === 'service' ? '800' : '600',
-                    fontSize: '0.94rem',
-                    padding: '0.5rem 0.25rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  Service & Repairs
-                </button>
-              </li>
-
+              {/* 2. Project Gallery */}
               <li>
                 <button 
                   className="nav-link-btn" 
                   onClick={() => handleNavClick('gallery')}
                   style={{
-                    color: '#334155',
+                    color: '#1e293b',
                     fontFamily: 'Outfit, sans-serif',
-                    fontWeight: '600',
+                    fontWeight: '700',
                     fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
                     cursor: 'pointer'
                   }}
                 >
-                  Project Gallery
+                  Gallery
                 </button>
               </li>
 
+              {/* 3. Verified Reviews (4.9★) */}
               <li>
                 <button 
                   className="nav-link-btn" 
-                  onClick={() => onNavigate('testimonials')}
+                  onClick={() => handleRouteClick('testimonials')}
                   style={{
-                    color: currentPage === 'testimonials' ? '#2563eb' : '#334155',
+                    color: currentPage === 'testimonials' ? '#2563eb' : '#1e293b',
                     fontFamily: 'Outfit, sans-serif',
-                    fontWeight: currentPage === 'testimonials' ? '800' : '600',
+                    fontWeight: currentPage === 'testimonials' ? '800' : '700',
                     fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
                     cursor: 'pointer',
-                    transition: 'color 0.15s ease'
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.3rem'
                   }}
                 >
-                  Reviews (4.9★)
+                  <span>Reviews</span>
+                  <span style={{ color: '#d97706', fontSize: '0.78rem', background: '#fef3c7', padding: '0.1rem 0.4rem', borderRadius: '4px', fontWeight: '800' }}>4.9★</span>
                 </button>
               </li>
 
+              {/* 4. Contact Us */}
               <li>
                 <button 
                   className="nav-link-btn" 
-                  onClick={() => handleNavClick('motors')}
+                  onClick={() => handleRouteClick('contact')}
                   style={{
-                    color: '#334155',
+                    color: currentPage === 'contact' ? '#2563eb' : '#1e293b',
                     fontFamily: 'Outfit, sans-serif',
-                    fontWeight: '600',
+                    fontWeight: currentPage === 'contact' ? '800' : '700',
                     fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
                     cursor: 'pointer'
-                  }}
-                >
-                  Motors & Specs
-                </button>
-              </li>
-
-              <li>
-                <button 
-                  className="nav-link-btn" 
-                  onClick={() => handleNavClick('why-factory-direct')}
-                  style={{
-                    color: '#334155',
-                    fontFamily: 'Outfit, sans-serif',
-                    fontWeight: '600',
-                    fontSize: '0.94rem',
-                    padding: '0.5rem 0.25rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  Why Factory Direct
-                </button>
-              </li>
-
-              <li>
-                <button 
-                  className="nav-link-btn" 
-                  onClick={() => handleNavClick('suburbs')}
-                  style={{
-                    color: '#334155',
-                    fontFamily: 'Outfit, sans-serif',
-                    fontWeight: '600',
-                    fontSize: '0.94rem',
-                    padding: '0.5rem 0.25rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  Service Areas
-                </button>
-              </li>
-
-              <li>
-                <button 
-                  className="nav-link-btn" 
-                  onClick={() => handleNavClick('faqs')}
-                  style={{
-                    color: '#334155',
-                    fontFamily: 'Outfit, sans-serif',
-                    fontWeight: '600',
-                    fontSize: '0.94rem',
-                    padding: '0.5rem 0.25rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  FAQs
-                </button>
-              </li>
-
-              <li>
-                <button 
-                  className="nav-link-btn" 
-                  onClick={() => onNavigate('contact')}
-                  style={{
-                    color: currentPage === 'contact' ? '#2563eb' : '#334155',
-                    fontFamily: 'Outfit, sans-serif',
-                    fontWeight: currentPage === 'contact' ? '800' : '600',
-                    fontSize: '0.94rem',
-                    padding: '0.5rem 0.25rem',
-                    cursor: 'pointer',
-                    transition: 'color 0.15s ease'
                   }}
                 >
                   Contact Us
@@ -427,164 +365,299 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
             </ul>
           </nav>
 
-          {/* Desktop & Mobile Actions */}
+          {/* Right Action CTA Buttons + Minimalist Burger Toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexShrink: 0 }}>
+            {/* Instant Quote CTA */}
             <button 
               onClick={onOpenQuote}
               className="btn btn-gold btn-sm btn-pulse hidden-mobile"
-              style={{ fontWeight: '800', padding: '0.6rem 1.1rem', fontSize: '0.9rem' }}
+              style={{ fontWeight: '800', padding: '0.6rem 1.15rem', fontSize: '0.9rem', borderRadius: '10px' }}
             >
               <Calculator size={15} />
               <span>Instant Quote</span>
             </button>
 
+            {/* Universal Burger Menu Button (Visible on ALL devices for full catalog access) */}
             <button 
-              onClick={onOpenContact}
-              className="btn btn-outline-dark btn-sm hidden-mobile"
-              style={{ padding: '0.6rem 1rem', fontSize: '0.9rem' }}
-            >
-              <Calendar size={14} />
-              <span>Free Measure</span>
-            </button>
-
-            {/* Mobile Toggle Button */}
-            <button 
-              className="mobile-toggle" 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle navigation menu"
+              onClick={() => setMenuOpen(true)}
+              aria-label="Open full site navigation menu"
               style={{
                 background: '#f8fafc',
-                border: '1.5px solid #e2e8f0',
-                borderRadius: '8px',
-                padding: '0.55rem',
+                border: '1.5px solid #cbd5e1',
+                borderRadius: '10px',
+                padding: '0.55rem 0.85rem',
                 color: '#0f172a',
                 cursor: 'pointer',
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                minWidth: '42px',
-                minHeight: '42px'
+                gap: '0.45rem',
+                fontWeight: '700',
+                fontSize: '0.86rem',
+                fontFamily: 'Outfit, sans-serif',
+                transition: 'all 0.18s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#eff6ff';
+                e.currentTarget.style.borderColor = '#2563eb';
+                e.currentTarget.style.color = '#2563eb';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#f8fafc';
+                e.currentTarget.style.borderColor = '#cbd5e1';
+                e.currentTarget.style.color = '#0f172a';
               }}
             >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              <Menu size={19} />
+              <span className="hidden-mobile">Menu</span>
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Drawer Navigation */}
-      {mobileMenuOpen && (
-        <div className="mobile-drawer">
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid #f1f5f9', paddingBottom: '1rem' }}>
-              <img 
-                src="/images/custom-auto-gates-logo.png" 
-                alt="Custom Auto Gates" 
-                style={{ height: '42px', width: 'auto', maxWidth: '180px', objectFit: 'contain' }}
-              />
-              <button 
-                onClick={() => setMobileMenuOpen(false)}
-                style={{
-                  background: '#f1f5f9',
-                  borderRadius: '50%',
-                  width: '36px',
-                  height: '36px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#0f172a'
-                }}
-              >
-                <X size={20} />
-              </button>
+      {/* =========================================================================
+          FULL-SCREEN SLIDE-OUT DRAWER (BURGER MENU)
+          ========================================================================= */}
+      {menuOpen && (
+        <div 
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 300,
+            background: 'rgba(15, 23, 42, 0.65)',
+            backdropFilter: 'blur(6px)',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            animation: 'fadeIn 0.2s ease-out'
+          }}
+          onClick={() => setMenuOpen(false)}
+        >
+          {/* Drawer Panel */}
+          <div 
+            style={{
+              width: '100%',
+              maxWidth: '440px',
+              height: '100%',
+              background: '#ffffff',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              padding: '1.5rem',
+              overflowY: 'auto',
+              boxShadow: '-10px 0 35px rgba(0,0,0,0.2)',
+              position: 'relative'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div>
+              {/* Drawer Header */}
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                paddingBottom: '1.25rem',
+                borderBottom: '1.5px solid #f1f5f9',
+                marginBottom: '1.25rem'
+              }}>
+                <img 
+                  src="/images/custom-auto-gates-logo.png" 
+                  alt="Custom Auto Gates" 
+                  style={{ height: '40px', width: 'auto', maxWidth: '170px', objectFit: 'contain' }}
+                />
+                <button 
+                  onClick={() => setMenuOpen(false)}
+                  aria-label="Close navigation menu"
+                  style={{
+                    background: '#f1f5f9',
+                    border: 'none',
+                    borderRadius: '50%',
+                    width: '38px',
+                    height: '38px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#0f172a',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              {/* SECTION 1: CORE PAGES */}
+              <div style={{ marginBottom: '1.5rem' }}>
+                <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: '800', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                  Main Navigation
+                </span>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                  <button 
+                    className="mobile-nav-item" 
+                    onClick={() => handleRouteClick('home')}
+                    style={{ color: currentPage === 'home' ? '#2563eb' : '#0f172a', padding: '0.65rem 0' }}
+                  >
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                      <Home size={17} style={{ color: '#64748b' }} />
+                      Home
+                    </span>
+                    <ChevronRight size={16} style={{ color: '#cbd5e1' }} />
+                  </button>
+
+                  <button 
+                    className="mobile-nav-item" 
+                    onClick={() => handleRouteClick('about')}
+                    style={{ color: currentPage === 'about' ? '#2563eb' : '#0f172a', padding: '0.65rem 0' }}
+                  >
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                      <Info size={17} style={{ color: '#2563eb' }} />
+                      About Us & Our Yamanto Team
+                    </span>
+                    <ChevronRight size={16} style={{ color: '#cbd5e1' }} />
+                  </button>
+
+                  <button 
+                    className="mobile-nav-item" 
+                    onClick={() => handleRouteClick('service')}
+                    style={{ color: currentPage === 'service' ? '#2563eb' : '#0f172a', padding: '0.65rem 0' }}
+                  >
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                      <Wrench size={17} style={{ color: 'var(--accent-gold)' }} />
+                      Service, Repairs & Warranty
+                    </span>
+                    <ChevronRight size={16} style={{ color: '#cbd5e1' }} />
+                  </button>
+
+                  <button 
+                    className="mobile-nav-item" 
+                    onClick={() => handleRouteClick('testimonials')}
+                    style={{ color: currentPage === 'testimonials' ? '#2563eb' : '#0f172a', padding: '0.65rem 0' }}
+                  >
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                      <Star size={17} fill="#f59e0b" style={{ color: '#f59e0b' }} />
+                      Verified Reviews & Case Studies (4.9★)
+                    </span>
+                    <ChevronRight size={16} style={{ color: '#cbd5e1' }} />
+                  </button>
+
+                  <button 
+                    className="mobile-nav-item" 
+                    onClick={() => handleRouteClick('council-guide')}
+                    style={{ color: currentPage === 'council-guide' ? '#2563eb' : '#0f172a', padding: '0.65rem 0' }}
+                  >
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                      <Scale size={17} style={{ color: '#10b981' }} />
+                      QLD Council & Pool Safety Guide
+                    </span>
+                    <ChevronRight size={16} style={{ color: '#cbd5e1' }} />
+                  </button>
+
+                  <button 
+                    className="mobile-nav-item" 
+                    onClick={() => handleRouteClick('contact')}
+                    style={{ color: currentPage === 'contact' ? '#2563eb' : '#0f172a', padding: '0.65rem 0' }}
+                  >
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                      <Phone size={17} style={{ color: '#2563eb' }} />
+                      Contact Us & Showroom
+                    </span>
+                    <ChevronRight size={16} style={{ color: '#cbd5e1' }} />
+                  </button>
+                </div>
+              </div>
+
+              {/* SECTION 2: GATE STYLES & WORKSHOP CAPABILITIES */}
+              <div style={{ marginBottom: '1.5rem' }}>
+                <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: '800', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                  Gate Styles & Fabrication
+                </span>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.45rem' }}>
+                  {[
+                    { name: 'Sliding Gates', id: 'sliding-gates' },
+                    { name: 'Swing & Bi-Fold', id: 'swing-gates' },
+                    { name: 'Solar Acreage', id: 'solar-gates' },
+                    { name: 'Slat Fencing', id: 'fencing' },
+                    { name: 'Boom Barriers', id: 'boom-gates' },
+                    { name: 'Commercial Gates', id: 'commercial-gates' }
+                  ].map((style) => (
+                    <button
+                      key={style.id}
+                      onClick={() => {
+                        onSelectCategory && onSelectCategory(style.id);
+                        handleNavClick('services');
+                      }}
+                      style={{
+                        padding: '0.55rem 0.75rem',
+                        background: '#f8fafc',
+                        border: '1px solid #e2e8f0',
+                        borderRadius: '8px',
+                        fontSize: '0.82rem',
+                        fontWeight: '700',
+                        color: '#334155',
+                        textAlign: 'left',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
+                      }}
+                    >
+                      <span>{style.name}</span>
+                      <ChevronRight size={13} style={{ color: '#94a3b8' }} />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* SECTION 3: TECHNICAL & TRUST HUB */}
+              <div style={{ marginBottom: '1.25rem' }}>
+                <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: '800', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                  Technical & Research
+                </span>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                  <button className="mobile-nav-item" onClick={() => handleNavClick('gallery')} style={{ padding: '0.55rem 0' }}>
+                    <span style={{ fontSize: '0.92rem' }}>Our Project Gallery (600+ Builds)</span>
+                    <Sparkles size={15} style={{ color: 'var(--accent-gold)' }} />
+                  </button>
+                  <button className="mobile-nav-item" onClick={() => handleNavClick('motors')} style={{ padding: '0.55rem 0' }}>
+                    <span style={{ fontSize: '0.92rem' }}>Italian Nice & Centurion Motors</span>
+                  </button>
+                  <button className="mobile-nav-item" onClick={() => handleNavClick('why-factory-direct')} style={{ padding: '0.55rem 0' }}>
+                    <span style={{ fontSize: '0.92rem' }}>Why Buy Factory Direct</span>
+                  </button>
+                  <button className="mobile-nav-item" onClick={() => handleNavClick('suburbs')} style={{ padding: '0.55rem 0' }}>
+                    <span style={{ fontSize: '0.92rem' }}>Service Coverage Areas</span>
+                  </button>
+                  <button className="mobile-nav-item" onClick={() => handleNavClick('faqs')} style={{ padding: '0.55rem 0' }}>
+                    <span style={{ fontSize: '0.92rem' }}>Frequently Asked Questions</span>
+                  </button>
+                  <button 
+                    className="mobile-nav-item" 
+                    onClick={() => { setMenuOpen(false); onOpenTroubleshoot(); }}
+                    style={{ color: '#d97706', padding: '0.55rem 0' }}
+                  >
+                    <span style={{ fontSize: '0.92rem', fontWeight: '700' }}>Emergency Gate Diagnostics</span>
+                    <Wrench size={15} />
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <button 
-                className="mobile-nav-item" 
-                onClick={() => { setMobileMenuOpen(false); onNavigate('about'); }}
-                style={{ color: currentPage === 'about' ? '#2563eb' : '#0f172a' }}
+            {/* Drawer Footer Actions */}
+            <div style={{ paddingTop: '1.25rem', borderTop: '1.5px solid #f1f5f9', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+              <a 
+                href={COMPANY_INFO.tel} 
+                className="btn btn-blue btn-lg" 
+                style={{ width: '100%', borderRadius: '12px' }}
               >
-                <span>About Us & Our Team</span>
-                <Info size={17} style={{ color: 'var(--accent-gold)' }} />
-              </button>
+                <Phone size={18} />
+                Call (07) 3102 1801
+              </a>
               <button 
-                className="mobile-nav-item" 
-                onClick={() => { setMobileMenuOpen(false); onNavigate('service'); }}
-                style={{ color: currentPage === 'service' ? '#2563eb' : '#0f172a' }}
+                onClick={() => { setMenuOpen(false); onOpenQuote(); }}
+                className="btn btn-gold btn-lg" 
+                style={{ width: '100%', borderRadius: '12px', fontWeight: '800' }}
               >
-                <span>Service, Repairs & Warranty</span>
-                <Wrench size={17} style={{ color: 'var(--accent-gold)' }} />
-              </button>
-              <button className="mobile-nav-item" onClick={() => handleNavClick('services')}>
-                <span>Services & Gate Styles</span>
-                <ChevronDown size={17} />
-              </button>
-              <button className="mobile-nav-item" onClick={() => handleNavClick('gallery')}>
-                <span>Our Project Gallery (600+ Builds)</span>
-                <Sparkles size={17} style={{ color: 'var(--accent-gold)' }} />
-              </button>
-              <button 
-                className="mobile-nav-item" 
-                onClick={() => { setMobileMenuOpen(false); onNavigate('testimonials'); }}
-                style={{ color: currentPage === 'testimonials' ? '#2563eb' : '#0f172a' }}
-              >
-                <span>Verified Reviews (4.9★)</span>
-                <Star size={17} style={{ color: '#f59e0b' }} />
-              </button>
-              <button 
-                className="mobile-nav-item" 
-                onClick={() => { setMobileMenuOpen(false); onNavigate('council-guide'); }}
-                style={{ color: currentPage === 'council-guide' ? '#2563eb' : '#0f172a' }}
-              >
-                <span>QLD Council & Pool Safety Guide</span>
-                <Scale size={17} style={{ color: 'var(--accent-gold)' }} />
-              </button>
-              <button className="mobile-nav-item" onClick={() => handleNavClick('motors')}>
-                <span>Italian Nice & Centurion Motors</span>
-              </button>
-              <button className="mobile-nav-item" onClick={() => handleNavClick('why-factory-direct')}>
-                <span>Why Buy Factory Direct</span>
-              </button>
-              <button className="mobile-nav-item" onClick={() => handleNavClick('suburbs')}>
-                <span>Service Coverage Areas</span>
-              </button>
-              <button 
-                className="mobile-nav-item" 
-                onClick={() => { setMobileMenuOpen(false); onNavigate('contact'); }}
-                style={{ color: currentPage === 'contact' ? '#2563eb' : '#0f172a' }}
-              >
-                <span>Contact Us & Showroom</span>
-                <Phone size={17} style={{ color: 'var(--accent-gold)' }} />
-              </button>
-              <button 
-                className="mobile-nav-item" 
-                onClick={() => { setMobileMenuOpen(false); onOpenTroubleshoot(); }}
-                style={{ color: '#d97706' }}
-              >
-                <span>Emergency Gate Troubleshooting</span>
-                <Wrench size={17} />
+                <Calculator size={18} />
+                Instant Online Quote
               </button>
             </div>
-          </div>
-
-          <div style={{ marginTop: '1.75rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-            <a 
-              href={COMPANY_INFO.tel} 
-              className="btn btn-blue btn-lg" 
-              style={{ width: '100%', borderRadius: '12px' }}
-            >
-              <Phone size={18} />
-              Call (07) 3102 1801
-            </a>
-            <button 
-              onClick={() => { setMobileMenuOpen(false); onOpenQuote(); }}
-              className="btn btn-gold btn-lg" 
-              style={{ width: '100%', borderRadius: '12px', fontWeight: '800' }}
-            >
-              <Calculator size={18} />
-              Get Instant Online Quote
-            </button>
           </div>
         </div>
       )}
