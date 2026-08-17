@@ -12,25 +12,29 @@ import FaqSection from './components/FaqSection';
 import ContactModal from './components/ContactModal';
 import TroubleshooterModal from './components/TroubleshooterModal';
 import AboutUs from './components/AboutUs';
+import ServiceRepairs from './components/ServiceRepairs';
 import Footer from './components/Footer';
 import QuickActionBar from './components/QuickActionBar';
 import RemoteCursorEffect from './components/RemoteCursorEffect';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home'); // 'home' or 'about'
+  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'about' | 'service'
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isTroubleshootOpen, setIsTroubleshootOpen] = useState(false);
   const [selectedServiceId, setSelectedServiceId] = useState('sliding-gates');
   const [selectedGalleryGate, setSelectedGalleryGate] = useState(null);
 
-  // Sync with browser URL hash/pathname if user visits /about-us or #about
+  // Sync with browser URL hash/pathname
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
       const path = window.location.pathname;
       if (hash === '#about' || path === '/about-us') {
         setCurrentPage('about');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#service' || hash === '#repairs' || path === '/service' || path === '/service/' || path === '/repairs') {
+        setCurrentPage('service');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         setCurrentPage('home');
@@ -47,6 +51,8 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (page === 'about') {
       window.location.hash = 'about';
+    } else if (page === 'service') {
+      window.location.hash = 'service';
     } else {
       window.location.hash = '';
     }
@@ -104,6 +110,13 @@ export default function App() {
             onOpenContact={() => setIsContactOpen(true)}
             onNavigateHome={() => navigateTo('home')}
           />
+        ) : currentPage === 'service' ? (
+          /* Dedicated Service, Repairs & Warranty Page */
+          <ServiceRepairs 
+            onOpenQuote={handleOpenQuote}
+            onOpenContact={() => setIsContactOpen(true)}
+            onNavigateHome={() => navigateTo('home')}
+          />
         ) : (
           /* Main Home Page Experience */
           <>
@@ -152,22 +165,22 @@ export default function App() {
 
             {/* Frequently Asked Questions */}
             <FaqSection 
-              onOpenQuote={handleOpenQuote}
               onOpenContact={() => setIsContactOpen(true)}
+              onOpenQuote={handleOpenQuote}
             />
           </>
         )}
       </main>
 
-      {/* Footer */}
+      {/* Footer Section */}
       <Footer 
-        onNavigate={navigateTo}
         onOpenQuote={handleOpenQuote}
         onOpenContact={() => setIsContactOpen(true)}
         onSelectCategory={(catId) => {
           setSelectedServiceId(catId);
           if (currentPage !== 'home') navigateTo('home');
         }}
+        onNavigate={navigateTo}
       />
 
       {/* Floating Bottom Quick Action Bar for Mobile */}

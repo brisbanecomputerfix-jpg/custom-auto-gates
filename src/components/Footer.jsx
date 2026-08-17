@@ -122,6 +122,14 @@ export default function Footer({ onOpenQuote, onSelectCategory, onNavigate }) {
                 </button>
               </li>
               <li>
+                <button 
+                  onClick={() => onNavigate && onNavigate('service')} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
+                >
+                  <ChevronRight size={13} /> Service, Repairs & Warranty
+                </button>
+              </li>
+              <li>
                 <button onClick={() => handleLinkClick('gate-visualizer')} style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
                   <ChevronRight size={13} /> Live Cost Estimator
                 </button>

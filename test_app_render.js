@@ -2,6 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import App from './src/App.jsx';
 import AboutUs from './src/components/AboutUs.jsx';
+import ServiceRepairs from './src/components/ServiceRepairs.jsx';
 import GateVisualizerQuote from './src/components/GateVisualizerQuote.jsx';
 import ServicesSection from './src/components/ServicesSection.jsx';
 import ProjectGallery from './src/components/ProjectGallery.jsx';
@@ -16,6 +17,7 @@ import TroubleshooterModal from './src/components/TroubleshooterModal.jsx';
 const components = [
   { name: 'App', elem: React.createElement(App) },
   { name: 'AboutUs', elem: React.createElement(AboutUs) },
+  { name: 'ServiceRepairs', elem: React.createElement(ServiceRepairs) },
   { name: 'GateVisualizerQuote', elem: React.createElement(GateVisualizerQuote) },
   { name: 'ServicesSection', elem: React.createElement(ServicesSection) },
   { name: 'ProjectGallery', elem: React.createElement(ProjectGallery) },
@@ -40,5 +42,5 @@ for (const comp of components) {
 }
 
 if (allPassed) {
-  console.log("\n>>> ALL 12 COMPONENTS RENDERED SUCCESSFULLY WITH 0 ERRORS! <<<");
+  console.log("\n>>> ALL 13 COMPONENTS RENDERED SUCCESSFULLY WITH 0 ERRORS! <<<");
 }

@@ -246,13 +246,18 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                       { name: 'Commercial & Security Gates', id: 'commercial-gates' },
                       { name: 'Boom Gates & Barriers', id: 'boom-gates' },
                       { name: 'Aluminium Slat Fencing', id: 'fencing' },
-                      { name: 'Service, Repairs & Warranty', id: 'servicing-repairs' }
+                      { name: 'Service, Repairs & Warranty Page', id: 'service', isRoute: true }
                     ].map((s) => (
                       <button
                         key={s.id}
                         onClick={() => {
-                          onSelectCategory && onSelectCategory(s.id);
-                          handleNavClick('services');
+                          setServicesDropdown(false);
+                          if (s.isRoute) {
+                            onNavigate('service');
+                          } else {
+                            onSelectCategory && onSelectCategory(s.id);
+                            handleNavClick('services');
+                          }
                         }}
                         style={{
                           width: '100%',
@@ -279,6 +284,23 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                     ))}
                   </div>
                 )}
+              </li>
+
+              <li>
+                <button 
+                  className="nav-link-btn" 
+                  onClick={() => onNavigate('service')}
+                  style={{
+                    color: currentPage === 'service' ? '#2563eb' : '#334155',
+                    fontFamily: 'Outfit, sans-serif',
+                    fontWeight: currentPage === 'service' ? '800' : '600',
+                    fontSize: '0.94rem',
+                    padding: '0.5rem 0.25rem',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Service & Repairs
+                </button>
               </li>
 
               <li>
@@ -448,6 +470,14 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
               >
                 <span>About Us & Our Team</span>
                 <Info size={17} style={{ color: 'var(--accent-gold)' }} />
+              </button>
+              <button 
+                className="mobile-nav-item" 
+                onClick={() => { setMobileMenuOpen(false); onNavigate('service'); }}
+                style={{ color: currentPage === 'service' ? '#2563eb' : '#0f172a' }}
+              >
+                <span>Service, Repairs & Warranty</span>
+                <Wrench size={17} style={{ color: 'var(--accent-gold)' }} />
               </button>
               <button className="mobile-nav-item" onClick={() => handleNavClick('services')}>
                 <span>Services & Gate Styles</span>
