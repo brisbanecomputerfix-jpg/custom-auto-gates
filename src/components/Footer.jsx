@@ -174,8 +174,23 @@ export default function Footer({ onOpenQuote, onSelectCategory, onNavigate }) {
                 </button>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('suburbs')} style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
-                  <ChevronRight size={13} /> Service Areas
+                <button onClick={() => onNavigate && onNavigate('suburbs', 'brisbane')} style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                  <ChevronRight size={13} /> Gates Brisbane (North, South, West)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate && onNavigate('suburbs', 'ipswich')} style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                  <ChevronRight size={13} /> Gates Ipswich & Yamanto
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate && onNavigate('suburbs', 'logan')} style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                  <ChevronRight size={13} /> Gates Logan & Redland Bay
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate && onNavigate('suburbs', 'goldcoast')} style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                  <ChevronRight size={13} /> Gates Gold Coast
                 </button>
               </li>
               <li>

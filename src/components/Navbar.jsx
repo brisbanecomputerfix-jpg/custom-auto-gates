@@ -621,8 +621,13 @@ export default function Navbar({
                   <button className="mobile-nav-item" onClick={() => handleNavClick('why-factory-direct')} style={{ padding: '0.55rem 0' }}>
                     <span style={{ fontSize: '0.92rem' }}>Why Buy Factory Direct</span>
                   </button>
-                  <button className="mobile-nav-item" onClick={() => handleNavClick('suburbs')} style={{ padding: '0.55rem 0' }}>
-                    <span style={{ fontSize: '0.92rem' }}>Service Coverage Areas</span>
+                  <button 
+                    className="mobile-nav-item" 
+                    onClick={() => handleRouteClick('suburbs')} 
+                    style={{ padding: '0.55rem 0', color: currentPage === 'suburbs' ? '#2563eb' : '#0f172a' }}
+                  >
+                    <span style={{ fontSize: '0.92rem' }}>Service Areas (Brisbane, Ipswich, Logan, GC)</span>
+                    <MapPin size={15} style={{ color: '#2563eb' }} />
                   </button>
                   <button className="mobile-nav-item" onClick={() => handleNavClick('faqs')} style={{ padding: '0.55rem 0' }}>
                     <span style={{ fontSize: '0.92rem' }}>Frequently Asked Questions</span>

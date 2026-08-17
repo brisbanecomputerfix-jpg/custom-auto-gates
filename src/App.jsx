@@ -16,12 +16,14 @@ import ServiceRepairs from './components/ServiceRepairs';
 import ContactUs from './components/ContactUs';
 import Testimonials from './components/Testimonials';
 import CouncilGuide from './components/CouncilGuide';
+import SuburbLandingPage from './components/SuburbLandingPage';
 import Footer from './components/Footer';
 import QuickActionBar from './components/QuickActionBar';
 import RemoteCursorEffect from './components/RemoteCursorEffect';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'about' | 'service' | 'contact' | 'testimonials' | 'council-guide'
+  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'about' | 'service' | 'contact' | 'testimonials' | 'council-guide' | 'suburbs'
+  const [selectedRegion, setSelectedRegion] = useState('brisbane');
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isTroubleshootOpen, setIsTroubleshootOpen] = useState(false);
@@ -48,6 +50,26 @@ export default function App() {
       } else if (hash === '#council-guide' || hash === '#council' || hash === '#pool-safety' || path === '/council-guide' || path === '/council-guide/' || path === '/planning-rules') {
         setCurrentPage('council-guide');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#gates-brisbane' || hash === '#brisbane' || path === '/gates-brisbane' || path === '/gates-brisbane/' || path === '/automatic-gates-brisbane') {
+        setSelectedRegion('brisbane');
+        setCurrentPage('suburbs');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#gates-ipswich' || hash === '#ipswich' || path === '/gates-ipswich' || path === '/gates-ipswich/' || path === '/automatic-gates-ipswich') {
+        setSelectedRegion('ipswich');
+        setCurrentPage('suburbs');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#gates-logan' || hash === '#logan' || path === '/gates-logan' || path === '/gates-logan/' || path === '/automatic-gates-logan') {
+        setSelectedRegion('logan');
+        setCurrentPage('suburbs');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#gates-gold-coast' || hash === '#goldcoast' || hash === '#gates-goldcoast' || path === '/gates-gold-coast' || path === '/gates-gold-coast/' || path === '/automatic-gates-gold-coast') {
+        setSelectedRegion('goldcoast');
+        setCurrentPage('suburbs');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#suburbs' || path === '/service-areas') {
+        setSelectedRegion('brisbane');
+        setCurrentPage('suburbs');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         setCurrentPage('home');
       }
@@ -58,7 +80,7 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (page) => {
+  const navigateTo = (page, region = 'brisbane') => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (page === 'about') {
@@ -71,6 +93,9 @@ export default function App() {
       window.location.hash = 'testimonials';
     } else if (page === 'council-guide') {
       window.location.hash = 'council-guide';
+    } else if (page === 'suburbs') {
+      setSelectedRegion(region);
+      window.location.hash = `gates-${region}`;
     } else {
       window.location.hash = '';
     }
@@ -156,6 +181,15 @@ export default function App() {
             onOpenQuote={handleOpenQuote}
             onOpenContact={() => setIsContactOpen(true)}
             onNavigateHome={() => navigateTo('home')}
+          />
+        ) : currentPage === 'suburbs' ? (
+          /* Dedicated Suburb Silo Landing Pages (Brisbane, Ipswich, Logan, Gold Coast) */
+          <SuburbLandingPage 
+            initialRegion={selectedRegion}
+            onOpenQuote={handleOpenQuote}
+            onOpenContact={() => setIsContactOpen(true)}
+            onNavigateHome={() => navigateTo('home')}
+            onNavigateCouncilGuide={() => navigateTo('council-guide')}
           />
         ) : (
           /* Main Home Page Experience */
