@@ -4,6 +4,7 @@ import App from './src/App.jsx';
 import AboutUs from './src/components/AboutUs.jsx';
 import ServiceRepairs from './src/components/ServiceRepairs.jsx';
 import ContactUs from './src/components/ContactUs.jsx';
+import Testimonials from './src/components/Testimonials.jsx';
 import GateVisualizerQuote from './src/components/GateVisualizerQuote.jsx';
 import ServicesSection from './src/components/ServicesSection.jsx';
 import ProjectGallery from './src/components/ProjectGallery.jsx';
@@ -20,6 +21,7 @@ const components = [
   { name: 'AboutUs', elem: React.createElement(AboutUs) },
   { name: 'ServiceRepairs', elem: React.createElement(ServiceRepairs) },
   { name: 'ContactUs', elem: React.createElement(ContactUs) },
+  { name: 'Testimonials', elem: React.createElement(Testimonials) },
   { name: 'GateVisualizerQuote', elem: React.createElement(GateVisualizerQuote) },
   { name: 'ServicesSection', elem: React.createElement(ServicesSection) },
   { name: 'ProjectGallery', elem: React.createElement(ProjectGallery) },
@@ -44,5 +46,5 @@ for (const comp of components) {
 }
 
 if (allPassed) {
-  console.log("\n>>> ALL 14 COMPONENTS RENDERED SUCCESSFULLY WITH 0 ERRORS! <<<");
+  console.log("\n>>> ALL 15 COMPONENTS RENDERED SUCCESSFULLY WITH 0 ERRORS! <<<");
 }

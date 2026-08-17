@@ -14,12 +14,13 @@ import TroubleshooterModal from './components/TroubleshooterModal';
 import AboutUs from './components/AboutUs';
 import ServiceRepairs from './components/ServiceRepairs';
 import ContactUs from './components/ContactUs';
+import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 import QuickActionBar from './components/QuickActionBar';
 import RemoteCursorEffect from './components/RemoteCursorEffect';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'about' | 'service' | 'contact'
+  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'about' | 'service' | 'contact' | 'testimonials'
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isTroubleshootOpen, setIsTroubleshootOpen] = useState(false);
@@ -40,6 +41,9 @@ export default function App() {
       } else if (hash === '#contact' || hash === '#contact-us' || path === '/contact-us' || path === '/contact-us/' || path === '/contact') {
         setCurrentPage('contact');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#testimonials' || hash === '#reviews' || path === '/testimonials' || path === '/testimonials/' || path === '/reviews') {
+        setCurrentPage('testimonials');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         setCurrentPage('home');
       }
@@ -59,6 +63,8 @@ export default function App() {
       window.location.hash = 'service';
     } else if (page === 'contact') {
       window.location.hash = 'contact';
+    } else if (page === 'testimonials') {
+      window.location.hash = 'testimonials';
     } else {
       window.location.hash = '';
     }
@@ -131,6 +137,13 @@ export default function App() {
             onNavigateHome={() => navigateTo('home')}
             onNavigateService={() => navigateTo('service')}
           />
+        ) : currentPage === 'testimonials' ? (
+          /* Dedicated Testimonials & Verified Case Studies Page (Google EEAT) */
+          <Testimonials 
+            onOpenQuote={handleOpenQuote}
+            onOpenContact={() => setIsContactOpen(true)}
+            onNavigateHome={() => navigateTo('home')}
+          />
         ) : (
           /* Main Home Page Experience */
           <>
@@ -175,7 +188,9 @@ export default function App() {
             />
 
             {/* Customer Testimonials & Reviews */}
-            <ReviewsSection />
+            <ReviewsSection 
+              onNavigateTestimonials={() => navigateTo('testimonials')}
+            />
 
             {/* Frequently Asked Questions */}
             <FaqSection 

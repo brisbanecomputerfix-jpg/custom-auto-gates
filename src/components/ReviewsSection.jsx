@@ -2,7 +2,7 @@ import React from 'react';
 import { Star, CheckCircle2, MapPin, Quote } from 'lucide-react';
 import { TESTIMONIALS } from '../data/siteData';
 
-export default function ReviewsSection() {
+export default function ReviewsSection({ onNavigateTestimonials }) {
   return (
     <section id="reviews" className="section" style={{ backgroundColor: '#f8fafc' }}>
       <div className="container">
@@ -106,6 +106,18 @@ export default function ReviewsSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* View Full Testimonials & Case Studies CTA */}
+        <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
+          <button
+            onClick={() => onNavigateTestimonials && onNavigateTestimonials()}
+            className="btn btn-outline-dark btn-lg"
+            style={{ borderRadius: '12px', fontWeight: '800', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+          >
+            <span>Explore All 180+ Verified Case Studies & Reviews</span>
+            <span style={{ color: '#fbbf24' }}>★</span>
+          </button>
         </div>
       </div>
     </section>

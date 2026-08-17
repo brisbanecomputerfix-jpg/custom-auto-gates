@@ -323,6 +323,24 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
               <li>
                 <button 
                   className="nav-link-btn" 
+                  onClick={() => onNavigate('testimonials')}
+                  style={{
+                    color: currentPage === 'testimonials' ? '#2563eb' : '#334155',
+                    fontFamily: 'Outfit, sans-serif',
+                    fontWeight: currentPage === 'testimonials' ? '800' : '600',
+                    fontSize: '0.94rem',
+                    padding: '0.5rem 0.25rem',
+                    cursor: 'pointer',
+                    transition: 'color 0.15s ease'
+                  }}
+                >
+                  Reviews (4.9★)
+                </button>
+              </li>
+
+              <li>
+                <button 
+                  className="nav-link-btn" 
                   onClick={() => handleNavClick('motors')}
                   style={{
                     color: '#334155',
@@ -504,6 +522,14 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
               <button className="mobile-nav-item" onClick={() => handleNavClick('gallery')}>
                 <span>Our Project Gallery (600+ Builds)</span>
                 <Sparkles size={17} style={{ color: 'var(--accent-gold)' }} />
+              </button>
+              <button 
+                className="mobile-nav-item" 
+                onClick={() => { setMobileMenuOpen(false); onNavigate('testimonials'); }}
+                style={{ color: currentPage === 'testimonials' ? '#2563eb' : '#0f172a' }}
+              >
+                <span>Verified Reviews (4.9★)</span>
+                <Star size={17} style={{ color: '#f59e0b' }} />
               </button>
               <button className="mobile-nav-item" onClick={() => handleNavClick('motors')}>
                 <span>Italian Nice & Centurion Motors</span>
