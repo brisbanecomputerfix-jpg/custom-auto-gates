@@ -1,6 +1,7 @@
 /* ==========================================================================
    CUSTOM AUTO GATES & FENCING - MASTER DESIGN SYSTEM
    Modern, Ultra-Fast, Light & Bright Luxury Trade Experience (React + Vite)
+   Fully Optimized for Desktop, Tablet & Mobile Devices
    ========================================================================== */
 
 :root {
@@ -71,6 +72,7 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
 }
 
 body {
@@ -79,6 +81,8 @@ body {
   background-color: var(--bg-body);
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -98,6 +102,12 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+  touch-action: manipulation;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
 }
 
 img {
@@ -108,7 +118,8 @@ img {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   background: #f1f5f9;
@@ -133,13 +144,13 @@ img {
 
 @media (max-width: 768px) {
   .container {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 1.15rem;
+    padding-right: 1.15rem;
   }
 }
 
 /* Utility visibility classes */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .hidden-tablet { display: none !important; }
 }
 
@@ -179,6 +190,7 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 1.1rem;
+  line-height: 1.2;
 }
 
 .badge-gold {
@@ -200,7 +212,7 @@ img {
 }
 
 .section-title {
-  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  font-size: clamp(1.85rem, 3.8vw, 2.75rem);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #0f172a;
@@ -241,18 +253,21 @@ img {
   white-space: nowrap;
   position: relative;
   overflow: hidden;
+  min-height: 44px;
 }
 
 .btn-lg {
   padding: 1.05rem 2.2rem;
   font-size: 1.05rem;
   border-radius: var(--radius-md);
+  min-height: 48px;
 }
 
 .btn-sm {
   padding: 0.6rem 1.2rem;
   font-size: 0.875rem;
   border-radius: var(--radius-sm);
+  min-height: 38px;
 }
 
 .btn-gold {
@@ -319,6 +334,46 @@ img {
   transform: translateY(-3px);
 }
 
+/* Responsive Grid Helpers */
+@media (max-width: 960px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.25rem !important;
+  }
+
+  .visualizer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2.5rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+}
+
 /* Responsive navigation visibility */
 .mobile-toggle {
   display: none;
@@ -339,23 +394,26 @@ img {
   inset: 0;
   background: #ffffff;
   z-index: 200;
-  padding: 1.75rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-nav-item {
-  padding: 1.1rem 0;
+  padding: 1rem 0;
   border-bottom: 1px solid #f1f5f9;
   font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #0f172a;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-align: left;
+  width: 100%;
 }
 
 /* Modals */
@@ -369,8 +427,9 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1rem;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .modal-content-light {
@@ -384,12 +443,21 @@ img {
   position: relative;
   box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
   color: #0f172a;
+  padding: 2rem;
+}
+
+@media (max-width: 640px) {
+  .modal-content-light {
+    padding: 1.5rem;
+    max-height: 92vh;
+    border-radius: 18px;
+  }
 }
 
 .modal-close-light {
   position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
+  top: 1rem;
+  right: 1rem;
   background: #f1f5f9;
   color: #475569;
   width: 38px;
@@ -408,7 +476,7 @@ img {
   transform: rotate(90deg);
 }
 
-/* Floating Bottom Bar (Mobile) */
+/* Floating Bottom Bar (Mobile with Safe Area Inset) */
 .floating-mobile-bar {
   position: fixed;
   bottom: 0;
@@ -416,8 +484,9 @@ img {
   right: 0;
   background: #ffffff;
   border-top: 1px solid #e2e8f0;
-  box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
   padding: 0.75rem 1rem;
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
   display: none;
   z-index: 90;
   grid-template-columns: 1fr 1fr;
@@ -425,11 +494,15 @@ img {
 }
 
 @media (max-width: 768px) {
-  .floating-mobile-bar { display: grid; }
-  body { padding-bottom: 70px; }
-  .section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .floating-mobile-bar { 
+    display: grid; 
+  }
+  body { 
+    padding-bottom: calc(75px + env(safe-area-inset-bottom)); 
+  }
 }
 
+/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
