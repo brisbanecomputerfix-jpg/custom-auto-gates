@@ -54,7 +54,7 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
         }}
         className="step-scroll-container"
         >
-          {SERVICES_DATA.map((s) => (
+          {SERVICES.map((s) => (
             <button
               key={s.id}
               onClick={() => setActiveTab(s.id)}

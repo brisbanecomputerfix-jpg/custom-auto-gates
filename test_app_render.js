@@ -1,0 +1,44 @@
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import App from './src/App.jsx';
+import AboutUs from './src/components/AboutUs.jsx';
+import GateVisualizerQuote from './src/components/GateVisualizerQuote.jsx';
+import ServicesSection from './src/components/ServicesSection.jsx';
+import ProjectGallery from './src/components/ProjectGallery.jsx';
+import WhyFactoryDirect from './src/components/WhyFactoryDirect.jsx';
+import MotorShowcase from './src/components/MotorShowcase.jsx';
+import ServiceAreaChecker from './src/components/ServiceAreaChecker.jsx';
+import ReviewsSection from './src/components/ReviewsSection.jsx';
+import FaqSection from './src/components/FaqSection.jsx';
+import ContactModal from './src/components/ContactModal.jsx';
+import TroubleshooterModal from './src/components/TroubleshooterModal.jsx';
+
+const components = [
+  { name: 'App', elem: React.createElement(App) },
+  { name: 'AboutUs', elem: React.createElement(AboutUs) },
+  { name: 'GateVisualizerQuote', elem: React.createElement(GateVisualizerQuote) },
+  { name: 'ServicesSection', elem: React.createElement(ServicesSection) },
+  { name: 'ProjectGallery', elem: React.createElement(ProjectGallery) },
+  { name: 'WhyFactoryDirect', elem: React.createElement(WhyFactoryDirect) },
+  { name: 'MotorShowcase', elem: React.createElement(MotorShowcase) },
+  { name: 'ServiceAreaChecker', elem: React.createElement(ServiceAreaChecker) },
+  { name: 'ReviewsSection', elem: React.createElement(ReviewsSection) },
+  { name: 'FaqSection', elem: React.createElement(FaqSection) },
+  { name: 'ContactModal', elem: React.createElement(ContactModal, { isOpen: true }) },
+  { name: 'TroubleshooterModal', elem: React.createElement(TroubleshooterModal, { isOpen: true }) },
+];
+
+let allPassed = true;
+for (const comp of components) {
+  try {
+    const html = renderToString(comp.elem);
+    console.log(`[PASS] ${comp.name} rendered (${html.length} chars)`);
+  } catch (err) {
+    allPassed = false;
+    console.error(`[FAIL] ${comp.name}:`, err);
+  }
+}
+
+if (allPassed) {
+  console.log("\n>>> ALL 12 COMPONENTS RENDERED SUCCESSFULLY WITH 0 ERRORS! <<<");
+}
