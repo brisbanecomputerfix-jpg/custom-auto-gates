@@ -530,3 +530,36 @@ img {
 .animate-fadeIn {
   animation: fadeIn 0.25s ease-out forwards;
 }
+
+/* ==========================================================================
+   GARAGE & GATE REMOTE CONTROL CUSTOM CURSOR (DESKTOP POINTERS ONLY)
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+  html, body, * {
+    cursor: url('/images/cursor-remote.svg') 2 2, auto;
+  }
+
+  a, 
+  button, 
+  [role="button"], 
+  input[type="submit"], 
+  input[type="button"], 
+  input[type="radio"], 
+  input[type="checkbox"], 
+  select, 
+  .btn, 
+  .clickable, 
+  label,
+  summary {
+    cursor: url('/images/cursor-remote-pointer.svg') 2 2, pointer !important;
+  }
+
+  input[type="text"], 
+  input[type="email"], 
+  input[type="tel"], 
+  input[type="number"], 
+  textarea {
+    cursor: text !important;
+  }
+}
+

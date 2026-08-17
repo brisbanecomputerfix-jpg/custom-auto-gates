@@ -14,6 +14,7 @@ import TroubleshooterModal from './components/TroubleshooterModal';
 import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
 import QuickActionBar from './components/QuickActionBar';
+import RemoteCursorEffect from './components/RemoteCursorEffect';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home'); // 'home' or 'about'
@@ -190,6 +191,9 @@ export default function App() {
           setIsContactOpen(true);
         }}
       />
+
+      {/* Luxury Garage Remote Click Effect for Pointer Devices */}
+      <RemoteCursorEffect />
     </div>
   );
 }

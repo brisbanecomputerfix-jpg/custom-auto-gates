@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <!-- Precision Pointer Arrow Indicator -->
+  <polygon points="2,2 10,2 2,10" fill="#f59e0b" />
+  
+  <!-- Garage / Gate Remote Fob Body -->
+  <g transform="rotate(-20 16 16)">
+    <!-- Shadow -->
+    <rect x="9.5" y="5.5" width="13" height="21" rx="4.5" fill="#000000" opacity="0.35" />
+    
+    <!-- Outer Remote Shell -->
+    <rect x="9" y="4" width="13" height="21" rx="4.5" fill="#0f172a" stroke="#cbd5e1" stroke-width="1.2" />
+    
+    <!-- Metallic Brushed Bezel -->
+    <rect x="10.5" y="5.5" width="10" height="18" rx="3" fill="#1e293b" />
+    
+    <!-- Remote Status LED (Idle) -->
+    <circle cx="15.5" cy="8" r="1.2" fill="#38bdf8" opacity="0.75" />
+    
+    <!-- Button 1 (Main Gate - Gold Accent) -->
+    <rect x="12" y="11" width="7" height="3.5" rx="1.5" fill="#d97706" stroke="#f59e0b" stroke-width="0.6" />
+    
+    <!-- Button 2 (Pedestrian Gate) -->
+    <rect x="12" y="15.5" width="7" height="3" rx="1.2" fill="#334155" />
+    
+    <!-- Button 3 & 4 (Small Auxiliary) -->
+    <circle cx="13.5" cy="20.5" r="1" fill="#475569" />
+    <circle cx="17.5" cy="20.5" r="1" fill="#475569" />
+    
+    <!-- Keyring Loop at Bottom -->
+    <path d="M14 24.5 C14 26, 17 26, 17 24.5" stroke="#94a3b8" stroke-width="1" fill="none" />
+  </g>
+</svg>
