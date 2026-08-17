@@ -387,6 +387,24 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
                   FAQs
                 </button>
               </li>
+
+              <li>
+                <button 
+                  className="nav-link-btn" 
+                  onClick={() => onNavigate('contact')}
+                  style={{
+                    color: currentPage === 'contact' ? '#2563eb' : '#334155',
+                    fontFamily: 'Outfit, sans-serif',
+                    fontWeight: currentPage === 'contact' ? '800' : '600',
+                    fontSize: '0.94rem',
+                    padding: '0.5rem 0.25rem',
+                    cursor: 'pointer',
+                    transition: 'color 0.15s ease'
+                  }}
+                >
+                  Contact Us
+                </button>
+              </li>
             </ul>
           </nav>
 
@@ -496,8 +514,13 @@ export default function Navbar({ currentPage, onNavigate, onOpenQuote, onOpenCon
               <button className="mobile-nav-item" onClick={() => handleNavClick('suburbs')}>
                 <span>Service Coverage Areas</span>
               </button>
-              <button className="mobile-nav-item" onClick={() => handleNavClick('faqs')}>
-                <span>Frequently Asked Questions</span>
+              <button 
+                className="mobile-nav-item" 
+                onClick={() => { setMobileMenuOpen(false); onNavigate('contact'); }}
+                style={{ color: currentPage === 'contact' ? '#2563eb' : '#0f172a' }}
+              >
+                <span>Contact Us & Showroom</span>
+                <Phone size={17} style={{ color: 'var(--accent-gold)' }} />
               </button>
               <button 
                 className="mobile-nav-item" 

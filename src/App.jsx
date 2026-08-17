@@ -13,12 +13,13 @@ import ContactModal from './components/ContactModal';
 import TroubleshooterModal from './components/TroubleshooterModal';
 import AboutUs from './components/AboutUs';
 import ServiceRepairs from './components/ServiceRepairs';
+import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
 import QuickActionBar from './components/QuickActionBar';
 import RemoteCursorEffect from './components/RemoteCursorEffect';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'about' | 'service'
+  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'about' | 'service' | 'contact'
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isTroubleshootOpen, setIsTroubleshootOpen] = useState(false);
@@ -35,6 +36,9 @@ export default function App() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#service' || hash === '#repairs' || path === '/service' || path === '/service/' || path === '/repairs') {
         setCurrentPage('service');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#contact' || hash === '#contact-us' || path === '/contact-us' || path === '/contact-us/' || path === '/contact') {
+        setCurrentPage('contact');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         setCurrentPage('home');
@@ -53,6 +57,8 @@ export default function App() {
       window.location.hash = 'about';
     } else if (page === 'service') {
       window.location.hash = 'service';
+    } else if (page === 'contact') {
+      window.location.hash = 'contact';
     } else {
       window.location.hash = '';
     }
@@ -116,6 +122,14 @@ export default function App() {
             onOpenQuote={handleOpenQuote}
             onOpenContact={() => setIsContactOpen(true)}
             onNavigateHome={() => navigateTo('home')}
+          />
+        ) : currentPage === 'contact' ? (
+          /* Dedicated Interactive Contact Us Page */
+          <ContactUs 
+            onOpenQuote={handleOpenQuote}
+            onOpenTroubleshoot={() => setIsTroubleshootOpen(true)}
+            onNavigateHome={() => navigateTo('home')}
+            onNavigateService={() => navigateTo('service')}
           />
         ) : (
           /* Main Home Page Experience */
