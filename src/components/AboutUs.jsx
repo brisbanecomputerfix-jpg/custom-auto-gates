@@ -1,0 +1,581 @@
+import React, { useState } from 'react';
+import { 
+  ShieldCheck, 
+  Award, 
+  Factory, 
+  CheckCircle2, 
+  HeartHandshake, 
+  Clock, 
+  Sparkles, 
+  Wrench, 
+  MapPin, 
+  Phone, 
+  Calculator, 
+  Calendar, 
+  Cpu, 
+  Target, 
+  Compass, 
+  Users, 
+  Check, 
+  ArrowRight,
+  ChevronRight
+} from 'lucide-react';
+import { COMPANY_INFO } from '../data/siteData';
+
+export default function AboutUs({ onOpenQuote, onOpenContact, onNavigateHome }) {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  return (
+    <div style={{ backgroundColor: '#f8fafc', color: '#0f172a', minHeight: '100vh' }}>
+      {/* 1. HERO SECTION WITH SPECIFIED VIMEO BACKGROUND VIDEO (1218815565) & VISIBLE TRANSPARENCY */}
+      <section 
+        style={{ 
+          position: 'relative', 
+          overflow: 'hidden', 
+          minHeight: '76vh', 
+          display: 'flex', 
+          alignItems: 'center', 
+          paddingTop: '4.5rem', 
+          paddingBottom: '5rem', 
+          backgroundColor: '#0f172a' 
+        }}
+        aria-label="About Custom Auto Gates & Fencing"
+      >
+        {/* Background Video Layer with Visible Transparency */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 1, overflow: 'hidden', pointerEvents: 'none' }}>
+          {/* Fallback Static Poster Image */}
+          <div 
+            style={{
+              position: 'absolute',
+              inset: 0,
+              backgroundImage: 'url(/images/Swinging-Gates.jpg)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: videoLoaded ? 0.12 : 0.4,
+              transition: 'opacity 1s ease'
+            }}
+          />
+
+          {/* Vimeo Background Video: 1218815565 (gate-automated-brisbane-QLD) */}
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: '100vw',
+            height: '100vh',
+            minWidth: '177.78vh', /* 16:9 Aspect Ratio Container */
+            minHeight: '56.25vw',
+            transform: 'translate(-50%, -50%)',
+            opacity: 0.82, /* High-contrast visible transparency */
+            filter: 'brightness(1.05) contrast(1.05)'
+          }}>
+            <iframe
+              src="https://player.vimeo.com/video/1218815565?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&playsinline=1&badge=0&autopause=0&app_id=58479"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; encrypted-media; web-share"
+              title="gate-automated-brisbane-QLD"
+              onLoad={() => setVideoLoaded(true)}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                border: 'none',
+                pointerEvents: 'none'
+              }}
+            />
+          </div>
+
+          {/* Translucent Dark Navy Light Gradient Overlays */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.86) 50%, rgba(15, 23, 42, 0.48) 100%)'
+          }} />
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to top, rgba(15, 23, 42, 0.98) 0%, transparent 60%)'
+          }} />
+        </div>
+
+        {/* Hero Content */}
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+          <div style={{ maxWidth: '840px' }}>
+            {/* Breadcrumb Navigation */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#94a3b8', marginBottom: '1.25rem' }}>
+              <button 
+                onClick={onNavigateHome}
+                style={{ color: '#fbbf24', fontWeight: '700', cursor: 'pointer' }}
+              >
+                Home
+              </button>
+              <ChevronRight size={14} />
+              <span style={{ color: '#ffffff' }}>About Our Workshop & Team</span>
+            </div>
+
+            {/* Badge Tags */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
+              <span className="badge-tag badge-gold" style={{ margin: 0 }}>
+                <Factory size={14} /> 100% Australian Made In Yamanto
+              </span>
+              <span className="badge-tag badge-green" style={{ margin: 0 }}>
+                <ShieldCheck size={14} /> 10-Year Factory Structural Warranty
+              </span>
+              <span className="badge-tag badge-blue" style={{ margin: 0 }}>
+                <HeartHandshake size={14} /> Community Champions
+              </span>
+            </div>
+
+            {/* H1 SEO Headline */}
+            <h1 style={{
+              fontSize: 'clamp(2.3rem, 4.5vw, 3.5rem)',
+              fontWeight: '900',
+              lineHeight: 1.15,
+              color: '#ffffff',
+              letterSpacing: '-0.025em',
+              marginBottom: '1.25rem'
+            }}>
+              Crafting Excellence, <br />
+              <span className="gradient-text-gold">Building Trust Across Queensland</span>
+            </h1>
+
+            <p style={{
+              fontSize: '1.15rem',
+              color: '#cbd5e1',
+              lineHeight: 1.65,
+              marginBottom: '2.25rem',
+              maxWidth: '680px'
+            }}>
+              At Custom Auto Gates & Fencing, we are dedicated to leading the automated gate industry through uncompromising quality, genuine Australian craftsmanship, and complete transparency. Buy factory direct from our Yamanto workshop and experience the difference of working with the actual builders.
+            </p>
+
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+              <button onClick={onOpenQuote} className="btn btn-gold btn-lg btn-pulse">
+                <Calculator size={19} />
+                Get Instant Factory Quote
+              </button>
+              <button 
+                onClick={onOpenContact} 
+                className="btn btn-outline-dark btn-lg" 
+                style={{ background: '#ffffff', color: '#0f172a', border: '1px solid #ffffff' }}
+              >
+                <Calendar size={18} />
+                Book Free Laser Measure
+              </button>
+              <a 
+                href={COMPANY_INFO.tel} 
+                style={{ color: '#fbbf24', fontWeight: '800', fontSize: '1.05rem', display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.5rem' }}
+              >
+                <Phone size={18} /> {COMPANY_INFO.phone}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. OUR PURPOSE, VISION & MISSION */}
+      <section className="section" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0' }}>
+        <div className="container">
+          <div className="section-header">
+            <span className="badge-tag badge-blue">
+              <Compass size={14} />
+              Our Purpose & Driving Force
+            </span>
+            <h2 className="section-title">
+              What Drives Us Every Single Day
+            </h2>
+            <p className="section-subtitle">
+              Our commitment goes beyond gates and fencing; we're proud to be industry leaders, local community champions, and advocates for fairness and opportunity.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '2rem',
+            marginBottom: '3rem'
+          }}>
+            {/* Vision Card */}
+            <div style={{
+              background: '#f8fafc',
+              border: '1.5px solid #e2e8f0',
+              borderRadius: '20px',
+              padding: '2.5rem',
+              boxShadow: '0 4px 14px rgba(15,23,42,0.04)'
+            }}>
+              <div style={{
+                width: '54px',
+                height: '54px',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
+                color: '#b45309',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem',
+                boxShadow: '0 4px 12px rgba(217, 119, 6, 0.2)'
+              }}>
+                <Target size={26} />
+              </div>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.75rem' }}>
+                Our Vision
+              </h3>
+              <p style={{ color: '#475569', fontSize: '1rem', lineHeight: 1.65 }}>
+                To be the most trusted and respected name in automated gate solutions across Queensland — an iconic local manufacturer recognized for engineering excellence, fairness, and meaningful contributions to our community.
+              </p>
+            </div>
+
+            {/* Mission Card */}
+            <div style={{
+              background: '#f8fafc',
+              border: '1.5px solid #e2e8f0',
+              borderRadius: '20px',
+              padding: '2.5rem',
+              boxShadow: '0 4px 14px rgba(15,23,42,0.04)'
+            }}>
+              <div style={{
+                width: '54px',
+                height: '54px',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
+                color: '#1d4ed8',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem',
+                boxShadow: '0 4px 12px rgba(37, 99, 235, 0.2)'
+              }}>
+                <Compass size={26} />
+              </div>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.75rem' }}>
+                Our Mission
+              </h3>
+              <p style={{ color: '#475569', fontSize: '1rem', lineHeight: 1.65 }}>
+                We deliver industry-leading quality and reliability in automated gate solutions while supporting our local community, empowering our team of skilled craftsmen, and operating with complete honesty and integrity in every interaction.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. OUR FOUR CORE PILLARS OF TRUST */}
+      <section className="section" style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
+        <div className="container">
+          <div className="section-header">
+            <span className="badge-tag badge-gold">
+              <ShieldCheck size={14} />
+              The Standards We Live By
+            </span>
+            <h2 className="section-title">
+              Our 4 Core Values <br />
+              <span className="gradient-text-gold">Why Queensland Homeowners Trust Us</span>
+            </h2>
+            <p className="section-subtitle">
+              Every single gate project we undertake in our Yamanto workshop is guided by four unwavering principles.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '1.75rem'
+          }}>
+            {/* Value 1: Reliability */}
+            <div className="card-light" style={{ padding: '2rem', background: '#ffffff' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '12px',
+                background: '#ecfdf5',
+                color: '#059669',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.25rem'
+              }}>
+                <Clock size={24} />
+              </div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.5rem' }}>
+                1. Reliability
+              </h3>
+              <div style={{ fontSize: '0.85rem', fontWeight: '700', color: '#059669', marginBottom: '0.75rem' }}>
+                Delivered on time, every time
+              </div>
+              <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                We respect your time. When we schedule a laser measurement or an installation date, we show up on time and deliver your completed project within our promised 2–4 week turnaround.
+              </p>
+            </div>
+
+            {/* Value 2: Quality */}
+            <div className="card-light" style={{ padding: '2rem', background: '#ffffff' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '12px',
+                background: '#fef3c7',
+                color: '#b45309',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.25rem'
+              }}>
+                <Sparkles size={24} />
+              </div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.5rem' }}>
+                2. Quality
+              </h3>
+              <div style={{ fontSize: '0.85rem', fontWeight: '700', color: '#b45309', marginBottom: '0.75rem' }}>
+                Craftsmanship you can see & feel
+              </div>
+              <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                Built using structural marine-grade Australian aluminium, reinforced box frames, commercial architectural powdercoating, and premium Italian Nice & Centurion automation motors.
+              </p>
+            </div>
+
+            {/* Value 3: Honesty */}
+            <div className="card-light" style={{ padding: '2rem', background: '#ffffff' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '12px',
+                background: '#eff6ff',
+                color: '#1d4ed8',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.25rem'
+              }}>
+                <HeartHandshake size={24} />
+              </div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.5rem' }}>
+                3. Honesty
+              </h3>
+              <div style={{ fontSize: '0.85rem', fontWeight: '700', color: '#1d4ed8', marginBottom: '0.75rem' }}>
+                Transparent communication & fair pricing
+              </div>
+              <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                Zero middleman markups, zero hidden fees, and straightforward advice. If your driveway has a challenging slope or wind load, we engineer the correct solution from day one.
+              </p>
+            </div>
+
+            {/* Value 4: Cleanliness */}
+            <div className="card-light" style={{ padding: '2rem', background: '#ffffff' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '12px',
+                background: '#faf5ff',
+                color: '#7e22ce',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.25rem'
+              }}>
+                <Sparkles size={24} />
+              </div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.5rem' }}>
+                4. Cleanliness
+              </h3>
+              <div style={{ fontSize: '0.85rem', fontWeight: '700', color: '#7e22ce', marginBottom: '0.75rem' }}>
+                Professional standards from start to finish
+              </div>
+              <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                We treat your property with utmost respect. Our installation teams leave your driveway, landscaping, and boundary spotless after testing every remote and safety sensor.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. THE YAMANTO WORKSHOP & IN-HOUSE FACILITY */}
+      <section className="section" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3.5rem', alignItems: 'center' }} className="hero-grid">
+            <div>
+              <span className="badge-tag badge-gold">
+                <Factory size={14} /> Shed 2, 43-45 Belar St, Yamanto
+              </span>
+              <h2 className="section-title" style={{ textAlign: 'left' }}>
+                Our Yamanto Workshop: <br />
+                <span className="gradient-text-gold">Where Quality Takes Shape</span>
+              </h2>
+              <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
+                Unlike resellers who drop-ship mass-manufactured gates or subcontract their welding to third parties, <strong>Custom Auto Gates & Fencing</strong> operates a fully equipped fabrication and powdercoating workshop right here in Yamanto, Queensland.
+              </p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                    <Check size={15} />
+                  </div>
+                  <div>
+                    <strong style={{ color: '#0f172a' }}>Precision Laser CAD Cutting & Raking:</strong> Custom raking for sloping driveways engineered to the exact millimeter so there are no unsightly bottom gaps.
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                    <Check size={15} />
+                  </div>
+                  <div>
+                    <strong style={{ color: '#0f172a' }}>Blondies Commercial Powdercoating:</strong> In-house pretreatment and architectural powdercoat curing tested for extreme Queensland UV resistance and coastal salt air.
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                    <Check size={15} />
+                  </div>
+                  <div>
+                    <strong style={{ color: '#0f172a' }}>Motor Bench Testing:</strong> Every Nice and Centurion motor and control board is pre-wired, tested, and paired with remotes prior to on-site installation.
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <button onClick={onOpenContact} className="btn btn-blue">
+                  <Calendar size={18} /> Book Free On-Site Consultation
+                </button>
+                <button onClick={onOpenQuote} className="btn btn-outline-dark">
+                  <Calculator size={18} /> Instant Online Estimator
+                </button>
+              </div>
+            </div>
+
+            {/* Workshop Visual Showcase Card */}
+            <div style={{
+              background: '#f8fafc',
+              border: '1.5px solid #e2e8f0',
+              borderRadius: '24px',
+              padding: '2rem',
+              boxShadow: '0 20px 45px -10px rgba(15,23,42,0.08)'
+            }}>
+              <div style={{
+                position: 'relative',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                aspectRatio: '16/10',
+                marginBottom: '1.5rem',
+                border: '1px solid #e2e8f0'
+              }}>
+                <img
+                  src="/images/Swinging-Gates.jpg"
+                  alt="Custom Auto Gates Yamanto Workshop"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: 'linear-gradient(to top, rgba(15,23,42,0.85) 0%, transparent 100%)',
+                  padding: '1rem',
+                  color: '#ffffff'
+                }}>
+                  <div style={{ fontSize: '0.75rem', color: '#fbbf24', fontWeight: '800' }}>
+                    📍 Yamanto Workshop & Showroom
+                  </div>
+                  <div style={{ fontSize: '0.95rem', fontWeight: '700' }}>
+                    Shed 2, 43-45 Belar Street, Yamanto QLD
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div style={{ background: '#ffffff', padding: '1rem', borderRadius: '12px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.5rem', fontWeight: '900', color: '#d97706' }}>10-Yr</div>
+                  <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: '600' }}>Structural Warranty</div>
+                </div>
+
+                <div style={{ background: '#ffffff', padding: '1rem', borderRadius: '12px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.5rem', fontWeight: '900', color: '#2563eb' }}>2–4 Wks</div>
+                  <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: '600' }}>Fast Turnaround</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. EARNING TRUST & CONFIDENCE (COMMUNITIES & GUARANTEE) */}
+      <section className="section" style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
+        <div className="container">
+          <div className="section-header">
+            <span className="badge-tag badge-blue">
+              <MapPin size={14} />
+              Serving Queensland Communities
+            </span>
+            <h2 className="section-title">
+              Local Expertise & Community Commitment
+            </h2>
+            <p className="section-subtitle">
+              We proudly service homeowners, builders, and commercial enterprises across all of South East Queensland.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1.5rem',
+            marginBottom: '3rem'
+          }}>
+            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '1.75rem' }}>
+              <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.5rem' }}>
+                Brisbane Inner & Greater Metro
+              </h4>
+              <p style={{ color: '#64748b', fontSize: '0.875rem', lineHeight: 1.6 }}>
+                New Farm, Paddington, Ascot, Bulimba, Hawthorne, Indooroopilly, Toowong, Camp Hill, Carindale, and Chermside.
+              </p>
+            </div>
+
+            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '1.75rem' }}>
+              <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.5rem' }}>
+                Ipswich & Greater Springfield
+              </h4>
+              <p style={{ color: '#64748b', fontSize: '0.875rem', lineHeight: 1.6 }}>
+                Yamanto, Brookwater, Springfield Lakes, Augustine Heights, Ripley, Brassall, Karalee, and Kenmore.
+              </p>
+            </div>
+
+            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '1.75rem' }}>
+              <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.5rem' }}>
+                Logan, Redlands & Gold Coast
+              </h4>
+              <p style={{ color: '#64748b', fontSize: '0.875rem', lineHeight: 1.6 }}>
+                Underwood, Rochedale, Springwood, Cleveland, Redland Bay, Hope Island, Sanctuary Cove, and Robina.
+              </p>
+            </div>
+          </div>
+
+          {/* Direct CTA Banner */}
+          <div style={{
+            background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+            borderRadius: '20px',
+            padding: '3rem 2rem',
+            textAlign: 'center',
+            color: '#ffffff',
+            boxShadow: '0 20px 45px -10px rgba(15, 23, 42, 0.3)'
+          }}>
+            <h3 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.35rem)', fontWeight: '900', color: '#ffffff', marginBottom: '0.75rem' }}>
+              Ready to Work with Queensland's Trusted Gate Builders?
+            </h3>
+            <p style={{ color: '#94a3b8', fontSize: '1.05rem', maxWidth: '640px', margin: '0 auto 2rem auto', lineHeight: 1.6 }}>
+              Contact our Yamanto workshop team today for honest expert advice, driveway slope analysis, and a free on-site laser measure.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+              <button onClick={onOpenQuote} className="btn btn-gold btn-lg">
+                <Calculator size={18} />
+                Calculate Instant Gate Price
+              </button>
+              <a href={COMPANY_INFO.tel} className="btn btn-blue btn-lg">
+                <Phone size={18} /> Call (07) 3102 1801
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
