@@ -9,9 +9,9 @@ import {
   Sun, 
   Smartphone, 
   Send, 
-  Upload,
-  Info,
-  PhoneCall
+  Upload, 
+  Info, 
+  PhoneCall 
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
 
@@ -125,7 +125,7 @@ export default function GateVisualizerQuote() {
   };
 
   return (
-    <section id="gate-visualizer" className="section" style={{ backgroundColor: '#ffffff', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
+    <section id="gate-visualizer" className="section" style={{ backgroundColor: 'var(--bg-surface)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -162,31 +162,35 @@ export default function GateVisualizerQuote() {
             { num: 3, label: '3. Material' },
             { num: 4, label: '4. Motors' },
             { num: 5, label: '5. Instant Quote' }
-          ].map((s) => (
-            <button
-              key={s.num}
-              onClick={() => setStep(s.num)}
-              style={{
-                padding: '0.5rem 1rem',
-                borderRadius: 'var(--radius-full)',
-                fontFamily: 'Outfit, sans-serif',
-                fontWeight: '700',
-                fontSize: '0.84rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                background: step === s.num ? '#0f172a' : step > s.num ? '#ecfdf5' : '#f1f5f9',
-                color: step === s.num ? '#ffffff' : step > s.num ? '#047857' : '#475569',
-                border: step === s.num ? '1px solid #0f172a' : step > s.num ? '1px solid #a7f3d0' : '1px solid #e2e8f0',
-                transition: 'all var(--transition-fast)',
-                whiteSpace: 'nowrap',
-                flexShrink: 0
-              }}
-            >
-              {step > s.num ? <Check size={13} /> : null}
-              {s.label}
-            </button>
-          ))}
+          ].map((s) => {
+            const isActive = step === s.num;
+            const isDone = step > s.num;
+            return (
+              <button
+                key={s.num}
+                onClick={() => setStep(s.num)}
+                style={{
+                  padding: '0.5rem 1rem',
+                  borderRadius: 'var(--radius-full)',
+                  fontFamily: 'Outfit, sans-serif',
+                  fontWeight: '700',
+                  fontSize: '0.84rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  background: isActive ? 'var(--accent-gold)' : isDone ? 'var(--badge-green-bg)' : 'var(--bg-card-subtle)',
+                  color: isActive ? '#090e1a' : isDone ? 'var(--badge-green-text)' : 'var(--text-muted)',
+                  border: isActive ? '1px solid var(--accent-gold)' : isDone ? '1px solid var(--badge-green-border)' : '1px solid var(--border-light)',
+                  transition: 'all var(--transition-fast)',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0
+                }}
+              >
+                {isDone ? <Check size={13} /> : null}
+                {s.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Visualizer Main Grid Container */}
@@ -198,36 +202,39 @@ export default function GateVisualizerQuote() {
         }}
         className="visualizer-grid"
         >
-          {/* Left Column: Interactive Configuration Form (Light Theme) */}
-          <div className="card-light" style={{ padding: 'clamp(1.25rem, 3.5vw, 2rem)', border: '1.5px solid #e2e8f0', background: '#ffffff', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+          {/* Left Column: Interactive Configuration Form */}
+          <div className="card-themed" style={{ padding: 'clamp(1.25rem, 3.5vw, 2rem)', border: '1.5px solid var(--border-light)', background: 'var(--bg-card)', boxShadow: 'var(--shadow-md)' }}>
             {/* STEP 1: Gate Type */}
             {step === 1 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: '#0f172a' }}>Step 1: Select Your Gate Style</h3>
-                <p style={{ color: '#64748b', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
+                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 1: Select Your Gate Style</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
                   Choose the mechanical gate structure that best fits your driveway layout and gradient.
                 </p>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.75rem' }}>
-                  {GATE_TYPES.map((g) => (
-                    <div
-                      key={g.id}
-                      onClick={() => setGateType(g.id)}
-                      style={{
-                        padding: '1rem',
-                        borderRadius: '12px',
-                        background: gateType === g.id ? '#eff6ff' : '#f8fafc',
-                        border: gateType === g.id ? '2px solid #2563eb' : '1px solid #e2e8f0',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease',
-                        position: 'relative'
-                      }}
-                    >
-                      <div style={{ fontSize: '1.6rem', marginBottom: '0.4rem' }}>{g.icon}</div>
-                      <h4 style={{ fontSize: '0.95rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.2rem' }}>{g.name}</h4>
-                      <p style={{ fontSize: '0.75rem', color: '#64748b', lineHeight: 1.4 }}>{g.desc}</p>
-                    </div>
-                  ))}
+                  {GATE_TYPES.map((g) => {
+                    const isSelected = gateType === g.id;
+                    return (
+                      <div
+                        key={g.id}
+                        onClick={() => setGateType(g.id)}
+                        style={{
+                          padding: '1rem',
+                          borderRadius: '12px',
+                          background: isSelected ? 'var(--accent-gold-light)' : 'var(--bg-card-subtle)',
+                          border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s ease',
+                          position: 'relative'
+                        }}
+                      >
+                        <div style={{ fontSize: '1.6rem', marginBottom: '0.4rem' }}>{g.icon}</div>
+                        <h4 style={{ fontSize: '0.95rem', fontWeight: '700', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)', marginBottom: '0.2rem' }}>{g.name}</h4>
+                        <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>{g.desc}</p>
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div style={{ marginTop: '1.75rem', display: 'flex', justifyContent: 'flex-end' }}>
@@ -241,16 +248,16 @@ export default function GateVisualizerQuote() {
             {/* STEP 2: Dimensions */}
             {step === 2 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: '#0f172a' }}>Step 2: Driveway Dimensions</h3>
-                <p style={{ color: '#64748b', fontSize: '0.88rem', marginBottom: '1.5rem' }}>
+                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 2: Driveway Dimensions</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.5rem' }}>
                   Adjust the approximate width and height. Every gate is custom-built to your exact millimeter.
                 </p>
 
                 {/* Width Slider */}
                 <div style={{ marginBottom: '2rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                    <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#0f172a' }}>Driveway Opening Width:</label>
-                    <span style={{ fontSize: '1.1rem', fontWeight: '800', color: '#2563eb' }}>{width} Meters</span>
+                    <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-heading)' }}>Driveway Width (Opening)</label>
+                    <span style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--accent-gold)' }}>{width} Meters ({(width * 3.28).toFixed(1)} ft)</span>
                   </div>
                   <input
                     type="range"
@@ -259,20 +266,20 @@ export default function GateVisualizerQuote() {
                     step="0.1"
                     value={width}
                     onChange={(e) => setWidth(parseFloat(e.target.value))}
-                    style={{ width: '100%', height: '8px', accentColor: '#2563eb', cursor: 'pointer' }}
+                    style={{ width: '100%', accentColor: 'var(--accent-gold)', height: '8px', cursor: 'pointer' }}
                   />
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: '#94a3b8', marginTop: '0.35rem' }}>
-                    <span>2.0m (Standard Single)</span>
-                    <span>4.5m (Standard Double)</span>
-                    <span>8.0m (Wide Commercial)</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+                    <span>Compact (2.0m)</span>
+                    <span>Standard Double (4.5m)</span>
+                    <span>Wide Acreage (8.0m)</span>
                   </div>
                 </div>
 
                 {/* Height Slider */}
                 <div style={{ marginBottom: '2rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                    <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#0f172a' }}>Gate Finished Height:</label>
-                    <span style={{ fontSize: '1.1rem', fontWeight: '800', color: '#2563eb' }}>{height} Meters</span>
+                    <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-heading)' }}>Gate Height</label>
+                    <span style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--accent-blue)' }}>{height} Meters ({height >= 1.8 ? 'Max Privacy' : 'Standard'})</span>
                   </div>
                   <input
                     type="range"
@@ -281,12 +288,12 @@ export default function GateVisualizerQuote() {
                     step="0.1"
                     value={height}
                     onChange={(e) => setHeight(parseFloat(e.target.value))}
-                    style={{ width: '100%', height: '8px', accentColor: '#2563eb', cursor: 'pointer' }}
+                    style={{ width: '100%', accentColor: 'var(--accent-blue)', height: '8px', cursor: 'pointer' }}
                   />
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: '#94a3b8', marginTop: '0.35rem' }}>
-                    <span>1.2m (Low Boundary)</span>
-                    <span>1.8m (Council Standard Privacy)</span>
-                    <span>2.4m (High Security)</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+                    <span>Low Profile (1.2m)</span>
+                    <span>Standard Security (1.8m)</span>
+                    <span>High Security (2.4m)</span>
                   </div>
                 </div>
 
@@ -295,7 +302,7 @@ export default function GateVisualizerQuote() {
                     <ChevronLeft size={18} /> Back
                   </button>
                   <button onClick={() => setStep(3)} className="btn btn-blue">
-                    Next: Material & Color <ChevronRight size={18} />
+                    Next: Materials & Infill <ChevronRight size={18} />
                   </button>
                 </div>
               </div>
@@ -304,59 +311,64 @@ export default function GateVisualizerQuote() {
             {/* STEP 3: Material & Color */}
             {step === 3 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: '#0f172a' }}>Step 3: Material Profile & Color Finish</h3>
-                <p style={{ color: '#64748b', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                  Select the infill design and high-grade architectural powdercoat finish.
+                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 3: Infill Material & Powdercoat Color</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
+                  Choose architectural aluminium slat styling and premium Colorbond powdercoat finish.
                 </p>
 
-                {/* Materials Selection */}
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.55rem' }}>
-                  Gate Infill Profile:
+                {/* Infill Types */}
+                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
+                  Select Infill Style:
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.65rem', marginBottom: '1.5rem' }}>
-                  {MATERIALS.map((m) => (
-                    <div
-                      key={m.id}
-                      onClick={() => setMaterial(m.id)}
-                      style={{
-                        padding: '0.85rem',
-                        borderRadius: '10px',
-                        background: material === m.id ? '#eff6ff' : '#f8fafc',
-                        border: material === m.id ? '2px solid #2563eb' : '1px solid #e2e8f0',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease'
-                      }}
-                    >
-                      <h4 style={{ fontSize: '0.88rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.15rem' }}>{m.name}</h4>
-                      <p style={{ fontSize: '0.72rem', color: '#64748b' }}>{m.desc}</p>
-                    </div>
-                  ))}
+                  {MATERIALS.map((m) => {
+                    const isSelected = material === m.id;
+                    return (
+                      <div
+                        key={m.id}
+                        onClick={() => setMaterial(m.id)}
+                        style={{
+                          padding: '0.75rem',
+                          borderRadius: '10px',
+                          background: isSelected ? 'var(--accent-gold-light)' : 'var(--bg-card-subtle)',
+                          border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <h4 style={{ fontSize: '0.88rem', fontWeight: '700', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)', marginBottom: '0.2rem' }}>{m.name}</h4>
+                        <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>{m.desc}</p>
+                      </div>
+                    );
+                  })}
                 </div>
 
                 {/* Color Selection */}
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.55rem' }}>
-                  Colorbond / Powdercoat Finish:
+                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
+                  Select Colorbond Finish:
                 </label>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 130px), 1fr))', gap: '0.5rem' }}>
-                  {COLORS.map((c) => (
-                    <div
-                      key={c.id}
-                      onClick={() => setColor(c.id)}
-                      style={{
-                        padding: '0.65rem',
-                        borderRadius: '8px',
-                        background: color === c.id ? '#eff6ff' : '#f8fafc',
-                        border: color === c.id ? '2px solid #2563eb' : '1px solid #e2e8f0',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.45rem'
-                      }}
-                    >
-                      <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: c.hex, border: '1px solid #cbd5e1', flexShrink: 0 }} />
-                      <span style={{ fontSize: '0.78rem', color: '#0f172a', fontWeight: '600' }}>{c.name}</span>
-                    </div>
-                  ))}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 130px), 1fr))', gap: '0.55rem' }}>
+                  {COLORS.map((c) => {
+                    const isSelected = color === c.id;
+                    return (
+                      <div
+                        key={c.id}
+                        onClick={() => setColor(c.id)}
+                        style={{
+                          padding: '0.6rem',
+                          borderRadius: '8px',
+                          background: isSelected ? 'var(--accent-blue-light)' : 'var(--bg-card-subtle)',
+                          border: isSelected ? '2px solid var(--accent-blue)' : '1px solid var(--border-light)',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.45rem'
+                        }}
+                      >
+                        <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: c.hex, border: '1px solid var(--border-subtle)', flexShrink: 0 }} />
+                        <span style={{ fontSize: '0.78rem', color: 'var(--text-heading)', fontWeight: '600' }}>{c.name}</span>
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div style={{ marginTop: '1.75rem', display: 'flex', justifyContent: 'space-between' }}>
@@ -373,43 +385,46 @@ export default function GateVisualizerQuote() {
             {/* STEP 4: Motor & Smart Accessories */}
             {step === 4 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: '#0f172a' }}>Step 4: Automation Motor & Smart Access</h3>
-                <p style={{ color: '#64748b', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
+                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 4: Automation Motor & Smart Access</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
                   Choose your motor power source and optional smart access accessories.
                 </p>
 
                 {/* Motor Selection */}
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.55rem' }}>
+                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
                   Select Motor System:
                 </label>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.5rem' }}>
-                  {MOTORS.map((m) => (
-                    <div
-                      key={m.id}
-                      onClick={() => setMotor(m.id)}
-                      style={{
-                        padding: '0.85rem',
-                        borderRadius: '10px',
-                        background: motor === m.id ? '#eff6ff' : '#f8fafc',
-                        border: motor === m.id ? '2px solid #2563eb' : '1px solid #e2e8f0',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        gap: '0.5rem'
-                      }}
-                    >
-                      <div>
-                        <h4 style={{ fontSize: '0.92rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.15rem' }}>{m.name}</h4>
-                        <p style={{ fontSize: '0.76rem', color: '#64748b' }}>{m.desc}</p>
+                  {MOTORS.map((m) => {
+                    const isSelected = motor === m.id;
+                    return (
+                      <div
+                        key={m.id}
+                        onClick={() => setMotor(m.id)}
+                        style={{
+                          padding: '0.85rem',
+                          borderRadius: '10px',
+                          background: isSelected ? 'var(--accent-blue-light)' : 'var(--bg-card-subtle)',
+                          border: isSelected ? '2px solid var(--accent-blue)' : '1px solid var(--border-light)',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          gap: '0.5rem'
+                        }}
+                      >
+                        <div>
+                          <h4 style={{ fontSize: '0.92rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.15rem' }}>{m.name}</h4>
+                          <p style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>{m.desc}</p>
+                        </div>
+                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: isSelected ? '5px solid var(--accent-blue)' : '2px solid var(--border-subtle)', background: 'var(--bg-card)', flexShrink: 0 }} />
                       </div>
-                      <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: motor === m.id ? '5px solid #2563eb' : '2px solid #cbd5e1', background: '#ffffff', flexShrink: 0 }} />
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 {/* Accessories Checkboxes */}
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.55rem' }}>
+                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
                   Smart Access & Safety Add-ons:
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.55rem' }}>
@@ -422,20 +437,20 @@ export default function GateVisualizerQuote() {
                         style={{
                           padding: '0.65rem 0.85rem',
                           borderRadius: '8px',
-                          background: isSelected ? '#eff6ff' : '#f8fafc',
-                          border: isSelected ? '1.5px solid #2563eb' : '1px solid #e2e8f0',
+                          background: isSelected ? 'var(--accent-gold-light)' : 'var(--bg-card-subtle)',
+                          border: isSelected ? '1.5px solid var(--accent-gold)' : '1px solid var(--border-light)',
                           cursor: 'pointer',
                           display: 'flex',
                           alignItems: 'center',
                           gap: '0.65rem'
                         }}
                       >
-                        <div style={{ width: '16px', height: '16px', borderRadius: '4px', background: isSelected ? '#2563eb' : '#ffffff', border: '1.5px solid #2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
+                        <div style={{ width: '16px', height: '16px', borderRadius: '4px', background: isSelected ? 'var(--accent-gold)' : 'var(--bg-card)', border: '1.5px solid var(--accent-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#090e1a', flexShrink: 0 }}>
                           {isSelected && <Check size={11} />}
                         </div>
                         <div>
-                          <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: '#0f172a' }}>{acc.name}</div>
-                          <div style={{ fontSize: '0.72rem', color: '#64748b' }}>+${acc.cost} AUD</div>
+                          <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--text-heading)' }}>{acc.name}</div>
+                          <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>+${acc.cost} AUD</div>
                         </div>
                       </div>
                     );
@@ -456,18 +471,18 @@ export default function GateVisualizerQuote() {
             {/* STEP 5: Instant Quote Submission */}
             {step === 5 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: '#0f172a' }}>Step 5: Lock In Your Factory-Direct Price</h3>
-                <p style={{ color: '#64748b', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
+                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 5: Lock In Your Factory-Direct Price</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
                   Send your configured specification to our engineering team for an exact itemized PDF quote and fast-track booking.
                 </p>
 
                 {isSubmitted ? (
-                  <div style={{ padding: '1.75rem', background: '#ecfdf5', border: '1px solid #a7f3d0', borderRadius: '12px', textAlign: 'center' }}>
-                    <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem auto', color: '#fff' }}>
+                  <div style={{ padding: '1.75rem', background: 'var(--badge-green-bg)', border: '1px solid var(--badge-green-border)', borderRadius: '12px', textAlign: 'center' }}>
+                    <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'var(--accent-emerald)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem auto', color: '#fff' }}>
                       <Check size={28} />
                     </div>
-                    <h4 style={{ fontSize: '1.3rem', color: '#065f46', marginBottom: '0.4rem' }}>Quote Request Received!</h4>
-                    <p style={{ color: '#334155', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
+                    <h4 style={{ fontSize: '1.3rem', color: 'var(--badge-green-text)', marginBottom: '0.4rem' }}>Quote Request Received!</h4>
+                    <p style={{ color: 'var(--text-main)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
                       Thank you <strong>{formData.fullName}</strong>. One of our senior gate fabricators will review your {width}m x {height}m {GATE_TYPES.find(g=>g.id===gateType)?.name} specs and call you shortly to confirm your free on-site measure.
                     </p>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -480,62 +495,62 @@ export default function GateVisualizerQuote() {
                   <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                     <div className="form-row-2col" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '0.75rem' }}>
                       <div>
-                        <label style={{ display: 'block', fontSize: '0.78rem', color: '#334155', fontWeight: '600', marginBottom: '0.3rem' }}>Your Full Name *</label>
+                        <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-main)', fontWeight: '600', marginBottom: '0.3rem' }}>Your Full Name *</label>
                         <input
                           type="text"
                           required
                           placeholder="e.g. John Smith"
                           value={formData.fullName}
                           onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                          style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', background: '#ffffff', border: '1.5px solid #cbd5e1', color: '#0f172a', fontSize: '0.9rem' }}
+                          style={{ width: '100%', padding: '0.7rem', fontSize: '0.9rem' }}
                         />
                       </div>
                       <div>
-                        <label style={{ display: 'block', fontSize: '0.78rem', color: '#334155', fontWeight: '600', marginBottom: '0.3rem' }}>Phone Number *</label>
+                        <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-main)', fontWeight: '600', marginBottom: '0.3rem' }}>Phone Number *</label>
                         <input
                           type="tel"
                           required
                           placeholder="e.g. 0400 123 456"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', background: '#ffffff', border: '1.5px solid #cbd5e1', color: '#0f172a', fontSize: '0.9rem' }}
+                          style={{ width: '100%', padding: '0.7rem', fontSize: '0.9rem' }}
                         />
                       </div>
                     </div>
 
                     <div className="form-row-2col" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '0.75rem' }}>
                       <div>
-                        <label style={{ display: 'block', fontSize: '0.78rem', color: '#334155', fontWeight: '600', marginBottom: '0.3rem' }}>Email Address *</label>
+                        <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-main)', fontWeight: '600', marginBottom: '0.3rem' }}>Email Address *</label>
                         <input
                           type="email"
                           required
                           placeholder="e.g. john@example.com.au"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', background: '#ffffff', border: '1.5px solid #cbd5e1', color: '#0f172a', fontSize: '0.9rem' }}
+                          style={{ width: '100%', padding: '0.7rem', fontSize: '0.9rem' }}
                         />
                       </div>
                       <div>
-                        <label style={{ display: 'block', fontSize: '0.78rem', color: '#334155', fontWeight: '600', marginBottom: '0.3rem' }}>Property Suburb *</label>
+                        <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-main)', fontWeight: '600', marginBottom: '0.3rem' }}>Property Suburb *</label>
                         <input
                           type="text"
                           required
                           placeholder="e.g. Yamanto / Brisbane"
                           value={formData.suburb}
                           onChange={(e) => setFormData({ ...formData, suburb: e.target.value })}
-                          style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', background: '#ffffff', border: '1.5px solid #cbd5e1', color: '#0f172a', fontSize: '0.9rem' }}
+                          style={{ width: '100%', padding: '0.7rem', fontSize: '0.9rem' }}
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.78rem', color: '#334155', fontWeight: '600', marginBottom: '0.3rem' }}>Driveway Notes or Slope Info</label>
+                      <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-main)', fontWeight: '600', marginBottom: '0.3rem' }}>Driveway Notes or Slope Info</label>
                       <textarea
                         rows={2}
                         placeholder="Tell us about any slopes or fencing..."
                         value={formData.notes}
                         onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                        style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', background: '#ffffff', border: '1.5px solid #cbd5e1', color: '#0f172a', fontSize: '0.9rem', resize: 'vertical' }}
+                        style={{ width: '100%', padding: '0.7rem', fontSize: '0.9rem', resize: 'vertical' }}
                       />
                     </div>
 
@@ -555,9 +570,9 @@ export default function GateVisualizerQuote() {
 
           {/* Right Column: Live Interactive Blueprint & Price Summary Card */}
           <div style={{ width: '100%' }}>
-            <div className="card-light" style={{ padding: 'clamp(1.25rem, 3.5vw, 1.75rem)', border: '2px solid #e2e8f0', background: '#ffffff', boxShadow: '0 8px 30px rgba(0,0,0,0.06)' }}>
+            <div className="card-themed" style={{ padding: 'clamp(1.25rem, 3.5vw, 1.75rem)', border: '1.5px solid var(--border-light)', background: 'var(--bg-card)', boxShadow: 'var(--shadow-lg)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                <span style={{ fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.05em', textTransform: 'uppercase', color: '#2563eb' }}>
+                <span style={{ fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--accent-gold)' }}>
                   LIVE SPECIFICATION
                 </span>
                 <span className="badge-tag badge-green" style={{ margin: 0, fontSize: '0.72rem', padding: '0.3rem 0.65rem' }}>
@@ -568,9 +583,9 @@ export default function GateVisualizerQuote() {
               {/* Dynamic Gate Wireframe Graphic */}
               <div style={{
                 height: '120px',
-                background: '#f8fafc',
+                background: 'var(--bg-card-subtle)',
                 borderRadius: '8px',
-                border: '1.5px solid #e2e8f0',
+                border: '1.5px solid var(--border-light)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -581,14 +596,14 @@ export default function GateVisualizerQuote() {
                 <div style={{
                   width: `${Math.min(85, (width / 10) * 85 + 25)}%`,
                   height: `${Math.min(75, (height / 2.4) * 75 + 20)}%`,
-                  border: '3px solid #2563eb',
+                  border: '3px solid var(--accent-gold)',
                   borderRadius: '4px',
                   display: 'flex',
                   flexDirection: material.includes('vertical') ? 'row' : 'column',
                   gap: '3px',
                   padding: '3px',
-                  background: '#ffffff',
-                  boxShadow: '0 4px 12px rgba(37, 99, 235, 0.15)'
+                  background: 'var(--bg-card)',
+                  boxShadow: 'var(--shadow-md)'
                 }}>
                   {[...Array(6)].map((_, i) => (
                     <div 
@@ -597,66 +612,66 @@ export default function GateVisualizerQuote() {
                         flex: 1, 
                         background: COLORS.find(c=>c.id===color)?.hex || '#334155',
                         borderRadius: '2px',
-                        border: '0.5px solid rgba(0,0,0,0.1)'
+                        border: '0.5px solid rgba(255,255,255,0.1)'
                       }} 
                     />
                   ))}
                 </div>
-                <div style={{ position: 'absolute', bottom: '5px', fontSize: '0.65rem', color: '#64748b', fontWeight: '600' }}>
+                <div style={{ position: 'absolute', bottom: '5px', fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: '600' }}>
                   {width}m wide × {height}m high
                 </div>
               </div>
 
               {/* Specification Summary List */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.84rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '1rem', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.84rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '1rem', marginBottom: '1rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <span style={{ color: '#64748b' }}>Gate Style:</span>
-                  <span style={{ color: '#0f172a', fontWeight: '700', textAlign: 'right' }}>{GATE_TYPES.find(g=>g.id===gateType)?.name}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>Gate Style:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{GATE_TYPES.find(g=>g.id===gateType)?.name}</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#64748b' }}>Size:</span>
-                  <span style={{ color: '#0f172a', fontWeight: '700' }}>{width}m × {height}m</span>
+                  <span style={{ color: 'var(--text-muted)' }}>Size:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{width}m × {height}m</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#64748b' }}>Material:</span>
-                  <span style={{ color: '#0f172a', fontWeight: '700' }}>{MATERIALS.find(m=>m.id===material)?.name}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>Material:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{MATERIALS.find(m=>m.id===material)?.name}</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#64748b' }}>Finish:</span>
-                  <span style={{ color: '#0f172a', fontWeight: '700' }}>{COLORS.find(c=>c.id===color)?.name}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>Finish:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{COLORS.find(c=>c.id===color)?.name}</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#64748b' }}>Motor:</span>
-                  <span style={{ color: '#0f172a', fontWeight: '700' }}>{(MOTORS.find(m=>m.id===motor)?.name || 'Nice Automation').split(' ')[0]} {(MOTORS.find(m=>m.id===motor)?.name || '').split(' ')[1] || ''}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>Motor:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{(MOTORS.find(m=>m.id===motor)?.name || 'Nice Automation').split(' ')[0]} {(MOTORS.find(m=>m.id===motor)?.name || '').split(' ')[1] || ''}</span>
                 </div>
               </div>
 
               {/* Estimated Price Range Box */}
               <div style={{
-                background: '#eff6ff',
-                border: '1.5px solid #bfdbfe',
+                background: 'var(--accent-gold-light)',
+                border: '1.5px solid var(--accent-gold-glow)',
                 borderRadius: '10px',
                 padding: '1rem',
                 textAlign: 'center',
                 marginBottom: '0.85rem'
               }}>
-                <div style={{ fontSize: '0.78rem', color: '#1e40af', fontWeight: '600', marginBottom: '0.2rem' }}>Estimated Factory Direct Range:</div>
-                <div style={{ fontSize: 'clamp(1.5rem, 4vw, 1.85rem)', fontWeight: '900', color: '#1d4ed8', letterSpacing: '-0.02em' }}>
-                  ${lowEst.toLocaleString()} – ${highEst.toLocaleString()} <span style={{ fontSize: '0.85rem', fontWeight: '600', color: '#64748b' }}>AUD*</span>
+                <div style={{ fontSize: '0.78rem', color: 'var(--accent-gold)', fontWeight: '700', marginBottom: '0.2rem' }}>Estimated Factory Direct Range:</div>
+                <div style={{ fontSize: 'clamp(1.5rem, 4vw, 1.85rem)', fontWeight: '900', color: 'var(--accent-gold-hover)', letterSpacing: '-0.02em' }}>
+                  ${lowEst.toLocaleString()} – ${highEst.toLocaleString()} <span style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-muted)' }}>AUD*</span>
                 </div>
-                <div style={{ fontSize: '0.65rem', color: '#64748b', marginTop: '0.25rem' }}>
+                <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
                   *Includes fabrication, powdercoating & motor kit.
                 </div>
               </div>
 
               {/* Guarantees Box */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', fontSize: '0.78rem', color: '#475569' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <ShieldCheck size={15} style={{ color: '#059669' }} />
+                  <ShieldCheck size={15} style={{ color: 'var(--accent-emerald)' }} />
                   <span>10-Year Structural Guarantee</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <Check size={15} style={{ color: '#059669' }} />
+                  <Check size={15} style={{ color: 'var(--accent-emerald)' }} />
                   <span>Yamanto Workshop Direct Pricing</span>
                 </div>
               </div>

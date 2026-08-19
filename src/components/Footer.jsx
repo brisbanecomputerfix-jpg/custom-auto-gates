@@ -53,9 +53,16 @@ export default function Footer({ onOpenQuote, onSelectCategory, onNavigate }) {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
               <img 
-                src="/images/custom-auto-gates-logo.png" 
+                src="/images/custom-auto-gates-logo-dark.png" 
                 alt="Custom Auto Gates & Fencing" 
-                style={{ height: '48px', width: 'auto', maxWidth: '200px', objectFit: 'contain' }}
+                style={{ 
+                  height: 'auto', 
+                  maxHeight: '54px', 
+                  width: 'auto', 
+                  maxWidth: '220px', 
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))'
+                }}
               />
             </div>
 

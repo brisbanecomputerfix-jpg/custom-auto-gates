@@ -40,9 +40,17 @@ export default class ErrorBoundary extends React.Component {
             border: '1.5px solid #e2e8f0'
           }}>
             <img 
-              src="/images/custom-auto-gates-logo.png" 
+              src="/images/custom-auto-gates-logo-dark.png" 
               alt="Custom Auto Gates & Fencing" 
-              style={{ height: '48px', width: 'auto', margin: '0 auto 1.5rem auto', display: 'block' }}
+              style={{ 
+                height: 'auto', 
+                maxHeight: '52px', 
+                width: 'auto', 
+                maxWidth: '200px', 
+                margin: '0 auto 1.5rem auto', 
+                display: 'block',
+                objectFit: 'contain'
+              }}
             />
             <div style={{
               width: '54px',

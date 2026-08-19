@@ -11,22 +11,25 @@ import {
   MapPin, 
   Sparkles, 
   Clock, 
-  Info,
-  Star,
-  Scale,
-  Sun,
-  Building2,
-  Home,
-  Layers,
-  ArrowRight,
-  ChevronRight,
-  Flame,
-  CheckCircle2
+  Info, 
+  Star, 
+  Scale, 
+  Sun, 
+  Moon, 
+  Building2, 
+  Home, 
+  Layers, 
+  ArrowRight, 
+  ChevronRight, 
+  Flame, 
+  CheckCircle2 
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
 
 export default function Navbar({ 
   currentPage = 'home',
+  theme = 'dark',
+  onToggleTheme,
   onNavigate, 
   onOpenQuote, 
   onOpenContact, 
@@ -88,11 +91,11 @@ export default function Navbar({
     <>
       {/* Top Announcements & Quick Contact Bar */}
       <div style={{
-        background: '#090e1a',
+        background: 'var(--bg-header-top)',
         color: '#ffffff',
         fontSize: '0.78rem',
         padding: '0.4rem 0',
-        borderBottom: '1px solid rgba(255,255,255,0.08)',
+        borderBottom: '1px solid var(--border-light)',
         position: 'relative',
         zIndex: 101
       }}>
@@ -121,7 +124,7 @@ export default function Navbar({
             </span>
           </div>
 
-          {/* Right: Emergency Repairs Hotline */}
+          {/* Right: Emergency Repairs Hotline & Direct Line */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: 'auto' }}>
             <button
               onClick={onOpenTroubleshoot}
@@ -162,15 +165,17 @@ export default function Navbar({
         </div>
       </div>
 
-      {/* Main Minimalist Sticky Header */}
+      {/* Main Sticky Header */}
       <header style={{
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        background: '#ffffff',
-        borderBottom: '1px solid #e2e8f0',
-        boxShadow: isScrolled ? '0 8px 24px rgba(15, 23, 42, 0.08)' : '0 2px 10px rgba(0, 0, 0, 0.03)',
-        transition: 'box-shadow 0.25s ease'
+        background: 'var(--bg-navbar)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: '1px solid var(--border-light)',
+        boxShadow: isScrolled ? '0 10px 30px rgba(0, 0, 0, 0.25)' : '0 2px 10px rgba(0, 0, 0, 0.05)',
+        transition: 'all 0.25s ease'
       }}>
         <div className="container" style={{
           display: 'flex',
@@ -194,20 +199,21 @@ export default function Navbar({
             }}
           >
             <img 
-              src="/images/custom-auto-gates-logo.png" 
+              src={theme === 'light' ? '/images/custom-auto-gates-logo-light.png' : '/images/custom-auto-gates-logo-dark.png'} 
               alt="Custom Auto Gates & Fencing" 
               style={{
                 height: 'auto',
-                maxHeight: 'clamp(38px, 6.5vw, 50px)',
+                maxHeight: 'clamp(44px, 6vw, 56px)',
                 width: 'auto',
-                maxWidth: '100%',
+                maxWidth: '220px',
                 objectFit: 'contain',
-                display: 'block'
+                display: 'block',
+                filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.25))'
               }}
             />
           </a>
 
-          {/* Minimalist Desktop Navigation Links (Main 4 Core Items) */}
+          {/* Desktop Navigation Links */}
           <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center' }}>
             <ul style={{
               display: 'flex',
@@ -222,7 +228,7 @@ export default function Navbar({
                 <button 
                   className="nav-link-btn"
                   style={{
-                    color: '#1e293b',
+                    color: 'var(--text-heading)',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: '700',
                     fontSize: '0.94rem',
@@ -230,7 +236,8 @@ export default function Navbar({
                     display: 'flex',
                     alignItems: 'center',
                     gap: '4px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    transition: 'color 0.2s ease'
                   }}
                   onClick={() => handleNavClick('services')}
                   onMouseEnter={() => setServicesDropdown(true)}
@@ -247,10 +254,10 @@ export default function Navbar({
                       top: '100%',
                       left: 0,
                       width: '280px',
-                      background: '#ffffff',
-                      border: '1.5px solid #e2e8f0',
+                      background: 'var(--bg-card)',
+                      border: '1.5px solid var(--border-subtle)',
                       borderRadius: '14px',
-                      boxShadow: '0 18px 36px rgba(15,23,42,0.12)',
+                      boxShadow: 'var(--shadow-xl)',
                       padding: '0.55rem',
                       zIndex: 120,
                       animation: 'fadeIn 0.18s ease-out'
@@ -281,7 +288,7 @@ export default function Navbar({
                           width: '100%',
                           textAlign: 'left',
                           padding: '0.6rem 0.8rem',
-                          color: '#334155',
+                          color: 'var(--text-main)',
                           fontSize: '0.86rem',
                           fontWeight: '600',
                           borderRadius: '8px',
@@ -290,12 +297,12 @@ export default function Navbar({
                           transition: 'all 0.15s ease'
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = '#eff6ff';
-                          e.currentTarget.style.color = '#2563eb';
+                          e.currentTarget.style.background = 'var(--bg-card-hover)';
+                          e.currentTarget.style.color = 'var(--accent-gold)';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.background = 'transparent';
-                          e.currentTarget.style.color = '#334155';
+                          e.currentTarget.style.color = 'var(--text-main)';
                         }}
                       >
                         {s.name}
@@ -311,12 +318,13 @@ export default function Navbar({
                   className="nav-link-btn" 
                   onClick={() => handleNavClick('gallery')}
                   style={{
-                    color: '#1e293b',
+                    color: 'var(--text-heading)',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: '700',
                     fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    transition: 'color 0.2s ease'
                   }}
                 >
                   Gallery
@@ -329,7 +337,7 @@ export default function Navbar({
                   className="nav-link-btn" 
                   onClick={() => handleRouteClick('testimonials')}
                   style={{
-                    color: currentPage === 'testimonials' ? '#2563eb' : '#1e293b',
+                    color: currentPage === 'testimonials' ? 'var(--accent-gold)' : 'var(--text-heading)',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: currentPage === 'testimonials' ? '800' : '700',
                     fontSize: '0.94rem',
@@ -337,11 +345,20 @@ export default function Navbar({
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.3rem'
+                    gap: '0.3rem',
+                    transition: 'color 0.2s ease'
                   }}
                 >
                   <span>Reviews</span>
-                  <span style={{ color: '#d97706', fontSize: '0.78rem', background: '#fef3c7', padding: '0.1rem 0.4rem', borderRadius: '4px', fontWeight: '800' }}>4.9★</span>
+                  <span style={{ 
+                    color: 'var(--badge-gold-text)', 
+                    fontSize: '0.78rem', 
+                    background: 'var(--badge-gold-bg)', 
+                    border: '1px solid var(--badge-gold-border)',
+                    padding: '0.1rem 0.4rem', 
+                    borderRadius: '4px', 
+                    fontWeight: '800' 
+                  }}>4.9★</span>
                 </button>
               </li>
 
@@ -351,12 +368,13 @@ export default function Navbar({
                   className="nav-link-btn" 
                   onClick={() => handleRouteClick('contact')}
                   style={{
-                    color: currentPage === 'contact' ? '#2563eb' : '#1e293b',
+                    color: currentPage === 'contact' ? 'var(--accent-gold)' : 'var(--text-heading)',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: currentPage === 'contact' ? '800' : '700',
                     fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    transition: 'color 0.2s ease'
                   }}
                 >
                   Contact Us
@@ -365,8 +383,21 @@ export default function Navbar({
             </ul>
           </nav>
 
-          {/* Right Action CTA Buttons + Minimalist Burger Toggle */}
+          {/* Right Action CTA Buttons + Theme Toggle Switch + Burger Toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexShrink: 0 }}>
+            {/* Theme Toggle Button (Dark / Day Mode Switcher) */}
+            <button
+              onClick={onToggleTheme}
+              className="theme-toggle-switch"
+              aria-label={`Switch to ${theme === 'dark' ? 'Day' : 'Dark'} Mode`}
+              title={`Currently in ${theme === 'dark' ? 'Dark' : 'Day'} Mode. Click to switch to ${theme === 'dark' ? 'Day' : 'Dark'} Mode.`}
+            >
+              <div className="theme-toggle-indicator">
+                {theme === 'dark' ? <Moon size={13} /> : <Sun size={13} />}
+              </div>
+              <span className="hidden-mobile">{theme === 'dark' ? 'Dark Mode' : 'Day Mode'}</span>
+            </button>
+
             {/* Instant Quote CTA */}
             <button 
               onClick={onOpenQuote}
@@ -377,16 +408,16 @@ export default function Navbar({
               <span>Instant Quote</span>
             </button>
 
-            {/* Universal Burger Menu Button (Visible on ALL devices for full catalog access) */}
+            {/* Universal Burger Menu Button */}
             <button 
               onClick={() => setMenuOpen(true)}
               aria-label="Open full site navigation menu"
               style={{
-                background: '#f8fafc',
-                border: '1.5px solid #cbd5e1',
+                background: 'var(--bg-card-subtle)',
+                border: '1.5px solid var(--border-subtle)',
                 borderRadius: '10px',
                 padding: '0.55rem 0.85rem',
-                color: '#0f172a',
+                color: 'var(--text-heading)',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -397,14 +428,14 @@ export default function Navbar({
                 transition: 'all 0.18s ease'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#eff6ff';
-                e.currentTarget.style.borderColor = '#2563eb';
-                e.currentTarget.style.color = '#2563eb';
+                e.currentTarget.style.background = 'var(--bg-card-hover)';
+                e.currentTarget.style.borderColor = 'var(--accent-gold)';
+                e.currentTarget.style.color = 'var(--accent-gold)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#f8fafc';
-                e.currentTarget.style.borderColor = '#cbd5e1';
-                e.currentTarget.style.color = '#0f172a';
+                e.currentTarget.style.background = 'var(--bg-card-subtle)';
+                e.currentTarget.style.borderColor = 'var(--border-subtle)';
+                e.currentTarget.style.color = 'var(--text-heading)';
               }}
             >
               <Menu size={19} />
@@ -423,8 +454,9 @@ export default function Navbar({
             position: 'fixed',
             inset: 0,
             zIndex: 300,
-            background: 'rgba(15, 23, 42, 0.65)',
-            backdropFilter: 'blur(6px)',
+            background: 'var(--modal-overlay-bg)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
             display: 'flex',
             justifyContent: 'flex-end',
             animation: 'fadeIn 0.2s ease-out'
@@ -437,14 +469,15 @@ export default function Navbar({
               width: '100%',
               maxWidth: '440px',
               height: '100%',
-              background: '#ffffff',
+              background: 'var(--bg-drawer)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
               padding: '1.5rem',
               overflowY: 'auto',
-              boxShadow: '-10px 0 35px rgba(0,0,0,0.2)',
-              position: 'relative'
+              boxShadow: 'var(--shadow-xl)',
+              position: 'relative',
+              borderLeft: '1px solid var(--border-light)'
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -455,27 +488,34 @@ export default function Navbar({
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 paddingBottom: '1.25rem',
-                borderBottom: '1.5px solid #f1f5f9',
+                borderBottom: '1.5px solid var(--border-light)',
                 marginBottom: '1.25rem'
               }}>
                 <img 
-                  src="/images/custom-auto-gates-logo.png" 
+                  src={theme === 'light' ? '/images/custom-auto-gates-logo-light.png' : '/images/custom-auto-gates-logo-dark.png'} 
                   alt="Custom Auto Gates" 
-                  style={{ height: '40px', width: 'auto', maxWidth: '170px', objectFit: 'contain' }}
+                  style={{ 
+                    height: 'auto', 
+                    maxHeight: '46px', 
+                    width: 'auto', 
+                    maxWidth: '190px', 
+                    objectFit: 'contain',
+                    filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.25))'
+                  }}
                 />
                 <button 
                   onClick={() => setMenuOpen(false)}
                   aria-label="Close navigation menu"
                   style={{
-                    background: '#f1f5f9',
-                    border: 'none',
+                    background: 'var(--bg-card-muted)',
+                    border: '1px solid var(--border-light)',
                     borderRadius: '50%',
                     width: '38px',
                     height: '38px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#0f172a',
+                    color: 'var(--text-heading)',
                     cursor: 'pointer'
                   }}
                 >
@@ -483,89 +523,113 @@ export default function Navbar({
                 </button>
               </div>
 
+              {/* Theme Toggle Banner Inside Mobile Menu */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '0.75rem 1rem',
+                background: 'var(--bg-card)',
+                borderRadius: '12px',
+                border: '1px solid var(--border-light)',
+                marginBottom: '1.25rem'
+              }}>
+                <span style={{ fontSize: '0.86rem', fontWeight: '700', color: 'var(--text-heading)', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                  {theme === 'dark' ? <Moon size={15} style={{ color: 'var(--accent-gold)' }} /> : <Sun size={15} style={{ color: 'var(--accent-gold)' }} />}
+                  Appearance: {theme === 'dark' ? 'Dark Mode' : 'Day Mode'}
+                </span>
+                <button
+                  onClick={onToggleTheme}
+                  className="theme-toggle-switch"
+                  style={{ padding: '0.3rem 0.65rem' }}
+                >
+                  <span>{theme === 'dark' ? 'Day Mode ☀️' : 'Dark Mode 🌙'}</span>
+                </button>
+              </div>
+
               {/* SECTION 1: CORE PAGES */}
               <div style={{ marginBottom: '1.5rem' }}>
-                <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: '800', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
                   Main Navigation
                 </span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
                   <button 
                     className="mobile-nav-item" 
                     onClick={() => handleRouteClick('home')}
-                    style={{ color: currentPage === 'home' ? '#2563eb' : '#0f172a', padding: '0.65rem 0' }}
+                    style={{ color: currentPage === 'home' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-                      <Home size={17} style={{ color: '#64748b' }} />
+                      <Home size={17} style={{ color: 'var(--text-muted)' }} />
                       Home
                     </span>
-                    <ChevronRight size={16} style={{ color: '#cbd5e1' }} />
+                    <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
                   </button>
 
                   <button 
                     className="mobile-nav-item" 
                     onClick={() => handleRouteClick('about')}
-                    style={{ color: currentPage === 'about' ? '#2563eb' : '#0f172a', padding: '0.65rem 0' }}
+                    style={{ color: currentPage === 'about' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-                      <Info size={17} style={{ color: '#2563eb' }} />
+                      <Info size={17} style={{ color: 'var(--accent-blue)' }} />
                       About Us & Our Yamanto Team
                     </span>
-                    <ChevronRight size={16} style={{ color: '#cbd5e1' }} />
+                    <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
                   </button>
 
                   <button 
                     className="mobile-nav-item" 
                     onClick={() => handleRouteClick('service')}
-                    style={{ color: currentPage === 'service' ? '#2563eb' : '#0f172a', padding: '0.65rem 0' }}
+                    style={{ color: currentPage === 'service' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
                       <Wrench size={17} style={{ color: 'var(--accent-gold)' }} />
                       Service, Repairs & Warranty
                     </span>
-                    <ChevronRight size={16} style={{ color: '#cbd5e1' }} />
+                    <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
                   </button>
 
                   <button 
                     className="mobile-nav-item" 
                     onClick={() => handleRouteClick('testimonials')}
-                    style={{ color: currentPage === 'testimonials' ? '#2563eb' : '#0f172a', padding: '0.65rem 0' }}
+                    style={{ color: currentPage === 'testimonials' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
                       <Star size={17} fill="#f59e0b" style={{ color: '#f59e0b' }} />
                       Verified Reviews & Case Studies (4.9★)
                     </span>
-                    <ChevronRight size={16} style={{ color: '#cbd5e1' }} />
+                    <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
                   </button>
 
                   <button 
                     className="mobile-nav-item" 
                     onClick={() => handleRouteClick('council-guide')}
-                    style={{ color: currentPage === 'council-guide' ? '#2563eb' : '#0f172a', padding: '0.65rem 0' }}
+                    style={{ color: currentPage === 'council-guide' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-                      <Scale size={17} style={{ color: '#10b981' }} />
+                      <Scale size={17} style={{ color: 'var(--accent-emerald)' }} />
                       QLD Council & Pool Safety Guide
                     </span>
-                    <ChevronRight size={16} style={{ color: '#cbd5e1' }} />
+                    <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
                   </button>
 
                   <button 
                     className="mobile-nav-item" 
                     onClick={() => handleRouteClick('contact')}
-                    style={{ color: currentPage === 'contact' ? '#2563eb' : '#0f172a', padding: '0.65rem 0' }}
+                    style={{ color: currentPage === 'contact' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-                      <Phone size={17} style={{ color: '#2563eb' }} />
+                      <Phone size={17} style={{ color: 'var(--accent-blue)' }} />
                       Contact Us & Showroom
                     </span>
-                    <ChevronRight size={16} style={{ color: '#cbd5e1' }} />
+                    <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
                   </button>
                 </div>
               </div>
 
               {/* SECTION 2: GATE STYLES & WORKSHOP CAPABILITIES */}
               <div style={{ marginBottom: '1.5rem' }}>
-                <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: '800', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
                   Gate Styles & Fabrication
                 </span>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.45rem' }}>
@@ -585,21 +649,22 @@ export default function Navbar({
                       }}
                       style={{
                         padding: '0.55rem 0.75rem',
-                        background: '#f8fafc',
-                        border: '1px solid #e2e8f0',
+                        background: 'var(--bg-card)',
+                        border: '1px solid var(--border-light)',
                         borderRadius: '8px',
                         fontSize: '0.82rem',
                         fontWeight: '700',
-                        color: '#334155',
+                        color: 'var(--text-main)',
                         textAlign: 'left',
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'space-between'
+                        justifyContent: 'space-between',
+                        transition: 'all 0.15s ease'
                       }}
                     >
                       <span>{style.name}</span>
-                      <ChevronRight size={13} style={{ color: '#94a3b8' }} />
+                      <ChevronRight size={13} style={{ color: 'var(--text-muted)' }} />
                     </button>
                   ))}
                 </div>
@@ -607,7 +672,7 @@ export default function Navbar({
 
               {/* SECTION 3: TECHNICAL & TRUST HUB */}
               <div style={{ marginBottom: '1.25rem' }}>
-                <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: '800', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
                   Technical & Research
                 </span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
@@ -624,10 +689,10 @@ export default function Navbar({
                   <button 
                     className="mobile-nav-item" 
                     onClick={() => handleRouteClick('suburbs')} 
-                    style={{ padding: '0.55rem 0', color: currentPage === 'suburbs' ? '#2563eb' : '#0f172a' }}
+                    style={{ padding: '0.55rem 0', color: currentPage === 'suburbs' ? 'var(--accent-gold)' : 'var(--text-heading)' }}
                   >
                     <span style={{ fontSize: '0.92rem' }}>Service Areas (Brisbane, Ipswich, Logan, GC)</span>
-                    <MapPin size={15} style={{ color: '#2563eb' }} />
+                    <MapPin size={15} style={{ color: 'var(--accent-blue)' }} />
                   </button>
                   <button className="mobile-nav-item" onClick={() => handleNavClick('faqs')} style={{ padding: '0.55rem 0' }}>
                     <span style={{ fontSize: '0.92rem' }}>Frequently Asked Questions</span>
@@ -635,7 +700,7 @@ export default function Navbar({
                   <button 
                     className="mobile-nav-item" 
                     onClick={() => { setMenuOpen(false); onOpenTroubleshoot(); }}
-                    style={{ color: '#d97706', padding: '0.55rem 0' }}
+                    style={{ color: 'var(--accent-gold)', padding: '0.55rem 0' }}
                   >
                     <span style={{ fontSize: '0.92rem', fontWeight: '700' }}>Emergency Gate Diagnostics</span>
                     <Wrench size={15} />
@@ -645,7 +710,7 @@ export default function Navbar({
             </div>
 
             {/* Drawer Footer Actions */}
-            <div style={{ paddingTop: '1.25rem', borderTop: '1.5px solid #f1f5f9', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+            <div style={{ paddingTop: '1.25rem', borderTop: '1.5px solid var(--border-light)', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
               <a 
                 href={COMPANY_INFO.tel} 
                 className="btn btn-blue btn-lg" 

@@ -12,10 +12,10 @@ import {
   Clock, 
   Ruler, 
   Factory, 
-  Sliders,
-  Calendar,
-  ChevronRight,
-  Info
+  Sliders, 
+  Calendar, 
+  ChevronRight, 
+  Info 
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
 
@@ -40,7 +40,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
         alignItems: 'center', 
         paddingTop: 'clamp(2.5rem, 5vw, 4rem)', 
         paddingBottom: 'clamp(3rem, 6vw, 4.5rem)', 
-        backgroundColor: '#f8fafc' 
+        backgroundColor: 'var(--bg-body)' 
       }}
       aria-label="Custom Auto Gates & Fencing Introduction"
     >
@@ -62,7 +62,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
             backgroundImage: 'url(/images/Swinging-Gates.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            opacity: videoLoaded ? 0.08 : 0.35,
+            opacity: videoLoaded ? 0.08 : 0.3,
             transition: 'opacity 1s ease'
           }}
         />
@@ -77,8 +77,8 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
           minWidth: '177.78vh',
           minHeight: '56.25vw',
           transform: 'translate(-50%, -50%)',
-          opacity: 0.78,
-          filter: 'brightness(1.03) contrast(1.04)'
+          opacity: 0.72,
+          filter: 'brightness(1.02) contrast(1.05)'
         }}>
           <iframe
             src="https://player.vimeo.com/video/1218804316?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&playsinline=1&badge=0&autopause=0&app_id=58479"
@@ -98,23 +98,23 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
           />
         </div>
 
-        {/* Premium Translucent Light Gradient Overlays */}
+        {/* Dynamic Theme Gradient Overlays */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to right, rgba(248, 250, 252, 0.97) 0%, rgba(248, 250, 252, 0.88) 52%, rgba(248, 250, 252, 0.40) 100%)'
+          background: 'linear-gradient(to right, var(--hero-overlay-1) 0%, var(--hero-overlay-2) 52%, var(--hero-overlay-3) 100%)'
         }} />
 
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to top, rgba(248, 250, 252, 1) 0%, rgba(248, 250, 252, 0.3) 40%, transparent 80%)'
+          background: 'linear-gradient(to top, var(--hero-overlay-1) 0%, transparent 65%)'
         }} />
 
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to bottom, rgba(248, 250, 252, 0.95) 0%, transparent 20%)'
+          background: 'linear-gradient(to bottom, var(--hero-overlay-1) 0%, transparent 25%)'
         }} />
       </div>
 
@@ -127,14 +127,14 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               <button 
                 onClick={onNavigateAbout}
                 className="badge-tag badge-gold" 
-                style={{ margin: 0, backdropFilter: 'blur(8px)', background: 'rgba(254, 243, 199, 0.95)', color: '#92400e', border: '1px solid #fde68a', fontWeight: '800', cursor: 'pointer', fontSize: '0.78rem' }}
+                style={{ margin: 0, fontWeight: '800', cursor: 'pointer', fontSize: '0.78rem' }}
               >
                 <Factory size={13} /> Buy Factory Direct Yamanto
               </button>
-              <span className="badge-tag badge-blue" style={{ margin: 0, backdropFilter: 'blur(8px)', background: 'rgba(239, 246, 255, 0.95)', color: '#1e40af', border: '1px solid #bfdbfe', fontWeight: '800', fontSize: '0.78rem' }}>
+              <span className="badge-tag badge-blue" style={{ margin: 0, fontWeight: '800', fontSize: '0.78rem' }}>
                 <MapPin size={13} /> Brisbane Inner Suburbs & QLD
               </span>
-              <span className="badge-tag badge-green" style={{ margin: 0, backdropFilter: 'blur(8px)', background: 'rgba(236, 253, 245, 0.95)', color: '#065f46', border: '1px solid #a7f3d0', fontWeight: '800', fontSize: '0.78rem' }}>
+              <span className="badge-tag badge-green" style={{ margin: 0, fontWeight: '800', fontSize: '0.78rem' }}>
                 <ShieldCheck size={13} /> 10-Yr Warranty
               </span>
             </div>
@@ -144,16 +144,12 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               fontSize: 'clamp(2rem, 4vw, 3.3rem)',
               fontWeight: '900',
               lineHeight: 1.15,
-              color: '#0f172a',
+              color: 'var(--text-heading)',
               letterSpacing: '-0.025em',
               marginBottom: '1rem'
             }}>
               Custom Automatic Gates <br />
-              <span style={{
-                background: 'linear-gradient(135deg, #d97706 0%, #b45309 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}>
+              <span className="gradient-text-gold">
                 Engineered & Fabricated in QLD
               </span>
             </h1>
@@ -161,13 +157,13 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
             {/* Subtitle & Value Proposition */}
             <p style={{
               fontSize: 'clamp(0.98rem, 2vw, 1.125rem)',
-              color: '#334155',
+              color: 'var(--text-main)',
               lineHeight: 1.6,
               marginBottom: '1.75rem',
               maxWidth: '650px',
-              fontWeight: '500'
+              fontWeight: '400'
             }}>
-              South East Queensland's dedicated specialist in custom automated <strong style={{ color: '#0f172a' }}>sliding gates, swing gates, solar off-grid systems</strong>, and <strong style={{ color: '#0f172a' }}>architectural aluminium slat fencing</strong>. Precision laser CAD measured, built in our Yamanto workshop, and installed with genuine Italian automation.
+              South East Queensland's dedicated specialist in custom automated <strong style={{ color: 'var(--text-heading)' }}>sliding gates, swing gates, solar off-grid systems</strong>, and <strong style={{ color: 'var(--text-heading)' }}>architectural aluminium slat fencing</strong>. Precision laser CAD measured, built in our Yamanto workshop, and installed with genuine Italian automation.
             </p>
 
             {/* Call to Actions */}
@@ -184,29 +180,28 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               <button
                 onClick={onOpenContact}
                 className="btn btn-outline-dark btn-lg"
-                style={{ background: '#ffffff', color: '#0f172a', border: '1.5px solid #cbd5e1', flex: '1 1 auto' }}
+                style={{ flex: '1 1 auto' }}
               >
                 Book Free Measure
               </button>
 
               <a
                 href={COMPANY_INFO.tel}
+                className="btn-outline-dark"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '0.45rem',
-                  color: '#0f172a',
+                  color: 'var(--text-heading)',
                   fontWeight: '800',
                   fontSize: '0.95rem',
-                  padding: '0.75rem 1rem',
-                  background: '#ffffff',
-                  borderRadius: '10px',
-                  border: '1.5px solid #cbd5e1',
+                  padding: '0.75rem 1.1rem',
+                  borderRadius: 'var(--radius-md)',
                   flex: '1 1 auto'
                 }}
               >
-                <Phone size={17} style={{ color: '#d97706' }} />
+                <Phone size={17} style={{ color: 'var(--accent-gold)' }} />
                 <span>(07) 3102 1801</span>
               </a>
             </div>
@@ -217,18 +212,18 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
               gap: '0.75rem',
               paddingTop: '1.25rem',
-              borderTop: '1.5px solid #e2e8f0'
+              borderTop: '1.5px solid var(--border-light)'
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#1e293b', fontSize: '0.84rem', fontWeight: '700' }}>
-                <CheckCircle2 size={15} style={{ color: '#059669', flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--text-heading)', fontSize: '0.84rem', fontWeight: '700' }}>
+                <CheckCircle2 size={15} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} />
                 <span>Zero Middleman Markups</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#1e293b', fontSize: '0.84rem', fontWeight: '700' }}>
-                <CheckCircle2 size={15} style={{ color: '#059669', flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--text-heading)', fontSize: '0.84rem', fontWeight: '700' }}>
+                <CheckCircle2 size={15} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} />
                 <span>Italian Nice & Centurion Motors</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#1e293b', fontSize: '0.84rem', fontWeight: '700' }}>
-                <CheckCircle2 size={15} style={{ color: '#059669', flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--text-heading)', fontSize: '0.84rem', fontWeight: '700' }}>
+                <CheckCircle2 size={15} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} />
                 <span>Sloping Driveway Engineering</span>
               </div>
             </div>
@@ -237,31 +232,31 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
           {/* Right Hero: Quick Gate Estimator Card */}
           <div style={{ position: 'relative', width: '100%' }}>
             <div style={{
-              background: '#ffffff',
+              background: 'var(--bg-card)',
               borderRadius: '20px',
-              border: '1.5px solid #e2e8f0',
+              border: '1.5px solid var(--border-light)',
               padding: 'clamp(1.25rem, 3.5vw, 1.85rem)',
-              boxShadow: '0 20px 45px -10px rgba(15, 23, 42, 0.1), 0 4px 14px rgba(0,0,0,0.04)',
+              boxShadow: 'var(--shadow-xl)',
               position: 'relative',
               zIndex: 5
             }}>
               {/* Card Header */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <div style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#10b981' }} />
-                  <span style={{ fontSize: '0.78rem', fontWeight: '800', color: '#0f172a', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  <div style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 8px #10b981' }} />
+                  <span style={{ fontSize: '0.78rem', fontWeight: '800', color: 'var(--text-heading)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     Yamanto Workshop
                   </span>
                 </div>
-                <span style={{ fontSize: '0.72rem', color: '#1d4ed8', background: '#eff6ff', border: '1px solid #bfdbfe', padding: '0.2rem 0.6rem', borderRadius: '6px', fontWeight: '800' }}>
+                <span className="badge-tag badge-blue" style={{ margin: 0, padding: '0.2rem 0.6rem', fontSize: '0.72rem' }}>
                   Daily On-Site Measures
                 </span>
               </div>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.35rem' }}>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
                 Quick Gate Price Estimator
               </h3>
-              <p style={{ color: '#64748b', fontSize: '0.84rem', marginBottom: '1rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', marginBottom: '1rem' }}>
                 Select a custom style to get an instant wholesale fabrication quote:
               </p>
 
@@ -276,17 +271,17 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                       style={{
                         padding: '0.75rem',
                         borderRadius: '10px',
-                        border: isSelected ? '2px solid #2563eb' : '1px solid #e2e8f0',
-                        background: isSelected ? '#eff6ff' : '#f8fafc',
+                        border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
+                        background: isSelected ? 'var(--accent-gold-light)' : 'var(--bg-card-subtle)',
                         textAlign: 'left',
                         transition: 'all 0.15s ease',
                         cursor: 'pointer'
                       }}
                     >
-                      <div style={{ fontSize: '0.84rem', fontWeight: '800', color: isSelected ? '#1d4ed8' : '#0f172a' }}>
+                      <div style={{ fontSize: '0.84rem', fontWeight: '800', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)' }}>
                         {style.label}
                       </div>
-                      <div style={{ fontSize: '0.7rem', color: isSelected ? '#2563eb' : '#64748b', display: 'flex', justifyContent: 'space-between', marginTop: '0.15rem' }}>
+                      <div style={{ fontSize: '0.7rem', color: isSelected ? 'var(--accent-gold)' : 'var(--text-muted)', display: 'flex', justifyContent: 'space-between', marginTop: '0.15rem' }}>
                         <span>{style.badge}</span>
                         <span>⚡ {style.time}</span>
                       </div>
@@ -295,11 +290,11 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                 })}
               </div>
 
-              {/* 3D Isometric Badges Showcase */}
+              {/* 3D Badges Showcase */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.65rem', marginBottom: '1.25rem' }}>
                 <div style={{
-                  background: '#f8fafc',
-                  border: '1px solid #e2e8f0',
+                  background: 'var(--bg-card-subtle)',
+                  border: '1px solid var(--border-light)',
                   borderRadius: '10px',
                   padding: '0.75rem',
                   display: 'flex',
@@ -310,8 +305,9 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                     width: '34px',
                     height: '34px',
                     borderRadius: '8px',
-                    background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
-                    color: '#b45309',
+                    background: 'var(--badge-gold-bg)',
+                    color: 'var(--badge-gold-text)',
+                    border: '1px solid var(--badge-gold-border)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -320,14 +316,14 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                     <Factory size={17} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.68rem', color: '#64748b', fontWeight: '600' }}>Fabrication</div>
-                    <div style={{ fontSize: '0.8rem', fontWeight: '800', color: '#0f172a' }}>100% In-House</div>
+                    <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', fontWeight: '600' }}>Fabrication</div>
+                    <div style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--text-heading)' }}>100% In-House</div>
                   </div>
                 </div>
 
                 <div style={{
-                  background: '#f8fafc',
-                  border: '1px solid #e2e8f0',
+                  background: 'var(--bg-card-subtle)',
+                  border: '1px solid var(--border-light)',
                   borderRadius: '10px',
                   padding: '0.75rem',
                   display: 'flex',
@@ -338,8 +334,9 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                     width: '34px',
                     height: '34px',
                     borderRadius: '8px',
-                    background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
-                    color: '#1d4ed8',
+                    background: 'var(--badge-blue-bg)',
+                    color: 'var(--badge-blue-text)',
+                    border: '1px solid var(--badge-blue-border)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -348,8 +345,8 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                     <Zap size={17} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.68rem', color: '#64748b', fontWeight: '600' }}>Automation</div>
-                    <div style={{ fontSize: '0.8rem', fontWeight: '800', color: '#0f172a' }}>Nice / Centurion</div>
+                    <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', fontWeight: '600' }}>Automation</div>
+                    <div style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--text-heading)' }}>Nice / Centurion</div>
                   </div>
                 </div>
               </div>
@@ -366,8 +363,8 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
 
               {/* Suburbs Micro-Banner */}
               <div style={{
-                background: '#eff6ff',
-                border: '1px solid #bfdbfe',
+                background: 'var(--badge-blue-bg)',
+                border: '1px solid var(--badge-blue-border)',
                 borderRadius: '8px',
                 padding: '0.6rem 0.8rem',
                 display: 'flex',
@@ -375,14 +372,14 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                 justifyContent: 'space-between',
                 gap: '0.4rem'
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#1e40af' }}>
-                  <MapPin size={13} style={{ color: '#2563eb', flexShrink: 0 }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: 'var(--badge-blue-text)' }}>
+                  <MapPin size={13} style={{ flexShrink: 0 }} />
                   <span><strong>Brisbane Inner Suburbs</strong> & QLD</span>
                 </div>
                 <button
                   onClick={onOpenContact}
                   style={{
-                    color: '#2563eb',
+                    color: 'var(--badge-blue-text)',
                     fontWeight: '800',
                     fontSize: '0.76rem',
                     display: 'flex',

@@ -22,8 +22,8 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   return (
-    <div style={{ backgroundColor: '#f8fafc' }}>
-      {/* 1. HERO SECTION WITH VIMEO BACKGROUND VIDEO (gate-automated-brisbane-QLD) */}
+    <div style={{ backgroundColor: 'var(--bg-body)' }}>
+      {/* 1. HERO SECTION WITH VIMEO BACKGROUND VIDEO */}
       <section style={{
         position: 'relative',
         overflow: 'hidden',
@@ -32,7 +32,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
         alignItems: 'center',
         paddingTop: 'clamp(3rem, 6vw, 5rem)',
         paddingBottom: 'clamp(3.5rem, 7vw, 5.5rem)',
-        backgroundColor: '#0f172a'
+        backgroundColor: 'var(--bg-body)'
       }}>
         {/* Background Video Layer */}
         <div style={{
@@ -63,8 +63,8 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
             minWidth: '177.78vh',
             minHeight: '56.25vw',
             transform: 'translate(-50%, -50%)',
-            opacity: 0.82,
-            filter: 'brightness(1.05) contrast(1.05)'
+            opacity: 0.76,
+            filter: 'brightness(1.02) contrast(1.05)'
           }}>
             <iframe
               src="https://player.vimeo.com/video/1218815565?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&playsinline=1&badge=0&autopause=0&app_id=58479"
@@ -84,16 +84,16 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
             />
           </div>
 
-          {/* Translucent Dark Navy Light Gradient Overlays */}
+          {/* Dynamic Gradient Overlays */}
           <div style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.86) 50%, rgba(15, 23, 42, 0.48) 100%)'
+            background: 'linear-gradient(to right, var(--hero-overlay-1) 0%, var(--hero-overlay-2) 50%, var(--hero-overlay-3) 100%)'
           }} />
           <div style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to top, rgba(15, 23, 42, 0.98) 0%, transparent 60%)'
+            background: 'linear-gradient(to top, var(--hero-overlay-1) 0%, transparent 60%)'
           }} />
         </div>
 
@@ -101,15 +101,15 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
         <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <div style={{ maxWidth: '840px' }}>
             {/* Breadcrumb Navigation */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.84rem', color: '#94a3b8', marginBottom: '1rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.84rem', color: 'var(--text-muted)', marginBottom: '1rem', flexWrap: 'wrap' }}>
               <button 
                 onClick={onNavigateHome}
-                style={{ color: '#fbbf24', fontWeight: '700', cursor: 'pointer' }}
+                style={{ color: 'var(--accent-gold)', fontWeight: '700', cursor: 'pointer' }}
               >
                 Home
               </button>
               <ChevronRight size={13} />
-              <span style={{ color: '#ffffff' }}>About Our Workshop & Team</span>
+              <span style={{ color: 'var(--text-heading)' }}>About Our Workshop & Team</span>
             </div>
 
             {/* Badge Tags */}
@@ -130,7 +130,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
               fontSize: 'clamp(2rem, 4vw, 3.3rem)',
               fontWeight: '900',
               lineHeight: 1.15,
-              color: '#ffffff',
+              color: 'var(--text-heading)',
               letterSpacing: '-0.025em',
               marginBottom: '1rem'
             }}>
@@ -140,7 +140,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
 
             <p style={{
               fontSize: 'clamp(0.96rem, 2vw, 1.125rem)',
-              color: '#cbd5e1',
+              color: 'var(--text-main)',
               lineHeight: 1.6,
               marginBottom: '1.75rem',
               maxWidth: '680px'
@@ -156,16 +156,28 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
               <button 
                 onClick={onOpenContact} 
                 className="btn btn-outline-dark btn-lg" 
-                style={{ background: '#ffffff', color: '#0f172a', border: '1px solid #ffffff', flex: '1 1 auto' }}
+                style={{ flex: '1 1 auto' }}
               >
                 <Calendar size={17} />
                 Book Free Measure
               </button>
               <a 
                 href={COMPANY_INFO.tel} 
-                style={{ color: '#fbbf24', fontWeight: '800', fontSize: '0.98rem', display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.5rem', flex: '1 1 auto', justifyContent: 'center' }}
+                className="btn-outline-dark"
+                style={{
+                  color: 'var(--text-heading)',
+                  fontWeight: '800',
+                  fontSize: '0.98rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  padding: '0.75rem 1.1rem',
+                  borderRadius: 'var(--radius-md)',
+                  flex: '1 1 auto',
+                  justifyContent: 'center'
+                }}
               >
-                <Phone size={17} /> {COMPANY_INFO.phone}
+                <Phone size={17} style={{ color: 'var(--accent-gold)' }} /> {COMPANY_INFO.phone}
               </a>
             </div>
           </div>
@@ -173,7 +185,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
       </section>
 
       {/* 2. OUR PURPOSE, VISION & MISSION */}
-      <section className="section" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0' }}>
+      <section className="section" style={{ backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--border-light)' }}>
         <div className="container">
           <div className="section-header">
             <span className="badge-tag badge-blue">
@@ -195,61 +207,63 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
             marginBottom: '2.5rem'
           }}>
             {/* Vision Card */}
-            <div style={{
-              background: '#f8fafc',
-              border: '1.5px solid #e2e8f0',
+            <div className="card-themed" style={{
+              background: 'var(--bg-card)',
+              border: '1.5px solid var(--border-light)',
               borderRadius: '18px',
               padding: 'clamp(1.25rem, 3.5vw, 2rem)',
-              boxShadow: '0 4px 14px rgba(15,23,42,0.04)'
+              boxShadow: 'var(--shadow-sm)'
             }}>
               <div style={{
                 width: '48px',
                 height: '48px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
-                color: '#b45309',
+                background: 'var(--badge-gold-bg)',
+                color: 'var(--badge-gold-text)',
+                border: '1px solid var(--badge-gold-border)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginBottom: '1.25rem',
-                boxShadow: '0 4px 12px rgba(217, 119, 6, 0.2)'
+                boxShadow: '0 4px 12px var(--accent-gold-glow)'
               }}>
                 <Target size={24} />
               </div>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.5rem' }}>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>
                 Our Vision
               </h3>
-              <p style={{ color: '#475569', fontSize: '0.92rem', lineHeight: 1.6 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6 }}>
                 To be the most trusted and respected name in automated gate solutions across Queensland — an iconic local manufacturer recognized for engineering excellence, fairness, and meaningful contributions to our community.
               </p>
             </div>
 
             {/* Mission Card */}
-            <div style={{
-              background: '#f8fafc',
-              border: '1.5px solid #e2e8f0',
+            <div className="card-themed" style={{
+              background: 'var(--bg-card)',
+              border: '1.5px solid var(--border-light)',
               borderRadius: '18px',
               padding: 'clamp(1.25rem, 3.5vw, 2rem)',
-              boxShadow: '0 4px 14px rgba(15,23,42,0.04)'
+              boxShadow: 'var(--shadow-sm)'
             }}>
               <div style={{
                 width: '48px',
                 height: '48px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
-                color: '#1d4ed8',
+                background: 'var(--badge-blue-bg)',
+                color: 'var(--badge-blue-text)',
+                border: '1px solid var(--badge-blue-border)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginBottom: '1.25rem',
-                boxShadow: '0 4px 12px rgba(37, 99, 235, 0.2)'
+                boxShadow: '0 4px 12px var(--accent-blue-glow)'
               }}>
                 <Compass size={24} />
               </div>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.5rem' }}>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>
                 Our Mission
               </h3>
-              <p style={{ color: '#475569', fontSize: '0.92rem', lineHeight: 1.6 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6 }}>
                 We deliver industry-leading quality and reliability in automated gate solutions while supporting our local community, empowering our team of skilled craftsmen, and operating with complete honesty and integrity in every interaction.
               </p>
             </div>
@@ -258,7 +272,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
       </section>
 
       {/* 3. OUR FOUR CORE PILLARS OF TRUST */}
-      <section className="section" style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
+      <section className="section" style={{ backgroundColor: 'var(--bg-body)', borderBottom: '1px solid var(--border-light)' }}>
         <div className="container">
           <div className="section-header">
             <span className="badge-tag badge-gold">
@@ -280,13 +294,14 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
             gap: '1.25rem'
           }}>
             {/* Value 1: Reliability */}
-            <div className="card-light" style={{ padding: 'clamp(1.25rem, 3vw, 1.75rem)', background: '#ffffff' }}>
+            <div className="card-themed" style={{ padding: 'clamp(1.25rem, 3vw, 1.75rem)', background: 'var(--bg-card)' }}>
               <div style={{
                 width: '44px',
                 height: '44px',
                 borderRadius: '12px',
-                background: '#ecfdf5',
-                color: '#059669',
+                background: 'var(--badge-green-bg)',
+                color: 'var(--badge-green-text)',
+                border: '1px solid var(--badge-green-border)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -294,25 +309,26 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
               }}>
                 <Clock size={22} />
               </div>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.35rem' }}>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
                 1. Reliability
               </h3>
-              <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: '#059669', marginBottom: '0.55rem' }}>
+              <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--accent-emerald)', marginBottom: '0.55rem' }}>
                 Delivered on time, every time
               </div>
-              <p style={{ color: '#475569', fontSize: '0.86rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', lineHeight: 1.55 }}>
                 We respect your time. When we schedule a laser measurement or an installation date, we show up on time and deliver your completed project within our promised 2–4 week turnaround.
               </p>
             </div>
 
             {/* Value 2: Quality */}
-            <div className="card-light" style={{ padding: 'clamp(1.25rem, 3vw, 1.75rem)', background: '#ffffff' }}>
+            <div className="card-themed" style={{ padding: 'clamp(1.25rem, 3vw, 1.75rem)', background: 'var(--bg-card)' }}>
               <div style={{
                 width: '44px',
                 height: '44px',
                 borderRadius: '12px',
-                background: '#fef3c7',
-                color: '#b45309',
+                background: 'var(--badge-gold-bg)',
+                color: 'var(--badge-gold-text)',
+                border: '1px solid var(--badge-gold-border)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -320,25 +336,26 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
               }}>
                 <Sparkles size={22} />
               </div>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.35rem' }}>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
                 2. Quality
               </h3>
-              <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: '#b45309', marginBottom: '0.55rem' }}>
+              <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--accent-gold)', marginBottom: '0.55rem' }}>
                 Craftsmanship you can see & feel
               </div>
-              <p style={{ color: '#475569', fontSize: '0.86rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', lineHeight: 1.55 }}>
                 Built using structural marine-grade Australian aluminium, reinforced box frames, commercial architectural powdercoating, and premium Italian Nice & Centurion automation motors.
               </p>
             </div>
 
             {/* Value 3: Honesty */}
-            <div className="card-light" style={{ padding: 'clamp(1.25rem, 3vw, 1.75rem)', background: '#ffffff' }}>
+            <div className="card-themed" style={{ padding: 'clamp(1.25rem, 3vw, 1.75rem)', background: 'var(--bg-card)' }}>
               <div style={{
                 width: '44px',
                 height: '44px',
                 borderRadius: '12px',
-                background: '#eff6ff',
-                color: '#1d4ed8',
+                background: 'var(--badge-blue-bg)',
+                color: 'var(--badge-blue-text)',
+                border: '1px solid var(--badge-blue-border)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -346,25 +363,26 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
               }}>
                 <HeartHandshake size={22} />
               </div>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.35rem' }}>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
                 3. Honesty
               </h3>
-              <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: '#1d4ed8', marginBottom: '0.55rem' }}>
+              <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--accent-blue)', marginBottom: '0.55rem' }}>
                 Transparent communication & fair pricing
               </div>
-              <p style={{ color: '#475569', fontSize: '0.86rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', lineHeight: 1.55 }}>
                 Zero middleman markups, zero hidden fees, and straightforward advice. If your driveway has a challenging slope or wind load, we engineer the correct solution from day one.
               </p>
             </div>
 
             {/* Value 4: Cleanliness */}
-            <div className="card-light" style={{ padding: 'clamp(1.25rem, 3vw, 1.75rem)', background: '#ffffff' }}>
+            <div className="card-themed" style={{ padding: 'clamp(1.25rem, 3vw, 1.75rem)', background: 'var(--bg-card)' }}>
               <div style={{
                 width: '44px',
                 height: '44px',
                 borderRadius: '12px',
-                background: '#faf5ff',
-                color: '#7e22ce',
+                background: 'var(--badge-gold-bg)',
+                color: 'var(--badge-gold-text)',
+                border: '1px solid var(--badge-gold-border)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -372,13 +390,13 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
               }}>
                 <Sparkles size={22} />
               </div>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.35rem' }}>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
                 4. Cleanliness
               </h3>
-              <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: '#7e22ce', marginBottom: '0.55rem' }}>
+              <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--accent-gold)', marginBottom: '0.55rem' }}>
                 Professional standards from start to finish
               </div>
-              <p style={{ color: '#475569', fontSize: '0.86rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', lineHeight: 1.55 }}>
                 We treat your property with utmost respect. Our installation teams leave your driveway, landscaping, and boundary spotless after testing every remote and safety sensor.
               </p>
             </div>
@@ -387,7 +405,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
       </section>
 
       {/* 4. THE YAMANTO WORKSHOP & IN-HOUSE FACILITY */}
-      <section className="section" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0' }}>
+      <section className="section" style={{ backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--border-light)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '2.5rem', alignItems: 'center' }} className="hero-grid">
             <div>
@@ -398,35 +416,36 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
                 Our Yamanto Workshop: <br />
                 <span className="gradient-text-gold">Where Quality Takes Shape</span>
               </h2>
-              <p style={{ color: '#475569', fontSize: '0.98rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
                 Unlike resellers who drop-ship mass-manufactured gates or subcontract their welding to third parties, <strong>Custom Auto Gates & Fencing</strong> operates a fully equipped fabrication and powdercoating workshop right here in Yamanto, Queensland.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
-                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'var(--badge-green-bg)', color: 'var(--badge-green-text)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
                     <Check size={14} />
                   </div>
-                  <div style={{ fontSize: '0.88rem' }}>
-                    <strong style={{ color: '#0f172a' }}>Precision Laser CAD Cutting & Raking:</strong> Custom raking for sloping driveways engineered to the exact millimeter so there are no unsightly bottom gaps.
+                  <div style={{ fontSize: '0.88rem', color: 'var(--text-main)' }}>
+                    <strong style={{ color: 'var(--text-heading)' }}>Precision Laser CAD Cutting & Raking:</strong> Custom raking for sloping driveways engineered to the exact millimeter so there are no unsightly bottom gaps.
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
-                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'var(--badge-green-bg)', color: 'var(--badge-green-text)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
                     <Check size={14} />
                   </div>
-                  <div style={{ fontSize: '0.88rem' }}>
-                    <strong style={{ color: '#0f172a' }}>Blondies Commercial Powdercoating:</strong> In-house pretreatment and architectural powdercoat curing tested for extreme Queensland UV resistance and coastal salt air.
+                  <div style={{ fontSize: '0.88rem', color: 'var(--text-main)' }}>
+                    <strong style={{ color: 'var(--text-heading)' }}>Blondies Commercial Powdercoating:</strong> In-house pretreatment and architectural powdercoat curing tested for extreme Queensland UV resistance and coastal salt air.
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
-                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'var(--badge-green-bg)', color: 'var(--badge-green-text)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
                     <Check size={14} />
                   </div>
-                  <div style={{ fontSize: '0.88rem' }}>
-                    <strong style={{ color: '#0f172a' }}>Motor Bench Testing:</strong> Every Nice and Centurion motor and control board is pre-wired, tested, and paired with remotes prior to on-site installation.
+                  <div style={{ fontSize: '0.88rem', color: 'var(--text-main)' }}>
+                    <strong style={{ color: 'var(--text-heading)' }}>Motor Bench Testing:</strong> Every Nice and Centurion motor and control board is pre-wired, tested, and paired with remotes prior to on-site installation.
                   </div>
                 </div>
               </div>
@@ -442,12 +461,12 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
             </div>
 
             {/* Workshop Visual Showcase Card */}
-            <div style={{
-              background: '#f8fafc',
-              border: '1.5px solid #e2e8f0',
+            <div className="card-themed" style={{
+              background: 'var(--bg-card)',
+              border: '1.5px solid var(--border-light)',
               borderRadius: '20px',
               padding: 'clamp(1.25rem, 3.5vw, 1.75rem)',
-              boxShadow: '0 20px 45px -10px rgba(15,23,42,0.08)'
+              boxShadow: 'var(--shadow-lg)'
             }}>
               <div style={{
                 position: 'relative',
@@ -455,7 +474,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
                 overflow: 'hidden',
                 aspectRatio: '16/10',
                 marginBottom: '1.25rem',
-                border: '1px solid #e2e8f0'
+                border: '1px solid var(--border-light)'
               }}>
                 <img
                   src="/images/Swinging-Gates.jpg"
@@ -467,11 +486,11 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  background: 'linear-gradient(to top, rgba(15,23,42,0.85) 0%, transparent 100%)',
+                  background: 'linear-gradient(to top, rgba(9,14,26,0.92) 0%, transparent 100%)',
                   padding: '0.85rem',
                   color: '#ffffff'
                 }}>
-                  <div style={{ fontSize: '0.72rem', color: '#fbbf24', fontWeight: '800' }}>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--accent-gold)', fontWeight: '800' }}>
                     📍 Yamanto Workshop & Showroom
                   </div>
                   <div style={{ fontSize: '0.88rem', fontWeight: '700' }}>
@@ -481,14 +500,14 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-                <div style={{ background: '#ffffff', padding: '0.75rem', borderRadius: '10px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-                  <div style={{ fontSize: '1.35rem', fontWeight: '900', color: '#d97706' }}>10-Yr</div>
-                  <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: '600' }}>Structural Warranty</div>
+                <div style={{ background: 'var(--bg-card-subtle)', padding: '0.75rem', borderRadius: '10px', border: '1px solid var(--border-light)', textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.35rem', fontWeight: '900', color: 'var(--accent-gold)' }}>10-Yr</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: '600' }}>Structural Warranty</div>
                 </div>
 
-                <div style={{ background: '#ffffff', padding: '0.75rem', borderRadius: '10px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-                  <div style={{ fontSize: '1.35rem', fontWeight: '900', color: '#2563eb' }}>2–4 Wks</div>
-                  <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: '600' }}>Fast Turnaround</div>
+                <div style={{ background: 'var(--bg-card-subtle)', padding: '0.75rem', borderRadius: '10px', border: '1px solid var(--border-light)', textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.35rem', fontWeight: '900', color: 'var(--accent-blue)' }}>2–4 Wks</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: '600' }}>Fast Turnaround</div>
                 </div>
               </div>
             </div>
@@ -497,7 +516,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
       </section>
 
       {/* 5. EARNING TRUST & CONFIDENCE */}
-      <section className="section" style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
+      <section className="section" style={{ backgroundColor: 'var(--bg-body)', borderBottom: '1px solid var(--border-light)' }}>
         <div className="container">
           <div className="section-header">
             <span className="badge-tag badge-blue">
@@ -518,29 +537,29 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
             gap: '1.25rem',
             marginBottom: '2.5rem'
           }}>
-            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '1.5rem' }}>
-              <h4 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.35rem' }}>
+            <div className="card-themed" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: '16px', padding: '1.5rem' }}>
+              <h4 style={{ fontSize: '1.05rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
                 Brisbane Inner & Greater Metro
               </h4>
-              <p style={{ color: '#64748b', fontSize: '0.84rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', lineHeight: 1.55 }}>
                 New Farm, Paddington, Ascot, Bulimba, Hawthorne, Indooroopilly, Toowong, Camp Hill, Carindale, and Chermside.
               </p>
             </div>
 
-            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '1.5rem' }}>
-              <h4 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.35rem' }}>
+            <div className="card-themed" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: '16px', padding: '1.5rem' }}>
+              <h4 style={{ fontSize: '1.05rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
                 Ipswich & Greater Springfield
               </h4>
-              <p style={{ color: '#64748b', fontSize: '0.84rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', lineHeight: 1.55 }}>
                 Yamanto, Brookwater, Springfield Lakes, Augustine Heights, Ripley, Brassall, Karalee, and Kenmore.
               </p>
             </div>
 
-            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '1.5rem' }}>
-              <h4 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.35rem' }}>
+            <div className="card-themed" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: '16px', padding: '1.5rem' }}>
+              <h4 style={{ fontSize: '1.05rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
                 Logan, Redlands & Gold Coast
               </h4>
-              <p style={{ color: '#64748b', fontSize: '0.84rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', lineHeight: 1.55 }}>
                 Underwood, Rochedale, Springwood, Cleveland, Redland Bay, Hope Island, Sanctuary Cove, and Robina.
               </p>
             </div>
@@ -548,12 +567,13 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
 
           {/* Direct CTA Banner */}
           <div style={{
-            background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+            background: 'linear-gradient(135deg, #090e1a 0%, #162238 100%)',
+            border: '1.5px solid var(--border-light)',
             borderRadius: '18px',
             padding: 'clamp(1.75rem, 4vw, 2.75rem) clamp(1rem, 3vw, 2rem)',
             textAlign: 'center',
             color: '#ffffff',
-            boxShadow: '0 20px 45px -10px rgba(15, 23, 42, 0.3)'
+            boxShadow: 'var(--shadow-xl)'
           }}>
             <h3 style={{ fontSize: 'clamp(1.45rem, 3vw, 2.15rem)', fontWeight: '900', color: '#ffffff', marginBottom: '0.5rem' }}>
               Ready to Work with Queensland's Trusted Gate Builders?

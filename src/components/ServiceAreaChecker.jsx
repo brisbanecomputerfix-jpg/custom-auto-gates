@@ -90,7 +90,7 @@ export default function ServiceAreaChecker({ onOpenContact }) {
   const currentRegionData = SERVICE_REGIONS.find(r => r.id === selectedRegion) || SERVICE_REGIONS[0];
 
   return (
-    <section id="suburbs" className="section" style={{ backgroundColor: '#ffffff', borderTop: '1px solid #e2e8f0' }}>
+    <section id="suburbs" className="section" style={{ backgroundColor: 'var(--bg-surface)', borderTop: '1px solid var(--border-light)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -114,7 +114,7 @@ export default function ServiceAreaChecker({ onOpenContact }) {
             display: 'flex',
             alignItems: 'center'
           }}>
-            <Search size={18} style={{ position: 'absolute', left: '1.1rem', color: '#64748b' }} />
+            <Search size={18} style={{ position: 'absolute', left: '1.1rem', color: 'var(--text-muted)' }} />
             <input
               type="text"
               placeholder="Search your suburb (e.g. New Farm, Paddington, Yamanto...)"
@@ -124,11 +124,11 @@ export default function ServiceAreaChecker({ onOpenContact }) {
                 width: '100%',
                 padding: '0.85rem 1.1rem 0.85rem 2.85rem',
                 borderRadius: 'var(--radius-full)',
-                background: '#f8fafc',
-                border: '2px solid #cbd5e1',
+                background: 'var(--input-bg)',
+                border: '2px solid var(--input-border)',
                 fontSize: '0.92rem',
-                color: '#0f172a',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.04)',
+                color: 'var(--input-text)',
+                boxShadow: 'var(--shadow-sm)',
                 outline: 'none',
                 fontFamily: 'inherit'
               }}
@@ -136,7 +136,7 @@ export default function ServiceAreaChecker({ onOpenContact }) {
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm('')}
-                style={{ position: 'absolute', right: '1.1rem', color: '#64748b', fontSize: '0.8125rem', fontWeight: '700', cursor: 'pointer' }}
+                style={{ position: 'absolute', right: '1.1rem', color: 'var(--text-muted)', fontSize: '0.8125rem', fontWeight: '700', cursor: 'pointer' }}
               >
                 Clear
               </button>
@@ -147,16 +147,16 @@ export default function ServiceAreaChecker({ onOpenContact }) {
           {searchTerm.trim() && (
             <div style={{
               marginTop: '0.85rem',
-              background: searchResults.length > 0 ? '#ecfdf5' : '#fef3c7',
-              border: searchResults.length > 0 ? '1.5px solid #a7f3d0' : '1.5px solid #fde68a',
+              background: searchResults.length > 0 ? 'var(--badge-green-bg)' : 'var(--badge-gold-bg)',
+              border: searchResults.length > 0 ? '1.5px solid var(--badge-green-border)' : '1.5px solid var(--badge-gold-border)',
               borderRadius: '12px',
               padding: '1rem',
               animation: 'fadeIn 0.2s ease-out'
             }}>
               {searchResults.length > 0 ? (
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.65rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#065f46' }}>
-                    <CheckCircle2 size={18} style={{ color: '#059669', flexShrink: 0 }} />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--badge-green-text)' }}>
+                    <CheckCircle2 size={18} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} />
                     <span style={{ fontWeight: '700', fontSize: '0.88rem' }}>
                       Yes! We Service {searchResults.slice(0, 4).join(', ')} (Free Measure Available)
                     </span>
@@ -167,7 +167,7 @@ export default function ServiceAreaChecker({ onOpenContact }) {
                 </div>
               ) : (
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.65rem' }}>
-                  <div style={{ color: '#92400e', fontSize: '0.84rem' }}>
+                  <div style={{ color: 'var(--badge-gold-text)', fontSize: '0.84rem' }}>
                     Didn’t find "{searchTerm}"? We cover almost all SE Queensland properties within 100km of Yamanto.
                   </div>
                   <a href={COMPANY_INFO.tel} className="btn btn-blue btn-sm" style={{ flex: '1 1 auto', justifyContent: 'center' }}>
@@ -191,44 +191,49 @@ export default function ServiceAreaChecker({ onOpenContact }) {
         }}
         className="step-scroll-container"
         >
-          {SERVICE_REGIONS.map((region) => (
-            <button
-              key={region.id}
-              onClick={() => setSelectedRegion(region.id)}
-              style={{
-                padding: '0.55rem 1rem',
-                borderRadius: 'var(--radius-full)',
-                fontFamily: 'Outfit, sans-serif',
-                fontWeight: '700',
-                fontSize: '0.84rem',
-                whiteSpace: 'nowrap',
-                background: selectedRegion === region.id ? '#0f172a' : '#f8fafc',
-                color: selectedRegion === region.id ? '#ffffff' : '#475569',
-                border: selectedRegion === region.id ? '1px solid #0f172a' : '1px solid #e2e8f0',
-                transition: 'all 0.2s ease',
-                flexShrink: 0,
-                cursor: 'pointer'
-              }}
-            >
-              {region.name.split('&')[0]}
-            </button>
-          ))}
+          {SERVICE_REGIONS.map((region) => {
+            const isActive = selectedRegion === region.id;
+            return (
+              <button
+                key={region.id}
+                onClick={() => setSelectedRegion(region.id)}
+                style={{
+                  padding: '0.55rem 1rem',
+                  borderRadius: 'var(--radius-full)',
+                  fontFamily: 'Outfit, sans-serif',
+                  fontWeight: '700',
+                  fontSize: '0.84rem',
+                  whiteSpace: 'nowrap',
+                  background: isActive ? 'var(--accent-gold)' : 'var(--bg-card)',
+                  color: isActive ? '#090e1a' : 'var(--text-muted)',
+                  border: isActive ? '1px solid var(--accent-gold)' : '1px solid var(--border-light)',
+                  boxShadow: isActive ? 'var(--shadow-md)' : 'var(--shadow-xs)',
+                  transition: 'all 0.2s ease',
+                  flexShrink: 0,
+                  cursor: 'pointer'
+                }}
+              >
+                {region.name.split('&')[0]}
+              </button>
+            );
+          })}
         </div>
 
         {/* Active Region Suburbs Grid Showcase */}
         <div style={{
-          background: '#f8fafc',
-          border: '1.5px solid #e2e8f0',
+          background: 'var(--bg-card)',
+          border: '1.5px solid var(--border-light)',
           borderRadius: '16px',
           padding: 'clamp(1.25rem, 3.5vw, 2rem)',
-          marginBottom: '2.5rem'
+          marginBottom: '2.5rem',
+          boxShadow: 'var(--shadow-sm)'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.5rem' }}>
             <div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.2rem' }}>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.2rem' }}>
                 {currentRegionData.name}
               </h3>
-              <p style={{ color: '#64748b', fontSize: '0.84rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem' }}>
                 Residential character homes, modern architectural builds, acreage properties & commercial sites.
               </p>
             </div>
@@ -246,20 +251,20 @@ export default function ServiceAreaChecker({ onOpenContact }) {
               <div
                 key={idx}
                 style={{
-                  background: '#ffffff',
-                  border: '1px solid #e2e8f0',
+                  background: 'var(--bg-card-subtle)',
+                  border: '1px solid var(--border-light)',
                   borderRadius: '8px',
                   padding: '0.55rem 0.75rem',
                   fontSize: '0.8125rem',
                   fontWeight: '600',
-                  color: '#1e293b',
+                  color: 'var(--text-main)',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.4rem',
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.02)'
+                  boxShadow: 'var(--shadow-xs)'
                 }}
               >
-                <MapPin size={12} style={{ color: '#2563eb', flexShrink: 0 }} />
+                <MapPin size={12} style={{ color: 'var(--accent-gold)', flexShrink: 0 }} />
                 <span>{suburb}</span>
               </div>
             ))}
@@ -272,33 +277,33 @@ export default function ServiceAreaChecker({ onOpenContact }) {
           gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
           gap: '1.25rem'
         }}>
-          <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '1.25rem', display: 'flex', gap: '0.85rem', alignItems: 'flex-start' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#eff6ff', color: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <div className="card-themed" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: '14px', padding: '1.25rem', display: 'flex', gap: '0.85rem', alignItems: 'flex-start' }}>
+            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'var(--badge-blue-bg)', color: 'var(--badge-blue-text)', border: '1px solid var(--badge-blue-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <Truck size={20} />
             </div>
             <div>
-              <h4 style={{ fontSize: '0.98rem', color: '#0f172a', fontWeight: '800', marginBottom: '0.25rem' }}>Free On-Site Laser Measure</h4>
-              <p style={{ color: '#64748b', fontSize: '0.78rem', lineHeight: 1.5 }}>We visit your property with precision laser gear to check ground levels, driveway slope, and boundary clearance.</p>
+              <h4 style={{ fontSize: '0.98rem', color: 'var(--text-heading)', fontWeight: '800', marginBottom: '0.25rem' }}>Free On-Site Laser Measure</h4>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', lineHeight: 1.5 }}>We visit your property with precision laser gear to check ground levels, driveway slope, and boundary clearance.</p>
             </div>
           </div>
 
-          <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '1.25rem', display: 'flex', gap: '0.85rem', alignItems: 'flex-start' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#fef3c7', color: '#d97706', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <div className="card-themed" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: '14px', padding: '1.25rem', display: 'flex', gap: '0.85rem', alignItems: 'flex-start' }}>
+            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'var(--badge-gold-bg)', color: 'var(--badge-gold-text)', border: '1px solid var(--badge-gold-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <Building2 size={20} />
             </div>
             <div>
-              <h4 style={{ fontSize: '0.98rem', color: '#0f172a', fontWeight: '800', marginBottom: '0.25rem' }}>Architectural & Heritage Focus</h4>
-              <p style={{ color: '#64748b', fontSize: '0.78rem', lineHeight: 1.5 }}>Custom slat spacing and DecoWood timber finishes tailored to character homes across Ascot, Paddington, and New Farm.</p>
+              <h4 style={{ fontSize: '0.98rem', color: 'var(--text-heading)', fontWeight: '800', marginBottom: '0.25rem' }}>Architectural & Heritage Focus</h4>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', lineHeight: 1.5 }}>Custom slat spacing and DecoWood timber finishes tailored to character homes across Ascot, Paddington, and New Farm.</p>
             </div>
           </div>
 
-          <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '1.25rem', display: 'flex', gap: '0.85rem', alignItems: 'flex-start' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <div className="card-themed" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: '14px', padding: '1.25rem', display: 'flex', gap: '0.85rem', alignItems: 'flex-start' }}>
+            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'var(--badge-green-bg)', color: 'var(--badge-green-text)', border: '1px solid var(--badge-green-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <TreePine size={20} />
             </div>
             <div>
-              <h4 style={{ fontSize: '0.98rem', color: '#0f172a', fontWeight: '800', marginBottom: '0.25rem' }}>Acreage Solar Specialists</h4>
-              <p style={{ color: '#64748b', fontSize: '0.78rem', lineHeight: 1.5 }}>Deep experience with long rural driveways, solar off-grid automation, and cantilever systems across Ipswich and Redlands.</p>
+              <h4 style={{ fontSize: '0.98rem', color: 'var(--text-heading)', fontWeight: '800', marginBottom: '0.25rem' }}>Acreage Solar Specialists</h4>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', lineHeight: 1.5 }}>Deep experience with long rural driveways, solar off-grid automation, and cantilever systems across Ipswich and Redlands.</p>
             </div>
           </div>
         </div>

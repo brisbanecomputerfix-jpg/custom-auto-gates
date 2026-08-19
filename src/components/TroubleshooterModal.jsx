@@ -94,7 +94,7 @@ export default function TroubleshooterModal({ isOpen, onClose }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div 
-        className="modal-content-light"
+        className="modal-content-themed"
         style={{ maxWidth: '800px', padding: 'clamp(1.25rem, 3.5vw, 2rem)' }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -105,20 +105,20 @@ export default function TroubleshooterModal({ isOpen, onClose }) {
 
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.25rem' }}>
-          <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#fef3c7', color: '#b45309', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--badge-gold-bg)', color: 'var(--badge-gold-text)', border: '1px solid var(--badge-gold-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <Wrench size={22} />
           </div>
           <div>
-            <h3 style={{ fontSize: 'clamp(1.2rem, 3vw, 1.5rem)', fontWeight: '800', color: '#0f172a' }}>
+            <h3 style={{ fontSize: 'clamp(1.2rem, 3vw, 1.5rem)', fontWeight: '800', color: 'var(--text-heading)' }}>
               Gate Troubleshooting & Emergency Guide
             </h3>
-            <p style={{ color: '#64748b', fontSize: '0.84rem' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem' }}>
               Official DIY diagnostics & emergency service support for Queensland gate owners.
             </p>
           </div>
         </div>
 
-        {/* Diagnostic Tabs - Fluid Minmax */}
+        {/* Diagnostic Tabs */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', gap: '0.5rem', marginBottom: '1.5rem' }}>
           {ISSUES.map((issue) => {
             const Icon = issue.icon;
@@ -130,9 +130,9 @@ export default function TroubleshooterModal({ isOpen, onClose }) {
                 style={{
                   padding: '0.65rem 0.8rem',
                   borderRadius: '10px',
-                  background: isSelected ? '#eff6ff' : '#f8fafc',
-                  border: isSelected ? '1.5px solid #2563eb' : '1px solid #e2e8f0',
-                  color: isSelected ? '#1d4ed8' : '#334155',
+                  background: isSelected ? 'var(--badge-gold-bg)' : 'var(--bg-card-subtle)',
+                  border: isSelected ? '1.5px solid var(--accent-gold)' : '1px solid var(--border-light)',
+                  color: isSelected ? 'var(--accent-gold)' : 'var(--text-muted)',
                   textAlign: 'left',
                   fontSize: '0.78rem',
                   fontWeight: '700',
@@ -151,21 +151,21 @@ export default function TroubleshooterModal({ isOpen, onClose }) {
         </div>
 
         {/* Selected Issue Guide */}
-        <div style={{ background: '#f8fafc', borderRadius: '14px', padding: 'clamp(1rem, 3vw, 1.5rem)', border: '1px solid #e2e8f0', marginBottom: '1.5rem' }}>
-          <h4 style={{ fontSize: '1.15rem', color: '#0f172a', marginBottom: '0.25rem', fontWeight: '800' }}>
+        <div style={{ background: 'var(--bg-card-subtle)', borderRadius: '14px', padding: 'clamp(1rem, 3vw, 1.5rem)', border: '1px solid var(--border-light)', marginBottom: '1.5rem' }}>
+          <h4 style={{ fontSize: '1.15rem', color: 'var(--text-heading)', marginBottom: '0.25rem', fontWeight: '800' }}>
             {currentIssueData.title}
           </h4>
-          <p style={{ color: '#64748b', fontSize: '0.84rem', marginBottom: '1rem' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', marginBottom: '1rem' }}>
             {currentIssueData.summary}
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
             {currentIssueData.steps.map((step, idx) => (
-              <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem', background: '#ffffff', padding: '0.75rem', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#eff6ff', color: '#2563eb', fontWeight: '800', fontSize: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem', background: 'var(--bg-card)', padding: '0.75rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
+                <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'var(--badge-gold-bg)', color: 'var(--badge-gold-text)', border: '1px solid var(--badge-gold-border)', fontWeight: '800', fontSize: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   {idx + 1}
                 </div>
-                <div style={{ fontSize: '0.84rem', color: '#334155', lineHeight: 1.5 }}>
+                <div style={{ fontSize: '0.84rem', color: 'var(--text-main)', lineHeight: 1.5 }}>
                   {step}
                 </div>
               </div>
@@ -175,7 +175,7 @@ export default function TroubleshooterModal({ isOpen, onClose }) {
 
         {/* Action Callout */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.85rem' }}>
-          <div style={{ fontSize: '0.84rem', color: '#64748b' }}>
+          <div style={{ fontSize: '0.84rem', color: 'var(--text-muted)' }}>
             Need an on-site technician in Brisbane or Ipswich?
           </div>
           <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap', width: '100%', maxWidth: '380px' }}>

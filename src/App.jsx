@@ -21,8 +21,10 @@ import Footer from './components/Footer';
 import QuickActionBar from './components/QuickActionBar';
 import RemoteCursorEffect from './components/RemoteCursorEffect';
 import { updateSeoMetadata } from './utils/seoManager';
+import { useTheme } from './utils/useTheme';
 
 export default function App() {
+  const { theme, isDark, toggleTheme } = useTheme();
   const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'about' | 'service' | 'contact' | 'testimonials' | 'council-guide' | 'suburbs'
   const [selectedRegion, setSelectedRegion] = useState('brisbane');
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
@@ -140,6 +142,8 @@ export default function App() {
       {/* Top Header Navigation */}
       <Navbar 
         currentPage={currentPage}
+        theme={theme}
+        onToggleTheme={toggleTheme}
         onNavigate={navigateTo}
         onOpenQuote={handleOpenQuote}
         onOpenContact={() => setIsContactOpen(true)}

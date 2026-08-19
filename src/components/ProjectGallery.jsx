@@ -10,8 +10,8 @@ import {
   ChevronRight, 
   Calculator, 
   Ruler, 
-  Phone,
-  Eye
+  Phone, 
+  Eye 
 } from 'lucide-react';
 import { GALLERY_ITEMS } from '../data/siteData';
 
@@ -62,7 +62,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
   };
 
   return (
-    <section id="gallery" className="section" style={{ backgroundColor: '#ffffff' }}>
+    <section id="gallery" className="section" style={{ backgroundColor: 'var(--bg-surface)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -87,7 +87,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
             margin: '0 auto 1.5rem auto',
             position: 'relative'
           }}>
-            <Search size={18} style={{ position: 'absolute', left: '1.1rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+            <Search size={18} style={{ position: 'absolute', left: '1.1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
             <input
               type="text"
               placeholder="Search by suburb (e.g. Paddington, Yamanto, New Farm)..."
@@ -97,18 +97,18 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
                 width: '100%',
                 padding: '0.8rem 1rem 0.8rem 2.85rem',
                 borderRadius: 'var(--radius-full)',
-                background: '#ffffff',
-                border: '1.5px solid #cbd5e1',
+                background: 'var(--input-bg)',
+                border: '1.5px solid var(--input-border)',
                 fontSize: '0.9rem',
-                color: '#0f172a',
+                color: 'var(--input-text)',
                 outline: 'none',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
+                boxShadow: 'var(--shadow-sm)'
               }}
             />
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm('')}
-                style={{ position: 'absolute', right: '1.1rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b', fontSize: '0.78rem', fontWeight: '700', cursor: 'pointer' }}
+                style={{ position: 'absolute', right: '1.1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', fontSize: '0.78rem', fontWeight: '700', cursor: 'pointer' }}
               >
                 Clear
               </button>
@@ -122,30 +122,33 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
             gap: '0.45rem',
             flexWrap: 'wrap'
           }}>
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => {
-                  setActiveCategory(cat.id);
-                  setVisibleCount(24);
-                }}
-                style={{
-                  padding: '0.5rem 1rem',
-                  borderRadius: 'var(--radius-full)',
-                  fontFamily: 'Outfit, sans-serif',
-                  fontWeight: '700',
-                  fontSize: '0.82rem',
-                  background: activeCategory === cat.id ? '#0f172a' : '#ffffff',
-                  color: activeCategory === cat.id ? '#ffffff' : '#475569',
-                  border: activeCategory === cat.id ? '1.5px solid #0f172a' : '1px solid #cbd5e1',
-                  boxShadow: '0 2px 4px rgba(0,0,0,0.03)',
-                  transition: 'all 0.2s ease',
-                  cursor: 'pointer'
-                }}
-              >
-                {cat.label}
-              </button>
-            ))}
+            {CATEGORIES.map((cat) => {
+              const isActive = activeCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => {
+                    setActiveCategory(cat.id);
+                    setVisibleCount(24);
+                  }}
+                  style={{
+                    padding: '0.5rem 1rem',
+                    borderRadius: 'var(--radius-full)',
+                    fontFamily: 'Outfit, sans-serif',
+                    fontWeight: '700',
+                    fontSize: '0.82rem',
+                    background: isActive ? 'var(--accent-gold)' : 'var(--bg-card)',
+                    color: isActive ? '#090e1a' : 'var(--text-muted)',
+                    border: isActive ? '1.5px solid var(--accent-gold)' : '1px solid var(--border-light)',
+                    boxShadow: isActive ? 'var(--shadow-md)' : 'var(--shadow-xs)',
+                    transition: 'all 0.2s ease',
+                    cursor: 'pointer'
+                  }}
+                >
+                  {cat.label}
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -164,15 +167,15 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
                 position: 'relative',
                 borderRadius: '16px',
                 overflow: 'hidden',
-                background: '#ffffff',
-                border: '1.5px solid #e2e8f0',
-                boxShadow: '0 4px 14px rgba(15,23,42,0.05)',
+                background: 'var(--bg-card)',
+                border: '1.5px solid var(--border-light)',
+                boxShadow: 'var(--shadow-sm)',
                 cursor: 'pointer',
                 aspectRatio: '4/3',
                 display: 'flex',
                 flexDirection: 'column'
               }}
-              className="gallery-card"
+              className="gallery-card card-themed"
             >
               {/* Image with progressive loading */}
               <img
@@ -192,7 +195,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
                 style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.2) 60%, transparent 100%)',
+                  background: 'linear-gradient(to top, rgba(9, 14, 26, 0.95) 0%, rgba(9, 14, 26, 0.2) 60%, transparent 100%)',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'flex-end',
@@ -201,8 +204,8 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.2rem' }}>
-                  <MapPin size={12} style={{ color: '#fbbf24' }} />
-                  <span style={{ fontSize: '0.72rem', color: '#fbbf24', fontWeight: '700', textTransform: 'uppercase' }}>
+                  <MapPin size={12} style={{ color: 'var(--accent-gold)' }} />
+                  <span style={{ fontSize: '0.72rem', color: 'var(--accent-gold)', fontWeight: '700', textTransform: 'uppercase' }}>
                     {item.location}
                   </span>
                 </div>
@@ -231,7 +234,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
       {selectedImage && (
         <div className="modal-overlay" onClick={() => setSelectedImage(null)}>
           <div 
-            className="modal-content-light"
+            className="modal-content-themed"
             onClick={(e) => e.stopPropagation()}
             style={{ maxWidth: '820px' }}
           >
@@ -247,11 +250,11 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
               borderRadius: '12px',
               overflow: 'hidden',
               maxHeight: '56vh',
-              background: '#0f172a',
+              background: '#090e1a',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.15)'
+              boxShadow: 'var(--shadow-xl)'
             }}>
               <img
                 src={selectedImage.url}
@@ -267,7 +270,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
                   left: '0.75rem',
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  background: 'rgba(0,0,0,0.65)',
+                  background: 'rgba(9, 14, 26, 0.75)',
                   color: '#fff',
                   width: '40px',
                   height: '40px',
@@ -290,7 +293,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
                   right: '0.75rem',
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  background: 'rgba(0,0,0,0.65)',
+                  background: 'rgba(9, 14, 26, 0.75)',
                   color: '#fff',
                   width: '40px',
                   height: '40px',
@@ -307,7 +310,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
               </button>
             </div>
 
-            {/* Project Specs & Description - Stacks cleanly on mobile */}
+            {/* Project Specs & Description */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '1.25rem', alignItems: 'center' }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.35rem', flexWrap: 'wrap' }}>
@@ -319,15 +322,15 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '0.4rem', fontWeight: '800' }}>
+                <h3 style={{ fontSize: '1.25rem', color: 'var(--text-heading)', marginBottom: '0.4rem', fontWeight: '800' }}>
                   {selectedImage.title}
                 </h3>
 
-                <p style={{ color: '#475569', fontSize: '0.84rem', lineHeight: 1.5, marginBottom: '0.65rem' }}>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', lineHeight: 1.5, marginBottom: '0.65rem' }}>
                   {selectedImage.description}
                 </p>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem', fontSize: '0.78rem', color: '#334155' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem', fontSize: '0.78rem', color: 'var(--text-main)' }}>
                   {selectedImage.finish && <span>🎨 <strong>Finish:</strong> {selectedImage.finish}</span>}
                   {selectedImage.motor && <span>⚙️ <strong>Motor:</strong> {selectedImage.motor}</span>}
                 </div>
@@ -346,7 +349,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
                   <Calculator size={17} />
                   Quote A Gate Like This
                 </button>
-                <div style={{ textAlign: 'center', fontSize: '0.75rem', color: '#64748b' }}>
+                <div style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                   ⚡ Free on-site laser measure across South East QLD
                 </div>
               </div>

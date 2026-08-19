@@ -24,7 +24,7 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
   const currentService = (SERVICES && SERVICES.find((s) => s.id === activeTab)) || (SERVICES && SERVICES[0]) || { highlights: [], features: [] };
 
   return (
-    <section id="services" className="section" style={{ backgroundColor: '#ffffff' }}>
+    <section id="services" className="section" style={{ backgroundColor: 'var(--bg-body)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -54,35 +54,38 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
         }}
         className="step-scroll-container"
         >
-          {SERVICES.map((s) => (
-            <button
-              key={s.id}
-              onClick={() => setActiveTab(s.id)}
-              style={{
-                padding: '0.55rem 1.1rem',
-                borderRadius: 'var(--radius-full)',
-                fontFamily: 'Outfit, sans-serif',
-                fontWeight: '700',
-                fontSize: '0.86rem',
-                whiteSpace: 'nowrap',
-                background: activeTab === s.id ? '#0f172a' : '#f1f5f9',
-                color: activeTab === s.id ? 'var(--accent-gold)' : '#475569',
-                border: activeTab === s.id ? '1px solid #0f172a' : '1px solid #e2e8f0',
-                boxShadow: activeTab === s.id ? '0 8px 16px -4px rgba(15,23,42,0.25)' : 'none',
-                transition: 'all 0.2s ease',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.45rem',
-                flexShrink: 0
-              }}
-            >
-              {s.title}
-            </button>
-          ))}
+          {SERVICES.map((s) => {
+            const isActive = activeTab === s.id;
+            return (
+              <button
+                key={s.id}
+                onClick={() => setActiveTab(s.id)}
+                style={{
+                  padding: '0.55rem 1.1rem',
+                  borderRadius: 'var(--radius-full)',
+                  fontFamily: 'Outfit, sans-serif',
+                  fontWeight: '700',
+                  fontSize: '0.86rem',
+                  whiteSpace: 'nowrap',
+                  background: isActive ? 'var(--accent-gold)' : 'var(--bg-card-subtle)',
+                  color: isActive ? '#090e1a' : 'var(--text-muted)',
+                  border: isActive ? '1px solid var(--accent-gold)' : '1px solid var(--border-light)',
+                  boxShadow: isActive ? 'var(--shadow-md)' : 'none',
+                  transition: 'all 0.2s ease',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  flexShrink: 0
+                }}
+              >
+                {s.title}
+              </button>
+            );
+          })}
         </div>
 
         {/* Active Service Showcase Card */}
-        <div className="card-light animate-fadeIn" style={{ padding: 'clamp(1.25rem, 3.5vw, 2.25rem)', border: '1px solid #e2e8f0' }}>
+        <div className="card-themed animate-fadeIn" style={{ padding: 'clamp(1.25rem, 3.5vw, 2.25rem)', border: '1px solid var(--border-light)', background: 'var(--bg-card)' }}>
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
@@ -93,15 +96,15 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
           >
             {/* Left: Content & Bullet Points */}
             <div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.25rem 0.75rem', borderRadius: '20px', background: 'rgba(37,99,235,0.1)', color: '#2563eb', fontWeight: '700', fontSize: '0.72rem', textTransform: 'uppercase', marginBottom: '0.85rem' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.25rem 0.75rem', borderRadius: '20px', background: 'var(--badge-blue-bg)', color: 'var(--badge-blue-text)', border: '1px solid var(--badge-blue-border)', fontWeight: '700', fontSize: '0.72rem', textTransform: 'uppercase', marginBottom: '0.85rem' }}>
                 <ShieldCheck size={13} /> Factory Direct Fabrication
               </div>
 
-              <h3 style={{ fontSize: 'clamp(1.4rem, 3vw, 1.9rem)', fontWeight: '800', color: '#0f172a', marginBottom: '0.75rem', lineHeight: 1.2 }}>
+              <h3 style={{ fontSize: 'clamp(1.4rem, 3vw, 1.9rem)', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.75rem', lineHeight: 1.2 }}>
                 {currentService.title}
               </h3>
 
-              <p style={{ color: '#475569', fontSize: '0.96rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.96rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
                 {currentService.shortDesc}
               </p>
 
@@ -109,8 +112,8 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.5rem' }}>
                 {currentService.highlights.map((point, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
-                    <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0, marginTop: '3px' }} />
-                    <span style={{ color: '#334155', fontSize: '0.88rem', fontWeight: '500' }}>{point}</span>
+                    <CheckCircle2 size={16} style={{ color: 'var(--accent-emerald)', flexShrink: 0, marginTop: '3px' }} />
+                    <span style={{ color: 'var(--text-main)', fontSize: '0.88rem', fontWeight: '500' }}>{point}</span>
                   </div>
                 ))}
               </div>
@@ -141,8 +144,9 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
                 position: 'relative',
                 borderRadius: '16px',
                 overflow: 'hidden',
-                boxShadow: '0 16px 28px -8px rgba(0,0,0,0.12)',
-                marginBottom: '0.85rem'
+                boxShadow: 'var(--shadow-lg)',
+                marginBottom: '0.85rem',
+                border: '1px solid var(--border-light)'
               }}>
                 <img
                   src={currentService.heroImage || currentService.image}
@@ -159,7 +163,7 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  background: 'linear-gradient(to top, rgba(15,23,42,0.85) 0%, transparent 100%)',
+                  background: 'linear-gradient(to top, rgba(9,14,26,0.92) 0%, transparent 100%)',
                   padding: '0.85rem 1rem',
                   color: '#ffffff',
                   fontSize: '0.82rem',
@@ -183,7 +187,7 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
                         height: '75px', 
                         borderRadius: '8px', 
                         overflow: 'hidden', 
-                        border: '1px solid #e2e8f0' 
+                        border: '1px solid var(--border-light)' 
                       }}
                     >
                       <img 
@@ -205,14 +209,14 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
             gap: '1rem',
             marginTop: '2rem',
             paddingTop: '1.75rem',
-            borderTop: '1px solid #f1f5f9'
+            borderTop: '1px solid var(--border-light)'
           }}>
             {currentService.features.map((feat, i) => (
-              <div key={i} style={{ padding: '1rem', background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
-                <h4 style={{ fontSize: '0.98rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <div key={i} style={{ padding: '1rem', background: 'var(--bg-card-subtle)', borderRadius: '12px', border: '1px solid var(--border-light)' }}>
+                <h4 style={{ fontSize: '0.98rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                   <span style={{ color: 'var(--accent-gold)' }}>•</span> {feat.title}
                 </h4>
-                <p style={{ color: '#64748b', fontSize: '0.84rem', lineHeight: 1.5 }}>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', lineHeight: 1.5 }}>
                   {feat.desc}
                 </p>
               </div>

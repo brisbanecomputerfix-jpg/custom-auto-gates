@@ -4,8 +4,8 @@ import {
   HelpCircle, 
   ChevronDown, 
   Phone, 
-  Calculator,
-  MessageCircleQuestion
+  Calculator, 
+  MessageCircleQuestion 
 } from 'lucide-react';
 
 export default function FaqSection({ onOpenQuote, onOpenContact }) {
@@ -16,7 +16,7 @@ export default function FaqSection({ onOpenQuote, onOpenContact }) {
   };
 
   return (
-    <section id="faqs" className="section" style={{ backgroundColor: '#ffffff', borderTop: '1px solid #e2e8f0' }}>
+    <section id="faqs" className="section" style={{ backgroundColor: 'var(--bg-surface)', borderTop: '1px solid var(--border-light)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -41,10 +41,10 @@ export default function FaqSection({ onOpenQuote, onOpenContact }) {
               <div
                 key={idx}
                 style={{
-                  background: isOpen ? '#f8fafc' : '#ffffff',
+                  background: isOpen ? 'var(--bg-card-hover)' : 'var(--bg-card)',
                   borderRadius: '14px',
-                  border: isOpen ? '1.5px solid #2563eb' : '1px solid #e2e8f0',
-                  boxShadow: '0 2px 6px rgba(0,0,0,0.03)',
+                  border: isOpen ? '1.5px solid var(--accent-gold)' : '1px solid var(--border-light)',
+                  boxShadow: isOpen ? 'var(--shadow-md)' : 'var(--shadow-xs)',
                   overflow: 'hidden',
                   transition: 'all 0.2s ease'
                 }}
@@ -59,7 +59,7 @@ export default function FaqSection({ onOpenQuote, onOpenContact }) {
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     gap: '0.75rem',
-                    color: '#0f172a',
+                    color: isOpen ? 'var(--accent-gold)' : 'var(--text-heading)',
                     fontFamily: 'Outfit, sans-serif',
                     fontSize: 'clamp(0.92rem, 2vw, 1.05rem)',
                     fontWeight: '700',
@@ -71,8 +71,8 @@ export default function FaqSection({ onOpenQuote, onOpenContact }) {
                     width: '26px',
                     height: '26px',
                     borderRadius: '50%',
-                    background: isOpen ? '#2563eb' : '#f1f5f9',
-                    color: isOpen ? '#ffffff' : '#475569',
+                    background: isOpen ? 'var(--accent-gold)' : 'var(--bg-card-subtle)',
+                    color: isOpen ? '#090e1a' : 'var(--text-muted)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -85,7 +85,7 @@ export default function FaqSection({ onOpenQuote, onOpenContact }) {
                 </button>
 
                 {isOpen && (
-                  <div style={{ padding: '0 clamp(1rem, 3vw, 1.35rem) clamp(1rem, 3vw, 1.35rem) clamp(1rem, 3vw, 1.35rem)', color: '#475569', fontSize: '0.88rem', lineHeight: 1.6, borderTop: '1px solid #e2e8f0', paddingTop: '0.85rem' }} className="animate-fadeIn">
+                  <div style={{ padding: '0 clamp(1rem, 3vw, 1.35rem) clamp(1rem, 3vw, 1.35rem) clamp(1rem, 3vw, 1.35rem)', color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.6, borderTop: '1px solid var(--border-light)', paddingTop: '0.85rem' }} className="animate-fadeIn">
                     {faq.a}
                   </div>
                 )}
@@ -98,21 +98,22 @@ export default function FaqSection({ onOpenQuote, onOpenContact }) {
         <div style={{
           maxWidth: '820px',
           margin: '0 auto',
-          background: '#eff6ff',
-          border: '1.5px solid #bfdbfe',
+          background: 'var(--bg-card)',
+          border: '1.5px solid var(--border-light)',
           borderRadius: '16px',
           padding: 'clamp(1.25rem, 3.5vw, 2rem)',
           textAlign: 'center',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '0.85rem'
+          gap: '0.85rem',
+          boxShadow: 'var(--shadow-md)'
         }}>
-          <MessageCircleQuestion size={32} style={{ color: '#2563eb' }} />
-          <h3 style={{ fontSize: 'clamp(1.15rem, 2.5vw, 1.35rem)', color: '#0f172a', fontWeight: '800' }}>
+          <MessageCircleQuestion size={32} style={{ color: 'var(--accent-gold)' }} />
+          <h3 style={{ fontSize: 'clamp(1.15rem, 2.5vw, 1.35rem)', color: 'var(--text-heading)', fontWeight: '800' }}>
             Have a question about your specific property or boundary?
           </h3>
-          <p style={{ color: '#475569', fontSize: '0.88rem', maxWidth: '580px' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', maxWidth: '580px' }}>
             Our Brisbane gate engineers are available Monday to Friday 9am to 4pm to assist with layout advice, sloping driveway questions, and custom powdercoat matching.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
