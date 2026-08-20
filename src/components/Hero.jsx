@@ -22,6 +22,23 @@ import { COMPANY_INFO } from '../data/siteData';
 export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, onNavigateAbout }) {
   const [selectedQuickGate, setSelectedQuickGate] = useState('sliding');
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const BACKGROUND_SLIDES = [
+    { url: '/images/434299467_861965892610424_2556695232572143965_n.jpg', title: 'Automated Monument Slat Sliding Gate', loc: 'Brisbane' },
+    { url: '/images/Swinging-Gates.jpg', title: 'Custom Architectural Double Swing Gate', loc: 'Yamanto' },
+    { url: '/images/SamFinchGates-32.jpg', title: 'DecoWood Timber & Aluminium Security Gate', loc: 'Brookfield' },
+    { url: '/images/422192364_820739326733081_8771292463020946930_n.jpg', title: 'Solar Automated Entry Gate System', loc: 'Redland Bay' },
+    { url: '/images/Sliding-Gates.jpg', title: 'Factory Direct Slat & Pedestrian System', loc: 'Workshop Direct' }
+  ];
+
+  // Rotate background showcase images smoothly
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % BACKGROUND_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const GATE_STYLES_PREVIEW = [
     { id: 'sliding', label: 'Sliding Gate', badge: 'Most Popular', time: '2–3 Wks' },
@@ -35,7 +52,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
       style={{ 
         position: 'relative', 
         overflow: 'hidden', 
-        minHeight: '85vh', 
+        minHeight: '88vh', 
         display: 'flex', 
         alignItems: 'center', 
         paddingTop: 'clamp(2.5rem, 5vw, 4rem)', 
@@ -44,7 +61,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
       }}
       aria-label="Custom Auto Gates & Fencing Introduction"
     >
-      {/* Background Video Layer with Refined Visible Transparency */}
+      {/* Background Video & Motion Showcase Layer - Highly Visible & Cinematic */}
       <div 
         style={{ 
           position: 'absolute', 
@@ -54,74 +71,53 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
           pointerEvents: 'none'
         }}
       >
-        {/* Fallback Static Poster Image */}
-        <div 
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: 'url(/images/Swinging-Gates.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: videoLoaded ? 0.08 : 0.3,
-            transition: 'opacity 1s ease'
-          }}
-        />
-
-        {/* Vimeo Video Background (Auto-playing, Looping, Muted) */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          width: '100%',
-          height: '100%',
-          minWidth: '177.78vh',
-          minHeight: '56.25vw',
-          transform: 'translate(-50%, -50%)',
-          opacity: 0.72,
-          filter: 'brightness(1.02) contrast(1.05)'
-        }}>
-          <iframe
-            src="https://player.vimeo.com/video/1218804316?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&playsinline=1&badge=0&autopause=0&app_id=58479"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-            title="Automatic Driveway Gate Custom Brisbane Video"
-            onLoad={() => setVideoLoaded(true)}
+        {/* Animated Ken Burns High-Definition Photo Showcase */}
+        {BACKGROUND_SLIDES.map((slide, idx) => (
+          <div
+            key={slide.url}
             style={{
               position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              border: 'none',
-              pointerEvents: 'none'
+              inset: 0,
+              backgroundImage: `url(${slide.url})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: activeSlide === idx ? 0.92 : 0,
+              transform: activeSlide === idx ? 'scale(1.08) translate(-1%, -1%)' : 'scale(1.0)',
+              transition: 'opacity 1.6s ease-in-out, transform 6s ease-out',
+              filter: 'brightness(0.98) contrast(1.08)'
             }}
           />
-        </div>
+        ))}
 
-        {/* Dynamic Theme Gradient Overlays */}
+        {/* Clean Translucent Gradient Overlays - Feathered for Crisp Text Readability & Max Video Visibility */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to right, var(--hero-overlay-1) 0%, var(--hero-overlay-2) 52%, var(--hero-overlay-3) 100%)'
+          background: 'linear-gradient(to right, var(--hero-overlay-1) 0%, var(--hero-overlay-2) 46%, var(--hero-overlay-3) 100%)'
         }} />
 
         <div style={{
           position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(to top, var(--hero-overlay-1) 0%, transparent 65%)'
-        }} />
-
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(to bottom, var(--hero-overlay-1) 0%, transparent 25%)'
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '140px',
+          background: 'linear-gradient(to top, var(--bg-body) 0%, transparent 100%)'
         }} />
       </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '2.5rem', alignItems: 'center' }}>
-          {/* Left Hero Content */}
-          <div>
+          {/* Left Hero Content with High-Contrast Glassmorphic Card Backing */}
+          <div style={{
+            background: 'var(--hero-card-bg)',
+            backdropFilter: 'blur(14px)',
+            borderRadius: '24px',
+            border: '1.5px solid var(--hero-card-border)',
+            padding: 'clamp(1.25rem, 3vw, 2.25rem)',
+            boxShadow: 'var(--hero-card-shadow)',
+            transition: 'background-color 0.3s ease, border-color 0.3s ease'
+          }}>
             {/* Top Pill Badges */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
               <button 
@@ -141,7 +137,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
 
             {/* Semantic SEO H1 Headline */}
             <h1 style={{
-              fontSize: 'clamp(2rem, 4vw, 3.3rem)',
+              fontSize: 'clamp(2rem, 4vw, 3.2rem)',
               fontWeight: '900',
               lineHeight: 1.15,
               color: 'var(--text-heading)',
@@ -180,7 +176,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               <button
                 onClick={onOpenContact}
                 className="btn btn-outline-dark btn-lg"
-                style={{ flex: '1 1 auto' }}
+                style={{ flex: '1 1 auto', backdropFilter: 'blur(8px)' }}
               >
                 Book Free Measure
               </button>
@@ -198,7 +194,8 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                   fontSize: '0.95rem',
                   padding: '0.75rem 1.1rem',
                   borderRadius: 'var(--radius-md)',
-                  flex: '1 1 auto'
+                  flex: '1 1 auto',
+                  backdropFilter: 'blur(8px)'
                 }}
               >
                 <Phone size={17} style={{ color: 'var(--accent-gold)' }} />
@@ -232,9 +229,10 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
           {/* Right Hero: Quick Gate Estimator Card */}
           <div style={{ position: 'relative', width: '100%' }}>
             <div style={{
-              background: 'var(--bg-card)',
+              background: 'var(--bg-card-glass)',
+              backdropFilter: 'blur(16px)',
               borderRadius: '20px',
-              border: '1.5px solid var(--border-light)',
+              border: '1.5px solid var(--border-subtle)',
               padding: 'clamp(1.25rem, 3.5vw, 1.85rem)',
               boxShadow: 'var(--shadow-xl)',
               position: 'relative',
@@ -393,6 +391,53 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Interactive Background Project Showcase Pill & Indicators */}
+      <div 
+        style={{
+          position: 'absolute',
+          bottom: '1rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 15,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.85rem',
+          background: 'rgba(9, 14, 26, 0.85)',
+          backdropFilter: 'blur(12px)',
+          padding: '0.35rem 0.95rem',
+          borderRadius: '30px',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
+          maxWidth: '90vw'
+        }}
+      >
+        <span style={{ fontSize: '0.74rem', color: 'var(--accent-gold)', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.4rem', whiteSpace: 'nowrap' }}>
+          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 8px #10b981', flexShrink: 0 }} />
+          <span>{BACKGROUND_SLIDES[activeSlide].title}</span>
+          <span style={{ color: 'var(--text-muted)', fontWeight: '400' }}>• {BACKGROUND_SLIDES[activeSlide].loc}</span>
+        </span>
+
+        <div style={{ display: 'flex', gap: '0.35rem', alignItems: 'center' }}>
+          {BACKGROUND_SLIDES.map((slide, i) => (
+            <button
+              key={slide.url}
+              onClick={() => setActiveSlide(i)}
+              aria-label={`View ${slide.title}`}
+              style={{
+                width: activeSlide === i ? '20px' : '7px',
+                height: '7px',
+                borderRadius: '4px',
+                backgroundColor: activeSlide === i ? 'var(--accent-gold)' : 'rgba(255, 255, 255, 0.35)',
+                transition: 'all 0.3s ease',
+                padding: 0,
+                border: 'none',
+                cursor: 'pointer'
+              }}
+            />
+          ))}
         </div>
       </div>
     </section>

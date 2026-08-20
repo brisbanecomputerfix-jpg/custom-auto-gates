@@ -68,7 +68,7 @@ async function generateAssets() {
       const isOrange = (r > 175 && g > 60 && g < 185 && b < 110 && (r - g > 45));
       const brightness = (r + g + b) / 3;
 
-      if (brightness > 248 && (maxVal - minVal < 15)) {
+      if (brightness > 245 && (maxVal - minVal < 20)) {
         // Pure transparent for white background
         lightRgba[dstIdx] = 255;
         lightRgba[dstIdx + 1] = 255;
@@ -79,21 +79,28 @@ async function generateAssets() {
         darkRgba[dstIdx + 1] = 255;
         darkRgba[dstIdx + 2] = 255;
         darkRgba[dstIdx + 3] = 0;
-      } else if (brightness > 230 && (maxVal - minVal < 20)) {
+      } else if (brightness > 210 && (maxVal - minVal < 25)) {
         // Edge anti-aliasing feathering
-        const alpha = Math.max(0, Math.min(255, Math.round((255 - brightness) * (255 / 25))));
-        lightRgba[dstIdx] = r;
-        lightRgba[dstIdx + 1] = g;
-        lightRgba[dstIdx + 2] = b;
-        lightRgba[dstIdx + 3] = alpha;
-
+        const alpha = Math.max(0, Math.min(255, Math.round((245 - brightness) * (255 / 35))));
+        
         if (isOrange) {
+          lightRgba[dstIdx] = r;
+          lightRgba[dstIdx + 1] = g;
+          lightRgba[dstIdx + 2] = b;
+          lightRgba[dstIdx + 3] = alpha;
+
           darkRgba[dstIdx] = Math.min(255, Math.round(r * 1.05));
           darkRgba[dstIdx + 1] = Math.min(255, Math.round(g * 1.1));
           darkRgba[dstIdx + 2] = b;
           darkRgba[dstIdx + 3] = alpha;
         } else {
-          // Dark parts inverted to crisp bright white #F8FAFC
+          // In light mode, anti-aliased dark edges
+          lightRgba[dstIdx] = 15;
+          lightRgba[dstIdx + 1] = 23;
+          lightRgba[dstIdx + 2] = 42;
+          lightRgba[dstIdx + 3] = alpha;
+
+          // In dark mode, anti-aliased white edges
           darkRgba[dstIdx] = 248;
           darkRgba[dstIdx + 1] = 250;
           darkRgba[dstIdx + 2] = 252;
@@ -101,19 +108,24 @@ async function generateAssets() {
         }
       } else {
         // Content pixel
-        lightRgba[dstIdx] = r;
-        lightRgba[dstIdx + 1] = g;
-        lightRgba[dstIdx + 2] = b;
-        lightRgba[dstIdx + 3] = 255;
-
         if (isOrange) {
-          // Keep orange gear vibrant in dark mode
+          lightRgba[dstIdx] = r;
+          lightRgba[dstIdx + 1] = g;
+          lightRgba[dstIdx + 2] = b;
+          lightRgba[dstIdx + 3] = 255;
+
           darkRgba[dstIdx] = Math.min(255, Math.round(r * 1.05));
           darkRgba[dstIdx + 1] = Math.min(255, Math.round(g * 1.1));
           darkRgba[dstIdx + 2] = b;
           darkRgba[dstIdx + 3] = 255;
         } else {
-          // Invert black gate/text to bright clean white/slate #F8FAFC
+          // Crisp charcoal in light mode
+          lightRgba[dstIdx] = 15;
+          lightRgba[dstIdx + 1] = 23;
+          lightRgba[dstIdx + 2] = 42;
+          lightRgba[dstIdx + 3] = 255;
+
+          // Crisp white in dark mode
           const darkTone = (255 - brightness) / 255;
           const targetLight = Math.round(230 + darkTone * 25);
           darkRgba[dstIdx] = targetLight;
