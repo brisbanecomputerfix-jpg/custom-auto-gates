@@ -48,7 +48,7 @@ export const REGIONAL_DATA = {
       { name: 'Paddington', postcode: '4064', area: 'Inner West', desc: 'Sloping driveway raked sliding gates matching heritage Queenslanders.' },
       { name: 'Bulimba', postcode: '4171', area: 'East / River', desc: 'Aerodynamic wind-resistant privacy louvers and marine aluminium gates.' },
       { name: 'Hawthorne', postcode: '4171', area: 'East / River', desc: 'Architectural horizontal slat gates in Dulux Monument & Surfmist.' },
-      { name: 'Camp Hill', postcode: '4152', area: 'South / East', desc: 'Dual swing automatic gates with concealed underground Nice motors.' },
+      { name: 'Camp Hill', postcode: '4152', area: 'South / East', desc: 'Dual swing automatic gates with concealed underground Centurion motors.' },
       { name: 'Carindale', postcode: '4152', area: 'East', desc: 'Full front boundary Colorbond slat fencing with pedestrian access gate.' },
       { name: 'Indooroopilly', postcode: '4068', area: 'West', desc: 'Double swing aluminium gates with high-speed Centurion automation.' },
       { name: 'Kenmore', postcode: '4069', area: 'West', desc: 'Sloping ground track sliding gates and matching pool safety barriers.' },
@@ -61,10 +61,10 @@ export const REGIONAL_DATA = {
       { name: 'Sunnybank', postcode: '4109', area: 'Southside', desc: 'High-security automatic sliding gates with 4G smartphone controls.' }
     ],
     popularGateStyles: [
-      { name: 'Monument Slat Sliding Gate', motor: 'Nice Robus 500 Hi-Speed', tag: 'Most Popular in Brisbane Inner Suburbs' },
+      { name: 'Monument Slat Sliding Gate', motor: 'Centurion D5 Smart Hi-Speed', tag: 'Most Popular in Brisbane Inner Suburbs' },
       { name: 'Acreage Solar Double Swing Gate', motor: 'Centurion Vantage 500 Solar', tag: 'Top Choice in Pullenvale & Brookfield' },
-      { name: 'DecoWood Timber-Look Gate', motor: 'Nice Toona 5024 Swing', tag: 'Popular in Ascot & Paddington Heritage' },
-      { name: 'Bi-Fold Space Saving Gate', motor: 'Nice Hyke Articulated', tag: 'Best for Short Driveways in New Farm' }
+      { name: 'DecoWood Timber-Look Gate', motor: 'Centurion Vantage 500 Swing', tag: 'Popular in Ascot & Paddington Heritage' },
+      { name: 'Bi-Fold Space Saving Gate', motor: 'Centurion Vector Articulated', tag: 'Best for Short Driveways in New Farm' }
     ]
   },
   ipswich: {
@@ -83,7 +83,7 @@ export const REGIONAL_DATA = {
     suburbs: [
       { name: 'Yamanto', postcode: '4305', area: 'Factory Direct Hub', desc: 'Our home base! Visit our showroom at 43 Belar St for live motor demos.' },
       { name: 'Ipswich Central', postcode: '4305', area: 'Central', desc: 'Custom laser cut sliding gates & architectural privacy screens.' },
-      { name: 'Brookwater', postcode: '4300', area: 'Greater Springfield', desc: 'Golf course prestige sliding gates with whisper-quiet Nice motors.' },
+      { name: 'Brookwater', postcode: '4300', area: 'Greater Springfield', desc: 'Golf course prestige sliding gates with whisper-quiet Centurion motors.' },
       { name: 'Springfield Lakes', postcode: '4300', area: 'Greater Springfield', desc: 'Contemporary slat fencing and matching electric driveway gates.' },
       { name: 'Augustine Heights', postcode: '4300', area: 'Greater Springfield', desc: 'Modern Colorbond Basalt and Monument sliding automated systems.' },
       { name: 'Ripley', postcode: '4306', area: 'Growth Corridor', desc: 'New build package: front boundary fence, sliding gate, and keypad.' },
@@ -95,8 +95,8 @@ export const REGIONAL_DATA = {
       { name: 'Booval', postcode: '4304', area: 'East Ipswich', desc: 'Heavy-duty steel-reinforced aluminium sliding gates.' }
     ],
     popularGateStyles: [
-      { name: 'Yamanto Custom Laser Cut Slide Gate', motor: 'Nice Robus 500 Hi-Speed', tag: 'Built 100% In-House in Yamanto' },
-      { name: 'Brookwater Architectural Slat System', motor: 'Italian Nice Robus 600', tag: 'Top Choice in Springfield & Brookwater' },
+      { name: 'Yamanto Custom Laser Cut Slide Gate', motor: 'Centurion D5 Smart Hi-Speed', tag: 'Built 100% In-House in Yamanto' },
+      { name: 'Brookwater Architectural Slat System', motor: 'Centurion D10 Smart 600', tag: 'Top Choice in Springfield & Brookwater' },
       { name: 'Karalee Solar Double Swing Gate', motor: 'Centurion Vantage 500 Double', tag: 'Best for Ipswich Acreage Properties' },
       { name: 'Ripley New Home Complete Pack', motor: 'Centurion D5-Evo Slide', tag: 'Complete Fence & Gate Combo' }
     ]
@@ -128,9 +128,9 @@ export const REGIONAL_DATA = {
       { name: 'Redland Bay', postcode: '4165', area: 'Redlands Coastal', desc: 'Marine powdercoated aluminium driveway gates with 10-year warranty.' }
     ],
     popularGateStyles: [
-      { name: 'Commercial Cantilever Security Gate', motor: 'Nice Run 2500 Heavy-Duty', tag: 'Top Choice in Berrinba Logistics Park' },
+      { name: 'Commercial Cantilever Security Gate', motor: 'Centurion D10 Smart Heavy-Duty', tag: 'Top Choice in Berrinba Logistics Park' },
       { name: 'Greenbank Solar Acreage Swing System', motor: 'Centurion Vantage Double Swing', tag: 'Most Popular in Logan Acreage' },
-      { name: 'Cleveland Marine-Grade Slide Gate', motor: 'Nice Robus 500 Marine Finish', tag: 'Best for Redlands Salt Air Coast' },
+      { name: 'Cleveland Marine-Grade Slide Gate', motor: 'Centurion D5 Smart Marine Finish', tag: 'Best for Redlands Salt Air Coast' },
       { name: 'Springwood Slat Privacy Sliding Gate', motor: 'Centurion D5-Evo Smart', tag: 'Popular in Suburban Logan' }
     ]
   },
@@ -141,7 +141,7 @@ export const REGIONAL_DATA = {
     shortTitle: 'Gold Coast',
     heroTag: 'Coastal Grade Aluminium Automated Gates',
     h1: 'Custom Automatic Gates Gold Coast',
-    subtitle: 'Engineered specifically for coastal Queensland conditions. 100% corrosion-resistant 6060-T6 aluminium alloy, marine-grade powdercoating, and high-speed Italian Nice automation for Gold Coast homes, strata, and canal estates.',
+    subtitle: 'Engineered specifically for coastal Queensland conditions. 100% corrosion-resistant 6060-T6 aluminium alloy, marine-grade powdercoating, and high-speed Centurion Smart automation for Gold Coast homes, strata, and canal estates.',
     councilName: 'City of Gold Coast',
     councilPlan: 'City Plan (Gold Coast)',
     councilHeight: '1.2m solid / 1.8m permeable | Specific waterfront canal setback rules',
@@ -151,7 +151,7 @@ export const REGIONAL_DATA = {
       { name: 'Hope Island', postcode: '4212', area: 'North GC / Canal', desc: 'Prestige gated estate sliding gates with GSM 4G mobile access.' },
       { name: 'Sanctuary Cove', postcode: '4212', area: 'North GC / Canal', desc: 'Custom luxury architectural gates matching resort master planning.' },
       { name: 'Coomera', postcode: '4209', area: 'Growth Corridor', desc: 'Aluminium slat privacy screens and automatic sliding driveway gates.' },
-      { name: 'Helensvale', postcode: '4212', area: 'North GC', desc: 'Dual swing automatic gates with high-speed Italian Nice automation.' },
+      { name: 'Helensvale', postcode: '4212', area: 'North GC', desc: 'Dual swing automatic gates with high-speed Centurion Smart automation.' },
       { name: 'Southport', postcode: '4215', area: 'Central GC / Strata', desc: 'Commercial multi-unit residential sliding gates with heavy-duty rollers.' },
       { name: 'Surfers Paradise', postcode: '4217', area: 'Central Coastal', desc: 'High-security coastal gates and keyless RFID pedestrian access.' },
       { name: 'Robina', postcode: '4226', area: 'Central GC', desc: 'Contemporary residential electric gates in Dulux Monument & Surfmist.' },
@@ -159,8 +159,8 @@ export const REGIONAL_DATA = {
       { name: 'Tamborine Mountain', postcode: '4272', area: 'Hinterland Acreage', desc: 'Off-grid solar double swing gates for mountain properties.' }
     ],
     popularGateStyles: [
-      { name: 'Hope Island Canal Slat Gate', motor: 'Nice Robus 600 Hi-Speed', tag: 'Prestige Coastal Living' },
-      { name: 'Southport Commercial Strata Gate', motor: 'Nice Tub 3500 Commercial Inverter', tag: 'Heavy-Duty Multi-Unit Complexes' },
+      { name: 'Hope Island Canal Slat Gate', motor: 'Centurion D10 Smart 600 Hi-Speed', tag: 'Prestige Coastal Living' },
+      { name: 'Southport Commercial Strata Gate', motor: 'Centurion D20 Smart Commercial Inverter', tag: 'Heavy-Duty Multi-Unit Complexes' },
       { name: 'Tamborine Hinterland Solar Gate', motor: 'Centurion Vantage 500 Solar', tag: 'High-Torque Mountain Acreage' },
       { name: 'Coomera Modern Slat Privacy Combo', motor: 'Centurion D5 Smart', tag: 'Modern Residential Estates' }
     ]

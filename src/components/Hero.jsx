@@ -159,7 +159,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               maxWidth: '650px',
               fontWeight: '400'
             }}>
-              South East Queensland's dedicated specialist in custom automated <strong style={{ color: 'var(--text-heading)' }}>sliding gates, swing gates, solar off-grid systems</strong>, and <strong style={{ color: 'var(--text-heading)' }}>architectural aluminium slat fencing</strong>. Precision laser CAD measured, built in our Yamanto workshop, and installed with genuine Italian automation.
+              South East Queensland's dedicated specialist in custom automated <strong style={{ color: 'var(--text-heading)' }}>sliding gates, swing gates, solar off-grid systems</strong>, and <strong style={{ color: 'var(--text-heading)' }}>architectural aluminium slat fencing</strong>. Precision laser CAD measured, built in our Yamanto workshop, and installed with commercial-grade automation systems.
             </p>
 
             {/* Call to Actions */}
@@ -217,7 +217,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--text-heading)', fontSize: '0.84rem', fontWeight: '700' }}>
                 <CheckCircle2 size={15} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} />
-                <span>Italian Nice & Centurion Motors</span>
+                <span>Centurion Smart Gate Automation</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--text-heading)', fontSize: '0.84rem', fontWeight: '700' }}>
                 <CheckCircle2 size={15} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} />
@@ -344,7 +344,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                   </div>
                   <div>
                     <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', fontWeight: '600' }}>Automation</div>
-                    <div style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--text-heading)' }}>Nice / Centurion</div>
+                    <div style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--text-heading)' }}>Centurion Smart Series</div>
                   </div>
                 </div>
               </div>

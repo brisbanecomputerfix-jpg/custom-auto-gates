@@ -205,7 +205,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                   </span>
                 </div>
                 <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
-                  Click the remote button below to activate the Nice® Italian 24V automation system
+                  Click the remote button below to activate the Centurion® Smart 24V automation system
                 </span>
               </div>
 
@@ -358,7 +358,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                 border: '1px solid #64748b',
                 zIndex: 10
               }}>
-                {/* Nice Motor Box at Base */}
+                {/* Centurion Motor Box at Base */}
                 <div style={{
                   position: 'absolute',
                   bottom: 0,
@@ -457,7 +457,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                     Status: {isMoving ? 'AUTOMATION MOTOR OPERATING...' : gateOpen ? 'GATE FULLY OPEN (ACCESS GRANTED)' : 'GATE CLOSED & SECURED'}
                   </div>
                   <div style={{ fontSize: '0.74rem', color: '#94a3b8' }}>
-                    Travel Position: {gateProgress}% • Italian Nice 24V Drive System
+                    Travel Position: {gateProgress}% • Centurion Smart 24V Drive System
                   </div>
                 </div>
               </div>
@@ -1064,7 +1064,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                 Yamanto Workshop & Showroom
               </h2>
               <p style={{ color: '#cbd5e1', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                Every gate is fabricated from high-tensile 6060-T6 architectural aluminium right here in our Yamanto facility. We invite you to visit our factory to see the precision TIG welding and heavy-duty Italian automation motors first-hand.
+                Every gate is fabricated from high-tensile 6060-T6 architectural aluminium right here in our Yamanto facility. We invite you to visit our factory to see the precision TIG welding and heavy-duty commercial automation systems first-hand.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>

@@ -681,7 +681,7 @@ export default function Navbar({
                     <Sparkles size={15} style={{ color: 'var(--accent-gold)' }} />
                   </button>
                   <button className="mobile-nav-item" onClick={() => handleNavClick('motors')} style={{ padding: '0.55rem 0' }}>
-                    <span style={{ fontSize: '0.92rem' }}>Italian Nice & Centurion Motors</span>
+                    <span style={{ fontSize: '0.92rem' }}>Centurion Smart Motors</span>
                   </button>
                   <button className="mobile-nav-item" onClick={() => handleNavClick('why-factory-direct')} style={{ padding: '0.55rem 0' }}>
                     <span style={{ fontSize: '0.92rem' }}>Why Buy Factory Direct</span>

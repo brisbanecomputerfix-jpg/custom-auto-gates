@@ -61,7 +61,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
     address: '',
     suburb: '',
     gateType: 'Sliding Gate',
-    motorBrand: 'Nice (Italian)',
+    motorBrand: 'Centurion Smart',
     issueDescription: '',
     preferredDate: '',
   });

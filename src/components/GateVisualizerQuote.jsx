@@ -24,7 +24,7 @@ export default function GateVisualizerQuote() {
   const [height, setHeight] = useState(1.8); // meters
   const [material, setMaterial] = useState('horizontal-slat');
   const [color, setColor] = useState('monument');
-  const [motor, setMotor] = useState('nice-240v');
+  const [motor, setMotor] = useState('centurion-d5');
   const [accessories, setAccessories] = useState(['remotes', 'phone-app']);
   
   // Quote Form State
@@ -70,7 +70,7 @@ export default function GateVisualizerQuote() {
 
   // Motor & Automation
   const MOTORS = [
-    { id: 'nice-240v', name: 'Italian Nice 240V Automation', cost: 1200, desc: 'Whisper quiet Italian reliability with 2 remotes' },
+    { id: 'centurion-d5', name: 'Centurion D5 Smart Automation', cost: 1200, desc: 'Ultra-fast smartphone app control & battery backup with 2 remotes' },
     { id: 'centurion-smart', name: 'Centurion D5 Smart High-Speed', cost: 1450, desc: 'Ultra-fast 36m/min opening + app diagnostic' },
     { id: 'solar-pro', name: 'Custom Solar Pro (100% Off-Grid)', cost: 1750, desc: 'Oversized solar panel + deep cycle battery bank' },
     { id: 'heavy-commercial', name: 'Heavy Duty 3-Phase Commercial', cost: 2200, desc: 'Continuous 100% duty cycle for 500+ ops/day' }
@@ -642,7 +642,7 @@ export default function GateVisualizerQuote() {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <span style={{ color: 'var(--text-muted)' }}>Motor:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{(MOTORS.find(m=>m.id===motor)?.name || 'Nice Automation').split(' ')[0]} {(MOTORS.find(m=>m.id===motor)?.name || '').split(' ')[1] || ''}</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{(MOTORS.find(m=>m.id===motor)?.name || 'Centurion Automation').split(' ')[0]} {(MOTORS.find(m=>m.id===motor)?.name || '').split(' ')[1] || ''}</span>
                 </div>
               </div>
 

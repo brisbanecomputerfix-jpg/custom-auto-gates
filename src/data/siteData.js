@@ -66,7 +66,7 @@ export const SERVICES = [
     highlights: [
       "Track & Cantilever (Trackless) configurations for all ground types",
       "Telescopic multi-panel systems for tight slide-back boundaries",
-      "Italian Nice & Centurion high-speed rack-and-pinion motors",
+      "Centurion D5/D10 Smart high-speed rack-and-pinion motors",
       "Heavy-duty marine-grade aluminium with anti-sag internal box frames",
       "Integrated safety infrared photo beams and auto-reverse sensing"
     ],
@@ -88,7 +88,7 @@ export const SERVICES = [
       "/images/swing-gates13.jpg"
     ],
     highlights: [
-      "Linear ram & articulated arm Italian automation motors",
+      "Linear ram & articulated arm commercial automation motors",
       "Inward or outward swinging with adjustable opening speeds",
       "Bi-fold fast folding mechanics for short driveway clearances",
       "Built-in mechanical stops and magnetic high-security lock integration",
@@ -114,7 +114,7 @@ export const SERVICES = [
       "Zero mains trenching costs — saves thousands on electrical installation",
       "High-efficiency monocrystalline solar panels with deep cycle battery banks",
       "Multi-day reserve power ensuring operation even during rainy weeks",
-      "Ultra-low standby power draw Italian & Centurion 12V/24V motors",
+      "Ultra-low standby power draw Centurion 12V/24V solar motors",
       "Compatible with long-range remotes, keypad entry, and 4G wireless intercoms"
     ],
     features: [
@@ -198,11 +198,11 @@ export const SERVICES = [
     heroImage: "/images/gate-motors.jpg",
     gallery: [
       "/images/gate-motors.jpg",
-      "/images/NICE-ERA-Wireless-Keypad.jpg",
-      "/images/Nice-PE-beams.jpg"
+      "/images/smart-wireless-keypad.jpg",
+      "/images/safety-pe-photo-beams.jpg"
     ],
     highlights: [
-      "Repair of Italian Nice, Centurion, BFT, ATA, FAAC, and Merlin gate motors",
+      "Repair of Centurion, BFT, ATA, Centsys, FAAC, and Merlin gate motors",
       "Track realignment, roller replacements, hinge welding, and chain replacements",
       "Replacement remote controls and wireless keypad programming",
       "Preventative maintenance service contracts for strata and commercial properties",
@@ -224,8 +224,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Australian-Made-Quality-.webp",
@@ -234,8 +234,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Brisbane-QLD-Service-Areas.webp",
@@ -244,8 +244,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Yamanto-Custom-Laser-Cut-Slide-Gate.webp",
@@ -254,8 +254,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Yamanto, Ipswich",
     "finish": "Custom Laser-Cut Decorative Panel",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Yamanto, Ipswich. Features Custom Laser-Cut Decorative Panel with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Yamanto, Ipswich. Features Custom Laser-Cut Decorative Panel with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Karalee-Rocklea-Style-P.A-Gate.webp",
@@ -284,8 +284,8 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Nice Toona / Centurion Linear Ram",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Nice Toona / Centurion Linear Ram, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion Vantage 500 Linear Ram",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion Vantage 500 Linear Ram, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Greenslopes-Springfield-Ironstone-Dual-Swing.webp",
@@ -294,8 +294,8 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Greenslopes, Brisbane",
     "finish": "Ironstone Dual Tone Powdercoat",
-    "motor": "Nice Wingo 3524 Linear Actuators",
-    "description": "Custom engineered in our Yamanto workshop for property in Greenslopes, Brisbane. Features Ironstone Dual Tone Powdercoat with Nice Wingo 3524 Linear Actuators, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion Vantage 400 Linear Actuators",
+    "description": "Custom engineered in our Yamanto workshop for property in Greenslopes, Brisbane. Features Ironstone Dual Tone Powdercoat with Centurion Vantage 400 Linear Actuators, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "CLEVELAND-Automated-Sliding-Gate-Springwood-Design-White.webp",
@@ -304,8 +304,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Cleveland, Redland Bay",
     "finish": "Surfmist White Architectural Powdercoat",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Cleveland, Redland Bay. Features Surfmist White Architectural Powdercoat with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Cleveland, Redland Bay. Features Surfmist White Architectural Powdercoat with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "GateProCharacter2-white-shirt-scaled.webp",
@@ -314,8 +314,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "male-technician-smiling.webp",
@@ -324,8 +324,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "CUSTOM-DESIGN.webp",
@@ -334,8 +334,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "PREMIUM-QUALITY.webp",
@@ -344,8 +344,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "EFFORTLESS-CONVENIENCE.webp",
@@ -354,8 +354,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "ULTIMATE-SECURITY.webp",
@@ -374,8 +374,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "PROFESSIONAL-INSTALLATION-blue.png",
@@ -384,8 +384,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "CUSTOM-DESIGN-blue.png",
@@ -394,8 +394,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "PROFESSIONAL-INSTALLATION-blue.jpg",
@@ -404,8 +404,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "CUSTOM-DESIGN-blue.jpg",
@@ -414,8 +414,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "male-technician-smiling.jpg",
@@ -424,8 +424,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "male-technician.jpg",
@@ -434,8 +434,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Redbank-Plains-Springfield-Frontage-with-20-MM-Gap-in-Basalt-with-Timber-Look-Posts.webp",
@@ -444,8 +444,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Yamanto-Custom-Laser-Cut-Slide-Gate-1.png",
@@ -454,8 +454,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Yamanto, Ipswich",
     "finish": "Custom Laser-Cut Decorative Panel",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Yamanto, Ipswich. Features Custom Laser-Cut Decorative Panel with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Yamanto, Ipswich. Features Custom Laser-Cut Decorative Panel with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Karalee-Rocklea-Style-P.A-Gate.png",
@@ -484,8 +484,8 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Nice Toona / Centurion Linear Ram",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Nice Toona / Centurion Linear Ram, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion Vantage 500 Linear Ram",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion Vantage 500 Linear Ram, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Greenslopes-Springfield-Ironstone-Dual-Swing.png",
@@ -494,8 +494,8 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Greenslopes, Brisbane",
     "finish": "Ironstone Dual Tone Powdercoat",
-    "motor": "Nice Wingo 3524 Linear Actuators",
-    "description": "Custom engineered in our Yamanto workshop for property in Greenslopes, Brisbane. Features Ironstone Dual Tone Powdercoat with Nice Wingo 3524 Linear Actuators, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion Vantage 400 Linear Actuators",
+    "description": "Custom engineered in our Yamanto workshop for property in Greenslopes, Brisbane. Features Ironstone Dual Tone Powdercoat with Centurion Vantage 400 Linear Actuators, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "CLEVELAND-Automated-Sliding-Gate-Springwood-Design-White.png",
@@ -504,8 +504,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Cleveland, Redland Bay",
     "finish": "Surfmist White Architectural Powdercoat",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Cleveland, Redland Bay. Features Surfmist White Architectural Powdercoat with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Cleveland, Redland Bay. Features Surfmist White Architectural Powdercoat with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "WULKURAKA-sliding-gate-and-p.a-gate.webp",
@@ -514,8 +514,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Upper-Mount-Gravatt-Aluminium-Automated-Sliding-Gate-Brookfield-Design-.webp",
@@ -524,8 +524,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Riverview-Lapped-Timber-Frontage-with-Automated-Slide-Gate.webp",
@@ -534,8 +534,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "River-Hill-Lapped-Timber-Frontage-with-Automated-Slide-Gate.webp",
@@ -544,8 +544,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "River Hills, Brisbane West",
     "finish": "DecoWood Western Red Cedar Look",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in River Hills, Brisbane West. Features DecoWood Western Red Cedar Look with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in River Hills, Brisbane West. Features DecoWood Western Red Cedar Look with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "REDHILL-Auto-Slide-Gate-PA-Gate.webp",
@@ -554,8 +554,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Milton-Springfield-10-MM-Gap-Satin-Black-Dual-Swing.webp",
@@ -564,8 +564,8 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Nice Toona / Centurion Linear Ram",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Nice Toona / Centurion Linear Ram, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion Vantage 500 Linear Ram",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion Vantage 500 Linear Ram, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Ipswich-Automated-Slide-Gate-P.A-Dual-Swings.webp",
@@ -574,8 +574,8 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Nice Toona / Centurion Linear Ram",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Nice Toona / Centurion Linear Ram, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion Vantage 500 Linear Ram",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion Vantage 500 Linear Ram, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Camp-Hill-Aluminium-Automated-Sliding-Gate-Windspray.webp",
@@ -584,8 +584,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Camp Hill, Brisbane",
     "finish": "Windspray Grey Powdercoat",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Camp Hill, Brisbane. Features Windspray Grey Powdercoat with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Camp Hill, Brisbane. Features Windspray Grey Powdercoat with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Bundamba-Aluminium-Sliding-Gate.webp",
@@ -594,8 +594,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Brookefield-Auto-sliding-gate-PA-gate.webp",
@@ -604,8 +604,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "BELMONT-Telescopic-Sliding-Gate-Horizontal-Slat-Monument-with-Matching-Pedestrian-Gate.3.webp",
@@ -614,8 +614,8 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "banner.webp",
@@ -624,8 +624,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "PROFESSIONAL-INSTALLATION.png",
@@ -634,8 +634,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "CUSTOM-DESIGN.png",
@@ -644,8 +644,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-Instagram-Post-45.jpg",
@@ -654,8 +654,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "ULTIMATE-SECURITY.jpg",
@@ -674,8 +674,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "EFFORTLESS-CONVENIENCE.jpg",
@@ -684,8 +684,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Australian-Made-Quality-2.jpg",
@@ -694,8 +694,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Australian-Made-Quality.jpg",
@@ -704,8 +704,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Professional-Installation.webp",
@@ -714,8 +714,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "5000-Happy-Families.webp",
@@ -724,8 +724,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "gates-and-fencingIMG_7346.webp",
@@ -734,8 +734,8 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "gates-and-fencingIMG_6874.webp",
@@ -744,8 +744,8 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "gate.webp",
@@ -754,8 +754,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "swing-gates.webp",
@@ -764,8 +764,8 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Nice Toona / Centurion Linear Ram",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Nice Toona / Centurion Linear Ram, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion Vantage 500 Linear Ram",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion Vantage 500 Linear Ram, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "solar-gates.webp",
@@ -784,8 +784,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "security-fencing.webp",
@@ -804,8 +804,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "gate-motors.webp",
@@ -814,8 +814,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "gate-automation.webp",
@@ -824,8 +824,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "commercial-gates.webp",
@@ -844,8 +844,8 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "gate-automation.png",
@@ -854,8 +854,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "aluminum-fencing.jpg",
@@ -864,8 +864,8 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "security-fencing.jpg",
@@ -884,8 +884,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "gate-motors.jpg",
@@ -894,8 +894,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "solar-gates.jpg",
@@ -924,8 +924,8 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Nice Toona / Centurion Linear Ram",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Nice Toona / Centurion Linear Ram, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion Vantage 500 Linear Ram",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion Vantage 500 Linear Ram, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-2200-x-830-px.jpg",
@@ -934,8 +934,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-1600-x-820-px-2.jpg",
@@ -944,8 +944,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-1600-x-820-px-1.jpg",
@@ -954,8 +954,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-1600-x-820-px.jpg",
@@ -964,8 +964,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "4.svg",
@@ -974,8 +974,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "3.svg",
@@ -984,8 +984,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "2.svg",
@@ -994,8 +994,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "3.png",
@@ -1004,8 +1004,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "2.png",
@@ -1014,8 +1014,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "1.png",
@@ -1024,8 +1024,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "SamFinchGates-32.jpg",
@@ -1034,8 +1034,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-2200-x-830-px-1-scaled.jpg",
@@ -1044,8 +1044,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Need-Assistance-Were-here-for-you-4.jpg",
@@ -1054,8 +1054,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-design.mp4",
@@ -1064,8 +1064,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "244479862_2967542013559648_5841129152015725762_n-2.jpg",
@@ -1074,8 +1074,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "164405009_2825935157720335_2815204527021495289_n-1.jpg",
@@ -1084,8 +1084,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "1-1.jpg",
@@ -1094,8 +1094,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "434299467_861965892610424_2556695232572143965_n-1.jpg",
@@ -1104,8 +1104,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "422192364_820739326733081_8771292463020946930_n.jpg",
@@ -1114,8 +1114,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "329518869_1328679527923976_5413407283011544898_n-1.jpg",
@@ -1124,8 +1124,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "327607752_1347753386000494_3928915057429206180_n-1.jpg",
@@ -1134,8 +1134,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "244479862_2967542013559648_5841129152015725762_n-1.jpg",
@@ -1144,8 +1144,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "193008468_2873597436287440_5499199513842302261_n-1.jpg",
@@ -1154,8 +1154,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "434299467_861965892610424_2556695232572143965_n.jpg",
@@ -1164,8 +1164,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "1.jpg",
@@ -1174,8 +1174,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "193008468_2873597436287440_5499199513842302261_n.jpg",
@@ -1184,8 +1184,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "164405009_2825935157720335_2815204527021495289_n.jpg",
@@ -1194,8 +1194,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "327607752_1347753386000494_3928915057429206180_n.jpg",
@@ -1204,8 +1204,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "244479862_2967542013559648_5841129152015725762_n.jpg",
@@ -1214,8 +1214,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-2200-x-830-px.jpg",
@@ -1224,8 +1224,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-design-8.jpg",
@@ -1234,8 +1234,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-design-7.jpg",
@@ -1244,8 +1244,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-design-6.jpg",
@@ -1254,8 +1254,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-design-5.jpg",
@@ -1264,8 +1264,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-design-4.jpg",
@@ -1274,8 +1274,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Untitled-design-3.jpg",
@@ -1284,8 +1284,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "transparent.png",
@@ -1294,8 +1294,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Weather-Resistance.svg",
@@ -1304,8 +1304,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Emergency-Access.svg",
@@ -1314,8 +1314,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Pedestrian-Safety.svg",
@@ -1324,8 +1324,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Impact-Resistance.svg",
@@ -1334,8 +1334,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "High-Visibility.svg",
@@ -1344,8 +1344,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Decorative-Bollards_.svg",
@@ -1354,8 +1354,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Automatic-Bollards_.svg",
@@ -1364,8 +1364,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Removable-Bollards_.svg",
@@ -1374,8 +1374,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Retractable-Bollards.svg",
@@ -1384,8 +1384,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Fixed-Bollards.svg",
@@ -1394,8 +1394,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Comprehensive-Solutions.svg",
@@ -1404,8 +1404,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Ideal-for-Various-Locations.svg",
@@ -1414,8 +1414,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Versatility.svg",
@@ -1424,8 +1424,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "High-Security.svg",
@@ -1444,8 +1444,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "image-3-scaled.jpg",
@@ -1454,8 +1454,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "image_50394881-scaled.jpg",
@@ -1464,8 +1464,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "image_67192833-scaled.jpg",
@@ -1474,8 +1474,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "image_67203841-scaled.jpg",
@@ -1484,8 +1484,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "image_50444033-scaled.jpg",
@@ -1494,8 +1494,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "IMG_3184-scaled.jpg",
@@ -1504,8 +1504,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "roger-boom-gate.png",
@@ -1514,8 +1514,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Aluminum-Durability-and-Lifespan.jpg",
@@ -1524,8 +1524,8 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Extending-the-Life-of-Aluminum.jpg",
@@ -1534,8 +1534,8 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Maximizing-Aluminum-Lifespan.jpg",
@@ -1544,8 +1544,8 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Modern-Security-Fence-Design.jpg",
@@ -1574,8 +1574,8 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Determining-Security-Fence-Height.jpg",
@@ -1614,8 +1614,8 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Residential-Custom-Aluminum-Gates.jpg",
@@ -1624,8 +1624,8 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Custom-Designed-Aluminum-Gates.jpg",
@@ -1634,8 +1634,8 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "Elegant-Custom-Aluminum-Gates.jpg",
@@ -1644,8 +1644,8 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane & SE QLD",
     "finish": "Satin Black Powdercoat (Dulux)",
-    "motor": "Italian Nice Robus 500 Hi-Speed",
-    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Italian Nice Robus 500 Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
+    "motor": "Centurion D5 Smart Hi-Speed",
+    "description": "Custom engineered in our Yamanto workshop for property in Brisbane & SE QLD. Features Satin Black Powdercoat (Dulux) with Centurion D5 Smart Hi-Speed, integrated photo-beam safety sensors, and 10-year factory structural warranty."
   },
   {
     "id": "security-fencing-options.jpg",
@@ -1674,7 +1674,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1684,7 +1684,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1694,7 +1694,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1704,7 +1704,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1714,7 +1714,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1724,7 +1724,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1734,7 +1734,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1744,7 +1744,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1754,7 +1754,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1764,7 +1764,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1774,7 +1774,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1784,7 +1784,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1794,7 +1794,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1804,7 +1804,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1814,7 +1814,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1824,7 +1824,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1834,7 +1834,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1844,7 +1844,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1854,7 +1854,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1864,7 +1864,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1874,7 +1874,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1884,7 +1884,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1894,7 +1894,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1904,7 +1904,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1914,7 +1914,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1924,7 +1924,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1934,7 +1934,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1944,7 +1944,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1954,7 +1954,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1964,7 +1964,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1974,7 +1974,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1984,7 +1984,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -1994,7 +1994,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2004,7 +2004,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2014,7 +2014,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2024,7 +2024,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2034,7 +2034,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2044,7 +2044,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2054,7 +2054,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2064,7 +2064,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2074,7 +2074,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2084,7 +2084,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2094,7 +2094,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2104,7 +2104,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2114,7 +2114,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2124,7 +2124,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2134,7 +2134,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2144,7 +2144,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2154,7 +2154,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2164,7 +2164,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2174,7 +2174,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2184,7 +2184,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2194,7 +2194,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2204,7 +2204,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2214,7 +2214,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2224,7 +2224,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2234,7 +2234,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2244,7 +2244,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2254,7 +2254,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2264,7 +2264,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2274,7 +2274,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2284,7 +2284,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2294,7 +2294,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2304,7 +2304,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2314,7 +2314,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2324,7 +2324,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2334,7 +2334,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2344,7 +2344,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2354,7 +2354,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2364,7 +2364,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2374,7 +2374,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2384,7 +2384,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2394,7 +2394,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2404,7 +2404,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2414,7 +2414,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2424,7 +2424,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2434,7 +2434,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2444,7 +2444,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2454,7 +2454,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2464,7 +2464,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2474,7 +2474,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2484,7 +2484,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2494,7 +2494,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2504,7 +2504,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2514,7 +2514,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2524,7 +2524,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2534,7 +2534,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2544,7 +2544,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2554,7 +2554,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2564,7 +2564,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2574,7 +2574,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2584,7 +2584,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2594,7 +2594,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2604,7 +2604,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2614,7 +2614,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2624,7 +2624,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2634,7 +2634,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2644,7 +2644,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2654,7 +2654,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2664,7 +2664,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2674,7 +2674,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2684,7 +2684,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2694,7 +2694,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2704,7 +2704,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2714,7 +2714,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2724,7 +2724,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2734,7 +2734,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2744,7 +2744,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2754,7 +2754,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2764,7 +2764,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2774,7 +2774,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2784,7 +2784,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2794,7 +2794,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2804,7 +2804,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2814,7 +2814,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2824,7 +2824,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2834,7 +2834,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2844,7 +2844,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2854,7 +2854,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2864,7 +2864,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2874,7 +2874,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2884,7 +2884,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2894,7 +2894,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2904,7 +2904,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2914,7 +2914,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2924,7 +2924,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2934,7 +2934,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2944,7 +2944,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2954,7 +2954,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2964,7 +2964,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2974,7 +2974,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2984,7 +2984,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -2994,7 +2994,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3004,7 +3004,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3014,7 +3014,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3024,7 +3024,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3034,7 +3034,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3044,7 +3044,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3054,7 +3054,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3064,7 +3064,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3074,7 +3074,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3084,7 +3084,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3094,7 +3094,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3104,7 +3104,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3114,7 +3114,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3124,7 +3124,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3134,7 +3134,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3144,7 +3144,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3154,7 +3154,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3164,7 +3164,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3174,7 +3174,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3184,7 +3184,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3194,7 +3194,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3204,7 +3204,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3214,7 +3214,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3224,7 +3224,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3234,7 +3234,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3244,7 +3244,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3254,7 +3254,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3264,7 +3264,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3274,7 +3274,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3284,7 +3284,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3294,7 +3294,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3304,7 +3304,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3314,7 +3314,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3324,7 +3324,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3334,7 +3334,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3344,7 +3344,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3354,7 +3354,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3364,7 +3364,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3374,7 +3374,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3384,7 +3384,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3394,7 +3394,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3404,7 +3404,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3414,7 +3414,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3424,7 +3424,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3434,7 +3434,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3444,7 +3444,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3454,7 +3454,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3464,7 +3464,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3474,7 +3474,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3484,7 +3484,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3494,7 +3494,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3504,7 +3504,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3514,7 +3514,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3524,7 +3524,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3534,7 +3534,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3544,7 +3544,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3554,7 +3554,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3564,7 +3564,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3574,7 +3574,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3584,7 +3584,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3594,7 +3594,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3604,7 +3604,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3614,7 +3614,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3624,7 +3624,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3634,7 +3634,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3644,7 +3644,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3654,7 +3654,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3664,7 +3664,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3674,7 +3674,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3684,7 +3684,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3694,7 +3694,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3704,7 +3704,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3714,7 +3714,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3724,7 +3724,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3734,7 +3734,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3744,7 +3744,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3754,7 +3754,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3764,27 +3764,27 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
-    "id": "NICE-BATTERY-BACK-UP-AND-GARAGE-CONVERSION-KIT.jpg",
-    "url": "/images/NICE-BATTERY-BACK-UP-AND-GARAGE-CONVERSION-KIT.jpg",
+    "id": "battery-backup-conversion-kit.jpg",
+    "url": "/images/battery-backup-conversion-kit.jpg",
     "title": "Custom Automated Sliding Gate Build",
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
-    "id": "NICE-ERA-Wireless-Keypad.jpg",
-    "url": "/images/NICE-ERA-Wireless-Keypad.jpg",
+    "id": "smart-wireless-keypad.jpg",
+    "url": "/images/smart-wireless-keypad.jpg",
     "title": "Custom Automated Sliding Gate Build",
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3794,7 +3794,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3804,7 +3804,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3814,7 +3814,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3824,7 +3824,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3834,17 +3834,17 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
-    "id": "Nice-PE-beams.jpg",
-    "url": "/images/Nice-PE-beams.jpg",
+    "id": "safety-pe-photo-beams.jpg",
+    "url": "/images/safety-pe-photo-beams.jpg",
     "title": "Custom Automated Sliding Gate Build",
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3854,7 +3854,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3864,7 +3864,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3874,7 +3874,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3884,7 +3884,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3894,7 +3894,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3904,7 +3904,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3914,7 +3914,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3924,7 +3924,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3934,7 +3934,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3944,7 +3944,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3954,7 +3954,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3964,7 +3964,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3974,7 +3974,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3984,7 +3984,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -3994,7 +3994,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4004,7 +4004,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4014,7 +4014,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4024,7 +4024,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4034,7 +4034,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4044,7 +4044,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4054,7 +4054,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4064,7 +4064,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4074,7 +4074,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4084,7 +4084,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4094,7 +4094,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4104,7 +4104,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4114,7 +4114,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4124,7 +4124,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4134,7 +4134,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4144,7 +4144,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4154,7 +4154,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4164,7 +4164,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4174,7 +4174,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4184,7 +4184,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4194,7 +4194,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4204,7 +4204,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4214,7 +4214,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4224,7 +4224,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4234,7 +4234,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4244,7 +4244,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4254,7 +4254,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4264,7 +4264,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4274,7 +4274,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4284,7 +4284,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4294,7 +4294,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4304,7 +4304,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4314,7 +4314,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4324,7 +4324,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4334,7 +4334,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4344,7 +4344,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4354,7 +4354,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4364,7 +4364,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4374,7 +4374,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4384,7 +4384,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4394,7 +4394,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4404,7 +4404,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4414,7 +4414,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4424,7 +4424,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4434,7 +4434,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4444,7 +4444,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4454,7 +4454,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4464,7 +4464,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4474,7 +4474,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4484,7 +4484,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4494,7 +4494,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4504,7 +4504,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4514,7 +4514,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4524,7 +4524,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4534,7 +4534,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4544,7 +4544,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4554,7 +4554,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4564,7 +4564,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4574,7 +4574,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4584,7 +4584,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4594,7 +4594,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4604,7 +4604,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4614,7 +4614,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4624,7 +4624,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4634,7 +4634,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4644,7 +4644,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4654,7 +4654,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4664,7 +4664,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4674,7 +4674,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4684,7 +4684,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4694,7 +4694,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4704,7 +4704,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4714,7 +4714,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4724,7 +4724,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4734,7 +4734,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4744,7 +4744,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4754,7 +4754,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4764,7 +4764,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4774,7 +4774,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4784,7 +4784,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4794,7 +4794,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4804,7 +4804,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4814,7 +4814,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4824,7 +4824,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4834,7 +4834,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4844,7 +4844,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4854,7 +4854,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4864,7 +4864,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4874,7 +4874,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4884,7 +4884,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4894,7 +4894,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4904,7 +4904,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4914,7 +4914,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4924,7 +4924,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4934,7 +4934,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4944,7 +4944,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4954,7 +4954,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4964,7 +4964,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4974,7 +4974,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4984,7 +4984,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -4994,7 +4994,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5004,7 +5004,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5014,7 +5014,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5024,7 +5024,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5034,7 +5034,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5044,7 +5044,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5054,7 +5054,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5064,7 +5064,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5074,7 +5074,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5084,7 +5084,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5094,7 +5094,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5104,7 +5104,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5114,7 +5114,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5124,7 +5124,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5134,7 +5134,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5144,7 +5144,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5154,7 +5154,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5164,7 +5164,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5174,7 +5174,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5184,7 +5184,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5194,7 +5194,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5204,7 +5204,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5214,7 +5214,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5224,7 +5224,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5234,7 +5234,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5244,7 +5244,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5254,7 +5254,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5264,7 +5264,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5274,7 +5274,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5284,7 +5284,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5294,7 +5294,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5304,7 +5304,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5314,7 +5314,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5324,7 +5324,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5334,7 +5334,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5344,7 +5344,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5354,7 +5354,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5364,7 +5364,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5374,7 +5374,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5384,7 +5384,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5394,7 +5394,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5404,7 +5404,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5414,7 +5414,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5424,7 +5424,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5434,7 +5434,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5444,7 +5444,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5454,7 +5454,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5464,7 +5464,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5474,7 +5474,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5484,7 +5484,7 @@ export const GALLERY_ITEMS = [
     "category": "fencing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5494,7 +5494,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5504,7 +5504,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5514,7 +5514,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5524,7 +5524,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5534,7 +5534,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5544,7 +5544,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5554,7 +5554,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5564,7 +5564,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5574,7 +5574,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5584,7 +5584,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5594,7 +5594,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5604,7 +5604,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5614,7 +5614,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5624,7 +5624,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5634,7 +5634,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5644,7 +5644,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5654,7 +5654,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5664,7 +5664,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5674,7 +5674,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5684,7 +5684,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5694,7 +5694,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5704,7 +5704,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5714,7 +5714,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5724,7 +5724,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5734,7 +5734,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5744,7 +5744,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5754,7 +5754,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5764,7 +5764,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5774,7 +5774,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5784,7 +5784,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5794,7 +5794,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5804,7 +5804,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5814,7 +5814,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5824,7 +5824,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5834,7 +5834,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5844,7 +5844,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5854,7 +5854,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5864,7 +5864,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5874,7 +5874,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5884,7 +5884,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5894,7 +5894,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5904,7 +5904,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5914,7 +5914,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5924,7 +5924,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5934,7 +5934,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5944,7 +5944,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5954,7 +5954,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5964,7 +5964,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5974,7 +5974,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5984,7 +5984,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -5994,7 +5994,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6004,7 +6004,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6014,7 +6014,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6024,7 +6024,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6034,7 +6034,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6044,7 +6044,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6054,7 +6054,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6064,7 +6064,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6074,7 +6074,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6084,7 +6084,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6094,7 +6094,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6104,7 +6104,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6114,7 +6114,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6124,7 +6124,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6134,7 +6134,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6144,7 +6144,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6154,7 +6154,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6164,7 +6164,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6174,7 +6174,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6184,7 +6184,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6194,7 +6194,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6204,7 +6204,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6214,7 +6214,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6224,7 +6224,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6234,7 +6234,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6244,7 +6244,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6254,7 +6254,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6264,7 +6264,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6274,7 +6274,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6284,7 +6284,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6294,7 +6294,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6304,7 +6304,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6314,7 +6314,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6324,7 +6324,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6334,7 +6334,7 @@ export const GALLERY_ITEMS = [
     "category": "solar",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6344,7 +6344,7 @@ export const GALLERY_ITEMS = [
     "category": "solar",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6354,7 +6354,7 @@ export const GALLERY_ITEMS = [
     "category": "solar",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6364,7 +6364,7 @@ export const GALLERY_ITEMS = [
     "category": "solar",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6374,7 +6374,7 @@ export const GALLERY_ITEMS = [
     "category": "solar",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6384,7 +6384,7 @@ export const GALLERY_ITEMS = [
     "category": "solar",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6394,7 +6394,7 @@ export const GALLERY_ITEMS = [
     "category": "solar",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6404,7 +6404,7 @@ export const GALLERY_ITEMS = [
     "category": "solar",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6414,7 +6414,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6424,7 +6424,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6434,7 +6434,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6444,7 +6444,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6454,7 +6454,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6464,7 +6464,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6474,7 +6474,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6484,7 +6484,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6494,7 +6494,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6504,7 +6504,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6514,7 +6514,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6524,7 +6524,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6534,7 +6534,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6544,7 +6544,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6554,7 +6554,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6564,7 +6564,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6574,7 +6574,7 @@ export const GALLERY_ITEMS = [
     "category": "swing",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6584,7 +6584,7 @@ export const GALLERY_ITEMS = [
     "category": "commercial",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6594,7 +6594,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   },
   {
@@ -6604,7 +6604,7 @@ export const GALLERY_ITEMS = [
     "category": "sliding",
     "location": "Brisbane / Ipswich / Gold Coast",
     "finish": "Architectural Powdercoated Aluminium",
-    "motor": "Italian Nice / Centurion Smart Automation",
+    "motor": "Centurion Smart Gate Automation",
     "description": "Custom fabricated in our Yamanto workshop. Features heavy-duty marine-grade aluminium box framing, whisper-quiet motor operation, and full 10-year structural warranty."
   }
 ];
@@ -6621,8 +6621,8 @@ export const WHY_US_POINTS = [
     icon: "ShieldCheck"
   },
   {
-    title: "Premium Italian & High-Speed Motors",
-    desc: "Authorized installers for industry-leading Nice, Centurion, and BFT automation systems with manufacturer warranties.",
+    title: "Commercial-Grade High-Speed Motors",
+    desc: "Authorized installers for industry-leading Centurion, BFT, and commercial automation systems with manufacturer warranties.",
     icon: "Cpu"
   },
   {
@@ -6644,13 +6644,13 @@ export const WHY_US_POINTS = [
 
 export const MOTOR_BRANDS = [
   {
-    name: "Nice Italy Automation",
-    badge: "Premium European",
-    desc: "World-renowned Italian engineering known for whisper-quiet operation, sleek aesthetics, and extreme reliability.",
-    speed: "Up to 24m/min",
+    name: "Centurion Vantage Swing Series",
+    badge: "Linear Ram Precision",
+    desc: "Heavy-duty linear arm automation designed for robust double and single swing gates with soft-stop control.",
+    speed: "14-18 sec opening",
     warranty: "3 Years",
-    bestFor: "Luxury residential sliding & swing gates",
-    features: ["BlueBUS 2-wire technology", "Obstacle detection", "Battery backup ready", "Smartphone integration"]
+    bestFor: "Residential & acreage architectural swing gates",
+    features: ["Heavy-duty stainless shaft", "Internal limit switches", "Solar & battery backup ready", "Smartphone control"]
   },
   {
     name: "Centurion D5 Smart / D10",
@@ -6687,7 +6687,7 @@ export const TESTIMONIALS = [
     suburb: "Brookwater, QLD",
     rating: 5,
     gateType: "Automatic Slat Sliding Gate (Monument)",
-    text: "From our first consultation to the final installation, the Custom Auto Gates team were exceptional. Having the gate custom built in their Yamanto workshop meant the fit was 100% millimeter-perfect for our sloping driveway. The Nice motor is whisper-quiet and opening it from our phones is a game changer!"
+    text: "From our first consultation to the final installation, the Custom Auto Gates team were exceptional. Having the gate custom built in their Yamanto workshop meant the fit was 100% millimeter-perfect for our sloping driveway. The Centurion motor is whisper-quiet and opening it from our phones is a game changer!"
   },
   {
     name: "David H.",
@@ -6727,7 +6727,7 @@ export const FAQS = [
   },
   {
     q: "What happens if there is a power outage?",
-    a: "All our electric gate systems include an emergency manual release key that allows you to disengage the motor and easily open the gate by hand in seconds. Furthermore, most of our Nice and Centurion motor systems come standard with battery backup to keep running automatically during blackouts."
+    a: "All our electric gate systems include an emergency manual release key that allows you to disengage the motor and easily open the gate by hand in seconds. Furthermore, most of our Centurion motor systems come standard with battery backup to keep running automatically during blackouts."
   },
   {
     q: "Can I open and monitor my gate from my smartphone?",

@@ -11,7 +11,7 @@ A modern, high-performance, light & bright web application for **Custom Auto Gat
 - 🧮 **Live Interactive Custom Gate Estimator**: 5-step custom gate configurator with dynamic price calculation (sliding, swing, solar, slat fencing, motor options, and Colorbond finishes).
 - 🖼️ **630+ Real Project Gallery**: Filterable photo gallery with real-time suburb search, lightbox modal, and technical specifications.
 - 🏭 **Why Factory Direct Comparison**: Direct value proposition comparison table between in-house Yamanto manufacturing vs. middleman resellers.
-- ⚙️ **Motors & Automation Hardware**: Full hardware comparison for Italian Nice (Robus 500HS, Run 1800), Centurion D5/D10 Smart, and Solar Pro off-grid systems.
+- ⚙️ **Motors & Automation Hardware**: Full hardware comparison for Centurion D5/D10/D20 Smart, Vantage Series, and Solar Pro off-grid systems.
 - 📍 **Brisbane Inner Suburbs & SE QLD Service Area Checker**: Interactive suburb lookup covering Brisbane Inner Suburbs, Northside, Southside, Ipswich, Logan, and Gold Coast.
 - 🛠️ **DIY Emergency Troubleshooting Guide**: Interactive diagnostic steps for power outages, manual motor release, sensor beams, and remotes.
 - 📅 **Free On-Site Laser Measure Booking System**: Multi-step booking form with instant confirmation.
@@ -56,7 +56,7 @@ custom-auto-gates/
 │   │   ├── ServicesSection.jsx      # Tabbed gate category deep dive
 │   │   ├── WhyFactoryDirect.jsx     # Comparison table & 3D value badges
 │   │   ├── ProjectGallery.jsx       # 630+ image gallery with search & lightbox
-│   │   ├── MotorShowcase.jsx        # Italian Nice & Centurion automation specs
+│   │   ├── MotorShowcase.jsx        # Centurion & Smart automation specs
 │   │   ├── ServiceAreaChecker.jsx   # Suburb coverage & instant postcode checker
 │   │   ├── ReviewsSection.jsx       # 5-Star customer testimonials
 │   │   ├── FaqSection.jsx           # Accordion FAQ

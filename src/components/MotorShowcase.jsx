@@ -24,7 +24,7 @@ export default function MotorShowcase({ onOpenQuote }) {
             Premium Automation Hardware
           </span>
           <h2 className="section-title">
-            Italian Nice & Centurion Motors <br />
+            Centurion Smart & Commercial Motors <br />
             <span className="gradient-text-gold">Engineered for Rapid, Whisper-Quiet Operation</span>
           </h2>
           <p className="section-subtitle">
