@@ -108,9 +108,9 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
                 {currentService.shortDesc}
               </p>
 
-              {/* Highlights Checklist */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.5rem' }}>
-                {currentService.highlights.map((point, idx) => (
+              {/* Highlights Checklist - 3 Crisp Points */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.5rem' }}>
+                {currentService.highlights.slice(0, 3).map((point, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
                     <CheckCircle2 size={16} style={{ color: 'var(--accent-emerald)', flexShrink: 0, marginTop: '3px' }} />
                     <span style={{ color: 'var(--text-main)', fontSize: '0.88rem', fontWeight: '500' }}>{point}</span>
@@ -118,35 +118,34 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
                 ))}
               </div>
 
-              {/* CTA Action Buttons */}
-              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              {/* CTA Action Buttons & Subpage Link */}
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
                 <button
                   onClick={() => onConfigureGate && onConfigureGate(currentService.id)}
                   className="btn btn-gold btn-md"
-                  style={{ flex: '1 1 auto' }}
+                  style={{ flex: '1 1 auto', fontWeight: '800' }}
                 >
-                  <Sliders size={17} />
-                  Configure This Gate Style
+                  <Sliders size={16} />
+                  Configure Style in 3D
                 </button>
                 <button
                   onClick={onOpenContact}
                   className="btn btn-outline-dark btn-md"
                   style={{ flex: '1 1 auto' }}
                 >
-                  Request Consultation
+                  Book Site Measure
                 </button>
               </div>
             </div>
 
-            {/* Right: High-Res Real Imagery Collage */}
+            {/* Right: High-Res Real Imagery Showcase */}
             <div>
               <div style={{
                 position: 'relative',
                 borderRadius: '16px',
                 overflow: 'hidden',
                 boxShadow: 'var(--shadow-lg)',
-                marginBottom: '0.85rem',
-                border: '1px solid var(--border-light)'
+                border: '1.5px solid var(--border-light)'
               }}>
                 <img
                   src={currentService.heroImage || currentService.image}
@@ -154,7 +153,7 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
                   loading="lazy"
                   style={{
                     width: '100%',
-                    height: '250px',
+                    height: '260px',
                     objectFit: 'cover'
                   }}
                 />
@@ -164,63 +163,19 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
                   left: 0,
                   right: 0,
                   background: 'linear-gradient(to top, rgba(9,14,26,0.92) 0%, transparent 100%)',
-                  padding: '0.85rem 1rem',
+                  padding: '0.75rem 1rem',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
                   color: '#ffffff',
-                  fontSize: '0.82rem',
-                  fontWeight: '600'
+                  fontSize: '0.8rem',
+                  fontWeight: '700'
                 }}>
-                  Yamanto Workshop Fabrication Reference
+                  <span>Yamanto Factory Direct</span>
+                  <span style={{ color: 'var(--accent-gold)' }}>10-Yr Warranty</span>
                 </div>
               </div>
-
-              {/* Thumbnail Gallery Sub-strip */}
-              {currentService.gallery && currentService.gallery.length > 0 && (
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(3, 1fr)',
-                  gap: '0.5rem'
-                }}>
-                  {currentService.gallery.slice(0, 3).map((imgUrl, i) => (
-                    <div 
-                      key={i} 
-                      style={{ 
-                        height: '75px', 
-                        borderRadius: '8px', 
-                        overflow: 'hidden', 
-                        border: '1px solid var(--border-light)' 
-                      }}
-                    >
-                      <img 
-                        src={imgUrl} 
-                        alt={`${currentService.title} preview ${i}`} 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
-          </div>
-
-          {/* 3 Detailed Feature Explanations */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
-            gap: '1rem',
-            marginTop: '2rem',
-            paddingTop: '1.75rem',
-            borderTop: '1px solid var(--border-light)'
-          }}>
-            {currentService.features.map((feat, i) => (
-              <div key={i} style={{ padding: '1rem', background: 'var(--bg-card-subtle)', borderRadius: '12px', border: '1px solid var(--border-light)' }}>
-                <h4 style={{ fontSize: '0.98rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <span style={{ color: 'var(--accent-gold)' }}>•</span> {feat.title}
-                </h4>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', lineHeight: 1.5 }}>
-                  {feat.desc}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </div>

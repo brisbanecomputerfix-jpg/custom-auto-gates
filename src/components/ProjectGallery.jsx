@@ -155,7 +155,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
         {/* Gallery Image Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 270px), 1fr))',
           gap: '1.25rem',
           marginBottom: '2.5rem'
         }}>
@@ -171,47 +171,69 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
                 border: '1.5px solid var(--border-light)',
                 boxShadow: 'var(--shadow-sm)',
                 cursor: 'pointer',
-                aspectRatio: '4/3',
                 display: 'flex',
-                flexDirection: 'column'
+                flexDirection: 'column',
+                transition: 'transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease'
               }}
               className="gallery-card card-themed"
             >
-              {/* Image with progressive loading */}
-              <img
-                src={item.thumbUrl || item.url}
-                alt={item.title}
-                loading="lazy"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  transition: 'transform 0.35s ease'
-                }}
-              />
-
-              {/* Hover Badge Overlay */}
-              <div 
-                style={{
+              {/* Image container */}
+              <div style={{ position: 'relative', width: '100%', height: '190px', overflow: 'hidden' }}>
+                <img
+                  src={item.thumbUrl || item.url}
+                  alt={item.title}
+                  loading="lazy"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.35s ease'
+                  }}
+                />
+                <span style={{
                   position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(to top, rgba(9, 14, 26, 0.95) 0%, rgba(9, 14, 26, 0.2) 60%, transparent 100%)',
+                  top: '10px',
+                  right: '10px',
+                  background: 'rgba(9, 14, 26, 0.82)',
+                  backdropFilter: 'blur(8px)',
+                  color: 'var(--accent-gold)',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  borderRadius: '6px',
+                  padding: '0.2rem 0.55rem',
+                  fontSize: '0.72rem',
+                  fontWeight: '800',
                   display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'flex-end',
-                  padding: '1.1rem',
-                  color: '#ffffff'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.2rem' }}>
-                  <MapPin size={12} style={{ color: 'var(--accent-gold)' }} />
-                  <span style={{ fontSize: '0.72rem', color: 'var(--accent-gold)', fontWeight: '700', textTransform: 'uppercase' }}>
-                    {item.location}
-                  </span>
-                </div>
-                <h3 style={{ fontSize: '0.98rem', fontWeight: '700', color: '#ffffff', lineHeight: 1.3 }}>
+                  alignItems: 'center',
+                  gap: '0.3rem'
+                }}>
+                  <MapPin size={11} /> {item.suburb || item.location}
+                </span>
+              </div>
+
+              {/* Clean Caption Bar: "Gate Type, Suburb" */}
+              <div style={{
+                padding: '0.85rem 1rem',
+                background: 'var(--bg-card)',
+                borderTop: '1px solid var(--border-light)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.25rem',
+                flexGrow: 1,
+                justifyContent: 'space-between'
+              }}>
+                <h3 style={{
+                  fontSize: '0.92rem',
+                  fontWeight: '800',
+                  color: 'var(--text-heading)',
+                  margin: 0,
+                  lineHeight: 1.35
+                }}>
                   {item.title}
                 </h3>
+                <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.2rem' }}>
+                  <span>{item.finish ? item.finish.split(' ')[0] + ' ' + (item.finish.split(' ')[1] || '') : 'Dulux Coat'}</span>
+                  <span style={{ color: 'var(--accent-gold)', fontWeight: '700' }}>View Specs →</span>
+                </div>
               </div>
             </div>
           ))}
