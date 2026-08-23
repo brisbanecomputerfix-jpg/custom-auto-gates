@@ -18,18 +18,28 @@ COPY . .
 RUN npm run build
 
 # ==========================================
-# 2. Production Web Server Stage (Nginx)
+# 2. Production Full-Stack Server Stage (Node.js Express)
 # ==========================================
-FROM nginx:alpine
+FROM node:20-alpine
 
-# Copy custom Nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
-# Copy production build from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Copy package descriptors and install production dependencies
+COPY package*.json ./
+RUN npm install --omit=dev
 
-# Expose HTTP ports (both standard 80 and Coolify default 3000)
-EXPOSE 80 3000
+# Copy built frontend static assets
+COPY --from=builder /app/dist ./dist
 
-# Start Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+# Copy backend server code and environment files
+COPY server ./server
+COPY .env* ./
+
+ENV NODE_ENV=production
+ENV PORT=3000
+
+# Expose standard Coolify HTTP port
+EXPOSE 3000
+
+# Start unified Node.js Express server
+CMD ["node", "server/index.js"]

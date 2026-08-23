@@ -80,8 +80,8 @@ export default function QuickPayModal({ isOpen, onClose }) {
       position: 'fixed',
       inset: 0,
       zIndex: 9999,
-      backgroundColor: 'rgba(15, 23, 42, 0.8)',
-      backdropFilter: 'blur(6px)',
+      backgroundColor: 'var(--modal-overlay-bg)',
+      backdropFilter: 'blur(8px)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -89,19 +89,21 @@ export default function QuickPayModal({ isOpen, onClose }) {
       overflowY: 'auto',
     }}>
       <div style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: 'var(--bg-surface)',
         borderRadius: '1.25rem',
         maxWidth: '560px',
         width: '100%',
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.35)',
-        border: '1px solid rgba(226, 232, 240, 0.8)',
+        boxShadow: 'var(--shadow-xl)',
+        border: '1.5px solid var(--border-light)',
         overflow: 'hidden',
         position: 'relative',
         animation: 'fadeIn 0.25s ease-out',
+        color: 'var(--text-main)'
       }}>
         {/* Close button */}
         <button
           onClick={onClose}
+          aria-label="Close Payment Modal"
           style={{
             position: 'absolute',
             top: '1.25rem',
@@ -117,6 +119,7 @@ export default function QuickPayModal({ isOpen, onClose }) {
             cursor: 'pointer',
             color: '#ffffff',
             transition: 'all 0.2s',
+            zIndex: 10
           }}
           onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.3)'; }}
           onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'; }}
@@ -126,14 +129,15 @@ export default function QuickPayModal({ isOpen, onClose }) {
 
         {/* Modal Header */}
         <div style={{
-          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          background: 'linear-gradient(135deg, #090e1a 0%, #1e293b 100%)',
           color: '#ffffff',
           padding: '2rem 1.75rem',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.5rem' }}>
             <span style={{
-              backgroundColor: '#eab308',
-              color: '#0f172a',
+              backgroundColor: 'var(--accent-gold)',
+              color: '#090e1a',
               padding: '0.2rem 0.6rem',
               borderRadius: '9999px',
               fontSize: '0.75rem',
@@ -156,12 +160,12 @@ export default function QuickPayModal({ isOpen, onClose }) {
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleSubmit} style={{ padding: '1.75rem' }}>
+        <form onSubmit={handleSubmit} style={{ padding: '1.75rem', backgroundColor: 'var(--bg-surface)' }}>
           {errorMsg && (
             <div style={{
-              backgroundColor: '#fef2f2',
-              border: '1px solid #fecaca',
-              color: '#991b1b',
+              backgroundColor: 'rgba(239, 68, 68, 0.12)',
+              border: '1px solid rgba(239, 68, 68, 0.35)',
+              color: '#ef4444',
               padding: '0.85rem 1rem',
               borderRadius: '0.75rem',
               fontSize: '0.85rem',
@@ -171,13 +175,13 @@ export default function QuickPayModal({ isOpen, onClose }) {
               gap: '0.5rem',
             }}>
               <AlertCircle size={16} style={{ flexShrink: 0 }} />
-              <span>{errorMsg}</span>
+              <span style={{ fontWeight: '600' }}>{errorMsg}</span>
             </div>
           )}
 
           {/* Payment Purpose */}
           <div style={{ marginBottom: '1.25rem' }}>
-            <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: '#334155', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               Payment Purpose *
             </label>
             <select
@@ -187,10 +191,10 @@ export default function QuickPayModal({ isOpen, onClose }) {
                 width: '100%',
                 padding: '0.75rem 0.9rem',
                 borderRadius: '0.65rem',
-                border: '1px solid #cbd5e1',
+                border: '1.5px solid var(--input-border)',
                 fontSize: '0.9rem',
-                color: '#0f172a',
-                backgroundColor: '#f8fafc',
+                color: 'var(--input-text)',
+                backgroundColor: 'var(--input-bg)',
                 outline: 'none',
               }}
             >
@@ -203,35 +207,39 @@ export default function QuickPayModal({ isOpen, onClose }) {
 
           {/* Amount Selection */}
           <div style={{ marginBottom: '1.25rem' }}>
-            <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: '#334155', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               Select Amount (AUD) *
             </label>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem', marginBottom: '0.5rem' }}>
-              {['189', '500', '1000', 'custom'].map((amt) => (
-                <button
-                  key={amt}
-                  type="button"
-                  onClick={() => handleAmountSelect(amt)}
-                  style={{
-                    padding: '0.6rem 0.4rem',
-                    borderRadius: '0.5rem',
-                    border: formData.amount === amt ? '2px solid #eab308' : '1px solid #cbd5e1',
-                    backgroundColor: formData.amount === amt ? '#fefce8' : '#ffffff',
-                    color: formData.amount === amt ? '#854d0e' : '#334155',
-                    fontWeight: formData.amount === amt ? '800' : '600',
-                    fontSize: '0.85rem',
-                    cursor: 'pointer',
-                    transition: 'all 0.15s',
-                  }}
-                >
-                  {amt === 'custom' ? 'Custom' : `$${amt}`}
-                </button>
-              ))}
+              {['189', '500', '1000', 'custom'].map((amt) => {
+                const isSelected = formData.amount === amt;
+                return (
+                  <button
+                    key={amt}
+                    type="button"
+                    onClick={() => handleAmountSelect(amt)}
+                    style={{
+                      padding: '0.65rem 0.4rem',
+                      borderRadius: '0.5rem',
+                      border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
+                      backgroundColor: isSelected ? 'var(--badge-gold-bg)' : 'var(--bg-card-subtle)',
+                      color: isSelected ? 'var(--accent-gold)' : 'var(--text-heading)',
+                      fontWeight: isSelected ? '800' : '600',
+                      fontSize: '0.88rem',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s',
+                      boxShadow: isSelected ? '0 0 10px var(--accent-gold-glow)' : 'none'
+                    }}
+                  >
+                    {amt === 'custom' ? 'Custom' : `$${amt}`}
+                  </button>
+                );
+              })}
             </div>
 
             {formData.amount === 'custom' && (
               <div style={{ position: 'relative', marginTop: '0.5rem' }}>
-                <DollarSign size={16} style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+                <DollarSign size={16} style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
                 <input
                   type="number"
                   placeholder="Enter custom amount (e.g. 1250.00)"
@@ -243,9 +251,10 @@ export default function QuickPayModal({ isOpen, onClose }) {
                     width: '100%',
                     padding: '0.75rem 0.9rem 0.75rem 2.25rem',
                     borderRadius: '0.65rem',
-                    border: '1px solid #cbd5e1',
+                    border: '1.5px solid var(--input-border)',
                     fontSize: '0.95rem',
-                    color: '#0f172a',
+                    color: 'var(--input-text)',
+                    backgroundColor: 'var(--input-bg)',
                     outline: 'none',
                     boxSizing: 'border-box',
                   }}
@@ -257,7 +266,7 @@ export default function QuickPayModal({ isOpen, onClose }) {
 
           {/* Invoice / Reference Number */}
           <div style={{ marginBottom: '1.25rem' }}>
-            <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: '#334155', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               Quote / Invoice Reference (Optional)
             </label>
             <input
@@ -269,9 +278,10 @@ export default function QuickPayModal({ isOpen, onClose }) {
                 width: '100%',
                 padding: '0.75rem 0.9rem',
                 borderRadius: '0.65rem',
-                border: '1px solid #cbd5e1',
+                border: '1.5px solid var(--input-border)',
                 fontSize: '0.9rem',
-                color: '#0f172a',
+                color: 'var(--input-text)',
+                backgroundColor: 'var(--input-bg)',
                 outline: 'none',
                 boxSizing: 'border-box',
               }}
@@ -281,7 +291,7 @@ export default function QuickPayModal({ isOpen, onClose }) {
           {/* Customer Details Grid */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem', marginBottom: '1.25rem' }}>
             <div>
-              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: '#334155', marginBottom: '0.4rem' }}>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.4rem' }}>
                 Full Name *
               </label>
               <input
@@ -294,15 +304,17 @@ export default function QuickPayModal({ isOpen, onClose }) {
                   width: '100%',
                   padding: '0.75rem 0.85rem',
                   borderRadius: '0.65rem',
-                  border: '1px solid #cbd5e1',
+                  border: '1.5px solid var(--input-border)',
                   fontSize: '0.88rem',
+                  color: 'var(--input-text)',
+                  backgroundColor: 'var(--input-bg)',
                   outline: 'none',
                   boxSizing: 'border-box',
                 }}
               />
             </div>
             <div>
-              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: '#334155', marginBottom: '0.4rem' }}>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.4rem' }}>
                 Email (Tax Receipt) *
               </label>
               <input
@@ -315,8 +327,10 @@ export default function QuickPayModal({ isOpen, onClose }) {
                   width: '100%',
                   padding: '0.75rem 0.85rem',
                   borderRadius: '0.65rem',
-                  border: '1px solid #cbd5e1',
+                  border: '1.5px solid var(--input-border)',
                   fontSize: '0.88rem',
+                  color: 'var(--input-text)',
+                  backgroundColor: 'var(--input-bg)',
                   outline: 'none',
                   boxSizing: 'border-box',
                 }}
@@ -325,7 +339,7 @@ export default function QuickPayModal({ isOpen, onClose }) {
           </div>
 
           <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: '#334155', marginBottom: '0.4rem' }}>
+            <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.4rem' }}>
               Mobile Phone
             </label>
             <input
@@ -337,8 +351,10 @@ export default function QuickPayModal({ isOpen, onClose }) {
                 width: '100%',
                 padding: '0.75rem 0.85rem',
                 borderRadius: '0.65rem',
-                border: '1px solid #cbd5e1',
+                border: '1.5px solid var(--input-border)',
                 fontSize: '0.88rem',
+                color: 'var(--input-text)',
+                backgroundColor: 'var(--input-bg)',
                 outline: 'none',
                 boxSizing: 'border-box',
               }}
@@ -352,8 +368,8 @@ export default function QuickPayModal({ isOpen, onClose }) {
             style={{
               width: '100%',
               padding: '1rem',
-              backgroundColor: '#eab308',
-              color: '#0f172a',
+              backgroundColor: 'var(--accent-gold)',
+              color: '#090e1a',
               border: 'none',
               borderRadius: '0.75rem',
               fontWeight: '800',
@@ -363,12 +379,10 @@ export default function QuickPayModal({ isOpen, onClose }) {
               alignItems: 'center',
               justifyContent: 'center',
               gap: '0.5rem',
-              boxShadow: '0 4px 14px rgba(234, 179, 8, 0.35)',
+              boxShadow: '0 4px 14px var(--accent-gold-glow)',
               transition: 'all 0.2s',
               opacity: isLoading ? 0.75 : 1,
             }}
-            onMouseEnter={(e) => { if (!isLoading) e.currentTarget.style.backgroundColor = '#ca8a04'; }}
-            onMouseLeave={(e) => { if (!isLoading) e.currentTarget.style.backgroundColor = '#eab308'; }}
           >
             {isLoading ? (
               <>
@@ -386,13 +400,13 @@ export default function QuickPayModal({ isOpen, onClose }) {
             marginTop: '1.25rem',
             textAlign: 'center',
             fontSize: '0.75rem',
-            color: '#64748b',
+            color: 'var(--text-muted)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             gap: '0.5rem',
           }}>
-            <ShieldCheck size={16} style={{ color: '#16a34a' }} />
+            <ShieldCheck size={16} style={{ color: 'var(--accent-emerald)' }} />
             <span>Powered by <strong>Stripe</strong> • Apple Pay • Google Pay • Link • Visa • Mastercard</span>
           </div>
         </form>

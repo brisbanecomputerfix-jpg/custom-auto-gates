@@ -12,7 +12,19 @@ export default defineConfig({
       name: 'stripe-api-middleware',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
-          if (req.url === '/api/create-checkout-session' && req.method === 'POST') {
+          const path = req.url ? req.url.split('?')[0] : '';
+
+          if (path === '/api/health' && req.method === 'GET') {
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({
+              status: 'ok',
+              service: 'Custom Auto Gates Dev Server',
+              stripeConfigured: !!process.env.STRIPE_SECRET_KEY,
+            }));
+            return;
+          }
+
+          if (path === '/api/create-checkout-session' && req.method === 'POST') {
             let body = '';
             req.on('data', chunk => { body += chunk; });
             req.on('end', async () => {
@@ -27,15 +39,16 @@ export default defineConfig({
                 res.setHeader('Content-Type', 'application/json');
                 res.end(JSON.stringify({ success: true, sessionId: session.id, url: session.url }));
               } catch (err) {
+                console.error('Stripe Dev Checkout Error:', err.message);
                 res.statusCode = 500;
                 res.setHeader('Content-Type', 'application/json');
-                res.end(JSON.stringify({ error: err.message }));
+                res.end(JSON.stringify({ success: false, error: err.message }));
               }
             });
             return;
           }
 
-          if (req.url === '/api/create-payment-intent' && req.method === 'POST') {
+          if (path === '/api/create-payment-intent' && req.method === 'POST') {
             let body = '';
             req.on('data', chunk => { body += chunk; });
             req.on('end', async () => {
@@ -45,9 +58,10 @@ export default defineConfig({
                 res.setHeader('Content-Type', 'application/json');
                 res.end(JSON.stringify({ success: true, clientSecret: pi.client_secret, paymentIntentId: pi.id }));
               } catch (err) {
+                console.error('Stripe Dev PaymentIntent Error:', err.message);
                 res.statusCode = 500;
                 res.setHeader('Content-Type', 'application/json');
-                res.end(JSON.stringify({ error: err.message }));
+                res.end(JSON.stringify({ success: false, error: err.message }));
               }
             });
             return;

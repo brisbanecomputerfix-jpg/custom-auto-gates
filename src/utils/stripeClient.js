@@ -32,6 +32,13 @@ export async function createStripeCheckout({
       }),
     });
 
+    const contentType = response.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      const rawText = await response.text();
+      console.error('Non-JSON response received from server:', rawText.substring(0, 150));
+      throw new Error('Payment gateway is currently initializing. Please try again in a moment or call (07) 3102 1801.');
+    }
+
     const data = await response.json();
     if (!response.ok || !data.success) {
       throw new Error(data.error || 'Failed to initiate secure Stripe checkout.');
@@ -69,6 +76,13 @@ export async function createPaymentIntent({
         metadata,
       }),
     });
+
+    const contentType = response.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      const rawText = await response.text();
+      console.error('Non-JSON response received from server:', rawText.substring(0, 150));
+      throw new Error('Payment gateway is currently initializing. Please try again in a moment or call (07) 3102 1801.');
+    }
 
     const data = await response.json();
     if (!response.ok || !data.success) {
