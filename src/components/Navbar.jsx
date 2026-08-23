@@ -17,6 +17,7 @@ import {
   Sun, 
   Moon, 
   Building2, 
+  HardHat, 
   Home, 
   Layers, 
   ArrowRight, 
@@ -291,6 +292,7 @@ export default function Navbar({
                       { name: 'Off-Grid Solar Gates', id: 'solar-gates' },
                       { name: 'Commercial Boom & Barriers', id: 'boom-gates' },
                       { name: 'Aluminium Slat Fencing', id: 'fencing' },
+                      { name: 'Trade & Builders Portal (Wholesale)', id: 'trade', isRoute: true },
                       { name: 'Service, Repairs & Warranty', id: 'service', isRoute: true },
                       { name: 'QLD Council & Pool Safety Guide', id: 'council-guide', isRoute: true }
                     ].map((s) => (
@@ -333,7 +335,30 @@ export default function Navbar({
                 )}
               </li>
 
-              {/* 2. Project Gallery */}
+              {/* 2. Trade & Builders Portal */}
+              <li>
+                <button 
+                  className="nav-link-btn" 
+                  onClick={() => handleRouteClick('trade')}
+                  style={{
+                    color: currentPage === 'trade' ? 'var(--accent-gold)' : 'var(--text-heading)',
+                    fontFamily: 'Outfit, sans-serif',
+                    fontWeight: currentPage === 'trade' ? '800' : '700',
+                    fontSize: '0.94rem',
+                    padding: '0.5rem 0.25rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    transition: 'color 0.2s ease'
+                  }}
+                >
+                  <HardHat size={15} style={{ color: 'var(--accent-gold)' }} />
+                  <span>Trade & Builders</span>
+                </button>
+              </li>
+
+              {/* 3. Project Gallery */}
               <li>
                 <button 
                   className="nav-link-btn" 
@@ -352,7 +377,7 @@ export default function Navbar({
                 </button>
               </li>
 
-              {/* 3. Verified Reviews (4.9★) */}
+              {/* 4. Verified Reviews (4.9★) */}
               <li>
                 <button 
                   className="nav-link-btn" 
@@ -383,7 +408,7 @@ export default function Navbar({
                 </button>
               </li>
 
-              {/* 4. Contact Us */}
+              {/* 5. Contact Us */}
               <li>
                 <button 
                   className="nav-link-btn" 
@@ -620,6 +645,28 @@ export default function Navbar({
                       Verified Reviews & Case Studies (4.9★)
                     </span>
                     <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
+                  </button>
+
+                  <button 
+                    className="mobile-nav-item" 
+                    onClick={() => handleRouteClick('trade')}
+                    style={{ color: currentPage === 'trade' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
+                  >
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                      <HardHat size={17} style={{ color: 'var(--accent-gold)' }} />
+                      Trade & Builders Portal (Wholesale)
+                    </span>
+                    <span style={{
+                      backgroundColor: 'rgba(245, 158, 11, 0.2)',
+                      color: '#fbbf24',
+                      fontSize: '0.7rem',
+                      fontWeight: '800',
+                      padding: '0.15rem 0.45rem',
+                      borderRadius: '4px',
+                      border: '1px solid rgba(251, 191, 36, 0.4)'
+                    }}>
+                      7–10 Days
+                    </span>
                   </button>
 
                   <button 

@@ -44,6 +44,12 @@ export const PAGE_SEO_CONFIGS = {
     canonicalPath: '/council-guide',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
+  trade: {
+    title: 'Trade & Builders Portal | Wholesale Gate Fabrication & Lead Times SEQ',
+    description: 'Wholesale custom automated gates and aluminium slat fencing for South East Queensland builders, fencing contractors, and developers. Fast 7–10 day lead times, CAD specs, 30-day accounts.',
+    canonicalPath: '/trade',
+    geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
+  },
   'suburbs-brisbane': {
     title: 'Custom Automatic Gates Brisbane | Factory Direct Sliding & Swing Gates',
     description: 'Custom designed and fabricated automatic gates across Brisbane Northside, Southside, and Western suburbs. Free on-site laser measures in Ascot, New Farm, Indooroopilly, and Pullenvale.',

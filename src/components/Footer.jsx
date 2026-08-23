@@ -154,6 +154,14 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
               </li>
               <li>
                 <button 
+                  onClick={() => onNavigate && onNavigate('trade')} 
+                  style={{ color: '#fbbf24', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
+                >
+                  <ChevronRight size={13} /> Trade & Builders Portal (Wholesale)
+                </button>
+              </li>
+              <li>
+                <button 
                   onClick={onOpenPay} 
                   style={{ color: '#60a5fa', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
                 >

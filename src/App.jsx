@@ -16,6 +16,7 @@ import ServiceRepairs from './components/ServiceRepairs';
 import ContactUs from './components/ContactUs';
 import Testimonials from './components/Testimonials';
 import CouncilGuide from './components/CouncilGuide';
+import TradeBuilders from './components/TradeBuilders';
 import SuburbLandingPage from './components/SuburbLandingPage';
 import QuickPayModal from './components/QuickPayModal';
 import PaymentSuccessModal from './components/PaymentSuccessModal';
@@ -70,6 +71,9 @@ export default function App() {
       } else if (hash === '#council-guide' || hash === '#council' || hash === '#pool-safety' || path === '/council-guide' || path === '/council-guide/' || path === '/planning-rules') {
         setCurrentPage('council-guide');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#trade' || hash === '#builders' || hash === '#commercial' || path === '/trade' || path === '/trade/' || path === '/builders') {
+        setCurrentPage('trade');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#gates-brisbane' || hash === '#brisbane' || path === '/gates-brisbane' || path === '/gates-brisbane/' || path === '/automatic-gates-brisbane') {
         setSelectedRegion('brisbane');
         setCurrentPage('suburbs');
@@ -118,6 +122,8 @@ export default function App() {
       window.location.hash = 'testimonials';
     } else if (page === 'council-guide') {
       window.location.hash = 'council-guide';
+    } else if (page === 'trade') {
+      window.location.hash = 'trade';
     } else if (page === 'suburbs') {
       setSelectedRegion(region);
       window.location.hash = `gates-${region}`;
@@ -206,6 +212,13 @@ export default function App() {
         ) : currentPage === 'council-guide' ? (
           /* Dedicated Queensland Council & Pool Safety Guide */
           <CouncilGuide 
+            onOpenQuote={handleOpenQuote}
+            onOpenContact={() => setIsContactOpen(true)}
+            onNavigateHome={() => navigateTo('home')}
+          />
+        ) : currentPage === 'trade' ? (
+          /* Dedicated Trade, Builders & Commercial Wholesale Portal */
+          <TradeBuilders 
             onOpenQuote={handleOpenQuote}
             onOpenContact={() => setIsContactOpen(true)}
             onNavigateHome={() => navigateTo('home')}
