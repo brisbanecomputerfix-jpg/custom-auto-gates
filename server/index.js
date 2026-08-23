@@ -129,7 +129,8 @@ app.post('/api/create-payment-intent', async (req, res) => {
 const distPath = path.resolve(__dirname, '../dist');
 app.use(express.static(distPath));
 
-app.get('*', (req, res) => {
+// Catch-all route for Single Page Application (Express 5 compatible)
+app.use((req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));
 });
 
