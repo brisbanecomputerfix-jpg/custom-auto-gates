@@ -117,11 +117,14 @@ export default function FaqSection({ onOpenQuote, onOpenContact }) {
             Our Brisbane gate engineers are available Monday to Friday 9am to 4pm to assist with layout advice, sloping driveway questions, and custom powdercoat matching.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <button onClick={onOpenQuote} className="btn btn-gold btn-md" style={{ fontWeight: '800' }}>
+              <Calculator size={17} /> Calculate Instant Price
+            </button>
             <a href={COMPANY_INFO.tel} className="btn btn-blue btn-md">
-              <Phone size={17} /> Call Us: (07) 3102 1801
+              <Phone size={17} /> Call (07) 3102 1801
             </a>
             <button onClick={onOpenContact} className="btn btn-outline-dark btn-md">
-              Send an Online Inquiry
+              Request Free Measure
             </button>
           </div>
         </div>

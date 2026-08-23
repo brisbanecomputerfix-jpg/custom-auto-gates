@@ -7,9 +7,8 @@ import {
   Truck, 
   Calendar, 
   Phone, 
-  Building2, 
-  Home, 
-  TreePine 
+  ArrowRight,
+  ShieldCheck
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
 
@@ -17,68 +16,36 @@ const SERVICE_REGIONS = [
   {
     id: 'brisbane-inner',
     name: 'Brisbane Inner & Character Suburbs',
-    badge: 'High Demand',
-    desc: 'Bespoke character-matching sliding and double swing gates for Queenslanders and heritage renovations.',
-    suburbs: [
-      'Paddington', 'New Farm', 'Ascot', 'Hamilton', 'Bulimba', 'Hawthorne',
-      'Teneriffe', 'Red Hill', 'Bardon', 'Ashgrove', 'Auchenflower', 'Toowong',
-      'Indooroopilly', 'St Lucia', 'Chelmer', 'Graceville', 'Sherwood', 'Corinda',
-      'Highgate Hill', 'West End', 'South Brisbane', 'Kangaroo Point', 'East Brisbane',
-      'Norman Park', 'Camp Hill', 'Coorparoo', 'Greenslopes', 'Holland Park'
-    ]
+    badge: 'Daily Measures',
+    suburbs: ['Paddington', 'New Farm', 'Ascot', 'Hamilton', 'Bulimba', 'Hawthorne', 'Teneriffe', 'Indooroopilly', 'Camp Hill', 'Coorparoo', 'St Lucia', 'Chelmer']
   },
   {
     id: 'brisbane-north',
-    name: 'Brisbane Northside & Moreton Bay',
-    badge: 'Daily Installations',
-    desc: 'Modern slat fencing, solar automated gates, and heavy-duty sliding gates.',
-    suburbs: [
-      'Clayfield', 'Hendra', 'Nundah', 'Wavell Heights', 'Chermside', 'Stafford',
-      'Grange', 'Wilston', 'Windsor', 'Kelvin Grove', 'Mitchelton', 'Enoggera',
-      'Keperra', 'Ferny Grove', 'Samford Valley', 'Bridgeman Downs', 'Carseldine',
-      'Aspley', 'Albany Creek', 'Eatons Hill', 'Warner', 'North Lakes', 'Redcliffe'
-    ]
+    name: 'Brisbane Northside & Moreton',
+    badge: 'Fast Dispatch',
+    suburbs: ['Clayfield', 'Hendra', 'Nundah', 'Wavell Heights', 'Chermside', 'Stafford', 'Grange', 'Wilston', 'Samford Valley', 'Bridgeman Downs', 'North Lakes']
   },
   {
     id: 'brisbane-south',
     name: 'Brisbane Southside & Logan',
     badge: 'Rapid Response',
-    desc: 'Wide driveway security gates, cantilever gates, and commercial boom gates.',
-    suburbs: [
-      'Morningside', 'Carina', 'Carindale', 'Mount Gravatt', 'Mansfield', 'Wishart',
-      'Sunnybank', 'Sunnybank Hills', 'Runcorn', 'Calamvale', 'Stretton', 'Algester',
-      'Parkinson', 'Eight Mile Plains', 'Rochedale', 'Underwood', 'Springwood',
-      'Daisy Hill', 'Shailer Park', 'Loganholme', 'Beenleigh', 'Browns Plains'
-    ]
+    suburbs: ['Morningside', 'Carina', 'Carindale', 'Mount Gravatt', 'Sunnybank', 'Rochedale', 'Underwood', 'Springwood', 'Daisy Hill', 'Loganholme']
   },
   {
     id: 'ipswich-springfield',
-    name: 'Ipswich, Yamanto & Greater Springfield',
-    badge: 'Workshop Home Region',
-    desc: 'Direct manufacturer visits within 24 hours. Acreage double swing gates and solar systems.',
-    suburbs: [
-      'Yamanto', 'Ipswich Central', 'Brassall', 'Booval', 'Bundamba', 'Silkstone',
-      'Raceview', 'Flinders View', 'Ripley', 'South Ripley', 'Deebing Heights',
-      'Brookwater', 'Springfield', 'Springfield Lakes', 'Springfield Central',
-      'Augustine Heights', 'Redbank Plains', 'Karalee', 'Chuwar', 'Pine Mountain',
-      'Rosewood', 'Marburg', 'Walloon', 'Willowbank', 'Peak Crossing'
-    ]
+    name: 'Ipswich & Greater Springfield',
+    badge: 'Workshop Local',
+    suburbs: ['Yamanto', 'Ipswich Central', 'Brassall', 'Booval', 'Brookwater', 'Springfield', 'Springfield Lakes', 'Augustine Heights', 'Ripley', 'Karalee']
   },
   {
     id: 'bayside-goldcoast',
-    name: 'Redlands Bayside & Northern Gold Coast',
+    name: 'Redlands & Northern Gold Coast',
     badge: 'Coastal Powdercoating',
-    desc: 'Specialized coastal-grade powdercoated aluminium gates resistant to ocean air and salt spray.',
-    suburbs: [
-      'Manly', 'Wynnum', 'Lota', 'Capalaba', 'Birkdale', 'Wellington Point',
-      'Ormiston', 'Cleveland', 'Thornlands', 'Victoria Point', 'Redland Bay',
-      'Ormeau', 'Pimpama', 'Coomera', 'Upper Coomera', 'Helensvale', 'Hope Island',
-      'Sanctuary Cove', 'Paradise Point', 'Runaway Bay', 'Southport'
-    ]
+    suburbs: ['Manly', 'Wynnum', 'Birkdale', 'Cleveland', 'Victoria Point', 'Redland Bay', 'Ormeau', 'Coomera', 'Hope Island', 'Sanctuary Cove']
   }
 ];
 
-export default function ServiceAreaChecker({ onOpenContact }) {
+export default function ServiceAreaChecker({ onOpenContact, onNavigateSuburbs }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('brisbane-inner');
 
@@ -99,16 +66,16 @@ export default function ServiceAreaChecker({ onOpenContact }) {
             South East Queensland Coverage
           </span>
           <h2 className="section-title">
-            Service Areas & Free On-Site Measures <br />
-            <span className="gradient-text-gold">Brisbane, Ipswich & Surrounds</span>
+            We Service Your Suburb Daily <br />
+            <span className="gradient-text-gold">Free On-Site Laser Measure & Site Assessment</span>
           </h2>
           <p className="section-subtitle">
-            From inner-city character residences to expansive regional acreages, our mobile laser measure team travels across all of South East Queensland daily.
+            Our mobile technicians check ground levels, driveway slope, boundary clearances, and power availability across all SEQ regions.
           </p>
         </div>
 
-        {/* Suburb Search Input */}
-        <div style={{ maxWidth: '560px', margin: '0 auto 2rem auto' }}>
+        {/* Suburb Search Input Card */}
+        <div style={{ maxWidth: '620px', margin: '0 auto 2.25rem auto' }}>
           <div style={{
             position: 'relative',
             display: 'flex',
@@ -117,7 +84,7 @@ export default function ServiceAreaChecker({ onOpenContact }) {
             <Search size={18} style={{ position: 'absolute', left: '1.1rem', color: 'var(--text-muted)' }} />
             <input
               type="text"
-              placeholder="Search your suburb (e.g. New Farm, Paddington, Yamanto...)"
+              placeholder="Search your suburb (e.g. Bulimba, New Farm, Springfield, Ascot)..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               style={{
@@ -143,7 +110,7 @@ export default function ServiceAreaChecker({ onOpenContact }) {
             )}
           </div>
 
-          {/* Search Result Instant Status */}
+          {/* Instant Search Feedback */}
           {searchTerm.trim() && (
             <div style={{
               marginTop: '0.85rem',
@@ -158,17 +125,17 @@ export default function ServiceAreaChecker({ onOpenContact }) {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--badge-green-text)' }}>
                     <CheckCircle2 size={18} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} />
                     <span style={{ fontWeight: '700', fontSize: '0.88rem' }}>
-                      Yes! We Service {searchResults.slice(0, 4).join(', ')} (Free Measure Available)
+                      Yes! We Service {searchResults.slice(0, 4).join(', ')} Daily
                     </span>
                   </div>
                   <button onClick={onOpenContact} className="btn btn-gold btn-sm" style={{ flex: '1 1 auto' }}>
-                    <Calendar size={14} /> Book Measure
+                    <Calendar size={14} /> Book Free Measure
                   </button>
                 </div>
               ) : (
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.65rem' }}>
                   <div style={{ color: 'var(--badge-gold-text)', fontSize: '0.84rem' }}>
-                    Didn’t find "{searchTerm}"? We cover almost all SE Queensland properties within 100km of Yamanto.
+                    We service virtually all SEQ properties within 100km of our Yamanto workshop.
                   </div>
                   <a href={COMPANY_INFO.tel} className="btn btn-blue btn-sm" style={{ flex: '1 1 auto', justifyContent: 'center' }}>
                     <Phone size={14} /> Call (07) 3102 1801
@@ -179,18 +146,17 @@ export default function ServiceAreaChecker({ onOpenContact }) {
           )}
         </div>
 
-        {/* Region Pills Navigation - Horizontal Scrollable on Mobile */}
+        {/* Region Pills Navigation */}
         <div style={{
           display: 'flex',
           gap: '0.45rem',
           overflowX: 'auto',
           paddingBottom: '0.65rem',
-          marginBottom: '1.75rem',
+          marginBottom: '1.25rem',
           WebkitOverflowScrolling: 'touch',
-          scrollbarWidth: 'none'
-        }}
-        className="step-scroll-container"
-        >
+          justifyContent: 'center',
+          flexWrap: 'wrap'
+        }}>
           {SERVICE_REGIONS.map((region) => {
             const isActive = selectedRegion === region.id;
             return (
@@ -198,22 +164,21 @@ export default function ServiceAreaChecker({ onOpenContact }) {
                 key={region.id}
                 onClick={() => setSelectedRegion(region.id)}
                 style={{
-                  padding: '0.55rem 1rem',
+                  padding: '0.5rem 1rem',
                   borderRadius: 'var(--radius-full)',
                   fontFamily: 'Outfit, sans-serif',
                   fontWeight: '700',
-                  fontSize: '0.84rem',
+                  fontSize: '0.82rem',
                   whiteSpace: 'nowrap',
                   background: isActive ? 'var(--accent-gold)' : 'var(--bg-card)',
                   color: isActive ? '#090e1a' : 'var(--text-muted)',
                   border: isActive ? '1px solid var(--accent-gold)' : '1px solid var(--border-light)',
                   boxShadow: isActive ? 'var(--shadow-md)' : 'var(--shadow-xs)',
                   transition: 'all 0.2s ease',
-                  flexShrink: 0,
                   cursor: 'pointer'
                 }}
               >
-                {region.name.split('&')[0]}
+                {region.name}
               </button>
             );
           })}
@@ -224,28 +189,29 @@ export default function ServiceAreaChecker({ onOpenContact }) {
           background: 'var(--bg-card)',
           border: '1.5px solid var(--border-light)',
           borderRadius: '16px',
-          padding: 'clamp(1.25rem, 3.5vw, 2rem)',
-          marginBottom: '2.5rem',
+          padding: 'clamp(1.25rem, 3vw, 1.75rem)',
+          marginBottom: '2rem',
           boxShadow: 'var(--shadow-sm)'
         }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-            <div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.2rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: '800', color: 'var(--text-heading)', margin: 0 }}>
                 {currentRegionData.name}
               </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem' }}>
-                Residential character homes, modern architectural builds, acreage properties & commercial sites.
-              </p>
+              <span className="badge-tag badge-gold" style={{ margin: 0, fontSize: '0.7rem' }}>
+                {currentRegionData.badge}
+              </span>
             </div>
-            <span className="badge-tag badge-gold" style={{ margin: 0, fontSize: '0.72rem' }}>
-              {currentRegionData.badge}
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+              Free mobile laser measure & site inspection
             </span>
           </div>
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 140px), 1fr))',
-            gap: '0.5rem'
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 130px), 1fr))',
+            gap: '0.45rem',
+            marginBottom: '1.25rem'
           }}>
             {currentRegionData.suburbs.map((suburb, idx) => (
               <div
@@ -254,56 +220,45 @@ export default function ServiceAreaChecker({ onOpenContact }) {
                   background: 'var(--bg-card-subtle)',
                   border: '1px solid var(--border-light)',
                   borderRadius: '8px',
-                  padding: '0.55rem 0.75rem',
-                  fontSize: '0.8125rem',
+                  padding: '0.5rem 0.65rem',
+                  fontSize: '0.8rem',
                   fontWeight: '600',
                   color: 'var(--text-main)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.4rem',
-                  boxShadow: 'var(--shadow-xs)'
+                  gap: '0.35rem'
                 }}
               >
-                <MapPin size={12} style={{ color: 'var(--accent-gold)', flexShrink: 0 }} />
+                <MapPin size={11} style={{ color: 'var(--accent-gold)', flexShrink: 0 }} />
                 <span>{suburb}</span>
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Value Callout 3-Column Box */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
-          gap: '1.25rem'
-        }}>
-          <div className="card-themed" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: '14px', padding: '1.25rem', display: 'flex', gap: '0.85rem', alignItems: 'flex-start' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'var(--badge-blue-bg)', color: 'var(--badge-blue-text)', border: '1px solid var(--badge-blue-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <Truck size={20} />
+          {/* Direct Region Action Row */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--border-light)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-emerald)', fontSize: '0.82rem', fontWeight: '700' }}>
+              <ShieldCheck size={16} />
+              <span>Full Queensland QBCC licensed installation & warranty</span>
             </div>
-            <div>
-              <h4 style={{ fontSize: '0.98rem', color: 'var(--text-heading)', fontWeight: '800', marginBottom: '0.25rem' }}>Free On-Site Laser Measure</h4>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', lineHeight: 1.5 }}>We visit your property with precision laser gear to check ground levels, driveway slope, and boundary clearance.</p>
-            </div>
-          </div>
 
-          <div className="card-themed" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: '14px', padding: '1.25rem', display: 'flex', gap: '0.85rem', alignItems: 'flex-start' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'var(--badge-gold-bg)', color: 'var(--badge-gold-text)', border: '1px solid var(--badge-gold-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <Building2 size={20} />
-            </div>
-            <div>
-              <h4 style={{ fontSize: '0.98rem', color: 'var(--text-heading)', fontWeight: '800', marginBottom: '0.25rem' }}>Architectural & Heritage Focus</h4>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', lineHeight: 1.5 }}>Custom slat spacing and DecoWood timber finishes tailored to character homes across Ascot, Paddington, and New Farm.</p>
-            </div>
-          </div>
-
-          <div className="card-themed" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: '14px', padding: '1.25rem', display: 'flex', gap: '0.85rem', alignItems: 'flex-start' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'var(--badge-green-bg)', color: 'var(--badge-green-text)', border: '1px solid var(--badge-green-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <TreePine size={20} />
-            </div>
-            <div>
-              <h4 style={{ fontSize: '0.98rem', color: 'var(--text-heading)', fontWeight: '800', marginBottom: '0.25rem' }}>Acreage Solar Specialists</h4>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', lineHeight: 1.5 }}>Deep experience with long rural driveways, solar off-grid automation, and cantilever systems across Ipswich and Redlands.</p>
+            <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
+              <button
+                onClick={onOpenContact}
+                className="btn btn-gold btn-sm"
+                style={{ fontWeight: '800' }}
+              >
+                <Calendar size={14} />
+                Book Free Measure in {currentRegionData.name.split('&')[0]}
+              </button>
+              {onNavigateSuburbs && (
+                <button
+                  onClick={onNavigateSuburbs}
+                  className="btn btn-outline-dark btn-sm"
+                >
+                  View All 100+ Suburb Guides <ArrowRight size={13} />
+                </button>
+              )}
             </div>
           </div>
         </div>

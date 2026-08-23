@@ -4,29 +4,12 @@ import {
   ShieldCheck, 
   Clock, 
   Sparkles, 
-  Wrench, 
-  Award, 
+  ArrowRight, 
   CheckCircle2, 
-  XCircle, 
-  Truck, 
-  HeartHandshake, 
-  Cpu, 
   Calculator, 
-  Info 
+  MapPin,
+  Award
 } from 'lucide-react';
-import { WHY_US_POINTS } from '../data/siteData';
-
-const iconMap = {
-  Factory: Factory,
-  ShieldCheck: ShieldCheck,
-  Clock: Clock,
-  Sparkles: Sparkles,
-  Wrench: Wrench,
-  Award: Award,
-  Truck: Truck,
-  HeartHandshake: HeartHandshake,
-  Cpu: Cpu
-};
 
 export default function WhyFactoryDirect({ onOpenQuote, onNavigateAbout }) {
   return (
@@ -36,181 +19,189 @@ export default function WhyFactoryDirect({ onOpenQuote, onNavigateAbout }) {
         <div className="section-header">
           <span className="badge-tag badge-gold">
             <Factory size={14} />
-            The Custom Auto Gates Advantage
+            The Factory Direct Advantage
           </span>
           <h2 className="section-title">
-            Why Buying Factory Direct <br />
-            <span className="gradient-text-gold">Saves You Thousands</span>
+            Direct From Our Yamanto Workshop <br />
+            <span className="gradient-text-gold">Better Build Quality. Zero Middleman Markups.</span>
           </h2>
           <p className="section-subtitle">
-            Most gate companies are middleman resellers who subcontract fabrication and installation. We do 100% of CAD engineering, welding, powdercoating, and motor setup right here in Yamanto.
+            Most gate installers are middleman resellers who outsource welding and mark up the price. We engineer, weld, powdercoat, and install everything in-house.
           </p>
         </div>
 
-        {/* 6 Value Prop Cards Grid with Isometric Styled Icon Badges */}
+        {/* 3 High-Impact Pillars */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
-          gap: '1.25rem',
-          marginBottom: '3.5rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+          gap: '1.5rem',
+          marginBottom: '2.5rem'
         }}>
-          {WHY_US_POINTS.map((pt, idx) => {
-            const IconComponent = iconMap[pt.icon] || ShieldCheck;
-            const isGold = idx % 2 === 0;
-            return (
-              <div
-                key={idx}
-                className="card-themed"
-                style={{
-                  padding: 'clamp(1.25rem, 3vw, 1.85rem)',
-                  display: 'flex',
-                  gap: '1rem',
-                  alignItems: 'flex-start',
-                  background: 'var(--bg-card)',
-                  borderRadius: '16px',
-                  border: '1.5px solid var(--border-light)',
-                  boxShadow: 'var(--shadow-sm)'
-                }}
-              >
-                {/* 3D / Isometric Icon Badge */}
-                <div style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '12px',
-                  background: isGold ? 'var(--badge-gold-bg)' : 'var(--badge-blue-bg)',
-                  color: isGold ? 'var(--badge-gold-text)' : 'var(--badge-blue-text)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                  boxShadow: isGold ? '0 6px 14px var(--accent-gold-glow)' : '0 6px 14px var(--accent-blue-glow)',
-                  border: isGold ? '1px solid var(--badge-gold-border)' : '1px solid var(--badge-blue-border)'
-                }}>
-                  <IconComponent size={24} />
-                </div>
-
-                <div>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
-                    {pt.title}
-                  </h3>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', lineHeight: 1.55 }}>
-                    {pt.desc}
-                  </p>
-                </div>
+          {/* Pillar 1 */}
+          <div
+            className="card-themed"
+            style={{
+              padding: 'clamp(1.5rem, 3vw, 2rem)',
+              background: 'var(--bg-card)',
+              borderRadius: '16px',
+              border: '1.5px solid var(--border-light)',
+              boxShadow: 'var(--shadow-sm)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between'
+            }}
+          >
+            <div>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '12px',
+                background: 'var(--badge-gold-bg)',
+                color: 'var(--badge-gold-text)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.25rem',
+                border: '1px solid var(--badge-gold-border)'
+              }}>
+                <Factory size={24} />
               </div>
-            );
-          })}
+              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>
+                100% In-House Fabrication
+              </h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: '1rem' }}>
+                Every gate is custom-measured, TIG-welded, and quality checked at our Yamanto workshop. No imported flat-packs or middleman subcontractors.
+              </p>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-emerald)', fontSize: '0.82rem', fontWeight: '700' }}>
+              <CheckCircle2 size={15} />
+              <span>Save 20%–30% on middleman commissions</span>
+            </div>
+          </div>
+
+          {/* Pillar 2 */}
+          <div
+            className="card-themed"
+            style={{
+              padding: 'clamp(1.5rem, 3vw, 2rem)',
+              background: 'var(--bg-card)',
+              borderRadius: '16px',
+              border: '1.5px solid var(--border-light)',
+              boxShadow: 'var(--shadow-sm)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between'
+            }}
+          >
+            <div>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '12px',
+                background: 'var(--badge-blue-bg)',
+                color: 'var(--badge-blue-text)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.25rem',
+                border: '1px solid var(--badge-blue-border)'
+              }}>
+                <ShieldCheck size={24} />
+              </div>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>
+                10-Year Structural Warranty
+              </h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: '1rem' }}>
+                Heavy-wall 6060-T5 architectural aluminium engineered to never rust, sag, or warp under Queensland’s sub-tropical sun and coastal storms.
+              </p>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-emerald)', fontSize: '0.82rem', fontWeight: '700' }}>
+              <CheckCircle2 size={15} />
+              <span>Dulux & Blondies certified powdercoating</span>
+            </div>
+          </div>
+
+          {/* Pillar 3 */}
+          <div
+            className="card-themed"
+            style={{
+              padding: 'clamp(1.5rem, 3vw, 2rem)',
+              background: 'var(--bg-card)',
+              borderRadius: '16px',
+              border: '1.5px solid var(--border-light)',
+              boxShadow: 'var(--shadow-sm)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between'
+            }}
+          >
+            <div>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '12px',
+                background: 'var(--badge-gold-bg)',
+                color: 'var(--badge-gold-text)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.25rem',
+                border: '1px solid var(--badge-gold-border)'
+              }}>
+                <Clock size={24} />
+              </div>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>
+                Guaranteed Fast Turnaround
+              </h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: '1rem' }}>
+                Standard sliding & swing gates completed in 7–10 days from sign-off. Need your gate urgent? Direct workshop scheduling gets it done fast.
+              </p>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-emerald)', fontSize: '0.82rem', fontWeight: '700' }}>
+              <CheckCircle2 size={15} />
+              <span>Full turn-key installation & automation</span>
+            </div>
+          </div>
         </div>
 
-        {/* Direct Comparison Table */}
+        {/* High-Converting CTA Banner */}
         <div style={{
           background: 'var(--bg-card)',
           borderRadius: '18px',
           border: '1.5px solid var(--border-light)',
-          padding: 'clamp(1.25rem, 3.5vw, 2.25rem)',
-          boxShadow: 'var(--shadow-lg)'
+          padding: 'clamp(1.5rem, 3.5vw, 2.25rem)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '1.5rem',
+          boxShadow: 'var(--shadow-md)'
         }}>
-          <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
-            <span className="badge-tag badge-blue">Direct Comparison</span>
-            <h3 style={{ fontSize: 'clamp(1.35rem, 3vw, 1.75rem)', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.4rem' }}>
-              Custom Auto Gates vs. Middleman Resellers
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
+              <span className="badge-tag badge-gold" style={{ margin: 0 }}>Yamanto Workshop Direct</span>
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📍 1/14 Saleyards Rd, Yamanto QLD</span>
+            </div>
+            <h3 style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)', fontWeight: '800', color: 'var(--text-heading)', margin: 0 }}>
+              Ready to see what a factory-direct automatic gate costs?
             </h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-              See what makes an authentic Australian manufacturer different.
-            </p>
           </div>
 
-          <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', paddingBottom: '0.5rem' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '540px' }}>
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--border-subtle)' }}>
-                  <th style={{ padding: '0.85rem', color: 'var(--text-muted)', fontSize: '0.8125rem', fontWeight: '700', textTransform: 'uppercase' }}>Feature & Quality Factor</th>
-                  <th style={{ padding: '0.85rem', color: 'var(--accent-gold)', fontSize: '0.92rem', fontWeight: '800', background: 'var(--accent-gold-light)', borderRadius: '8px 8px 0 0', border: '1px solid var(--accent-gold-glow)' }}>Custom Auto Gates (Factory Direct)</th>
-                  <th style={{ padding: '0.85rem', color: 'var(--text-muted)', fontSize: '0.8125rem', fontWeight: '700', textTransform: 'uppercase' }}>Middleman Resellers</th>
-                </tr>
-              </thead>
-              <tbody style={{ fontSize: '0.875rem' }}>
-                <tr style={{ borderBottom: '1px solid var(--border-light)' }}>
-                  <td style={{ padding: '0.9rem 0.85rem', fontWeight: '600', color: 'var(--text-heading)' }}>Manufacturing Origin</td>
-                  <td style={{ padding: '0.9rem 0.85rem', color: 'var(--accent-emerald)', fontWeight: '700', background: 'var(--accent-gold-light)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <CheckCircle2 size={15} /> 100% Built in Yamanto Workshop, QLD
-                    </div>
-                  </td>
-                  <td style={{ padding: '0.9rem 0.85rem', color: '#ef4444' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <XCircle size={15} /> Mass Imported / Subcontracted
-                    </div>
-                  </td>
-                </tr>
-
-                <tr style={{ borderBottom: '1px solid var(--border-light)' }}>
-                  <td style={{ padding: '0.9rem 0.85rem', fontWeight: '600', color: 'var(--text-heading)' }}>Pricing Structure</td>
-                  <td style={{ padding: '0.9rem 0.85rem', color: 'var(--accent-emerald)', fontWeight: '700', background: 'var(--accent-gold-light)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <CheckCircle2 size={15} /> True Wholesale Factory Direct Rates
-                    </div>
-                  </td>
-                  <td style={{ padding: '0.9rem 0.85rem', color: '#ef4444' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <XCircle size={15} /> 30%–50% Middleman Sales Markups
-                    </div>
-                  </td>
-                </tr>
-
-                <tr style={{ borderBottom: '1px solid var(--border-light)' }}>
-                  <td style={{ padding: '0.9rem 0.85rem', fontWeight: '600', color: 'var(--text-heading)' }}>Structural Warranty</td>
-                  <td style={{ padding: '0.9rem 0.85rem', color: 'var(--accent-emerald)', fontWeight: '700', background: 'var(--accent-gold-light)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <CheckCircle2 size={15} /> 10-Year Direct Manufacturer Guarantee
-                    </div>
-                  </td>
-                  <td style={{ padding: '0.9rem 0.85rem', color: '#ef4444' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <XCircle size={15} /> 1-Year Limited Warranty
-                    </div>
-                  </td>
-                </tr>
-
-                <tr style={{ borderBottom: '1px solid var(--border-light)' }}>
-                  <td style={{ padding: '0.9rem 0.85rem', fontWeight: '600', color: 'var(--text-heading)' }}>Custom Engineering & Raking</td>
-                  <td style={{ padding: '0.9rem 0.85rem', color: 'var(--accent-emerald)', fontWeight: '700', background: 'var(--accent-gold-light)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <CheckCircle2 size={15} /> Custom CAD Laser Raked to Millimeter
-                    </div>
-                  </td>
-                  <td style={{ padding: '0.9rem 0.85rem', color: '#ef4444' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <XCircle size={15} /> Fixed Modular Sizes with Gaps
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td style={{ padding: '0.9rem 0.85rem', fontWeight: '600', color: 'var(--text-heading)' }}>Turnaround & Lead Time</td>
-                  <td style={{ padding: '0.9rem 0.85rem', color: 'var(--accent-emerald)', fontWeight: '700', background: 'var(--accent-gold-light)', borderRadius: '0 0 8px 8px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <CheckCircle2 size={15} /> Rapid 2–4 Weeks From Measure
-                    </div>
-                  </td>
-                  <td style={{ padding: '0.9rem 0.85rem', color: '#ef4444' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <XCircle size={15} /> 8–14 Weeks Shipping Delays
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '2rem', display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-            <button onClick={onOpenQuote} className="btn btn-gold btn-lg">
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <button
+              onClick={onOpenQuote}
+              className="btn btn-gold btn-lg"
+              style={{ fontWeight: '800' }}
+            >
               <Calculator size={18} />
-              Calculate Factory Direct Price
+              Calculate Instant Price
             </button>
-            <button onClick={onNavigateAbout} className="btn btn-outline-dark btn-lg">
-              <Info size={18} />
-              Read Our Story & Values
+            <button
+              onClick={onNavigateAbout}
+              className="btn btn-outline-dark btn-lg"
+            >
+              Learn More About Our Workshop
+              <ArrowRight size={16} />
             </button>
           </div>
         </div>

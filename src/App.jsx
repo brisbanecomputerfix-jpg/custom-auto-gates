@@ -273,6 +273,7 @@ export default function App() {
             {/* Brisbane Inner Suburbs & SE QLD Area Checker */}
             <ServiceAreaChecker 
               onOpenContact={() => setIsContactOpen(true)}
+              onNavigateSuburbs={() => navigateTo('suburbs')}
             />
 
             {/* Customer Testimonials & Reviews */}
