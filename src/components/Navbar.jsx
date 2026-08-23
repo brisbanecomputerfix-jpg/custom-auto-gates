@@ -259,7 +259,7 @@ export default function Navbar({
           minHeight: '68px',
           height: 'clamp(68px, 9vw, 80px)'
         }}>
-          {/* Brand Logo */}
+          {/* Brand Logo - Responsive Horizontal Logo */}
           <a 
             href="#" 
             onClick={(e) => { e.preventDefault(); handleRouteClick('home'); }}
@@ -269,21 +269,20 @@ export default function Navbar({
               alignItems: 'center',
               flexShrink: 0,
               padding: '0.2rem 0',
-              marginRight: '1.25rem',
-              maxWidth: '55%'
+              marginRight: '1rem',
+              maxWidth: 'min(280px, 60vw)',
+              textDecoration: 'none'
             }}
           >
             <img 
-              src={theme === 'light' ? '/images/custom-auto-gates-logo-light.png' : '/images/custom-auto-gates-logo-dark.png'} 
+              src={theme === 'light' ? '/images/custom-auto-gates-logo-horizontal-light.png' : '/images/custom-auto-gates-logo-horizontal-dark.png'} 
               alt="Custom Auto Gates & Fencing" 
               style={{
-                height: 'auto',
-                maxHeight: 'clamp(44px, 6vw, 56px)',
+                height: 'clamp(38px, 5.2vw, 48px)',
                 width: 'auto',
-                maxWidth: '220px',
+                maxWidth: '100%',
                 objectFit: 'contain',
-                display: 'block',
-                filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.25))'
+                display: 'block'
               }}
             />
           </a>
@@ -591,15 +590,13 @@ export default function Navbar({
                 marginBottom: '1.25rem'
               }}>
                 <img 
-                  src={theme === 'light' ? '/images/custom-auto-gates-logo-light.png' : '/images/custom-auto-gates-logo-dark.png'} 
+                  src={theme === 'light' ? '/images/custom-auto-gates-logo-horizontal-light.png' : '/images/custom-auto-gates-logo-horizontal-dark.png'} 
                   alt="Custom Auto Gates" 
                   style={{ 
-                    height: 'auto', 
-                    maxHeight: '46px', 
+                    height: 'clamp(32px, 5vw, 40px)', 
                     width: 'auto', 
                     maxWidth: '190px', 
-                    objectFit: 'contain',
-                    filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.25))'
+                    objectFit: 'contain'
                   }}
                 />
                 <button 
