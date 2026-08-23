@@ -13,7 +13,7 @@ export const COMPANY_INFO = {
   tagline: "Buy Factory Direct — Premium Automatic Gates & Fencing Brisbane",
   logoUrl: "/images/custom-auto-gates-logo.png",
   facebook: "https://www.facebook.com/customautogates",
-  instagram: "https://www.instagram.com/customautogates",
+  instagram: "https://www.instagram.com/customautogates/",
   linkedin: "https://au.linkedin.com/company/customautogates",
   serviceAreas: [
     "Brisbane CBD & Inner Suburbs",

@@ -133,7 +133,7 @@ export default function Navbar({
             {/* Social Media Links */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
               <a
-                href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates'}
+                href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates/'}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow Custom Auto Gates on Instagram"
@@ -872,7 +872,7 @@ export default function Navbar({
             <div style={{ paddingTop: '1.25rem', borderTop: '1.5px solid var(--border-light)', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.45rem', marginBottom: '0.25rem' }}>
                 <a 
-                  href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates'} 
+                  href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates/'} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn btn-outline-dark"

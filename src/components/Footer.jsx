@@ -87,7 +87,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
               </span>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                 <a 
-                  href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates'} 
+                  href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates/'} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   aria-label="Custom Auto Gates on Instagram"
@@ -363,7 +363,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <a
-                href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates'}
+                href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates/'}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
