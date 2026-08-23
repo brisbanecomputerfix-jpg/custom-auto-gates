@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const THEME_STORAGE_KEY = 'cag_theme';
-const DEFAULT_THEME = 'dark';
+const DEFAULT_THEME = 'light';
 
 export function getInitialTheme() {
   if (typeof window === 'undefined') return DEFAULT_THEME;
