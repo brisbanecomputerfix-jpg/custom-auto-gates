@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import GateVisualizerQuote from './components/GateVisualizerQuote';
 import ServicesSection from './components/ServicesSection';
+import CoreSolutionsSection from './components/CoreSolutionsSection';
 import ProjectGallery from './components/ProjectGallery';
 import WhyFactoryDirect from './components/WhyFactoryDirect';
 import MotorShowcase from './components/MotorShowcase';
@@ -241,6 +242,12 @@ export default function App() {
               onOpenContact={() => setIsContactOpen(true)}
               onExploreVisualizer={handleOpenQuote}
               onNavigateAbout={() => navigateTo('about')}
+            />
+
+            {/* Core Custom Gates and Fencing Solutions (8-Card Grid) */}
+            <CoreSolutionsSection 
+              onSelectService={(id) => setSelectedServiceId(id)}
+              onOpenQuote={handleOpenQuote}
             />
 
             {/* 600+ Real Project Gallery - High-Trust Visual Proof Section */}
