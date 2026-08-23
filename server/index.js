@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createCheckoutSession, createPaymentIntent } from './stripeHandler.js';
+import { sendLeadNotification } from './emailHandler.js';
 
 dotenv.config();
 
@@ -55,11 +56,79 @@ app.use(express.json({ limit: '100kb' }));
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
-    service: 'Custom Auto Gates Stripe API',
+    service: 'Custom Auto Gates Full-Stack API',
     business: 'Custom Auto Gates Pty Ltd',
     stripeConfigured: !!process.env.STRIPE_SECRET_KEY,
+    smtpConfigured: !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS),
     environment: process.env.NODE_ENV || 'production',
   });
+});
+
+// Contact & Measure Form Submission Endpoint
+app.post('/api/contact', async (req, res) => {
+  try {
+    const { name, phone, email, suburb, serviceType, preferredTime, notes, dimensions, estimatedPrice, source } = req.body;
+
+    if (!name || !phone) {
+      return res.status(400).json({ error: 'Name and Phone Number are required.' });
+    }
+
+    const result = await sendLeadNotification({
+      name: String(name).trim().substring(0, 100),
+      phone: String(phone).trim().substring(0, 30),
+      email: email ? String(email).trim().toLowerCase().substring(0, 120) : '',
+      suburb: suburb ? String(suburb).trim().substring(0, 80) : '',
+      serviceType: serviceType ? String(serviceType).trim().substring(0, 100) : 'General Inquiry',
+      preferredTime: preferredTime ? String(preferredTime).trim().substring(0, 50) : '',
+      notes: notes ? String(notes).trim().substring(0, 1000) : '',
+      dimensions: dimensions ? String(dimensions).trim().substring(0, 80) : '',
+      estimatedPrice: estimatedPrice ? String(estimatedPrice).trim().substring(0, 50) : '',
+      source: source || 'Contact Modal',
+      ip: req.ip,
+    });
+
+    res.json({
+      success: true,
+      message: 'Thank you! Your measure request has been received.',
+      ...result
+    });
+  } catch (error) {
+    console.error('Contact Form Endpoint Error:', error.message);
+    res.status(500).json({ error: 'Failed to process inquiry. Please call us directly.' });
+  }
+});
+
+// Quote Estimator Lead Endpoint
+app.post('/api/quote', async (req, res) => {
+  try {
+    const { name, phone, email, suburb, gateType, width, height, motor, material, estimatedTotal, notes } = req.body;
+
+    if (!phone) {
+      return res.status(400).json({ error: 'Phone number is required to send your quote.' });
+    }
+
+    const result = await sendLeadNotification({
+      name: name ? String(name).trim().substring(0, 100) : 'Website Estimator User',
+      phone: String(phone).trim().substring(0, 30),
+      email: email ? String(email).trim().toLowerCase().substring(0, 120) : '',
+      suburb: suburb ? String(suburb).trim().substring(0, 80) : 'Brisbane & SE QLD',
+      serviceType: `Gate Estimator: ${gateType || 'Custom Gate'} (${material || 'Aluminium'})`,
+      dimensions: width && height ? `${width}m Wide x ${height}m High` : undefined,
+      estimatedPrice: estimatedTotal ? `$${estimatedTotal} AUD (Estimator)` : undefined,
+      notes: `Motor: ${motor || 'Standard'}. ${notes ? `Additional notes: ${notes}` : ''}`,
+      source: 'Gate Visualizer & Cost Estimator',
+      ip: req.ip,
+    });
+
+    res.json({
+      success: true,
+      message: 'Quote inquiry received! Our workshop will send your itemised breakdown.',
+      ...result
+    });
+  } catch (error) {
+    console.error('Quote Endpoint Error:', error.message);
+    res.status(500).json({ error: 'Failed to process quote inquiry.' });
+  }
 });
 
 // 3. Endpoint: Create Stripe Checkout Session

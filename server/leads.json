@@ -1,0 +1,17 @@
+[
+  {
+    "id": "lead-1787495406315",
+    "receivedAt": "2026-08-23T14:30:06.315Z",
+    "name": "John Test",
+    "phone": "0400111222",
+    "email": "john@example.com",
+    "suburb": "New Farm",
+    "serviceType": "Automatic Sliding Gate",
+    "preferredTime": "",
+    "notes": "Testing email notification integration",
+    "dimensions": "",
+    "estimatedPrice": "",
+    "source": "Contact Modal",
+    "ip": "127.0.0.1"
+  }
+]

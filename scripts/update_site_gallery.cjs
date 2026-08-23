@@ -40,6 +40,7 @@ const validImages = files.filter(f => {
   const ext = path.extname(f).toLowerCase();
   if (!['.jpg', '.jpeg', '.png', '.webp'].includes(ext)) return false;
   if (/icon|logo|favicon|banner|testimonial|author|hero-bg/i.test(f)) return false;
+  if (/(Professional-Installation|Australian-Made-Quality|Brisbane-QLD-Service-Areas|Factory-Direct-Pricing|Commercial-Security|Residential-Properties|Fast-Turnaround|Expert-Support)/i.test(f)) return false;
   if (/-\d+x\d+\./.test(f)) return false; // skip resized thumbs
   return true;
 });
@@ -112,18 +113,25 @@ validImages.forEach((filename, idx) => {
 
 console.log(`Generated ${newGalleryItems.length} verified gallery items.`);
 
-// Read siteData.js up to GALLERY_ITEMS
-const siteDataContent = fs.readFileSync(siteDataPath, 'utf8');
-const galleryMarker = 'export const GALLERY_ITEMS =';
-const markerIndex = siteDataContent.indexOf(galleryMarker);
+// Read siteData.js preserving exports after GALLERY_ITEMS
+const { execSync } = require('child_process');
+const originalContent = execSync('git show 5e0569a:src/data/siteData.js').toString();
 
-if (markerIndex === -1) {
-  console.error('Could not find GALLERY_ITEMS marker in siteData.js');
+const galleryMarker = 'export const GALLERY_ITEMS =';
+const whyUsMarker = 'export const WHY_US_POINTS =';
+
+const startIndex = originalContent.indexOf(galleryMarker);
+const endIndex = originalContent.indexOf(whyUsMarker);
+
+if (startIndex === -1 || endIndex === -1) {
+  console.error('Markers not found in original siteData.js');
   process.exit(1);
 }
 
-const beforeGallery = siteDataContent.substring(0, markerIndex);
-const updatedSiteData = `${beforeGallery}export const GALLERY_ITEMS = ${JSON.stringify(newGalleryItems, null, 2)};\n`;
+const beforeGallery = originalContent.substring(0, startIndex);
+const afterGallery = originalContent.substring(endIndex);
+
+const updatedSiteData = `${beforeGallery}export const GALLERY_ITEMS = ${JSON.stringify(newGalleryItems, null, 2)};\n\n${afterGallery}`;
 
 fs.writeFileSync(siteDataPath, updatedSiteData, 'utf8');
-console.log('Successfully updated siteData.js with pristine reorganized gallery!');
+console.log('Successfully updated siteData.js with pristine reorganized gallery and preserved all exports!');
