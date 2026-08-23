@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ShieldCheck, 
   Sparkles, 
@@ -8,20 +8,52 @@ import {
   Sliders, 
   Wrench, 
   Building2, 
-  Layers 
+  Layers,
+  ZoomIn,
+  X,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { SERVICES } from '../data/siteData';
 
 export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigureGate, activeCategory, selectedServiceId, onSelectService }) {
   const [activeTab, setActiveTab] = useState(selectedServiceId || activeCategory || 'sliding-gates');
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (selectedServiceId) {
       setActiveTab(selectedServiceId);
     }
   }, [selectedServiceId]);
 
-  const currentService = (SERVICES && SERVICES.find((s) => s.id === activeTab)) || (SERVICES && SERVICES[0]) || { highlights: [], features: [] };
+  const currentService = (SERVICES && SERVICES.find((s) => s.id === activeTab)) || (SERVICES && SERVICES[0]) || { highlights: [], features: [], gallery: [] };
+  const serviceGallery = currentService.gallery && currentService.gallery.length > 0 
+    ? currentService.gallery 
+    : [currentService.heroImage || currentService.image || '/images/Sliding-Gates.jpg'];
+
+  const mainImage = selectedImage || serviceGallery[0] || currentService.heroImage || '/images/Sliding-Gates.jpg';
+
+  // Reset selected image when tab changes
+  useEffect(() => {
+    setSelectedImage(serviceGallery[0]);
+  }, [activeTab]);
+
+  const handleOpenLightbox = (index) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const handleNextLightbox = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev + 1) % serviceGallery.length);
+  };
+
+  const handlePrevLightbox = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev - 1 + serviceGallery.length) % serviceGallery.length);
+  };
 
   return (
     <section id="services" className="section" style={{ backgroundColor: 'var(--bg-body)' }}>
@@ -59,7 +91,10 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
             return (
               <button
                 key={s.id}
-                onClick={() => setActiveTab(s.id)}
+                onClick={() => {
+                  setActiveTab(s.id);
+                  if (onSelectService) onSelectService(s.id);
+                }}
                 style={{
                   padding: '0.55rem 1.1rem',
                   borderRadius: 'var(--radius-full)',
@@ -75,7 +110,8 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.45rem',
-                  flexShrink: 0
+                  flexShrink: 0,
+                  cursor: 'pointer'
                 }}
               >
                 {s.title}
@@ -118,7 +154,7 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
                 ))}
               </div>
 
-              {/* CTA Action Buttons & Subpage Link */}
+              {/* CTA Action Buttons */}
               <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
                 <button
                   onClick={() => onConfigureGate && onConfigureGate(currentService.id)}
@@ -138,25 +174,61 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
               </div>
             </div>
 
-            {/* Right: High-Res Real Imagery Showcase */}
+            {/* Right: Interactive High-Res Imagery Showcase & Thumbnails Strip */}
             <div>
-              <div style={{
-                position: 'relative',
-                borderRadius: '16px',
-                overflow: 'hidden',
-                boxShadow: 'var(--shadow-lg)',
-                border: '1.5px solid var(--border-light)'
-              }}>
+              {/* Main Feature Image with Zoom Trigger */}
+              <div 
+                onClick={() => handleOpenLightbox(serviceGallery.indexOf(mainImage) >= 0 ? serviceGallery.indexOf(mainImage) : 0)}
+                style={{
+                  position: 'relative',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  boxShadow: 'var(--shadow-lg)',
+                  border: '1.5px solid var(--border-light)',
+                  cursor: 'pointer',
+                  marginBottom: '0.85rem',
+                  background: '#090e1a'
+                }}
+                className="group"
+              >
                 <img
-                  src={currentService.heroImage || currentService.image}
+                  src={mainImage}
                   alt={currentService.title}
                   loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.src = '/images/Sliding-Gates.jpg';
+                  }}
                   style={{
                     width: '100%',
-                    height: '260px',
-                    objectFit: 'cover'
+                    height: '280px',
+                    objectFit: 'cover',
+                    display: 'block',
+                    transition: 'transform 0.3s ease'
                   }}
                 />
+                
+                {/* Top-Right Zoom Indicator Badge */}
+                <div style={{
+                  position: 'absolute',
+                  top: '12px',
+                  right: '12px',
+                  background: 'rgba(9, 14, 26, 0.75)',
+                  backdropFilter: 'blur(8px)',
+                  color: '#ffffff',
+                  borderRadius: '8px',
+                  padding: '0.35rem 0.65rem',
+                  fontSize: '0.75rem',
+                  fontWeight: '700',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  border: '1px solid rgba(255, 255, 255, 0.2)'
+                }}>
+                  <ZoomIn size={13} style={{ color: 'var(--accent-gold)' }} />
+                  <span>Click to Expand</span>
+                </div>
+
+                {/* Bottom Overlay Bar */}
                 <div style={{
                   position: 'absolute',
                   bottom: 0,
@@ -171,14 +243,195 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
                   fontSize: '0.8rem',
                   fontWeight: '700'
                 }}>
-                  <span>Yamanto Factory Direct</span>
-                  <span style={{ color: 'var(--accent-gold)' }}>10-Yr Warranty</span>
+                  <span>Yamanto Workshop Direct</span>
+                  <span style={{ color: 'var(--accent-gold)' }}>100% Australian Made</span>
                 </div>
               </div>
+
+              {/* Small Thumbnails Strip - Clickable Image Selector */}
+              {serviceGallery.length > 1 && (
+                <div>
+                  <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.45rem' }}>
+                    Select Photo to Preview ({serviceGallery.length} Workshop Builds):
+                  </span>
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: `repeat(${serviceGallery.length}, 1fr)`,
+                    gap: '0.5rem'
+                  }}>
+                    {serviceGallery.map((imgUrl, idx) => {
+                      const isSelected = mainImage === imgUrl;
+                      return (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setSelectedImage(imgUrl)}
+                          aria-label={`View photo ${idx + 1} for ${currentService.title}`}
+                          style={{
+                            padding: 0,
+                            borderRadius: '10px',
+                            overflow: 'hidden',
+                            border: isSelected ? '2.5px solid var(--accent-gold)' : '1.5px solid var(--border-light)',
+                            boxShadow: isSelected ? '0 0 12px var(--accent-gold-glow)' : 'var(--shadow-xs)',
+                            cursor: 'pointer',
+                            background: 'var(--bg-card-subtle)',
+                            height: '62px',
+                            position: 'relative',
+                            transition: 'all 0.2s ease',
+                            transform: isSelected ? 'scale(1.03)' : 'scale(1)'
+                          }}
+                        >
+                          <img
+                            src={imgUrl}
+                            alt={`${currentService.title} thumbnail ${idx + 1}`}
+                            loading="lazy"
+                            onError={(e) => {
+                              e.currentTarget.src = '/images/Sliding-Gates.jpg';
+                            }}
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover',
+                              display: 'block'
+                            }}
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal for Ultra-High Res Inspection */}
+      {lightboxOpen && (
+        <div 
+          className="modal-overlay" 
+          onClick={() => setLightboxOpen(false)}
+          style={{ zIndex: 1000 }}
+        >
+          <div 
+            className="modal-content-themed" 
+            onClick={(e) => e.stopPropagation()}
+            style={{ maxWidth: '880px', padding: 0, overflow: 'hidden' }}
+          >
+            {/* Close Button */}
+            <button 
+              className="modal-close-light" 
+              onClick={() => setLightboxOpen(false)}
+              aria-label="Close lightbox"
+            >
+              <X size={22} />
+            </button>
+
+            {/* Lightbox Image Container */}
+            <div style={{ position: 'relative', background: '#04070e', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img
+                src={serviceGallery[lightboxIndex]}
+                alt={`${currentService.title} build ${lightboxIndex + 1}`}
+                style={{
+                  width: '100%',
+                  maxHeight: '75vh',
+                  objectFit: 'contain',
+                  display: 'block'
+                }}
+              />
+
+              {/* Prev / Next Controls */}
+              {serviceGallery.length > 1 && (
+                <>
+                  <button
+                    onClick={handlePrevLightbox}
+                    aria-label="Previous build image"
+                    style={{
+                      position: 'absolute',
+                      left: '12px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '50%',
+                      background: 'rgba(9, 14, 26, 0.75)',
+                      backdropFilter: 'blur(8px)',
+                      color: '#ffffff',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: 'pointer',
+                      transition: 'background 0.2s ease'
+                    }}
+                  >
+                    <ChevronLeft size={22} />
+                  </button>
+
+                  <button
+                    onClick={handleNextLightbox}
+                    aria-label="Next build image"
+                    style={{
+                      position: 'absolute',
+                      right: '12px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '50%',
+                      background: 'rgba(9, 14, 26, 0.75)',
+                      backdropFilter: 'blur(8px)',
+                      color: '#ffffff',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: 'pointer',
+                      transition: 'background 0.2s ease'
+                    }}
+                  >
+                    <ChevronRight size={22} />
+                  </button>
+                </>
+              )}
+            </div>
+
+            {/* Lightbox Footer Bar */}
+            <div style={{
+              padding: '1.25rem 1.5rem',
+              background: 'var(--bg-card)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '1rem',
+              borderTop: '1px solid var(--border-light)'
+            }}>
+              <div>
+                <h4 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '800', color: 'var(--text-heading)' }}>
+                  {currentService.title} — Build {lightboxIndex + 1} of {serviceGallery.length}
+                </h4>
+                <p style={{ margin: '0.2rem 0 0 0', fontSize: '0.84rem', color: 'var(--text-muted)' }}>
+                  Custom fabricated in Yamanto with marine-grade architectural aluminium.
+                </p>
+              </div>
+
+              <div style={{ display: 'flex', gap: '0.65rem' }}>
+                <button
+                  onClick={() => {
+                    setLightboxOpen(false);
+                    if (onConfigureGate) onConfigureGate(currentService.id);
+                  }}
+                  className="btn btn-gold btn-sm"
+                  style={{ fontWeight: '800' }}
+                >
+                  <Sliders size={15} /> Configure Style in 3D
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
