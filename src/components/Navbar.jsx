@@ -33,7 +33,8 @@ export default function Navbar({
   onNavigate, 
   onOpenQuote, 
   onOpenContact, 
-  onOpenTroubleshoot, 
+  onOpenTroubleshoot,
+  onOpenPay,
   onSelectCategory 
 }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -126,6 +127,26 @@ export default function Navbar({
 
           {/* Right: Emergency Repairs Hotline & Direct Line */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: 'auto' }}>
+            <button
+              onClick={onOpenPay}
+              style={{
+                background: 'rgba(59, 130, 246, 0.2)',
+                color: '#93c5fd',
+                border: '1px solid rgba(147, 197, 253, 0.4)',
+                borderRadius: '6px',
+                padding: '0.18rem 0.55rem',
+                fontSize: '0.72rem',
+                fontWeight: '700',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                cursor: 'pointer'
+              }}
+            >
+              <CreditCard size={12} style={{ color: '#60a5fa' }} />
+              <span>Pay Invoice</span>
+            </button>
+
             <button
               onClick={onOpenTroubleshoot}
               style={{
@@ -623,6 +644,23 @@ export default function Navbar({
                       Contact Us & Showroom
                     </span>
                     <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
+                  </button>
+
+                  <button 
+                    className="mobile-nav-item" 
+                    onClick={() => {
+                      setMenuOpen(false);
+                      onOpenPay && onOpenPay();
+                    }}
+                    style={{ color: '#60a5fa', padding: '0.65rem 0', fontWeight: '800' }}
+                  >
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                      <CreditCard size={17} style={{ color: '#60a5fa' }} />
+                      Pay Invoice or Deposit (Stripe)
+                    </span>
+                    <span style={{ fontSize: '0.7rem', backgroundColor: 'rgba(59, 130, 246, 0.15)', color: '#93c5fd', padding: '0.15rem 0.45rem', borderRadius: '4px', border: '1px solid rgba(147, 197, 253, 0.3)' }}>
+                      Instant Pay
+                    </span>
                   </button>
                 </div>
               </div>

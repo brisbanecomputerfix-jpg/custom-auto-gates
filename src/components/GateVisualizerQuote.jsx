@@ -11,9 +11,13 @@ import {
   Send, 
   Upload, 
   Info, 
-  PhoneCall 
+  PhoneCall,
+  CreditCard,
+  Lock,
+  Loader2
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
+import { createStripeCheckout } from '../utils/stripeClient';
 
 export default function GateVisualizerQuote() {
   const [step, setStep] = useState(1);
@@ -37,6 +41,7 @@ export default function GateVisualizerQuote() {
     file: null
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isPayingDeposit, setIsPayingDeposit] = useState(false);
 
   // Gate Type Options
   const GATE_TYPES = [
@@ -554,13 +559,78 @@ export default function GateVisualizerQuote() {
                       />
                     </div>
 
-                    <div style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
-                      <button type="button" onClick={() => setStep(4)} className="btn btn-outline-dark">
-                        <ChevronLeft size={17} /> Back
+                    <div style={{ marginTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
+                        <button type="button" onClick={() => setStep(4)} className="btn btn-outline-dark">
+                          <ChevronLeft size={17} /> Back
+                        </button>
+                        <button type="submit" className="btn btn-blue" style={{ flex: '1 1 auto' }}>
+                          <Send size={17} /> Request Free Itemized Quote
+                        </button>
+                      </div>
+
+                      {/* Optional Fast-Track Production Deposit via Stripe */}
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          if (!formData.fullName || !formData.email) {
+                            alert('Please enter your Name and Email above before securing your production deposit.');
+                            return;
+                          }
+                          setIsPayingDeposit(true);
+                          try {
+                            const selectedTypeObj = GATE_TYPES.find(g => g.id === gateType);
+                            await createStripeCheckout({
+                              amount: 500,
+                              title: `Custom ${selectedTypeObj?.name || 'Gate'} Production Deposit ($500)`,
+                              description: `${width}m x ${height}m ${selectedTypeObj?.name || 'Gate'}, ${material}, ${color.toUpperCase()} - For ${formData.fullName}`,
+                              customerEmail: formData.email,
+                              customerName: formData.fullName,
+                              customerPhone: formData.phone,
+                              metadata: {
+                                gateType,
+                                width: width.toString(),
+                                height: height.toString(),
+                                material,
+                                color,
+                                motor,
+                                accessories: accessories.join(', '),
+                                suburb: formData.suburb,
+                                notes: formData.notes,
+                                purpose: 'production_deposit'
+                              }
+                            });
+                          } catch (err) {
+                            alert(err.message || 'Error connecting to Stripe.');
+                            setIsPayingDeposit(false);
+                          }
+                        }}
+                        disabled={isPayingDeposit}
+                        className="btn btn-gold btn-lg btn-pulse"
+                        style={{
+                          width: '100%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '0.55rem',
+                          padding: '0.9rem',
+                          fontWeight: '800',
+                          fontSize: '0.95rem'
+                        }}
+                      >
+                        {isPayingDeposit ? (
+                          <>
+                            <Loader2 size={18} className="animate-spin" /> Securing with Stripe...
+                          </>
+                        ) : (
+                          <>
+                            <CreditCard size={18} /> Lock In Queue & Pay $500 Deposit (Stripe Gateway)
+                          </>
+                        )}
                       </button>
-                      <button type="submit" className="btn btn-gold btn-lg btn-pulse" style={{ flex: '1 1 auto' }}>
-                        <Send size={17} /> Submit for Official Quote
-                      </button>
+                      <div style={{ textAlign: 'center', fontSize: '0.72rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}>
+                        <Lock size={11} /> 100% Refundable prior to on-site laser measure • 256-Bit SSL Encrypted
+                      </div>
                     </div>
                   </form>
                 )}

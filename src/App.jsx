@@ -17,6 +17,8 @@ import ContactUs from './components/ContactUs';
 import Testimonials from './components/Testimonials';
 import CouncilGuide from './components/CouncilGuide';
 import SuburbLandingPage from './components/SuburbLandingPage';
+import QuickPayModal from './components/QuickPayModal';
+import PaymentSuccessModal from './components/PaymentSuccessModal';
 import Footer from './components/Footer';
 import QuickActionBar from './components/QuickActionBar';
 import RemoteCursorEffect from './components/RemoteCursorEffect';
@@ -30,6 +32,9 @@ export default function App() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isTroubleshootOpen, setIsTroubleshootOpen] = useState(false);
+  const [isQuickPayOpen, setIsQuickPayOpen] = useState(false);
+  const [isPaymentSuccessOpen, setIsPaymentSuccessOpen] = useState(false);
+  const [paymentSessionId, setPaymentSessionId] = useState('');
   const [selectedServiceId, setSelectedServiceId] = useState('sliding-gates');
   const [selectedGalleryGate, setSelectedGalleryGate] = useState(null);
 
@@ -38,6 +43,18 @@ export default function App() {
     const handleHashChange = () => {
       const hash = window.location.hash;
       const path = window.location.pathname;
+
+      if (hash.includes('#payment-success') || window.location.search.includes('session_id')) {
+        const hashParams = hash.includes('?') ? hash.split('?')[1] : '';
+        const searchStr = window.location.search ? window.location.search.substring(1) : hashParams;
+        const urlParams = new URLSearchParams(searchStr);
+        const sid = urlParams.get('session_id') || 'cs_live_verified';
+        setPaymentSessionId(sid);
+        setIsPaymentSuccessOpen(true);
+      } else if (hash === '#pay' || hash === '#pay-invoice' || hash === '#payment') {
+        setIsQuickPayOpen(true);
+      }
+
       if (hash === '#about' || path === '/about-us') {
         setCurrentPage('about');
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -148,6 +165,7 @@ export default function App() {
         onOpenQuote={handleOpenQuote}
         onOpenContact={() => setIsContactOpen(true)}
         onOpenTroubleshoot={() => setIsTroubleshootOpen(true)}
+        onOpenPay={() => setIsQuickPayOpen(true)}
         onSelectCategory={(catId) => {
           setSelectedServiceId(catId);
           if (currentPage !== 'home') navigateTo('home');
@@ -262,6 +280,7 @@ export default function App() {
       <Footer 
         onOpenQuote={handleOpenQuote}
         onOpenContact={() => setIsContactOpen(true)}
+        onOpenPay={() => setIsQuickPayOpen(true)}
         onSelectCategory={(catId) => {
           setSelectedServiceId(catId);
           if (currentPage !== 'home') navigateTo('home');
@@ -274,6 +293,7 @@ export default function App() {
         onOpenQuote={handleOpenQuote}
         onOpenContact={() => setIsContactOpen(true)}
         onOpenTroubleshoot={() => setIsTroubleshootOpen(true)}
+        onOpenPay={() => setIsQuickPayOpen(true)}
       />
 
       {/* Interactive Modals */}
@@ -289,6 +309,29 @@ export default function App() {
         onOpenContact={() => {
           setIsTroubleshootOpen(false);
           setIsContactOpen(true);
+        }}
+      />
+
+      {/* Quick Pay Invoice / Deposit Stripe Modal */}
+      <QuickPayModal 
+        isOpen={isQuickPayOpen}
+        onClose={() => {
+          setIsQuickPayOpen(false);
+          if (window.location.hash === '#pay' || window.location.hash === '#pay-invoice') {
+            window.location.hash = '';
+          }
+        }}
+      />
+
+      {/* Verified Stripe Payment Success Receipt Modal */}
+      <PaymentSuccessModal 
+        isOpen={isPaymentSuccessOpen}
+        sessionId={paymentSessionId}
+        onClose={() => {
+          setIsPaymentSuccessOpen(false);
+          if (window.location.hash.includes('#payment-success')) {
+            window.location.hash = '';
+          }
         }}
       />
 

@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
 
-export default function Footer({ onOpenQuote, onSelectCategory, onNavigate }) {
+export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelectCategory, onNavigate }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -150,6 +150,14 @@ export default function Footer({ onOpenQuote, onSelectCategory, onNavigate }) {
                   style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
                 >
                   <ChevronRight size={13} /> Customer Reviews (4.9★)
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={onOpenPay} 
+                  style={{ color: '#60a5fa', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
+                >
+                  <ChevronRight size={13} /> Pay Invoice / Deposit (Stripe)
                 </button>
               </li>
               <li>
