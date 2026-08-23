@@ -30,7 +30,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(24);
+  const [visibleCount, setVisibleCount] = useState(8);
 
   // Filter and search logic
   const filteredItems = useMemo(() => {
@@ -239,14 +239,23 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
           ))}
         </div>
 
-        {/* Load More Button */}
+        {/* Load More Button Controls */}
         {visibleCount < filteredItems.length && (
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
             <button
-              onClick={() => setVisibleCount((prev) => prev + 24)}
-              className="btn btn-outline-dark btn-lg"
+              onClick={() => setVisibleCount((prev) => prev + 8)}
+              className="btn btn-outline-dark btn-md"
+              style={{ fontWeight: '800' }}
             >
-              Load More Projects ({filteredItems.length - visibleCount} remaining)
+              Load 8 More Projects ({filteredItems.length - visibleCount} remaining)
+            </button>
+
+            <button
+              onClick={() => setVisibleCount(filteredItems.length)}
+              className="btn btn-gold btn-md"
+              style={{ fontWeight: '800' }}
+            >
+              View All {filteredItems.length} Projects
             </button>
           </div>
         )}

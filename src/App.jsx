@@ -243,6 +243,11 @@ export default function App() {
               onNavigateAbout={() => navigateTo('about')}
             />
 
+            {/* 600+ Real Project Gallery - High-Trust Visual Proof Section */}
+            <ProjectGallery 
+              onOpenQuoteWithProject={handleOpenQuoteWithProject}
+            />
+
             {/* Live Custom Gate Cost Estimator */}
             <GateVisualizerQuote />
 
@@ -258,11 +263,6 @@ export default function App() {
             <WhyFactoryDirect 
               onOpenQuote={handleOpenQuote}
               onNavigateAbout={() => navigateTo('about')}
-            />
-
-            {/* 600+ Real Project Gallery */}
-            <ProjectGallery 
-              onOpenQuoteWithProject={handleOpenQuoteWithProject}
             />
 
             {/* Motor Hardware Automation Specs */}
