@@ -108,29 +108,30 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
 
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '2.5rem', alignItems: 'center' }}>
-          {/* Left Hero Content with High-Contrast Glassmorphic Card Backing */}
+          {/* Left Hero Content with High-Transparency Glassmorphic Card Backing */}
           <div style={{
             background: 'var(--hero-card-bg)',
-            backdropFilter: 'blur(14px)',
+            backdropFilter: 'blur(24px) saturate(190%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(190%)',
             borderRadius: '24px',
             border: '1.5px solid var(--hero-card-border)',
-            padding: 'clamp(1.25rem, 3vw, 2.25rem)',
+            padding: 'clamp(1.5rem, 3.5vw, 2.5rem)',
             boxShadow: 'var(--hero-card-shadow)',
-            transition: 'background-color 0.3s ease, border-color 0.3s ease'
+            transition: 'all 0.3s ease'
           }}>
             {/* Top Pill Badges */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
               <button 
                 onClick={onNavigateAbout}
                 className="badge-tag badge-gold" 
-                style={{ margin: 0, fontWeight: '800', cursor: 'pointer', fontSize: '0.78rem' }}
+                style={{ margin: 0, fontWeight: '800', cursor: 'pointer', fontSize: '0.78rem', backdropFilter: 'blur(8px)' }}
               >
                 <Factory size={13} /> Buy Factory Direct Yamanto
               </button>
-              <span className="badge-tag badge-blue" style={{ margin: 0, fontWeight: '800', fontSize: '0.78rem' }}>
+              <span className="badge-tag badge-blue" style={{ margin: 0, fontWeight: '800', fontSize: '0.78rem', backdropFilter: 'blur(8px)' }}>
                 <MapPin size={13} /> Brisbane Inner Suburbs & QLD
               </span>
-              <span className="badge-tag badge-green" style={{ margin: 0, fontWeight: '800', fontSize: '0.78rem' }}>
+              <span className="badge-tag badge-green" style={{ margin: 0, fontWeight: '800', fontSize: '0.78rem', backdropFilter: 'blur(8px)' }}>
                 <ShieldCheck size={13} /> 10-Yr Warranty
               </span>
             </div>
@@ -142,7 +143,8 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               lineHeight: 1.15,
               color: 'var(--text-heading)',
               letterSpacing: '-0.025em',
-              marginBottom: '1rem'
+              marginBottom: '1rem',
+              textShadow: '0 2px 10px rgba(0,0,0,0.3)'
             }}>
               Custom Automatic Gates <br />
               <span className="gradient-text-gold">
@@ -157,7 +159,8 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               lineHeight: 1.6,
               marginBottom: '1.75rem',
               maxWidth: '650px',
-              fontWeight: '400'
+              fontWeight: '400',
+              textShadow: '0 1px 4px rgba(0,0,0,0.2)'
             }}>
               South East Queensland's dedicated specialist in custom automated <strong style={{ color: 'var(--text-heading)' }}>sliding gates, swing gates, solar off-grid systems</strong>, and <strong style={{ color: 'var(--text-heading)' }}>architectural aluminium slat fencing</strong>. Precision laser CAD measured, built in our Yamanto workshop, and installed with commercial-grade automation systems.
             </p>
@@ -176,7 +179,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               <button
                 onClick={onOpenContact}
                 className="btn btn-outline-dark btn-lg"
-                style={{ flex: '1 1 auto', backdropFilter: 'blur(8px)' }}
+                style={{ flex: '1 1 auto', backdropFilter: 'blur(12px)', background: 'rgba(255,255,255,0.06)' }}
               >
                 Book Free Measure
               </button>
@@ -195,7 +198,8 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                   padding: '0.75rem 1.1rem',
                   borderRadius: 'var(--radius-md)',
                   flex: '1 1 auto',
-                  backdropFilter: 'blur(8px)'
+                  backdropFilter: 'blur(12px)',
+                  background: 'rgba(255,255,255,0.06)'
                 }}
               >
                 <Phone size={17} style={{ color: 'var(--accent-gold)' }} />
@@ -226,17 +230,19 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
             </div>
           </div>
 
-          {/* Right Hero: Quick Gate Estimator Card */}
+          {/* Right Hero: Quick Gate Estimator Card with Transparent Glass */}
           <div style={{ position: 'relative', width: '100%' }}>
             <div style={{
               background: 'var(--bg-card-glass)',
-              backdropFilter: 'blur(16px)',
-              borderRadius: '20px',
-              border: '1.5px solid var(--border-subtle)',
-              padding: 'clamp(1.25rem, 3.5vw, 1.85rem)',
-              boxShadow: 'var(--shadow-xl)',
+              backdropFilter: 'blur(24px) saturate(190%)',
+              WebkitBackdropFilter: 'blur(24px) saturate(190%)',
+              borderRadius: '24px',
+              border: '1.5px solid var(--hero-card-border)',
+              padding: 'clamp(1.25rem, 3.5vw, 2rem)',
+              boxShadow: 'var(--hero-card-shadow)',
               position: 'relative',
-              zIndex: 5
+              zIndex: 5,
+              transition: 'all 0.3s ease'
             }}>
               {/* Card Header */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
@@ -246,7 +252,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                     Yamanto Workshop
                   </span>
                 </div>
-                <span className="badge-tag badge-blue" style={{ margin: 0, padding: '0.2rem 0.6rem', fontSize: '0.72rem' }}>
+                <span className="badge-tag badge-blue" style={{ margin: 0, padding: '0.2rem 0.6rem', fontSize: '0.72rem', backdropFilter: 'blur(8px)' }}>
                   Daily On-Site Measures
                 </span>
               </div>
@@ -268,9 +274,10 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                       onClick={() => setSelectedQuickGate(style.id)}
                       style={{
                         padding: '0.75rem',
-                        borderRadius: '10px',
+                        borderRadius: '12px',
                         border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
-                        background: isSelected ? 'var(--accent-gold-light)' : 'var(--bg-card-subtle)',
+                        background: isSelected ? 'var(--accent-gold-light)' : 'rgba(255, 255, 255, 0.05)',
+                        backdropFilter: 'blur(8px)',
                         textAlign: 'left',
                         transition: 'all 0.15s ease',
                         cursor: 'pointer'
@@ -291,9 +298,10 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               {/* 3D Badges Showcase */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.65rem', marginBottom: '1.25rem' }}>
                 <div style={{
-                  background: 'var(--bg-card-subtle)',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  backdropFilter: 'blur(8px)',
                   border: '1px solid var(--border-light)',
-                  borderRadius: '10px',
+                  borderRadius: '12px',
                   padding: '0.75rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -320,9 +328,10 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                 </div>
 
                 <div style={{
-                  background: 'var(--bg-card-subtle)',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  backdropFilter: 'blur(8px)',
                   border: '1px solid var(--border-light)',
-                  borderRadius: '10px',
+                  borderRadius: '12px',
                   padding: '0.75rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -363,7 +372,8 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               <div style={{
                 background: 'var(--badge-blue-bg)',
                 border: '1px solid var(--badge-blue-border)',
-                borderRadius: '8px',
+                backdropFilter: 'blur(8px)',
+                borderRadius: '10px',
                 padding: '0.6rem 0.8rem',
                 display: 'flex',
                 alignItems: 'center',
