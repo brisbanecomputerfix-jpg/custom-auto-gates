@@ -12,6 +12,8 @@ export const COMPANY_INFO = {
   emergencyNote: "Emergency Repair Services Available Across SE Queensland",
   tagline: "Buy Factory Direct — Premium Automatic Gates & Fencing Brisbane",
   logoUrl: "/images/custom-auto-gates-logo.png",
+  facebook: "https://www.facebook.com/customautogates",
+  instagram: "https://www.instagram.com/customautogates",
   serviceAreas: [
     "Brisbane CBD & Inner Suburbs",
     "Brisbane Northside & Southside",

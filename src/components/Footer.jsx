@@ -11,6 +11,7 @@ import {
   ArrowUp,
   HeartHandshake
 } from 'lucide-react';
+import { InstagramIcon, FacebookIcon } from './SocialIcons';
 import { COMPANY_INFO } from '../data/siteData';
 
 export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelectCategory, onNavigate }) {
@@ -70,7 +71,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
               South East Queensland's premier manufacturer of custom automatic driveway sliding gates, swing gates, solar off-grid gates, and aluminium slat fencing. 100% fabricated in our Yamanto workshop.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.8125rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.8125rem', marginBottom: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#10b981' }}>
                 <ShieldCheck size={15} />
                 <span>10-Year Factory Structural Warranty</span>
@@ -78,6 +79,68 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#fbbf24' }}>
                 <Factory size={15} />
                 <span>Yamanto Direct Wholesale Pricing</span>
+              </div>
+            </div>
+
+            {/* Social Media Channels */}
+            <div>
+              <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: '800', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.6rem' }}>
+                Follow Our Workshop Builds
+              </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                <a 
+                  href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates'} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Custom Auto Gates on Instagram"
+                  title="Follow Custom Auto Gates on Instagram"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    padding: '0.4rem 0.85rem',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    color: '#cbd5e1',
+                    fontSize: '0.82rem',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = '#e1306c'; e.currentTarget.style.borderColor = 'rgba(225, 48, 108, 0.4)'; e.currentTarget.style.background = 'rgba(225, 48, 108, 0.12)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'; e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)'; }}
+                >
+                  <InstagramIcon size={15} style={{ color: '#e1306c' }} />
+                  <span>Instagram</span>
+                </a>
+
+                <a 
+                  href={COMPANY_INFO.facebook || 'https://www.facebook.com/customautogates'} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Custom Auto Gates on Facebook"
+                  title="Follow Custom Auto Gates on Facebook"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    padding: '0.4rem 0.85rem',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    color: '#cbd5e1',
+                    fontSize: '0.82rem',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = '#1877f2'; e.currentTarget.style.borderColor = 'rgba(24, 119, 242, 0.4)'; e.currentTarget.style.background = 'rgba(24, 119, 242, 0.12)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'; e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)'; }}
+                >
+                  <FacebookIcon size={15} style={{ color: '#1877f2' }} />
+                  <span>Facebook</span>
+                </a>
               </div>
             </div>
           </div>
@@ -273,6 +336,30 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <a
+                href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                style={{ color: '#94a3b8', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#e1306c'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
+              >
+                <InstagramIcon size={16} />
+              </a>
+              <a
+                href={COMPANY_INFO.facebook || 'https://www.facebook.com/customautogates'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                style={{ color: '#94a3b8', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#1877f2'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
+              >
+                <FacebookIcon size={16} />
+              </a>
+            </div>
             <span>Privacy Policy</span>
             <span>Terms & Conditions</span>
             <button 

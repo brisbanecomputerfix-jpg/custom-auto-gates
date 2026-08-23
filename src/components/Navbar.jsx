@@ -23,8 +23,10 @@ import {
   ArrowRight, 
   ChevronRight, 
   Flame, 
-  CheckCircle2 
+  CheckCircle2,
+  CreditCard 
 } from 'lucide-react';
+import { InstagramIcon, FacebookIcon } from './SocialIcons';
 import { COMPANY_INFO } from '../data/siteData';
 
 export default function Navbar({ 
@@ -126,8 +128,59 @@ export default function Navbar({
             </span>
           </div>
 
-          {/* Right: Emergency Repairs Hotline & Direct Line */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: 'auto' }}>
+          {/* Right: Social Links, Emergency Repairs & Direct Line */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginLeft: 'auto' }}>
+            {/* Social Media Links */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+              <a
+                href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Custom Auto Gates on Instagram"
+                title="Follow Custom Auto Gates on Instagram"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  color: '#cbd5e1',
+                  transition: 'all 0.2s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#e1306c'; e.currentTarget.style.background = 'rgba(225, 48, 108, 0.2)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)'; }}
+              >
+                <InstagramIcon size={13} />
+              </a>
+
+              <a
+                href={COMPANY_INFO.facebook || 'https://www.facebook.com/customautogates'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Custom Auto Gates on Facebook"
+                title="Follow Custom Auto Gates on Facebook"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  color: '#cbd5e1',
+                  transition: 'all 0.2s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#1877f2'; e.currentTarget.style.background = 'rgba(24, 119, 242, 0.2)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)'; }}
+              >
+                <FacebookIcon size={13} />
+              </a>
+            </div>
+
             <button
               onClick={onOpenPay}
               style={{
@@ -794,8 +847,29 @@ export default function Navbar({
               </div>
             </div>
 
-            {/* Drawer Footer Actions */}
+            {/* Drawer Footer Actions & Social Links */}
             <div style={{ paddingTop: '1.25rem', borderTop: '1.5px solid var(--border-light)', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.25rem' }}>
+                <a 
+                  href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates'} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn btn-outline-dark"
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', fontSize: '0.84rem', padding: '0.6rem' }}
+                >
+                  <InstagramIcon size={16} style={{ color: '#e1306c' }} /> Instagram
+                </a>
+                <a 
+                  href={COMPANY_INFO.facebook || 'https://www.facebook.com/customautogates'} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn btn-outline-dark"
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', fontSize: '0.84rem', padding: '0.6rem' }}
+                >
+                  <FacebookIcon size={16} style={{ color: '#1877f2' }} /> Facebook
+                </a>
+              </div>
+
               <a 
                 href={COMPANY_INFO.tel} 
                 className="btn btn-blue btn-lg" 
