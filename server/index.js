@@ -11,7 +11,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
+const PORT = parseInt(process.env.PORT, 10) || 3000;
 
 // 1. Security Headers Middleware
 app.use((req, res, next) => {
@@ -133,8 +134,8 @@ app.get('*', (req, res) => {
 });
 
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => {
-    console.log(`⚡ Custom Auto Gates Secure Server running on http://localhost:${PORT}`);
+  app.listen(PORT, HOST, () => {
+    console.log(`⚡ Custom Auto Gates Secure Server running on http://${HOST}:${PORT}`);
   });
 }
 

@@ -24,6 +24,11 @@ FROM node:20-alpine
 
 WORKDIR /app
 
+# Set production environment
+ENV NODE_ENV=production
+ENV HOST=0.0.0.0
+ENV PORT=3000
+
 # Copy package descriptors and install production dependencies
 COPY package*.json ./
 RUN npm install --omit=dev
@@ -31,15 +36,11 @@ RUN npm install --omit=dev
 # Copy built frontend static assets
 COPY --from=builder /app/dist ./dist
 
-# Copy backend server code and environment files
+# Copy backend server code
 COPY server ./server
-COPY .env* ./
 
-ENV NODE_ENV=production
-ENV PORT=3000
-
-# Expose standard Coolify HTTP port
-EXPOSE 3000
+# Expose HTTP ports (both Coolify default 3000 and standard 80)
+EXPOSE 3000 80
 
 # Start unified Node.js Express server
 CMD ["node", "server/index.js"]
