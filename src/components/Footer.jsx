@@ -11,7 +11,7 @@ import {
   ArrowUp,
   HeartHandshake
 } from 'lucide-react';
-import { InstagramIcon, FacebookIcon } from './SocialIcons';
+import { InstagramIcon, FacebookIcon, LinkedInIcon } from './SocialIcons';
 import { COMPANY_INFO } from '../data/siteData';
 
 export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelectCategory, onNavigate }) {
@@ -85,7 +85,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
               <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: '800', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.6rem' }}>
                 Follow Our Workshop Builds
               </span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                 <a 
                   href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates'} 
                   target="_blank" 
@@ -96,7 +96,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.45rem',
-                    padding: '0.4rem 0.85rem',
+                    padding: '0.4rem 0.75rem',
                     borderRadius: '8px',
                     background: 'rgba(255, 255, 255, 0.06)',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -123,7 +123,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.45rem',
-                    padding: '0.4rem 0.85rem',
+                    padding: '0.4rem 0.75rem',
                     borderRadius: '8px',
                     background: 'rgba(255, 255, 255, 0.06)',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -138,6 +138,33 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
                 >
                   <FacebookIcon size={15} style={{ color: '#1877f2' }} />
                   <span>Facebook</span>
+                </a>
+
+                <a 
+                  href={COMPANY_INFO.linkedin || 'https://au.linkedin.com/company/customautogates'} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Custom Auto Gates on LinkedIn"
+                  title="Follow Custom Auto Gates on LinkedIn"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    padding: '0.4rem 0.75rem',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    color: '#cbd5e1',
+                    fontSize: '0.82rem',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = '#0a66c2'; e.currentTarget.style.borderColor = 'rgba(10, 102, 194, 0.4)'; e.currentTarget.style.background = 'rgba(10, 102, 194, 0.12)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'; e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)'; }}
+                >
+                  <LinkedInIcon size={15} style={{ color: '#0a66c2' }} />
+                  <span>LinkedIn</span>
                 </a>
               </div>
             </div>
@@ -356,6 +383,17 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
                 onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
               >
                 <FacebookIcon size={16} />
+              </a>
+              <a
+                href={COMPANY_INFO.linkedin || 'https://au.linkedin.com/company/customautogates'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                style={{ color: '#94a3b8', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#0a66c2'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
+              >
+                <LinkedInIcon size={16} />
               </a>
             </div>
             <span>Privacy Policy</span>

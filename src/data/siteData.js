@@ -14,6 +14,7 @@ export const COMPANY_INFO = {
   logoUrl: "/images/custom-auto-gates-logo.png",
   facebook: "https://www.facebook.com/customautogates",
   instagram: "https://www.instagram.com/customautogates",
+  linkedin: "https://au.linkedin.com/company/customautogates",
   serviceAreas: [
     "Brisbane CBD & Inner Suburbs",
     "Brisbane Northside & Southside",

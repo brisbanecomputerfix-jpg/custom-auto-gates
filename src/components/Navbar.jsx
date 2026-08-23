@@ -26,7 +26,7 @@ import {
   CheckCircle2,
   CreditCard 
 } from 'lucide-react';
-import { InstagramIcon, FacebookIcon } from './SocialIcons';
+import { InstagramIcon, FacebookIcon, LinkedInIcon } from './SocialIcons';
 import { COMPANY_INFO } from '../data/siteData';
 
 export default function Navbar({ 
@@ -178,6 +178,30 @@ export default function Navbar({
                 onMouseLeave={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)'; }}
               >
                 <FacebookIcon size={13} />
+              </a>
+
+              <a
+                href={COMPANY_INFO.linkedin || 'https://au.linkedin.com/company/customautogates'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Custom Auto Gates on LinkedIn"
+                title="Follow Custom Auto Gates on LinkedIn"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  color: '#cbd5e1',
+                  transition: 'all 0.2s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#0a66c2'; e.currentTarget.style.background = 'rgba(10, 102, 194, 0.2)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)'; }}
+              >
+                <LinkedInIcon size={13} />
               </a>
             </div>
 
@@ -846,24 +870,33 @@ export default function Navbar({
 
             {/* Drawer Footer Actions & Social Links */}
             <div style={{ paddingTop: '1.25rem', borderTop: '1.5px solid var(--border-light)', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.25rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.45rem', marginBottom: '0.25rem' }}>
                 <a 
                   href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates'} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn btn-outline-dark"
-                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', fontSize: '0.84rem', padding: '0.6rem' }}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem', fontSize: '0.78rem', padding: '0.55rem 0.35rem' }}
                 >
-                  <InstagramIcon size={16} style={{ color: '#e1306c' }} /> Instagram
+                  <InstagramIcon size={15} style={{ color: '#e1306c' }} /> Insta
                 </a>
                 <a 
                   href={COMPANY_INFO.facebook || 'https://www.facebook.com/customautogates'} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn btn-outline-dark"
-                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', fontSize: '0.84rem', padding: '0.6rem' }}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem', fontSize: '0.78rem', padding: '0.55rem 0.35rem' }}
                 >
-                  <FacebookIcon size={16} style={{ color: '#1877f2' }} /> Facebook
+                  <FacebookIcon size={15} style={{ color: '#1877f2' }} /> FB
+                </a>
+                <a 
+                  href={COMPANY_INFO.linkedin || 'https://au.linkedin.com/company/customautogates'} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn btn-outline-dark"
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem', fontSize: '0.78rem', padding: '0.55rem 0.35rem' }}
+                >
+                  <LinkedInIcon size={15} style={{ color: '#0a66c2' }} /> LinkedIn
                 </a>
               </div>
 
