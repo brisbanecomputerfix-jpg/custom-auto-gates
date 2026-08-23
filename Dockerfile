@@ -27,7 +27,7 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
-ENV PORT=80
+ENV PORT=3000
 
 # Copy package descriptors and install production dependencies
 COPY package*.json ./
@@ -39,8 +39,12 @@ COPY --from=builder /app/dist ./dist
 # Copy backend server code
 COPY server ./server
 
-# Expose HTTP ports (both standard 80 and Coolify 3000)
-EXPOSE 80 3000
+# Expose standard Node container port
+EXPOSE 3000
+
+# Container healthcheck for Coolify
+HEALTHCHECK --interval=20s --timeout=5s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:3000/api/health || exit 1
 
 # Start unified Node.js Express server
 CMD ["node", "server/index.js"]

@@ -134,21 +134,13 @@ app.get('*', (req, res) => {
 });
 
 if (process.env.NODE_ENV !== 'test') {
-  const primaryPort = parseInt(process.env.PORT, 10) || 80;
-  const secondaryPort = primaryPort === 80 ? 3000 : 80;
-
-  app.listen(primaryPort, HOST, () => {
-    console.log(`⚡ Custom Auto Gates Primary Server running on http://${HOST}:${primaryPort}`);
+  const server = app.listen(PORT, HOST, () => {
+    console.log(`⚡ Custom Auto Gates Server running on http://${HOST}:${PORT}`);
   });
 
-  // Also bind secondary port if available so Coolify reverse proxy matches either 80 or 3000
-  try {
-    app.listen(secondaryPort, HOST, () => {
-      console.log(`⚡ Custom Auto Gates Secondary Port running on http://${HOST}:${secondaryPort}`);
-    });
-  } catch (err) {
-    console.warn(`Could not bind secondary port ${secondaryPort}:`, err.message);
-  }
+  server.on('error', (err) => {
+    console.error(`Server error on port ${PORT}:`, err.message);
+  });
 }
 
 export default app;
