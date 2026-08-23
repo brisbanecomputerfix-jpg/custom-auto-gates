@@ -16,13 +16,12 @@ import {
 import { GALLERY_ITEMS } from '../data/siteData';
 
 const CATEGORIES = [
-  { id: 'all', label: 'All Projects (600+)' },
+  { id: 'all', label: 'All Projects (220+)' },
   { id: 'sliding', label: 'Sliding Gates' },
   { id: 'swing', label: 'Swing Gates' },
   { id: 'solar', label: 'Solar Gates' },
   { id: 'commercial', label: 'Commercial & Security' },
-  { id: 'slat-fencing', label: 'Slat Fencing' },
-  { id: 'decowood', label: 'DecoWood Timber Look' }
+  { id: 'fencing', label: 'Architectural Fencing' }
 ];
 
 export default function ProjectGallery({ onOpenQuoteWithProject }) {
@@ -35,7 +34,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
   // Filter and search logic
   const filteredItems = useMemo(() => {
     return GALLERY_ITEMS.filter((item) => {
-      const matchesCategory = activeCategory === 'all' || item?.category === activeCategory;
+      const matchesCategory = activeCategory === 'all' || item?.category === activeCategory || (activeCategory === 'fencing' && (item?.category === 'fencing' || item?.category === 'slat-fencing'));
       const query = (searchTerm || '').toLowerCase().trim();
       const titleMatch = (item?.title || '').toLowerCase().includes(query);
       const locMatch = (item?.location || item?.suburb || '').toLowerCase().includes(query);
