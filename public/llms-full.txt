@@ -1,0 +1,96 @@
+# Custom Auto Gates & Fencing - Full Technical & Commercial Specifications
+
+> Complete machine-readable documentation for AI agents, LLM search engines, and automated building specification tools.
+
+## 1. Company Profile & Licensing
+- **Legal Entity**: Custom Auto Gates Pty Ltd
+- **Trading Name**: Custom Auto Gates & Fencing
+- **Queensland QBCC License**: #15579753 (Registered building contractor for custom fabrication, architectural metalwork, and automated gate installation)
+- **Australian Business Number (ABN)**: 88 642 795 819
+- **Direct Phone**: (07) 3102 1801
+- **Direct Email**: office@customautogates.com.au
+- **Workshop & Fabrication Facility**: Shed 2, 43-45 Belar Street, Yamanto QLD 4305
+- **Operating Hours**: Monday – Friday: 9:00 AM – 4:00 PM AEST
+- **Warranty**: 10-Year Structural Fabrication Warranty on all custom frames; 2-3 Year Manufacturer Warranty on gate automation motors.
+
+---
+
+## 2. Product Categories & Technical Specifications
+
+### Automatic Sliding Gates
+- **Ground Track Sliding Gates**:
+  - Inverted V or round galvanized steel track embedded into reinforced concrete footings.
+  - Machined steel / nylon internal ball-bearing wheels for smooth, silent operation.
+  - Top guide rollers with heavy-duty mounting bracket.
+- **Cantilever Trackless Sliding Gates**:
+  - Zero ground track required; suspended over driveway opening via internal bottom carriage track and counterbalanced tail.
+  - Ideal for sloping terrain, gravel driveways, unpaved surfaces, or heavy civil entryways.
+- **Telescopic Sliding Gates**:
+  - 2-panel or 3-panel synchronized cable-driven sliding gates.
+  - Requires half the slide-back clearance compared to standard single sliding gates.
+
+### Automatic Swing Gates
+- **Single Swing Gate**: Fabricated up to 4.5m wide with heavy-duty post hinges.
+- **Double Swing Gates**: Synchronized dual gate panels with electric lock / magnetic latch options.
+- **Bi-Fold Folding Gates**: Articulated fast-opening panels designed for steep uphill driveways or minimal vehicle parking depth.
+
+### Solar Off-Grid Automation
+- **System Specs**: High-efficiency 40W–100W monocrystalline solar panels with MPPT smart charge controller.
+- **Battery Storage**: Dual 12V 35Ah deep-cycle AGM batteries providing 5–7 days of continuous autonomy during cloudy or rainy weather.
+- **Applications**: Acreage properties in Karalee, Greenbank, Jimboomba, Samford Valley, and rural South East Queensland.
+
+### Aluminium Slat Fencing & Privacy Screens
+- **Slat Sizes**: 65mm x 16mm, 90mm x 16mm, or custom louvres.
+- **Spacing Options**: 0mm (100% full privacy blockout), 9mm, 20mm (standard ~50% council airflow compliant).
+- **Finishes**: Genuine Dulux powdercoating (Monument, Surfmist, Basalt, Woodland Grey, Satin Black) or DecoWood natural timber sublimation (Western Red Cedar, Spotted Gum, Bush Cherry).
+
+---
+
+## 3. Automation Motors & Electronics
+
+| Motor Model | Gate Type | Max Weight | Speed | Duty Cycle | Power Source |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Centurion D5 Smart** | Sliding | 500 kg | Up to 36 m/min | Residential / Light Commercial | 240V Mains or Solar |
+| **Centurion D10 Smart** | Sliding | 1,000 kg | Up to 30 m/min | High-Volume Commercial | 240V Mains |
+| **Centurion Vantage 400** | Swing (Piston) | 400 kg / leaf | ~14 sec 90° | Residential Double Swing | 240V Mains or Solar |
+| **Centurion Vantage 500** | Swing (Piston) | 500 kg / leaf | ~16 sec 90° | Heavy Duty Double Swing | 240V Mains or Solar |
+| **Nice Robus 600 / 1000** | Sliding | 600–1000 kg | Variable speed | Residential / Commercial | 240V Mains |
+
+### Safety & Access Hardware
+- **Safety**: Infrared anti-crush photo beams, magnetic loop detectors, auto-reverse obstacle sensing.
+- **Access Control**: 4G cellular smartphone app openers, wireless weather-resistant PIN keypads, HD video intercoms with night vision, encrypted 128-bit key fobs (100m+ line of sight).
+
+---
+
+## 4. Council Compliance & Pool Safety Standards
+- **Front Boundary Fences**: Standard permissible height without building approval is up to 1.5m solid, or up to 1.8m – 2.0m when maintaining at least 50% visual transparency / permeability (Brisbane City Council & Ipswich City Council planning schemes).
+- **Pool Fencing (AS 1926.1-2012)**: Minimum 1.2m height from finished ground level, self-closing and self-latching hinges opening outwards from pool area, maximum 100mm ground clearance.
+
+---
+
+## 5. Pricing & Estimation Guidelines (AUD)
+- **Custom Sliding Gate (4.0m x 1.8m Aluminium Slat + Centurion Motor)**: ~$4,200 – $5,600 AUD fully fabricated, powdercoated & automated.
+- **Double Automated Swing Gate (3.6m x 1.5m)**: ~$4,800 – $6,500 AUD.
+- **Off-Grid Solar Package Add-on**: +$1,400 – $1,800 AUD (including solar panel, mounting bracket, dual batteries & MPPT controller).
+- **Service / Repair Callout**: $250 AUD (includes diagnosis and on-site motor recalibration).
+- **On-Site Laser Measure & CAD Proposal**: 100% FREE across all of Brisbane, Ipswich, Logan, and Gold Coast.
+
+---
+
+## 6. Official URLs & Sitemap Links
+- Main Website: https://customautogates.com.au/
+- Sliding Gates: https://customautogates.com.au/#sliding-gates
+- Swing Gates: https://customautogates.com.au/#swing-gates
+- Solar Gates: https://customautogates.com.au/#solar-gates
+- Slat Fencing: https://customautogates.com.au/#slat-fencing
+- Motors: https://customautogates.com.au/#motor-showcase
+- Price Estimator: https://customautogates.com.au/#gate-visualizer
+- Service & Repairs: https://customautogates.com.au/service
+- Council Guide: https://customautogates.com.au/council-guide
+- Trade Portal: https://customautogates.com.au/trade
+- Reviews & Case Studies: https://customautogates.com.au/testimonials
+- Contact & Free Measure: https://customautogates.com.au/contact-us
+- Brisbane Area Portal: https://customautogates.com.au/gates-brisbane
+- Ipswich Area Portal: https://customautogates.com.au/gates-ipswich
+- Logan Area Portal: https://customautogates.com.au/gates-logan
+- Gold Coast Area Portal: https://customautogates.com.au/gates-gold-coast
