@@ -465,7 +465,7 @@ export default function SuburbLandingPage({
                   <h3 style={{ fontSize: '1.1rem', fontWeight: '900', color: '#0f172a', marginBottom: '0.4rem' }}>
                     {style.name}
                   </h3>
-                  <p style={{ fontSize: '0.82rem', color: '#64748b', marginBottom: '1rem' }}>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
                     ⚡ Powered by: <strong>{style.motor}</strong>
                   </p>
                 </div>
@@ -506,7 +506,7 @@ export default function SuburbLandingPage({
               <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: 1.6, marginBottom: '0.5rem' }}>
                 <strong>Standard Limit:</strong> {currentRegion.councilHeight}.
               </p>
-              <p style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
+              <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>
                 {currentRegion.councilNotes}
               </p>
             </div>
@@ -537,7 +537,7 @@ export default function SuburbLandingPage({
                 <h3 style={{ fontSize: '1.4rem', fontWeight: '900', color: '#0f172a', margin: 0 }}>
                   Suburbs We Service in {currentRegion.regionName}
                 </h3>
-                <span style={{ fontSize: '0.84rem', color: '#64748b' }}>
+                <span style={{ fontSize: '0.84rem', color: 'var(--text-muted)' }}>
                   Free on-site laser measure & quote available in all listed suburbs
                 </span>
               </div>
@@ -590,7 +590,7 @@ export default function SuburbLandingPage({
                   <div style={{ fontSize: '0.75rem', color: '#059669', fontWeight: '700', marginBottom: '0.35rem' }}>
                     📍 {sub.area}
                   </div>
-                  <p style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: 1.45, margin: 0 }}>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.45, margin: 0 }}>
                     {sub.desc}
                   </p>
                 </div>
@@ -652,7 +652,7 @@ export default function SuburbLandingPage({
 
                     <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: '0.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <strong style={{ fontSize: '0.88rem', color: '#0f172a' }}>{rev.name}</strong>
-                      <span style={{ fontSize: '0.76rem', color: '#64748b' }}>📍 {rev.suburb}</span>
+                      <span style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>📍 {rev.suburb}</span>
                     </div>
                   </div>
                 ))}

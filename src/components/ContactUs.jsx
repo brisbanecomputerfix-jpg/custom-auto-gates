@@ -282,7 +282,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                 right: 0,
                 height: '70px',
                 background: 'linear-gradient(180deg, #334155 0%, #1e293b 100%)',
-                borderTop: '3px solid #64748b'
+                borderTop: '3px solid var(--text-muted)'
               }}>
                 {/* Steel In-Ground Track Rail */}
                 <div style={{
@@ -348,7 +348,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                 height: '140px',
                 background: 'linear-gradient(90deg, #475569 0%, #1e293b 100%)',
                 borderRadius: '4px 4px 0 0',
-                border: '1px solid #64748b',
+                border: '1px solid var(--text-muted)',
                 zIndex: 10
               }}>
                 {/* Flashing Amber Beacon */}
@@ -375,7 +375,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                 height: '140px',
                 background: 'linear-gradient(90deg, #1e293b 0%, #475569 100%)',
                 borderRadius: '4px 4px 0 0',
-                border: '1px solid #64748b',
+                border: '1px solid var(--text-muted)',
                 zIndex: 10
               }}>
                 {/* Centurion Motor Box at Base */}
@@ -572,7 +572,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
               <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
                 Workshop Phone
               </h3>
-              <p style={{ color: '#64748b', fontSize: '0.86rem', marginBottom: '1.25rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', marginBottom: '1.25rem' }}>
                 Speak directly with our fabrication & estimating technicians.
               </p>
               <a
@@ -610,7 +610,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
               <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
                 Email Sales & Plans
               </h3>
-              <p style={{ color: '#64748b', fontSize: '0.86rem', marginBottom: '1.25rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', marginBottom: '1.25rem' }}>
                 Send site architectural drawings, photos, or tender specifications.
               </p>
               <a
@@ -626,7 +626,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
               >
                 sales@customautogates.com.au
               </a>
-              <span style={{ fontSize: '0.78rem', color: '#64748b' }}>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                 24hr Response Time
               </span>
             </div>
@@ -649,13 +649,13 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
               <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
                 Factory Showroom
               </h3>
-              <p style={{ color: '#64748b', fontSize: '0.86rem', marginBottom: '0.75rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', marginBottom: '0.75rem' }}>
                 43 Belar Street, Yamanto QLD 4305
               </p>
               <div style={{ fontSize: '0.82rem', color: '#0f172a', fontWeight: '700', marginBottom: '0.5rem' }}>
                 Factory Direct Buying
               </div>
-              <span style={{ fontSize: '0.78rem', color: '#64748b' }}>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                 QBCC #15579753 • ABN 13 693 740 573
               </span>
             </div>
@@ -678,7 +678,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
               <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
                 Repairs & Warranty
               </h3>
-              <p style={{ color: '#64748b', fontSize: '0.86rem', marginBottom: '1.25rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', marginBottom: '1.25rem' }}>
                 Gate stuck or motor issue? Visit our dedicated repairs booking gateway.
               </p>
               <button
@@ -711,7 +711,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                   <h3 style={{ fontSize: '1.65rem', fontWeight: '900', color: '#0f172a', letterSpacing: '-0.02em' }}>
                     Send Us A Message
                   </h3>
-                  <p style={{ color: '#64748b', fontSize: '0.88rem', margin: '0.35rem 0 0 0' }}>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', margin: '0.35rem 0 0 0' }}>
                     Fill out the form below and an estimator will contact you within 1 business day.
                   </p>
                 </div>
@@ -1002,7 +1002,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                   </h3>
                 </div>
 
-                <p style={{ color: '#64748b', fontSize: '0.82rem', marginBottom: '1rem' }}>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginBottom: '1rem' }}>
                   Select your suburb to see estimated travel time to our factory at <strong>43 Belar St, Yamanto</strong>:
                 </p>
 
@@ -1040,7 +1040,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                   justifyContent: 'space-between'
                 }}>
                   <div>
-                    <span style={{ fontSize: '0.74rem', color: '#64748b', textTransform: 'uppercase', fontWeight: '700' }}>Estimated Travel</span>
+                    <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '700' }}>Estimated Travel</span>
                     <div style={{ fontSize: '1.5rem', fontWeight: '900', color: '#0f172a' }}>
                       {travelTimes[selectedOrigin].time}
                     </div>

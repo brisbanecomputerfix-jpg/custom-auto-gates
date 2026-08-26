@@ -68,7 +68,7 @@ export default class ErrorBoundary extends React.Component {
             <h2 style={{ fontSize: '1.5rem', fontWeight: '800', marginBottom: '0.5rem', color: '#0f172a', fontFamily: "'Outfit', sans-serif" }}>
               Custom Auto Gates & Fencing
             </h2>
-            <p style={{ color: '#64748b', fontSize: '0.92rem', marginBottom: '1.75rem', lineHeight: 1.5 }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', marginBottom: '1.75rem', lineHeight: 1.5 }}>
               Queensland's Premier Automatic Gates Manufacturer. Click below to reload the workshop live page.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>

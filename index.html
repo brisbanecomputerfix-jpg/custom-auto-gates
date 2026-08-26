@@ -58,12 +58,16 @@
     <meta name="twitter:image" content="https://customautogates.com.au/images/Sliding-Gates.jpg" />
 
     <!-- Performance Optimization: LCP Hero Image Preload -->
-    <link rel="preload" as="image" href="/images/Swinging-Gates.jpg" fetchpriority="high" type="image/jpeg" />
+    <link rel="preload" as="image" href="/images/hero-monument-sliding.webp" fetchpriority="high" type="image/webp" />
 
-    <!-- Google Fonts Preconnect & Stylesheets with font-display swap -->
+    <!-- Google Fonts Non-Render-Blocking Asynchronous Load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" />
+    </noscript>
 
     <!-- Agentic AI & LLM Machine-Readable Indexing Tags -->
     <link rel="help" type="text/plain" href="/llms.txt" title="LLM & AI Agent Context Documentation" />

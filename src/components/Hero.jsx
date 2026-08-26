@@ -25,11 +25,11 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
   const [activeSlide, setActiveSlide] = useState(0);
 
   const BACKGROUND_SLIDES = [
-    { url: '/images/434299467_861965892610424_2556695232572143965_n.jpg', title: 'Automated Monument Slat Sliding Gate', loc: 'Brisbane' },
-    { url: '/images/Swinging-Gates.jpg', title: 'Custom Architectural Double Swing Gate', loc: 'Yamanto' },
-    { url: '/images/SamFinchGates-32.jpg', title: 'DecoWood Timber & Aluminium Security Gate', loc: 'Brookfield' },
-    { url: '/images/422192364_820739326733081_8771292463020946930_n.jpg', title: 'Solar Automated Entry Gate System', loc: 'Redland Bay' },
-    { url: '/images/Sliding-Gates.jpg', title: 'Factory Direct Slat & Pedestrian System', loc: 'Workshop Direct' }
+    { url: '/images/hero-monument-sliding.webp', title: 'Automated Monument Slat Sliding Gate', loc: 'Brisbane' },
+    { url: '/images/hero-swing-gates.webp', title: 'Custom Architectural Double Swing Gate', loc: 'Yamanto' },
+    { url: '/images/hero-decowood-slat.webp', title: 'DecoWood Timber & Aluminium Security Gate', loc: 'Brookfield' },
+    { url: '/images/hero-solar-entry.webp', title: 'Solar Automated Entry Gate System', loc: 'Redland Bay' },
+    { url: '/images/hero-factory-slat.webp', title: 'Factory Direct Slat & Pedestrian System', loc: 'Workshop Direct' }
   ];
 
   // Rotate background showcase images smoothly
@@ -71,20 +71,29 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
           pointerEvents: 'none'
         }}
       >
-        {/* Animated Ken Burns High-Definition Photo Showcase */}
+        {/* Animated High-Definition Photo Showcase with LCP High Priority */}
         {BACKGROUND_SLIDES.map((slide, idx) => (
-          <div
+          <img
             key={slide.url}
+            src={slide.url}
+            alt={slide.title}
+            width="1920"
+            height="1080"
+            fetchPriority={idx === 0 ? "high" : "low"}
+            loading={idx === 0 ? "eager" : "lazy"}
+            decoding={idx === 0 ? "sync" : "async"}
             style={{
               position: 'absolute',
               inset: 0,
-              backgroundImage: `url(${slide.url})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
               opacity: activeSlide === idx ? 0.92 : 0,
               transform: activeSlide === idx ? 'scale(1.08) translate(-1%, -1%)' : 'scale(1.0)',
               transition: 'opacity 1.6s ease-in-out, transform 6s ease-out',
-              filter: 'brightness(0.98) contrast(1.08)'
+              filter: 'brightness(0.98) contrast(1.08)',
+              pointerEvents: 'none'
             }}
           />
         ))}

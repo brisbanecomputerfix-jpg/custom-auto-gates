@@ -610,7 +610,7 @@ export default function Testimonials({ onOpenQuote, onOpenContact, onNavigateHom
                 </div>
                 <strong>{r.name}</strong>
                 <span style={{ color: '#2563eb', fontWeight: '600' }}>({r.suburb})</span>:
-                <span style={{ color: '#64748b' }}>"{r.text}"</span>
+                <span style={{ color: 'var(--text-muted)' }}>"{r.text}"</span>
               </div>
             ))}
           </div>
@@ -642,7 +642,7 @@ export default function Testimonials({ onOpenQuote, onOpenContact, onNavigateHom
                 <h3 style={{ fontSize: '1.2rem', fontWeight: '900', color: '#0f172a', margin: 0 }}>
                   Filter Case Studies by Location & Gate Type
                 </h3>
-                <span style={{ fontSize: '0.82rem', color: '#64748b' }}>
+                <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
                   Showing {filteredReviews.length} of {DETAILED_REVIEWS.length} verified Queensland projects
                 </span>
               </div>
@@ -755,7 +755,7 @@ export default function Testimonials({ onOpenQuote, onOpenContact, onNavigateHom
             }}>
               <Search size={36} style={{ color: '#94a3b8', margin: '0 auto 0.75rem auto' }} />
               <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a' }}>No matching case studies found</h4>
-              <p style={{ color: '#64748b', fontSize: '0.88rem', margin: '0.25rem 0 1rem 0' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', margin: '0.25rem 0 1rem 0' }}>
                 Try adjusting your search keywords or resetting the region/product filters.
               </p>
               <button
@@ -802,7 +802,7 @@ export default function Testimonials({ onOpenQuote, onOpenContact, onNavigateHom
                             <Star key={i} size={16} fill="#f59e0b" />
                           ))}
                         </div>
-                        <span style={{ fontSize: '0.74rem', color: '#64748b' }}>
+                        <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
                           {rev.date} • {rev.source}
                         </span>
                       </div>
@@ -838,7 +838,7 @@ export default function Testimonials({ onOpenQuote, onOpenContact, onNavigateHom
                       <div style={{ color: '#2563eb', fontWeight: '700', fontSize: '0.78rem', marginBottom: '0.2rem' }}>
                         ⚡ Motor: {rev.motor}
                       </div>
-                      <div style={{ color: '#64748b', fontSize: '0.76rem' }}>
+                      <div style={{ color: 'var(--text-muted)', fontSize: '0.76rem' }}>
                         🎨 Finish: {rev.finish}
                       </div>
                     </div>
@@ -881,7 +881,7 @@ export default function Testimonials({ onOpenQuote, onOpenContact, onNavigateHom
                       <h4 style={{ fontSize: '0.95rem', fontWeight: '800', color: '#0f172a', margin: 0 }}>
                         {rev.name}
                       </h4>
-                      <div style={{ fontSize: '0.78rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '2px' }}>
+                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '2px' }}>
                         <MapPin size={12} style={{ color: '#2563eb' }} />
                         <span>{rev.suburb}, {rev.state}</span>
                       </div>

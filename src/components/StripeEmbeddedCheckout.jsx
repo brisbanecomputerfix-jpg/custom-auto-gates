@@ -118,7 +118,7 @@ function CheckoutForm({ amount, customerName, onSuccess }) {
         marginTop: '0.85rem',
         textAlign: 'center',
         fontSize: '0.72rem',
-        color: '#64748b',
+        color: 'var(--text-muted)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -197,7 +197,7 @@ export default function StripeEmbeddedCheckout({
       <div style={{
         padding: '2.5rem 1rem',
         textAlign: 'center',
-        color: '#64748b',
+        color: 'var(--text-muted)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

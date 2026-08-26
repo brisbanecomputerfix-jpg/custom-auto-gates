@@ -271,7 +271,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                 <span className="badge-tag badge-gold">$250 Flat</span>
               </div>
               <div style={{ fontSize: '2.25rem', fontWeight: '900', color: '#0f172a', marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>
-                $250 <span style={{ fontSize: '1rem', color: '#64748b', fontWeight: '600' }}>inc GST</span>
+                $250 <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: '600' }}>inc GST</span>
               </div>
               <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1.25rem' }}>
                 Upfront booking fee covering technician travel across Greater Brisbane, Ipswich & Logan + up to 30 minutes of diagnostic time.
@@ -302,7 +302,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                 <span className="badge-tag badge-blue">$350 Flat</span>
               </div>
               <div style={{ fontSize: '2.25rem', fontWeight: '900', color: '#0f172a', marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>
-                $350 <span style={{ fontSize: '1rem', color: '#64748b', fontWeight: '600' }}>inc GST</span>
+                $350 <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: '600' }}>inc GST</span>
               </div>
               <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1.25rem' }}>
                 Heavy-duty commercial boom gates, industrial cantilever systems, access control card readers, and strata car park installations.
@@ -333,7 +333,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                 <span className="badge-tag badge-green">Genuine Support</span>
               </div>
               <div style={{ fontSize: '2.25rem', fontWeight: '900', color: '#0f172a', marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>
-                12 Mo <span style={{ fontSize: '1rem', color: '#64748b', fontWeight: '600' }}>Labour Warranty</span>
+                12 Mo <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: '600' }}>Labour Warranty</span>
               </div>
               <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1.25rem' }}>
                 Labour is covered for 12 months from installation. If outside 12 months, call out fee applies, but genuine manufacturer parts remain 100% free if within parts warranty.
@@ -569,23 +569,23 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid #e2e8f0', paddingBottom: '1rem', marginBottom: '1rem' }}>
                     <div>
-                      <div style={{ fontSize: '0.78rem', color: '#64748b', fontWeight: '700', textTransform: 'uppercase' }}>Tax Invoice / Order Ref</div>
+                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase' }}>Tax Invoice / Order Ref</div>
                       <div style={{ fontSize: '1.1rem', fontWeight: '800', color: '#0f172a' }}>{transactionReceipt.receiptNumber}</div>
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: '0.78rem', color: '#64748b', fontWeight: '700', textTransform: 'uppercase' }}>Date</div>
+                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase' }}>Date</div>
                       <div style={{ fontSize: '0.92rem', fontWeight: '700', color: '#0f172a' }}>{transactionReceipt.date}</div>
                     </div>
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', marginBottom: '1.25rem' }}>
                     <div>
-                      <span style={{ fontSize: '0.8rem', color: '#64748b' }}>Client:</span>
+                      <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Client:</span>
                       <div style={{ fontWeight: '700', color: '#0f172a', fontSize: '0.92rem' }}>{transactionReceipt.customerName}</div>
                       <div style={{ fontSize: '0.85rem', color: '#475569' }}>{transactionReceipt.phone}</div>
                     </div>
                     <div>
-                      <span style={{ fontSize: '0.8rem', color: '#64748b' }}>Site Address:</span>
+                      <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Site Address:</span>
                       <div style={{ fontWeight: '700', color: '#0f172a', fontSize: '0.92rem' }}>{transactionReceipt.address}</div>
                     </div>
                   </div>
@@ -603,7 +603,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                       <span>Total Paid:</span>
                       <span style={{ color: '#10b981' }}>${transactionReceipt.amount}.00 AUD</span>
                     </div>
-                    <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                       <ShieldCheck size={14} style={{ color: '#10b981' }} />
                       <span>Processed via {transactionReceipt.paymentMethod} • Stripe Tx: {transactionReceipt.stripeChargeId.substring(0, 18)}...</span>
                     </div>
@@ -923,7 +923,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                           Secure Payment & Call-Out Authorization
                         </span>
                       </div>
-                      <span style={{ fontSize: '0.78rem', color: '#64748b' }}>
+                      <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                         256-Bit SSL Encryption • PCI-DSS Level 1 Compliant • Powered by Stripe
                       </span>
                     </div>
@@ -996,7 +996,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                         <CreditCard size={15} style={{ color: '#2563eb' }} />
                         <span>Card</span>
                       </div>
-                      <span style={{ fontSize: '0.68rem', color: '#64748b' }}>Visa, MC, Amex</span>
+                      <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Visa, MC, Amex</span>
                     </button>
 
                     {/* Option 3: Apple / Google Pay */}
@@ -1021,7 +1021,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                         <Smartphone size={15} />
                         <span>Wallets</span>
                       </div>
-                      <span style={{ fontSize: '0.68rem', color: '#64748b' }}>Apple / Google Pay</span>
+                      <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Apple / Google Pay</span>
                     </button>
 
                     {/* Option 4: Invoice / Confirmation */}
@@ -1242,7 +1242,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                           <span>G Pay</span>
                         </button>
                       </div>
-                      <span style={{ fontSize: '0.78rem', color: '#64748b' }}>
+                      <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                         Authorizes the {callOutFeeStr} fee instantly using your biometric face/fingerprint authentication.
                       </span>
                     </div>
@@ -1280,7 +1280,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                     border: '1px solid #e2e8f0'
                   }}>
                     <div>
-                      <span style={{ fontSize: '0.78rem', color: '#64748b' }}>Upfront Booking Fee (inc GST):</span>
+                      <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Upfront Booking Fee (inc GST):</span>
                       <div style={{ fontSize: '1.25rem', fontWeight: '900', color: '#0f172a' }}>
                         ${basePrice}.00 AUD <span style={{ fontSize: '0.78rem', color: '#16a34a', fontWeight: '700' }}>(Includes $30/15min travel & 30m diag)</span>
                       </div>

@@ -307,7 +307,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
                     gap: '0.5rem',
                     padding: '1rem 0.25rem',
                     borderBottom: isActive ? '3px solid #2563eb' : '3px solid transparent',
-                    color: isActive ? '#2563eb' : '#64748b',
+                    color: isActive ? '#2563eb' : 'var(--text-muted)',
                     fontWeight: isActive ? '800' : '600',
                     fontSize: '0.9rem',
                     background: 'none',
@@ -351,7 +351,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
                     <h2 style={{ fontSize: '1.6rem', fontWeight: '900', color: '#0f172a', margin: 0 }}>
                       {currentCouncil.name}
                     </h2>
-                    <span style={{ fontSize: '0.86rem', color: '#64748b' }}>
+                    <span style={{ fontSize: '0.86rem', color: 'var(--text-muted)' }}>
                       Under {currentCouncil.planName} & Queensland Development Code (QDC MP1.1 / MP1.2)
                     </span>
                   </div>
@@ -372,7 +372,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
                   {/* Front Boundary Solid */}
                   <div style={{ background: '#f8fafc', padding: '1.25rem', borderRadius: '14px', border: '1px solid #e2e8f0' }}>
-                    <div style={{ fontSize: '0.75rem', fontWeight: '800', color: '#64748b', textTransform: 'uppercase' }}>
+                    <div style={{ fontSize: '0.75rem', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
                       Front Boundary (Solid)
                     </div>
                     <div style={{ fontSize: '1.8rem', fontWeight: '900', color: '#0f172a', margin: '0.35rem 0' }}>
@@ -398,7 +398,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
 
                   {/* Side & Rear Boundary */}
                   <div style={{ background: '#f8fafc', padding: '1.25rem', borderRadius: '14px', border: '1px solid #e2e8f0' }}>
-                    <div style={{ fontSize: '0.75rem', fontWeight: '800', color: '#64748b', textTransform: 'uppercase' }}>
+                    <div style={{ fontSize: '0.75rem', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
                       Side & Rear Boundaries
                     </div>
                     <div style={{ fontSize: '1.8rem', fontWeight: '900', color: '#0f172a', margin: '0.35rem 0' }}>
@@ -440,7 +440,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
                     <div style={{ fontWeight: '800', color: '#0f172a', fontSize: '0.92rem', marginBottom: '0.35rem' }}>
                       1. RPEQ Engineered Drawings
                     </div>
-                    <p style={{ fontSize: '0.8rem', color: '#64748b', margin: 0 }}>
+                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>
                       We provide wind-load certified RPEQ structural drawings for post footings and aluminium frames.
                     </p>
                   </div>
@@ -449,7 +449,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
                     <div style={{ fontWeight: '800', color: '#0f172a', fontSize: '0.92rem', marginBottom: '0.35rem' }}>
                       2. Form 15 / Form 16 Certification
                     </div>
-                    <p style={{ fontSize: '0.8rem', color: '#64748b', margin: 0 }}>
+                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>
                       Direct compliance certification signed off for private building certifiers across SEQ.
                     </p>
                   </div>
@@ -458,7 +458,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
                     <div style={{ fontWeight: '800', color: '#0f172a', fontSize: '0.92rem', marginBottom: '0.35rem' }}>
                       3. Siting Variation Assistance
                     </div>
-                    <p style={{ fontSize: '0.8rem', color: '#64748b', margin: 0 }}>
+                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>
                       We assist with boundary relaxation documentation for Brisbane & Ipswich City Councils.
                     </p>
                   </div>
@@ -483,7 +483,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
                 <h2 style={{ fontSize: '1.75rem', fontWeight: '900', color: '#0f172a', marginBottom: '0.5rem' }}>
                   Interactive Gate Compliance Checker
                 </h2>
-                <p style={{ fontSize: '0.88rem', color: '#64748b', margin: 0 }}>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0 }}>
                   Adjust the height and slat spacing sliders below to instantly verify if your proposed driveway gate complies with <strong>{currentCouncil.name}</strong> standards.
                 </p>
               </div>
@@ -579,7 +579,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
                   </div>
 
                   <div style={{ borderTop: '1px solid rgba(0,0,0,0.08)', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
-                    <span style={{ fontSize: '0.78rem', color: '#64748b', fontWeight: '700' }}>
+                    <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: '700' }}>
                       Target: {currentCouncil.name}
                     </span>
                     <button
@@ -729,7 +729,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
                     <h3 style={{ fontSize: '1rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
                       The "Sufficient Dividing Fence" Rule
                     </h3>
-                    <p style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
+                    <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>
                       Adjoining owners are legally required to contribute 50% towards a "sufficient" standard fence (e.g. 1.8m timber paling or Colorbond). If one neighbour requests premium architectural aluminium slats, they pay the difference unless agreed otherwise.
                     </p>
                   </div>
@@ -738,7 +738,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
                     <h3 style={{ fontSize: '1rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
                       Serving a Form 2 (Notice to Contribute)
                     </h3>
-                    <p style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
+                    <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>
                       You must give your neighbour a written <strong>Form 2 Notice</strong> with at least one written quote before beginning any demolition or construction work. The neighbour has 30 days to respond.
                     </p>
                   </div>
