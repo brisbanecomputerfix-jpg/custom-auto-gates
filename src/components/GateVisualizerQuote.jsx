@@ -750,21 +750,22 @@ export default function GateVisualizerQuote() {
 
               {/* Estimated Price Range Box */}
               <div style={{
-                background: 'var(--accent-gold-light)',
-                border: '1.5px solid var(--accent-gold-glow)',
+                background: 'var(--badge-gold-bg)',
+                border: '1.5px solid var(--badge-gold-border)',
                 borderRadius: '10px',
                 padding: '1rem',
                 textAlign: 'center',
                 marginBottom: '0.85rem'
               }}>
-                <div style={{ fontSize: '0.78rem', color: 'var(--accent-gold)', fontWeight: '700', marginBottom: '0.2rem' }}>Estimated Factory Direct Range:</div>
-                <div style={{ fontSize: 'clamp(1.5rem, 4vw, 1.85rem)', fontWeight: '900', color: 'var(--accent-gold-hover)', letterSpacing: '-0.02em' }}>
-                  ${lowEst.toLocaleString()} – ${highEst.toLocaleString()} <span style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-muted)' }}>AUD*</span>
+                <div style={{ fontSize: '0.78rem', color: 'var(--badge-gold-text)', fontWeight: '800', marginBottom: '0.2rem' }}>Estimated Factory Direct Range:</div>
+                <div style={{ fontSize: 'clamp(1.5rem, 4vw, 1.85rem)', fontWeight: '900', color: 'var(--badge-gold-text)', letterSpacing: '-0.02em' }}>
+                  ${lowEst.toLocaleString()} – ${highEst.toLocaleString()} <span style={{ fontSize: '0.85rem', fontWeight: '800', color: 'var(--text-heading)' }}>AUD*</span>
                 </div>
-                <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-main)', marginTop: '0.25rem', fontWeight: '600' }}>
                   *Includes fabrication, powdercoating & motor kit.
                 </div>
               </div>
+
 
               {/* Guarantees Box */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', fontSize: '0.78rem', color: 'var(--text-muted)' }}>

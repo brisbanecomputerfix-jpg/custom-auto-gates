@@ -96,11 +96,12 @@ export default function ReviewsSection({ onNavigateTestimonials }) {
               {/* Reviewer Details */}
               <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '0.85rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                  <h4 style={{ fontSize: '0.92rem', fontWeight: '800', color: 'var(--text-heading)' }}>{review.name}</h4>
-                  <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                  <h3 style={{ fontSize: '0.92rem', fontWeight: '800', color: 'var(--text-heading)', margin: 0 }}>{review.name}</h3>
+                  <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.2rem' }}>
                     <MapPin size={11} style={{ color: 'var(--accent-blue)' }} /> {review.suburb}
                   </div>
                 </div>
+
                 <div style={{ fontSize: '0.72rem', color: 'var(--badge-green-text)', background: 'var(--badge-green-bg)', border: '1px solid var(--badge-green-border)', padding: '0.2rem 0.55rem', borderRadius: '6px', fontWeight: '700' }}>
                   {review.gateType}
                 </div>

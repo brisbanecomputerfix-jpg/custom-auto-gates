@@ -126,7 +126,7 @@ export default function MotorShowcase({ onOpenQuote }) {
               <Smartphone size={22} />
             </div>
             <div>
-              <h4 style={{ color: 'var(--text-heading)', fontSize: '1rem', fontWeight: '800' }}>Smartphone App Access</h4>
+              <h3 style={{ color: 'var(--text-heading)', fontSize: '1rem', fontWeight: '800' }}>Smartphone App Access</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>Open & check your gate from anywhere on iOS & Android.</p>
             </div>
           </div>
@@ -136,7 +136,7 @@ export default function MotorShowcase({ onOpenQuote }) {
               <BatteryCharging size={22} />
             </div>
             <div>
-              <h4 style={{ color: 'var(--text-heading)', fontSize: '1rem', fontWeight: '800' }}>Battery Backup Built-In</h4>
+              <h3 style={{ color: 'var(--text-heading)', fontSize: '1rem', fontWeight: '800' }}>Battery Backup Built-In</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>Never get stuck in a blackout with integrated backup batteries.</p>
             </div>
           </div>
@@ -146,10 +146,11 @@ export default function MotorShowcase({ onOpenQuote }) {
               <Sun size={22} />
             </div>
             <div>
-              <h4 style={{ color: 'var(--text-heading)', fontSize: '1rem', fontWeight: '800' }}>100% Solar Compatible</h4>
+              <h3 style={{ color: 'var(--text-heading)', fontSize: '1rem', fontWeight: '800' }}>100% Solar Compatible</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>Zero power cables required for rural & long driveways.</p>
             </div>
           </div>
+
         </div>
       </div>
     </section>

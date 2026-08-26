@@ -22,40 +22,40 @@
   --bg-navbar-solid: #090e1a;
   --bg-drawer: #090e1a;
 
-  /* Accent Colors - Glowing Gold, Electric Blue & Emerald */
-  --accent-gold: #f59e0b;
-  --accent-gold-hover: #fbbf24;
-  --accent-gold-dark: #d97706;
-  --accent-gold-light: rgba(245, 158, 11, 0.15);
+  /* Accent Colors - High Contrast WCAG AA Compliant */
+  --accent-gold: #fbbf24;
+  --accent-gold-hover: #fcd34d;
+  --accent-gold-dark: #f59e0b;
+  --accent-gold-light: rgba(245, 158, 11, 0.18);
   --accent-gold-glow: rgba(245, 158, 11, 0.35);
 
-  --accent-blue: #3b82f6;
-  --accent-blue-dark: #2563eb;
-  --accent-blue-light: rgba(59, 130, 246, 0.15);
+  --accent-blue: #60a5fa;
+  --accent-blue-dark: #3b82f6;
+  --accent-blue-light: rgba(59, 130, 246, 0.18);
   --accent-blue-glow: rgba(59, 130, 246, 0.3);
 
-  --accent-emerald: #10b981;
-  --accent-emerald-light: rgba(16, 185, 129, 0.15);
+  --accent-emerald: #34d399;
+  --accent-emerald-light: rgba(16, 185, 129, 0.18);
   --accent-emerald-glow: rgba(16, 185, 129, 0.3);
 
   /* Typography */
-  --text-main: #cbd5e1;
-  --text-heading: #f8fafc;
+  --text-main: #e2e8f0;
+  --text-heading: #ffffff;
   --text-muted: #94a3b8;
-  --text-light: #64748b;
+  --text-light: #94a3b8;
   --text-white: #ffffff;
 
   /* Borders & Dividers */
-  --border-light: rgba(255, 255, 255, 0.08);
-  --border-subtle: rgba(255, 255, 255, 0.14);
-  --border-strong: rgba(255, 255, 255, 0.22);
-  --border-focus: #f59e0b;
+  --border-light: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.18);
+  --border-strong: rgba(255, 255, 255, 0.28);
+  --border-focus: #fbbf24;
 
   /* Form Inputs */
   --input-bg: #131d31;
-  --input-border: rgba(255, 255, 255, 0.15);
+  --input-border: rgba(255, 255, 255, 0.18);
   --input-text: #f8fafc;
-  --input-placeholder: #64748b;
+  --input-placeholder: #94a3b8;
 
   /* Shadows */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -67,17 +67,17 @@
   --shadow-glow-blue: 0 0 25px rgba(59, 130, 246, 0.35);
 
   /* Badges */
-  --badge-gold-bg: rgba(245, 158, 11, 0.15);
-  --badge-gold-text: #fbbf24;
-  --badge-gold-border: rgba(245, 158, 11, 0.35);
+  --badge-gold-bg: rgba(245, 158, 11, 0.18);
+  --badge-gold-text: #fde68a;
+  --badge-gold-border: rgba(245, 158, 11, 0.4);
 
-  --badge-blue-bg: rgba(59, 130, 246, 0.15);
-  --badge-blue-text: #60a5fa;
-  --badge-blue-border: rgba(59, 130, 246, 0.35);
+  --badge-blue-bg: rgba(59, 130, 246, 0.18);
+  --badge-blue-text: #93c5fd;
+  --badge-blue-border: rgba(59, 130, 246, 0.4);
 
-  --badge-green-bg: rgba(16, 185, 129, 0.15);
-  --badge-green-text: #34d399;
-  --badge-green-border: rgba(16, 185, 129, 0.35);
+  --badge-green-bg: rgba(16, 185, 129, 0.18);
+  --badge-green-text: #6ee7b7;
+  --badge-green-border: rgba(16, 185, 129, 0.4);
 
   /* Hero Gradient Overlays - Tuned for high video visibility */
   --hero-overlay-1: rgba(9, 14, 26, 0.65);
@@ -117,40 +117,40 @@
   --bg-navbar-solid: #ffffff;
   --bg-drawer: #ffffff;
 
-  /* Accent Colors */
-  --accent-gold: #d97706;
-  --accent-gold-hover: #b45309;
-  --accent-gold-dark: #92400e;
+  /* Accent Colors - High Contrast WCAG AA Compliant */
+  --accent-gold: #92400e;
+  --accent-gold-hover: #78350f;
+  --accent-gold-dark: #78350f;
   --accent-gold-light: #fef3c7;
-  --accent-gold-glow: rgba(217, 119, 6, 0.25);
+  --accent-gold-glow: rgba(146, 64, 14, 0.25);
 
-  --accent-blue: #2563eb;
-  --accent-blue-dark: #1d4ed8;
+  --accent-blue: #1d4ed8;
+  --accent-blue-dark: #1e40af;
   --accent-blue-light: #eff6ff;
-  --accent-blue-glow: rgba(37, 99, 235, 0.2);
+  --accent-blue-glow: rgba(29, 78, 216, 0.2);
 
-  --accent-emerald: #059669;
+  --accent-emerald: #065f46;
   --accent-emerald-light: #ecfdf5;
-  --accent-emerald-glow: rgba(5, 150, 105, 0.2);
+  --accent-emerald-glow: rgba(6, 95, 70, 0.2);
 
   /* Typography */
-  --text-main: #334155;
+  --text-main: #1e293b;
   --text-heading: #0f172a;
-  --text-muted: #64748b;
-  --text-light: #94a3b8;
+  --text-muted: #475569;
+  --text-light: #64748b;
   --text-white: #ffffff;
 
   /* Borders & Dividers */
   --border-light: #e2e8f0;
   --border-subtle: #cbd5e1;
   --border-strong: #94a3b8;
-  --border-focus: #2563eb;
+  --border-focus: #1d4ed8;
 
   /* Form Inputs */
   --input-bg: #ffffff;
   --input-border: #cbd5e1;
   --input-text: #0f172a;
-  --input-placeholder: #94a3b8;
+  --input-placeholder: #64748b;
 
   /* Shadows */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -158,21 +158,22 @@
   --shadow-md: 0 4px 14px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
   --shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.1), 0 4px 12px -2px rgba(15, 23, 42, 0.05);
   --shadow-xl: 0 20px 35px -5px rgba(15, 23, 42, 0.12), 0 10px 15px -5px rgba(15, 23, 42, 0.06);
-  --shadow-glow-gold: 0 4px 20px rgba(217, 119, 6, 0.2);
-  --shadow-glow-blue: 0 4px 20px rgba(37, 99, 235, 0.2);
+  --shadow-glow-gold: 0 4px 20px rgba(146, 64, 14, 0.2);
+  --shadow-glow-blue: 0 4px 20px rgba(29, 78, 216, 0.2);
 
   /* Badges */
   --badge-gold-bg: #fef3c7;
-  --badge-gold-text: #b45309;
+  --badge-gold-text: #78350f;
   --badge-gold-border: #fde68a;
 
   --badge-blue-bg: #eff6ff;
-  --badge-blue-text: #1d4ed8;
-  --badge-blue-border: #dbeafe;
+  --badge-blue-text: #1e40af;
+  --badge-blue-border: #bfdbfe;
 
   --badge-green-bg: #ecfdf5;
-  --badge-green-text: #047857;
+  --badge-green-text: #065f46;
   --badge-green-border: #a7f3d0;
+
 
   /* Hero Gradient Overlays - Tuned for high video visibility */
   --hero-overlay-1: rgba(248, 250, 252, 0.70);

@@ -257,9 +257,9 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                 </span>
               </div>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
+              <h2 style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
                 Quick Gate Price Estimator
-              </h3>
+              </h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', marginBottom: '1rem' }}>
                 Select a custom style to get an instant wholesale fabrication quote:
               </p>
@@ -276,17 +276,17 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                         padding: '0.75rem',
                         borderRadius: '12px',
                         border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
-                        background: isSelected ? 'var(--accent-gold-light)' : 'rgba(255, 255, 255, 0.05)',
+                        background: isSelected ? 'var(--badge-gold-bg)' : 'rgba(255, 255, 255, 0.05)',
                         backdropFilter: 'blur(8px)',
                         textAlign: 'left',
                         transition: 'all 0.15s ease',
                         cursor: 'pointer'
                       }}
                     >
-                      <div style={{ fontSize: '0.84rem', fontWeight: '800', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)' }}>
+                      <div style={{ fontSize: '0.84rem', fontWeight: '800', color: isSelected ? 'var(--badge-gold-text)' : 'var(--text-heading)' }}>
                         {style.label}
                       </div>
-                      <div style={{ fontSize: '0.7rem', color: isSelected ? 'var(--accent-gold)' : 'var(--text-muted)', display: 'flex', justifyContent: 'space-between', marginTop: '0.15rem' }}>
+                      <div style={{ fontSize: '0.72rem', color: isSelected ? 'var(--badge-gold-text)' : 'var(--text-muted)', display: 'flex', justifyContent: 'space-between', marginTop: '0.15rem', fontWeight: '600' }}>
                         <span>{style.badge}</span>
                         <span>⚡ {style.time}</span>
                       </div>
@@ -430,23 +430,35 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
           <span style={{ color: 'var(--text-muted)', fontWeight: '400' }}>• {BACKGROUND_SLIDES[activeSlide].loc}</span>
         </span>
 
-        <div style={{ display: 'flex', gap: '0.35rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '0.2rem', alignItems: 'center' }}>
           {BACKGROUND_SLIDES.map((slide, i) => (
             <button
               key={slide.url}
               onClick={() => setActiveSlide(i)}
               aria-label={`View ${slide.title}`}
               style={{
-                width: activeSlide === i ? '20px' : '7px',
-                height: '7px',
-                borderRadius: '4px',
-                backgroundColor: activeSlide === i ? 'var(--accent-gold)' : 'rgba(255, 255, 255, 0.35)',
-                transition: 'all 0.3s ease',
-                padding: 0,
+                minWidth: '28px',
+                minHeight: '28px',
+                padding: '4px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'none',
                 border: 'none',
                 cursor: 'pointer'
               }}
-            />
+            >
+              <span
+                style={{
+                  width: activeSlide === i ? '20px' : '8px',
+                  height: '8px',
+                  borderRadius: '4px',
+                  backgroundColor: activeSlide === i ? 'var(--accent-gold)' : 'rgba(255, 255, 255, 0.45)',
+                  transition: 'all 0.3s ease',
+                  display: 'block'
+                }}
+              />
+            </button>
           ))}
         </div>
       </div>

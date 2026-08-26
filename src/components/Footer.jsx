@@ -355,22 +355,22 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
           flexWrap: 'wrap',
           gap: '1rem',
           fontSize: '0.8125rem',
-          color: '#64748b'
+          color: '#cbd5e1'
         }}>
           <div>
             © {new Date().getFullYear()} Custom Auto Gates Pty Ltd. All Rights Reserved. ABN & QBCC Licensed.
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <a
                 href={COMPANY_INFO.instagram || 'https://www.instagram.com/customautogates/'}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                style={{ color: '#94a3b8', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center' }}
+                style={{ color: '#cbd5e1', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center' }}
                 onMouseEnter={(e) => e.currentTarget.style.color = '#e1306c'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#cbd5e1'}
               >
                 <InstagramIcon size={16} />
               </a>
@@ -379,9 +379,9 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                style={{ color: '#94a3b8', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center' }}
+                style={{ color: '#cbd5e1', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center' }}
                 onMouseEnter={(e) => e.currentTarget.style.color = '#1877f2'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#cbd5e1'}
               >
                 <FacebookIcon size={16} />
               </a>
@@ -390,15 +390,16 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                style={{ color: '#94a3b8', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center' }}
+                style={{ color: '#cbd5e1', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center' }}
                 onMouseEnter={(e) => e.currentTarget.style.color = '#0a66c2'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#cbd5e1'}
               >
                 <LinkedInIcon size={16} />
               </a>
             </div>
-            <span>Privacy Policy</span>
-            <span>Terms & Conditions</span>
+            <span style={{ color: '#cbd5e1', cursor: 'pointer' }}>Privacy Policy</span>
+            <span style={{ color: '#cbd5e1', cursor: 'pointer' }}>Terms & Conditions</span>
+
             <button 
               onClick={scrollToTop}
               style={{
