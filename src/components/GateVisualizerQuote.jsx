@@ -122,7 +122,10 @@ export default function GateVisualizerQuote() {
     return { lowEst, highEst, subtotal: Math.round(subtotal) };
   };
 
+  const { lowEst, highEst, subtotal } = calculatePrice();
+
   const [isSubmitting, setIsSubmitting] = useState(false);
+
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
