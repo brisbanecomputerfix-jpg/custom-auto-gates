@@ -61,6 +61,7 @@ export async function sendLeadNotification(lead) {
     name,
     phone,
     email,
+    address,
     suburb,
     serviceType,
     preferredTime,
@@ -75,7 +76,7 @@ export async function sendLeadNotification(lead) {
 
   const transporter = getTransporter();
   const notificationRecipient = process.env.NOTIFICATION_EMAIL || process.env.SMTP_USER || 'office@customautogates.com.au';
-  const fromAddress = process.env.SMTP_FROM || process.env.SMTP_USER || 'office@customautogates.com.au';
+  const fromAddress = process.env.SMTP_FROM || 'info@customautogates.com.au';
 
   if (!transporter) {
     console.warn('⚠️ SMTP credentials not yet configured in .env. Lead saved locally to server/leads.json.');
@@ -111,6 +112,11 @@ export async function sendLeadNotification(lead) {
             <td style="padding: 10px 0; font-weight: bold; color: #4a5568;">Email Address:</td>
             <td style="padding: 10px 0;"><a href="mailto:${email}" style="color: #2b6cb0; text-decoration: none;">${email || 'Not provided'}</a></td>
           </tr>
+          ${address ? `
+          <tr style="border-bottom: 1px solid #edf2f7;">
+            <td style="padding: 10px 0; font-weight: bold; color: #4a5568;">Street Address:</td>
+            <td style="padding: 10px 0; font-weight: 600;">${address}</td>
+          </tr>` : ''}
           <tr style="border-bottom: 1px solid #edf2f7;">
             <td style="padding: 10px 0; font-weight: bold; color: #4a5568;">Suburb / Location:</td>
             <td style="padding: 10px 0; font-weight: 600;">${suburb || 'Brisbane / QLD'}</td>

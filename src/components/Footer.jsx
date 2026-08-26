@@ -54,10 +54,11 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
               <img 
-                src="/images/custom-auto-gates-logo-horizontal-dark.png" 
+                src="/images/custom-auto-gates-footer-logo.png" 
+                srcSet="/images/custom-auto-gates-footer-logo.png 1x, /images/custom-auto-gates-footer-logo@2x.png 2x"
                 alt="Custom Auto Gates & Fencing" 
                 style={{ 
-                  height: 'clamp(38px, 5vw, 48px)', 
+                  height: 'clamp(44px, 5.5vw, 56px)', 
                   width: 'auto', 
                   maxWidth: '260px', 
                   objectFit: 'contain'

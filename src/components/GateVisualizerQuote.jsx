@@ -122,11 +122,40 @@ export default function GateVisualizerQuote() {
     return { lowEst, highEst, subtotal: Math.round(subtotal) };
   };
 
-  const { lowEst, highEst } = calculatePrice();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      const selectedGate = GATE_TYPES.find(g => g.id === gateType)?.name || 'Custom Gate';
+      const selectedMat = MATERIALS.find(m => m.id === material)?.name || 'Aluminium Slat';
+      const selectedMot = MOTORS.find(m => m.id === motor)?.name || 'Centurion Smart';
+      
+      await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.fullName,
+          phone: formData.phone,
+          email: formData.email,
+          suburb: formData.suburb,
+          gateType: selectedGate,
+          width: width,
+          height: height,
+          material: selectedMat,
+          motor: selectedMot,
+          estimatedTotal: `$${lowEst} - $${highEst}`,
+          notes: formData.notes
+        })
+      });
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error('Quote submit error:', err);
+      setIsSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

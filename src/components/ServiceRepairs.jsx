@@ -83,6 +83,22 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
     setIsProcessingPayment(true);
 
     try {
+      // 1. Record lead with backend notification
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.fullName,
+          phone: formData.phone,
+          email: formData.email,
+          address: `${formData.address || ''}, ${formData.suburb || ''} ${formData.postcode || ''}`.trim(),
+          suburb: formData.suburb,
+          serviceType: `Service Booking: ${serviceRequirement} (${propertyType} - $${basePrice} callout)`,
+          notes: `Original Purchaser: ${isOriginalPurchaser}. Gate Type: ${formData.gateType}. Motor: ${formData.motorBrand}. Issues: ${formData.issueDescription}. Preferred Date: ${formData.preferredDate || 'ASAP'}`,
+          source: 'Service & Warranty Booking Form'
+        })
+      }).catch(e => console.warn('Service lead notification log:', e));
+
       const serviceTitle = serviceRequirement === 'repair'
         ? `Urgent ${propertyType === 'residential' ? 'Residential' : 'Commercial'} Gate Repair Call-Out Fee`
         : serviceRequirement === 'routine-service'

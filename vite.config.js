@@ -72,8 +72,24 @@ export default defineConfig({
       }
     }
   ],
+  build: {
+    target: 'esnext',
+    minify: 'esbuild',
+    cssMinify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-stripe': ['@stripe/stripe-js'],
+          'vendor-icons': ['lucide-react']
+        }
+      }
+    },
+    chunkSizeWarningLimit: 600
+  },
   server: {
     port: 3000,
     open: false
   }
 });
+

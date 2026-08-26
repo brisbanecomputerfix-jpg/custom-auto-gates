@@ -1,0 +1,17 @@
+# Custom Auto Gates & Fencing - robots.txt
+# https://customautogates.com.au
+
+User-agent: *
+Allow: /
+Allow: /images/
+Allow: /videos/
+Allow: /favicon.svg
+
+# Disallow internal API endpoints & server files
+Disallow: /api/
+Disallow: /server/
+Disallow: /*.json$
+Disallow: /*?session_id=*
+
+# XML Sitemap Location
+Sitemap: https://customautogates.com.au/sitemap.xml

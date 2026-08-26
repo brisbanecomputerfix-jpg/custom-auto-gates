@@ -130,4 +130,82 @@ export function updateSeoMetadata(pageKey, regionKey = 'brisbane') {
   if (geoPlace && config.geoPlacename) {
     geoPlace.setAttribute('content', config.geoPlacename);
   }
+
+  // 7. Dynamic Route-Specific JSON-LD Schema
+  updateDynamicRouteSchema(lookupKey, canonicalUrl, config);
 }
+
+/**
+ * Injects or updates dynamic JSON-LD schema for specific landing pages
+ */
+function updateDynamicRouteSchema(lookupKey, canonicalUrl, config) {
+  const schemaId = 'dynamic-route-schema';
+  let scriptElem = document.getElementById(schemaId);
+
+  let routeSchema = null;
+
+  if (lookupKey.startsWith('suburbs-')) {
+    const regionName = lookupKey === 'suburbs-brisbane' ? 'Brisbane'
+      : lookupKey === 'suburbs-ipswich' ? 'Ipswich & Greater Springfield'
+      : lookupKey === 'suburbs-logan' ? 'Logan City & Redlands'
+      : 'Gold Coast';
+
+    routeSchema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${canonicalUrl}#service`,
+      "name": `Custom Automatic Gates ${regionName}`,
+      "serviceType": "Automatic Gate Design, Fabrication & Installation",
+      "provider": {
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Custom Auto Gates & Fencing",
+        "url": "https://customautogates.com.au/",
+        "telephone": "+61731021801",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shed 2, 43-45 Belar Street",
+          "addressLocality": "Yamanto",
+          "addressRegion": "QLD",
+          "postalCode": "4305",
+          "addressCountry": "AU"
+        }
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": regionName
+      },
+      "description": config.description,
+      "url": canonicalUrl
+    };
+  } else if (lookupKey === 'service') {
+    routeSchema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${canonicalUrl}#repair-service`,
+      "name": "Gate Motor Repairs & Scheduled Servicing South East Queensland",
+      "serviceType": "Emergency Gate Motor Repair and Maintenance",
+      "provider": {
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Custom Auto Gates & Fencing",
+        "url": "https://customautogates.com.au/",
+        "telephone": "+61731021801"
+      },
+      "areaServed": ["Brisbane", "Ipswich", "Logan", "Gold Coast"],
+      "description": config.description,
+      "url": canonicalUrl
+    };
+  }
+
+  if (routeSchema) {
+    if (!scriptElem) {
+      scriptElem = document.createElement('script');
+      scriptElem.id = schemaId;
+      scriptElem.type = 'application/ld+json';
+      document.head.appendChild(scriptElem);
+    }
+    scriptElem.textContent = JSON.stringify(routeSchema, null, 2);
+  } else if (scriptElem) {
+    scriptElem.remove();
+  }
+}
+

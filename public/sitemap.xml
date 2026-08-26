@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- 1. Homepage -->
+  <url>
+    <loc>https://customautogates.com.au/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://customautogates.com.au/images/Sliding-Gates.jpg</image:loc>
+      <image:title>Automatic Sliding Gates Brisbane Yamanto Factory Direct</image:title>
+      <image:caption>Custom designed automatic sliding and swing gates fabricated in Yamanto QLD</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 2. Suburb Landing Pages (Geo-Targeted Silos) -->
+  <url>
+    <loc>https://customautogates.com.au/gates-brisbane</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://customautogates.com.au/images/Serving-Brisbane-QLD.webp</image:loc>
+      <image:title>Custom Automatic Gates Brisbane Northside &amp; Southside</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://customautogates.com.au/gates-ipswich</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://customautogates.com.au/images/Ipswich-Automated-Slide-Gate-P.A-Dual-Swings.webp</image:loc>
+      <image:title>Automatic Gates Ipswich &amp; Greater Springfield QLD</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://customautogates.com.au/gates-logan</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://customautogates.com.au/images/CLEVELAND-Automated-Sliding-Gate-Springwood-Design-White.webp</image:loc>
+      <image:title>Automatic Gates Logan &amp; Redland Bay QLD</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://customautogates.com.au/gates-gold-coast</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://customautogates.com.au/images/Swinging-Gates.jpg</image:loc>
+      <image:title>Custom Automatic Marine Grade Aluminium Gates Gold Coast</image:title>
+    </image:image>
+  </url>
+
+  <!-- 3. Service, Repairs & Warranty -->
+  <url>
+    <loc>https://customautogates.com.au/service</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 4. About Us & Yamanto Workshop -->
+  <url>
+    <loc>https://customautogates.com.au/about-us</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- 5. Queensland Council & Pool Safety Planning Guide -->
+  <url>
+    <loc>https://customautogates.com.au/council-guide</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- 6. Verified Customer Testimonials & Reviews -->
+  <url>
+    <loc>https://customautogates.com.au/testimonials</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- 7. Trade & Builders Wholesale Portal -->
+  <url>
+    <loc>https://customautogates.com.au/trade</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 8. Contact Us & Showroom -->
+  <url>
+    <loc>https://customautogates.com.au/contact-us</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

@@ -67,7 +67,7 @@ app.get('/api/health', (req, res) => {
 // Contact & Measure Form Submission Endpoint
 app.post('/api/contact', async (req, res) => {
   try {
-    const { name, phone, email, suburb, serviceType, preferredTime, notes, dimensions, estimatedPrice, source } = req.body;
+    const { name, phone, email, address, suburb, serviceType, preferredTime, notes, dimensions, estimatedPrice, source } = req.body;
 
     if (!name || !phone) {
       return res.status(400).json({ error: 'Name and Phone Number are required.' });
@@ -77,6 +77,7 @@ app.post('/api/contact', async (req, res) => {
       name: String(name).trim().substring(0, 100),
       phone: String(phone).trim().substring(0, 30),
       email: email ? String(email).trim().toLowerCase().substring(0, 120) : '',
+      address: address ? String(address).trim().substring(0, 200) : '',
       suburb: suburb ? String(suburb).trim().substring(0, 80) : '',
       serviceType: serviceType ? String(serviceType).trim().substring(0, 100) : 'General Inquiry',
       preferredTime: preferredTime ? String(preferredTime).trim().substring(0, 50) : '',
@@ -89,12 +90,40 @@ app.post('/api/contact', async (req, res) => {
 
     res.json({
       success: true,
-      message: 'Thank you! Your measure request has been received.',
+      message: 'Thank you! Your inquiry has been received.',
       ...result
     });
   } catch (error) {
     console.error('Contact Form Endpoint Error:', error.message);
     res.status(500).json({ error: 'Failed to process inquiry. Please call us directly.' });
+  }
+});
+
+// Test Email Endpoint
+app.post('/api/test-email', async (req, res) => {
+  try {
+    const testResult = await sendLeadNotification({
+      name: 'System Integration Test',
+      phone: '(07) 3102 1801',
+      email: 'office@customautogates.com.au',
+      address: '10 Yamanto Drive, Yamanto QLD 4305',
+      suburb: 'Yamanto / Ipswich',
+      serviceType: 'Automated SMTP & Contact Form Connectivity Test',
+      notes: 'This is a test notification confirming email server integration with previous WordPress settings (office@customautogates.com.au).',
+      source: 'Admin System Diagnostic'
+    });
+
+    res.json({
+      success: true,
+      testResult,
+      settings: {
+        recipient: process.env.NOTIFICATION_EMAIL || 'office@customautogates.com.au',
+        from: process.env.SMTP_FROM || 'info@customautogates.com.au',
+        smtpConfigured: !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS)
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 

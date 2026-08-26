@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import GateVisualizerQuote from './components/GateVisualizerQuote';
@@ -10,22 +10,31 @@ import MotorShowcase from './components/MotorShowcase';
 import ServiceAreaChecker from './components/ServiceAreaChecker';
 import ReviewsSection from './components/ReviewsSection';
 import FaqSection from './components/FaqSection';
-import ContactModal from './components/ContactModal';
-import TroubleshooterModal from './components/TroubleshooterModal';
-import AboutUs from './components/AboutUs';
-import ServiceRepairs from './components/ServiceRepairs';
-import ContactUs from './components/ContactUs';
-import Testimonials from './components/Testimonials';
-import CouncilGuide from './components/CouncilGuide';
-import TradeBuilders from './components/TradeBuilders';
-import SuburbLandingPage from './components/SuburbLandingPage';
-import QuickPayModal from './components/QuickPayModal';
-import PaymentSuccessModal from './components/PaymentSuccessModal';
 import Footer from './components/Footer';
 import QuickActionBar from './components/QuickActionBar';
 import RemoteCursorEffect from './components/RemoteCursorEffect';
 import { updateSeoMetadata } from './utils/seoManager';
 import { useTheme } from './utils/useTheme';
+
+// Code-split subpages & modals with React.lazy for high Core Web Vitals (LCP & TBT)
+const AboutUs = lazy(() => import('./components/AboutUs'));
+const ServiceRepairs = lazy(() => import('./components/ServiceRepairs'));
+const ContactUs = lazy(() => import('./components/ContactUs'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const CouncilGuide = lazy(() => import('./components/CouncilGuide'));
+const TradeBuilders = lazy(() => import('./components/TradeBuilders'));
+const SuburbLandingPage = lazy(() => import('./components/SuburbLandingPage'));
+const ContactModal = lazy(() => import('./components/ContactModal'));
+const TroubleshooterModal = lazy(() => import('./components/TroubleshooterModal'));
+const QuickPayModal = lazy(() => import('./components/QuickPayModal'));
+const PaymentSuccessModal = lazy(() => import('./components/PaymentSuccessModal'));
+
+const PageLoader = () => (
+  <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ width: '40px', height: '40px', border: '3px solid rgba(212, 163, 89, 0.2)', borderTop: '3px solid #d4a359', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+  </div>
+);
+
 
 export default function App() {
   const { theme, isDark, toggleTheme } = useTheme();
@@ -181,120 +190,122 @@ export default function App() {
 
       {/* Main Page Routing Content */}
       <main style={{ flex: 1 }}>
-        {currentPage === 'about' ? (
-          /* Dedicated About Us Page */
-          <AboutUs 
-            onOpenQuote={handleOpenQuote}
-            onOpenContact={() => setIsContactOpen(true)}
-            onNavigateHome={() => navigateTo('home')}
-          />
-        ) : currentPage === 'service' ? (
-          /* Dedicated Service, Repairs & Warranty Page */
-          <ServiceRepairs 
-            onOpenQuote={handleOpenQuote}
-            onOpenContact={() => setIsContactOpen(true)}
-            onNavigateHome={() => navigateTo('home')}
-          />
-        ) : currentPage === 'contact' ? (
-          /* Dedicated Interactive Contact Us Page */
-          <ContactUs 
-            onOpenQuote={handleOpenQuote}
-            onOpenTroubleshoot={() => setIsTroubleshootOpen(true)}
-            onNavigateHome={() => navigateTo('home')}
-            onNavigateService={() => navigateTo('service')}
-          />
-        ) : currentPage === 'testimonials' ? (
-          /* Dedicated Testimonials & Verified Case Studies Page (Google EEAT) */
-          <Testimonials 
-            onOpenQuote={handleOpenQuote}
-            onOpenContact={() => setIsContactOpen(true)}
-            onNavigateHome={() => navigateTo('home')}
-          />
-        ) : currentPage === 'council-guide' ? (
-          /* Dedicated Queensland Council & Pool Safety Guide */
-          <CouncilGuide 
-            onOpenQuote={handleOpenQuote}
-            onOpenContact={() => setIsContactOpen(true)}
-            onNavigateHome={() => navigateTo('home')}
-          />
-        ) : currentPage === 'trade' ? (
-          /* Dedicated Trade, Builders & Commercial Wholesale Portal */
-          <TradeBuilders 
-            onOpenQuote={handleOpenQuote}
-            onOpenContact={() => setIsContactOpen(true)}
-            onNavigateHome={() => navigateTo('home')}
-          />
-        ) : currentPage === 'suburbs' ? (
-          /* Dedicated Suburb Silo Landing Pages (Brisbane, Ipswich, Logan, Gold Coast) */
-          <SuburbLandingPage 
-            initialRegion={selectedRegion}
-            onOpenQuote={handleOpenQuote}
-            onOpenContact={() => setIsContactOpen(true)}
-            onNavigateHome={() => navigateTo('home')}
-            onNavigateCouncilGuide={() => navigateTo('council-guide')}
-          />
-        ) : (
-          /* Main Home Page Experience */
-          <>
-            {/* Hero Section with Vimeo Background Video */}
-            <Hero 
+        <Suspense fallback={<PageLoader />}>
+          {currentPage === 'about' ? (
+            /* Dedicated About Us Page */
+            <AboutUs 
               onOpenQuote={handleOpenQuote}
               onOpenContact={() => setIsContactOpen(true)}
-              onExploreVisualizer={handleOpenQuote}
-              onNavigateAbout={() => navigateTo('about')}
+              onNavigateHome={() => navigateTo('home')}
             />
-
-            {/* Core Custom Gates and Fencing Solutions (8-Card Grid) */}
-            <CoreSolutionsSection 
-              onSelectService={(id) => setSelectedServiceId(id)}
+          ) : currentPage === 'service' ? (
+            /* Dedicated Service, Repairs & Warranty Page */
+            <ServiceRepairs 
               onOpenQuote={handleOpenQuote}
-            />
-
-            {/* 600+ Real Project Gallery - High-Trust Visual Proof Section */}
-            <ProjectGallery 
-              onOpenQuoteWithProject={handleOpenQuoteWithProject}
-            />
-
-            {/* Live Custom Gate Cost Estimator */}
-            <GateVisualizerQuote />
-
-            {/* Comprehensive Services Deep Dive */}
-            <ServicesSection 
-              selectedServiceId={selectedServiceId}
-              onSelectService={(id) => setSelectedServiceId(id)}
-              onConfigureGate={handleConfigureGate}
               onOpenContact={() => setIsContactOpen(true)}
+              onNavigateHome={() => navigateTo('home')}
             />
-
-            {/* Why Factory Direct Yamanto Comparison */}
-            <WhyFactoryDirect 
+          ) : currentPage === 'contact' ? (
+            /* Dedicated Interactive Contact Us Page */
+            <ContactUs 
               onOpenQuote={handleOpenQuote}
-              onNavigateAbout={() => navigateTo('about')}
+              onOpenTroubleshoot={() => setIsTroubleshootOpen(true)}
+              onNavigateHome={() => navigateTo('home')}
+              onNavigateService={() => navigateTo('service')}
             />
-
-            {/* Motor Hardware Automation Specs */}
-            <MotorShowcase 
+          ) : currentPage === 'testimonials' ? (
+            /* Dedicated Testimonials & Verified Case Studies Page (Google EEAT) */
+            <Testimonials 
               onOpenQuote={handleOpenQuote}
-            />
-
-            {/* Brisbane Inner Suburbs & SE QLD Area Checker */}
-            <ServiceAreaChecker 
               onOpenContact={() => setIsContactOpen(true)}
-              onNavigateSuburbs={() => navigateTo('suburbs')}
+              onNavigateHome={() => navigateTo('home')}
             />
-
-            {/* Customer Testimonials & Reviews */}
-            <ReviewsSection 
-              onNavigateTestimonials={() => navigateTo('testimonials')}
-            />
-
-            {/* Frequently Asked Questions */}
-            <FaqSection 
-              onOpenContact={() => setIsContactOpen(true)}
+          ) : currentPage === 'council-guide' ? (
+            /* Dedicated Queensland Council & Pool Safety Guide */
+            <CouncilGuide 
               onOpenQuote={handleOpenQuote}
+              onOpenContact={() => setIsContactOpen(true)}
+              onNavigateHome={() => navigateTo('home')}
             />
-          </>
-        )}
+          ) : currentPage === 'trade' ? (
+            /* Dedicated Trade, Builders & Commercial Wholesale Portal */
+            <TradeBuilders 
+              onOpenQuote={handleOpenQuote}
+              onOpenContact={() => setIsContactOpen(true)}
+              onNavigateHome={() => navigateTo('home')}
+            />
+          ) : currentPage === 'suburbs' ? (
+            /* Dedicated Suburb Silo Landing Pages (Brisbane, Ipswich, Logan, Gold Coast) */
+            <SuburbLandingPage 
+              initialRegion={selectedRegion}
+              onOpenQuote={handleOpenQuote}
+              onOpenContact={() => setIsContactOpen(true)}
+              onNavigateHome={() => navigateTo('home')}
+              onNavigateCouncilGuide={() => navigateTo('council-guide')}
+            />
+          ) : (
+            /* Main Home Page Experience */
+            <>
+              {/* Hero Section with Vimeo Background Video */}
+              <Hero 
+                onOpenQuote={handleOpenQuote}
+                onOpenContact={() => setIsContactOpen(true)}
+                onExploreVisualizer={handleOpenQuote}
+                onNavigateAbout={() => navigateTo('about')}
+              />
+
+              {/* Core Custom Gates and Fencing Solutions (8-Card Grid) */}
+              <CoreSolutionsSection 
+                onSelectService={(id) => setSelectedServiceId(id)}
+                onOpenQuote={handleOpenQuote}
+              />
+
+              {/* 600+ Real Project Gallery - High-Trust Visual Proof Section */}
+              <ProjectGallery 
+                onOpenQuoteWithProject={handleOpenQuoteWithProject}
+              />
+
+              {/* Live Custom Gate Cost Estimator */}
+              <GateVisualizerQuote />
+
+              {/* Comprehensive Services Deep Dive */}
+              <ServicesSection 
+                selectedServiceId={selectedServiceId}
+                onSelectService={(id) => setSelectedServiceId(id)}
+                onConfigureGate={handleConfigureGate}
+                onOpenContact={() => setIsContactOpen(true)}
+              />
+
+              {/* Why Factory Direct Yamanto Comparison */}
+              <WhyFactoryDirect 
+                onOpenQuote={handleOpenQuote}
+                onNavigateAbout={() => navigateTo('about')}
+              />
+
+              {/* Motor Hardware Automation Specs */}
+              <MotorShowcase 
+                onOpenQuote={handleOpenQuote}
+              />
+
+              {/* Brisbane Inner Suburbs & SE QLD Area Checker */}
+              <ServiceAreaChecker 
+                onOpenContact={() => setIsContactOpen(true)}
+                onNavigateSuburbs={() => navigateTo('suburbs')}
+              />
+
+              {/* Customer Testimonials & Reviews */}
+              <ReviewsSection 
+                onNavigateTestimonials={() => navigateTo('testimonials')}
+              />
+
+              {/* Frequently Asked Questions */}
+              <FaqSection 
+                onOpenContact={() => setIsContactOpen(true)}
+                onOpenQuote={handleOpenQuote}
+              />
+            </>
+          )}
+        </Suspense>
       </main>
 
       {/* Footer Section */}
@@ -317,47 +328,58 @@ export default function App() {
         onOpenPay={() => setIsQuickPayOpen(true)}
       />
 
-      {/* Interactive Modals */}
-      <ContactModal 
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-        defaultGateStyle={selectedGalleryGate?.category || selectedServiceId}
-      />
+      {/* Interactive Lazy-Loaded Modals */}
+      <Suspense fallback={null}>
+        {isContactOpen && (
+          <ContactModal 
+            isOpen={isContactOpen}
+            onClose={() => setIsContactOpen(false)}
+            defaultGateStyle={selectedGalleryGate?.category || selectedServiceId}
+          />
+        )}
 
-      <TroubleshooterModal 
-        isOpen={isTroubleshootOpen}
-        onClose={() => setIsTroubleshootOpen(false)}
-        onOpenContact={() => {
-          setIsTroubleshootOpen(false);
-          setIsContactOpen(true);
-        }}
-      />
+        {isTroubleshootOpen && (
+          <TroubleshooterModal 
+            isOpen={isTroubleshootOpen}
+            onClose={() => setIsTroubleshootOpen(false)}
+            onOpenContact={() => {
+              setIsTroubleshootOpen(false);
+              setIsContactOpen(true);
+            }}
+          />
+        )}
 
-      {/* Quick Pay Invoice / Deposit Stripe Modal */}
-      <QuickPayModal 
-        isOpen={isQuickPayOpen}
-        onClose={() => {
-          setIsQuickPayOpen(false);
-          if (window.location.hash === '#pay' || window.location.hash === '#pay-invoice') {
-            window.location.hash = '';
-          }
-        }}
-      />
+        {/* Quick Pay Invoice / Deposit Stripe Modal */}
+        {isQuickPayOpen && (
+          <QuickPayModal 
+            isOpen={isQuickPayOpen}
+            onClose={() => {
+              setIsQuickPayOpen(false);
+              if (window.location.hash === '#pay' || window.location.hash === '#pay-invoice') {
+                window.location.hash = '';
+              }
+            }}
+          />
+        )}
 
-      {/* Verified Stripe Payment Success Receipt Modal */}
-      <PaymentSuccessModal 
-        isOpen={isPaymentSuccessOpen}
-        sessionId={paymentSessionId}
-        onClose={() => {
-          setIsPaymentSuccessOpen(false);
-          if (window.location.hash.includes('#payment-success')) {
-            window.location.hash = '';
-          }
-        }}
-      />
+        {/* Verified Stripe Payment Success Receipt Modal */}
+        {isPaymentSuccessOpen && (
+          <PaymentSuccessModal 
+            isOpen={isPaymentSuccessOpen}
+            sessionId={paymentSessionId}
+            onClose={() => {
+              setIsPaymentSuccessOpen(false);
+              if (window.location.hash.includes('#payment-success')) {
+                window.location.hash = '';
+              }
+            }}
+          />
+        )}
+      </Suspense>
 
       {/* Luxury Garage Remote Click Effect for Pointer Devices */}
       <RemoteCursorEffect />
     </div>
   );
 }
+
