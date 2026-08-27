@@ -115,7 +115,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
                 </a>
 
                 <a 
-                  href={COMPANY_INFO.facebook || 'https://www.facebook.com/customautogates'} 
+                  href={COMPANY_INFO.facebook || 'https://www.facebook.com/profile.php?id=61593825539148'} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   aria-label="Custom Auto Gates on Facebook"
@@ -375,7 +375,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
                 <InstagramIcon size={16} />
               </a>
               <a
-                href={COMPANY_INFO.facebook || 'https://www.facebook.com/customautogates'}
+                href={COMPANY_INFO.facebook || 'https://www.facebook.com/profile.php?id=61593825539148'}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"

@@ -157,7 +157,7 @@ export default function Navbar({
               </a>
 
               <a
-                href={COMPANY_INFO.facebook || 'https://www.facebook.com/customautogates'}
+                href={COMPANY_INFO.facebook || 'https://www.facebook.com/profile.php?id=61593825539148'}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow Custom Auto Gates on Facebook"
@@ -881,7 +881,7 @@ export default function Navbar({
                   <InstagramIcon size={15} style={{ color: '#e1306c' }} /> Insta
                 </a>
                 <a 
-                  href={COMPANY_INFO.facebook || 'https://www.facebook.com/customautogates'} 
+                  href={COMPANY_INFO.facebook || 'https://www.facebook.com/profile.php?id=61593825539148'} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn btn-outline-dark"
