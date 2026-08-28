@@ -102,8 +102,16 @@
   <!-- 8. Contact Us & Showroom -->
   <url>
     <loc>https://customautogates.com.au/contact-us</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- 9. Privacy Policy & Compliance -->
+  <url>
+    <loc>https://customautogates.com.au/privacy-policy</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>

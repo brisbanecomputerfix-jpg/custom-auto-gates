@@ -73,6 +73,12 @@ export const PAGE_SEO_CONFIGS = {
     description: '100% corrosion-resistant marine grade aluminium automatic gates for Gold Coast, Hope Island, Sanctuary Cove, Coomera, Southport, and Hinterland properties.',
     canonicalPath: '/gates-gold-coast',
     geoPlacename: 'Gold Coast, Coomera, Southport, Queensland, AU'
+  },
+  'privacy-policy': {
+    title: 'Privacy Policy | Custom Auto Gates & Fencing Brisbane & Ipswich',
+    description: 'Official Privacy Policy for Custom Auto Gates Pty Ltd. Learn how we collect, protect, and manage your personal and property data in strict compliance with the Australian Privacy Principles (Privacy Act 1988).',
+    canonicalPath: '/privacy-policy',
+    geoPlacename: 'Yamanto, Brisbane, Ipswich, Queensland'
   }
 };
 

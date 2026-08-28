@@ -24,6 +24,7 @@ const Testimonials = lazy(() => import('./components/Testimonials'));
 const CouncilGuide = lazy(() => import('./components/CouncilGuide'));
 const TradeBuilders = lazy(() => import('./components/TradeBuilders'));
 const SuburbLandingPage = lazy(() => import('./components/SuburbLandingPage'));
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
 const ContactModal = lazy(() => import('./components/ContactModal'));
 const TroubleshooterModal = lazy(() => import('./components/TroubleshooterModal'));
 const QuickPayModal = lazy(() => import('./components/QuickPayModal'));
@@ -100,6 +101,9 @@ export default function App() {
         setSelectedRegion('goldcoast');
         setCurrentPage('suburbs');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#privacy' || hash === '#privacy-policy' || path === '/privacy' || path === '/privacy-policy' || path === '/privacy-policy/') {
+        setCurrentPage('privacy-policy');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#suburbs' || path === '/service-areas') {
         setSelectedRegion('brisbane');
         setCurrentPage('suburbs');
@@ -134,6 +138,8 @@ export default function App() {
       window.location.hash = 'council-guide';
     } else if (page === 'trade') {
       window.location.hash = 'trade';
+    } else if (page === 'privacy-policy' || page === 'privacy') {
+      window.location.hash = 'privacy-policy';
     } else if (page === 'suburbs') {
       setSelectedRegion(region);
       window.location.hash = `gates-${region}`;
@@ -233,6 +239,13 @@ export default function App() {
               onOpenQuote={handleOpenQuote}
               onOpenContact={() => setIsContactOpen(true)}
               onNavigateHome={() => navigateTo('home')}
+            />
+          ) : currentPage === 'privacy-policy' ? (
+            /* Dedicated Australian Privacy Principles Compliant Policy Page */
+            <PrivacyPolicy 
+              onNavigateHome={() => navigateTo('home')}
+              onOpenQuote={handleOpenQuote}
+              onOpenContact={() => setIsContactOpen(true)}
             />
           ) : currentPage === 'suburbs' ? (
             /* Dedicated Suburb Silo Landing Pages (Brisbane, Ipswich, Logan, Gold Coast) */

@@ -397,8 +397,40 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
                 <LinkedInIcon size={16} />
               </a>
             </div>
-            <span style={{ color: '#cbd5e1', cursor: 'pointer' }}>Privacy Policy</span>
-            <span style={{ color: '#cbd5e1', cursor: 'pointer' }}>Terms & Conditions</span>
+            <button
+              onClick={() => onNavigate && onNavigate('privacy-policy')}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#cbd5e1',
+                cursor: 'pointer',
+                padding: 0,
+                fontSize: 'inherit',
+                fontFamily: 'inherit',
+                transition: 'color 0.2s ease'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#fbbf24'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#cbd5e1'}
+            >
+              Privacy Policy
+            </button>
+            <button
+              onClick={() => onNavigate && onNavigate('privacy-policy')}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#cbd5e1',
+                cursor: 'pointer',
+                padding: 0,
+                fontSize: 'inherit',
+                fontFamily: 'inherit',
+                transition: 'color 0.2s ease'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#fbbf24'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#cbd5e1'}
+            >
+              Terms & Conditions
+            </button>
 
             <button 
               onClick={scrollToTop}

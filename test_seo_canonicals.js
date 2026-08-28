@@ -13,6 +13,7 @@ const expectedRoutes = [
   { key: 'suburbs-ipswich', expectedCanonical: 'https://customautogates.com.au/gates-ipswich' },
   { key: 'suburbs-logan', expectedCanonical: 'https://customautogates.com.au/gates-logan' },
   { key: 'suburbs-goldcoast', expectedCanonical: 'https://customautogates.com.au/gates-gold-coast' },
+  { key: 'privacy-policy', expectedCanonical: 'https://customautogates.com.au/privacy-policy' },
 ];
 
 let allPassed = true;
