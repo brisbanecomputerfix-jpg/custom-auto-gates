@@ -6,6 +6,7 @@ const SOLUTIONS = [
     id: 'sliding-gates',
     title: 'Sliding Gates',
     image: '/images/Sliding-Gates.jpg',
+    alt: 'Custom automatic aluminium sliding driveway gate fabricated in Brisbane',
     desc: "Smooth, space saving, and secure. Our custom sliding gates are ideal for driveways and tight spaces, built tough to withstand Brisbane's climate.",
     category: 'sliding-gates'
   },
@@ -13,6 +14,7 @@ const SOLUTIONS = [
     id: 'swing-gates',
     title: 'Swing Gates',
     image: '/images/Swinging-Gates.jpg',
+    alt: 'Grand architectural double swing automated entrance gates',
     desc: "Elegant and durable, our swing gates are custom-built to suit your property's entry and can be automated for seamless access.",
     category: 'swing-gates'
   },
@@ -20,6 +22,7 @@ const SOLUTIONS = [
     id: 'commercial-gates',
     title: 'Commercial Gates',
     image: '/images/commercial-gates.jpg',
+    alt: 'Heavy duty commercial and industrial security slide gate installation',
     desc: "Protect your premises with heavy-duty commercial gate solutions, tailored for high-traffic environments and enhanced security.",
     category: 'commercial-gates'
   },
@@ -27,6 +30,7 @@ const SOLUTIONS = [
     id: 'solar-gates',
     title: 'Solar Gates',
     image: '/images/solar-gates.jpg',
+    alt: 'Off-grid solar powered automated farm and acreage driveway gate',
     desc: "Go green with energy-efficient solar-powered gates—perfect for remote properties or eco-conscious households.",
     category: 'solar-gates'
   },
@@ -34,6 +38,7 @@ const SOLUTIONS = [
     id: 'gate-motors',
     title: 'Gate Motors',
     image: '/images/gate-motors.jpg',
+    alt: 'Centurion Smart high-speed automatic gate motor and rack pinion',
     desc: "We supply and install reliable gate motors that are powerful, quiet, and built to last, suitable for sliding and swing gates alike.",
     category: 'repairs'
   },
@@ -41,6 +46,7 @@ const SOLUTIONS = [
     id: 'gate-automation',
     title: 'Gate Automation',
     image: '/images/gate-automation.png',
+    alt: 'Smart electric automated gate access control system with wireless phone app',
     desc: "Automate your existing gate or install a brand-new electric system—smart access made easy with advanced automation options.",
     category: 'sliding-gates'
   },
@@ -48,6 +54,7 @@ const SOLUTIONS = [
     id: 'security-fencing',
     title: 'Security Fencing',
     image: '/images/security-fencing.jpg',
+    alt: 'Robust commercial and residential perimeter security fencing panels',
     desc: "Keep your property protected with our sturdy, professionally-installed security fencing—built for both residential and commercial use.",
     category: 'fencing'
   },
@@ -55,6 +62,7 @@ const SOLUTIONS = [
     id: 'aluminum-fencing',
     title: 'Aluminum Fencing',
     image: '/images/aluminum-fencing.jpg',
+    alt: 'Modern architectural vertical white aluminium blade fencing and pedestrian gate',
     desc: "Lightweight, rust-resistant, and low-maintenance—our aluminium fencing offers modern style without sacrificing durability.",
     category: 'fencing'
   }
@@ -172,7 +180,7 @@ export default function CoreSolutionsSection({ onSelectService, onOpenQuote }) {
               }}>
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={item.alt || item.title}
                   loading="lazy"
                   onError={(e) => {
                     e.currentTarget.src = '/images/Sliding-Gates.jpg';

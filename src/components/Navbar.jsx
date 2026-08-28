@@ -119,7 +119,7 @@ export default function Navbar({
 
             <span className="hidden-mobile" style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#94a3b8' }}>
               <Clock size={12} style={{ color: 'var(--accent-gold)' }} />
-              <span>Mon-Fri: 7:00 AM - 5:00 PM</span>
+              <span>Mon-Fri: 9:00 AM – 4:00 PM</span>
             </span>
 
             <span className="hidden-mobile" style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#94a3b8' }}>

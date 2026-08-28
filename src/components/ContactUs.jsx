@@ -968,7 +968,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.88rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '0.5rem' }}>
                     <span style={{ fontWeight: '700', color: '#0f172a' }}>Monday – Friday:</span>
-                    <span style={{ color: '#16a34a', fontWeight: '700' }}>7:00 AM – 5:00 PM</span>
+                    <span style={{ color: '#16a34a', fontWeight: '700' }}>9:00 AM – 4:00 PM</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '0.5rem' }}>
                     <span style={{ fontWeight: '700', color: '#0f172a' }}>Saturday:</span>

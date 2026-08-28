@@ -175,8 +175,9 @@ export const SERVICES = [
     id: "fencing",
     title: "Aluminium Slat, Louver & Security Fencing",
     shortDesc: "Factory-direct custom aluminium fencing, privacy screens, and infill panels tailored to seamlessly match your gate.",
-    heroImage: "/images/Aluminum-Durability-and-Lifespan.jpg",
+    heroImage: "/images/aluminum-fencing.jpg",
     gallery: [
+      "/images/aluminum-fencing.jpg",
       "/images/Aluminum-Durability-and-Lifespan.jpg",
       "/images/Custom-Designed-Aluminum-Gates.jpg",
       "/images/colorbond-banner_2.jpg"
@@ -220,6 +221,22 @@ export const SERVICES = [
 ];
 
 export const GALLERY_ITEMS = [
+  {
+    "id": "project-white-vertical-blade-aluminium-fencing",
+    "url": "/images/aluminum-fencing.jpg",
+    "thumbUrl": "/images/aluminum-fencing.jpg",
+    "image": "/images/aluminum-fencing.jpg",
+    "title": "White Vertical Blade Aluminium Fencing & Gate",
+    "category": "fencing",
+    "location": "Brisbane, QLD",
+    "finish": "Pearl White Gloss Powdercoat",
+    "motor": "Integrated Pedestrian Gate Lock & Hardware",
+    "description": "Custom architectural vertical white blade aluminium fencing and pedestrian gate fabricated in our Yamanto workshop. Built with marine-grade rust-resistant aluminium and our 10-year structural warranty.",
+    "alt": "Architectural vertical white aluminium blade fencing and pedestrian gate installed in Brisbane Queensland",
+    "gateType": "Vertical Blade Aluminium Fencing & Security Gate",
+    "suburb": "Brisbane",
+    "caption": "Vertical Blade Fencing, Brisbane (White)"
+  },
   {
     "id": "project-imgur-1-mount-ommaney-vertical-slat-KvcLWwl",
     "url": "/images/gallery/imgur-1-mount-ommaney-vertical-slat-KvcLWwl.webp",

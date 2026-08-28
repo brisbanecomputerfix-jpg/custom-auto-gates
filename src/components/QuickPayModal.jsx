@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
-import { X, ShieldCheck, Lock, CreditCard, ArrowRight, Loader2, DollarSign, CheckCircle2, AlertCircle } from 'lucide-react';
+import { X, ShieldCheck, Lock, CreditCard, ArrowRight, Loader2, DollarSign, CheckCircle2, AlertCircle, Plus, Minus } from 'lucide-react';
 import { createStripeCheckout } from '../utils/stripeClient';
+
+const PURPOSE_OPTIONS = [
+  { id: 'residential-callout', label: 'Residential Call-Out Fee ($250.00)', unitPrice: 250, hasQty: true },
+  { id: 'commercial-callout', label: 'Commercial Call-Out Fee ($350.00)', unitPrice: 350, hasQty: true },
+  { id: 'gate-deposit', label: 'Custom Gate Production Deposit ($500 standard)', unitPrice: 500, hasQty: false },
+  { id: 'service-maintenance', label: 'Routine Annual Gate Service ($149.00)', unitPrice: 149, hasQty: true },
+  { id: 'quote-balance', label: 'Custom Quote or Existing Invoice Balance', unitPrice: null, hasQty: false },
+];
 
 export default function QuickPayModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
@@ -8,24 +16,55 @@ export default function QuickPayModal({ isOpen, onClose }) {
     customerName: '',
     email: '',
     phone: '',
-    amount: '500',
+    purpose: 'residential-callout',
+    quantity: 1,
+    amountPreset: '250',
     customAmount: '',
-    purpose: 'gate-deposit',
   });
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
   if (!isOpen) return null;
 
-  const handleAmountSelect = (val) => {
-    setFormData({ ...formData, amount: val, customAmount: '' });
+  const currentPurpose = PURPOSE_OPTIONS.find((p) => p.id === formData.purpose) || PURPOSE_OPTIONS[0];
+
+  const handlePurposeChange = (newPurposeId) => {
+    const target = PURPOSE_OPTIONS.find((p) => p.id === newPurposeId) || PURPOSE_OPTIONS[0];
+    setFormData((prev) => ({
+      ...prev,
+      purpose: newPurposeId,
+      quantity: 1,
+      amountPreset: target.unitPrice ? String(target.unitPrice) : 'custom',
+      customAmount: target.unitPrice ? '' : prev.customAmount,
+    }));
+  };
+
+  const handleQuantityChange = (delta) => {
+    setFormData((prev) => {
+      const nextQty = Math.max(1, Math.min(99, Number(prev.quantity || 1) + delta));
+      return { ...prev, quantity: nextQty };
+    });
+  };
+
+  const handleQuantityInput = (val) => {
+    const num = parseInt(val, 10);
+    setFormData((prev) => ({
+      ...prev,
+      quantity: isNaN(num) || num < 1 ? 1 : Math.min(99, num),
+    }));
   };
 
   const getFinalAmount = () => {
-    if (formData.amount === 'custom') {
+    if (currentPurpose.hasQty && currentPurpose.unitPrice) {
+      return currentPurpose.unitPrice * (Number(formData.quantity) || 1);
+    }
+    if (formData.purpose === 'quote-balance' || formData.amountPreset === 'custom') {
       return parseFloat(formData.customAmount) || 0;
     }
-    return parseFloat(formData.amount) || 0;
+    if (formData.amountPreset && formData.amountPreset !== 'custom') {
+      return parseFloat(formData.amountPreset) || 0;
+    }
+    return currentPurpose.unitPrice || 0;
   };
 
   const handleSubmit = async (e) => {
@@ -46,15 +85,13 @@ export default function QuickPayModal({ isOpen, onClose }) {
     setIsLoading(true);
 
     try {
-      const purposeLabels = {
-        'gate-deposit': 'Custom Gate Production Deposit',
-        'repair-callout': 'Emergency Gate Repair Call-Out Fee',
-        'quote-balance': 'Custom Gate Quote / Invoice Balance',
-        'service-maintenance': 'Annual Preventative Gate Service',
-      };
+      let purposeTitle = currentPurpose.label;
+      if (currentPurpose.hasQty) {
+        purposeTitle = `${currentPurpose.label.split('(')[0].trim()} (${formData.quantity}x @ $${currentPurpose.unitPrice.toFixed(2)} AUD)`;
+      }
 
-      const title = `${purposeLabels[formData.purpose] || 'Custom Gate Payment'} ${formData.invoiceNumber ? `(#${formData.invoiceNumber})` : ''}`.trim();
-      const description = `Payment for Custom Auto Gates & Blondies Powder Coating Yamanto. Ref: ${formData.invoiceNumber || 'Direct Web Payment'}`;
+      const title = `${purposeTitle} ${formData.invoiceNumber ? `(#${formData.invoiceNumber})` : ''}`.trim();
+      const description = `Payment for Custom Auto Gates & Blondies Powder Coating Yamanto. Ref: ${formData.invoiceNumber || 'Direct Web Gateway'}`;
 
       await createStripeCheckout({
         amount: finalAmount,
@@ -66,6 +103,9 @@ export default function QuickPayModal({ isOpen, onClose }) {
         metadata: {
           invoiceNumber: formData.invoiceNumber || 'N/A',
           purpose: formData.purpose,
+          quantity: String(formData.quantity || 1),
+          unitPrice: String(currentPurpose.unitPrice || finalAmount),
+          gstIncluded: 'true',
         },
       });
     } catch (err) {
@@ -74,6 +114,8 @@ export default function QuickPayModal({ isOpen, onClose }) {
       setIsLoading(false);
     }
   };
+
+  const finalAmount = getFinalAmount();
 
   return (
     <div style={{
@@ -98,7 +140,10 @@ export default function QuickPayModal({ isOpen, onClose }) {
         overflow: 'hidden',
         position: 'relative',
         animation: 'fadeIn 0.25s ease-out',
-        color: 'var(--text-main)'
+        color: 'var(--text-main)',
+        maxHeight: '90vh',
+        display: 'flex',
+        flexDirection: 'column',
       }}>
         {/* Close button */}
         <button
@@ -131,10 +176,11 @@ export default function QuickPayModal({ isOpen, onClose }) {
         <div style={{
           background: 'linear-gradient(135deg, #090e1a 0%, #1e293b 100%)',
           color: '#ffffff',
-          padding: '2rem 1.75rem',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+          padding: '1.75rem 1.75rem',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          flexShrink: 0,
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.45rem' }}>
             <span style={{
               backgroundColor: 'var(--accent-gold)',
               color: '#090e1a',
@@ -151,16 +197,16 @@ export default function QuickPayModal({ isOpen, onClose }) {
               <Lock size={12} /> 256-Bit SSL Encrypted
             </span>
           </div>
-          <h2 style={{ fontSize: '1.5rem', fontWeight: '800', margin: 0, color: '#ffffff' }}>
+          <h2 style={{ fontSize: '1.45rem', fontWeight: '800', margin: 0, color: '#ffffff' }}>
             Pay Invoice or Deposit
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: '0.88rem', margin: '0.35rem 0 0 0' }}>
+          <p style={{ color: '#94a3b8', fontSize: '0.86rem', margin: '0.3rem 0 0 0' }}>
             Secure instant payment via Stripe (Apple Pay, Google Pay, Link & Credit Cards).
           </p>
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleSubmit} style={{ padding: '1.75rem', backgroundColor: 'var(--bg-surface)' }}>
+        <form onSubmit={handleSubmit} style={{ padding: '1.5rem 1.75rem', backgroundColor: 'var(--bg-surface)', overflowY: 'auto' }}>
           {errorMsg && (
             <div style={{
               backgroundColor: 'rgba(239, 68, 68, 0.12)',
@@ -179,14 +225,14 @@ export default function QuickPayModal({ isOpen, onClose }) {
             </div>
           )}
 
-          {/* Payment Purpose */}
+          {/* Payment Purpose Dropdown */}
           <div style={{ marginBottom: '1.25rem' }}>
             <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               Payment Purpose *
             </label>
             <select
               value={formData.purpose}
-              onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
+              onChange={(e) => handlePurposeChange(e.target.value)}
               style={{
                 width: '100%',
                 padding: '0.75rem 0.9rem',
@@ -196,73 +242,181 @@ export default function QuickPayModal({ isOpen, onClose }) {
                 color: 'var(--input-text)',
                 backgroundColor: 'var(--input-bg)',
                 outline: 'none',
+                cursor: 'pointer',
               }}
             >
-              <option value="gate-deposit">Custom Gate Production Deposit ($500 standard)</option>
-              <option value="repair-callout">Emergency Gate Repair / Call-Out Fee ($189)</option>
-              <option value="quote-balance">Custom Quote or Existing Invoice Balance</option>
-              <option value="service-maintenance">Routine Annual Gate Service ($149)</option>
+              {PURPOSE_OPTIONS.map((opt) => (
+                <option key={opt.id} value={opt.id}>
+                  {opt.label}
+                </option>
+              ))}
             </select>
           </div>
 
-          {/* Amount Selection */}
-          <div style={{ marginBottom: '1.25rem' }}>
-            <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-              Select Amount (AUD) *
-            </label>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem', marginBottom: '0.5rem' }}>
-              {['189', '500', '1000', 'custom'].map((amt) => {
-                const isSelected = formData.amount === amt;
-                return (
+          {/* Quantity Section for Call-Out Fees & Services */}
+          {currentPurpose.hasQty ? (
+            <div style={{
+              marginBottom: '1.25rem',
+              padding: '1rem',
+              background: 'var(--bg-card-subtle)',
+              borderRadius: '0.75rem',
+              border: '1px solid var(--border-light)',
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: 'var(--text-heading)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    Call-Out Quantity *
+                  </label>
+                  <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+                    ${currentPurpose.unitPrice.toFixed(2)} AUD each (inc. GST)
+                  </span>
+                </div>
+
+                {/* Stepper Controls */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <button
-                    key={amt}
                     type="button"
-                    onClick={() => handleAmountSelect(amt)}
+                    onClick={() => handleQuantityChange(-1)}
+                    disabled={formData.quantity <= 1}
+                    aria-label="Decrease quantity"
                     style={{
-                      padding: '0.65rem 0.4rem',
+                      width: '2.25rem',
+                      height: '2.25rem',
                       borderRadius: '0.5rem',
-                      border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
-                      backgroundColor: isSelected ? 'var(--badge-gold-bg)' : 'var(--bg-card-subtle)',
-                      color: isSelected ? 'var(--accent-gold)' : 'var(--text-heading)',
-                      fontWeight: isSelected ? '800' : '600',
-                      fontSize: '0.88rem',
-                      cursor: 'pointer',
+                      border: '1.5px solid var(--border-light)',
+                      background: 'var(--bg-surface)',
+                      color: 'var(--text-heading)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: formData.quantity <= 1 ? 'not-allowed' : 'pointer',
+                      opacity: formData.quantity <= 1 ? 0.5 : 1,
                       transition: 'all 0.15s',
-                      boxShadow: isSelected ? '0 0 10px var(--accent-gold-glow)' : 'none'
                     }}
                   >
-                    {amt === 'custom' ? 'Custom' : `$${amt}`}
+                    <Minus size={15} />
                   </button>
-                );
-              })}
-            </div>
 
-            {formData.amount === 'custom' && (
-              <div style={{ position: 'relative', marginTop: '0.5rem' }}>
-                <DollarSign size={16} style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
-                <input
-                  type="number"
-                  placeholder="Enter custom amount (e.g. 1250.00)"
-                  min="5"
-                  step="0.01"
-                  value={formData.customAmount}
-                  onChange={(e) => setFormData({ ...formData, customAmount: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem 0.9rem 0.75rem 2.25rem',
-                    borderRadius: '0.65rem',
-                    border: '1.5px solid var(--input-border)',
-                    fontSize: '0.95rem',
-                    color: 'var(--input-text)',
-                    backgroundColor: 'var(--input-bg)',
-                    outline: 'none',
-                    boxSizing: 'border-box',
-                  }}
-                  required
-                />
+                  <input
+                    type="number"
+                    min="1"
+                    max="99"
+                    value={formData.quantity}
+                    onChange={(e) => handleQuantityInput(e.target.value)}
+                    style={{
+                      width: '3.5rem',
+                      height: '2.25rem',
+                      textAlign: 'center',
+                      borderRadius: '0.5rem',
+                      border: '1.5px solid var(--input-border)',
+                      fontSize: '1rem',
+                      fontWeight: '800',
+                      color: 'var(--input-text)',
+                      backgroundColor: 'var(--input-bg)',
+                    }}
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => handleQuantityChange(1)}
+                    aria-label="Increase quantity"
+                    style={{
+                      width: '2.25rem',
+                      height: '2.25rem',
+                      borderRadius: '0.5rem',
+                      border: '1.5px solid var(--border-light)',
+                      background: 'var(--bg-surface)',
+                      color: 'var(--text-heading)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s',
+                    }}
+                  >
+                    <Plus size={15} />
+                  </button>
+                </div>
               </div>
-            )}
-          </div>
+
+              {/* Subtotal preview banner */}
+              <div style={{
+                marginTop: '0.75rem',
+                paddingTop: '0.75rem',
+                borderTop: '1px dashed var(--border-light)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                fontSize: '0.88rem',
+              }}>
+                <span style={{ color: 'var(--text-muted)' }}>
+                  Total ({formData.quantity} × ${currentPurpose.unitPrice.toFixed(2)}):
+                </span>
+                <span style={{ fontWeight: '800', color: 'var(--accent-gold)', fontSize: '1.1rem' }}>
+                  ${(currentPurpose.unitPrice * formData.quantity).toFixed(2)} AUD
+                </span>
+              </div>
+            </div>
+          ) : (
+            /* Amount Selection for Deposits / Custom Balances */
+            <div style={{ marginBottom: '1.25rem' }}>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                Select Amount (AUD) *
+              </label>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                {['250', '500', '1000', 'custom'].map((amt) => {
+                  const isSelected = formData.amountPreset === amt;
+                  return (
+                    <button
+                      key={amt}
+                      type="button"
+                      onClick={() => setFormData({ ...formData, amountPreset: amt, customAmount: amt === 'custom' ? formData.customAmount : '' })}
+                      style={{
+                        padding: '0.65rem 0.4rem',
+                        borderRadius: '0.5rem',
+                        border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
+                        backgroundColor: isSelected ? 'var(--badge-gold-bg)' : 'var(--bg-card-subtle)',
+                        color: isSelected ? 'var(--accent-gold)' : 'var(--text-heading)',
+                        fontWeight: isSelected ? '800' : '600',
+                        fontSize: '0.88rem',
+                        cursor: 'pointer',
+                        transition: 'all 0.15s',
+                        boxShadow: isSelected ? '0 0 10px var(--accent-gold-glow)' : 'none'
+                      }}
+                    >
+                      {amt === 'custom' ? 'Custom' : `$${amt}`}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {(formData.amountPreset === 'custom' || formData.purpose === 'quote-balance') && (
+                <div style={{ position: 'relative', marginTop: '0.5rem' }}>
+                  <DollarSign size={16} style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
+                  <input
+                    type="number"
+                    placeholder="Enter custom amount (e.g. 1250.00)"
+                    min="5"
+                    step="0.01"
+                    value={formData.customAmount}
+                    onChange={(e) => setFormData({ ...formData, customAmount: e.target.value, amountPreset: 'custom' })}
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 0.9rem 0.75rem 2.25rem',
+                      borderRadius: '0.65rem',
+                      border: '1.5px solid var(--input-border)',
+                      fontSize: '0.95rem',
+                      color: 'var(--input-text)',
+                      backgroundColor: 'var(--input-bg)',
+                      outline: 'none',
+                      boxSizing: 'border-box',
+                    }}
+                    required
+                  />
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Invoice / Reference Number */}
           <div style={{ marginBottom: '1.25rem' }}>
@@ -361,7 +515,7 @@ export default function QuickPayModal({ isOpen, onClose }) {
             />
           </div>
 
-          {/* Pay Button */}
+          {/* Dynamic Stripe Checkout Button */}
           <button
             type="submit"
             disabled={isLoading}
@@ -390,7 +544,7 @@ export default function QuickPayModal({ isOpen, onClose }) {
               </>
             ) : (
               <>
-                <CreditCard size={20} /> Proceed to Stripe Checkout (${getFinalAmount().toFixed(2)} AUD) <ArrowRight size={18} />
+                <CreditCard size={20} /> Proceed to Stripe Checkout (${finalAmount.toFixed(2)} AUD) <ArrowRight size={18} />
               </>
             )}
           </button>

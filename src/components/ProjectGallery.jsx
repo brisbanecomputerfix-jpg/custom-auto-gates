@@ -180,7 +180,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
               <div style={{ position: 'relative', width: '100%', height: '190px', overflow: 'hidden' }}>
                 <img
                   src={item.thumbUrl || item.url}
-                  alt={item.title}
+                  alt={item.alt || item.title || `${item.category || 'Custom'} gate installation in ${item.suburb || item.location || 'Brisbane'}`}
                   loading="lazy"
                   style={{
                     width: '100%',
@@ -288,7 +288,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
             }}>
               <img
                 src={selectedImage.url}
-                alt={selectedImage.title}
+                alt={selectedImage.alt || selectedImage.title || 'Custom automatic gate installation'}
                 style={{ maxHeight: '52vh', width: 'auto', maxWidth: '100%', objectFit: 'contain' }}
               />
 

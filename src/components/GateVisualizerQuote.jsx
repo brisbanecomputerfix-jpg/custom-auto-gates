@@ -757,12 +757,17 @@ export default function GateVisualizerQuote() {
                 textAlign: 'center',
                 marginBottom: '0.85rem'
               }}>
-                <div style={{ fontSize: '0.78rem', color: 'var(--badge-gold-text)', fontWeight: '800', marginBottom: '0.2rem' }}>Estimated Factory Direct Range:</div>
-                <div style={{ fontSize: 'clamp(1.5rem, 4vw, 1.85rem)', fontWeight: '900', color: 'var(--badge-gold-text)', letterSpacing: '-0.02em' }}>
-                  ${lowEst.toLocaleString()} – ${highEst.toLocaleString()} <span style={{ fontSize: '0.85rem', fontWeight: '800', color: 'var(--text-heading)' }}>AUD*</span>
+                <div style={{ fontSize: '0.78rem', color: 'var(--badge-gold-text)', fontWeight: '800', marginBottom: '0.2rem' }}>
+                  Estimated Factory Direct Range:
                 </div>
-                <div style={{ fontSize: '0.72rem', color: 'var(--text-main)', marginTop: '0.25rem', fontWeight: '600' }}>
-                  *Includes fabrication, powdercoating & motor kit.
+                <div style={{ fontSize: 'clamp(1.5rem, 4vw, 1.85rem)', fontWeight: '900', color: 'var(--badge-gold-text)', letterSpacing: '-0.02em' }}>
+                  ${lowEst.toLocaleString()} – ${highEst.toLocaleString()} <span style={{ fontSize: '0.85rem', fontWeight: '800', color: 'var(--text-heading)' }}>AUD</span>
+                </div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--badge-green-text)', fontWeight: '700', marginTop: '0.2rem' }}>
+                  ✓ All Prices Include GST (10% GST Inc.)
+                </div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-main)', marginTop: '0.35rem', lineHeight: 1.4 }}>
+                  *Includes custom fabrication, premium powdercoating & complete motor kit. Final itemized quote confirmed on free laser measure.
                 </div>
               </div>
 
