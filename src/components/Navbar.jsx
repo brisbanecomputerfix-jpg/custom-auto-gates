@@ -316,7 +316,7 @@ export default function Navbar({
             <ul style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '1.75rem',
+              gap: 'clamp(0.85rem, 1.35vw, 1.4rem)',
               listStyle: 'none',
               margin: 0,
               padding: 0
@@ -431,6 +431,29 @@ export default function Navbar({
                 >
                   <HardHat size={15} style={{ color: 'var(--accent-gold)' }} />
                   <span>Trade & Builders</span>
+                </button>
+              </li>
+
+              {/* 3. Service and Repairs */}
+              <li>
+                <button 
+                  className="nav-link-btn" 
+                  onClick={() => handleRouteClick('service')}
+                  style={{
+                    color: currentPage === 'service' ? 'var(--accent-gold)' : 'var(--text-heading)',
+                    fontFamily: 'Outfit, sans-serif',
+                    fontWeight: currentPage === 'service' ? '800' : '700',
+                    fontSize: '0.94rem',
+                    padding: '0.5rem 0.25rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    transition: 'color 0.2s ease'
+                  }}
+                >
+                  <Wrench size={15} style={{ color: 'var(--accent-gold)' }} />
+                  <span>Service and Repairs</span>
                 </button>
               </li>
 
