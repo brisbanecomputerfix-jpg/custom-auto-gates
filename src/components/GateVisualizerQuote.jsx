@@ -148,7 +148,7 @@ export default function GateVisualizerQuote() {
           height: height,
           material: selectedMat,
           motor: selectedMot,
-          estimatedTotal: `$${lowEst} - $${highEst}`,
+          estimatedTotal: 'Custom Specification Quote Request',
           notes: formData.notes
         })
       });
@@ -168,14 +168,14 @@ export default function GateVisualizerQuote() {
         <div className="section-header">
           <span className="badge-tag badge-gold">
             <Calculator size={14} />
-            Live Pricing Estimator & Builder
+            Custom Gate Configurator & Quote
           </span>
           <h2 className="section-title">
             Design Your Custom Gate <br />
-            <span className="gradient-text-gold">& Get Instant Factory-Direct Pricing</span>
+            <span className="gradient-text-gold">& Get Your Factory-Direct Custom Quote</span>
           </h2>
           <p className="section-subtitle">
-            Configure your gate type, dimensions, finish, and automation options in 5 simple steps to get an accurate instant estimate for your Queensland property.
+            Configure your gate type, dimensions, finish, and automation options in 5 simple steps to get a tailored custom proposal for your Queensland property.
           </p>
         </div>
 
@@ -198,7 +198,7 @@ export default function GateVisualizerQuote() {
             { num: 2, label: '2. Dimensions' },
             { num: 3, label: '3. Material' },
             { num: 4, label: '4. Motors' },
-            { num: 5, label: '5. Instant Quote' }
+            { num: 5, label: '5. Custom Quote' }
           ].map((s) => {
             const isActive = step === s.num;
             const isDone = step > s.num;
@@ -487,7 +487,7 @@ export default function GateVisualizerQuote() {
                         </div>
                         <div>
                           <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--text-heading)' }}>{acc.name}</div>
-                          <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>+${acc.cost} AUD</div>
+                          <div style={{ fontSize: '0.72rem', color: isSelected ? 'var(--accent-gold)' : 'var(--text-muted)', fontWeight: '600' }}>Custom Option</div>
                         </div>
                       </div>
                     );
@@ -508,7 +508,7 @@ export default function GateVisualizerQuote() {
             {/* STEP 5: Instant Quote Submission */}
             {step === 5 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 5: Lock In Your Factory-Direct Price</h3>
+                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 5: Get Your Itemized Factory-Direct Quote</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
                   Send your configured specification to our engineering team for an exact itemized PDF quote and fast-track booking.
                 </p>
@@ -748,26 +748,26 @@ export default function GateVisualizerQuote() {
                 </div>
               </div>
 
-              {/* Estimated Price Range Box */}
+              {/* Custom Quote Specification Box (No confusing hardcoded numbers) */}
               <div style={{
                 background: 'var(--badge-gold-bg)',
                 border: '1.5px solid var(--badge-gold-border)',
-                borderRadius: '10px',
-                padding: '1rem',
+                borderRadius: '12px',
+                padding: '1.1rem 1rem',
                 textAlign: 'center',
                 marginBottom: '0.85rem'
               }}>
-                <div style={{ fontSize: '0.78rem', color: 'var(--badge-gold-text)', fontWeight: '800', marginBottom: '0.2rem' }}>
-                  Estimated Factory Direct Range:
+                <div style={{ fontSize: '0.78rem', color: 'var(--badge-gold-text)', fontWeight: '800', marginBottom: '0.25rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  Factory-Direct Custom Proposal:
                 </div>
-                <div style={{ fontSize: 'clamp(1.5rem, 4vw, 1.85rem)', fontWeight: '900', color: 'var(--badge-gold-text)', letterSpacing: '-0.02em' }}>
-                  ${lowEst.toLocaleString()} – ${highEst.toLocaleString()} <span style={{ fontSize: '0.85rem', fontWeight: '800', color: 'var(--text-heading)' }}>AUD</span>
+                <div style={{ fontSize: 'clamp(1.15rem, 3.2vw, 1.4rem)', fontWeight: '900', color: 'var(--badge-gold-text)', letterSpacing: '-0.01em', marginBottom: '0.25rem' }}>
+                  Itemized Quote on Custom Specs
                 </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--badge-green-text)', fontWeight: '700', marginTop: '0.2rem' }}>
-                  ✓ All Prices Include GST (10% GST Inc.)
+                <div style={{ fontSize: '0.78rem', color: 'var(--badge-green-text)', fontWeight: '700', marginTop: '0.2rem' }}>
+                  ✓ 100% Free On-Site Laser Measure & Proposal
                 </div>
-                <div style={{ fontSize: '0.72rem', color: 'var(--text-main)', marginTop: '0.35rem', lineHeight: 1.4 }}>
-                  *Includes custom fabrication, premium powdercoating & complete motor kit. Final itemized quote confirmed on free laser measure.
+                <div style={{ fontSize: '0.74rem', color: 'var(--text-main)', marginTop: '0.35rem', lineHeight: 1.4 }}>
+                  Every gate is precision fabricated in our Yamanto workshop. Submit your specs for an exact, obligation-free proposal tailored to your opening.
                 </div>
               </div>
 

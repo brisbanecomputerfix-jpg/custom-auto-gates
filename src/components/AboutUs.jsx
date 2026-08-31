@@ -455,7 +455,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
                   <Calendar size={17} /> Free Consultation
                 </button>
                 <button onClick={onOpenQuote} className="btn btn-outline-dark" style={{ flex: '1 1 auto' }}>
-                  <Calculator size={17} /> Online Estimator
+                  <Calculator size={17} /> Custom Configurator
                 </button>
               </div>
             </div>

@@ -267,10 +267,10 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               </div>
 
               <h2 style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
-                Quick Gate Price Estimator
+                Quick Gate Configurator & Quote
               </h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', marginBottom: '1rem' }}>
-                Select a custom style to get an instant wholesale fabrication quote:
+                Select a custom style to configure your factory-direct quote:
               </p>
 
               {/* Gate Style Selector Pills */}
@@ -374,7 +374,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                 style={{ width: '100%', marginBottom: '0.75rem', fontWeight: '800' }}
               >
                 <Calculator size={17} />
-                Calculate Price for {GATE_STYLES_PREVIEW.find(g => g.id === selectedQuickGate)?.label}
+                Get Custom Quote for {GATE_STYLES_PREVIEW.find(g => g.id === selectedQuickGate)?.label}
               </button>
 
               {/* Suburbs Micro-Banner */}

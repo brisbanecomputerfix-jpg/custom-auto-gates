@@ -267,7 +267,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
               </li>
               <li>
                 <button onClick={() => handleLinkClick('gate-visualizer')} style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
-                  <ChevronRight size={13} /> Live Cost Estimator
+                  <ChevronRight size={13} /> Custom Gate Configurator & Quote
                 </button>
               </li>
               <li>
