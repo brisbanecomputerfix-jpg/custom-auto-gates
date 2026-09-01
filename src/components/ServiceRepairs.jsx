@@ -62,7 +62,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
     suburb: '',
     postcode: '',
     gateType: 'sliding',
-    motorBrand: 'Centurion Smart',
+    motorBrand: 'Smart Gate Automation',
     installYear: '2022',
     issueDescription: '',
     preferredDate: '',
@@ -227,13 +227,19 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
               >
                 <Phone size={19} /> Call Workshop: (07) 3102 1801
               </a>
-              <a
-                href="#book-service"
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById('book-service');
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 className="btn btn-outline-dark btn-lg"
-                style={{ borderRadius: '12px', background: 'rgba(255,255,255,0.08)', color: '#ffffff', borderColor: 'rgba(255,255,255,0.2)' }}
+                style={{ borderRadius: '12px', background: 'rgba(255,255,255,0.08)', color: '#ffffff', borderColor: 'rgba(255,255,255,0.2)', cursor: 'pointer' }}
               >
                 <Calendar size={19} /> Book Technician Online
-              </a>
+              </button>
             </div>
           </div>
         </div>

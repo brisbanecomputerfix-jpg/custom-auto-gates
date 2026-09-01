@@ -28,7 +28,7 @@ export default function GateVisualizerQuote() {
   const [height, setHeight] = useState(1.8); // meters
   const [material, setMaterial] = useState('horizontal-slat');
   const [color, setColor] = useState('monument');
-  const [motor, setMotor] = useState('centurion-d5');
+  const [motor, setMotor] = useState('standard-motor');
   const [accessories, setAccessories] = useState(['remotes', 'phone-app']);
   
   // Quote Form State
@@ -75,10 +75,10 @@ export default function GateVisualizerQuote() {
 
   // Motor & Automation
   const MOTORS = [
-    { id: 'centurion-d5', name: 'Centurion D5 Smart Automation', cost: 1200, desc: 'Ultra-fast smartphone app control & battery backup with 2 remotes' },
-    { id: 'centurion-smart', name: 'Centurion D5 Smart High-Speed', cost: 1450, desc: 'Ultra-fast 36m/min opening + app diagnostic' },
-    { id: 'solar-pro', name: 'Custom Solar Pro (100% Off-Grid)', cost: 1750, desc: 'Oversized solar panel + deep cycle battery bank' },
-    { id: 'heavy-commercial', name: 'Heavy Duty 3-Phase Commercial', cost: 2200, desc: 'Continuous 100% duty cycle for 500+ ops/day' }
+    { id: 'standard-motor', name: 'Standard Motor', cost: 1200, desc: 'Smooth, durable residential gate automation with battery backup & 2 remotes' },
+    { id: 'premium-motor', name: 'Premium Motor (Smart & High-Speed)', cost: 1450, desc: 'Whisper-quiet ultra-fast opening with smartphone app control & diagnostic alerts' },
+    { id: 'solar-motor', name: 'Solar Motor (100% Off-Grid)', cost: 1750, desc: 'Oversized monocrystalline solar panel & deep-cycle battery bank for acreage' },
+    { id: 'commercial-motor', name: 'Commercial Motor (Continuous Duty)', cost: 2200, desc: 'Continuous 100% duty cycle commercial automation for 500+ ops/day' }
   ];
 
   // Access Accessories
@@ -133,7 +133,7 @@ export default function GateVisualizerQuote() {
     try {
       const selectedGate = GATE_TYPES.find(g => g.id === gateType)?.name || 'Custom Gate';
       const selectedMat = MATERIALS.find(m => m.id === material)?.name || 'Aluminium Slat';
-      const selectedMot = MOTORS.find(m => m.id === motor)?.name || 'Centurion Smart';
+      const selectedMot = MOTORS.find(m => m.id === motor)?.name || 'Standard Motor';
       
       await fetch('/api/quote', {
         method: 'POST',
@@ -742,9 +742,9 @@ export default function GateVisualizerQuote() {
                   <span style={{ color: 'var(--text-muted)' }}>Finish:</span>
                   <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{COLORS.find(c=>c.id===color)?.name}</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
                   <span style={{ color: 'var(--text-muted)' }}>Motor:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{(MOTORS.find(m=>m.id===motor)?.name || 'Centurion Automation').split(' ')[0]} {(MOTORS.find(m=>m.id===motor)?.name || '').split(' ')[1] || ''}</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{MOTORS.find(m=>m.id===motor)?.name || 'Standard Motor'}</span>
                 </div>
               </div>
 

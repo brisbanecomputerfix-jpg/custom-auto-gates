@@ -38,7 +38,7 @@ const SOLUTIONS = [
     id: 'gate-motors',
     title: 'Gate Motors',
     image: '/images/gate-motors.jpg',
-    alt: 'Centurion Smart high-speed automatic gate motor and rack pinion',
+    alt: 'High-speed automatic gate motor and rack pinion system',
     desc: "We supply and install reliable gate motors that are powerful, quiet, and built to last, suitable for sliding and swing gates alike.",
     category: 'repairs'
   },

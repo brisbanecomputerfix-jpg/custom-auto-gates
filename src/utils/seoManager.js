@@ -22,7 +22,7 @@ export const PAGE_SEO_CONFIGS = {
   },
   service: {
     title: 'Gate Service, Repairs & Warranty | Custom Auto Gates Brisbane & Ipswich',
-    description: 'Professional gate motor repairs, scheduled maintenance, and warranty support across South East Queensland. Centurion, BFT, Centsys, and FAAC specialists. Transparent pricing.',
+    description: 'Professional gate motor repairs, scheduled maintenance, and warranty support across South East Queensland. Specialised in all sliding, swing, solar and commercial automation systems.',
     canonicalPath: '/service',
     geoPlacename: 'Brisbane, Ipswich, Logan, Queensland'
   },

@@ -306,7 +306,7 @@ export default function PrivacyPolicy({ onNavigateHome, onOpenQuote, onOpenConta
                   <Server size={16} /> Gate Telemetry & Warranty History
                 </h3>
                 <ul style={{ paddingLeft: '1.2rem', margin: 0, fontSize: '0.88rem', lineHeight: 1.6, color: 'var(--text-main)' }}>
-                  <li>Gate motor serial numbers (Centurion, BFT, ATA, Centsys)</li>
+                  <li>Gate motor serial numbers and hardware batch identifiers</li>
                   <li>Remote control transmitter registers</li>
                   <li>Scheduled maintenance records and fault logs</li>
                   <li>10-year structural warranty registration details</li>
@@ -380,7 +380,7 @@ export default function PrivacyPolicy({ onNavigateHome, onOpenQuote, onOpenConta
             <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.8, color: 'var(--text-main)', marginBottom: '1.25rem' }}>
               <li><strong>Certified Subcontractors & Electricians:</strong> Providing your site address and access contact to our licensed Queensland electrical contractors for 240V power isolator and motor hookups.</li>
               <li><strong>Freight & Delivery Logistics:</strong> Sharing delivery address and phone number with our heavy-vehicle logistics drivers transporting large 6m–10m gate frames.</li>
-              <li><strong>Motor Hardware Manufacturers:</strong> Sharing motor serial numbers with Centurion Systems, BFT Automation, or ATA solely for warranty claims and hardware replacements.</li>
+              <li><strong>Motor Hardware Manufacturers:</strong> Sharing motor serial numbers with authorised hardware manufacturers and distributors solely for warranty claims and hardware replacements.</li>
               <li><strong>Legal & Regulatory Authorities:</strong> Where required by law, Queensland Building and Construction Commission (QBCC) reporting, or lawful police request in connection with security investigations.</li>
             </ul>
           </article>

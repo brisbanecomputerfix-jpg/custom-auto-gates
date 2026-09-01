@@ -21,14 +21,14 @@ export default function MotorShowcase({ onOpenQuote }) {
         <div className="section-header">
           <span className="badge-tag badge-gold">
             <Cpu size={14} />
-            Premium Automation Hardware
+            Gate Automation & Motor Options
           </span>
           <h2 className="section-title">
-            Centurion Smart & Commercial Motors <br />
+            Smart, Solar & Heavy-Duty Motors <br />
             <span className="gradient-text-gold">Engineered for Rapid, Whisper-Quiet Operation</span>
           </h2>
           <p className="section-subtitle">
-            A custom gate is only as good as its motor. We exclusively install genuine commercial-grade motors backed by full Australian warranties and intelligent safety obstruction sensors.
+            A custom gate is only as good as its motor. We install reliable, commercial-grade motors backed by comprehensive warranties, battery backup, and intelligent safety obstruction sensors.
           </p>
         </div>
 

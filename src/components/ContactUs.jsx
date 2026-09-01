@@ -225,7 +225,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                   </span>
                 </div>
                 <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
-                  Click the remote button below to activate the Centurion® Smart 24V automation system
+                  Click the remote button below to activate the Smart 24V automation system
                 </span>
               </div>
 
@@ -378,7 +378,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                 border: '1px solid var(--text-muted)',
                 zIndex: 10
               }}>
-                {/* Centurion Motor Box at Base */}
+                {/* Automation Motor Box at Base */}
                 <div style={{
                   position: 'absolute',
                   bottom: 0,
@@ -477,7 +477,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                     Status: {isMoving ? 'AUTOMATION MOTOR OPERATING...' : gateOpen ? 'GATE FULLY OPEN (ACCESS GRANTED)' : 'GATE CLOSED & SECURED'}
                   </div>
                   <div style={{ fontSize: '0.74rem', color: '#94a3b8' }}>
-                    Travel Position: {gateProgress}% • Centurion Smart 24V Drive System
+                    Travel Position: {gateProgress}% • Smart 24V Drive System
                   </div>
                 </div>
               </div>

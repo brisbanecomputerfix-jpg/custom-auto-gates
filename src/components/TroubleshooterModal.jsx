@@ -49,7 +49,7 @@ const ISSUES = [
     summary: 'How to disengage the motor and push your gate open by hand during a blackout.',
     steps: [
       'Locate your metallic or triangular manual release key provided in your handover pack.',
-      'Insert the key into the lock cylinder on the side of the Centurion or automated motor housing.',
+      'Insert the key into the lock cylinder on the side of the automated motor housing.',
       'Turn the key clockwise and pull the release lever outward 90 degrees.',
       'You can now slide or swing the gate smoothly by hand to allow vehicles in or out.',
       'When power returns, push the lever back in and lock with the key to re-engage automatic driving.'

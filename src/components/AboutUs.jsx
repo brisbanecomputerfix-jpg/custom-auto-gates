@@ -343,7 +343,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
                 Craftsmanship you can see & feel
               </div>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', lineHeight: 1.55 }}>
-                Built using structural marine-grade Australian aluminium, reinforced box frames, commercial architectural powdercoating, and premium Centurion smart automation systems.
+                Built using structural marine-grade Australian aluminium, reinforced box frames, commercial architectural powdercoating, and premium smart automation systems.
               </p>
             </div>
 
@@ -445,7 +445,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
                     <Check size={14} />
                   </div>
                   <div style={{ fontSize: '0.88rem', color: 'var(--text-main)' }}>
-                    <strong style={{ color: 'var(--text-heading)' }}>Motor Bench Testing:</strong> Every Centurion motor and control board is pre-wired, tested, and paired with remotes prior to on-site installation.
+                    <strong style={{ color: 'var(--text-heading)' }}>Motor Bench Testing:</strong> Every automation motor and control board is pre-wired, tested, and paired with remotes prior to on-site installation.
                   </div>
                 </div>
               </div>

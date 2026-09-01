@@ -37,6 +37,7 @@ export default function Navbar({
   onOpenQuote, 
   onOpenContact, 
   onOpenTroubleshoot,
+  onBookTechnician,
   onOpenPay,
   onSelectCategory 
 }) {
@@ -89,6 +90,23 @@ export default function Navbar({
     setMenuOpen(false);
     setServicesDropdown(false);
     onNavigate(page);
+  };
+
+  const handleBookTechnician = () => {
+    setMenuOpen(false);
+    setServicesDropdown(false);
+    if (onBookTechnician) {
+      onBookTechnician();
+    } else if (currentPage !== 'service') {
+      onNavigate('service');
+      setTimeout(() => {
+        const el = document.getElementById('book-service');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    } else {
+      const el = document.getElementById('book-service');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -206,7 +224,7 @@ export default function Navbar({
             </div>
 
             <button
-              onClick={onOpenPay}
+              onClick={handleBookTechnician}
               style={{
                 background: 'rgba(59, 130, 246, 0.2)',
                 color: '#93c5fd',
@@ -221,8 +239,8 @@ export default function Navbar({
                 cursor: 'pointer'
               }}
             >
-              <CreditCard size={12} style={{ color: '#60a5fa' }} />
-              <span>Pay Invoice</span>
+              <Calendar size={12} style={{ color: '#60a5fa' }} />
+              <span>Book Technician Online</span>
             </button>
 
             <button
@@ -792,18 +810,15 @@ export default function Navbar({
 
                   <button 
                     className="mobile-nav-item" 
-                    onClick={() => {
-                      setMenuOpen(false);
-                      onOpenPay && onOpenPay();
-                    }}
+                    onClick={handleBookTechnician}
                     style={{ color: '#60a5fa', padding: '0.65rem 0', fontWeight: '800' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-                      <CreditCard size={17} style={{ color: '#60a5fa' }} />
-                      Pay Invoice or Deposit (Stripe)
+                      <Calendar size={17} style={{ color: '#60a5fa' }} />
+                      Book Technician Online (Service & Repairs)
                     </span>
                     <span style={{ fontSize: '0.7rem', backgroundColor: 'rgba(59, 130, 246, 0.15)', color: '#93c5fd', padding: '0.15rem 0.45rem', borderRadius: '4px', border: '1px solid rgba(147, 197, 253, 0.3)' }}>
-                      Instant Pay
+                      Online Booking
                     </span>
                   </button>
                 </div>
@@ -863,7 +878,7 @@ export default function Navbar({
                     <Sparkles size={15} style={{ color: 'var(--accent-gold)' }} />
                   </button>
                   <button className="mobile-nav-item" onClick={() => handleNavClick('motors')} style={{ padding: '0.55rem 0' }}>
-                    <span style={{ fontSize: '0.92rem' }}>Centurion Smart Motors</span>
+                    <span style={{ fontSize: '0.92rem' }}>Gate Motors & Automation</span>
                   </button>
                   <button className="mobile-nav-item" onClick={() => handleNavClick('why-factory-direct')} style={{ padding: '0.55rem 0' }}>
                     <span style={{ fontSize: '0.92rem' }}>Why Buy Factory Direct</span>

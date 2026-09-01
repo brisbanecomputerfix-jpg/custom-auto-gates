@@ -53,7 +53,7 @@ export default function TradeBuilders({ onOpenQuote, onOpenContact, onNavigateHo
       standardTime: '7 – 10 Business Days',
       fastTrackTime: '5 Business Days',
       idealFor: 'Custom Homes, Townhouses, Volume Builds',
-      specs: 'TIG-welded 6060-T5 aluminium, 65x16mm / 90x16mm slats, Centurion D5 Smart ready',
+      specs: 'TIG-welded 6060-T5 aluminium, 65x16mm / 90x16mm slats, Smart automation ready',
       status: 'In Stock & Pre-Cut'
     },
     {
@@ -101,13 +101,13 @@ export default function TradeBuilders({ onOpenQuote, onOpenContact, onNavigateHo
       filename: 'CAG-Architectural-Sliding-Gate-Footing-Spec.pdf'
     },
     {
-      id: 'centurion-wiring-conduits',
-      title: 'Centurion Smart Automation Pre-Wire & Electrical Schedule',
+      id: 'gate-wiring-conduits',
+      title: 'Gate Automation Pre-Wire & Electrical Schedule',
       desc: '240V mains isolating switch placement, 12V safety sensor conduit paths, solar panel orientation, and keyfob receiver wiring diagrams.',
       fileSize: '1.8 MB PDF',
       icon: Zap,
       category: 'Electrical & Automation',
-      filename: 'CAG-Centurion-Automation-Prewire-Schedule.pdf'
+      filename: 'CAG-Gate-Automation-Prewire-Schedule.pdf'
     },
     {
       id: 'pool-safety-as1926',
@@ -154,7 +154,7 @@ DATE GENERATED: ${new Date().toLocaleDateString('en-AU', { day: '2-digit', month
 
 2.0 AUTOMATION & HARDWARE INTEGRATION
 --------------------------------------------------------------------------------
-- Motor System: Centurion D5 / D10 / D20 Smart or Vantage Linear Electro-Mechanical Actuators.
+- Motor System: Standard, Smart, Solar or Commercial Inverter Actuators.
 - Controller: Intelligent Bluetooth / GSM smartphone cloud control with battery backup (AS/NZS 60335.2.103 compliant).
 - Safety Sensors: Monitored Wireless Infra-Red Beams (Photon Smart / i5) meeting EN 12453 safety standards.
 - Track Profile: Heavy-duty galvanized steel or stainless-steel inverted-Y track with M10 expansion anchors @ 450mm c/c.
@@ -162,7 +162,7 @@ DATE GENERATED: ${new Date().toLocaleDateString('en-AU', { day: '2-digit', month
 3.0 COMPLIANCE & WARRANTY SCHEDULE
 --------------------------------------------------------------------------------
 - 10-Year In-House Structural Integrity Factory Warranty on all aluminium welds and frame fabrications.
-- 3-Year On-Site Manufacturer Replacement Warranty on Centurion Smart automation motors and control boards.
+- 3-Year On-Site Manufacturer Replacement Warranty on automation motors and control boards.
 - 7-Year Powder Coating Adhesion Warranty against peeling, flaking, or chalking under normal atmospheric conditions.
 
 FOR DETAILED CAD/DWG INTEGRATION OR PROJECT PRICING:
@@ -781,7 +781,7 @@ Yamanto Workshop: Shed 2, 43-45 Belar Street, Yamanto QLD 4305
                   <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem 0', display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.86rem' }}>
                     <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><CheckCircle2 size={16} style={{ color: '#10b981' }} /> Bare Aluminum Frame Welding & Supply</li>
                     <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><CheckCircle2 size={16} style={{ color: '#10b981' }} /> Blondies Powder Coating Sub-Service (3 Days)</li>
-                    <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><CheckCircle2 size={16} style={{ color: '#10b981' }} /> Centurion Motor Hardware at Trade Pricing</li>
+                    <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><CheckCircle2 size={16} style={{ color: '#10b981' }} /> Gate Automation Hardware at Trade Pricing</li>
                     <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><CheckCircle2 size={16} style={{ color: '#10b981' }} /> Yamanto Factory Pickup Dock Available</li>
                   </ul>
                   <a href="#trade-quote-form" className="btn btn-outline-dark" style={{ width: '100%', textAlign: 'center' }}>
@@ -1074,7 +1074,7 @@ Yamanto Workshop: Shed 2, 43-45 Belar Street, Yamanto QLD 4305
                   </label>
                   <textarea
                     rows={3}
-                    placeholder="Enter gate widths, motor preferences (Centurion Smart), Colorbond color (Monument / Surfmist), or driveway slope notes..."
+                    placeholder="Enter gate widths, motor preferences (Standard / Smart / Solar / Commercial), Colorbond color (Monument / Surfmist), or driveway slope notes..."
                     value={tradeForm.comments}
                     onChange={(e) => setTradeForm({ ...tradeForm, comments: e.target.value })}
                     style={{

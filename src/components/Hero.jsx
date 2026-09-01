@@ -230,7 +230,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--text-heading)', fontSize: '0.84rem', fontWeight: '700' }}>
                 <CheckCircle2 size={15} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} />
-                <span>Centurion Smart Gate Automation</span>
+                <span>Premium Gate Automation</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--text-heading)', fontSize: '0.84rem', fontWeight: '700' }}>
                 <CheckCircle2 size={15} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} />
@@ -362,7 +362,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                   </div>
                   <div>
                     <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', fontWeight: '600' }}>Automation</div>
-                    <div style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--text-heading)' }}>Centurion Smart Series</div>
+                    <div style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--text-heading)' }}>Smart & Solar Automation</div>
                   </div>
                 </div>
               </div>

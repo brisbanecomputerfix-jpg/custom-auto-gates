@@ -70,6 +70,12 @@ export default function App() {
       if (hash === '#about' || path === '/about-us') {
         setCurrentPage('about');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#book-service' || hash === '#book-technician' || hash === '#service-booking' || hash === '#repairs-booking') {
+        setCurrentPage('service');
+        setTimeout(() => {
+          const el = document.getElementById('book-service');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
       } else if (hash === '#service' || hash === '#repairs' || path === '/service' || path === '/service/' || path === '/repairs') {
         setCurrentPage('service');
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -123,9 +129,12 @@ export default function App() {
     updateSeoMetadata(currentPage, selectedRegion);
   }, [currentPage, selectedRegion]);
 
+  // Central Navigation Handler
   const navigateTo = (page, region = 'brisbane') => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    
+    // Update hash for deep linking
     if (page === 'about') {
       window.location.hash = 'about';
     } else if (page === 'service') {
@@ -145,6 +154,20 @@ export default function App() {
       window.location.hash = `gates-${region}`;
     } else {
       window.location.hash = '';
+    }
+  };
+
+  const handleBookTechnician = () => {
+    if (currentPage !== 'service') {
+      setCurrentPage('service');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      setTimeout(() => {
+        const el = document.getElementById('book-service');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    } else {
+      const el = document.getElementById('book-service');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -187,6 +210,7 @@ export default function App() {
         onOpenQuote={handleOpenQuote}
         onOpenContact={() => setIsContactOpen(true)}
         onOpenTroubleshoot={() => setIsTroubleshootOpen(true)}
+        onBookTechnician={handleBookTechnician}
         onOpenPay={() => setIsQuickPayOpen(true)}
         onSelectCategory={(catId) => {
           setSelectedServiceId(catId);
@@ -326,6 +350,7 @@ export default function App() {
         onOpenQuote={handleOpenQuote}
         onOpenContact={() => setIsContactOpen(true)}
         onOpenPay={() => setIsQuickPayOpen(true)}
+        onBookTechnician={handleBookTechnician}
         onSelectCategory={(catId) => {
           setSelectedServiceId(catId);
           if (currentPage !== 'home') navigateTo('home');
