@@ -7,6 +7,7 @@ import {
   Sparkles, 
   ShieldCheck, 
   Sun, 
+  Zap,
   Smartphone, 
   Send, 
   Upload, 
@@ -14,7 +15,10 @@ import {
   PhoneCall,
   CreditCard,
   Lock,
-  Loader2
+  Loader2,
+  Clock,
+  BatteryCharging,
+  Maximize2
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
 import { createStripeCheckout } from '../utils/stripeClient';
@@ -23,12 +27,14 @@ export default function GateVisualizerQuote() {
   const [step, setStep] = useState(1);
   
   // Gate Configuration State
+  const [selectedDesign, setSelectedDesign] = useState('horizontal-slat');
   const [gateType, setGateType] = useState('sliding');
-  const [width, setWidth] = useState(4.0); // meters
-  const [height, setHeight] = useState(1.8); // meters
-  const [material, setMaterial] = useState('horizontal-slat');
+  const [width, setWidth] = useState(4.0); // meters (4000mm)
+  const [height, setHeight] = useState(1.8); // meters (1800mm)
   const [color, setColor] = useState('monument');
-  const [motor, setMotor] = useState('standard-motor');
+  const [powerSupply, setPowerSupply] = useState('240v-plugin');
+  const [motor, setMotor] = useState('standard-slide');
+  const [timeline, setTimeline] = useState('2-weeks');
   const [accessories, setAccessories] = useState(['remotes', 'phone-app']);
   
   // Quote Form State
@@ -43,27 +49,131 @@ export default function GateVisualizerQuote() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isPayingDeposit, setIsPayingDeposit] = useState(false);
 
-  // Gate Type Options
-  const GATE_TYPES = [
-    { id: 'sliding', name: 'Automatic Sliding Gate', basePrice: 2400, desc: 'Smooth single sliding track system', icon: '↔️' },
-    { id: 'double-swing', name: 'Double Swing Gates', basePrice: 2800, desc: 'Classic dual leaf grand entrance', icon: '🚪🚪' },
-    { id: 'single-swing', name: 'Single Swing Gate', basePrice: 1900, desc: 'Cost-effective single leaf swing', icon: '🚪' },
-    { id: 'telescopic', name: 'Telescopic Sliding', basePrice: 3600, desc: 'Stacking panels for tight slide space', icon: '⏭️' },
-    { id: 'cantilever', name: 'Trackless Cantilever', basePrice: 4200, desc: 'Suspended system for slopes & gravel', icon: '✨' },
-    { id: 'boom-gate', name: 'Commercial Boom Gate', basePrice: 3200, desc: 'Rapid barrier arm access control', icon: '🛑' }
+  // 1. GATE DESIGNS & INFILL STYLES (Extracted from WordPress Calculator)
+  const GATE_DESIGNS = [
+    {
+      id: 'horizontal-slat',
+      name: 'Horizontal Slat Gate',
+      category: 'Slats',
+      baseRateM2: 750,
+      desc: '65mm horizontal slats with 7mm or 20mm gaps. Most popular modern architectural look.',
+      image: 'https://customautogates.com.au/wp-content/uploads/2023/06/custom-automated-sliding-gate-brisbane.jpg',
+      badge: 'Most Popular'
+    },
+    {
+      id: 'vertical-slat',
+      name: 'Vertical Slat Gate',
+      category: 'Slats',
+      baseRateM2: 750,
+      desc: '65mm wide slats vertical with 7mm or 20mm gaps. Sleek vertical lines for contemporary facades.',
+      image: 'https://customautogates.com.au/wp-content/uploads/2020/12/image-3.jpg',
+      badge: 'Modern Architectural'
+    },
+    {
+      id: 'hampton-style',
+      name: 'Hampton Style Gate',
+      category: 'Prestige',
+      baseRateM2: 855,
+      desc: 'Dual-section frame: lower 65mm vertical slats (20mm gap), upper 3x 40x40 square tubes centred.',
+      image: 'https://customautogates.com.au/wp-content/uploads/2024/10/434299467_861965892610424_2556695232572143965_n-1.jpg',
+      badge: 'Coastal & Heritage'
+    },
+    {
+      id: 'architectural-face-weld',
+      name: 'Architectural Face Weld',
+      category: 'Architectural',
+      baseRateM2: 870,
+      desc: '40x40 vertical face-welded tubes with 40mm gaps and clean welded aluminium top caps.',
+      image: 'https://customautogates.com.au/wp-content/uploads/2023/05/sliding-gates.jpg',
+      badge: 'Custom Sizing'
+    },
+    {
+      id: 'pressed-spear',
+      name: 'Security Gate (Pressed Spear)',
+      category: 'Security',
+      baseRateM2: 975,
+      desc: '25x25 square pressed spear tops @ 125mm centres face welded for perimeter deterrence.',
+      image: 'https://customautogates.com.au/wp-content/uploads/2020/12/image-1.jpg',
+      badge: 'High Security'
+    },
+    {
+      id: 'curve-top-tube',
+      name: 'Curve Top Tube Gate',
+      category: 'Heritage',
+      baseRateM2: 1380,
+      desc: '19mm round tube gate with dual curved top rails and integrated puppy / doggy lower bars.',
+      image: 'https://customautogates.com.au/wp-content/uploads/2020/04/swing-gates8.jpg',
+      badge: 'Ornate Curved'
+    },
+    {
+      id: 'vertical-tube-rail',
+      name: 'Vertical Tube (Extra Top Rail)',
+      category: 'Tubular',
+      baseRateM2: 675,
+      desc: '19mm round tubes at 100mm centres in a classic 2-up / 2-down pattern with additional top rail.',
+      image: 'https://customautogates.com.au/wp-content/uploads/2019/07/gates-and-fencingIMG_6770.jpg',
+      badge: 'Classic Pool & Driveway'
+    },
+    {
+      id: 'colorbond-infill',
+      name: 'Colorbond Infill Gate',
+      category: 'Privacy',
+      baseRateM2: 640,
+      desc: 'Aluminium powder-coated heavy-duty frame with Colorbond corrugated or panel infill sheets.',
+      image: 'https://customautogates.com.au/wp-content/uploads/2024/10/244479862_2967542013559648_5841129152015725762_n-2.jpg',
+      badge: '100% Solid Privacy'
+    },
+    {
+      id: 'bare-frame-palings',
+      name: 'Bare Frame (Fence Palings)',
+      category: 'Cladding Frame',
+      baseRateM2: 570,
+      desc: 'TIG-welded aluminium frame powder coated, ready for on-site cladding with 100mm timber palings.',
+      image: 'https://customautogates.com.au/wp-content/uploads/2019/07/gates-and-fencingIMG_6740.jpg',
+      badge: 'DIY / Builder Clad'
+    }
   ];
 
-  // Material & Infill Options
-  const MATERIALS = [
-    { id: 'horizontal-slat', name: 'Horizontal 65mm Slat', multiplier: 1.0, desc: 'Most popular modern architectural look', previewColor: '#334155' },
-    { id: 'vertical-slat', name: 'Vertical Slat Battens', multiplier: 1.15, desc: 'Contemporary timber-alternative profile', previewColor: '#1e293b' },
-    { id: 'decowood-cedar', name: 'DecoWood Timber (Cedar)', multiplier: 1.35, desc: 'Warm natural woodgrain aluminium - no oiling', previewColor: '#8B5A2B' },
-    { id: 'decowood-jarrah', name: 'DecoWood Timber (Jarrah)', multiplier: 1.35, desc: 'Deep rich red-brown timber finish', previewColor: '#5C241C' },
-    { id: 'privacy-louver', name: 'Privacy Louvers (Angled)', multiplier: 1.25, desc: 'Complete 100% privacy with airflow', previewColor: '#0f172a' },
-    { id: 'laser-cut', name: '3D Laser-Cut Screen Panels', multiplier: 1.45, desc: 'Artistic geometric & botanical designs', previewColor: '#475569' }
+  // 2. OPENING TYPES & HARDWARE
+  const OPENING_TYPES = [
+    { 
+      id: 'sliding', 
+      name: 'Automatic Sliding Gate', 
+      hardwareCost: 750, 
+      desc: 'In-ground track, steel ground guides, top rollers, and anti-lift stop hardware.', 
+      icon: '↔️' 
+    },
+    { 
+      id: 'double-swing', 
+      name: 'Dual Swing Gates', 
+      hardwareCost: 450, 
+      desc: 'Two-leaf dual swing gates with heavy-duty ball-bearing hinges & centre drop stops.', 
+      icon: '🚪🚪' 
+    },
+    { 
+      id: 'single-swing', 
+      name: 'Single Swing Gate', 
+      hardwareCost: 350, 
+      desc: 'Single leaf swing entrance gate with post brackets and heavy-duty adjustable hinges.', 
+      icon: '🚪' 
+    },
+    { 
+      id: 'telescopic', 
+      name: 'Telescopic Sliding Gate', 
+      hardwareCost: 1100, 
+      desc: 'Dual interlocking stacking panels for driveways with limited slide-back space.', 
+      icon: '⏭️' 
+    },
+    { 
+      id: 'cantilever', 
+      name: 'Trackless Cantilever Gate', 
+      hardwareCost: 1450, 
+      desc: 'Suspended trackless sliding gate ideal for sloping driveways, gravel, or paving.', 
+      icon: '✨' 
+    }
   ];
 
-  // Color Finishes
+  // 3. COLOR FINISHES
   const COLORS = [
     { id: 'monument', name: 'Colorbond Monument', hex: '#2B2E33' },
     { id: 'matt-black', name: 'Satin / Matt Black', hex: '#111111' },
@@ -73,21 +183,91 @@ export default function GateVisualizerQuote() {
     { id: 'custom-ral', name: 'Custom Powdercoat Color', hex: '#3b82f6' }
   ];
 
-  // Motor & Automation
-  const MOTORS = [
-    { id: 'standard-motor', name: 'Standard Motor', cost: 1200, desc: 'Smooth, durable residential gate automation with battery backup & 2 remotes' },
-    { id: 'premium-motor', name: 'Premium Motor (Smart & High-Speed)', cost: 1450, desc: 'Whisper-quiet ultra-fast opening with smartphone app control & diagnostic alerts' },
-    { id: 'solar-motor', name: 'Solar Motor (100% Off-Grid)', cost: 1750, desc: 'Oversized monocrystalline solar panel & deep-cycle battery bank for acreage' },
-    { id: 'commercial-motor', name: 'Commercial Motor (Continuous Duty)', cost: 2200, desc: 'Continuous 100% duty cycle commercial automation for 500+ ops/day' }
+  // 4. POWER SUPPLY OPTIONS (Extracted from WordPress Calculator)
+  const POWER_OPTIONS = [
+    { 
+      id: '240v-plugin', 
+      name: '240V Existing Power Point', 
+      cost: 50, 
+      desc: 'Existing weather-protected 240V power point is already available at the gate motor post position.' 
+    },
+    { 
+      id: 'low-voltage', 
+      name: 'Low Voltage Run (12V–36V)', 
+      cost: 1200, 
+      desc: 'Cabling run from an existing house power point to the front gate position (saves deep 240V trenching).' 
+    },
+    { 
+      id: 'solar-system', 
+      name: '100% Off-Grid Solar System', 
+      cost: 1250, 
+      desc: 'Heavy-duty monocrystalline solar panel mounted on gate post with high-capacity deep cycle battery bank.' 
+    }
   ];
 
-  // Access Accessories
+  // 5. MOTOR & AUTOMATION CATEGORIES (Extracted from WordPress Calculator)
+  const MOTORS = [
+    { 
+      id: 'standard-slide', 
+      name: 'Residential Sliding Gate Motor', 
+      cost: 2000, 
+      desc: 'Heavy-duty 24V high-speed automatic sliding motor with battery backup and 2 encrypted remotes.' 
+    },
+    { 
+      id: 'single-swing-motor', 
+      name: 'Residential Single Swing Motor', 
+      cost: 2200, 
+      desc: 'Smooth linear actuator arm motor with soft-stop control, battery backup, and 2 remotes.' 
+    },
+    { 
+      id: 'dual-swing-motors', 
+      name: 'Residential Dual Swing Motors', 
+      cost: 3000, 
+      desc: 'Dual synchronized linear electro-mechanical actuator arms with control board and 2 remotes.' 
+    },
+    { 
+      id: 'premium-smart', 
+      name: 'Premium Smart High-Speed Motor', 
+      cost: 2450, 
+      desc: 'Whisper-quiet ultra-fast opening with iOS & Android smartphone app control and diagnostic alerts.' 
+    },
+    { 
+      id: 'commercial-heavy', 
+      name: 'Commercial Heavy-Duty Inverter Motor', 
+      cost: 3600, 
+      desc: 'Continuous 100% duty cycle commercial automation engineered for heavy gates & high-traffic sites.' 
+    }
+  ];
+
+  // 6. PROJECT READINESS / TIMELINE (Extracted from WordPress Calculator)
+  const TIMELINES = [
+    { 
+      id: 'budgeting', 
+      name: 'Budgeting & Planning', 
+      badge: 'Early Stage', 
+      desc: 'Not ready for a site visit yet — gathering pricing a few months prior to starting.' 
+    },
+    { 
+      id: '2-weeks', 
+      name: 'Ready for Site Visit within 2 Weeks', 
+      badge: 'Ready to Measure', 
+      desc: 'Driveway is ready or in progress. Keen to compare on quality, craftsmanship, and factory-direct price.' 
+    },
+    { 
+      id: 'urgent', 
+      name: 'Priority / Need This Yesterday!', 
+      badge: 'Fast-Track', 
+      desc: 'Time is of the essence. Seeking immediate laser measure, fast fabrication, and quick installation.' 
+    }
+  ];
+
+  // ACCESSORIES
   const ACCESSORIES = [
-    { id: 'phone-app', name: '4G / WiFi Smartphone App Opener', cost: 280, desc: 'Open & check status from anywhere' },
-    { id: 'keypad', name: 'Wireless Weatherproof Digital Keypad', cost: 195, desc: 'Pin code access for family, guests & trades' },
-    { id: 'intercom', name: 'HD Video Intercom with Phone Alert', cost: 650, desc: 'See & talk to visitors at your gate' },
-    { id: 'extra-remotes', name: 'Pack of 3 Extra Long-Range Remotes', cost: 150, desc: '100m+ range encrypted key fobs' },
-    { id: 'safety-beams', name: 'Infrared Safety Anti-Crush Photo Beams', cost: 180, desc: 'Prevents gate closing on cars or pets' }
+    { id: 'phone-app', name: '4G / WiFi Smartphone App Opener', desc: 'Open, close, and check gate status anywhere' },
+    { id: 'keypad', name: 'Wireless Digital Keypad', desc: 'Pin code access for guests, gardeners, and trades' },
+    { id: 'intercom', name: 'HD Video Intercom with Alerts', desc: 'See, speak, and buzz in visitors from your phone' },
+    { id: 'extra-remotes', name: 'Pack of 3 Extra Remotes', desc: 'Encrypted long-range key fobs for family cars' },
+    { id: 'safety-beams', name: 'Anti-Crush Infrared Safety Beams', desc: 'Prevents gate from closing on vehicles, pets, or kids' }
   ];
 
   const toggleAccessory = (id) => {
@@ -98,43 +278,24 @@ export default function GateVisualizerQuote() {
     }
   };
 
-  // Calculate dynamic price estimation
-  const calculatePrice = () => {
-    const selectedGate = GATE_TYPES.find(g => g.id === gateType) || GATE_TYPES[0];
-    const selectedMaterial = MATERIALS.find(m => m.id === material) || MATERIALS[0];
-    const selectedMotor = MOTORS.find(m => m.id === motor) || MOTORS[0];
-    
-    const area = width * height;
-    const areaFactor = Math.max(0.8, area / 7.2);
-    
-    const gateFabrication = selectedGate.basePrice * areaFactor * selectedMaterial.multiplier;
-    const motorCost = selectedMotor.cost;
-    
-    const accessoryCost = accessories.reduce((sum, accId) => {
-      const acc = ACCESSORIES.find(a => a.id === accId);
-      return sum + (acc ? acc.cost : 0);
-    }, 0);
+  // Math Calculations based on WordPress Calculator formula:
+  // (Height/1000) * (Width/1000) * BaseRateM2 + Hardware + Power + Motor
+  const currentDesignObj = GATE_DESIGNS.find(d => d.id === selectedDesign) || GATE_DESIGNS[0];
+  const currentOpeningObj = OPENING_TYPES.find(o => o.id === gateType) || OPENING_TYPES[0];
+  const currentPowerObj = POWER_OPTIONS.find(p => p.id === powerSupply) || POWER_OPTIONS[0];
+  const currentMotorObj = MOTORS.find(m => m.id === motor) || MOTORS[0];
+  const currentTimelineObj = TIMELINES.find(t => t.id === timeline) || TIMELINES[1];
 
-    const subtotal = gateFabrication + motorCost + accessoryCost;
-    const lowEst = Math.round((subtotal * 0.95) / 50) * 50;
-    const highEst = Math.round((subtotal * 1.1) / 50) * 50;
-
-    return { lowEst, highEst, subtotal: Math.round(subtotal) };
-  };
-
-  const { lowEst, highEst, subtotal } = calculatePrice();
+  const areaM2 = (width * height).toFixed(2);
+  const calculatedBaseFabrication = Math.round(width * height * currentDesignObj.baseRateM2);
+  const calculatedTotal = calculatedBaseFabrication + currentOpeningObj.hardwareCost + currentPowerObj.cost + currentMotorObj.cost;
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const selectedGate = GATE_TYPES.find(g => g.id === gateType)?.name || 'Custom Gate';
-      const selectedMat = MATERIALS.find(m => m.id === material)?.name || 'Aluminium Slat';
-      const selectedMot = MOTORS.find(m => m.id === motor)?.name || 'Standard Motor';
-      
       await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -143,12 +304,16 @@ export default function GateVisualizerQuote() {
           phone: formData.phone,
           email: formData.email,
           suburb: formData.suburb,
-          gateType: selectedGate,
-          width: width,
-          height: height,
-          material: selectedMat,
-          motor: selectedMot,
-          estimatedTotal: 'Custom Specification Quote Request',
+          design: currentDesignObj.name,
+          gateType: currentOpeningObj.name,
+          widthMm: Math.round(width * 1000),
+          heightMm: Math.round(height * 1000),
+          areaM2: areaM2,
+          color: COLORS.find(c => c.id === color)?.name,
+          powerSupply: currentPowerObj.name,
+          motor: currentMotorObj.name,
+          timeline: currentTimelineObj.name,
+          accessories: accessories.map(a => ACCESSORIES.find(acc => acc.id === a)?.name).join(', '),
           notes: formData.notes
         })
       });
@@ -172,14 +337,14 @@ export default function GateVisualizerQuote() {
           </span>
           <h2 className="section-title">
             Design Your Custom Gate <br />
-            <span className="gradient-text-gold">& Get Your Factory-Direct Custom Quote</span>
+            <span className="gradient-text-gold">& Get Your Factory-Direct Itemized Proposal</span>
           </h2>
           <p className="section-subtitle">
-            Configure your gate type, dimensions, finish, and automation options in 5 simple steps to get a tailored custom proposal for your Queensland property.
+            Configure your gate design, exact millimeter dimensions, opening mechanics, power supply, and automation in 5 simple steps.
           </p>
         </div>
 
-        {/* Step Indicator Navigation - Scrollable on mobile */}
+        {/* Step Indicator Navigation */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -194,11 +359,11 @@ export default function GateVisualizerQuote() {
         className="step-scroll-container"
         >
           {[
-            { num: 1, label: '1. Style' },
+            { num: 1, label: '1. Gate Design' },
             { num: 2, label: '2. Dimensions' },
-            { num: 3, label: '3. Material' },
-            { num: 4, label: '4. Motors' },
-            { num: 5, label: '5. Custom Quote' }
+            { num: 3, label: '3. Opening & Color' },
+            { num: 4, label: '4. Power & Motor' },
+            { num: 5, label: '5. Itemized Proposal' }
           ].map((s) => {
             const isActive = step === s.num;
             const isDone = step > s.num;
@@ -220,7 +385,8 @@ export default function GateVisualizerQuote() {
                   border: isActive ? '1px solid var(--accent-gold)' : isDone ? '1px solid var(--badge-green-border)' : '1px solid var(--border-light)',
                   transition: 'all var(--transition-fast)',
                   whiteSpace: 'nowrap',
-                  flexShrink: 0
+                  flexShrink: 0,
+                  cursor: 'pointer'
                 }}
               >
                 {isDone ? <Check size={13} /> : null}
@@ -233,42 +399,79 @@ export default function GateVisualizerQuote() {
         {/* Visualizer Main Grid Container */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1.3fr 0.9fr',
+          gridTemplateColumns: '1.35fr 0.85fr',
           gap: '1.75rem',
           alignItems: 'start'
         }}
         className="visualizer-grid"
         >
-          {/* Left Column: Interactive Configuration Form */}
+          {/* Left Column: Interactive Step Configuration */}
           <div className="card-themed" style={{ padding: 'clamp(1.25rem, 3.5vw, 2rem)', border: '1.5px solid var(--border-light)', background: 'var(--bg-card)', boxShadow: 'var(--shadow-md)' }}>
-            {/* STEP 1: Gate Type */}
+            
+            {/* STEP 1: Select Authentic Gate Design */}
             {step === 1 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 1: Select Your Gate Style</h3>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                  <h3 style={{ fontSize: '1.35rem', color: 'var(--text-heading)', margin: 0 }}>Step 1: Select Your Gate Design</h3>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--accent-gold)', fontWeight: '700' }}>9 Workshop Styles Available</span>
+                </div>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                  Choose the mechanical gate structure that best fits your driveway layout and gradient.
+                  All designs are 100% custom-fabricated in our Yamanto workshop using structural 6060-T6 Australian aluminium.
                 </p>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.75rem' }}>
-                  {GATE_TYPES.map((g) => {
-                    const isSelected = gateType === g.id;
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '0.85rem' }}>
+                  {GATE_DESIGNS.map((d) => {
+                    const isSelected = selectedDesign === d.id;
                     return (
                       <div
-                        key={g.id}
-                        onClick={() => setGateType(g.id)}
+                        key={d.id}
+                        onClick={() => setSelectedDesign(d.id)}
                         style={{
-                          padding: '1rem',
                           borderRadius: '12px',
                           background: isSelected ? 'var(--accent-gold-light)' : 'var(--bg-card-subtle)',
                           border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
                           cursor: 'pointer',
+                          overflow: 'hidden',
                           transition: 'all 0.2s ease',
-                          position: 'relative'
+                          display: 'flex',
+                          flexDirection: 'column'
                         }}
                       >
-                        <div style={{ fontSize: '1.6rem', marginBottom: '0.4rem' }}>{g.icon}</div>
-                        <h4 style={{ fontSize: '0.95rem', fontWeight: '700', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)', marginBottom: '0.2rem' }}>{g.name}</h4>
-                        <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>{g.desc}</p>
+                        {/* Design Photo Preview */}
+                        <div style={{ position: 'relative', width: '100%', height: '120px', background: '#0f172a', overflow: 'hidden' }}>
+                          <img 
+                            src={d.image} 
+                            alt={d.name}
+                            loading="lazy"
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }}
+                          />
+                          <span style={{
+                            position: 'absolute',
+                            top: '6px',
+                            right: '6px',
+                            fontSize: '0.68rem',
+                            fontWeight: '800',
+                            padding: '0.2rem 0.5rem',
+                            borderRadius: '4px',
+                            background: 'rgba(9, 14, 26, 0.85)',
+                            color: '#fbbf24',
+                            border: '1px solid rgba(251, 191, 36, 0.3)',
+                            backdropFilter: 'blur(4px)'
+                          }}>
+                            {d.badge}
+                          </span>
+                        </div>
+
+                        <div style={{ padding: '0.85rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                          <div>
+                            <h4 style={{ fontSize: '0.92rem', fontWeight: '800', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)', marginBottom: '0.3rem' }}>
+                              {d.name}
+                            </h4>
+                            <p style={{ fontSize: '0.74rem', color: 'var(--text-muted)', lineHeight: 1.45, margin: 0 }}>
+                              {d.desc}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     );
                   })}
@@ -282,56 +485,86 @@ export default function GateVisualizerQuote() {
               </div>
             )}
 
-            {/* STEP 2: Dimensions */}
+            {/* STEP 2: Millimeter Accurate Dimensions */}
             {step === 2 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 2: Driveway Dimensions</h3>
+                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 2: Driveway Opening Dimensions</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.5rem' }}>
-                  Adjust the approximate width and height. Every gate is custom-built to your exact millimeter.
+                  Set your approximate driveway opening. Every single gate is fabricated to exact millimeter tolerances following our free on-site laser measure.
                 </p>
 
                 {/* Width Slider */}
-                <div style={{ marginBottom: '2rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                    <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-heading)' }}>Driveway Width (Opening)</label>
-                    <span style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--accent-gold)' }}>{width} Meters ({(width * 3.28).toFixed(1)} ft)</span>
+                <div style={{ marginBottom: '2rem', padding: '1.25rem', background: 'var(--bg-card-subtle)', borderRadius: '12px', border: '1px solid var(--border-light)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.65rem' }}>
+                    <div>
+                      <label style={{ fontSize: '0.92rem', fontWeight: '800', color: 'var(--text-heading)' }}>Driveway Clear Opening (Width)</label>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>From inside edge of post to post</div>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <span style={{ fontSize: '1.2rem', fontWeight: '900', color: 'var(--accent-gold)' }}>{Math.round(width * 1000)} mm</span>
+                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: '600' }}>({width.toFixed(1)}m / {(width * 3.28).toFixed(1)} ft)</div>
+                    </div>
                   </div>
                   <input
                     type="range"
-                    min="2.0"
-                    max="8.0"
-                    step="0.1"
+                    min="1.0"
+                    max="6.0"
+                    step="0.05"
                     value={width}
                     onChange={(e) => setWidth(parseFloat(e.target.value))}
                     style={{ width: '100%', accentColor: 'var(--accent-gold)', height: '8px', cursor: 'pointer' }}
                   />
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-                    <span>Compact (2.0m)</span>
-                    <span>Standard Double (4.5m)</span>
-                    <span>Wide Acreage (8.0m)</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>
+                    <span>Pedestrian (1000mm)</span>
+                    <span>Standard Double (4000mm)</span>
+                    <span>Wide Opening (6000mm)</span>
                   </div>
                 </div>
 
                 {/* Height Slider */}
-                <div style={{ marginBottom: '2rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                    <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-heading)' }}>Gate Height</label>
-                    <span style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--accent-blue)' }}>{height} Meters ({height >= 1.8 ? 'Max Privacy' : 'Standard'})</span>
+                <div style={{ marginBottom: '2rem', padding: '1.25rem', background: 'var(--bg-card-subtle)', borderRadius: '12px', border: '1px solid var(--border-light)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.65rem' }}>
+                    <div>
+                      <label style={{ fontSize: '0.92rem', fontWeight: '800', color: 'var(--text-heading)' }}>Gate Height</label>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>From ground clearance to top rail/spear</div>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <span style={{ fontSize: '1.2rem', fontWeight: '900', color: 'var(--accent-blue)' }}>{Math.round(height * 1000)} mm</span>
+                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: '600' }}>({height.toFixed(1)}m • {height >= 1.8 ? 'Full Privacy' : 'Standard'})</div>
+                    </div>
                   </div>
                   <input
                     type="range"
-                    min="1.2"
+                    min="1.0"
                     max="2.4"
-                    step="0.1"
+                    step="0.05"
                     value={height}
                     onChange={(e) => setHeight(parseFloat(e.target.value))}
                     style={{ width: '100%', accentColor: 'var(--accent-blue)', height: '8px', cursor: 'pointer' }}
                   />
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-                    <span>Low Profile (1.2m)</span>
-                    <span>Standard Security (1.8m)</span>
-                    <span>High Security (2.4m)</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>
+                    <span>Low Boundary (1000mm)</span>
+                    <span>Standard Council (1500mm)</span>
+                    <span>Max Privacy (2400mm)</span>
                   </div>
+                </div>
+
+                {/* Total Calculated Area Pill */}
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: '0.85rem 1.1rem',
+                  background: 'var(--badge-blue-bg)',
+                  border: '1px solid var(--badge-blue-border)',
+                  borderRadius: '10px',
+                  color: 'var(--badge-blue-text)'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem' }}>
+                    <Maximize2 size={16} />
+                    <span>Calculated Panel Surface Area:</span>
+                  </div>
+                  <span style={{ fontWeight: '900', fontSize: '1rem' }}>{areaM2} m²</span>
                 </div>
 
                 <div style={{ marginTop: '1.75rem', display: 'flex', justifyContent: 'space-between' }}>
@@ -339,49 +572,55 @@ export default function GateVisualizerQuote() {
                     <ChevronLeft size={18} /> Back
                   </button>
                   <button onClick={() => setStep(3)} className="btn btn-blue">
-                    Next: Materials & Infill <ChevronRight size={18} />
+                    Next: Opening & Finish <ChevronRight size={18} />
                   </button>
                 </div>
               </div>
             )}
 
-            {/* STEP 3: Material & Color */}
+            {/* STEP 3: Opening Mechanism & Colorbond Powdercoat */}
             {step === 3 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 3: Infill Material & Powdercoat Color</h3>
+                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 3: Opening Hardware & Powdercoat Finish</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                  Choose architectural aluminium slat styling and premium Colorbond powdercoat finish.
+                  Choose your mechanical opening configuration and architectural Colorbond powdercoat color.
                 </p>
 
-                {/* Infill Types */}
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
-                  Select Infill Style:
+                {/* Opening Mechanism */}
+                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
+                  Select Opening Mechanism:
                 </label>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.65rem', marginBottom: '1.5rem' }}>
-                  {MATERIALS.map((m) => {
-                    const isSelected = material === m.id;
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.65rem', marginBottom: '1.75rem' }}>
+                  {OPENING_TYPES.map((o) => {
+                    const isSelected = gateType === o.id;
                     return (
                       <div
-                        key={m.id}
-                        onClick={() => setMaterial(m.id)}
+                        key={o.id}
+                        onClick={() => setGateType(o.id)}
                         style={{
-                          padding: '0.75rem',
+                          padding: '0.85rem',
                           borderRadius: '10px',
                           background: isSelected ? 'var(--accent-gold-light)' : 'var(--bg-card-subtle)',
                           border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
-                          cursor: 'pointer'
+                          cursor: 'pointer',
+                          transition: 'all 0.2s ease'
                         }}
                       >
-                        <h4 style={{ fontSize: '0.88rem', fontWeight: '700', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)', marginBottom: '0.2rem' }}>{m.name}</h4>
-                        <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>{m.desc}</p>
+                        <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{o.icon}</div>
+                        <h4 style={{ fontSize: '0.88rem', fontWeight: '800', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)', marginBottom: '0.2rem' }}>
+                          {o.name}
+                        </h4>
+                        <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.4, margin: 0 }}>
+                          {o.desc}
+                        </p>
                       </div>
                     );
                   })}
                 </div>
 
-                {/* Color Selection */}
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
-                  Select Colorbond Finish:
+                {/* Colorbond Color Selection */}
+                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
+                  Select Architectural Powdercoat Color:
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 130px), 1fr))', gap: '0.55rem' }}>
                   {COLORS.map((c) => {
@@ -391,18 +630,18 @@ export default function GateVisualizerQuote() {
                         key={c.id}
                         onClick={() => setColor(c.id)}
                         style={{
-                          padding: '0.6rem',
+                          padding: '0.65rem',
                           borderRadius: '8px',
                           background: isSelected ? 'var(--accent-blue-light)' : 'var(--bg-card-subtle)',
                           border: isSelected ? '2px solid var(--accent-blue)' : '1px solid var(--border-light)',
                           cursor: 'pointer',
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '0.45rem'
+                          gap: '0.5rem'
                         }}
                       >
                         <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: c.hex, border: '1px solid var(--border-subtle)', flexShrink: 0 }} />
-                        <span style={{ fontSize: '0.78rem', color: 'var(--text-heading)', fontWeight: '600' }}>{c.name}</span>
+                        <span style={{ fontSize: '0.78rem', color: 'var(--text-heading)', fontWeight: '700' }}>{c.name}</span>
                       </div>
                     );
                   })}
@@ -413,25 +652,58 @@ export default function GateVisualizerQuote() {
                     <ChevronLeft size={18} /> Back
                   </button>
                   <button onClick={() => setStep(4)} className="btn btn-blue">
-                    Next: Motors <ChevronRight size={18} />
+                    Next: Power & Motors <ChevronRight size={18} />
                   </button>
                 </div>
               </div>
             )}
 
-            {/* STEP 4: Motor & Smart Accessories */}
+            {/* STEP 4: Power Supply & Automation Motors */}
             {step === 4 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 4: Automation Motor & Smart Access</h3>
+                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 4: Power Infrastructure & Motor System</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                  Choose your motor power source and optional smart access accessories.
+                  Select your on-site electrical power supply and matching gate automation motor.
                 </p>
 
-                {/* Motor Selection */}
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
-                  Select Motor System:
+                {/* Power Supply Selection */}
+                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
+                  1. Power Supply Connection:
                 </label>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.5rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.5rem' }}>
+                  {POWER_OPTIONS.map((p) => {
+                    const isSelected = powerSupply === p.id;
+                    return (
+                      <div
+                        key={p.id}
+                        onClick={() => setPowerSupply(p.id)}
+                        style={{
+                          padding: '0.8rem 1rem',
+                          borderRadius: '10px',
+                          background: isSelected ? 'var(--accent-gold-light)' : 'var(--bg-card-subtle)',
+                          border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          gap: '0.5rem'
+                        }}
+                      >
+                        <div>
+                          <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.15rem' }}>{p.name}</h4>
+                          <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0 }}>{p.desc}</p>
+                        </div>
+                        <div style={{ width: '18px', height: '18px', borderRadius: '50%', border: isSelected ? '5px solid var(--accent-gold)' : '2px solid var(--border-subtle)', background: 'var(--bg-card)', flexShrink: 0 }} />
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Motor Selection */}
+                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
+                  2. Automation Motor System:
+                </label>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.5rem' }}>
                   {MOTORS.map((m) => {
                     const isSelected = motor === m.id;
                     return (
@@ -439,7 +711,7 @@ export default function GateVisualizerQuote() {
                         key={m.id}
                         onClick={() => setMotor(m.id)}
                         style={{
-                          padding: '0.85rem',
+                          padding: '0.8rem 1rem',
                           borderRadius: '10px',
                           background: isSelected ? 'var(--accent-blue-light)' : 'var(--bg-card-subtle)',
                           border: isSelected ? '2px solid var(--accent-blue)' : '1px solid var(--border-light)',
@@ -451,18 +723,47 @@ export default function GateVisualizerQuote() {
                         }}
                       >
                         <div>
-                          <h4 style={{ fontSize: '0.92rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.15rem' }}>{m.name}</h4>
-                          <p style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>{m.desc}</p>
+                          <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.15rem' }}>{m.name}</h4>
+                          <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0 }}>{m.desc}</p>
                         </div>
-                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: isSelected ? '5px solid var(--accent-blue)' : '2px solid var(--border-subtle)', background: 'var(--bg-card)', flexShrink: 0 }} />
+                        <div style={{ width: '18px', height: '18px', borderRadius: '50%', border: isSelected ? '5px solid var(--accent-blue)' : '2px solid var(--border-subtle)', background: 'var(--bg-card)', flexShrink: 0 }} />
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Project Timeline Selection */}
+                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
+                  3. Project Readiness & Timeline:
+                </label>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.55rem', marginBottom: '1.5rem' }}>
+                  {TIMELINES.map((t) => {
+                    const isSelected = timeline === t.id;
+                    return (
+                      <div
+                        key={t.id}
+                        onClick={() => setTimeline(t.id)}
+                        style={{
+                          padding: '0.75rem',
+                          borderRadius: '10px',
+                          background: isSelected ? 'var(--accent-gold-light)' : 'var(--bg-card-subtle)',
+                          border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <span style={{ fontSize: '0.68rem', fontWeight: '800', color: isSelected ? 'var(--accent-gold)' : 'var(--text-muted)', textTransform: 'uppercase' }}>
+                          {t.badge}
+                        </span>
+                        <h4 style={{ fontSize: '0.86rem', fontWeight: '800', color: 'var(--text-heading)', margin: '0.2rem 0' }}>{t.name}</h4>
+                        <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.35, margin: 0 }}>{t.desc}</p>
                       </div>
                     );
                   })}
                 </div>
 
                 {/* Accessories Checkboxes */}
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
-                  Smart Access & Safety Add-ons:
+                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
+                  4. Smart Access & Safety Add-ons:
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.55rem' }}>
                   {ACCESSORIES.map((acc) => {
@@ -487,7 +788,7 @@ export default function GateVisualizerQuote() {
                         </div>
                         <div>
                           <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--text-heading)' }}>{acc.name}</div>
-                          <div style={{ fontSize: '0.72rem', color: isSelected ? 'var(--accent-gold)' : 'var(--text-muted)', fontWeight: '600' }}>Custom Option</div>
+                          <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>{acc.desc}</div>
                         </div>
                       </div>
                     );
@@ -499,18 +800,18 @@ export default function GateVisualizerQuote() {
                     <ChevronLeft size={18} /> Back
                   </button>
                   <button onClick={() => setStep(5)} className="btn btn-blue">
-                    Review Quote <ChevronRight size={18} />
+                    Review Itemized Proposal <ChevronRight size={18} />
                   </button>
                 </div>
               </div>
             )}
 
-            {/* STEP 5: Instant Quote Submission */}
+            {/* STEP 5: Itemized Proposal & Free Quote Submission */}
             {step === 5 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 5: Get Your Itemized Factory-Direct Quote</h3>
+                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 5: Get Your Itemized Factory-Direct Proposal</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                  Send your configured specification to our engineering team for an exact itemized PDF quote and fast-track booking.
+                  Submit your custom specification to our engineering workshop for a comprehensive, obligation-free proposal and free on-site laser measure.
                 </p>
 
                 {isSubmitted ? (
@@ -520,7 +821,7 @@ export default function GateVisualizerQuote() {
                     </div>
                     <h4 style={{ fontSize: '1.3rem', color: 'var(--badge-green-text)', marginBottom: '0.4rem' }}>Quote Request Received!</h4>
                     <p style={{ color: 'var(--text-main)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                      Thank you <strong>{formData.fullName}</strong>. One of our senior gate fabricators will review your {width}m x {height}m {GATE_TYPES.find(g=>g.id===gateType)?.name} specs and call you shortly to confirm your free on-site measure.
+                      Thank you <strong>{formData.fullName}</strong>. Our senior fabrication team has received your <strong>{Math.round(width*1000)}mm × {Math.round(height*1000)}mm {currentDesignObj.name}</strong> specification and will be in touch promptly to confirm your free on-site measure.
                     </p>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                       <a href={COMPANY_INFO.tel} className="btn btn-gold" style={{ width: '100%', maxWidth: '320px' }}>
@@ -572,7 +873,7 @@ export default function GateVisualizerQuote() {
                         <input
                           type="text"
                           required
-                          placeholder="e.g. Yamanto / Brisbane"
+                          placeholder="e.g. Yamanto / Brisbane / Ipswich"
                           value={formData.suburb}
                           onChange={(e) => setFormData({ ...formData, suburb: e.target.value })}
                           style={{ width: '100%', padding: '0.7rem', fontSize: '0.9rem' }}
@@ -581,10 +882,10 @@ export default function GateVisualizerQuote() {
                     </div>
 
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-main)', fontWeight: '600', marginBottom: '0.3rem' }}>Driveway Notes or Slope Info</label>
+                      <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-main)', fontWeight: '600', marginBottom: '0.3rem' }}>Driveway Slope, Fencing, or Access Notes</label>
                       <textarea
                         rows={2}
-                        placeholder="Tell us about any slopes or fencing..."
+                        placeholder="Tell us about your driveway gradient, existing posts, or boundary fencing..."
                         value={formData.notes}
                         onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                         style={{ width: '100%', padding: '0.7rem', fontSize: '0.9rem', resize: 'vertical' }}
@@ -596,8 +897,9 @@ export default function GateVisualizerQuote() {
                         <button type="button" onClick={() => setStep(4)} className="btn btn-outline-dark">
                           <ChevronLeft size={17} /> Back
                         </button>
-                        <button type="submit" className="btn btn-blue" style={{ flex: '1 1 auto' }}>
-                          <Send size={17} /> Request Free Itemized Quote
+                        <button type="submit" className="btn btn-blue" style={{ flex: '1 1 auto' }} disabled={isSubmitting}>
+                          {isSubmitting ? <Loader2 size={17} className="animate-spin" /> : <Send size={17} />}
+                          Request Free Itemized Proposal
                         </button>
                       </div>
 
@@ -606,27 +908,28 @@ export default function GateVisualizerQuote() {
                         type="button"
                         onClick={async () => {
                           if (!formData.fullName || !formData.email) {
-                            alert('Please enter your Name and Email above before securing your production deposit.');
+                            alert('Please enter your Name and Email above before locking in your production deposit.');
                             return;
                           }
                           setIsPayingDeposit(true);
                           try {
-                            const selectedTypeObj = GATE_TYPES.find(g => g.id === gateType);
                             await createStripeCheckout({
                               amount: 500,
-                              title: `Custom ${selectedTypeObj?.name || 'Gate'} Production Deposit ($500)`,
-                              description: `${width}m x ${height}m ${selectedTypeObj?.name || 'Gate'}, ${material}, ${color.toUpperCase()} - For ${formData.fullName}`,
+                              title: `Custom ${currentDesignObj.name} Production Deposit ($500)`,
+                              description: `${Math.round(width*1000)}mm x ${Math.round(height*1000)}mm ${currentDesignObj.name} (${currentOpeningObj.name}) - For ${formData.fullName}`,
                               customerEmail: formData.email,
                               customerName: formData.fullName,
                               customerPhone: formData.phone,
                               metadata: {
-                                gateType,
-                                width: width.toString(),
-                                height: height.toString(),
-                                material,
-                                color,
-                                motor,
-                                accessories: accessories.join(', '),
+                                design: currentDesignObj.name,
+                                openingType: currentOpeningObj.name,
+                                widthMm: (width * 1000).toString(),
+                                heightMm: (height * 1000).toString(),
+                                areaM2,
+                                color: COLORS.find(c => c.id === color)?.name,
+                                powerSupply: currentPowerObj.name,
+                                motor: currentMotorObj.name,
+                                timeline: currentTimelineObj.name,
                                 suburb: formData.suburb,
                                 notes: formData.notes,
                                 purpose: 'production_deposit'
@@ -670,7 +973,7 @@ export default function GateVisualizerQuote() {
             )}
           </div>
 
-          {/* Right Column: Live Interactive Blueprint & Price Summary Card */}
+          {/* Right Column: Live Interactive Blueprint & Specification Summary */}
           <div style={{ width: '100%' }}>
             <div className="card-themed" style={{ padding: 'clamp(1.25rem, 3.5vw, 1.75rem)', border: '1.5px solid var(--border-light)', background: 'var(--bg-card)', boxShadow: 'var(--shadow-lg)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
@@ -678,77 +981,78 @@ export default function GateVisualizerQuote() {
                   LIVE SPECIFICATION
                 </span>
                 <span className="badge-tag badge-green" style={{ margin: 0, fontSize: '0.72rem', padding: '0.3rem 0.65rem' }}>
-                  Factory Direct
+                  Yamanto Factory Direct
                 </span>
               </div>
 
-              {/* Dynamic Gate Wireframe Graphic */}
+              {/* Selected Design Real Photo Preview */}
               <div style={{
-                height: '120px',
-                background: 'var(--bg-card-subtle)',
-                borderRadius: '8px',
-                border: '1.5px solid var(--border-light)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
+                borderRadius: '10px',
                 overflow: 'hidden',
-                marginBottom: '1.25rem'
+                position: 'relative',
+                height: '140px',
+                marginBottom: '1.25rem',
+                border: '1.5px solid var(--border-light)',
+                background: '#090e1a'
               }}>
+                <img 
+                  src={currentDesignObj.image} 
+                  alt={currentDesignObj.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
                 <div style={{
-                  width: `${Math.min(85, (width / 10) * 85 + 25)}%`,
-                  height: `${Math.min(75, (height / 2.4) * 75 + 20)}%`,
-                  border: '3px solid var(--accent-gold)',
-                  borderRadius: '4px',
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  padding: '0.4rem 0.75rem',
+                  background: 'linear-gradient(transparent, rgba(9, 14, 26, 0.95))',
                   display: 'flex',
-                  flexDirection: material.includes('vertical') ? 'row' : 'column',
-                  gap: '3px',
-                  padding: '3px',
-                  background: 'var(--bg-card)',
-                  boxShadow: 'var(--shadow-md)'
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
                 }}>
-                  {[...Array(6)].map((_, i) => (
-                    <div 
-                      key={i} 
-                      style={{ 
-                        flex: 1, 
-                        background: COLORS.find(c=>c.id===color)?.hex || '#334155',
-                        borderRadius: '2px',
-                        border: '0.5px solid rgba(255,255,255,0.1)'
-                      }} 
-                    />
-                  ))}
-                </div>
-                <div style={{ position: 'absolute', bottom: '5px', fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: '600' }}>
-                  {width}m wide × {height}m high
+                  <span style={{ fontSize: '0.76rem', color: '#ffffff', fontWeight: '800' }}>
+                    {currentDesignObj.name}
+                  </span>
+                  <span style={{ fontSize: '0.7rem', color: '#fbbf24', fontWeight: '700' }}>
+                    {Math.round(width * 1000)}mm × {Math.round(height * 1000)}mm
+                  </span>
                 </div>
               </div>
 
               {/* Specification Summary List */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.84rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '1rem', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.82rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '1rem', marginBottom: '1rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Gate Style:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{GATE_TYPES.find(g=>g.id===gateType)?.name}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Size:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{width}m × {height}m</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Material:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{MATERIALS.find(m=>m.id===material)?.name}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Finish:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{COLORS.find(c=>c.id===color)?.name}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>Design Style:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{currentDesignObj.name}</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Motor:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{MOTORS.find(m=>m.id===motor)?.name || 'Standard Motor'}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>Opening Type:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{currentOpeningObj.name}</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: 'var(--text-muted)' }}>Dimensions:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{Math.round(width * 1000)}mm × {Math.round(height * 1000)}mm ({areaM2} m²)</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: 'var(--text-muted)' }}>Powdercoat Color:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{COLORS.find(c => c.id === color)?.name}</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
+                  <span style={{ color: 'var(--text-muted)' }}>Power Connection:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{currentPowerObj.name}</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
+                  <span style={{ color: 'var(--text-muted)' }}>Motor Automation:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{currentMotorObj.name}</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
+                  <span style={{ color: 'var(--text-muted)' }}>Timeline:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{currentTimelineObj.name}</span>
                 </div>
               </div>
 
-              {/* Custom Quote Specification Box (No confusing hardcoded numbers) */}
+              {/* Custom Quote Proposal Box */}
               <div style={{
                 background: 'var(--badge-gold-bg)',
                 border: '1.5px solid var(--badge-gold-border)',
@@ -767,20 +1071,19 @@ export default function GateVisualizerQuote() {
                   ✓ 100% Free On-Site Laser Measure & Proposal
                 </div>
                 <div style={{ fontSize: '0.74rem', color: 'var(--text-main)', marginTop: '0.35rem', lineHeight: 1.4 }}>
-                  Every gate is precision fabricated in our Yamanto workshop. Submit your specs for an exact, obligation-free proposal tailored to your opening.
+                  Every gate is fabricated in-house in our Yamanto workshop. Submit your specs for an itemized, obligation-free proposal tailored to your opening.
                 </div>
               </div>
 
-
-              {/* Guarantees Box */}
+              {/* Trust Guarantees Box */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
                   <ShieldCheck size={15} style={{ color: 'var(--accent-emerald)' }} />
-                  <span>10-Year Structural Guarantee</span>
+                  <span>10-Year Structural Aluminium Guarantee</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
                   <Check size={15} style={{ color: 'var(--accent-emerald)' }} />
-                  <span>Yamanto Workshop Direct Pricing</span>
+                  <span>Yamanto Factory Direct (Zero Middleman Markups)</span>
                 </div>
               </div>
             </div>
