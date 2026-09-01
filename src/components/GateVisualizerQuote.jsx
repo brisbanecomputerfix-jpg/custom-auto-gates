@@ -18,7 +18,9 @@ import {
   Loader2,
   Clock,
   BatteryCharging,
-  Maximize2
+  Maximize2,
+  DollarSign,
+  Tag
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
 import { createStripeCheckout } from '../utils/stripeClient';
@@ -35,7 +37,7 @@ export default function GateVisualizerQuote() {
   const [powerSupply, setPowerSupply] = useState('240v-plugin');
   const [motor, setMotor] = useState('standard-slide');
   const [timeline, setTimeline] = useState('2-weeks');
-  const [accessories, setAccessories] = useState(['remotes', 'phone-app']);
+  const [accessories, setAccessories] = useState(['phone-app']);
   
   // Quote Form State
   const [formData, setFormData] = useState({
@@ -49,7 +51,7 @@ export default function GateVisualizerQuote() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isPayingDeposit, setIsPayingDeposit] = useState(false);
 
-  // 1. GATE DESIGNS & INFILL STYLES (Extracted from WordPress Calculator)
+  // 1. GATE DESIGNS & INFILL STYLES (Extracted from WordPress Stylish Cost Calculator)
   const GATE_DESIGNS = [
     {
       id: 'horizontal-slat',
@@ -88,11 +90,11 @@ export default function GateVisualizerQuote() {
       badge: 'Custom Sizing'
     },
     {
-      id: 'pressed-spear',
+      id: 'security-pressed-spear',
       name: 'Security Gate (Pressed Spear)',
       category: 'Security',
       baseRateM2: 975,
-      desc: '25x25 square pressed spear tops @ 125mm centres face welded for perimeter deterrence.',
+      desc: '25x25 square pressed spear tops @ 125mm centres face welded for high perimeter security.',
       image: 'https://customautogates.com.au/wp-content/uploads/2020/12/image-1.jpg',
       badge: 'High Security'
     },
@@ -134,13 +136,13 @@ export default function GateVisualizerQuote() {
     }
   ];
 
-  // 2. OPENING TYPES & HARDWARE
+  // 2. OPENING TYPES & HARDWARE (Extracted from WordPress Calculator)
   const OPENING_TYPES = [
     { 
       id: 'sliding', 
       name: 'Automatic Sliding Gate', 
       hardwareCost: 750, 
-      desc: 'In-ground track, steel ground guides, top rollers, and anti-lift stop hardware.', 
+      desc: 'In-ground steel track, ground rollers, top guide rollers, and anti-lift stop hardware.', 
       icon: '↔️' 
     },
     { 
@@ -189,19 +191,19 @@ export default function GateVisualizerQuote() {
       id: '240v-plugin', 
       name: '240V Existing Power Point', 
       cost: 50, 
-      desc: 'Existing weather-protected 240V power point is already available at the gate motor post position.' 
+      desc: 'Existing weather-protected 240V power point already available at gate motor post.' 
     },
     { 
       id: 'low-voltage', 
       name: 'Low Voltage Run (12V–36V)', 
       cost: 1200, 
-      desc: 'Cabling run from an existing house power point to the front gate position (saves deep 240V trenching).' 
+      desc: 'Cabling run from existing house power point to front gate (saves deep 240V trenching).' 
     },
     { 
       id: 'solar-system', 
       name: '100% Off-Grid Solar System', 
       cost: 1250, 
-      desc: 'Heavy-duty monocrystalline solar panel mounted on gate post with high-capacity deep cycle battery bank.' 
+      desc: 'Monocrystalline solar panel mounted on gate post with high-capacity deep-cycle battery bank.' 
     }
   ];
 
@@ -261,13 +263,13 @@ export default function GateVisualizerQuote() {
     }
   ];
 
-  // ACCESSORIES
+  // ACCESSORIES WITH PRICING
   const ACCESSORIES = [
-    { id: 'phone-app', name: '4G / WiFi Smartphone App Opener', desc: 'Open, close, and check gate status anywhere' },
-    { id: 'keypad', name: 'Wireless Digital Keypad', desc: 'Pin code access for guests, gardeners, and trades' },
-    { id: 'intercom', name: 'HD Video Intercom with Alerts', desc: 'See, speak, and buzz in visitors from your phone' },
-    { id: 'extra-remotes', name: 'Pack of 3 Extra Remotes', desc: 'Encrypted long-range key fobs for family cars' },
-    { id: 'safety-beams', name: 'Anti-Crush Infrared Safety Beams', desc: 'Prevents gate from closing on vehicles, pets, or kids' }
+    { id: 'phone-app', name: '4G / WiFi Smartphone App Opener', cost: 280, desc: 'Open, close, and check gate status anywhere' },
+    { id: 'keypad', name: 'Wireless Digital Keypad', cost: 195, desc: 'Pin code access for guests, gardeners, and trades' },
+    { id: 'intercom', name: 'HD Video Intercom with Phone Alert', cost: 650, desc: 'See, speak, and buzz in visitors from your phone' },
+    { id: 'extra-remotes', name: 'Pack of 3 Extra Long-Range Remotes', cost: 150, desc: 'Encrypted long-range key fobs for family cars' },
+    { id: 'safety-beams', name: 'Anti-Crush Infrared Safety Beams', cost: 180, desc: 'Prevents gate from closing on vehicles, pets, or kids' }
   ];
 
   const toggleAccessory = (id) => {
@@ -278,17 +280,27 @@ export default function GateVisualizerQuote() {
     }
   };
 
-  // Math Calculations based on WordPress Calculator formula:
-  // (Height/1000) * (Width/1000) * BaseRateM2 + Hardware + Power + Motor
+  // Math Calculations based on authentic WordPress Calculator formula:
+  // Total = (Height / 1000) * (Width / 1000) * BaseRateM2 + Hardware + Power + Motor + Accessories
   const currentDesignObj = GATE_DESIGNS.find(d => d.id === selectedDesign) || GATE_DESIGNS[0];
   const currentOpeningObj = OPENING_TYPES.find(o => o.id === gateType) || OPENING_TYPES[0];
   const currentPowerObj = POWER_OPTIONS.find(p => p.id === powerSupply) || POWER_OPTIONS[0];
   const currentMotorObj = MOTORS.find(m => m.id === motor) || MOTORS[0];
   const currentTimelineObj = TIMELINES.find(t => t.id === timeline) || TIMELINES[1];
 
-  const areaM2 = (width * height).toFixed(2);
-  const calculatedBaseFabrication = Math.round(width * height * currentDesignObj.baseRateM2);
-  const calculatedTotal = calculatedBaseFabrication + currentOpeningObj.hardwareCost + currentPowerObj.cost + currentMotorObj.cost;
+  const areaM2Num = width * height;
+  const areaM2 = areaM2Num.toFixed(2);
+  const calculatedFabrication = Math.round(areaM2Num * currentDesignObj.baseRateM2);
+  const calculatedHardware = currentOpeningObj.hardwareCost;
+  const calculatedPower = currentPowerObj.cost;
+  const calculatedMotor = currentMotorObj.cost;
+  const calculatedAccessories = accessories.reduce((sum, accId) => {
+    const item = ACCESSORIES.find(a => a.id === accId);
+    return sum + (item ? item.cost : 0);
+  }, 0);
+
+  const totalCalculatedPrice = calculatedFabrication + calculatedHardware + calculatedPower + calculatedMotor + calculatedAccessories;
+  const formattedTotal = `$${totalCalculatedPrice.toLocaleString()}`;
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -314,6 +326,14 @@ export default function GateVisualizerQuote() {
           motor: currentMotorObj.name,
           timeline: currentTimelineObj.name,
           accessories: accessories.map(a => ACCESSORIES.find(acc => acc.id === a)?.name).join(', '),
+          estimatedTotal: formattedTotal,
+          itemizedBreakdown: {
+            fabrication: `$${calculatedFabrication.toLocaleString()}`,
+            hardware: `$${calculatedHardware.toLocaleString()}`,
+            power: `$${calculatedPower.toLocaleString()}`,
+            motor: `$${calculatedMotor.toLocaleString()}`,
+            accessories: `$${calculatedAccessories.toLocaleString()}`
+          },
           notes: formData.notes
         })
       });
@@ -333,14 +353,14 @@ export default function GateVisualizerQuote() {
         <div className="section-header">
           <span className="badge-tag badge-gold">
             <Calculator size={14} />
-            Custom Gate Configurator & Quote
+            Instant Gate Pricing Calculator & Quote
           </span>
           <h2 className="section-title">
-            Design Your Custom Gate <br />
-            <span className="gradient-text-gold">& Get Your Factory-Direct Itemized Proposal</span>
+            Interactive Gate Pricing Calculator <br />
+            <span className="gradient-text-gold">& Live Factory-Direct Cost Estimator</span>
           </h2>
           <p className="section-subtitle">
-            Configure your gate design, exact millimeter dimensions, opening mechanics, power supply, and automation in 5 simple steps.
+            Configure your gate design, exact millimeter dimensions, opening track kit, power supply, and automation motor for an instant itemized price estimate.
           </p>
         </div>
 
@@ -363,7 +383,7 @@ export default function GateVisualizerQuote() {
             { num: 2, label: '2. Dimensions' },
             { num: 3, label: '3. Opening & Color' },
             { num: 4, label: '4. Power & Motor' },
-            { num: 5, label: '5. Itemized Proposal' }
+            { num: 5, label: '5. Instant Quote' }
           ].map((s) => {
             const isActive = step === s.num;
             const isDone = step > s.num;
@@ -413,7 +433,9 @@ export default function GateVisualizerQuote() {
               <div className="animate-fadeIn">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <h3 style={{ fontSize: '1.35rem', color: 'var(--text-heading)', margin: 0 }}>Step 1: Select Your Gate Design</h3>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--accent-gold)', fontWeight: '700' }}>9 Workshop Styles Available</span>
+                  <span style={{ fontSize: '0.78rem', color: 'var(--accent-gold)', fontWeight: '800' }}>
+                    From $570/m² • 9 Workshop Styles
+                  </span>
                 </div>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
                   All designs are 100% custom-fabricated in our Yamanto workshop using structural 6060-T6 Australian aluminium.
@@ -438,7 +460,7 @@ export default function GateVisualizerQuote() {
                         }}
                       >
                         {/* Design Photo Preview */}
-                        <div style={{ position: 'relative', width: '100%', height: '120px', background: '#0f172a', overflow: 'hidden' }}>
+                        <div style={{ position: 'relative', width: '100%', height: '125px', background: '#0f172a', overflow: 'hidden' }}>
                           <img 
                             src={d.image} 
                             alt={d.name}
@@ -460,13 +482,28 @@ export default function GateVisualizerQuote() {
                           }}>
                             {d.badge}
                           </span>
+                          <span style={{
+                            position: 'absolute',
+                            bottom: '6px',
+                            left: '6px',
+                            fontSize: '0.72rem',
+                            fontWeight: '900',
+                            padding: '0.2rem 0.5rem',
+                            borderRadius: '4px',
+                            background: 'rgba(16, 185, 129, 0.95)',
+                            color: '#ffffff'
+                          }}>
+                            ${d.baseRateM2}/m²
+                          </span>
                         </div>
 
                         <div style={{ padding: '0.85rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                           <div>
-                            <h4 style={{ fontSize: '0.92rem', fontWeight: '800', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)', marginBottom: '0.3rem' }}>
-                              {d.name}
-                            </h4>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.25rem' }}>
+                              <h4 style={{ fontSize: '0.92rem', fontWeight: '800', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)', margin: 0 }}>
+                                {d.name}
+                              </h4>
+                            </div>
                             <p style={{ fontSize: '0.74rem', color: 'var(--text-muted)', lineHeight: 1.45, margin: 0 }}>
                               {d.desc}
                             </p>
@@ -490,7 +527,7 @@ export default function GateVisualizerQuote() {
               <div className="animate-fadeIn">
                 <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 2: Driveway Opening Dimensions</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.5rem' }}>
-                  Set your approximate driveway opening. Every single gate is fabricated to exact millimeter tolerances following our free on-site laser measure.
+                  Set your driveway opening. The fabrication price scales directly with your square meter size (${currentDesignObj.baseRateM2}/m²).
                 </p>
 
                 {/* Width Slider */}
@@ -549,22 +586,32 @@ export default function GateVisualizerQuote() {
                   </div>
                 </div>
 
-                {/* Total Calculated Area Pill */}
+                {/* Area & Base Fabrication Price Card */}
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  padding: '0.85rem 1.1rem',
+                  padding: '1rem 1.25rem',
                   background: 'var(--badge-blue-bg)',
-                  border: '1px solid var(--badge-blue-border)',
-                  borderRadius: '10px',
+                  border: '1.5px solid var(--badge-blue-border)',
+                  borderRadius: '12px',
                   color: 'var(--badge-blue-text)'
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem' }}>
-                    <Maximize2 size={16} />
-                    <span>Calculated Panel Surface Area:</span>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.86rem', fontWeight: '700' }}>
+                      <Maximize2 size={16} />
+                      <span>Panel Area: <strong>{areaM2} m²</strong></span>
+                    </div>
+                    <div style={{ fontSize: '0.75rem', opacity: 0.85, marginTop: '0.15rem' }}>
+                      {currentDesignObj.name} @ ${currentDesignObj.baseRateM2}/m²
+                    </div>
                   </div>
-                  <span style={{ fontWeight: '900', fontSize: '1rem' }}>{areaM2} m²</span>
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', fontWeight: '800' }}>Fabrication Subtotal</div>
+                    <span style={{ fontWeight: '900', fontSize: '1.25rem', color: 'var(--accent-gold)' }}>
+                      ${calculatedFabrication.toLocaleString()}
+                    </span>
+                  </div>
                 </div>
 
                 <div style={{ marginTop: '1.75rem', display: 'flex', justifyContent: 'space-between' }}>
@@ -583,12 +630,12 @@ export default function GateVisualizerQuote() {
               <div className="animate-fadeIn">
                 <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 3: Opening Hardware & Powdercoat Finish</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                  Choose your mechanical opening configuration and architectural Colorbond powdercoat color.
+                  Select your track or hinge hardware kit and architectural Colorbond powdercoat color.
                 </p>
 
                 {/* Opening Mechanism */}
                 <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
-                  Select Opening Mechanism:
+                  Select Opening Hardware Kit:
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.65rem', marginBottom: '1.75rem' }}>
                   {OPENING_TYPES.map((o) => {
@@ -603,16 +650,24 @@ export default function GateVisualizerQuote() {
                           background: isSelected ? 'var(--accent-gold-light)' : 'var(--bg-card-subtle)',
                           border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--border-light)',
                           cursor: 'pointer',
-                          transition: 'all 0.2s ease'
+                          transition: 'all 0.2s ease',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'space-between'
                         }}
                       >
-                        <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{o.icon}</div>
-                        <h4 style={{ fontSize: '0.88rem', fontWeight: '800', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)', marginBottom: '0.2rem' }}>
-                          {o.name}
-                        </h4>
-                        <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.4, margin: 0 }}>
-                          {o.desc}
-                        </p>
+                        <div>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
+                            <span style={{ fontSize: '1.4rem' }}>{o.icon}</span>
+                            <span style={{ fontSize: '0.78rem', fontWeight: '800', color: 'var(--accent-gold)' }}>+${o.hardwareCost}</span>
+                          </div>
+                          <h4 style={{ fontSize: '0.88rem', fontWeight: '800', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)', marginBottom: '0.2rem' }}>
+                            {o.name}
+                          </h4>
+                          <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.4, margin: 0 }}>
+                            {o.desc}
+                          </p>
+                        </div>
                       </div>
                     );
                   })}
@@ -663,7 +718,7 @@ export default function GateVisualizerQuote() {
               <div className="animate-fadeIn">
                 <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 4: Power Infrastructure & Motor System</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                  Select your on-site electrical power supply and matching gate automation motor.
+                  Select your on-site electrical power supply, matching gate motor, and optional smart access accessories.
                 </p>
 
                 {/* Power Supply Selection */}
@@ -690,7 +745,10 @@ export default function GateVisualizerQuote() {
                         }}
                       >
                         <div>
-                          <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.15rem' }}>{p.name}</h4>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.15rem' }}>
+                            <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'var(--text-heading)', margin: 0 }}>{p.name}</h4>
+                            <span style={{ fontSize: '0.78rem', fontWeight: '800', color: 'var(--accent-gold)' }}>+${p.cost}</span>
+                          </div>
                           <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0 }}>{p.desc}</p>
                         </div>
                         <div style={{ width: '18px', height: '18px', borderRadius: '50%', border: isSelected ? '5px solid var(--accent-gold)' : '2px solid var(--border-subtle)', background: 'var(--bg-card)', flexShrink: 0 }} />
@@ -701,7 +759,7 @@ export default function GateVisualizerQuote() {
 
                 {/* Motor Selection */}
                 <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
-                  2. Automation Motor System:
+                  2. Automation Motor System (Includes 2 Remotes):
                 </label>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.5rem' }}>
                   {MOTORS.map((m) => {
@@ -723,7 +781,10 @@ export default function GateVisualizerQuote() {
                         }}
                       >
                         <div>
-                          <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.15rem' }}>{m.name}</h4>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.15rem' }}>
+                            <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'var(--text-heading)', margin: 0 }}>{m.name}</h4>
+                            <span style={{ fontSize: '0.8rem', fontWeight: '900', color: 'var(--accent-blue)' }}>+${m.cost.toLocaleString()}</span>
+                          </div>
                           <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0 }}>{m.desc}</p>
                         </div>
                         <div style={{ width: '18px', height: '18px', borderRadius: '50%', border: isSelected ? '5px solid var(--accent-blue)' : '2px solid var(--border-subtle)', background: 'var(--bg-card)', flexShrink: 0 }} />
@@ -786,8 +847,11 @@ export default function GateVisualizerQuote() {
                         <div style={{ width: '16px', height: '16px', borderRadius: '4px', background: isSelected ? 'var(--accent-gold)' : 'var(--bg-card)', border: '1.5px solid var(--accent-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#090e1a', flexShrink: 0 }}>
                           {isSelected && <Check size={11} />}
                         </div>
-                        <div>
-                          <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--text-heading)' }}>{acc.name}</div>
+                        <div style={{ flex: 1 }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--text-heading)' }}>{acc.name}</span>
+                            <span style={{ fontSize: '0.75rem', fontWeight: '800', color: 'var(--accent-gold)' }}>+${acc.cost}</span>
+                          </div>
                           <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>{acc.desc}</div>
                         </div>
                       </div>
@@ -800,7 +864,7 @@ export default function GateVisualizerQuote() {
                     <ChevronLeft size={18} /> Back
                   </button>
                   <button onClick={() => setStep(5)} className="btn btn-blue">
-                    Review Itemized Proposal <ChevronRight size={18} />
+                    Review Itemized Quote <ChevronRight size={18} />
                   </button>
                 </div>
               </div>
@@ -809,7 +873,12 @@ export default function GateVisualizerQuote() {
             {/* STEP 5: Itemized Proposal & Free Quote Submission */}
             {step === 5 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 5: Get Your Itemized Factory-Direct Proposal</h3>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                  <h3 style={{ fontSize: '1.35rem', color: 'var(--text-heading)', margin: 0 }}>Step 5: Lock In Your Itemized Quote</h3>
+                  <span style={{ fontSize: '1.2rem', fontWeight: '900', color: 'var(--accent-gold)' }}>
+                    Total: {formattedTotal}
+                  </span>
+                </div>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
                   Submit your custom specification to our engineering workshop for a comprehensive, obligation-free proposal and free on-site laser measure.
                 </p>
@@ -821,7 +890,7 @@ export default function GateVisualizerQuote() {
                     </div>
                     <h4 style={{ fontSize: '1.3rem', color: 'var(--badge-green-text)', marginBottom: '0.4rem' }}>Quote Request Received!</h4>
                     <p style={{ color: 'var(--text-main)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                      Thank you <strong>{formData.fullName}</strong>. Our senior fabrication team has received your <strong>{Math.round(width*1000)}mm × {Math.round(height*1000)}mm {currentDesignObj.name}</strong> specification and will be in touch promptly to confirm your free on-site measure.
+                      Thank you <strong>{formData.fullName}</strong>. Our senior fabrication team has received your <strong>{Math.round(width*1000)}mm × {Math.round(height*1000)}mm {currentDesignObj.name}</strong> specification (Estimated at <strong>{formattedTotal}</strong>) and will contact you promptly to confirm your free on-site measure.
                     </p>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                       <a href={COMPANY_INFO.tel} className="btn btn-gold" style={{ width: '100%', maxWidth: '320px' }}>
@@ -899,7 +968,7 @@ export default function GateVisualizerQuote() {
                         </button>
                         <button type="submit" className="btn btn-blue" style={{ flex: '1 1 auto' }} disabled={isSubmitting}>
                           {isSubmitting ? <Loader2 size={17} className="animate-spin" /> : <Send size={17} />}
-                          Request Free Itemized Proposal
+                          Submit for Free Laser Measure & Quote
                         </button>
                       </div>
 
@@ -916,7 +985,7 @@ export default function GateVisualizerQuote() {
                             await createStripeCheckout({
                               amount: 500,
                               title: `Custom ${currentDesignObj.name} Production Deposit ($500)`,
-                              description: `${Math.round(width*1000)}mm x ${Math.round(height*1000)}mm ${currentDesignObj.name} (${currentOpeningObj.name}) - For ${formData.fullName}`,
+                              description: `${Math.round(width*1000)}mm x ${Math.round(height*1000)}mm ${currentDesignObj.name} (${currentOpeningObj.name}) - Total Est: ${formattedTotal} - For ${formData.fullName}`,
                               customerEmail: formData.email,
                               customerName: formData.fullName,
                               customerPhone: formData.phone,
@@ -930,6 +999,7 @@ export default function GateVisualizerQuote() {
                                 powerSupply: currentPowerObj.name,
                                 motor: currentMotorObj.name,
                                 timeline: currentTimelineObj.name,
+                                estimatedTotal: formattedTotal,
                                 suburb: formData.suburb,
                                 notes: formData.notes,
                                 purpose: 'production_deposit'
@@ -973,15 +1043,15 @@ export default function GateVisualizerQuote() {
             )}
           </div>
 
-          {/* Right Column: Live Interactive Blueprint & Specification Summary */}
+          {/* Right Column: Live Interactive Blueprint & Itemized Price Summary Card */}
           <div style={{ width: '100%' }}>
             <div className="card-themed" style={{ padding: 'clamp(1.25rem, 3.5vw, 1.75rem)', border: '1.5px solid var(--border-light)', background: 'var(--bg-card)', boxShadow: 'var(--shadow-lg)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                 <span style={{ fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--accent-gold)' }}>
-                  LIVE SPECIFICATION
+                  LIVE COST BREAKDOWN
                 </span>
                 <span className="badge-tag badge-green" style={{ margin: 0, fontSize: '0.72rem', padding: '0.3rem 0.65rem' }}>
-                  Yamanto Factory Direct
+                  Yamanto Workshop Direct
                 </span>
               </div>
 
@@ -1020,58 +1090,82 @@ export default function GateVisualizerQuote() {
                 </div>
               </div>
 
-              {/* Specification Summary List */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.82rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '1rem', marginBottom: '1rem' }}>
+              {/* Itemized Calculation Summary */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.82rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '1rem', marginBottom: '1rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Design Style:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{currentDesignObj.name}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>
+                    Gate Fabrication ({areaM2} m² @ ${currentDesignObj.baseRateM2}/m²):
+                  </span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>
+                    ${calculatedFabrication.toLocaleString()}
+                  </span>
                 </div>
+
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Opening Type:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{currentOpeningObj.name}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>
+                    {currentOpeningObj.name} Hardware:
+                  </span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>
+                    +${calculatedHardware.toLocaleString()}
+                  </span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Dimensions:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{Math.round(width * 1000)}mm × {Math.round(height * 1000)}mm ({areaM2} m²)</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Powdercoat Color:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{COLORS.find(c => c.id === color)?.name}</span>
-                </div>
+
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Power Connection:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{currentPowerObj.name}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>
+                    {currentPowerObj.name}:
+                  </span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>
+                    +${calculatedPower.toLocaleString()}
+                  </span>
                 </div>
+
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Motor Automation:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{currentMotorObj.name}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>
+                    {currentMotorObj.name}:
+                  </span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>
+                    +${calculatedMotor.toLocaleString()}
+                  </span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Timeline:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>{currentTimelineObj.name}</span>
+
+                {calculatedAccessories > 0 && (
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>
+                      Selected Smart Add-ons:
+                    </span>
+                    <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>
+                      +${calculatedAccessories.toLocaleString()}
+                    </span>
+                  </div>
+                )}
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '0.35rem', borderTop: '1px dashed var(--border-light)' }}>
+                  <span style={{ color: 'var(--text-muted)' }}>Powdercoat Finish:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{COLORS.find(c => c.id === color)?.name} (Included)</span>
                 </div>
               </div>
 
-              {/* Custom Quote Proposal Box */}
+              {/* Dynamic Live Estimated Total Card */}
               <div style={{
                 background: 'var(--badge-gold-bg)',
-                border: '1.5px solid var(--badge-gold-border)',
+                border: '2px solid var(--accent-gold)',
                 borderRadius: '12px',
-                padding: '1.1rem 1rem',
+                padding: '1.15rem 1rem',
                 textAlign: 'center',
-                marginBottom: '0.85rem'
+                marginBottom: '1rem',
+                boxShadow: '0 4px 14px rgba(251, 191, 36, 0.15)'
               }}>
-                <div style={{ fontSize: '0.78rem', color: 'var(--badge-gold-text)', fontWeight: '800', marginBottom: '0.25rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                  Factory-Direct Custom Proposal:
+                <div style={{ fontSize: '0.75rem', color: 'var(--badge-gold-text)', fontWeight: '800', marginBottom: '0.2rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  Estimated Factory Direct Price:
                 </div>
-                <div style={{ fontSize: 'clamp(1.15rem, 3.2vw, 1.4rem)', fontWeight: '900', color: 'var(--badge-gold-text)', letterSpacing: '-0.01em', marginBottom: '0.25rem' }}>
-                  Itemized Quote on Custom Specs
+                <div style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', fontWeight: '900', color: 'var(--accent-gold)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+                  {formattedTotal}
                 </div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--badge-green-text)', fontWeight: '700', marginTop: '0.2rem' }}>
-                  ✓ 100% Free On-Site Laser Measure & Proposal
+                <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: '600', marginTop: '0.25rem' }}>
+                  *Inc. GST, fabrication, track hardware & automation kit
                 </div>
-                <div style={{ fontSize: '0.74rem', color: 'var(--text-main)', marginTop: '0.35rem', lineHeight: 1.4 }}>
-                  Every gate is fabricated in-house in our Yamanto workshop. Submit your specs for an itemized, obligation-free proposal tailored to your opening.
+                <div style={{ fontSize: '0.76rem', color: 'var(--badge-green-text)', fontWeight: '700', marginTop: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.3rem' }}>
+                  <Check size={14} /> 100% Free On-Site Laser Measure & Fixed Quote
                 </div>
               </div>
 
