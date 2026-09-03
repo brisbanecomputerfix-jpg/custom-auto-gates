@@ -16,7 +16,7 @@ import {
 import { GALLERY_ITEMS } from '../data/siteData';
 
 const CATEGORIES = [
-  { id: 'all', label: 'All Projects (220+)' },
+  { id: 'all', label: `All Projects (${GALLERY_ITEMS.length})` },
   { id: 'sliding', label: 'Sliding Gates' },
   { id: 'swing', label: 'Swing Gates' },
   { id: 'solar', label: 'Solar Gates' },
