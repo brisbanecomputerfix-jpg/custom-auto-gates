@@ -182,6 +182,11 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
                   src={item.thumbUrl || item.url}
                   alt={item.alt || item.title || `${item.category || 'Custom'} gate installation in ${item.suburb || item.location || 'Brisbane'}`}
                   loading="lazy"
+                  onError={(e) => {
+                    if (item.fallbackUrl && e.target.src !== item.fallbackUrl) {
+                      e.target.src = item.fallbackUrl;
+                    }
+                  }}
                   style={{
                     width: '100%',
                     height: '100%',
@@ -289,6 +294,11 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
               <img
                 src={selectedImage.url}
                 alt={selectedImage.alt || selectedImage.title || 'Custom automatic gate installation'}
+                onError={(e) => {
+                  if (selectedImage.fallbackUrl && e.target.src !== selectedImage.fallbackUrl) {
+                    e.target.src = selectedImage.fallbackUrl;
+                  }
+                }}
                 style={{ maxHeight: '52vh', width: 'auto', maxWidth: '100%', objectFit: 'contain' }}
               />
 
