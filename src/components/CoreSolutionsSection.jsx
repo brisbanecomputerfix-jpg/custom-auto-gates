@@ -27,6 +27,14 @@ const SOLUTIONS = [
     category: 'commercial-gates'
   },
   {
+    id: 'pool-fencing',
+    title: 'Pool Fencing',
+    image: '/images/pool-fencing.png',
+    alt: 'Aluminium pool safety fencing and compliance gates in Queensland',
+    desc: "Engineered to meet Australian safety standard AS1926.1. Premium rust-proof aluminium pool fencing and self-closing safety gates.",
+    category: 'fencing'
+  },
+  {
     id: 'solar-gates',
     title: 'Solar Gates',
     image: '/images/solar-gates.jpg',
@@ -35,20 +43,12 @@ const SOLUTIONS = [
     category: 'solar-gates'
   },
   {
-    id: 'gate-motors',
-    title: 'Gate Motors',
+    id: 'gate-motors-automation',
+    title: 'Gate Motors & Automation',
     image: '/images/gate-motors.jpg',
-    alt: 'High-speed automatic gate motor and rack pinion system',
-    desc: "We supply and install reliable gate motors that are powerful, quiet, and built to last, suitable for sliding and swing gates alike.",
+    alt: 'Automatic gate motors and smart wireless automation systems',
+    desc: "Reliable, whisper-quiet electric gate motors and intelligent access control for sliding and swing gates with smartphone control.",
     category: 'repairs'
-  },
-  {
-    id: 'gate-automation',
-    title: 'Gate Automation',
-    image: '/images/gate-automation.png',
-    alt: 'Smart electric automated gate access control system with wireless phone app',
-    desc: "Automate your existing gate or install a brand-new electric system—smart access made easy with advanced automation options.",
-    category: 'sliding-gates'
   },
   {
     id: 'security-fencing',
@@ -70,7 +70,7 @@ const SOLUTIONS = [
 
 export default function CoreSolutionsSection({ onSelectService, onOpenQuote }) {
   const handleCardClick = (solution) => {
-    if (solution.category === 'repairs') {
+    if (solution.category === 'repairs' || solution.id === 'gate-motors-automation') {
       const elem = document.getElementById('motors');
       if (elem) {
         elem.scrollIntoView({ behavior: 'smooth' });
