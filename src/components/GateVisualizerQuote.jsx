@@ -33,7 +33,6 @@ export default function GateVisualizerQuote() {
   const [gateType, setGateType] = useState('sliding');
   const [width, setWidth] = useState(4.0); // meters (4000mm)
   const [height, setHeight] = useState(1.8); // meters (1800mm)
-  const [color, setColor] = useState('monument');
   const [powerSupply, setPowerSupply] = useState('240v-plugin');
   const [motor, setMotor] = useState('standard-slide');
   const [timeline, setTimeline] = useState('2-weeks');
@@ -50,6 +49,19 @@ export default function GateVisualizerQuote() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isPayingDeposit, setIsPayingDeposit] = useState(false);
+
+  // Helper to change step and smoothly scroll without page jumping or shrinking
+  const goToStep = (newStep) => {
+    setStep(newStep);
+    setTimeout(() => {
+      const el = document.getElementById('gate-visualizer');
+      if (el) {
+        const yOffset = -75;
+        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }, 50);
+  };
 
   // 1. GATE DESIGNS & INFILL STYLES (Extracted from WordPress Stylish Cost Calculator)
   const GATE_DESIGNS = [
@@ -175,17 +187,7 @@ export default function GateVisualizerQuote() {
     }
   ];
 
-  // 3. COLOR FINISHES
-  const COLORS = [
-    { id: 'monument', name: 'Colorbond Monument', hex: '#2B2E33' },
-    { id: 'matt-black', name: 'Satin / Matt Black', hex: '#111111' },
-    { id: 'woodland-grey', name: 'Woodland Grey', hex: '#4A4F4C' },
-    { id: 'surfmist', name: 'Surfmist / Warm White', hex: '#ECECE7' },
-    { id: 'dune', name: 'Dune / Warm Neutral', hex: '#B8B3A8' },
-    { id: 'custom-ral', name: 'Custom Powdercoat Color', hex: '#3b82f6' }
-  ];
-
-  // 4. POWER SUPPLY OPTIONS (Extracted from WordPress Calculator)
+  // 3. POWER SUPPLY OPTIONS (Extracted from WordPress Calculator)
   const POWER_OPTIONS = [
     { 
       id: '240v-plugin', 
@@ -207,11 +209,11 @@ export default function GateVisualizerQuote() {
     }
   ];
 
-  // 5. MOTOR & AUTOMATION CATEGORIES (Extracted from WordPress Calculator)
+  // 4. MOTOR & AUTOMATION CATEGORIES (Extracted from WordPress Calculator)
   const MOTORS = [
     { 
       id: 'standard-slide', 
-      name: 'Residential Sliding Gate Motor', 
+      name: 'Residential Slide Motor', 
       cost: 2000, 
       desc: 'Heavy-duty 24V high-speed automatic sliding motor with battery backup and 2 encrypted remotes.' 
     },
@@ -241,11 +243,11 @@ export default function GateVisualizerQuote() {
     }
   ];
 
-  // 6. PROJECT READINESS / TIMELINE (Extracted from WordPress Calculator)
+  // 5. PROJECT READINESS / TIMELINE (Extracted from WordPress Calculator)
   const TIMELINES = [
     { 
       id: 'budgeting', 
-      name: 'Budgeting & Planning', 
+      name: 'Budgeting and Planing', 
       badge: 'Early Stage', 
       desc: 'Not ready for a site visit yet — gathering pricing a few months prior to starting.' 
     },
@@ -259,11 +261,11 @@ export default function GateVisualizerQuote() {
       id: 'urgent', 
       name: 'Priority / Need This Yesterday!', 
       badge: 'Fast-Track', 
-      desc: 'Time is of the essence. Seeking immediate laser measure, fast fabrication, and quick installation.' 
+      desc: 'Time is of the essence. Seeking immediate site visit, fast fabrication, and quick installation.' 
     }
   ];
 
-  // ACCESSORIES WITH PRICING
+  // 6. ACCESSORIES
   const ACCESSORIES = [
     { id: 'phone-app', name: '4G / WiFi Smartphone App Opener', cost: 280, desc: 'Open, close, and check gate status anywhere' },
     { id: 'keypad', name: 'Wireless Digital Keypad', cost: 195, desc: 'Pin code access for guests, gardeners, and trades' },
@@ -280,8 +282,8 @@ export default function GateVisualizerQuote() {
     }
   };
 
-  // Math Calculations based on authentic WordPress Calculator formula:
-  // Total = (Height / 1000) * (Width / 1000) * BaseRateM2 + Hardware + Power + Motor + Accessories
+  // Math Calculations based on the requested formula:
+  // Gate Design Price = 2.25 * Height(m) * Width(m) * Design Price
   const currentDesignObj = GATE_DESIGNS.find(d => d.id === selectedDesign) || GATE_DESIGNS[0];
   const currentOpeningObj = OPENING_TYPES.find(o => o.id === gateType) || OPENING_TYPES[0];
   const currentPowerObj = POWER_OPTIONS.find(p => p.id === powerSupply) || POWER_OPTIONS[0];
@@ -290,7 +292,9 @@ export default function GateVisualizerQuote() {
 
   const areaM2Num = width * height;
   const areaM2 = areaM2Num.toFixed(2);
-  const calculatedFabrication = Math.round(areaM2Num * currentDesignObj.baseRateM2);
+
+  // Exact 2.25 multiplier formula from user PDF Page 6 & 7:
+  const gateDesignPrice = Math.round(2.25 * height * width * currentDesignObj.baseRateM2);
   const calculatedHardware = currentOpeningObj.hardwareCost;
   const calculatedPower = currentPowerObj.cost;
   const calculatedMotor = currentMotorObj.cost;
@@ -299,8 +303,14 @@ export default function GateVisualizerQuote() {
     return sum + (item ? item.cost : 0);
   }, 0);
 
-  const totalCalculatedPrice = calculatedFabrication + calculatedHardware + calculatedPower + calculatedMotor + calculatedAccessories;
-  const formattedTotal = `$${totalCalculatedPrice.toLocaleString()}`;
+  const subtotal = gateDesignPrice + calculatedHardware + calculatedPower + calculatedMotor + calculatedAccessories;
+  const taxAmount = Math.round(subtotal * 0.10);
+  const totalCalculatedPrice = subtotal + taxAmount;
+
+  // Price range matching existing website (+15% band):
+  const rangeLow = totalCalculatedPrice;
+  const rangeHigh = Math.round(totalCalculatedPrice * 1.15);
+  const formattedRange = `$${rangeLow.toLocaleString()} - $${rangeHigh.toLocaleString()}`;
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -321,19 +331,13 @@ export default function GateVisualizerQuote() {
           widthMm: Math.round(width * 1000),
           heightMm: Math.round(height * 1000),
           areaM2: areaM2,
-          color: COLORS.find(c => c.id === color)?.name,
           powerSupply: currentPowerObj.name,
           motor: currentMotorObj.name,
           timeline: currentTimelineObj.name,
           accessories: accessories.map(a => ACCESSORIES.find(acc => acc.id === a)?.name).join(', '),
-          estimatedTotal: formattedTotal,
-          itemizedBreakdown: {
-            fabrication: `$${calculatedFabrication.toLocaleString()}`,
-            hardware: `$${calculatedHardware.toLocaleString()}`,
-            power: `$${calculatedPower.toLocaleString()}`,
-            motor: `$${calculatedMotor.toLocaleString()}`,
-            accessories: `$${calculatedAccessories.toLocaleString()}`
-          },
+          estimatedTotal: formattedRange,
+          subtotal: `$${subtotal.toLocaleString()}`,
+          tax: `$${taxAmount.toLocaleString()}`,
           notes: formData.notes
         })
       });
@@ -345,6 +349,14 @@ export default function GateVisualizerQuote() {
       setIsSubmitting(false);
     }
   };
+
+  const STEPS = [
+    { num: 1, label: '1. Gate Design' },
+    { num: 2, label: '2. Dimensions' },
+    { num: 3, label: '3. Opening Hardware' },
+    { num: 4, label: '4. Power & Motor' },
+    { num: 5, label: '5. Instant Quote' },
+  ];
 
   return (
     <section id="gate-visualizer" className="section" style={{ backgroundColor: 'var(--bg-surface)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
@@ -360,7 +372,7 @@ export default function GateVisualizerQuote() {
             <span className="gradient-text-gold">& Live Factory-Direct Cost Estimator</span>
           </h2>
           <p className="section-subtitle">
-            Configure your gate design, exact millimeter dimensions, opening track kit, power supply, and automation motor for an instant itemized price estimate.
+            Configure your gate design, exact millimeter dimensions, opening track kit, power supply, and automation motor for an instant price estimate range.
           </p>
         </div>
 
@@ -378,35 +390,28 @@ export default function GateVisualizerQuote() {
         }}
         className="step-scroll-container"
         >
-          {[
-            { num: 1, label: '1. Gate Design' },
-            { num: 2, label: '2. Dimensions' },
-            { num: 3, label: '3. Opening & Color' },
-            { num: 4, label: '4. Power & Motor' },
-            { num: 5, label: '5. Instant Quote' }
-          ].map((s) => {
+          {STEPS.map((s) => {
             const isActive = step === s.num;
             const isDone = step > s.num;
             return (
               <button
                 key={s.num}
-                onClick={() => setStep(s.num)}
+                onClick={() => goToStep(s.num)}
                 style={{
-                  padding: '0.5rem 1rem',
-                  borderRadius: 'var(--radius-full)',
-                  fontFamily: 'Outfit, sans-serif',
-                  fontWeight: '700',
-                  fontSize: '0.84rem',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.4rem',
-                  background: isActive ? 'var(--accent-gold)' : isDone ? 'var(--badge-green-bg)' : 'var(--bg-card-subtle)',
-                  color: isActive ? '#090e1a' : isDone ? 'var(--badge-green-text)' : 'var(--text-muted)',
-                  border: isActive ? '1px solid var(--accent-gold)' : isDone ? '1px solid var(--badge-green-border)' : '1px solid var(--border-light)',
-                  transition: 'all var(--transition-fast)',
+                  gap: '0.45rem',
+                  padding: '0.55rem 0.95rem',
+                  borderRadius: 'var(--radius-full)',
+                  border: isActive ? '2px solid var(--accent-gold)' : isDone ? '1px solid var(--accent-emerald)' : '1px solid var(--border-light)',
+                  background: isActive ? 'var(--accent-gold-light)' : isDone ? 'var(--badge-green-bg)' : 'var(--bg-card)',
+                  color: isActive ? 'var(--accent-gold)' : isDone ? 'var(--accent-emerald)' : 'var(--text-muted)',
+                  fontSize: '0.82rem',
+                  fontWeight: isActive || isDone ? '800' : '600',
+                  cursor: 'pointer',
                   whiteSpace: 'nowrap',
-                  flexShrink: 0,
-                  cursor: 'pointer'
+                  transition: 'all 0.2s ease',
+                  flexShrink: 0
                 }}
               >
                 {isDone ? <Check size={13} /> : null}
@@ -434,7 +439,7 @@ export default function GateVisualizerQuote() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <h3 style={{ fontSize: '1.35rem', color: 'var(--text-heading)', margin: 0 }}>Step 1: Select Your Gate Design</h3>
                   <span style={{ fontSize: '0.78rem', color: 'var(--accent-gold)', fontWeight: '800' }}>
-                    From $570/m² • 9 Workshop Styles
+                    9 Workshop Styles
                   </span>
                 </div>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
@@ -482,19 +487,6 @@ export default function GateVisualizerQuote() {
                           }}>
                             {d.badge}
                           </span>
-                          <span style={{
-                            position: 'absolute',
-                            bottom: '6px',
-                            left: '6px',
-                            fontSize: '0.72rem',
-                            fontWeight: '900',
-                            padding: '0.2rem 0.5rem',
-                            borderRadius: '4px',
-                            background: 'rgba(16, 185, 129, 0.95)',
-                            color: '#ffffff'
-                          }}>
-                            ${d.baseRateM2}/m²
-                          </span>
                         </div>
 
                         <div style={{ padding: '0.85rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -515,7 +507,7 @@ export default function GateVisualizerQuote() {
                 </div>
 
                 <div style={{ marginTop: '1.75rem', display: 'flex', justifyContent: 'flex-end' }}>
-                  <button onClick={() => setStep(2)} className="btn btn-blue">
+                  <button onClick={() => goToStep(2)} className="btn btn-blue">
                     Next: Set Dimensions <ChevronRight size={18} />
                   </button>
                 </div>
@@ -527,7 +519,7 @@ export default function GateVisualizerQuote() {
               <div className="animate-fadeIn">
                 <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 2: Driveway Opening Dimensions</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.5rem' }}>
-                  Set your driveway opening. The fabrication price scales directly with your square meter size (${currentDesignObj.baseRateM2}/m²).
+                  Set your driveway opening. We custom engineer and fabricate every gate to your exact millimeter specifications.
                 </p>
 
                 {/* Width Slider */}
@@ -586,7 +578,7 @@ export default function GateVisualizerQuote() {
                   </div>
                 </div>
 
-                {/* Area & Base Fabrication Price Card */}
+                {/* Area Badge Card (No prices shown) */}
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -597,40 +589,32 @@ export default function GateVisualizerQuote() {
                   borderRadius: '12px',
                   color: 'var(--badge-blue-text)'
                 }}>
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.86rem', fontWeight: '700' }}>
-                      <Maximize2 size={16} />
-                      <span>Panel Area: <strong>{areaM2} m²</strong></span>
-                    </div>
-                    <div style={{ fontSize: '0.75rem', opacity: 0.85, marginTop: '0.15rem' }}>
-                      {currentDesignObj.name} @ ${currentDesignObj.baseRateM2}/m²
-                    </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.9rem', fontWeight: '700' }}>
+                    <Maximize2 size={18} />
+                    <span>Calculated Panel Surface Area: <strong>{areaM2} m²</strong></span>
                   </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', fontWeight: '800' }}>Fabrication Subtotal</div>
-                    <span style={{ fontWeight: '900', fontSize: '1.25rem', color: 'var(--accent-gold)' }}>
-                      ${calculatedFabrication.toLocaleString()}
-                    </span>
+                  <div style={{ fontSize: '0.82rem', fontWeight: '800', color: 'var(--accent-gold)' }}>
+                    Custom Yamanto Fabrication
                   </div>
                 </div>
 
                 <div style={{ marginTop: '1.75rem', display: 'flex', justifyContent: 'space-between' }}>
-                  <button onClick={() => setStep(1)} className="btn btn-outline-dark">
+                  <button onClick={() => goToStep(1)} className="btn btn-outline-dark">
                     <ChevronLeft size={18} /> Back
                   </button>
-                  <button onClick={() => setStep(3)} className="btn btn-blue">
-                    Next: Opening & Finish <ChevronRight size={18} />
+                  <button onClick={() => goToStep(3)} className="btn btn-blue">
+                    Next: Opening Hardware <ChevronRight size={18} />
                   </button>
                 </div>
               </div>
             )}
 
-            {/* STEP 3: Opening Mechanism & Colorbond Powdercoat */}
+            {/* STEP 3: Opening Hardware Kit */}
             {step === 3 && (
               <div className="animate-fadeIn">
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 3: Opening Hardware & Powdercoat Finish</h3>
+                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem', color: 'var(--text-heading)' }}>Step 3: Opening Hardware Kit</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                  Select your track or hinge hardware kit and architectural Colorbond powdercoat color.
+                  Select your track or hinge hardware kit for your driveway layout.
                 </p>
 
                 {/* Opening Mechanism */}
@@ -659,7 +643,6 @@ export default function GateVisualizerQuote() {
                         <div>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
                             <span style={{ fontSize: '1.4rem' }}>{o.icon}</span>
-                            <span style={{ fontSize: '0.78rem', fontWeight: '800', color: 'var(--accent-gold)' }}>+${o.hardwareCost}</span>
                           </div>
                           <h4 style={{ fontSize: '0.88rem', fontWeight: '800', color: isSelected ? 'var(--accent-gold-hover)' : 'var(--text-heading)', marginBottom: '0.2rem' }}>
                             {o.name}
@@ -673,40 +656,11 @@ export default function GateVisualizerQuote() {
                   })}
                 </div>
 
-                {/* Colorbond Color Selection */}
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.55rem' }}>
-                  Select Architectural Powdercoat Color:
-                </label>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 130px), 1fr))', gap: '0.55rem' }}>
-                  {COLORS.map((c) => {
-                    const isSelected = color === c.id;
-                    return (
-                      <div
-                        key={c.id}
-                        onClick={() => setColor(c.id)}
-                        style={{
-                          padding: '0.65rem',
-                          borderRadius: '8px',
-                          background: isSelected ? 'var(--accent-blue-light)' : 'var(--bg-card-subtle)',
-                          border: isSelected ? '2px solid var(--accent-blue)' : '1px solid var(--border-light)',
-                          cursor: 'pointer',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '0.5rem'
-                        }}
-                      >
-                        <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: c.hex, border: '1px solid var(--border-subtle)', flexShrink: 0 }} />
-                        <span style={{ fontSize: '0.78rem', color: 'var(--text-heading)', fontWeight: '700' }}>{c.name}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-
                 <div style={{ marginTop: '1.75rem', display: 'flex', justifyContent: 'space-between' }}>
-                  <button onClick={() => setStep(2)} className="btn btn-outline-dark">
+                  <button onClick={() => goToStep(2)} className="btn btn-outline-dark">
                     <ChevronLeft size={18} /> Back
                   </button>
-                  <button onClick={() => setStep(4)} className="btn btn-blue">
+                  <button onClick={() => goToStep(4)} className="btn btn-blue">
                     Next: Power & Motors <ChevronRight size={18} />
                   </button>
                 </div>
@@ -747,7 +701,6 @@ export default function GateVisualizerQuote() {
                         <div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.15rem' }}>
                             <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'var(--text-heading)', margin: 0 }}>{p.name}</h4>
-                            <span style={{ fontSize: '0.78rem', fontWeight: '800', color: 'var(--accent-gold)' }}>+${p.cost}</span>
                           </div>
                           <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0 }}>{p.desc}</p>
                         </div>
@@ -783,7 +736,6 @@ export default function GateVisualizerQuote() {
                         <div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.15rem' }}>
                             <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'var(--text-heading)', margin: 0 }}>{m.name}</h4>
-                            <span style={{ fontSize: '0.8rem', fontWeight: '900', color: 'var(--accent-blue)' }}>+${m.cost.toLocaleString()}</span>
                           </div>
                           <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0 }}>{m.desc}</p>
                         </div>
@@ -850,7 +802,6 @@ export default function GateVisualizerQuote() {
                         <div style={{ flex: 1 }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <span style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--text-heading)' }}>{acc.name}</span>
-                            <span style={{ fontSize: '0.75rem', fontWeight: '800', color: 'var(--accent-gold)' }}>+${acc.cost}</span>
                           </div>
                           <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>{acc.desc}</div>
                         </div>
@@ -860,27 +811,27 @@ export default function GateVisualizerQuote() {
                 </div>
 
                 <div style={{ marginTop: '1.75rem', display: 'flex', justifyContent: 'space-between' }}>
-                  <button onClick={() => setStep(3)} className="btn btn-outline-dark">
+                  <button onClick={() => goToStep(3)} className="btn btn-outline-dark">
                     <ChevronLeft size={18} /> Back
                   </button>
-                  <button onClick={() => setStep(5)} className="btn btn-blue">
-                    Review Itemized Quote <ChevronRight size={18} />
+                  <button onClick={() => goToStep(5)} className="btn btn-blue">
+                    Review Customised Quote <ChevronRight size={18} />
                   </button>
                 </div>
               </div>
             )}
 
-            {/* STEP 5: Itemized Proposal & Free Quote Submission */}
+            {/* STEP 5: Itemized Proposal & Free Site Visit Submission */}
             {step === 5 && (
               <div className="animate-fadeIn">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <h3 style={{ fontSize: '1.35rem', color: 'var(--text-heading)', margin: 0 }}>Step 5: Lock In Your Itemized Quote</h3>
-                  <span style={{ fontSize: '1.2rem', fontWeight: '900', color: 'var(--accent-gold)' }}>
-                    Total: {formattedTotal}
+                  <h3 style={{ fontSize: '1.35rem', color: 'var(--text-heading)', margin: 0 }}>Step 5: Lock In Your Estimate</h3>
+                  <span style={{ fontSize: '1.1rem', fontWeight: '900', color: 'var(--accent-gold)' }}>
+                    Total: {formattedRange}
                   </span>
                 </div>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                  Submit your custom specification to our engineering workshop for a comprehensive, obligation-free proposal and free on-site laser measure.
+                  Submit your custom specification to our engineering workshop for a comprehensive, obligation-free proposal and free on-site visit.
                 </p>
 
                 {isSubmitted ? (
@@ -890,7 +841,7 @@ export default function GateVisualizerQuote() {
                     </div>
                     <h4 style={{ fontSize: '1.3rem', color: 'var(--badge-green-text)', marginBottom: '0.4rem' }}>Quote Request Received!</h4>
                     <p style={{ color: 'var(--text-main)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                      Thank you <strong>{formData.fullName}</strong>. Our senior fabrication team has received your <strong>{Math.round(width*1000)}mm × {Math.round(height*1000)}mm {currentDesignObj.name}</strong> specification (Estimated at <strong>{formattedTotal}</strong>) and will contact you promptly to confirm your free on-site measure.
+                      Thank you <strong>{formData.fullName}</strong>. Our senior fabrication team has received your <strong>{Math.round(width*1000)}mm × {Math.round(height*1000)}mm {currentDesignObj.name}</strong> specification (Estimated range: <strong>{formattedRange}</strong>) and will contact you promptly to confirm your free on-site visit.
                     </p>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                       <a href={COMPANY_INFO.tel} className="btn btn-gold" style={{ width: '100%', maxWidth: '320px' }}>
@@ -963,12 +914,17 @@ export default function GateVisualizerQuote() {
 
                     <div style={{ marginTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
-                        <button type="button" onClick={() => setStep(4)} className="btn btn-outline-dark">
+                        <button type="button" onClick={() => goToStep(4)} className="btn btn-outline-dark">
                           <ChevronLeft size={17} /> Back
                         </button>
-                        <button type="submit" className="btn btn-blue" style={{ flex: '1 1 auto' }} disabled={isSubmitting}>
+                        <button 
+                          type="submit" 
+                          className="btn btn-blue" 
+                          style={{ flex: '1 1 auto', fontWeight: '800', letterSpacing: '0.02em' }} 
+                          disabled={isSubmitting}
+                        >
                           {isSubmitting ? <Loader2 size={17} className="animate-spin" /> : <Send size={17} />}
-                          Submit for Free Laser Measure & Quote
+                          SUBMIT FOR A FREE SITE VISIT
                         </button>
                       </div>
 
@@ -985,7 +941,7 @@ export default function GateVisualizerQuote() {
                             await createStripeCheckout({
                               amount: 500,
                               title: `Custom ${currentDesignObj.name} Production Deposit ($500)`,
-                              description: `${Math.round(width*1000)}mm x ${Math.round(height*1000)}mm ${currentDesignObj.name} (${currentOpeningObj.name}) - Total Est: ${formattedTotal} - For ${formData.fullName}`,
+                              description: `${Math.round(width*1000)}mm x ${Math.round(height*1000)}mm ${currentDesignObj.name} (${currentOpeningObj.name}) - Total Est: ${formattedRange} - For ${formData.fullName}`,
                               customerEmail: formData.email,
                               customerName: formData.fullName,
                               customerPhone: formData.phone,
@@ -995,11 +951,10 @@ export default function GateVisualizerQuote() {
                                 widthMm: (width * 1000).toString(),
                                 heightMm: (height * 1000).toString(),
                                 areaM2,
-                                color: COLORS.find(c => c.id === color)?.name,
                                 powerSupply: currentPowerObj.name,
                                 motor: currentMotorObj.name,
                                 timeline: currentTimelineObj.name,
-                                estimatedTotal: formattedTotal,
+                                estimatedTotal: formattedRange,
                                 suburb: formData.suburb,
                                 notes: formData.notes,
                                 purpose: 'production_deposit'
@@ -1034,7 +989,7 @@ export default function GateVisualizerQuote() {
                         )}
                       </button>
                       <div style={{ textAlign: 'center', fontSize: '0.72rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}>
-                        <Lock size={11} /> 100% Refundable prior to on-site laser measure • 256-Bit SSL Encrypted
+                        <Lock size={11} /> 100% Refundable prior to on-site visit • 256-Bit SSL Encrypted
                       </div>
                     </div>
                   </form>
@@ -1043,130 +998,192 @@ export default function GateVisualizerQuote() {
             )}
           </div>
 
-          {/* Right Column: Live Interactive Blueprint & Itemized Price Summary Card */}
+          {/* Right Column: Instant Quote Visualisation (Description & Quantity Layout matching Page 10) */}
           <div style={{ width: '100%' }}>
             <div className="card-themed" style={{ padding: 'clamp(1.25rem, 3.5vw, 1.75rem)', border: '1.5px solid var(--border-light)', background: 'var(--bg-card)', boxShadow: 'var(--shadow-lg)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                <span style={{ fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--accent-gold)' }}>
-                  LIVE COST BREAKDOWN
-                </span>
-                <span className="badge-tag badge-green" style={{ margin: 0, fontSize: '0.72rem', padding: '0.3rem 0.65rem' }}>
-                  Yamanto Workshop Direct
-                </span>
+              
+              <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-heading)', margin: 0 }}>
+                  Instant Gate Quotes - Now
+                </h3>
               </div>
 
-              {/* Selected Design Real Photo Preview */}
-              <div style={{
-                borderRadius: '10px',
-                overflow: 'hidden',
-                position: 'relative',
-                height: '140px',
-                marginBottom: '1.25rem',
-                border: '1.5px solid var(--border-light)',
-                background: '#090e1a'
+              {/* Table Header: Description & Quantity */}
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'center', 
+                borderBottom: '2px solid var(--border-light)', 
+                paddingBottom: '0.5rem', 
+                marginBottom: '0.75rem',
+                fontSize: '0.85rem',
+                fontWeight: '800',
+                color: 'var(--text-heading)'
               }}>
-                <img 
-                  src={currentDesignObj.image} 
-                  alt={currentDesignObj.name}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-                <div style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  padding: '0.4rem 0.75rem',
-                  background: 'linear-gradient(transparent, rgba(9, 14, 26, 0.95))',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
-                }}>
-                  <span style={{ fontSize: '0.76rem', color: '#ffffff', fontWeight: '800' }}>
-                    {currentDesignObj.name}
-                  </span>
-                  <span style={{ fontSize: '0.7rem', color: '#fbbf24', fontWeight: '700' }}>
-                    {Math.round(width * 1000)}mm × {Math.round(height * 1000)}mm
-                  </span>
-                </div>
+                <span>Description</span>
+                <span>Quantity</span>
               </div>
 
-              {/* Itemized Calculation Summary */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.82rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '1rem', marginBottom: '1rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>
-                    Gate Fabrication ({areaM2} m² @ ${currentDesignObj.baseRateM2}/m²):
-                  </span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>
-                    ${calculatedFabrication.toLocaleString()}
-                  </span>
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>
-                    {currentOpeningObj.name} Hardware:
-                  </span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>
-                    +${calculatedHardware.toLocaleString()}
-                  </span>
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>
-                    {currentPowerObj.name}:
-                  </span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>
-                    +${calculatedPower.toLocaleString()}
-                  </span>
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>
-                    {currentMotorObj.name}:
-                  </span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>
-                    +${calculatedMotor.toLocaleString()}
-                  </span>
-                </div>
-
-                {calculatedAccessories > 0 && (
-                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
-                    <span style={{ color: 'var(--text-muted)' }}>
-                      Selected Smart Add-ons:
-                    </span>
-                    <span style={{ color: 'var(--text-heading)', fontWeight: '700', textAlign: 'right' }}>
-                      +${calculatedAccessories.toLocaleString()}
+              {/* Selected Items List with Quantity 1 */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '1.25rem' }}>
+                {/* 1. DESIGNS */}
+                <div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: '800', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.04em', marginBottom: '0.35rem' }}>
+                    DESIGNS
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                      <img 
+                        src={currentDesignObj.image} 
+                        alt={currentDesignObj.name} 
+                        style={{ width: '42px', height: '36px', objectFit: 'cover', borderRadius: '4px', border: '1px solid var(--border-light)' }} 
+                      />
+                      <span style={{ fontSize: '0.84rem', fontWeight: '700', color: 'var(--text-heading)' }}>
+                        {currentDesignObj.name}
+                      </span>
+                    </div>
+                    <span style={{ fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', minWidth: '20px', textAlign: 'right' }}>
+                      1
                     </span>
                   </div>
-                )}
+                </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '0.35rem', borderTop: '1px dashed var(--border-light)' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Powdercoat Finish:</span>
-                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>{COLORS.find(c => c.id === color)?.name} (Included)</span>
+                {/* 2. Gate Type */}
+                <div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: '800', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.04em', marginBottom: '0.2rem' }}>
+                    Gate Type
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: '0.82rem', color: 'var(--text-main)' }}>
+                      {currentOpeningObj.name}
+                    </span>
+                    <span style={{ fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', minWidth: '20px', textAlign: 'right' }}>
+                      1
+                    </span>
+                  </div>
+                </div>
+
+                {/* 3. Gate Size */}
+                <div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: '800', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.04em', marginBottom: '0.2rem' }}>
+                    Gate Size
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: '0.82rem', color: 'var(--text-main)' }}>
+                      {Math.round(width * 1000)}mm (W) × {Math.round(height * 1000)}mm (H) ({areaM2} m²)
+                    </span>
+                    <span style={{ fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', minWidth: '20px', textAlign: 'right' }}>
+                      1
+                    </span>
+                  </div>
+                </div>
+
+                {/* 4. Power Supply */}
+                <div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: '800', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.04em', marginBottom: '0.2rem' }}>
+                    Power Supply
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: '0.82rem', color: 'var(--text-main)' }}>
+                      {currentPowerObj.name}
+                    </span>
+                    <span style={{ fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', minWidth: '20px', textAlign: 'right' }}>
+                      1
+                    </span>
+                  </div>
+                </div>
+
+                {/* 5. Automation Type */}
+                <div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: '800', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.04em', marginBottom: '0.2rem' }}>
+                    Automation Type
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: '0.82rem', color: 'var(--text-main)' }}>
+                      {currentMotorObj.name}
+                    </span>
+                    <span style={{ fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', minWidth: '20px', textAlign: 'right' }}>
+                      1
+                    </span>
+                  </div>
+                </div>
+
+                {/* 6. Project Readiness */}
+                <div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: '800', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.04em', marginBottom: '0.2rem' }}>
+                    What stage are you at for this project?
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: '0.82rem', color: 'var(--text-main)' }}>
+                      {currentTimelineObj.name}
+                    </span>
+                    <span style={{ fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', minWidth: '20px', textAlign: 'right' }}>
+                      1
+                    </span>
+                  </div>
+                </div>
+
+                {/* 7. Accessories (if any selected) */}
+                {accessories.length > 0 && accessories.map((accId) => {
+                  const accObj = ACCESSORIES.find(a => a.id === accId);
+                  if (!accObj) return null;
+                  return (
+                    <div key={accId}>
+                      <div style={{ fontSize: '0.72rem', fontWeight: '800', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.04em', marginBottom: '0.2rem' }}>
+                        Accessory / Add-on
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ fontSize: '0.82rem', color: 'var(--text-main)' }}>
+                          {accObj.name}
+                        </span>
+                        <span style={{ fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-heading)', minWidth: '20px', textAlign: 'right' }}>
+                          1
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Subtotal, Tax 10%, and Total Price */}
+              <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '1rem', marginBottom: '1.25rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.88rem', marginBottom: '0.4rem' }}>
+                  <span style={{ color: 'var(--text-muted)' }}>Subtotal:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>${subtotal.toLocaleString()}</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.88rem', marginBottom: '0.65rem' }}>
+                  <span style={{ color: 'var(--text-muted)' }}>TAX 10%:</span>
+                  <span style={{ color: 'var(--text-heading)', fontWeight: '700' }}>${taxAmount.toLocaleString()}</span>
+                </div>
+                <div style={{ 
+                  display: 'flex', 
+                  justifyContent: 'space-between', 
+                  alignItems: 'baseline', 
+                  borderTop: '2px solid var(--border-light)', 
+                  paddingTop: '0.75rem',
+                  gap: '0.5rem'
+                }}>
+                  <span style={{ fontSize: '1.05rem', fontWeight: '900', color: 'var(--text-heading)' }}>
+                    Total Price:
+                  </span>
+                  <span style={{ fontSize: 'clamp(1.15rem, 2.5vw, 1.45rem)', fontWeight: '900', color: 'var(--accent-gold)', letterSpacing: '-0.02em', textAlign: 'right' }}>
+                    {formattedRange}
+                  </span>
                 </div>
               </div>
 
-              {/* Dynamic Live Estimated Total Card */}
+              {/* Mandatory Estimate Disclaimer Note (From Page 10 of PDF) */}
               <div style={{
-                background: 'var(--badge-gold-bg)',
-                border: '2px solid var(--accent-gold)',
-                borderRadius: '12px',
-                padding: '1.15rem 1rem',
-                textAlign: 'center',
-                marginBottom: '1rem',
-                boxShadow: '0 4px 14px rgba(251, 191, 36, 0.15)'
+                background: 'var(--bg-card-subtle)',
+                border: '1px solid var(--border-light)',
+                borderRadius: '10px',
+                padding: '0.85rem',
+                fontSize: '0.75rem',
+                color: 'var(--text-muted)',
+                lineHeight: 1.55,
+                marginBottom: '1rem'
               }}>
-                <div style={{ fontSize: '0.75rem', color: 'var(--badge-gold-text)', fontWeight: '800', marginBottom: '0.2rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  Estimated Factory Direct Price:
-                </div>
-                <div style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', fontWeight: '900', color: 'var(--accent-gold)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-                  {formattedTotal}
-                </div>
-                <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: '600', marginTop: '0.25rem' }}>
-                  *Inc. GST, fabrication, track hardware & automation kit
-                </div>
-                <div style={{ fontSize: '0.76rem', color: 'var(--badge-green-text)', fontWeight: '700', marginTop: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.3rem' }}>
-                  <Check size={14} /> 100% Free On-Site Laser Measure & Fixed Quote
-                </div>
+                <strong>Please Note:</strong> Quote provided is an estimate only and is subject to site inspection - pricing may vary, this is not a firm quote but a pricing tool for budgeting. We offer individual site quotes for free to ensure you have a 100% firm quote to move forward with.
               </div>
 
               {/* Trust Guarantees Box */}
@@ -1180,6 +1197,7 @@ export default function GateVisualizerQuote() {
                   <span>Yamanto Factory Direct (Zero Middleman Markups)</span>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

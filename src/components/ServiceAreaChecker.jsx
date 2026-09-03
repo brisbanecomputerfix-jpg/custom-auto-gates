@@ -67,7 +67,7 @@ export default function ServiceAreaChecker({ onOpenContact, onNavigateSuburbs })
           </span>
           <h2 className="section-title">
             We Service Your Suburb Daily <br />
-            <span className="gradient-text-gold">Free On-Site Laser Measure & Site Assessment</span>
+            <span className="gradient-text-gold">Free Site Visit</span>
           </h2>
           <p className="section-subtitle">
             Our mobile technicians check ground levels, driveway slope, boundary clearances, and power availability across all SEQ regions.
@@ -203,7 +203,7 @@ export default function ServiceAreaChecker({ onOpenContact, onNavigateSuburbs })
               </span>
             </div>
             <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-              Free mobile laser measure & site inspection
+              Free mobile site visit & site inspection
             </span>
           </div>
 

@@ -89,12 +89,30 @@ export default function MotorShowcase({ onOpenQuote }) {
 
                 {/* Features Checklist */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginBottom: '1.25rem' }}>
-                  {motor.features.map((feat, fIdx) => (
-                    <div key={fIdx} style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.78rem', color: 'var(--text-main)' }}>
-                      <CheckCircle2 size={13} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
+                  {motor.features.map((feat, fIdx) => {
+                    const isOptional = feat.toLowerCase().includes('optional upgrade');
+                    const cleanText = feat.replace(/\(optional upgrade\)/i, '').trim();
+                    return (
+                      <div key={fIdx} style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.78rem', color: 'var(--text-main)' }}>
+                        <CheckCircle2 size={13} style={{ color: isOptional ? '#ef4444' : 'var(--accent-emerald)', flexShrink: 0 }} />
+                        <span>{cleanText}</span>
+                        {isOptional && (
+                          <span style={{
+                            fontSize: '0.68rem',
+                            fontWeight: '800',
+                            color: '#ef4444',
+                            background: 'rgba(239, 68, 68, 0.1)',
+                            border: '1px solid rgba(239, 68, 68, 0.3)',
+                            padding: '0.1rem 0.4rem',
+                            borderRadius: '4px',
+                            whiteSpace: 'nowrap'
+                          }}>
+                            (optional upgrade)
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -126,8 +144,11 @@ export default function MotorShowcase({ onOpenQuote }) {
               <Smartphone size={22} />
             </div>
             <div>
-              <h3 style={{ color: 'var(--text-heading)', fontSize: '1rem', fontWeight: '800' }}>Smartphone App Access</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>Open & check your gate from anywhere on iOS & Android.</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
+                <h3 style={{ color: 'var(--text-heading)', fontSize: '0.98rem', fontWeight: '800', margin: 0 }}>Smartphone App Access</h3>
+                <span style={{ fontSize: '0.68rem', fontWeight: '800', color: '#ef4444', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', padding: '0.05rem 0.35rem', borderRadius: '4px' }}>(optional upgrade)</span>
+              </div>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', margin: '0.2rem 0 0 0' }}>Open & check your gate from anywhere on iOS & Android.</p>
             </div>
           </div>
 
@@ -136,8 +157,11 @@ export default function MotorShowcase({ onOpenQuote }) {
               <BatteryCharging size={22} />
             </div>
             <div>
-              <h3 style={{ color: 'var(--text-heading)', fontSize: '1rem', fontWeight: '800' }}>Battery Backup Built-In</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>Never get stuck in a blackout with integrated backup batteries.</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
+                <h3 style={{ color: 'var(--text-heading)', fontSize: '0.98rem', fontWeight: '800', margin: 0 }}>Battery Backup Built-In</h3>
+                <span style={{ fontSize: '0.68rem', fontWeight: '800', color: '#ef4444', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', padding: '0.05rem 0.35rem', borderRadius: '4px' }}>(optional upgrade)</span>
+              </div>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', margin: '0.2rem 0 0 0' }}>Never get stuck in a blackout with integrated backup batteries.</p>
             </div>
           </div>
 
@@ -146,8 +170,11 @@ export default function MotorShowcase({ onOpenQuote }) {
               <Sun size={22} />
             </div>
             <div>
-              <h3 style={{ color: 'var(--text-heading)', fontSize: '1rem', fontWeight: '800' }}>100% Solar Compatible</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>Zero power cables required for rural & long driveways.</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
+                <h3 style={{ color: 'var(--text-heading)', fontSize: '0.98rem', fontWeight: '800', margin: 0 }}>100% Solar Compatible</h3>
+                <span style={{ fontSize: '0.68rem', fontWeight: '800', color: '#ef4444', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', padding: '0.05rem 0.35rem', borderRadius: '4px' }}>(optional upgrade)</span>
+              </div>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', margin: '0.2rem 0 0 0' }}>Zero power cables required for rural & long driveways.</p>
             </div>
           </div>
 

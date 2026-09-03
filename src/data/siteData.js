@@ -3591,7 +3591,12 @@ export const MOTOR_BRANDS = [
     speed: "Standard 12–16 sec opening",
     warranty: "3 Years",
     bestFor: "Standard residential sliding & swing driveways",
-    features: ["Heavy-duty gear assembly", "Integrated battery backup", "Obstruction detection sensors", "Includes 2 long-range remotes"]
+    features: [
+      "Heavy-duty gear assembly",
+      "Includes 2 long-range remotes",
+      "Integrated battery backup (optional upgrade)",
+      "Obstruction detection sensors (optional upgrade)"
+    ]
   },
   {
     name: "Premium Motor",
@@ -3600,7 +3605,12 @@ export const MOTOR_BRANDS = [
     speed: "Ultra-fast high speed opening",
     warranty: "3 Years",
     bestFor: "Busy families, prestige homes, and high-security access",
-    features: ["Smartphone iOS & Android app control", "Ultra-fast whisper-quiet operation", "Multi-user access management", "Dual battery backup system"]
+    features: [
+      "Ultra-fast whisper-quiet operation",
+      "Multi-user access management",
+      "Smartphone iOS & Android app control (optional upgrade)",
+      "Dual battery backup system (optional upgrade)"
+    ]
   },
   {
     name: "Solar Motor",
@@ -3609,7 +3619,12 @@ export const MOTOR_BRANDS = [
     speed: "Smooth solar powered opening",
     warranty: "3 Years",
     bestFor: "Acreage, farms, rural gates & long driveways without mains power",
-    features: ["Zero grid electricity bills", "High-capacity deep-cycle battery bank", "Ultra-low standby power draw", "Long-range 100m+ encrypted remotes"]
+    features: [
+      "Zero grid electricity bills",
+      "Long-range 100m+ encrypted remotes",
+      "High-capacity deep-cycle battery bank",
+      "Heavy-duty 50W solar panel kit (optional upgrade)"
+    ]
   },
   {
     name: "Commercial Motor",
@@ -3618,7 +3633,12 @@ export const MOTOR_BRANDS = [
     speed: "Adjustable commercial speed",
     warranty: "5 Years",
     bestFor: "Commercial business parks, strata complexes, and industrial sites",
-    features: ["100% continuous duty cycle", "Anti-tailgating loop detector support", "Emergency manual release & fire switch", "Access control & intercom integration"]
+    features: [
+      "100% continuous duty cycle",
+      "Emergency manual release & fire switch",
+      "Anti-tailgating loop detector support (optional upgrade)",
+      "Access control & intercom integration (optional upgrade)"
+    ]
   }
 ];
 

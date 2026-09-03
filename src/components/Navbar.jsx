@@ -429,29 +429,6 @@ export default function Navbar({
                 )}
               </li>
 
-              {/* 2. Trade & Builders Portal */}
-              <li>
-                <button 
-                  className="nav-link-btn" 
-                  onClick={() => handleRouteClick('trade')}
-                  style={{
-                    color: currentPage === 'trade' ? 'var(--accent-gold)' : 'var(--text-heading)',
-                    fontFamily: 'Outfit, sans-serif',
-                    fontWeight: currentPage === 'trade' ? '800' : '700',
-                    fontSize: '0.94rem',
-                    padding: '0.5rem 0.25rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.35rem',
-                    transition: 'color 0.2s ease'
-                  }}
-                >
-                  <HardHat size={15} style={{ color: 'var(--accent-gold)' }} />
-                  <span>Trade & Builders</span>
-                </button>
-              </li>
-
               {/* 3. Service and Repairs */}
               <li>
                 <button 
@@ -760,28 +737,6 @@ export default function Navbar({
                       Verified Reviews & Case Studies (4.9★)
                     </span>
                     <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
-                  </button>
-
-                  <button 
-                    className="mobile-nav-item" 
-                    onClick={() => handleRouteClick('trade')}
-                    style={{ color: currentPage === 'trade' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
-                  >
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-                      <HardHat size={17} style={{ color: 'var(--accent-gold)' }} />
-                      Trade & Builders Portal (Wholesale)
-                    </span>
-                    <span style={{
-                      backgroundColor: 'rgba(245, 158, 11, 0.2)',
-                      color: '#fbbf24',
-                      fontSize: '0.7rem',
-                      fontWeight: '800',
-                      padding: '0.15rem 0.45rem',
-                      borderRadius: '4px',
-                      border: '1px solid rgba(251, 191, 36, 0.4)'
-                    }}>
-                      7–10 Days
-                    </span>
                   </button>
 
                   <button 

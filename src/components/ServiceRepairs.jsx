@@ -263,101 +263,156 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))',
             gap: '1.75rem',
             marginBottom: '3rem'
           }}>
             {/* Residential Call Out Card */}
-            <div className="card-light" style={{ padding: '2rem', borderTop: '4px solid #d97706', position: 'relative' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                  <Home size={22} style={{ color: '#d97706' }} />
-                  <h3 style={{ fontSize: '1.35rem', fontWeight: '800', color: '#0f172a' }}>Residential Call Out</h3>
+            <div 
+              className="card-light" 
+              onClick={() => {
+                setPropertyType('residential');
+                document.getElementById('book-service')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              style={{ 
+                padding: '2rem', 
+                borderTop: '4px solid #d97706', 
+                position: 'relative', 
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 12px 24px -6px rgba(217, 119, 6, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'none';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                    <Home size={22} style={{ color: '#d97706' }} />
+                    <h3 style={{ fontSize: '1.35rem', fontWeight: '800', color: '#0f172a' }}>Residential Call Out</h3>
+                  </div>
+                  <span className="badge-tag badge-gold">$250 Flat</span>
                 </div>
-                <span className="badge-tag badge-gold">$250 Flat</span>
+                <div style={{ fontSize: '2.25rem', fontWeight: '900', color: '#0f172a', marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>
+                  $250 <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: '600' }}>inc GST</span>
+                </div>
+                <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1.25rem' }}>
+                  Upfront booking fee covering technician travel across Greater Brisbane, Ipswich & Logan + up to 30 minutes of diagnostic time.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.85rem', color: '#334155' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
+                    <span>Includes 30 mins on-site diagnostics</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
+                    <span>Additional time: $30 per 15-min ($120/hr)</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
+                    <span>Response: 10 – 15 business days standard</span>
+                  </div>
+                </div>
               </div>
-              <div style={{ fontSize: '2.25rem', fontWeight: '900', color: '#0f172a', marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>
-                $250 <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: '600' }}>inc GST</span>
-              </div>
-              <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1.25rem' }}>
-                Upfront booking fee covering technician travel across Greater Brisbane, Ipswich & Logan + up to 30 minutes of diagnostic time.
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.85rem', color: '#334155' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
-                  <span>Includes 30 mins on-site diagnostics</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
-                  <span>Additional time: $30 per 15-min ($120/hr)</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
-                  <span>Response: 10 – 15 business days standard</span>
-                </div>
-              </div>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setPropertyType('residential');
+                  document.getElementById('book-service')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="btn btn-gold btn-md"
+                style={{ width: '100%', marginTop: '1.75rem', borderRadius: '10px', justifyContent: 'center' }}
+              >
+                <Calendar size={17} /> Book Residential Call Out ($250)
+              </button>
             </div>
 
             {/* Commercial Call Out Card */}
-            <div className="card-light" style={{ padding: '2rem', borderTop: '4px solid #2563eb', position: 'relative' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                  <Building2 size={22} style={{ color: '#2563eb' }} />
-                  <h3 style={{ fontSize: '1.35rem', fontWeight: '800', color: '#0f172a' }}>Commercial & Industrial</h3>
+            <div 
+              className="card-light" 
+              onClick={() => {
+                setPropertyType('commercial');
+                document.getElementById('book-service')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              style={{ 
+                padding: '2rem', 
+                borderTop: '4px solid #2563eb', 
+                position: 'relative', 
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 12px 24px -6px rgba(37, 99, 235, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'none';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                    <Building2 size={22} style={{ color: '#2563eb' }} />
+                    <h3 style={{ fontSize: '1.35rem', fontWeight: '800', color: '#0f172a' }}>Commercial & Industrial</h3>
+                  </div>
+                  <span className="badge-tag badge-blue">$350 Flat</span>
                 </div>
-                <span className="badge-tag badge-blue">$350 Flat</span>
+                <div style={{ fontSize: '2.25rem', fontWeight: '900', color: '#0f172a', marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>
+                  $350 <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: '600' }}>inc GST</span>
+                </div>
+                <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1.25rem' }}>
+                  Heavy-duty commercial boom gates, industrial cantilever systems, access control card readers, and strata car park installations.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.85rem', color: '#334155' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
+                    <span>Includes 30 mins industrial diagnostics</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
+                    <span>Additional time: $30 per 15-min ($120/hr)</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
+                    <span>High-duty cycle motors, loops & barrier arms</span>
+                  </div>
+                </div>
               </div>
-              <div style={{ fontSize: '2.25rem', fontWeight: '900', color: '#0f172a', marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>
-                $350 <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: '600' }}>inc GST</span>
-              </div>
-              <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1.25rem' }}>
-                Heavy-duty commercial boom gates, industrial cantilever systems, access control card readers, and strata car park installations.
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.85rem', color: '#334155' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
-                  <span>Includes 30 mins industrial diagnostics</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
-                  <span>Additional time: $30 per 15-min ($120/hr)</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
-                  <span>High-duty cycle motors, loops & barrier arms</span>
-                </div>
-              </div>
-            </div>
 
-            {/* Warranty Coverage Card */}
-            <div className="card-light" style={{ padding: '2rem', borderTop: '4px solid #10b981', position: 'relative' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                  <ShieldCheck size={22} style={{ color: '#10b981' }} />
-                  <h3 style={{ fontSize: '1.35rem', fontWeight: '800', color: '#0f172a' }}>Warranty Terms</h3>
-                </div>
-                <span className="badge-tag badge-green">Genuine Support</span>
-              </div>
-              <div style={{ fontSize: '2.25rem', fontWeight: '900', color: '#0f172a', marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>
-                12 Mo <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: '600' }}>Labour Warranty</span>
-              </div>
-              <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1.25rem' }}>
-                Labour is covered for 12 months from installation. If outside 12 months, call out fee applies, but genuine manufacturer parts remain 100% free if within parts warranty.
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.85rem', color: '#334155' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
-                  <span>10-Year Factory Structural Warranty</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
-                  <span>Return visit to fit warranty parts is FREE</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <CheckCircle2 size={16} style={{ color: '#10b981', flexShrink: 0 }} />
-                  <span>Fencing labour warranty: 6 months</span>
-                </div>
-              </div>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setPropertyType('commercial');
+                  document.getElementById('book-service')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="btn btn-outline-dark btn-md"
+                style={{ 
+                  width: '100%', 
+                  marginTop: '1.75rem', 
+                  borderRadius: '10px', 
+                  justifyContent: 'center',
+                  borderColor: '#2563eb',
+                  color: '#2563eb',
+                  background: '#eff6ff'
+                }}
+              >
+                <Calendar size={17} /> Book Commercial Call Out ($350)
+              </button>
             </div>
           </div>
 
