@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { createCheckoutSession, createPaymentIntent } from './stripeHandler.js';
 import { sendLeadNotification } from './emailHandler.js';
+import { generateQuotePdf } from './pdfGenerator.js';
 
 dotenv.config();
 
@@ -77,8 +78,8 @@ app.post('/api/contact', async (req, res) => {
       name: String(name).trim().substring(0, 100),
       phone: String(phone).trim().substring(0, 30),
       email: email ? String(email).trim().toLowerCase().substring(0, 120) : '',
-      address: address ? String(address).trim().substring(0, 200) : '',
-      suburb: suburb ? String(suburb).trim().substring(0, 80) : '',
+      address: address ? String(address).trim().substring(0, 200) : (suburb ? String(suburb).trim().substring(0, 200) : ''),
+      suburb: suburb ? String(suburb).trim().substring(0, 80) : (address ? String(address).trim().substring(0, 80) : ''),
       serviceType: serviceType ? String(serviceType).trim().substring(0, 100) : 'General Inquiry',
       preferredTime: preferredTime ? String(preferredTime).trim().substring(0, 50) : '',
       notes: notes ? String(notes).trim().substring(0, 1000) : '',
@@ -130,28 +131,81 @@ app.post('/api/test-email', async (req, res) => {
 // Quote Estimator Lead Endpoint
 app.post('/api/quote', async (req, res) => {
   try {
-    const { name, phone, email, suburb, gateType, width, height, motor, material, estimatedTotal, notes } = req.body;
+    const {
+      name,
+      phone,
+      email,
+      address,
+      suburb,
+      design,
+      designImage,
+      gateType,
+      widthMm,
+      heightMm,
+      areaM2,
+      powerSupply,
+      motor,
+      timeline,
+      accessories,
+      subtotal,
+      tax,
+      totalPriceRange,
+      estimatedTotal,
+      notes
+    } = req.body;
 
-    if (!phone) {
-      return res.status(400).json({ error: 'Phone number is required to send your quote.' });
+    if (!phone && !email) {
+      return res.status(400).json({ error: 'Phone number or email is required to send your quote.' });
+    }
+
+    const fullAddress = (address || suburb || '').trim();
+
+    // Generate Itemized PDF Quote breakdown
+    let pdfBuffer = null;
+    try {
+      pdfBuffer = await generateQuotePdf({
+        name: name ? String(name).trim() : 'Valued Customer',
+        phone: phone ? String(phone).trim() : '',
+        email: email ? String(email).trim() : '',
+        address: fullAddress,
+        design: design || 'Custom Fabricated Gate',
+        designImage,
+        gateType: gateType || 'Automatic Sliding Gate',
+        widthMm,
+        heightMm,
+        areaM2,
+        powerSupply,
+        motor,
+        timeline,
+        accessories,
+        subtotal,
+        tax,
+        totalPriceRange: totalPriceRange || estimatedTotal,
+        notes
+      });
+    } catch (pdfErr) {
+      console.error('Error generating quote PDF:', pdfErr.message);
     }
 
     const result = await sendLeadNotification({
       name: name ? String(name).trim().substring(0, 100) : 'Website Estimator User',
-      phone: String(phone).trim().substring(0, 30),
+      phone: phone ? String(phone).trim().substring(0, 30) : 'Not provided',
       email: email ? String(email).trim().toLowerCase().substring(0, 120) : '',
-      suburb: suburb ? String(suburb).trim().substring(0, 80) : 'Brisbane & SE QLD',
-      serviceType: `Gate Estimator: ${gateType || 'Custom Gate'} (${material || 'Aluminium'})`,
-      dimensions: width && height ? `${width}m Wide x ${height}m High` : undefined,
-      estimatedPrice: estimatedTotal ? `$${estimatedTotal} AUD (Estimator)` : undefined,
-      notes: `Motor: ${motor || 'Standard'}. ${notes ? `Additional notes: ${notes}` : ''}`,
+      address: fullAddress,
+      suburb: fullAddress || 'Brisbane & SE QLD',
+      serviceType: `Instant Quote: ${design || 'Custom Gate'} (${gateType || 'Sliding Gate'})`,
+      dimensions: widthMm && heightMm ? `${widthMm}mm W x ${heightMm}mm H (${areaM2 || ''} m²)` : undefined,
+      estimatedPrice: (totalPriceRange || estimatedTotal) ? `${totalPriceRange || estimatedTotal} (Estimator)` : undefined,
+      notes: `Motor: ${motor || 'Standard'}. Power: ${powerSupply || 'Standard'}. Timeline: ${timeline || 'Standard'}. ${accessories ? `Accessories: ${Array.isArray(accessories) ? accessories.join(', ') : accessories}. ` : ''}${notes ? `Notes: ${notes}` : ''}`,
       source: 'Gate Visualizer & Cost Estimator',
+      pdfBuffer,
       ip: req.ip,
     });
 
     res.json({
       success: true,
-      message: 'Quote inquiry received! Our workshop will send your itemised breakdown.',
+      message: 'Quote inquiry received! Itemized PDF breakdown generated and sent.',
+      hasPdf: !!pdfBuffer,
       ...result
     });
   } catch (error) {

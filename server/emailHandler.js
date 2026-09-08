@@ -15,10 +15,12 @@ export function saveLeadLocally(leadData) {
       const raw = fs.readFileSync(leadsFilePath, 'utf8');
       leads = JSON.parse(raw || '[]');
     }
+    const { pdfBuffer, ...cleanLeadData } = leadData;
     leads.unshift({
       id: `lead-${Date.now()}`,
       receivedAt: new Date().toISOString(),
-      ...leadData
+      hasPdf: !!pdfBuffer,
+      ...cleanLeadData
     });
     fs.writeFileSync(leadsFilePath, JSON.stringify(leads, null, 2), 'utf8');
   } catch (err) {
@@ -157,18 +159,30 @@ export async function sendLeadNotification(lead) {
     </div>
   `;
 
+  // Attach PDF if generated
+  const attachments = [];
+  if (lead.pdfBuffer) {
+    attachments.push({
+      filename: 'instant-gate-quotes.pdf',
+      content: lead.pdfBuffer,
+      contentType: 'application/pdf'
+    });
+  }
+
   // Send admin alert
   await transporter.sendMail({
     from: `"Custom Auto Gates Website" <${fromAddress}>`,
     to: notificationRecipient,
     replyTo: email || fromAddress,
-    subject: `🚨 New Gate Lead: ${name} (${suburb || 'Brisbane'}) - ${serviceType || 'Quote Request'}`,
+    subject: `🚨 New Gate Lead: ${name} (${address || suburb || 'Brisbane'}) - ${serviceType || 'Quote Request'}`,
     html: adminHtml,
+    attachments: attachments.length > 0 ? attachments : undefined
   });
 
   // 3. Optional Customer Confirmation Email (if valid email provided)
   if (email && email.includes('@')) {
     try {
+      const isInstantQuote = !!lead.pdfBuffer || (serviceType && serviceType.includes('Instant Quote'));
       const customerHtml = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e0e0e0;">
           <div style="background-color: #1a202c; padding: 20px 24px; border-radius: 6px 6px 0 0; text-align: center;">
@@ -179,13 +193,24 @@ export async function sendLeadNotification(lead) {
           </div>
 
           <div style="background-color: #ffffff; padding: 24px; border-radius: 0 0 6px 6px; border: 1px solid #e2e8f0; border-top: none;">
-            <h3 style="color: #1a202c; margin-top: 0;">Hi ${name || 'there'},</h3>
+            <h3 style="color: #1a202c; margin-top: 0;">Hello ${name || 'there'},</h3>
             <p style="color: #4a5568; line-height: 1.6; font-size: 15px;">
-              Thank you for contacting <strong>Custom Auto Gates & Fencing</strong>. We have received your inquiry for <strong>${serviceType || 'custom gate fabrication & installation'}</strong>.
+              Thank you for contacting <strong>Custom Auto Gates & Fencing</strong>. ${isInstantQuote 
+                ? 'Attached to this email is a PDF containing the itemized breakdown of your selected gate materials and instant estimate.' 
+                : `We have received your inquiry for <strong>${serviceType || 'custom gate fabrication & installation'}</strong>.`}
             </p>
+            ${address ? `
             <p style="color: #4a5568; line-height: 1.6; font-size: 15px;">
-              Our estimation and measure team is reviewing your project details. A fabrication specialist will contact you shortly on <strong>${phone}</strong> to confirm your free on-site measure and CAD quote.
+              <strong>Site Address:</strong> ${address}
+            </p>` : ''}
+            <p style="color: #4a5568; line-height: 1.6; font-size: 15px;">
+              Our estimation and measure team is reviewing your specification. A fabrication specialist will contact you shortly on <strong>${phone}</strong> to confirm your free on-site laser measure.
             </p>
+
+            ${isInstantQuote ? `
+            <div style="background-color: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 6px; padding: 14px 16px; margin: 18px 0; color: #1e40af; font-size: 14px;">
+              📄 <strong>PDF Attachment Included:</strong> Please check the attached document <code>instant-gate-quotes.pdf</code> for your complete itemized materials specification and pricing estimate.
+            </div>` : ''}
 
             <div style="background-color: #f7fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; margin: 20px 0;">
               <h4 style="margin: 0 0 10px 0; color: #2d3748; font-size: 14px; text-transform: uppercase;">Why Buy Factory Direct from Us?</h4>
@@ -200,6 +225,13 @@ export async function sendLeadNotification(lead) {
             <p style="color: #718096; font-size: 13px; line-height: 1.5; margin-top: 24px;">
               Need urgent assistance? Call our Yamanto office directly on <a href="tel:0731021801" style="color: #d4a359; font-weight: bold;">(07) 3102 1801</a>.
             </p>
+            <p style="color: #718096; font-size: 13px; line-height: 1.5; margin-top: 16px;">
+              Sincerely,<br>
+              <strong>Estimation Team</strong><br>
+              Custom Auto Gates Pty Ltd<br>
+              43 Belar Street, Yamanto QLD 4305<br>
+              (07) 3102 1801
+            </p>
           </div>
         </div>
       `;
@@ -207,8 +239,11 @@ export async function sendLeadNotification(lead) {
       await transporter.sendMail({
         from: `"Custom Auto Gates" <${fromAddress}>`,
         to: email,
-        subject: `Your Gate Measure & Quote Request Received - Custom Auto Gates`,
+        subject: isInstantQuote 
+          ? `Your Quote Request & Material Breakdown - Custom Auto Gates`
+          : `Your Gate Measure & Quote Request Received - Custom Auto Gates`,
         html: customerHtml,
+        attachments: attachments.length > 0 ? attachments : undefined
       });
     } catch (custErr) {
       console.warn('Customer confirmation email failed (non-critical):', custErr.message);

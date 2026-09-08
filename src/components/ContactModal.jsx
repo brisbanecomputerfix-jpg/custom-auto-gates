@@ -17,7 +17,7 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
     name: '',
     phone: '',
     email: '',
-    suburb: '',
+    address: '',
     serviceType: defaultGateStyle || 'sliding-gates',
     preferredTime: 'morning',
     notes: ''
@@ -41,7 +41,8 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
           name: formData.name,
           phone: formData.phone,
           email: formData.email,
-          suburb: formData.suburb,
+          address: formData.address,
+          suburb: formData.address,
           serviceType: formData.serviceType,
           preferredTime: formData.preferredTime,
           notes: formData.notes,
@@ -85,7 +86,7 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
               Site Visit Request Received!
             </h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', maxWidth: '480px', margin: '0 auto 1.5rem auto', lineHeight: 1.6 }}>
-              Thank you, <strong>{formData.name}</strong>. Our booking coordinator will call you on <strong>{formData.phone}</strong> within 2 business hours to schedule your free site visit and consultation in {formData.suburb || 'your area'}.
+              Thank you, <strong>{formData.name}</strong>. Our booking coordinator will call you on <strong>{formData.phone}</strong> within 2 business hours to schedule your free site visit and consultation at {formData.address || 'your property'}.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
               <a href={COMPANY_INFO.tel} className="btn btn-gold">
@@ -149,13 +150,13 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-heading)', fontWeight: '700', marginBottom: '0.3rem' }}>Property Suburb *</label>
+                  <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-heading)', fontWeight: '700', marginBottom: '0.3rem' }}>Full Site Address *</label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Paddington / Ipswich"
-                    value={formData.suburb}
-                    onChange={(e) => setFormData({ ...formData, suburb: e.target.value })}
+                    placeholder="e.g. 12 Smith Street, Paddington QLD 4064"
+                    value={formData.address}
+                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                     style={{ width: '100%', padding: '0.65rem', borderRadius: '8px', background: 'var(--input-bg)', border: '1.5px solid var(--input-border)', color: 'var(--input-text)', fontSize: '0.88rem' }}
                   />
                 </div>

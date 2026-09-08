@@ -43,12 +43,11 @@ export default function GateVisualizerQuote() {
     fullName: '',
     phone: '',
     email: '',
-    suburb: '',
+    address: '',
     notes: '',
     file: null
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isPayingDeposit, setIsPayingDeposit] = useState(false);
 
   // Helper to change step and smoothly scroll without page jumping or shrinking
   const goToStep = (newStep) => {
@@ -325,8 +324,10 @@ export default function GateVisualizerQuote() {
           name: formData.fullName,
           phone: formData.phone,
           email: formData.email,
-          suburb: formData.suburb,
+          address: formData.address,
+          suburb: formData.address,
           design: currentDesignObj.name,
+          designImage: currentDesignObj.image,
           gateType: currentOpeningObj.name,
           widthMm: Math.round(width * 1000),
           heightMm: Math.round(height * 1000),
@@ -334,8 +335,9 @@ export default function GateVisualizerQuote() {
           powerSupply: currentPowerObj.name,
           motor: currentMotorObj.name,
           timeline: currentTimelineObj.name,
-          accessories: accessories.map(a => ACCESSORIES.find(acc => acc.id === a)?.name).join(', '),
+          accessories: accessories.map(a => ACCESSORIES.find(acc => acc.id === a)?.name).filter(Boolean),
           estimatedTotal: formattedRange,
+          totalPriceRange: formattedRange,
           subtotal: `$${subtotal.toLocaleString()}`,
           tax: `$${taxAmount.toLocaleString()}`,
           notes: formData.notes
@@ -841,7 +843,7 @@ export default function GateVisualizerQuote() {
                     </div>
                     <h4 style={{ fontSize: '1.3rem', color: 'var(--badge-green-text)', marginBottom: '0.4rem' }}>Quote Request Received!</h4>
                     <p style={{ color: 'var(--text-main)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
-                      Thank you <strong>{formData.fullName}</strong>. Our senior fabrication team has received your <strong>{Math.round(width*1000)}mm × {Math.round(height*1000)}mm {currentDesignObj.name}</strong> specification (Estimated range: <strong>{formattedRange}</strong>) and will contact you promptly to confirm your free on-site visit.
+                      Thank you <strong>{formData.fullName}</strong>. Our senior fabrication team has received your <strong>{Math.round(width*1000)}mm × {Math.round(height*1000)}mm {currentDesignObj.name}</strong> specification (Estimated range: <strong>{formattedRange}</strong>). A copy of your itemized quote PDF has been sent to <strong>{formData.email}</strong>, and our team will contact you promptly to confirm your free on-site visit.
                     </p>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                       <a href={COMPANY_INFO.tel} className="btn btn-gold" style={{ width: '100%', maxWidth: '320px' }}>
@@ -889,13 +891,13 @@ export default function GateVisualizerQuote() {
                         />
                       </div>
                       <div>
-                        <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-main)', fontWeight: '600', marginBottom: '0.3rem' }}>Property Suburb *</label>
+                        <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-main)', fontWeight: '600', marginBottom: '0.3rem' }}>Full Site Address *</label>
                         <input
                           type="text"
                           required
-                          placeholder="e.g. Yamanto / Brisbane / Ipswich"
-                          value={formData.suburb}
-                          onChange={(e) => setFormData({ ...formData, suburb: e.target.value })}
+                          placeholder="e.g. 12 Smith Street, Yamanto QLD 4305"
+                          value={formData.address}
+                          onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                           style={{ width: '100%', padding: '0.7rem', fontSize: '0.9rem' }}
                         />
                       </div>
@@ -926,70 +928,6 @@ export default function GateVisualizerQuote() {
                           {isSubmitting ? <Loader2 size={17} className="animate-spin" /> : <Send size={17} />}
                           SUBMIT FOR A FREE SITE VISIT
                         </button>
-                      </div>
-
-                      {/* Optional Fast-Track Production Deposit via Stripe */}
-                      <button
-                        type="button"
-                        onClick={async () => {
-                          if (!formData.fullName || !formData.email) {
-                            alert('Please enter your Name and Email above before locking in your production deposit.');
-                            return;
-                          }
-                          setIsPayingDeposit(true);
-                          try {
-                            await createStripeCheckout({
-                              amount: 500,
-                              title: `Custom ${currentDesignObj.name} Production Deposit ($500)`,
-                              description: `${Math.round(width*1000)}mm x ${Math.round(height*1000)}mm ${currentDesignObj.name} (${currentOpeningObj.name}) - Total Est: ${formattedRange} - For ${formData.fullName}`,
-                              customerEmail: formData.email,
-                              customerName: formData.fullName,
-                              customerPhone: formData.phone,
-                              metadata: {
-                                design: currentDesignObj.name,
-                                openingType: currentOpeningObj.name,
-                                widthMm: (width * 1000).toString(),
-                                heightMm: (height * 1000).toString(),
-                                areaM2,
-                                powerSupply: currentPowerObj.name,
-                                motor: currentMotorObj.name,
-                                timeline: currentTimelineObj.name,
-                                estimatedTotal: formattedRange,
-                                suburb: formData.suburb,
-                                notes: formData.notes,
-                                purpose: 'production_deposit'
-                              }
-                            });
-                          } catch (err) {
-                            alert(err.message || 'Error connecting to Stripe.');
-                            setIsPayingDeposit(false);
-                          }
-                        }}
-                        disabled={isPayingDeposit}
-                        className="btn btn-gold btn-lg btn-pulse"
-                        style={{
-                          width: '100%',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gap: '0.55rem',
-                          padding: '0.9rem',
-                          fontWeight: '800',
-                          fontSize: '0.95rem'
-                        }}
-                      >
-                        {isPayingDeposit ? (
-                          <>
-                            <Loader2 size={18} className="animate-spin" /> Securing with Stripe...
-                          </>
-                        ) : (
-                          <>
-                            <CreditCard size={18} /> Lock In Queue & Pay $500 Deposit (Stripe Gateway)
-                          </>
-                        )}
-                      </button>
-                      <div style={{ textAlign: 'center', fontSize: '0.72rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}>
-                        <Lock size={11} /> 100% Refundable prior to on-site visit • 256-Bit SSL Encrypted
                       </div>
                     </div>
                   </form>
