@@ -180,7 +180,7 @@ export default function WhyFactoryDirect({ onOpenQuote, onNavigateAbout }) {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
               <span className="badge-tag badge-gold" style={{ margin: 0 }}>Yamanto Workshop Direct</span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📍 1/14 Saleyards Rd, Yamanto QLD</span>
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📍 Shed 2, 43-45 Belar Street, Yamanto QLD 4305</span>
             </div>
             <h3 style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)', fontWeight: '800', color: 'var(--text-heading)', margin: 0 }}>
               Ready to see what a factory-direct automatic gate costs?

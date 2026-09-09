@@ -237,7 +237,7 @@ export function generateQuotePdf(quote = {}) {
       doc.fontSize(7.5).font('Helvetica').fillColor('#64748b')
         .text('• Preliminary online estimation. Final contract is subject to on-site laser measure, driveway slope check, and structural post assessment.', margin, bottomY + 6, { width: contentWidth, align: 'center' });
       doc.fontSize(7.5).font('Helvetica-Bold').fillColor('#334155')
-        .text('Custom Auto Gates Pty Ltd • 43 Belar Street, Yamanto QLD 4305 • Tel: (07) 3102 1801 • office@customautogates.com.au • ABN: 73 634 329 860', margin, bottomY + 18, { width: contentWidth, align: 'center' });
+        .text('Custom Auto Gates Pty Ltd • Shed 2, 43-45 Belar Street, Yamanto QLD 4305 • Tel: (07) 3102 1801 • office@customautogates.com.au • ABN: 73 634 329 860', margin, bottomY + 18, { width: contentWidth, align: 'center' });
 
       doc.end();
     } catch (err) {

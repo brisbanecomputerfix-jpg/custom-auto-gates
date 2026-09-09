@@ -190,7 +190,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                 className="btn btn-outline-dark btn-lg"
                 style={{ flex: '1 1 auto', backdropFilter: 'blur(12px)', background: 'rgba(255,255,255,0.06)' }}
               >
-                Book Free Measure
+                Book Free Site Visit
               </button>
 
               <a
@@ -262,7 +262,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                   </span>
                 </div>
                 <span className="badge-tag badge-blue" style={{ margin: 0, padding: '0.2rem 0.6rem', fontSize: '0.72rem', backdropFilter: 'blur(8px)' }}>
-                  Daily On-Site Measures
+                  Daily Site Visits
                 </span>
               </div>
 
@@ -405,7 +405,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                     cursor: 'pointer'
                   }}
                 >
-                  Book Measure <ChevronRight size={12} />
+                  Book Free Site Visit <ChevronRight size={12} />
                 </button>
               </div>
             </div>

@@ -27,7 +27,6 @@ const SuburbLandingPage = lazy(() => import('./components/SuburbLandingPage'));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
 const ContactModal = lazy(() => import('./components/ContactModal'));
 const TroubleshooterModal = lazy(() => import('./components/TroubleshooterModal'));
-const QuickPayModal = lazy(() => import('./components/QuickPayModal'));
 const PaymentSuccessModal = lazy(() => import('./components/PaymentSuccessModal'));
 
 const PageLoader = () => (
@@ -44,7 +43,7 @@ export default function App() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isTroubleshootOpen, setIsTroubleshootOpen] = useState(false);
-  const [isQuickPayOpen, setIsQuickPayOpen] = useState(false);
+
   const [isPaymentSuccessOpen, setIsPaymentSuccessOpen] = useState(false);
   const [paymentSessionId, setPaymentSessionId] = useState('');
   const [selectedServiceId, setSelectedServiceId] = useState('sliding-gates');
@@ -63,8 +62,6 @@ export default function App() {
         const sid = urlParams.get('session_id') || 'cs_live_verified';
         setPaymentSessionId(sid);
         setIsPaymentSuccessOpen(true);
-      } else if (hash === '#pay' || hash === '#pay-invoice' || hash === '#payment') {
-        setIsQuickPayOpen(true);
       }
 
       if (hash === '#about' || path === '/about-us') {
@@ -87,9 +84,6 @@ export default function App() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#council-guide' || hash === '#council' || hash === '#pool-safety' || path === '/council-guide' || path === '/council-guide/' || path === '/planning-rules') {
         setCurrentPage('council-guide');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#trade' || hash === '#builders' || hash === '#commercial' || path === '/trade' || path === '/trade/' || path === '/builders') {
-        setCurrentPage('trade');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#gates-brisbane' || hash === '#brisbane' || path === '/gates-brisbane' || path === '/gates-brisbane/' || path === '/automatic-gates-brisbane') {
         setSelectedRegion('brisbane');
@@ -211,7 +205,6 @@ export default function App() {
         onOpenContact={() => setIsContactOpen(true)}
         onOpenTroubleshoot={() => setIsTroubleshootOpen(true)}
         onBookTechnician={handleBookTechnician}
-        onOpenPay={() => setIsQuickPayOpen(true)}
         onSelectCategory={(catId) => {
           setSelectedServiceId(catId);
           if (currentPage !== 'home') navigateTo('home');
@@ -253,13 +246,6 @@ export default function App() {
           ) : currentPage === 'council-guide' ? (
             /* Dedicated Queensland Council & Pool Safety Guide */
             <CouncilGuide 
-              onOpenQuote={handleOpenQuote}
-              onOpenContact={() => setIsContactOpen(true)}
-              onNavigateHome={() => navigateTo('home')}
-            />
-          ) : currentPage === 'trade' ? (
-            /* Dedicated Trade, Builders & Commercial Wholesale Portal */
-            <TradeBuilders 
               onOpenQuote={handleOpenQuote}
               onOpenContact={() => setIsContactOpen(true)}
               onNavigateHome={() => navigateTo('home')}
@@ -349,7 +335,6 @@ export default function App() {
       <Footer 
         onOpenQuote={handleOpenQuote}
         onOpenContact={() => setIsContactOpen(true)}
-        onOpenPay={() => setIsQuickPayOpen(true)}
         onBookTechnician={handleBookTechnician}
         onSelectCategory={(catId) => {
           setSelectedServiceId(catId);
@@ -363,7 +348,6 @@ export default function App() {
         onOpenQuote={handleOpenQuote}
         onOpenContact={() => setIsContactOpen(true)}
         onOpenTroubleshoot={() => setIsTroubleshootOpen(true)}
-        onOpenPay={() => setIsQuickPayOpen(true)}
       />
 
       {/* Interactive Lazy-Loaded Modals */}
@@ -387,18 +371,7 @@ export default function App() {
           />
         )}
 
-        {/* Quick Pay Invoice / Deposit Stripe Modal */}
-        {isQuickPayOpen && (
-          <QuickPayModal 
-            isOpen={isQuickPayOpen}
-            onClose={() => {
-              setIsQuickPayOpen(false);
-              if (window.location.hash === '#pay' || window.location.hash === '#pay-invoice') {
-                window.location.hash = '';
-              }
-            }}
-          />
-        )}
+
 
         {/* Verified Stripe Payment Success Receipt Modal */}
         {isPaymentSuccessOpen && (

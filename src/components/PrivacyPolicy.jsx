@@ -248,7 +248,7 @@ export default function PrivacyPolicy({ onNavigateHome, onOpenQuote, onOpenConta
               We are committed to safeguarding the privacy of our residential clients, commercial property managers, builders, strata bodies corporate, and website visitors. We comply unconditionally with the <strong>Australian Privacy Principles (APPs)</strong> contained in Schedule 1 of the <em>Privacy Act 1988 (Cth)</em> and applicable Queensland privacy guidelines.
             </p>
             <div style={{ background: 'var(--bg-card-subtle)', borderLeft: '4px solid var(--accent-gold)', padding: '1rem 1.25rem', borderRadius: '0 8px 8px 0', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              <strong>Scope:</strong> This Privacy Policy governs all personal data collected through our online cost estimator, contact forms, invoice quick-pay modal, email, telephone calls, on-site laser measure consultations, and in-person workshop showroom visits across South East Queensland.
+              <strong>Scope:</strong> This Privacy Policy governs all personal data collected through our online cost estimator, contact forms, invoice quick-pay modal, email, telephone calls, on-site visit consultations, and in-person workshop visits across South East Queensland.
             </div>
           </article>
 
@@ -328,7 +328,7 @@ export default function PrivacyPolicy({ onNavigateHome, onOpenQuote, onOpenConta
             </p>
             <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.8, color: 'var(--text-main)', marginBottom: '1.25rem' }}>
               <li><strong>Custom Quoting & Blueprint Generation:</strong> Calculating accurate factory-direct material costs, motor requirements, and council setback compliance.</li>
-              <li><strong>Free On-Site Laser Measures:</strong> Dispatching our qualified estimators to your address to take high-precision electronic measurements.</li>
+              <li><strong>Free On-Site Visits:</strong> Dispatching our qualified estimators to your address to take high-precision measurements and slope assessments.</li>
               <li><strong>Workshop Fabrication:</strong> Cutting, TIG-welding, and powdercoating aluminium gate panels to your specific order in Yamanto.</li>
               <li><strong>Installation & Electrical Commissioning:</strong> Coordinating our in-house trade installation crews and licensed electricians for on-site automation hookup.</li>
               <li><strong>Warranty & Preventative Servicing:</strong> Maintaining structural warranty registries and dispatching mobile emergency technicians for gate repairs.</li>
@@ -346,7 +346,7 @@ export default function PrivacyPolicy({ onNavigateHome, onOpenQuote, onOpenConta
               4. Payment Security & Stripe PCI-DSS Processing
             </h2>
             <p style={{ lineHeight: 1.7, color: 'var(--text-main)', marginBottom: '1rem' }}>
-              We prioritize financial security. All credit card and electronic payments initiated through our QuickPay modal (<a href="#pay" onClick={onOpenContact} style={{ color: 'var(--accent-gold)', textDecoration: 'none' }}>Pay Invoice</a>) are processed directly by <strong>Stripe Australia Pty Ltd</strong> (ACN 149 694 130).
+              We prioritize financial security. All invoice and deposit payments processed via Stripe are handled directly by <strong>Stripe Australia Pty Ltd</strong> (ACN 149 694 130).
             </p>
             
             <div style={{ background: 'var(--bg-card-subtle)', border: '1.5px solid var(--border-light)', borderRadius: '12px', padding: '1.25rem', marginBottom: '1.25rem' }}>
@@ -551,7 +551,7 @@ export default function PrivacyPolicy({ onNavigateHome, onOpenQuote, onOpenConta
                 className="btn-secondary"
                 style={{ padding: '0.85rem 1.75rem', fontSize: '0.95rem', fontWeight: '700' }}
               >
-                Book Free Laser Measure
+                Book Free Site Visit
               </button>
             </div>
           </div>

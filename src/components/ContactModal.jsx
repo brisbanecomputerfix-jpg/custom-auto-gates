@@ -11,6 +11,8 @@ import {
   ShieldCheck 
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
+import FileUploadField from './FileUploadField';
+import { uploadFormFiles } from '../utils/uploadHelper';
 
 export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
   const [formData, setFormData] = useState({
@@ -22,6 +24,7 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
     preferredTime: 'morning',
     notes: ''
   });
+  const [files, setFiles] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -34,6 +37,11 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
     setErrorMessage('');
 
     try {
+      let uploadedFiles = [];
+      if (files && files.length > 0) {
+        uploadedFiles = await uploadFormFiles(files);
+      }
+
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -46,7 +54,8 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
           serviceType: formData.serviceType,
           preferredTime: formData.preferredTime,
           notes: formData.notes,
-          source: 'Website On-Site Measure Modal'
+          source: 'Website On-Site Measure Modal',
+          files: uploadedFiles
         })
       });
 
@@ -186,6 +195,12 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                   style={{ width: '100%', padding: '0.65rem', borderRadius: '8px', background: 'var(--input-bg)', border: '1.5px solid var(--input-border)', color: 'var(--input-text)', fontSize: '0.88rem', resize: 'vertical' }}
+                />
+
+                <FileUploadField
+                  files={files}
+                  onChange={setFiles}
+                  helperText="Upload driveway or gate site photos"
                 />
               </div>
 

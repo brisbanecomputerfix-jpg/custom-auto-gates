@@ -24,6 +24,8 @@ import {
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
 import { createStripeCheckout } from '../utils/stripeClient';
+import FileUploadField from './FileUploadField';
+import { uploadFormFiles } from '../utils/uploadHelper';
 
 export default function GateVisualizerQuote() {
   const [step, setStep] = useState(1);
@@ -47,6 +49,7 @@ export default function GateVisualizerQuote() {
     notes: '',
     file: null
   });
+  const [files, setFiles] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Helper to change step and smoothly scroll without page jumping or shrinking
@@ -70,7 +73,7 @@ export default function GateVisualizerQuote() {
       category: 'Slats',
       baseRateM2: 750,
       desc: '65mm horizontal slats with 7mm or 20mm gaps. Most popular modern architectural look.',
-      image: 'https://customautogates.com.au/wp-content/uploads/2023/06/custom-automated-sliding-gate-brisbane.jpg',
+      image: '/images/custom-automated-sliding-gate-brisbane.jpg',
       badge: 'Most Popular'
     },
     {
@@ -79,7 +82,7 @@ export default function GateVisualizerQuote() {
       category: 'Slats',
       baseRateM2: 750,
       desc: '65mm wide slats vertical with 7mm or 20mm gaps. Sleek vertical lines for contemporary facades.',
-      image: 'https://customautogates.com.au/wp-content/uploads/2020/12/image-3.jpg',
+      image: '/images/image-3.jpg',
       badge: 'Modern Architectural'
     },
     {
@@ -88,7 +91,7 @@ export default function GateVisualizerQuote() {
       category: 'Prestige',
       baseRateM2: 855,
       desc: 'Dual-section frame: lower 65mm vertical slats (20mm gap), upper 3x 40x40 square tubes centred.',
-      image: 'https://customautogates.com.au/wp-content/uploads/2024/10/434299467_861965892610424_2556695232572143965_n-1.jpg',
+      image: '/images/434299467_861965892610424_2556695232572143965_n-1.jpg',
       badge: 'Coastal & Heritage'
     },
     {
@@ -97,7 +100,7 @@ export default function GateVisualizerQuote() {
       category: 'Architectural',
       baseRateM2: 870,
       desc: '40x40 vertical face-welded tubes with 40mm gaps and clean welded aluminium top caps.',
-      image: 'https://customautogates.com.au/wp-content/uploads/2023/05/sliding-gates.jpg',
+      image: '/images/sliding-gates.webp',
       badge: 'Custom Sizing'
     },
     {
@@ -106,7 +109,7 @@ export default function GateVisualizerQuote() {
       category: 'Security',
       baseRateM2: 975,
       desc: '25x25 square pressed spear tops @ 125mm centres face welded for high perimeter security.',
-      image: 'https://customautogates.com.au/wp-content/uploads/2020/12/image-1.jpg',
+      image: '/images/image-1.jpg',
       badge: 'High Security'
     },
     {
@@ -115,7 +118,7 @@ export default function GateVisualizerQuote() {
       category: 'Heritage',
       baseRateM2: 1380,
       desc: '19mm round tube gate with dual curved top rails and integrated puppy / doggy lower bars.',
-      image: 'https://customautogates.com.au/wp-content/uploads/2020/04/swing-gates8.jpg',
+      image: '/images/swing-gates8.jpg',
       badge: 'Ornate Curved'
     },
     {
@@ -124,7 +127,7 @@ export default function GateVisualizerQuote() {
       category: 'Tubular',
       baseRateM2: 675,
       desc: '19mm round tubes at 100mm centres in a classic 2-up / 2-down pattern with additional top rail.',
-      image: 'https://customautogates.com.au/wp-content/uploads/2019/07/gates-and-fencingIMG_6770.jpg',
+      image: '/images/gates-and-fencingIMG_6770.jpg',
       badge: 'Classic Pool & Driveway'
     },
     {
@@ -133,7 +136,7 @@ export default function GateVisualizerQuote() {
       category: 'Privacy',
       baseRateM2: 640,
       desc: 'Aluminium powder-coated heavy-duty frame with Colorbond corrugated or panel infill sheets.',
-      image: 'https://customautogates.com.au/wp-content/uploads/2024/10/244479862_2967542013559648_5841129152015725762_n-2.jpg',
+      image: '/images/244479862_2967542013559648_5841129152015725762_n-2.jpg',
       badge: '100% Solid Privacy'
     },
     {
@@ -142,7 +145,7 @@ export default function GateVisualizerQuote() {
       category: 'Cladding Frame',
       baseRateM2: 570,
       desc: 'TIG-welded aluminium frame powder coated, ready for on-site cladding with 100mm timber palings.',
-      image: 'https://customautogates.com.au/wp-content/uploads/2019/07/gates-and-fencingIMG_6740.jpg',
+      image: '/images/gates-and-fencingIMG_6740.jpg',
       badge: 'DIY / Builder Clad'
     }
   ];
@@ -317,6 +320,11 @@ export default function GateVisualizerQuote() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
+      let uploadedFiles = [];
+      if (files && files.length > 0) {
+        uploadedFiles = await uploadFormFiles(files);
+      }
+
       await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -340,7 +348,8 @@ export default function GateVisualizerQuote() {
           totalPriceRange: formattedRange,
           subtotal: `$${subtotal.toLocaleString()}`,
           tax: `$${taxAmount.toLocaleString()}`,
-          notes: formData.notes
+          notes: formData.notes,
+          files: uploadedFiles
         })
       });
       setIsSubmitted(true);
@@ -472,6 +481,10 @@ export default function GateVisualizerQuote() {
                             src={d.image} 
                             alt={d.name}
                             loading="lazy"
+                            onError={(e) => {
+                              e.currentTarget.onerror = null;
+                              e.currentTarget.src = '/images/sliding-gates.webp';
+                            }}
                             style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }}
                           />
                           <span style={{
@@ -912,6 +925,12 @@ export default function GateVisualizerQuote() {
                         onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                         style={{ width: '100%', padding: '0.7rem', fontSize: '0.9rem', resize: 'vertical' }}
                       />
+
+                      <FileUploadField
+                        files={files}
+                        onChange={setFiles}
+                        helperText="Upload photos or videos of your driveway, slope, or boundary fencing"
+                      />
                     </div>
 
                     <div style={{ marginTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -974,6 +993,10 @@ export default function GateVisualizerQuote() {
                       <img 
                         src={currentDesignObj.image} 
                         alt={currentDesignObj.name} 
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = '/images/sliding-gates.webp';
+                        }}
                         style={{ width: '42px', height: '36px', objectFit: 'cover', borderRadius: '4px', border: '1px solid var(--border-light)' }} 
                       />
                       <span style={{ fontSize: '0.84rem', fontWeight: '700', color: 'var(--text-heading)' }}>

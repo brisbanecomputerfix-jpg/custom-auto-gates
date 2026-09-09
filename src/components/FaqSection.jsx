@@ -124,7 +124,7 @@ export default function FaqSection({ onOpenQuote, onOpenContact }) {
               <Phone size={17} /> Call (07) 3102 1801
             </a>
             <button onClick={onOpenContact} className="btn btn-outline-dark btn-md">
-              Request Free Measure
+              Request Free Site Visit
             </button>
           </div>
         </div>

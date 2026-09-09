@@ -159,7 +159,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
                 style={{ flex: '1 1 auto' }}
               >
                 <Calendar size={17} />
-                Book Free Measure
+                Book Free Site Visit
               </button>
               <a 
                 href={COMPANY_INFO.tel} 
@@ -316,7 +316,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
                 Delivered on time, every time
               </div>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', lineHeight: 1.55 }}>
-                We respect your time. When we schedule a laser measurement or an installation date, we show up on time and deliver your completed project within our promised 2–4 week turnaround.
+                We respect your time. When we schedule a site consultation or an installation date, we show up on time and deliver your completed project within our promised 2–4 week turnaround.
               </p>
             </div>
 
@@ -491,7 +491,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
                   color: '#ffffff'
                 }}>
                   <div style={{ fontSize: '0.72rem', color: 'var(--accent-gold)', fontWeight: '800' }}>
-                    📍 Yamanto Workshop & Showroom
+                    📍 Yamanto Workshop
                   </div>
                   <div style={{ fontSize: '0.88rem', fontWeight: '700' }}>
                     Shed 2, 43-45 Belar Street, Yamanto QLD
@@ -579,7 +579,7 @@ export default function AboutUs({ onNavigateHome, onOpenQuote, onOpenContact }) 
               Ready to Work with Queensland's Trusted Gate Builders?
             </h3>
             <p style={{ color: '#94a3b8', fontSize: '0.96rem', maxWidth: '640px', margin: '0 auto 1.5rem auto', lineHeight: 1.6 }}>
-              Contact our Yamanto workshop team today for honest expert advice, driveway slope analysis, and a free on-site laser measure.
+              Contact our Yamanto workshop team today for honest expert advice, driveway slope analysis, and a free on-site visit.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
               <button onClick={onOpenQuote} className="btn btn-gold btn-lg">

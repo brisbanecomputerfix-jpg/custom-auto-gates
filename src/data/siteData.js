@@ -35,7 +35,7 @@ export const HERO_SLIDES = [
     badge: "10-Year Structural Warranty"
   },
   {
-    image: "/images/Sliding-Gates.webp",
+    image: "/images/sliding-gates.webp",
     title: "Sleek Automatic Sliding & Swing Gates",
     subtitle: "Architectural Aluminium Slat, Laser-Cut & Timber-Look DecoWood",
     badge: "Factory Direct in Yamanto"
@@ -59,12 +59,12 @@ export const SERVICES = [
     id: "sliding-gates",
     title: "Automatic Sliding Gates",
     shortDesc: "Space-saving, smooth-glide sliding gates engineered for driveways with slope or limited depth.",
-    heroImage: "/images/Sliding-Gates.webp",
+    heroImage: "/images/sliding-gates.webp",
     gallery: [
-      "/images/Sliding-Gates.webp",
+      "/images/sliding-gates.webp",
       "/images/Dayboro-Design-Slide.webp",
       "/images/custom-automated-sliding-gate-brisbane.jpg",
-      "/images/gates-and-fencingIMG_6829.webp"
+      "/images/Bundamba-Aluminium-Sliding-Gate.webp"
     ],
     highlights: [
       "Track & Cantilever (Trackless) configurations for all ground types",
@@ -107,11 +107,11 @@ export const SERVICES = [
     id: "solar-gates",
     title: "Solar Powered Automatic Gates",
     shortDesc: "Eco-friendly, 100% off-grid automated gates engineered for rural, acreage, and long driveway properties.",
-    heroImage: "/images/gates-and-fencingIMG_6829.webp",
+    heroImage: "/images/solar-gate-installation-1.jpg",
     gallery: [
-      "/images/gates-and-fencingIMG_6829.webp",
-      "/images/gates-and-fencingIMG_7484.jpg",
-      "/images/Swinging-Gates.jpg"
+      "/images/solar-gate-installation-1.jpg",
+      "/images/solar-gate-installation-2.jpg",
+      "/images/solar-gate-installation-3.jpg"
     ],
     highlights: [
       "Zero mains trenching costs — saves thousands on electrical installation",
@@ -130,11 +130,11 @@ export const SERVICES = [
     id: "commercial-gates",
     title: "Commercial & Industrial Security Gates",
     shortDesc: "High-duty cycle, crash-resistant, and anti-tailgating automatic gates for business parks, depots, and storage facilities.",
-    heroImage: "/images/Custom-Security-Fence-Designs.jpg",
+    heroImage: "/images/commercial-security-gate-1.jpg",
     gallery: [
-      "/images/Custom-Security-Fence-Designs.jpg",
-      "/images/type-of-security-fencing.jpg",
-      "/images/Determining-Security-Fence-Height.webp"
+      "/images/commercial-security-gate-1.jpg",
+      "/images/commercial-security-gate-2.jpg",
+      "/images/commercial-security-gate-3.jpg"
     ],
     highlights: [
       "Continuous 100% duty cycle motors handling 500+ operations daily",
@@ -153,10 +153,10 @@ export const SERVICES = [
     id: "boom-gates",
     title: "Automatic Boom Gates & Road Barriers",
     shortDesc: "Rapid vehicle access control barriers for commercial car parks, gated communities, strata, and toll points.",
-    heroImage: "/images/Determining-Security-Fence-Height.webp",
+    heroImage: "/images/automatic-boom-gate-barrier-1.jpg",
     gallery: [
-      "/images/Determining-Security-Fence-Height.webp",
-      "/images/Custom-Security-Fence-Designs.jpg"
+      "/images/automatic-boom-gate-barrier-1.jpg",
+      "/images/automatic-boom-gate-barrier-2.jpg"
     ],
     highlights: [
       "Ultra-fast 1.5s to 3s opening speeds for high-traffic throughput",
@@ -2247,7 +2247,7 @@ export const MOTOR_BRANDS = [
     badge: "Reliable Daily Automation",
     desc: "Smooth, durable automation designed for residential sliding and swing gates with soft-start and soft-stop control.",
     speed: "Standard 12–16 sec opening",
-    warranty: "3 Years",
+    warranty: "Up to 7 years",
     bestFor: "Standard residential sliding & swing driveways",
     features: [
       "Heavy-duty gear assembly",
@@ -2261,7 +2261,7 @@ export const MOTOR_BRANDS = [
     badge: "High-Speed & Smart App",
     desc: "Whisper-quiet, high-speed intelligent automation with smartphone app control, real-time diagnostics, and rapid opening.",
     speed: "Ultra-fast high speed opening",
-    warranty: "3 Years",
+    warranty: "Up to 7 years",
     bestFor: "Busy families, prestige homes, and high-security access",
     features: [
       "Ultra-fast whisper-quiet operation",
@@ -2275,7 +2275,7 @@ export const MOTOR_BRANDS = [
     badge: "100% Off-Grid Solar",
     desc: "Engineered specifically for Australian rural and acreage conditions with high-efficiency solar panels and deep-cycle battery storage.",
     speed: "Smooth solar powered opening",
-    warranty: "3 Years",
+    warranty: "Up to 7 years",
     bestFor: "Acreage, farms, rural gates & long driveways without mains power",
     features: [
       "Zero grid electricity bills",
@@ -2289,7 +2289,7 @@ export const MOTOR_BRANDS = [
     badge: "Continuous Duty",
     desc: "High-torque continuous-duty commercial automation capable of operating heavy gates and high-frequency multi-vehicle traffic 24/7.",
     speed: "Adjustable commercial speed",
-    warranty: "5 Years",
+    warranty: "Up to 7 years",
     bestFor: "Commercial business parks, strata complexes, and industrial sites",
     features: [
       "100% continuous duty cycle",
@@ -2354,7 +2354,7 @@ export const FAQS = [
   },
   {
     q: "What areas do you service?",
-    a: "We service the entire South East Queensland region, including Brisbane (North, South, East, West), Ipswich, Springfield, Logan, Gold Coast, Moreton Bay, Redland Bay, and surrounding areas. We provide free on-site measures and quotes across all these regions."
+    a: "We service the entire South East Queensland region, including Brisbane (North, South, East, West), Ipswich, Springfield, Logan, Gold Coast, Moreton Bay, Redland Bay, and surrounding areas. We provide free on-site visits and quotes across all these regions."
   },
   {
     q: "What is your typical turnaround time from order to installation?",

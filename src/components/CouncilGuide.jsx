@@ -789,7 +789,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
                 Unsure About Your Council Boundary Limits?
               </h3>
               <p style={{ color: '#cbd5e1', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
-                Book a free on-site laser measure. Our experienced technicians inspect your boundary pegs, calculate slope gradient clearances, and ensure 100% council compliance before fabrication.
+                Book a free on-site visit. Our experienced technicians inspect your boundary pegs, calculate slope gradient clearances, and ensure 100% council compliance before fabrication.
               </p>
             </div>
 
@@ -799,7 +799,7 @@ export default function CouncilGuide({ onOpenQuote, onOpenContact, onNavigateHom
                 className="btn btn-gold btn-lg"
                 style={{ borderRadius: '12px' }}
               >
-                <Sparkles size={18} /> Book Free On-Site Measure
+                <Sparkles size={18} /> Book Free Site Visit
               </button>
               <a
                 href={COMPANY_INFO.tel}

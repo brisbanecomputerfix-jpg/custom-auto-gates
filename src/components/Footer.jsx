@@ -14,7 +14,7 @@ import {
 import { InstagramIcon, FacebookIcon, LinkedInIcon } from './SocialIcons';
 import { COMPANY_INFO } from '../data/siteData';
 
-export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelectCategory, onNavigate }) {
+export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, onNavigate }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -74,10 +74,6 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#10b981' }}>
                 <ShieldCheck size={15} />
                 <span>10-Year Factory Structural Warranty</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#fbbf24' }}>
-                <Factory size={15} />
-                <span>Yamanto Direct Wholesale Pricing</span>
               </div>
             </div>
 
@@ -230,7 +226,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
                   onClick={() => onNavigate && onNavigate('contact')} 
                   style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
                 >
-                  <ChevronRight size={13} /> Contact Us & Showroom
+                  <ChevronRight size={13} /> Contact Us
                 </button>
               </li>
               <li>
@@ -241,22 +237,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onOpenPay, onSelect
                   <ChevronRight size={13} /> Customer Reviews (4.9★)
                 </button>
               </li>
-              <li>
-                <button 
-                  onClick={() => onNavigate && onNavigate('trade')} 
-                  style={{ color: '#fbbf24', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
-                >
-                  <ChevronRight size={13} /> Trade & Builders Portal (Wholesale)
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={onOpenPay} 
-                  style={{ color: '#60a5fa', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
-                >
-                  <ChevronRight size={13} /> Pay Invoice / Deposit (Stripe)
-                </button>
-              </li>
+
               <li>
                 <button 
                   onClick={() => onNavigate && onNavigate('council-guide')} 

@@ -390,7 +390,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
                   Quote A Gate Like This
                 </button>
                 <div style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                  ⚡ Free on-site laser measure across South East QLD
+                  ⚡ Free on-site visit across South East QLD
                 </div>
               </div>
             </div>

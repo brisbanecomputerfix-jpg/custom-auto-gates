@@ -27,6 +27,8 @@ import {
   HelpCircle
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
+import FileUploadField from './FileUploadField';
+import { uploadFormFiles } from '../utils/uploadHelper';
 
 export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateHome, onNavigateService }) {
   // Gate Simulation State
@@ -51,6 +53,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
     preferredTime: 'Morning (8am - 12pm)',
     message: ''
   });
+  const [files, setFiles] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Driveway distance calculator
@@ -104,6 +107,11 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
     e.preventDefault();
     setIsSubmitting(true);
     try {
+      let uploadedFiles = [];
+      if (files && files.length > 0) {
+        uploadedFiles = await uploadFormFiles(files);
+      }
+
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -116,7 +124,8 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
           serviceType: `${formData.projectType} (${formData.propertyType})`,
           preferredTime: formData.preferredTime,
           notes: formData.message,
-          source: 'Contact Page Inquiry Form'
+          source: 'Contact Page Inquiry Form',
+          files: uploadedFiles
         })
       });
       setFormSubmitted(true);
@@ -183,7 +192,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
               color: '#cbd5e1',
               lineHeight: 1.65
             }}>
-              We’d love to hear from you. Visit our Yamanto workshop and showroom or book a free on-site laser measure and design consultation anywhere across Greater Brisbane, Ipswich & Logan.
+              We’d love to hear from you. Contact our Yamanto workshop or book a free site visit to discuss your gate or fencing project.
             </p>
           </div>
 
@@ -221,7 +230,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                     animation: isMoving ? 'pulse 1s infinite' : 'none'
                   }} />
                   <span style={{ fontSize: '0.95rem', fontWeight: '800', color: '#ffffff', letterSpacing: '0.02em' }}>
-                    Interactive Gate Controller & Virtual Showroom
+                    Interactive Gate Controller & Virtual Gate Preview
                   </span>
                 </div>
                 <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
@@ -550,11 +559,11 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
             gap: '1.5rem',
             marginBottom: '3.5rem'
           }}>
-            {/* Card 1: Phone Hotline */}
+            {/* Card 1: Merged Workshop Card (Phone, Address & Relevant Details) */}
             <div className="card-light" style={{ padding: '2rem', textAlign: 'center', borderTop: '4px solid #d97706' }}>
               <div style={{
                 width: '54px',
@@ -569,11 +578,11 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
               }}>
                 <Phone size={26} />
               </div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
-                Workshop Phone
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
+                Workshop
               </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', marginBottom: '1.25rem' }}>
-                Speak directly with our fabrication & estimating technicians.
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', marginBottom: '0.65rem' }}>
+                Shed 2, 43-45 Belar Street, Yamanto QLD 4305
               </p>
               <a
                 href={COMPANY_INFO.tel}
@@ -587,8 +596,14 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
               >
                 (07) 3102 1801
               </a>
-              <span style={{ fontSize: '0.78rem', color: '#10b981', fontWeight: '700' }}>
-                Mon–Fri: 7am – 5pm
+              <div style={{ fontSize: '0.82rem', color: '#0f172a', fontWeight: '700', marginBottom: '0.35rem' }}>
+                Factory Direct Manufacturing
+              </div>
+              <span style={{ fontSize: '0.78rem', color: '#10b981', fontWeight: '700', display: 'block', marginBottom: '0.35rem' }}>
+                Mon–Fri: 9:00 AM – 4:00 PM
+              </span>
+              <span style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>
+                QBCC #15579753 • ABN 13 693 740 573
               </span>
             </div>
 
@@ -607,7 +622,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
               }}>
                 <Mail size={26} />
               </div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
                 Email Sales & Plans
               </h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', marginBottom: '1.25rem' }}>
@@ -631,36 +646,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
               </span>
             </div>
 
-            {/* Card 3: Showroom & Workshop Location */}
-            <div className="card-light" style={{ padding: '2rem', textAlign: 'center', borderTop: '4px solid #10b981' }}>
-              <div style={{
-                width: '54px',
-                height: '54px',
-                borderRadius: '50%',
-                background: '#ecfdf5',
-                color: '#10b981',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: '0 auto 1.25rem auto'
-              }}>
-                <MapPin size={26} />
-              </div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
-                Factory Showroom
-              </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', marginBottom: '0.75rem' }}>
-                43 Belar Street, Yamanto QLD 4305
-              </p>
-              <div style={{ fontSize: '0.82rem', color: '#0f172a', fontWeight: '700', marginBottom: '0.5rem' }}>
-                Factory Direct Buying
-              </div>
-              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                QBCC #15579753 • ABN 13 693 740 573
-              </span>
-            </div>
-
-            {/* Card 4: Service, Repairs & Warranty Hotline */}
+            {/* Card 3: Service, Repairs & Warranty Hotline */}
             <div className="card-light" style={{ padding: '2rem', textAlign: 'center', borderTop: '4px solid #8b5cf6' }}>
               <div style={{
                 width: '54px',
@@ -675,7 +661,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
               }}>
                 <Wrench size={26} />
               </div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0f172a', marginBottom: '0.4rem' }}>
                 Repairs & Warranty
               </h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', marginBottom: '1.25rem' }}>
@@ -706,7 +692,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                 <div style={{ marginBottom: '1.5rem' }}>
                   <span className="badge-tag badge-gold" style={{ marginBottom: '0.5rem' }}>
                     <Calendar size={13} />
-                    Free Laser Measure & Design Quote
+                    FREE SITE VISIT
                   </span>
                   <h3 style={{ fontSize: '1.65rem', fontWeight: '900', color: '#0f172a', letterSpacing: '-0.02em' }}>
                     Send Us A Message
@@ -932,6 +918,12 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                           fontFamily: 'inherit'
                         }}
                       />
+
+                      <FileUploadField
+                        files={files}
+                        onChange={setFiles}
+                        helperText="Upload photos or videos of your driveway, slope, or gate area"
+                      />
                     </div>
 
                     {/* Submit Button */}
@@ -961,7 +953,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
                   <Clock size={22} style={{ color: '#d97706' }} />
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0f172a' }}>
-                    Factory & Showroom Hours
+                    Workshop Hours
                   </h3>
                 </div>
 
@@ -970,26 +962,10 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                     <span style={{ fontWeight: '700', color: '#0f172a' }}>Monday – Friday:</span>
                     <span style={{ color: '#16a34a', fontWeight: '700' }}>9:00 AM – 4:00 PM</span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '0.5rem' }}>
-                    <span style={{ fontWeight: '700', color: '#0f172a' }}>Saturday:</span>
-                    <span style={{ color: '#d97706', fontWeight: '700' }}>8:00 AM – 1:00 PM (By Appt)</span>
-                  </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ fontWeight: '700', color: '#0f172a' }}>Sunday & Public Holidays:</span>
-                    <span style={{ color: '#94a3b8' }}>Closed (Online Requests Open)</span>
+                    <span style={{ fontWeight: '700', color: '#0f172a' }}>Saturday, Sunday & Public Holidays:</span>
+                    <span style={{ color: '#ef4444', fontWeight: '700' }}>Closed</span>
                   </div>
-                </div>
-
-                <div style={{
-                  marginTop: '1.25rem',
-                  padding: '0.9rem',
-                  background: '#f8fafc',
-                  borderRadius: '10px',
-                  border: '1px solid #e2e8f0',
-                  fontSize: '0.8rem',
-                  color: '#475569'
-                }}>
-                  <strong style={{ color: '#0f172a' }}>Visiting Our Yamanto Workshop?</strong> You are welcome to view working gate displays, powdercoat sample color swatches, and motor hardware in person.
                 </div>
               </div>
 
@@ -1003,7 +979,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                 </div>
 
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginBottom: '1rem' }}>
-                  Select your suburb to see estimated travel time to our factory at <strong>43 Belar St, Yamanto</strong>:
+                  Select your suburb to see estimated travel time to our factory at <strong>Shed 2, 43-45 Belar St, Yamanto</strong>:
                 </p>
 
                 {/* Suburb Selector */}
@@ -1049,7 +1025,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                     </span>
                   </div>
                   <a
-                    href="https://maps.google.com/?q=43+Belar+Street+Yamanto+QLD+4305"
+                    href="https://maps.google.com/?q=Shed+2,+43-45+Belar+Street+Yamanto+QLD+4305"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-outline-dark btn-sm"
@@ -1080,17 +1056,14 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
                 <MapPin size={13} />
                 Yamanto Manufacturing Headquarters
               </span>
-              <h2 style={{ fontSize: '2rem', fontWeight: '900', color: '#ffffff', marginBottom: '1rem', letterSpacing: '-0.02em' }}>
-                Yamanto Workshop & Showroom
+              <h2 style={{ fontSize: '2rem', fontWeight: '900', color: '#ffffff', marginBottom: '1.25rem', letterSpacing: '-0.02em' }}>
+                Yamanto Workshop
               </h2>
-              <p style={{ color: '#cbd5e1', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                Every gate is fabricated from high-tensile 6060-T6 architectural aluminium right here in our Yamanto facility. We invite you to visit our factory to see the precision TIG welding and heavy-duty commercial automation systems first-hand.
-              </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#f8fafc', fontSize: '0.88rem' }}>
                   <CheckCircle2 size={16} style={{ color: '#10b981' }} />
-                  <span><strong>Address:</strong> 43 Belar Street, Yamanto QLD 4305</span>
+                  <span><strong>Address:</strong> Shed 2, 43-45 Belar Street, Yamanto QLD 4305</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#f8fafc', fontSize: '0.88rem' }}>
                   <CheckCircle2 size={16} style={{ color: '#10b981' }} />
@@ -1104,7 +1077,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
 
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                 <a
-                  href="https://maps.google.com/?q=43+Belar+Street+Yamanto+QLD+4305"
+                  href="https://maps.google.com/?q=Shed+2,+43-45+Belar+Street+Yamanto+QLD+4305"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-gold btn-md"

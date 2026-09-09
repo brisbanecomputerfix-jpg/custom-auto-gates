@@ -1,5 +1,73 @@
 [
   {
+    "id": "lead-1788927065639",
+    "receivedAt": "2026-09-09T04:11:05.639Z",
+    "hasPdf": false,
+    "name": "James Anderson",
+    "phone": "0412 999 888",
+    "email": "james.anderson.test@example.com",
+    "address": "15 Jasmine Street, Yamanto QLD 4305",
+    "suburb": "Yamanto",
+    "serviceType": "Paid Service Booking: Urgent Gate Repair",
+    "notes": "Motor humming but gate arm not moving.",
+    "source": "Service & Warranty Booking Form",
+    "files": [
+      {
+        "filename": "driveway_slope_photo-1788927065628-923504057.jpg",
+        "originalName": "driveway_slope_photo.jpg",
+        "size": 66,
+        "mimetype": "image/jpeg",
+        "path": "C:\\Users\\PC\\.gemini\\antigravity-ide\\scratch\\custom-auto-gates\\public\\uploads\\driveway_slope_photo-1788927065628-923504057.jpg",
+        "url": "/uploads/driveway_slope_photo-1788927065628-923504057.jpg",
+        "fullUrl": "http://127.0.0.1:3456/uploads/driveway_slope_photo-1788927065628-923504057.jpg"
+      }
+    ],
+    "paymentDetails": {
+      "status": "Paid",
+      "amount": "$250.00 AUD",
+      "method": "Card",
+      "brand": "Visa",
+      "last4": "4242",
+      "email": "james.anderson.test@example.com",
+      "stripeRef": "ch_test_3N99Yamanto4242",
+      "items": "Urgent Residential Gate Repair Call-Out Fee"
+    }
+  },
+  {
+    "id": "lead-1788926939464",
+    "receivedAt": "2026-09-09T04:08:59.464Z",
+    "hasPdf": false,
+    "name": "James Anderson",
+    "phone": "0412 999 888",
+    "email": "james.anderson.test@example.com",
+    "address": "15 Jasmine Street, Yamanto QLD 4305",
+    "suburb": "Yamanto",
+    "serviceType": "Paid Service Booking: Urgent Gate Repair",
+    "notes": "Motor humming but gate arm not moving.",
+    "source": "Service & Warranty Booking Form",
+    "files": [
+      {
+        "filename": "driveway_slope_photo-1788926939452-83700355.jpg",
+        "originalName": "driveway_slope_photo.jpg",
+        "size": 66,
+        "mimetype": "image/jpeg",
+        "path": "C:\\Users\\PC\\.gemini\\antigravity-ide\\scratch\\custom-auto-gates\\public\\uploads\\driveway_slope_photo-1788926939452-83700355.jpg",
+        "url": "/uploads/driveway_slope_photo-1788926939452-83700355.jpg",
+        "fullUrl": "http://127.0.0.1:3456/uploads/driveway_slope_photo-1788926939452-83700355.jpg"
+      }
+    ],
+    "paymentDetails": {
+      "status": "Paid",
+      "amount": "$250.00 AUD",
+      "method": "Card",
+      "brand": "Visa",
+      "last4": "4242",
+      "email": "james.anderson.test@example.com",
+      "stripeRef": "ch_test_3N99Yamanto4242",
+      "items": "Urgent Residential Gate Repair Call-Out Fee"
+    }
+  },
+  {
     "id": "lead-1787699896635",
     "receivedAt": "2026-08-25T23:18:16.635Z",
     "name": "Robert Taylor",

@@ -31,3 +31,7 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Uploaded user files
+public/uploads/*
+!public/uploads/.gitkeep

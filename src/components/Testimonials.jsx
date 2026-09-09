@@ -46,7 +46,7 @@ export const DETAILED_REVIEWS = [
     finish: 'Dulux Monument Satin Powdercoat',
     challenge: 'Driveway had a steep 7-degree cross-slope with limited run-off space.',
     solution: 'Fabricated a bottom-raked telescopic sliding gate with custom ground tracks in Yamanto.',
-    text: 'From our first on-site laser measure to the final installation, Custom Auto Gates were exceptional. Having the gate custom built in their Yamanto workshop meant the fit was 100% millimeter-perfect for our sloping driveway. The smart automated motor is whisper-quiet and opening it from our smartphones when pulling into the street is an absolute game-changer. Couldn’t be happier!',
+    text: 'From our first on-site consultation to the final installation, Custom Auto Gates were exceptional. Having the gate custom built in their Yamanto workshop meant the fit was 100% millimeter-perfect for our sloping driveway. The smart automated motor is whisper-quiet and opening it from our smartphones when pulling into the street is an absolute game-changer. Couldn’t be happier!',
     engineerNote: 'Precision CNC raked bottom beam ensured a consistent 25mm ground clearance across the entire driveway width.',
     helpfulCount: 24
   },
@@ -341,7 +341,7 @@ export default function Testimonials({ onOpenQuote, onOpenContact, onNavigateHom
       "email": "sales@customautogates.com.au",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "43 Belar Street",
+        "streetAddress": "Shed 2, 43-45 Belar Street",
         "addressLocality": "Yamanto",
         "addressRegion": "QLD",
         "postalCode": "4305",
@@ -547,7 +547,7 @@ export default function Testimonials({ onOpenQuote, onOpenContact, onNavigateHom
               </div>
               <div>
                 <div style={{ fontSize: '1.05rem', fontWeight: '900', color: '#ffffff' }}>All SE QLD</div>
-                <div style={{ fontSize: '0.78rem', color: '#cbd5e1', fontWeight: '700' }}>Free On-Site Measures</div>
+                <div style={{ fontSize: '0.78rem', color: '#cbd5e1', fontWeight: '700' }}>Free On-Site Visits</div>
                 <span style={{ fontSize: '0.7rem', color: '#94a3b8' }}>Brisbane, Ipswich, Logan, GC</span>
               </div>
             </div>
@@ -920,7 +920,7 @@ export default function Testimonials({ onOpenQuote, onOpenContact, onNavigateHom
                 Ready to Upgrade Your Driveway Security?
               </h3>
               <p style={{ color: '#cbd5e1', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
-                Get a free on-site laser measure and design quote directly from our Yamanto workshop. No salesmen, no generic middleman kits — just custom Australian manufacturing.
+                Get a free on-site visit and design quote directly from our Yamanto workshop. No salesmen, no generic middleman kits — just custom Australian manufacturing.
               </p>
             </div>
 

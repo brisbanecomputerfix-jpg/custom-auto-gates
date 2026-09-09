@@ -27,10 +27,10 @@ export const PAGE_SEO_CONFIGS = {
     geoPlacename: 'Brisbane, Ipswich, Logan, Queensland'
   },
   contact: {
-    title: 'Contact Us & Factory Showroom | Custom Auto Gates Yamanto QLD',
-    description: 'Contact Custom Auto Gates & Fencing at 43 Belar St, Yamanto QLD 4305. Book a free on-site laser measure or call (07) 3102 1801 for factory direct advice.',
+    title: 'Contact Us & Workshop | Custom Auto Gates Yamanto QLD',
+    description: 'Contact Custom Auto Gates & Fencing at Shed 2, 43-45 Belar St, Yamanto QLD 4305. Book a free on-site visit or call (07) 3102 1801 for factory direct advice.',
     canonicalPath: '/contact-us',
-    geoPlacename: '43 Belar St, Yamanto, QLD 4305'
+    geoPlacename: 'Shed 2, 43-45 Belar St, Yamanto, QLD 4305'
   },
   testimonials: {
     title: 'Customer Reviews & Case Studies (4.9★) | Custom Auto Gates QLD',
@@ -52,12 +52,12 @@ export const PAGE_SEO_CONFIGS = {
   },
   'suburbs-brisbane': {
     title: 'Custom Automatic Gates Brisbane | Factory Direct Sliding & Swing Gates',
-    description: 'Custom designed and fabricated automatic gates across Brisbane Northside, Southside, and Western suburbs. Free on-site laser measures in Ascot, New Farm, Indooroopilly, and Pullenvale.',
+    description: 'Custom designed and fabricated automatic gates across Brisbane Northside, Southside, and Western suburbs. Free on-site visits in Ascot, New Farm, Indooroopilly, and Pullenvale.',
     canonicalPath: '/gates-brisbane',
     geoPlacename: 'Brisbane, Queensland, AU'
   },
   'suburbs-ipswich': {
-    title: 'Automatic Gates Ipswich & Yamanto | Factory Direct from 43 Belar St',
+    title: 'Automatic Gates Ipswich & Yamanto | Factory Direct from Shed 2, 43-45 Belar St',
     description: 'Buy direct from our Yamanto workshop facility! Eliminating middleman markups for Ipswich, Springfield Lakes, Brookwater, Brassall, and Karalee property owners.',
     canonicalPath: '/gates-ipswich',
     geoPlacename: 'Yamanto, Ipswich, Springfield, Queensland, AU'

@@ -32,6 +32,8 @@ import {
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
 import { createStripeCheckout } from '../utils/stripeClient';
+import FileUploadField from './FileUploadField';
+import { uploadFormFiles } from '../utils/uploadHelper';
 
 export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateHome }) {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -67,6 +69,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
     issueDescription: '',
     preferredDate: '',
   });
+  const [files, setFiles] = useState([]);
 
   const basePrice = propertyType === 'residential' ? 250 : 350;
   const gstAmount = (basePrice / 11).toFixed(2);
@@ -83,7 +86,13 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
     setIsProcessingPayment(true);
 
     try {
-      // 1. Record lead with backend notification
+      // 1. Upload any attached photos/videos
+      let uploadedFiles = [];
+      if (files && files.length > 0) {
+        uploadedFiles = await uploadFormFiles(files);
+      }
+
+      // 2. Record lead with backend notification
       fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -95,7 +104,8 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
           suburb: formData.suburb,
           serviceType: `Service Booking: ${serviceRequirement} (${propertyType} - $${basePrice} callout)`,
           notes: `Original Purchaser: ${isOriginalPurchaser}. Gate Type: ${formData.gateType}. Motor: ${formData.motorBrand}. Issues: ${formData.issueDescription}. Preferred Date: ${formData.preferredDate || 'ASAP'}`,
-          source: 'Service & Warranty Booking Form'
+          source: 'Service & Warranty Booking Form',
+          files: uploadedFiles
         })
       }).catch(e => console.warn('Service lead notification log:', e));
 
@@ -939,6 +949,12 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                       fontSize: '0.9rem',
                       fontFamily: 'inherit'
                     }}
+                  />
+
+                  <FileUploadField
+                    files={files}
+                    onChange={setFiles}
+                    helperText="Upload photos or videos of the gate fault, damaged track, or motor display"
                   />
                 </div>
 

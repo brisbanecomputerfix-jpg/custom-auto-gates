@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CheckCircle2, ShieldCheck, Printer, ArrowRight, Phone, Clock, FileText, X } from 'lucide-react';
 
 export default function PaymentSuccessModal({ isOpen, onClose, sessionId }) {
+  useEffect(() => {
+    if (isOpen && sessionId && sessionId.startsWith('cs_')) {
+      fetch('/api/verify-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId })
+      }).catch(err => console.warn('Payment verification dispatch:', err));
+    }
+  }, [isOpen, sessionId]);
+
   if (!isOpen) return null;
 
   const handlePrint = () => {

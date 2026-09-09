@@ -169,7 +169,7 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
                   className="btn btn-outline-dark btn-md"
                   style={{ flex: '1 1 auto' }}
                 >
-                  Book Site Measure
+                  Book Free Site Visit
                 </button>
               </div>
             </div>
@@ -332,6 +332,9 @@ export default function ServicesSection({ onOpenQuote, onOpenContact, onConfigur
               <img
                 src={serviceGallery[lightboxIndex]}
                 alt={`${currentService.title} build ${lightboxIndex + 1}`}
+                onError={(e) => {
+                  e.currentTarget.src = '/images/Sliding-Gates.jpg';
+                }}
                 style={{
                   width: '100%',
                   maxHeight: '75vh',

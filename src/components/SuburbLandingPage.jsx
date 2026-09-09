@@ -72,16 +72,16 @@ export const REGIONAL_DATA = {
     routeSlug: 'gates-ipswich',
     regionName: 'Ipswich, Yamanto & Greater West',
     shortTitle: 'Ipswich & Yamanto',
-    heroTag: 'Factory Direct from 43 Belar St, Yamanto',
+    heroTag: 'Factory Direct from Shed 2, 43-45 Belar St, Yamanto',
     h1: 'Custom Automatic Gates & Fencing Ipswich',
-    subtitle: 'Buy direct from the manufacturer! Our state-of-the-art workshop and showroom are located at 43 Belar St, Yamanto. Eliminating middleman markups for Ipswich, Springfield, Brookwater, and Ripley homeowners.',
+    subtitle: 'Buy direct from the manufacturer! Our state-of-the-art workshop is located at Shed 2, 43-45 Belar St, Yamanto. Eliminating middleman markups for Ipswich, Springfield, Brookwater, and Ripley homeowners.',
     councilName: 'Ipswich City Council (ICC)',
     councilPlan: 'Ipswich Planning Scheme',
     councilHeight: '1.2m solid front fences / up to 1.8m with 50% open slat permeability',
     councilNotes: 'Character Residential zones in Brassall, Newtown, and Woodend permit custom powdercoat Colorbond finishes matching heritage structures.',
     travelTime: '5 – 15 mins (Direct local dispatch from our Yamanto workshop facility)',
     suburbs: [
-      { name: 'Yamanto', postcode: '4305', area: 'Factory Direct Hub', desc: 'Our home base! Visit our showroom at 43 Belar St for live motor demos.' },
+      { name: 'Yamanto', postcode: '4305', area: 'Factory Direct Hub', desc: 'Our home base! Custom gate fabrication direct from our workshop at Shed 2, 43-45 Belar St.' },
       { name: 'Ipswich Central', postcode: '4305', area: 'Central', desc: 'Custom laser cut sliding gates & architectural privacy screens.' },
       { name: 'Brookwater', postcode: '4300', area: 'Greater Springfield', desc: 'Golf course prestige sliding gates with whisper-quiet automated gate motors.' },
       { name: 'Springfield Lakes', postcode: '4300', area: 'Greater Springfield', desc: 'Contemporary slat fencing and matching electric driveway gates.' },
@@ -223,7 +223,7 @@ export default function SuburbLandingPage({
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "43 Belar Street",
+        "streetAddress": "Shed 2, 43-45 Belar Street",
         "addressLocality": "Yamanto",
         "addressRegion": "QLD",
         "postalCode": "4305",
@@ -402,7 +402,7 @@ export default function SuburbLandingPage({
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <Sparkles size={22} style={{ color: '#38bdf8', flexShrink: 0 }} />
               <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: '800', color: '#ffffff' }}>Free Laser Measure</div>
+                <div style={{ fontSize: '0.88rem', fontWeight: '800', color: '#ffffff' }}>Free Site Visit</div>
                 <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>On-site in {currentRegion.shortTitle}</div>
               </div>
             </div>
@@ -538,7 +538,7 @@ export default function SuburbLandingPage({
                   Suburbs We Service in {currentRegion.regionName}
                 </h3>
                 <span style={{ fontSize: '0.84rem', color: 'var(--text-muted)' }}>
-                  Free on-site laser measure & quote available in all listed suburbs
+                  Free on-site visit & quote available in all listed suburbs
                 </span>
               </div>
 
@@ -679,10 +679,10 @@ export default function SuburbLandingPage({
                 <Clock size={13} /> Fast Response across {currentRegion.shortTitle}
               </span>
               <h3 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: '900', color: '#ffffff', marginBottom: '0.75rem' }}>
-                Get a Free On-Site Measure in {currentRegion.shortTitle}
+                Get a Free On-Site Visit in {currentRegion.shortTitle}
               </h3>
               <p style={{ color: '#cbd5e1', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
-                Our mobile technicians service {currentRegion.regionName} daily. Book a free consultation and get an exact millimeter-accurate laser measure and factory direct quote.
+                Book a free site visit with our sales team to discuss your gate or fencing project in {currentRegion.regionName}.
               </p>
             </div>
 

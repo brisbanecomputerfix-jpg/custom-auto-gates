@@ -109,3 +109,19 @@ export async function createPaymentIntent({
 
   return paymentIntent;
 }
+
+/**
+ * Retrieves Stripe Checkout Session details with expanded payment details
+ */
+export async function retrieveSessionDetails(sessionId) {
+  const stripe = getStripe();
+  if (!stripe) {
+    throw new Error('Stripe API Key is not configured in .env');
+  }
+
+  const session = await stripe.checkout.sessions.retrieve(sessionId, {
+    expand: ['payment_intent.payment_method', 'line_items']
+  });
+
+  return session;
+}

@@ -16,7 +16,7 @@ const SERVICE_REGIONS = [
   {
     id: 'brisbane-inner',
     name: 'Brisbane Inner & Character Suburbs',
-    badge: 'Daily Measures',
+    badge: 'Daily Site Visits',
     suburbs: ['Paddington', 'New Farm', 'Ascot', 'Hamilton', 'Bulimba', 'Hawthorne', 'Teneriffe', 'Indooroopilly', 'Camp Hill', 'Coorparoo', 'St Lucia', 'Chelmer']
   },
   {
@@ -70,7 +70,7 @@ export default function ServiceAreaChecker({ onOpenContact, onNavigateSuburbs })
             <span className="gradient-text-gold">Free Site Visit</span>
           </h2>
           <p className="section-subtitle">
-            Our mobile technicians check ground levels, driveway slope, boundary clearances, and power availability across all SEQ regions.
+            Book a free site visit with our sales team to discuss your gate or fencing project.
           </p>
         </div>
 
@@ -129,7 +129,7 @@ export default function ServiceAreaChecker({ onOpenContact, onNavigateSuburbs })
                     </span>
                   </div>
                   <button onClick={onOpenContact} className="btn btn-gold btn-sm" style={{ flex: '1 1 auto' }}>
-                    <Calendar size={14} /> Book Free Measure
+                    <Calendar size={14} /> Book Free Site Visit
                   </button>
                 </div>
               ) : (
@@ -249,7 +249,7 @@ export default function ServiceAreaChecker({ onOpenContact, onNavigateSuburbs })
                 style={{ fontWeight: '800' }}
               >
                 <Calendar size={14} />
-                Book Free Measure in {currentRegionData.name.split('&')[0]}
+                Book Free Site Visit in {currentRegionData.name.split('&')[0]}
               </button>
               {onNavigateSuburbs && (
                 <button

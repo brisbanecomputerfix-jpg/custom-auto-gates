@@ -38,7 +38,6 @@ export default function Navbar({
   onOpenContact, 
   onOpenTroubleshoot,
   onBookTechnician,
-  onOpenPay,
   onSelectCategory 
 }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -386,7 +385,6 @@ export default function Navbar({
                       { name: 'Off-Grid Solar Gates', id: 'solar-gates' },
                       { name: 'Commercial Boom & Barriers', id: 'boom-gates' },
                       { name: 'Aluminium Slat Fencing', id: 'fencing' },
-                      { name: 'Trade & Builders Portal (Wholesale)', id: 'trade', isRoute: true },
                       { name: 'Service, Repairs & Warranty', id: 'service', isRoute: true },
                       { name: 'QLD Council & Pool Safety Guide', id: 'council-guide', isRoute: true }
                     ].map((s) => (
@@ -758,7 +756,7 @@ export default function Navbar({
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
                       <Phone size={17} style={{ color: 'var(--accent-blue)' }} />
-                      Contact Us & Showroom
+                      Contact Us
                     </span>
                     <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
                   </button>
