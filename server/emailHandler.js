@@ -131,7 +131,7 @@ export function saveLeadLocally(leadData) {
 
 // Asynchronously dispatch lead to Zapier webhook if configured
 export async function dispatchZapierWebhook(lead) {
-  const zapierUrl = process.env.ZAPIER_WEBHOOK_URL;
+  const zapierUrl = process.env.ZAPIER_WEBHOOK_URL || 'https://hooks.zapier.com/hooks/catch/25895755/4dyxnvd/';
   if (!zapierUrl) return;
 
   try {
