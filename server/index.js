@@ -217,7 +217,7 @@ app.use('/uploads', express.static(uploadsDir));
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
-    version: '1.0.1',
+    version: '1.0.2',
     service: 'Custom Auto Gates Full-Stack API',
     business: 'Custom Auto Gates Pty Ltd',
     stripeConfigured: !!process.env.STRIPE_SECRET_KEY,
