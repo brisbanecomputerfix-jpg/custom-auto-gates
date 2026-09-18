@@ -206,90 +206,139 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.86rem' }}>
               <li>
-                <button 
-                  onClick={() => onNavigate && onNavigate('about')} 
-                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
+                <a 
+                  href="/about-us"
+                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('about'); }} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
                 >
                   <ChevronRight size={13} /> About Us & Our Team
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate && onNavigate('service')} 
-                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
+                <a 
+                  href="/service"
+                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('service'); }} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
                 >
                   <ChevronRight size={13} /> Service, Repairs & Warranty
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate && onNavigate('contact')} 
-                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
+                <a 
+                  href="/contact-us"
+                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('contact'); }} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
                 >
                   <ChevronRight size={13} /> Contact Us
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate && onNavigate('testimonials')} 
-                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
+                <a 
+                  href="/testimonials"
+                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('testimonials'); }} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
                 >
                   <ChevronRight size={13} /> Customer Reviews (4.9★)
-                </button>
+                </a>
               </li>
-
               <li>
-                <button 
-                  onClick={() => onNavigate && onNavigate('council-guide')} 
-                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
+                <a 
+                  href="/council-guide"
+                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('council-guide'); }} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
                 >
                   <ChevronRight size={13} /> QLD Council & Pool Safety Guide
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('gate-visualizer')} style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                <a 
+                  href="/trade"
+                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('trade'); }} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                >
+                  <ChevronRight size={13} /> Trade & Builders Portal
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/#gate-visualizer"
+                  onClick={(e) => { e.preventDefault(); handleLinkClick('gate-visualizer'); }} 
+                  style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                >
                   <ChevronRight size={13} /> Custom Gate Configurator & Quote
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('gallery')} style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                <a 
+                  href="/#gallery"
+                  onClick={(e) => { e.preventDefault(); handleLinkClick('gallery'); }} 
+                  style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                >
                   <ChevronRight size={13} /> Completed Gallery (600+)
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('motors')} style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                <a 
+                  href="/#motors"
+                  onClick={(e) => { e.preventDefault(); handleLinkClick('motors'); }} 
+                  style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                >
                   <ChevronRight size={13} /> Motors & Automation
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('why-factory-direct')} style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                <a 
+                  href="/#why-factory-direct"
+                  onClick={(e) => { e.preventDefault(); handleLinkClick('why-factory-direct'); }} 
+                  style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                >
                   <ChevronRight size={13} /> Why Buy Factory Direct
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate && onNavigate('suburbs', 'brisbane')} style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                <a 
+                  href="/gates-brisbane"
+                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('suburbs', 'brisbane'); }} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                >
                   <ChevronRight size={13} /> Gates Brisbane (North, South, West)
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate && onNavigate('suburbs', 'ipswich')} style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                <a 
+                  href="/gates-ipswich"
+                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('suburbs', 'ipswich'); }} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                >
                   <ChevronRight size={13} /> Gates Ipswich & Yamanto
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate && onNavigate('suburbs', 'logan')} style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                <a 
+                  href="/gates-logan"
+                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('suburbs', 'logan'); }} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                >
                   <ChevronRight size={13} /> Gates Logan & Redland Bay
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate && onNavigate('suburbs', 'goldcoast')} style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                <a 
+                  href="/gates-gold-coast"
+                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('suburbs', 'goldcoast'); }} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                >
                   <ChevronRight size={13} /> Gates Gold Coast
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('faqs')} style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                <a 
+                  href="/#faqs"
+                  onClick={(e) => { e.preventDefault(); handleLinkClick('faqs'); }} 
+                  style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                >
                   <ChevronRight size={13} /> FAQs & Answers
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -378,14 +427,12 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
                 <LinkedInIcon size={16} />
               </a>
             </div>
-            <button
-              onClick={() => onNavigate && onNavigate('privacy-policy')}
+            <a
+              href="/privacy-policy"
+              onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('privacy-policy'); }}
               style={{
-                background: 'none',
-                border: 'none',
                 color: '#cbd5e1',
-                cursor: 'pointer',
-                padding: 0,
+                textDecoration: 'none',
                 fontSize: 'inherit',
                 fontFamily: 'inherit',
                 transition: 'color 0.2s ease'
@@ -394,15 +441,13 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
               onMouseLeave={(e) => e.currentTarget.style.color = '#cbd5e1'}
             >
               Privacy Policy
-            </button>
-            <button
-              onClick={() => onNavigate && onNavigate('privacy-policy')}
+            </a>
+            <a
+              href="/privacy-policy"
+              onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('privacy-policy'); }}
               style={{
-                background: 'none',
-                border: 'none',
                 color: '#cbd5e1',
-                cursor: 'pointer',
-                padding: 0,
+                textDecoration: 'none',
                 fontSize: 'inherit',
                 fontFamily: 'inherit',
                 transition: 'color 0.2s ease'
@@ -411,7 +456,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
               onMouseLeave={(e) => e.currentTarget.style.color = '#cbd5e1'}
             >
               Terms & Conditions
-            </button>
+            </a>
 
             <button 
               onClick={scrollToTop}

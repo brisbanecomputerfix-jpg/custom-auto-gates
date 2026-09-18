@@ -380,17 +380,19 @@ export default function Navbar({
                     onMouseEnter={() => setServicesDropdown(true)}
                   >
                     {[
-                      { name: 'Automatic Sliding Gates', id: 'sliding-gates' },
-                      { name: 'Automatic Swing & Bi-Fold', id: 'swing-gates' },
-                      { name: 'Off-Grid Solar Gates', id: 'solar-gates' },
-                      { name: 'Commercial Boom & Barriers', id: 'boom-gates' },
-                      { name: 'Aluminium Slat Fencing', id: 'fencing' },
-                      { name: 'Service, Repairs & Warranty', id: 'service', isRoute: true },
-                      { name: 'QLD Council & Pool Safety Guide', id: 'council-guide', isRoute: true }
+                      { name: 'Automatic Sliding Gates', id: 'sliding-gates', href: '/#sliding-gates' },
+                      { name: 'Automatic Swing & Bi-Fold', id: 'swing-gates', href: '/#swing-gates' },
+                      { name: 'Off-Grid Solar Gates', id: 'solar-gates', href: '/#solar-gates' },
+                      { name: 'Commercial Boom & Barriers', id: 'boom-gates', href: '/#boom-gates' },
+                      { name: 'Aluminium Slat Fencing', id: 'fencing', href: '/#fencing' },
+                      { name: 'Service, Repairs & Warranty', id: 'service', isRoute: true, href: '/service' },
+                      { name: 'QLD Council & Pool Safety Guide', id: 'council-guide', isRoute: true, href: '/council-guide' }
                     ].map((s) => (
-                      <button
+                      <a
                         key={s.id}
-                        onClick={() => {
+                        href={s.href}
+                        onClick={(e) => {
+                          e.preventDefault();
                           setServicesDropdown(false);
                           if (s.isRoute) {
                             handleRouteClick(s.id);
@@ -408,7 +410,8 @@ export default function Navbar({
                           fontWeight: '600',
                           borderRadius: '8px',
                           display: 'block',
-                          cursor: 'pointer',
+                          textDecoration: 'none',
+                          boxSizing: 'border-box',
                           transition: 'all 0.15s ease'
                         }}
                         onMouseEnter={(e) => {
@@ -421,24 +424,25 @@ export default function Navbar({
                         }}
                       >
                         {s.name}
-                      </button>
+                      </a>
                     ))}
                   </div>
                 )}
               </li>
 
-              {/* 3. Service and Repairs */}
+              {/* 2. Service and Repairs */}
               <li>
-                <button 
+                <a 
+                  href="/service"
                   className="nav-link-btn" 
-                  onClick={() => handleRouteClick('service')}
+                  onClick={(e) => { e.preventDefault(); handleRouteClick('service'); }}
                   style={{
                     color: currentPage === 'service' ? 'var(--accent-gold)' : 'var(--text-heading)',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: currentPage === 'service' ? '800' : '700',
                     fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
-                    cursor: 'pointer',
+                    textDecoration: 'none',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.35rem',
@@ -447,40 +451,42 @@ export default function Navbar({
                 >
                   <Wrench size={15} style={{ color: 'var(--accent-gold)' }} />
                   <span>Service and Repairs</span>
-                </button>
+                </a>
               </li>
 
               {/* 3. Project Gallery */}
               <li>
-                <button 
+                <a 
+                  href="/#gallery"
                   className="nav-link-btn" 
-                  onClick={() => handleNavClick('gallery')}
+                  onClick={(e) => { e.preventDefault(); handleNavClick('gallery'); }}
                   style={{
                     color: 'var(--text-heading)',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: '700',
                     fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
-                    cursor: 'pointer',
+                    textDecoration: 'none',
                     transition: 'color 0.2s ease'
                   }}
                 >
                   Gallery
-                </button>
+                </a>
               </li>
 
               {/* 4. Verified Reviews (4.9★) */}
               <li>
-                <button 
+                <a 
+                  href="/testimonials"
                   className="nav-link-btn" 
-                  onClick={() => handleRouteClick('testimonials')}
+                  onClick={(e) => { e.preventDefault(); handleRouteClick('testimonials'); }}
                   style={{
                     color: currentPage === 'testimonials' ? 'var(--accent-gold)' : 'var(--text-heading)',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: currentPage === 'testimonials' ? '800' : '700',
                     fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
-                    cursor: 'pointer',
+                    textDecoration: 'none',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.3rem',
@@ -497,26 +503,27 @@ export default function Navbar({
                     borderRadius: '4px', 
                     fontWeight: '800' 
                   }}>4.9★</span>
-                </button>
+                </a>
               </li>
 
               {/* 5. Contact Us */}
               <li>
-                <button 
+                <a 
+                  href="/contact-us"
                   className="nav-link-btn" 
-                  onClick={() => handleRouteClick('contact')}
+                  onClick={(e) => { e.preventDefault(); handleRouteClick('contact'); }}
                   style={{
                     color: currentPage === 'contact' ? 'var(--accent-gold)' : 'var(--text-heading)',
                     fontFamily: 'Outfit, sans-serif',
                     fontWeight: currentPage === 'contact' ? '800' : '700',
                     fontSize: '0.94rem',
                     padding: '0.5rem 0.25rem',
-                    cursor: 'pointer',
+                    textDecoration: 'none',
                     transition: 'color 0.2s ease'
                   }}
                 >
                   Contact Us
-                </button>
+                </a>
               </li>
             </ul>
           </nav>
@@ -689,77 +696,96 @@ export default function Navbar({
                   Main Navigation
                 </span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
-                  <button 
+                  <a 
+                    href="/"
                     className="mobile-nav-item" 
-                    onClick={() => handleRouteClick('home')}
-                    style={{ color: currentPage === 'home' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
+                    onClick={(e) => { e.preventDefault(); handleRouteClick('home'); }}
+                    style={{ color: currentPage === 'home' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0', textDecoration: 'none' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
                       <Home size={17} style={{ color: 'var(--text-muted)' }} />
                       Home
                     </span>
                     <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
-                  </button>
+                  </a>
 
-                  <button 
+                  <a 
+                    href="/about-us"
                     className="mobile-nav-item" 
-                    onClick={() => handleRouteClick('about')}
-                    style={{ color: currentPage === 'about' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
+                    onClick={(e) => { e.preventDefault(); handleRouteClick('about'); }}
+                    style={{ color: currentPage === 'about' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0', textDecoration: 'none' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
                       <Info size={17} style={{ color: 'var(--accent-blue)' }} />
                       About Us & Our Yamanto Team
                     </span>
                     <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
-                  </button>
+                  </a>
 
-                  <button 
+                  <a 
+                    href="/service"
                     className="mobile-nav-item" 
-                    onClick={() => handleRouteClick('service')}
-                    style={{ color: currentPage === 'service' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
+                    onClick={(e) => { e.preventDefault(); handleRouteClick('service'); }}
+                    style={{ color: currentPage === 'service' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0', textDecoration: 'none' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
                       <Wrench size={17} style={{ color: 'var(--accent-gold)' }} />
                       Service, Repairs & Warranty
                     </span>
                     <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
-                  </button>
+                  </a>
 
-                  <button 
+                  <a 
+                    href="/testimonials"
                     className="mobile-nav-item" 
-                    onClick={() => handleRouteClick('testimonials')}
-                    style={{ color: currentPage === 'testimonials' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
+                    onClick={(e) => { e.preventDefault(); handleRouteClick('testimonials'); }}
+                    style={{ color: currentPage === 'testimonials' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0', textDecoration: 'none' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
                       <Star size={17} fill="#f59e0b" style={{ color: '#f59e0b' }} />
                       Verified Reviews & Case Studies (4.9★)
                     </span>
                     <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
-                  </button>
+                  </a>
 
-                  <button 
+                  <a 
+                    href="/council-guide"
                     className="mobile-nav-item" 
-                    onClick={() => handleRouteClick('council-guide')}
-                    style={{ color: currentPage === 'council-guide' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
+                    onClick={(e) => { e.preventDefault(); handleRouteClick('council-guide'); }}
+                    style={{ color: currentPage === 'council-guide' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0', textDecoration: 'none' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
                       <Scale size={17} style={{ color: 'var(--accent-emerald)' }} />
                       QLD Council & Pool Safety Guide
                     </span>
                     <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
-                  </button>
+                  </a>
 
-                  <button 
+                  <a 
+                    href="/trade"
                     className="mobile-nav-item" 
-                    onClick={() => handleRouteClick('contact')}
-                    style={{ color: currentPage === 'contact' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0' }}
+                    onClick={(e) => { e.preventDefault(); handleRouteClick('trade'); }}
+                    style={{ color: currentPage === 'trade' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0', textDecoration: 'none' }}
+                  >
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                      <Building2 size={17} style={{ color: 'var(--accent-gold)' }} />
+                      Trade & Builders Portal
+                    </span>
+                    <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
+                  </a>
+
+                  <a 
+                    href="/contact-us"
+                    className="mobile-nav-item" 
+                    onClick={(e) => { e.preventDefault(); handleRouteClick('contact'); }}
+                    style={{ color: currentPage === 'contact' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0', textDecoration: 'none' }}
                   >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
                       <Phone size={17} style={{ color: 'var(--accent-blue)' }} />
                       Contact Us
                     </span>
                     <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
-                  </button>
+                  </a>
 
                   <button 
                     className="mobile-nav-item" 
@@ -836,14 +862,15 @@ export default function Navbar({
                   <button className="mobile-nav-item" onClick={() => handleNavClick('why-factory-direct')} style={{ padding: '0.55rem 0' }}>
                     <span style={{ fontSize: '0.92rem' }}>Why Buy Factory Direct</span>
                   </button>
-                  <button 
+                  <a 
+                    href="/gates-brisbane" 
                     className="mobile-nav-item" 
-                    onClick={() => handleRouteClick('suburbs')} 
-                    style={{ padding: '0.55rem 0', color: currentPage === 'suburbs' ? 'var(--accent-gold)' : 'var(--text-heading)' }}
+                    onClick={(e) => { e.preventDefault(); handleRouteClick('suburbs'); }} 
+                    style={{ padding: '0.55rem 0', color: currentPage === 'suburbs' ? 'var(--accent-gold)' : 'var(--text-heading)', textDecoration: 'none' }}
                   >
                     <span style={{ fontSize: '0.92rem' }}>Service Areas (Brisbane, Ipswich, Logan, GC)</span>
                     <MapPin size={15} style={{ color: 'var(--accent-blue)' }} />
-                  </button>
+                  </a>
                   <button className="mobile-nav-item" onClick={() => handleNavClick('faqs')} style={{ padding: '0.55rem 0' }}>
                     <span style={{ fontSize: '0.92rem' }}>Frequently Asked Questions</span>
                   </button>

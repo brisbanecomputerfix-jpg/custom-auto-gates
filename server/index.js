@@ -82,6 +82,105 @@ app.use((req, res, next) => {
   next();
 });
 
+// 1c. 301 Permanent Redirects for Legacy WordPress URLs (Preserve Search Authority & Link Equity)
+const LEGACY_301_REDIRECTS = {
+  // Driveway & Sliding Gates
+  '/gates/driveway-gates': '/#sliding-gates',
+  '/gates/driveway-gates/': '/#sliding-gates',
+  '/driveway-gates': '/#sliding-gates',
+  '/driveway-gates/': '/#sliding-gates',
+  '/automatic-sliding-gates': '/#sliding-gates',
+  '/automatic-sliding-gates/': '/#sliding-gates',
+  '/automatic-sliding-gates-2': '/#sliding-gates',
+  '/automatic-sliding-gates-2/': '/#sliding-gates',
+  '/gates/automatic-sliding-gates-brisbane': '/gates-brisbane',
+  '/gates/automatic-sliding-gates-brisbane/': '/gates-brisbane',
+  '/automated-gates-brisbane': '/gates-brisbane',
+  '/automated-gates-brisbane/': '/gates-brisbane',
+  '/gates/automatic-gates': '/#sliding-gates',
+  '/gates/automatic-gates/': '/#sliding-gates',
+  '/gates/slide-swing-bi-fold-telescopic': '/#sliding-gates',
+  '/slide-swing-bi-fold-telescopic': '/#sliding-gates',
+  '/slide-swing-bi-fold-telescopic/': '/#sliding-gates',
+
+  // Solar Automatic Gates
+  '/gate-automation/solar-automatic-gates': '/#solar-gates',
+  '/gate-automation/solar-automatic-gates/': '/#solar-gates',
+  '/solar-automatic-gates': '/#solar-gates',
+  '/solar-automatic-gates/': '/#solar-gates',
+
+  // Swing Gates
+  '/gates/swing-gates': '/#swing-gates',
+  '/gates/swing-gates/': '/#swing-gates',
+  '/swing-gates': '/#swing-gates',
+  '/swing-gates/': '/#swing-gates',
+
+  // Gallery
+  '/gates/gallery-gates': '/#gallery',
+  '/gates/gallery-gates/': '/#gallery',
+  '/gallery-gates': '/#gallery',
+  '/gallery-gates/': '/#gallery',
+  '/gallery': '/#gallery',
+  '/gallery/': '/#gallery',
+
+  // Commercial & Boom Gates
+  '/gates/security-commercial-electric-gates': '/#boom-gates',
+  '/gates/security-commercial-electric-gates/': '/#boom-gates',
+  '/gates/secuirty-commercial-electric-gates': '/#boom-gates',
+  '/gates/secuirty-commercial-electric-gates/': '/#boom-gates',
+  '/gate-automation/automatic-boom-gates': '/#boom-gates',
+  '/gate-automation/automatic-boom-gates/': '/#boom-gates',
+  '/gate-automation-boom-gates-road-barriers': '/#boom-gates',
+  '/gate-automation-boom-gates-road-barriers/': '/#boom-gates',
+  '/security-fencing': '/#fencing',
+  '/security-fencing/': '/#fencing',
+
+  // Motors & Automation
+  '/automation-accessories/motors': '/#motor-showcase',
+  '/automation-accessories/motors/': '/#motor-showcase',
+  '/automation-accessories': '/#motor-showcase',
+  '/automation-accessories/': '/#motor-showcase',
+  '/gate-automation': '/#motor-showcase',
+  '/gate-automation/': '/#motor-showcase',
+  '/gate-automation/nice-sliding-gate-automation': '/#motor-showcase',
+  '/gate-automation/nice-sliding-gate-automation/': '/#motor-showcase',
+  '/gate-automation/nice-swing-gate-automation': '/#motor-showcase',
+  '/gate-automation/nice-swing-gate-automation/': '/#motor-showcase',
+
+  // Fencing
+  '/fencing': '/#fencing',
+  '/fencing/': '/#fencing',
+  '/fencing/colorbond-fencing': '/#fencing',
+  '/fencing/colorbond-fencing/': '/#fencing',
+  '/fencing/aluminium-fencing': '/#fencing',
+  '/fencing/aluminium-fencing/': '/#fencing',
+  '/fencing/timber-fencing': '/#fencing',
+  '/fencing/timber-fencing/': '/#fencing',
+  '/balustrade': '/#fencing',
+  '/balustrade/': '/#fencing',
+
+  // Legacy Bookings / Contact
+  '/book-an-appointment': '/contact-us',
+  '/book-an-appointment/': '/contact-us',
+  '/terms-conditions': '/privacy-policy',
+  '/terms-conditions/': '/privacy-policy'
+};
+
+app.use((req, res, next) => {
+  const normalizedPath = req.path.toLowerCase().replace(/\/$/, '');
+  const withTrailingSlash = `${normalizedPath}/`;
+  
+  const targetRedirect = LEGACY_301_REDIRECTS[req.path] || 
+                         LEGACY_301_REDIRECTS[normalizedPath] || 
+                         LEGACY_301_REDIRECTS[withTrailingSlash];
+
+  if (targetRedirect) {
+    return res.redirect(301, targetRedirect);
+  }
+  next();
+});
+
+
 
 // 2. CORS Configuration (Permits localhost and production domain)
 app.use(cors({
