@@ -9,43 +9,43 @@ const BASE_URL = 'https://customautogates.com.au';
 
 export const PAGE_SEO_CONFIGS = {
   home: {
-    title: 'Custom Auto Gates & Fencing | Buy Factory Direct Brisbane & Ipswich QLD',
-    description: "Custom Auto Gates & Fencing — South East Queensland's premier manufacturer of custom automatic sliding gates, swing gates, solar gates, and aluminium slat fencing. Buy factory direct from our Yamanto workshop. Call (07) 3102 1801.",
+    title: 'Custom Automatic Gates Brisbane | Factory Direct Sliding, Swing & Solar Gates',
+    description: "Custom Auto Gates & Fencing — South East Queensland's leading manufacturer of custom automatic sliding gates, swing gates, solar gates & aluminium slat fencing. Buy factory direct from our Yamanto workshop. Free on-site measure: (07) 3102 1801.",
     canonicalPath: '/',
-    geoPlacename: 'Yamanto, Brisbane, Ipswich, Queensland'
+    geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
   about: {
-    title: 'About Our Team & Yamanto Workshop | Custom Auto Gates & Fencing',
-    description: 'Learn about Custom Auto Gates & Fencing. Over 20 years fabricating Australian-made automatic gates, TIG-welded aluminium, and QBCC licensed (#15579753) automation in Yamanto.',
+    title: 'About Our Team & Yamanto Gate Workshop | Custom Auto Gates QLD',
+    description: 'Learn about Custom Auto Gates & Fencing. Over 20 years fabricating Australian-made automatic gates, TIG-welded aluminium, and QBCC licensed (#15579753) automation in Yamanto, QLD.',
     canonicalPath: '/about-us',
     geoPlacename: 'Yamanto, Ipswich, Queensland'
   },
   service: {
-    title: 'Gate Service, Repairs & Warranty | Custom Auto Gates Brisbane & Ipswich',
-    description: 'Professional gate motor repairs, scheduled maintenance, and warranty support across South East Queensland. Specialised in all sliding, swing, solar and commercial automation systems.',
+    title: 'Electric Gate Repairs Brisbane | Fast Emergency Gate Motor & Track Service',
+    description: 'Electric gate stopped working? Professional gate motor repairs, remote reprogramming, safety beam alignment & maintenance across Brisbane, Ipswich & Gold Coast. Book technician online.',
     canonicalPath: '/service',
-    geoPlacename: 'Brisbane, Ipswich, Logan, Queensland'
+    geoPlacename: 'Brisbane, Ipswich, Logan, Gold Coast, Queensland'
   },
   contact: {
-    title: 'Contact Us & Workshop | Custom Auto Gates Yamanto QLD',
-    description: 'Contact Custom Auto Gates & Fencing at Shed 2, 43-45 Belar St, Yamanto QLD 4305. Book a free on-site visit or call (07) 3102 1801 for factory direct advice.',
+    title: 'Contact Us & Showroom Workshop | Custom Auto Gates Yamanto Brisbane',
+    description: 'Contact Custom Auto Gates & Fencing at Shed 2, 43-45 Belar St, Yamanto QLD 4305. Book a free on-site design consult or call (07) 3102 1801 for factory direct advice.',
     canonicalPath: '/contact-us',
     geoPlacename: 'Shed 2, 43-45 Belar St, Yamanto, QLD 4305'
   },
   testimonials: {
-    title: 'Customer Reviews & Case Studies (4.9★) | Custom Auto Gates QLD',
+    title: 'Customer Reviews & Gate Projects (4.9★) | Custom Auto Gates QLD',
     description: 'Read 180+ verified 5-star customer reviews and detailed engineering case studies from homeowners across Brisbane, Ipswich, Logan, and Gold Coast.',
     canonicalPath: '/testimonials',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
   'council-guide': {
-    title: 'Queensland Council Planning & Pool Safety Gate Guide (AS1926.1)',
+    title: 'Queensland Council Fence & Pool Safety Gate Guide (AS1926.1)',
     description: 'Official guide to Brisbane City Council (BCC), Ipswich City Council (ICC), and Gold Coast fence height rules, 50% slat permeability, and AS1926.1 pool gate laws.',
     canonicalPath: '/council-guide',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
   trade: {
-    title: 'Trade & Builders Portal | Wholesale Gate Fabrication & Lead Times SEQ',
+    title: 'Trade & Builders Gate Portal | Wholesale Gate Fabrication SEQ',
     description: 'Wholesale custom automated gates and aluminium slat fencing for South East Queensland builders, fencing contractors, and developers. Fast 7–10 day lead times, CAD specs, 30-day accounts.',
     canonicalPath: '/trade',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
@@ -57,8 +57,8 @@ export const PAGE_SEO_CONFIGS = {
     geoPlacename: 'Brisbane, Queensland, AU'
   },
   'suburbs-ipswich': {
-    title: 'Automatic Gates Ipswich & Yamanto | Factory Direct from Shed 2, 43-45 Belar St',
-    description: 'Buy direct from our Yamanto workshop facility! Eliminating middleman markups for Ipswich, Springfield Lakes, Brookwater, Brassall, and Karalee property owners.',
+    title: 'Automatic Gates Ipswich & Yamanto | Factory Direct from Belar St Workshop',
+    description: 'Buy factory direct from our Yamanto workshop facility! Eliminating middleman markups for Ipswich, Springfield Lakes, Brookwater, Brassall, and Karalee property owners.',
     canonicalPath: '/gates-ipswich',
     geoPlacename: 'Yamanto, Ipswich, Springfield, Queensland, AU'
   },
@@ -69,7 +69,7 @@ export const PAGE_SEO_CONFIGS = {
     geoPlacename: 'Logan City, Redland Bay, Queensland, AU'
   },
   'suburbs-goldcoast': {
-    title: 'Custom Automatic Gates Gold Coast | Coastal Marine Grade Aluminium',
+    title: 'Custom Automatic Gates Gold Coast | Marine Grade Aluminium Automation',
     description: '100% corrosion-resistant marine grade aluminium automatic gates for Gold Coast, Hope Island, Sanctuary Cove, Coomera, Southport, and Hinterland properties.',
     canonicalPath: '/gates-gold-coast',
     geoPlacename: 'Gold Coast, Coomera, Southport, Queensland, AU'
