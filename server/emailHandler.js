@@ -78,6 +78,56 @@ export function getLeadById(id) {
   return leads.find(l => l.id === searchId || String(l.id).replace('lead-', '') === String(id));
 }
 
+// Helper to retrieve lead by Stripe checkout session ID
+export function getLeadBySessionId(sessionId) {
+  if (!sessionId) return null;
+  const leads = getAllLeads();
+  return leads.find(l => 
+    l.sessionId === sessionId || 
+    l.paymentDetails?.sessionId === sessionId || 
+    l.paymentDetails?.stripeRef === sessionId ||
+    l.id === sessionId
+  );
+}
+
+// Helper to save a pending lead/booking before payment without sending premature emails
+export function savePendingLead(leadData) {
+  try {
+    let leads = getAllLeads();
+    const sessionId = leadData.sessionId || leadData.paymentDetails?.sessionId;
+    const existingIdx = leads.findIndex(l => 
+      (sessionId && (l.sessionId === sessionId || l.paymentDetails?.sessionId === sessionId)) ||
+      (leadData.id && l.id === leadData.id)
+    );
+
+    const pendingRecord = {
+      id: leadData.id || (sessionId ? `lead-${sessionId.slice(-10)}` : `lead-${Date.now()}`),
+      sessionId: sessionId || null,
+      receivedAt: new Date().toISOString(),
+      paymentStatus: 'pending_payment',
+      notificationSent: false,
+      ...leadData
+    };
+
+    if (existingIdx !== -1) {
+      leads[existingIdx] = {
+        ...leads[existingIdx],
+        ...pendingRecord,
+        updatedAt: new Date().toISOString()
+      };
+      fs.writeFileSync(leadsFilePath, JSON.stringify(leads, null, 2), 'utf8');
+      return leads[existingIdx];
+    } else {
+      leads.unshift(pendingRecord);
+      fs.writeFileSync(leadsFilePath, JSON.stringify(leads, null, 2), 'utf8');
+      return pendingRecord;
+    }
+  } catch (err) {
+    console.error('Failed to save pending lead:', err.message);
+    return leadData;
+  }
+}
+
 // Helper to append or update lead in local leads.json backup
 export function saveLeadLocally(leadData) {
   try {
@@ -98,10 +148,11 @@ export function saveLeadLocally(leadData) {
     }
 
     // Match existing lead by Stripe session ID if updating payment
-    if (cleanLeadData.paymentDetails?.sessionId) {
+    const sessId = cleanLeadData.paymentDetails?.sessionId || cleanLeadData.sessionId;
+    if (sessId) {
       const existingBySession = leads.findIndex(l => 
-        l.paymentDetails?.sessionId === cleanLeadData.paymentDetails.sessionId ||
-        (l.sessionId && l.sessionId === cleanLeadData.paymentDetails.sessionId)
+        l.paymentDetails?.sessionId === sessId ||
+        l.sessionId === sessId
       );
       if (existingBySession !== -1) {
         leads[existingBySession] = {
@@ -364,8 +415,9 @@ export async function sendLeadNotification(lead) {
   // Attach PDF and uploaded files (under 10MB)
   const attachments = [];
   if (lead.pdfBuffer) {
+    const pdfFilename = lead.pdfFilename || (paymentDetails ? 'service-booking-confirmation.pdf' : 'instant-gate-quotes.pdf');
     attachments.push({
-      filename: 'instant-gate-quotes.pdf',
+      filename: pdfFilename,
       content: lead.pdfBuffer,
       contentType: 'application/pdf'
     });
@@ -435,9 +487,9 @@ export async function sendLeadNotification(lead) {
               ✅ <strong>Payment Confirmed:</strong> ${paymentDetails.amount} received via ${paymentDetails.method || 'Card'}${paymentDetails.last4 ? ` (ending in ${paymentDetails.last4})` : ''}. Stripe Ref: <code>${paymentDetails.stripeRef || paymentDetails.sessionId}</code>.
             </div>` : ''}
 
-            ${isInstantQuote ? `
+            ${lead.pdfBuffer ? `
             <div style="background-color: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 6px; padding: 14px 16px; margin: 18px 0; color: #1e40af; font-size: 14px;">
-              📄 <strong>PDF Attachment Included:</strong> Please check the attached document <code>instant-gate-quotes.pdf</code> for your complete itemized materials specification and pricing estimate.
+              📄 <strong>PDF Attachment Included:</strong> Please check the attached document <code>${lead.pdfFilename || (paymentDetails ? 'service-booking-confirmation.pdf' : 'instant-gate-quotes.pdf')}</code> for your official itemized ${paymentDetails ? 'tax invoice and booking confirmation' : 'materials specification and pricing estimate'}.
             </div>` : ''}
 
             <div style="background-color: #f7fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; margin: 20px 0;">

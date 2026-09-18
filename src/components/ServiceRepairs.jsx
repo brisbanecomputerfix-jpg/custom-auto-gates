@@ -92,30 +92,56 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
         uploadedFiles = await uploadFormFiles(files);
       }
 
-      // 2. Record lead with backend notification
-      fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.fullName,
-          phone: formData.phone,
-          email: formData.email,
-          address: `${formData.address || ''}, ${formData.suburb || ''} ${formData.postcode || ''}`.trim(),
-          suburb: formData.suburb,
-          serviceType: `Service Booking: ${serviceRequirement} (${propertyType} - $${basePrice} callout)`,
-          notes: `Original Purchaser: ${isOriginalPurchaser}. Gate Type: ${formData.gateType}. Motor: ${formData.motorBrand}. Issues: ${formData.issueDescription}. Preferred Date: ${formData.preferredDate || 'ASAP'}`,
-          source: 'Service & Warranty Booking Form',
-          files: uploadedFiles
-        })
-      }).catch(e => console.warn('Service lead notification log:', e));
-
+      const fullAddress = `${formData.address || ''}, ${formData.suburb || ''} ${formData.postcode || ''}`.trim();
       const serviceTitle = serviceRequirement === 'repair'
         ? `Urgent ${propertyType === 'residential' ? 'Residential' : 'Commercial'} Gate Repair Call-Out Fee`
         : serviceRequirement === 'routine-service'
         ? 'Annual Preventative Gate Service & Safety Check'
         : 'Gate Automation Diagnostic Assessment';
 
-      const description = `Technician Dispatch: ${formData.fullName || 'Customer'} - ${formData.address || ''}, ${formData.suburb || ''} ${formData.postcode || ''}`;
+      const detailedNotes = `Original Purchaser: ${isOriginalPurchaser}. Gate Type: ${formData.gateType}. Motor: ${formData.motorBrand}. Issues: ${formData.issueDescription}. Preferred Date: ${formData.preferredDate || 'ASAP'}`;
+
+      // 2. Handle 'Pay On Dispatch / Direct Invoice' without Stripe redirection
+      if (paymentMethod === 'invoice') {
+        await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.fullName,
+            phone: formData.phone,
+            email: formData.email,
+            address: fullAddress,
+            suburb: formData.suburb,
+            serviceType: `Service Booking (Pay on Dispatch): ${serviceRequirement} (${propertyType} - $${basePrice} callout)`,
+            notes: `[PAY ON DISPATCH / INVOICE REQUESTED]\n${detailedNotes}`,
+            source: 'Service & Warranty Booking Form',
+            files: uploadedFiles
+          })
+        });
+
+        const receiptId = 'CAG-' + Math.floor(100000 + Math.random() * 900000);
+        setTransactionReceipt({
+          receiptNumber: receiptId,
+          stripeChargeId: 'Pay On Dispatch Authorized',
+          date: new Date().toLocaleDateString('en-AU', { day: '2-digit', month: 'short', year: 'numeric' }),
+          amount: basePrice,
+          gst: gstAmount,
+          paymentMethod: 'Direct Booking Invoice (Pay on Dispatch)',
+          customerName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          address: fullAddress,
+          serviceType: serviceRequirement === 'repair' ? 'Urgent Repair Call Out' : serviceRequirement === 'routine-service' ? 'Routine Preventative Service' : 'Warranty Diagnostic'
+        });
+        setFormSubmitted(true);
+        setIsProcessingPayment(false);
+        return;
+      }
+
+      // 3. Online Payment (Link, Card, Wallets):
+      // Do NOT send premature unpaid lead notification. Pass complete booking data to Stripe session
+      // so a single consolidated email with verified payment details and PDF receipt is sent upon confirmation.
+      const description = `Technician Dispatch: ${formData.fullName || 'Customer'} - ${fullAddress}`;
 
       await createStripeCheckout({
         amount: basePrice,
@@ -132,13 +158,34 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
           suburb: formData.suburb,
           postcode: formData.postcode,
           motorBrand: formData.motorBrand,
+          isOriginalPurchaser,
+          preferredDate: formData.preferredDate || 'ASAP',
           issueDescription: formData.issueDescription,
         },
+        bookingData: {
+          fullName: formData.fullName,
+          phone: formData.phone,
+          email: formData.email,
+          address: fullAddress,
+          suburb: formData.suburb,
+          postcode: formData.postcode,
+          propertyType,
+          serviceRequirement,
+          gateType: formData.gateType,
+          motorBrand: formData.motorBrand,
+          isOriginalPurchaser,
+          preferredDate: formData.preferredDate || 'ASAP',
+          issueDescription: formData.issueDescription,
+          notes: detailedNotes,
+          files: uploadedFiles,
+          serviceType: serviceTitle,
+        }
       });
     } catch (err) {
       console.warn('Direct Stripe Checkout redirection note (using confirmed receipt mode):', err);
       setIsProcessingPayment(false);
       
+      const fullAddress = `${formData.address || ''}, ${formData.suburb || ''} ${formData.postcode || ''}`.trim();
       const receiptId = 'CAG-' + Math.floor(100000 + Math.random() * 900000);
       const stripeTx = 'ch_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
       
@@ -152,7 +199,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
         customerName: formData.fullName,
         email: formData.email,
         phone: formData.phone,
-        address: `${formData.address}, ${formData.suburb}`,
+        address: fullAddress,
         serviceType: serviceRequirement === 'repair' ? 'Urgent Repair Call Out' : serviceRequirement === 'routine-service' ? 'Routine Preventative Service' : 'Warranty Diagnostic'
       });
       setFormSubmitted(true);

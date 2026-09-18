@@ -11,6 +11,7 @@ export async function createStripeCheckout({
   customerName,
   customerPhone,
   metadata = {},
+  bookingData = {},
 }) {
   try {
     const response = await fetch('/api/create-checkout-session', {
@@ -29,6 +30,7 @@ export async function createStripeCheckout({
           business: 'Custom Auto Gates Pty Ltd',
           ...metadata,
         },
+        bookingData,
       }),
     });
 

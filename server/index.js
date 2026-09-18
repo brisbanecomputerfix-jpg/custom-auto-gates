@@ -6,8 +6,15 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import multer from 'multer';
 import { createCheckoutSession, createPaymentIntent, retrieveSessionDetails } from './stripeHandler.js';
-import { sendLeadNotification, getAllLeads, getLeadById, formatLeadForGravityForms } from './emailHandler.js';
-import { generateQuotePdf } from './pdfGenerator.js';
+import { 
+  sendLeadNotification, 
+  getAllLeads, 
+  getLeadById, 
+  getLeadBySessionId, 
+  savePendingLead, 
+  formatLeadForGravityForms 
+} from './emailHandler.js';
+import { generateQuotePdf, generateBookingReceiptPdf } from './pdfGenerator.js';
 
 dotenv.config();
 
@@ -298,7 +305,18 @@ app.post('/api/quote', async (req, res) => {
 // Endpoint: Create Stripe Checkout Session
 app.post('/api/create-checkout-session', async (req, res) => {
   try {
-    const { amount, title, description, customerEmail, customerName, customerPhone, metadata, successUrl, cancelUrl } = req.body;
+    const { 
+      amount, 
+      title, 
+      description, 
+      customerEmail, 
+      customerName, 
+      customerPhone, 
+      metadata, 
+      bookingData, 
+      successUrl, 
+      cancelUrl 
+    } = req.body;
     
     const parsedAmount = Number(amount);
     if (!parsedAmount || isNaN(parsedAmount) || parsedAmount < 1 || parsedAmount > 50000) {
@@ -315,6 +333,30 @@ app.post('/api/create-checkout-session', async (req, res) => {
       metadata: typeof metadata === 'object' && metadata !== null ? metadata : {},
       successUrl,
       cancelUrl,
+    });
+
+    // Persist pending booking details safely in leads.json (WITHOUT prematurely dispatching emails)
+    const bData = bookingData || {};
+    const fullAddress = (bData.address ? `${bData.address}, ${bData.suburb || ''} ${bData.postcode || ''}`.trim() : (metadata?.address ? `${metadata.address}, ${metadata.suburb || ''} ${metadata.postcode || ''}`.trim() : '')).trim();
+
+    savePendingLead({
+      sessionId: session.id,
+      name: customerName || bData.fullName || bData.name || '',
+      phone: customerPhone || bData.phone || '',
+      email: customerEmail || bData.email || '',
+      address: fullAddress,
+      suburb: bData.suburb || metadata?.suburb || '',
+      serviceType: title || `Service Booking: ${bData.serviceRequirement || 'Routine Service'}`,
+      gateType: bData.gateType || metadata?.gateType || 'sliding',
+      motorBrand: bData.motorBrand || metadata?.motorBrand || 'Smart Gate Automation',
+      isOriginalPurchaser: bData.isOriginalPurchaser || metadata?.isOriginalPurchaser || 'yes',
+      preferredDate: bData.preferredDate || metadata?.preferredDate || 'ASAP',
+      notes: bData.notes || (bData.issueDescription 
+        ? `Original Purchaser: ${bData.isOriginalPurchaser || 'yes'}. Gate Type: ${bData.gateType || 'sliding'}. Motor: ${bData.motorBrand || 'Smart Gate Automation'}. Issues: ${bData.issueDescription}. Preferred Date: ${bData.preferredDate || 'ASAP'}` 
+        : (metadata?.issueDescription ? `Gate Type: ${metadata.gateType || 'sliding'}. Motor: ${metadata.motorBrand || 'Smart Gate Automation'}. Issues: ${metadata.issueDescription}.` : '')),
+      files: bData.files || [],
+      source: 'Service & Warranty Booking Form',
+      amount: parsedAmount
     });
 
     res.json({
@@ -356,12 +398,23 @@ app.post('/api/create-payment-intent', async (req, res) => {
   }
 });
 
-// Endpoint: Verify Stripe Payment & Dispatch Full Notification with Payment Details
+// Endpoint: Verify Stripe Payment & Dispatch Full Notification with Payment Details & PDF Attachment
 app.post('/api/verify-payment', async (req, res) => {
   try {
     const { sessionId } = req.body;
     if (!sessionId) {
       return res.status(400).json({ error: 'Session ID is required.' });
+    }
+
+    // Deduplication check: if notification has already been dispatched for this session, do not send duplicates
+    const existingLead = getLeadBySessionId(sessionId);
+    if (existingLead && existingLead.paymentStatus === 'Paid' && existingLead.notificationSent) {
+      return res.json({
+        success: true,
+        alreadyProcessed: true,
+        message: 'Payment already verified and notification previously dispatched.',
+        paymentDetails: existingLead.paymentDetails
+      });
     }
 
     let session = null;
@@ -385,22 +438,63 @@ app.post('/api/verify-payment', async (req, res) => {
         method: pm?.type === 'card' ? 'Card' : (pm?.type || 'Card'),
         brand: pm?.card?.brand || 'Visa / Mastercard',
         last4: pm?.card?.last4 || '',
-        email: session.customer_details?.email || session.customer_email || '',
+        email: session.customer_details?.email || session.customer_email || existingLead?.email || '',
         stripeRef: session.payment_intent?.id || session.id,
-        items: itemsDescription || 'Technician Dispatch & Diagnostics Call-Out'
+        items: itemsDescription || existingLead?.serviceType || 'Technician Dispatch & Diagnostics Call-Out'
       };
 
-      // Notify business with verified payment details
+      const finalName = existingLead?.name || session.customer_details?.name || session.metadata?.customerName || 'Stripe Customer';
+      const finalPhone = existingLead?.phone || session.customer_details?.phone || session.metadata?.customerPhone || '';
+      const finalEmail = existingLead?.email || session.customer_details?.email || session.customer_email || '';
+      const finalAddress = existingLead?.address || session.metadata?.address || session.customer_details?.address?.line1 || '';
+      const finalSuburb = existingLead?.suburb || session.metadata?.suburb || session.customer_details?.address?.city || '';
+      const finalServiceType = existingLead?.serviceType || `Paid Booking: ${itemsDescription || 'Service & Repair Call-Out'}`;
+      
+      // Preserve the customer's full problem description and notes
+      const finalNotes = existingLead?.notes || (session.metadata?.issueDescription 
+        ? `Gate Type: ${session.metadata.gateType || ''}. Motor: ${session.metadata.motorBrand || ''}. Issues: ${session.metadata.issueDescription}` 
+        : `Stripe Payment Confirmed: ${paymentDetails.amount}`);
+
+      const finalFiles = existingLead?.files || [];
+
+      // Generate official PDF Service Booking Confirmation & Tax Invoice Receipt
+      let pdfBuffer = null;
+      try {
+        pdfBuffer = await generateBookingReceiptPdf({
+          name: finalName,
+          phone: finalPhone,
+          email: finalEmail,
+          address: finalAddress,
+          suburb: finalSuburb,
+          serviceType: finalServiceType,
+          gateType: existingLead?.gateType || session.metadata?.gateType,
+          motorBrand: existingLead?.motorBrand || session.metadata?.motorBrand,
+          notes: finalNotes,
+          paymentDetails,
+          date: new Date().toLocaleDateString('en-AU', { day: '2-digit', month: '2-digit', year: 'numeric' })
+        });
+      } catch (pdfErr) {
+        console.error('Error generating booking receipt PDF:', pdfErr.message);
+      }
+
+      // Dispatch single consolidated notification with verified payment details, full customer notes, and PDF attachment
       await sendLeadNotification({
-        name: session.customer_details?.name || session.metadata?.customerName || 'Stripe Customer',
-        phone: session.customer_details?.phone || session.metadata?.customerPhone || '',
-        email: session.customer_details?.email || session.customer_email || '',
-        address: session.metadata?.address || session.customer_details?.address?.line1 || '',
-        suburb: session.metadata?.suburb || session.customer_details?.address?.city || '',
-        serviceType: `Paid Booking: ${itemsDescription || 'Service & Repair Call-Out'}`,
-        notes: session.metadata?.notes || `Stripe Payment Confirmed: ${paymentDetails.amount}`,
+        id: existingLead?.id,
+        sessionId: session.id,
+        name: finalName,
+        phone: finalPhone,
+        email: finalEmail,
+        address: finalAddress,
+        suburb: finalSuburb,
+        serviceType: finalServiceType,
+        notes: finalNotes,
         source: 'Stripe Online Payment Gateway',
-        paymentDetails
+        files: finalFiles,
+        paymentDetails,
+        pdfBuffer,
+        pdfFilename: 'service-booking-confirmation.pdf',
+        paymentStatus: 'Paid',
+        notificationSent: true
       });
     }
 
