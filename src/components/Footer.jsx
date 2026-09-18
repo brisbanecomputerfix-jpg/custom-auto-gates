@@ -174,26 +174,31 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.86rem' }}>
               {[
-                { name: 'Automatic Sliding Gates', id: 'sliding-gates' },
-                { name: 'Double Swing Gates', id: 'swing-gates' },
-                { name: 'Off-Grid Solar Gates', id: 'solar-gates' },
-                { name: 'Commercial & Boom Gates', id: 'commercial-gates' },
-                { name: 'Aluminium Slat Fencing', id: 'fencing' },
-                { name: 'DecoWood Timber Finishes', id: 'decowood' },
-                { name: 'Gate Servicing & Repairs', id: 'servicing-repairs' }
+                { name: 'Automatic Sliding Gates', href: '/automatic-sliding-gates', isRoute: 'automatic-sliding-gates' },
+                { name: 'Double Swing Gates', href: '/swing-gates', isRoute: 'swing-gates' },
+                { name: 'Off-Grid Solar Gates', href: '/solar-gates', isRoute: 'solar-gates' },
+                { name: 'Commercial & Boom Gates', href: '/#boom-gates', id: 'boom-gates' },
+                { name: 'Aluminium Slat Fencing', href: '/#fencing', id: 'fencing' },
+                { name: 'Gate Servicing & Repairs', href: '/service', isRoute: 'service' }
               ].map((item, i) => (
                 <li key={i}>
-                  <button
-                    onClick={() => {
-                      onSelectCategory && onSelectCategory(item.id);
-                      handleLinkClick('services');
+                  <a
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (item.isRoute) {
+                        onNavigate && onNavigate(item.isRoute);
+                      } else {
+                        onSelectCategory && onSelectCategory(item.id);
+                        handleLinkClick('services');
+                      }
                     }}
-                    style={{ color: '#94a3b8', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center', gap: '0.4rem', textAlign: 'left', cursor: 'pointer' }}
+                    style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center', gap: '0.4rem', textAlign: 'left' }}
                     onMouseEnter={(e) => e.currentTarget.style.color = '#fbbf24'}
                     onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
                   >
                     <ChevronRight size={13} /> {item.name}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>

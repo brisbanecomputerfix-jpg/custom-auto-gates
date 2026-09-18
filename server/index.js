@@ -84,36 +84,37 @@ app.use((req, res, next) => {
 
 // 1c. 301 Permanent Redirects for Legacy WordPress URLs (Preserve Search Authority & Link Equity)
 const LEGACY_301_REDIRECTS = {
-  // Driveway & Sliding Gates
-  '/gates/driveway-gates': '/#sliding-gates',
-  '/gates/driveway-gates/': '/#sliding-gates',
-  '/driveway-gates': '/#sliding-gates',
-  '/driveway-gates/': '/#sliding-gates',
-  '/automatic-sliding-gates': '/#sliding-gates',
-  '/automatic-sliding-gates/': '/#sliding-gates',
-  '/automatic-sliding-gates-2': '/#sliding-gates',
-  '/automatic-sliding-gates-2/': '/#sliding-gates',
+  // Driveway & Sliding Gates (Direct to dedicated landing page)
+  '/gates/driveway-gates': '/automatic-sliding-gates',
+  '/gates/driveway-gates/': '/automatic-sliding-gates',
+  '/driveway-gates': '/automatic-sliding-gates',
+  '/driveway-gates/': '/automatic-sliding-gates',
+  '/automatic-sliding-gates/': '/automatic-sliding-gates',
+  '/automatic-sliding-gates-2': '/automatic-sliding-gates',
+  '/automatic-sliding-gates-2/': '/automatic-sliding-gates',
   '/gates/automatic-sliding-gates-brisbane': '/gates-brisbane',
   '/gates/automatic-sliding-gates-brisbane/': '/gates-brisbane',
   '/automated-gates-brisbane': '/gates-brisbane',
   '/automated-gates-brisbane/': '/gates-brisbane',
-  '/gates/automatic-gates': '/#sliding-gates',
-  '/gates/automatic-gates/': '/#sliding-gates',
-  '/gates/slide-swing-bi-fold-telescopic': '/#sliding-gates',
-  '/slide-swing-bi-fold-telescopic': '/#sliding-gates',
-  '/slide-swing-bi-fold-telescopic/': '/#sliding-gates',
+  '/gates/automatic-gates': '/automatic-sliding-gates',
+  '/gates/automatic-gates/': '/automatic-sliding-gates',
+  '/gates/slide-swing-bi-fold-telescopic': '/automatic-sliding-gates',
+  '/slide-swing-bi-fold-telescopic': '/automatic-sliding-gates',
+  '/slide-swing-bi-fold-telescopic/': '/automatic-sliding-gates',
 
-  // Solar Automatic Gates
-  '/gate-automation/solar-automatic-gates': '/#solar-gates',
-  '/gate-automation/solar-automatic-gates/': '/#solar-gates',
-  '/solar-automatic-gates': '/#solar-gates',
-  '/solar-automatic-gates/': '/#solar-gates',
+  // Solar Automatic Gates (Direct to dedicated landing page)
+  '/gate-automation/solar-automatic-gates': '/solar-gates',
+  '/gate-automation/solar-automatic-gates/': '/solar-gates',
+  '/solar-automatic-gates': '/solar-gates',
+  '/solar-automatic-gates/': '/solar-gates',
+  '/solar-gates/': '/solar-gates',
 
-  // Swing Gates
-  '/gates/swing-gates': '/#swing-gates',
-  '/gates/swing-gates/': '/#swing-gates',
-  '/swing-gates': '/#swing-gates',
-  '/swing-gates/': '/#swing-gates',
+  // Swing Gates (Direct to dedicated landing page)
+  '/gates/swing-gates': '/swing-gates',
+  '/gates/swing-gates/': '/swing-gates',
+  '/swing-gates/': '/swing-gates',
+  '/automatic-swing-gates': '/swing-gates',
+  '/automatic-swing-gates/': '/swing-gates',
 
   // Gallery
   '/gates/gallery-gates': '/#gallery',

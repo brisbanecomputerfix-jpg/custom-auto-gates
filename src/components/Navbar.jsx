@@ -380,9 +380,9 @@ export default function Navbar({
                     onMouseEnter={() => setServicesDropdown(true)}
                   >
                     {[
-                      { name: 'Automatic Sliding Gates', id: 'sliding-gates', href: '/#sliding-gates' },
-                      { name: 'Automatic Swing & Bi-Fold', id: 'swing-gates', href: '/#swing-gates' },
-                      { name: 'Off-Grid Solar Gates', id: 'solar-gates', href: '/#solar-gates' },
+                      { name: 'Automatic Sliding Gates', id: 'automatic-sliding-gates', isRoute: true, href: '/automatic-sliding-gates' },
+                      { name: 'Automatic Swing & Bi-Fold', id: 'swing-gates', isRoute: true, href: '/swing-gates' },
+                      { name: 'Off-Grid Solar Gates', id: 'solar-gates', isRoute: true, href: '/solar-gates' },
                       { name: 'Commercial Boom & Barriers', id: 'boom-gates', href: '/#boom-gates' },
                       { name: 'Aluminium Slat Fencing', id: 'fencing', href: '/#fencing' },
                       { name: 'Service, Repairs & Warranty', id: 'service', isRoute: true, href: '/service' },

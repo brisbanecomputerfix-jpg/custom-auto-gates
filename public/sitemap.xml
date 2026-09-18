@@ -14,7 +14,41 @@
     </image:image>
   </url>
 
-  <!-- 2. Suburb Landing Pages (Geo-Targeted Silos) -->
+  <!-- 2. Dedicated Gate Style Landing Pages (High Search Volume Silos) -->
+  <url>
+    <loc>https://customautogates.com.au/automatic-sliding-gates</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://customautogates.com.au/images/Sliding-Gates.jpg</image:loc>
+      <image:title>Custom Automatic Sliding Driveway Gates Brisbane</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://customautogates.com.au/swing-gates</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://customautogates.com.au/images/Swinging-Gates.jpg</image:loc>
+      <image:title>Custom Automatic Double Swing Gates Brisbane &amp; Gold Coast</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://customautogates.com.au/solar-gates</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://customautogates.com.au/images/solar-gate-installation-1.jpg</image:loc>
+      <image:title>Solar Powered Off-Grid Automatic Gates Brisbane &amp; Ipswich</image:title>
+    </image:image>
+  </url>
+
+  <!-- 3. Suburb Landing Pages (Geo-Targeted Silos) -->
   <url>
     <loc>https://customautogates.com.au/gates-brisbane</loc>
     <lastmod>2026-08-26</lastmod>

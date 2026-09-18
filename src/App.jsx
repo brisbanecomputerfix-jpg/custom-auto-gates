@@ -24,6 +24,7 @@ const Testimonials = lazy(() => import('./components/Testimonials'));
 const CouncilGuide = lazy(() => import('./components/CouncilGuide'));
 const TradeBuilders = lazy(() => import('./components/TradeBuilders'));
 const SuburbLandingPage = lazy(() => import('./components/SuburbLandingPage'));
+const DedicatedServicePage = lazy(() => import('./components/DedicatedServicePage'));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
 const ContactModal = lazy(() => import('./components/ContactModal'));
 const TroubleshooterModal = lazy(() => import('./components/TroubleshooterModal'));
@@ -101,6 +102,15 @@ export default function App() {
         setSelectedRegion('goldcoast');
         setCurrentPage('suburbs');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#sliding-gates' || hash === '#automatic-sliding-gates' || hash === '#driveway-gates' || path === '/automatic-sliding-gates' || path === '/automatic-sliding-gates/' || path === '/driveway-gates' || path === '/driveway-gates/') {
+        setCurrentPage('automatic-sliding-gates');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#swing-gates' || hash === '#automatic-swing-gates' || path === '/swing-gates' || path === '/swing-gates/' || path === '/automatic-swing-gates') {
+        setCurrentPage('swing-gates');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#solar-gates' || hash === '#solar-automatic-gates' || path === '/solar-gates' || path === '/solar-gates/' || path === '/solar-automatic-gates') {
+        setCurrentPage('solar-gates');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#privacy' || hash === '#privacy-policy' || path === '/privacy' || path === '/privacy-policy' || path === '/privacy-policy/') {
         setCurrentPage('privacy-policy');
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -143,6 +153,12 @@ export default function App() {
       window.location.hash = 'trade';
     } else if (page === 'privacy-policy' || page === 'privacy') {
       window.location.hash = 'privacy-policy';
+    } else if (page === 'automatic-sliding-gates' || page === 'sliding-gates') {
+      window.location.hash = 'automatic-sliding-gates';
+    } else if (page === 'swing-gates') {
+      window.location.hash = 'swing-gates';
+    } else if (page === 'solar-gates') {
+      window.location.hash = 'solar-gates';
     } else if (page === 'suburbs') {
       setSelectedRegion(region);
       window.location.hash = `gates-${region}`;
@@ -265,6 +281,15 @@ export default function App() {
               onOpenContact={() => setIsContactOpen(true)}
               onNavigateHome={() => navigateTo('home')}
               onNavigateCouncilGuide={() => navigateTo('council-guide')}
+            />
+          ) : currentPage === 'automatic-sliding-gates' || currentPage === 'swing-gates' || currentPage === 'solar-gates' ? (
+            /* Dedicated Comprehensive Service & Gate Style Guides */
+            <DedicatedServicePage 
+              serviceKey={currentPage}
+              onOpenQuote={handleOpenQuote}
+              onOpenContact={() => setIsContactOpen(true)}
+              onNavigateHome={() => navigateTo('home')}
+              onNavigateService={() => navigateTo('service')}
             />
           ) : (
             /* Main Home Page Experience */

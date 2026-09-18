@@ -79,6 +79,24 @@ export const PAGE_SEO_CONFIGS = {
     description: 'Official Privacy Policy for Custom Auto Gates Pty Ltd. Learn how we collect, protect, and manage your personal and property data in strict compliance with the Australian Privacy Principles (Privacy Act 1988).',
     canonicalPath: '/privacy-policy',
     geoPlacename: 'Yamanto, Brisbane, Ipswich, Queensland'
+  },
+  'automatic-sliding-gates': {
+    title: 'Automatic Sliding Gates Brisbane | Factory Direct Sliding Driveway Gates',
+    description: 'Custom automatic sliding gates Brisbane. Premium aluminium ground track & cantilever trackless systems. High-speed smart motors with 10-year structural warranty. Free on-site visit: (07) 3102 1801.',
+    canonicalPath: '/automatic-sliding-gates',
+    geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
+  },
+  'swing-gates': {
+    title: 'Automatic Swing Gates Brisbane | Custom Double Swing & Bi-Fold Electric Gates',
+    description: 'Automatic swing gates Brisbane & Gold Coast. Single leaf, double swing & bi-fold folding gates. 10-Year Factory Structural Warranty. Free on-site measure: (07) 3102 1801.',
+    canonicalPath: '/swing-gates',
+    geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
+  },
+  'solar-gates': {
+    title: 'Solar Automatic Gates Brisbane | Off-Grid Electric Solar Powered Gates QLD',
+    description: 'Solar powered automatic gates Brisbane & Ipswich. 100% off-grid solar kits with deep cycle battery banks. Zero mains power trenching costs. Free on-site measure: (07) 3102 1801.',
+    canonicalPath: '/solar-gates',
+    geoPlacename: 'Brisbane, Ipswich, Logan, Queensland'
   }
 };
 
