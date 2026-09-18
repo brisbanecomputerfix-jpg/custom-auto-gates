@@ -61,6 +61,28 @@ app.use((req, res, next) => {
   next();
 });
 
+// 1b. Spam URL & Hack Parameter Interceptor (Returns HTTP 410 Gone to purge Google index)
+app.use((req, res, next) => {
+  const urlPath = req.path.toLowerCase();
+  const queryKeys = Object.keys(req.query || {});
+  
+  // Check for scrap ecommerce collections or wp-content artifacts
+  if (urlPath.startsWith('/collections') || urlPath.startsWith('/collections/')) {
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    return res.status(410).send('Gone - Scraped collection URL does not exist.');
+  }
+
+  // Check for spam parameter injections (?h=, ?y=, ?l=, ?k=)
+  const hasSpamQuery = queryKeys.some(key => /^[hylk]$/i.test(key) || /^h\d+/i.test(key));
+  if (hasSpamQuery) {
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    return res.status(410).send('Gone - Invalid spam query parameters.');
+  }
+
+  next();
+});
+
+
 // 2. CORS Configuration (Permits localhost and production domain)
 app.use(cors({
   origin: (origin, callback) => {
