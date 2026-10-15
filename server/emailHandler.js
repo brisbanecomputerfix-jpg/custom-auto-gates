@@ -12,6 +12,24 @@ export function formatLeadForGravityForms(lead, index = 1) {
   const dateCreated = lead.receivedAt ? lead.receivedAt.replace('T', ' ').substring(0, 19) : new Date().toISOString().replace('T', ' ').substring(0, 19);
   const fileUrls = Array.isArray(lead.files) ? lead.files.map(f => f.fullUrl || f.url).join(', ') : '';
 
+  // Guaranteed non-empty description for Ascora CRM & Zapier
+  const rawNotes = (lead.notes || lead.message || '').trim();
+  const summaryParts = [
+    rawNotes,
+    lead.serviceType ? `Service: ${lead.serviceType}` : '',
+    lead.dimensions ? `Dimensions: ${lead.dimensions}` : '',
+    lead.estimatedPrice ? `Estimated Price: ${lead.estimatedPrice}` : '',
+    lead.preferredTime ? `Preferred Time: ${lead.preferredTime}` : '',
+    lead.source ? `Source: ${lead.source}` : '',
+    lead.paymentDetails ? `Payment: ${lead.paymentDetails.status || 'Paid'} (${lead.paymentDetails.amount || ''})` : ''
+  ].filter(Boolean);
+
+  const fallbackSummary = summaryParts.length > 0 
+    ? summaryParts.join(' | ') 
+    : `Website Enquiry from ${lead.name || 'Customer'} (${lead.serviceType || 'General Gate Enquiry'})`;
+
+  const descriptionText = rawNotes || fallbackSummary;
+
   return {
     id: lead.id ? String(lead.id).replace('lead-', '') : String(index),
     form_id: lead.source && lead.source.includes('Service') ? '2' : (lead.source && lead.source.includes('Estimator') ? '3' : '1'),
@@ -38,10 +56,15 @@ export function formatLeadForGravityForms(lead, index = 1) {
     '2': lead.phone || '',
     '3': lead.email || '',
     '4': lead.address || '',
-    '5': lead.suburb || '',
+    '5': descriptionText, // GF Form 2 "Message" field was ID 5
     '6': lead.serviceType || '',
-    '7': lead.notes || '',
-    '8': fileUrls,
+    '7': descriptionText, // GF Form 10 field 7 / notes
+    '8': lead.name || '', // GF Form 2 "Name" field was ID 8
+    '9': lead.address || '', // GF Form 10 "Address" field was ID 9
+    '13': lead.address || '', // GF Form 2 Address field was ID 13
+    '15': descriptionText, // GF Form 10 "Issues" field was ID 15
+    'files': fileUrls,
+    'uploads': fileUrls,
     // Named fields for direct Webhooks by Zapier or custom CRM mapping
     name: lead.name || '',
     phone: lead.phone || '',
@@ -50,11 +73,17 @@ export function formatLeadForGravityForms(lead, index = 1) {
     suburb: lead.suburb || '',
     service_type: lead.serviceType || '',
     preferred_time: lead.preferredTime || '',
-    notes: lead.notes || '',
+    notes: descriptionText,
+    message: descriptionText,
+    description: descriptionText,
+    enquiryDescription: descriptionText, // Exact Ascora API required field
+    enquiry_description: descriptionText,
+    Issues: descriptionText,
     dimensions: lead.dimensions || '',
     estimated_price: lead.estimatedPrice || '',
     source: lead.source || '',
     files: lead.files || [],
+    file_urls: fileUrls,
     payment_details: lead.paymentDetails || null
   };
 }
