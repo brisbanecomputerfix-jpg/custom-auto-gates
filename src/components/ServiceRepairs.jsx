@@ -41,6 +41,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
   const [isOriginalPurchaser, setIsOriginalPurchaser] = useState('yes');
   const [serviceRequirement, setServiceRequirement] = useState('repair');
   const [checklistConfirmed, setChecklistConfirmed] = useState(false);
+  const [openFaq, setOpenFaq] = useState(0);
   
   // Payment Options: 'link' | 'card' | 'wallet' | 'invoice'
   const [paymentMethod, setPaymentMethod] = useState('link');
@@ -263,8 +264,8 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
               marginBottom: '1.25rem',
               letterSpacing: '-0.02em'
             }}>
-              Gate Automation Service, <br />
-              <span className="gradient-text-gold">Repairs & Warranty Support</span>
+              Electric & Automatic Gate Repairs Brisbane <br />
+              <span className="gradient-text-gold">Emergency Motor Service & Upgrades</span>
             </h1>
             <p style={{
               fontSize: 'clamp(1rem, 2.2vw, 1.2rem)',
@@ -1462,6 +1463,105 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
                 </div>
               </form>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* 4b. Common Faults & FAQ Section (SEO Rich Snippets) */}
+      <section className="section section-light" style={{ borderTop: '1px solid #e2e8f0', padding: '4.5rem 0' }}>
+        <div className="container" style={{ maxWidth: '960px' }}>
+          <div className="section-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <span className="badge-tag badge-gold" style={{ marginBottom: '0.85rem' }}>
+              <HelpCircle size={14} />
+              Gate Diagnostics & Troubleshooting Guide
+            </span>
+            <h2 className="section-title" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', fontWeight: '900', color: '#0f172a' }}>
+              Frequently Asked Questions: Gate Repairs & Motors
+            </h2>
+            <p className="section-subtitle" style={{ maxWidth: '680px', margin: '0 auto', color: '#64748b' }}>
+              Expert answers to common automatic sliding gate, swing gate, and electric opener issues across Brisbane, Ipswich, and Logan.
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {[
+              {
+                q: 'Why is my electric gate not opening or responding to remote controls?',
+                a: 'The most frequent cause is blocked, dirty, or misaligned infrared safety beam sensors (photocells). In Queensland, geckos, ants, or cobwebs commonly bridge circuit boards inside the sensors. Other typical causes include flat remote batteries, a tripped 240V mains safety switch, a blown motor fuse, or limit switch misalignment caused by driveway ground movement.'
+              },
+              {
+                q: 'How much does an automatic gate repair call-out cost in Brisbane?',
+                a: 'Our standard residential call-out fee is $250.00 AUD (including GST), which includes travel anywhere within Greater Brisbane, Ipswich, and Logan plus the first 30 minutes of on-site diagnostic testing. If replacement parts (such as a new control board, remote receiver, or battery) are required, our technician provides a fixed, transparent quote on the spot before proceeding.'
+              },
+              {
+                q: 'What gate motor brands and models do you service and replace?',
+                a: 'We service, diagnose, and carry genuine replacement parts for all premier Australian and European gate automation brands including Centurion (D5 Evo, D5 Smart, D10, D20), Nice (Robus, Run, Toona, Wingo), BFT (Deimos, Ares, Phobos), FAAC, CAME, Merlin, Automatic Technology Australia (ATA), and Roger Technology. We also upgrade obsolete discontinued motors to modern smart brushless systems.'
+              },
+              {
+                q: 'Can you replace my broken gate motor with a smart smartphone-controlled opener?',
+                a: 'Yes. We can replace older, failing AC motors with new high-speed DC smart motors (like the Centurion D5 Smart). This enables you to open and close your gate from your iPhone or Android smartphone, receive real-time open/close gate status notifications, grant digital visitor passes, and operate your gate via Apple CarPlay or Google Assistant.'
+              },
+              {
+                q: 'What should I do if my electric gate is stuck halfway during a storm or blackout?',
+                a: 'Locate the manual release key supplied with your motor (typically an allen-style key or mechanical barrel key). Insert the key into the release mechanism on the side or top of the motor and rotate it to disengage the internal gearbox. You can then slide or swing the gate freely by hand. Never force a locked electric gate against its gearbox, as this can strip internal drive gears.'
+              },
+              {
+                q: 'How often should an automatic driveway gate be serviced in Queensland?',
+                a: 'For residential gates, we recommend professional preventative maintenance once every 12 to 18 months. For high-cycle commercial, industrial, or strata apartment car parks, preventative maintenance should be performed quarterly or bi-annually. Regular servicing prevents premature motor burn-out, maintains track alignment, and lubricates sealed bearings.'
+              }
+            ].map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  style={{
+                    background: '#ffffff',
+                    border: isOpen ? '1.5px solid #d97706' : '1px solid #e2e8f0',
+                    borderRadius: '14px',
+                    boxShadow: isOpen ? '0 10px 25px -5px rgba(217, 119, 6, 0.08)' : '0 2px 6px rgba(0,0,0,0.02)',
+                    transition: 'all 0.2s ease',
+                    overflow: 'hidden'
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    style={{
+                      width: '100%',
+                      padding: '1.25rem 1.5rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: '1rem',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      textAlign: 'left'
+                    }}
+                  >
+                    <span style={{ fontSize: '1.02rem', fontWeight: '800', color: isOpen ? '#d97706' : '#0f172a' }}>
+                      {faq.q}
+                    </span>
+                    <ChevronRight
+                      size={20}
+                      style={{
+                        transform: isOpen ? 'rotate(90deg)' : 'none',
+                        transition: 'transform 0.2s ease',
+                        color: isOpen ? '#d97706' : '#94a3b8',
+                        flexShrink: 0
+                      }}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div style={{ padding: '0 1.5rem 1.35rem 1.5rem', borderTop: '1px solid #f1f5f9', paddingTop: '1rem' }}>
+                      <p style={{ margin: 0, fontSize: '0.92rem', color: '#475569', lineHeight: 1.65 }}>
+                        {faq.a}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

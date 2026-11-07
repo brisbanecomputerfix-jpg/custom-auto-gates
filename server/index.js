@@ -84,37 +84,42 @@ app.use((req, res, next) => {
 
 // 1c. 301 Permanent Redirects for Legacy WordPress URLs (Preserve Search Authority & Link Equity)
 const LEGACY_301_REDIRECTS = {
-  // Driveway & Sliding Gates (Direct to dedicated landing page)
-  '/gates/driveway-gates': '/automatic-sliding-gates',
-  '/gates/driveway-gates/': '/automatic-sliding-gates',
-  '/driveway-gates': '/automatic-sliding-gates',
-  '/driveway-gates/': '/automatic-sliding-gates',
-  '/automatic-sliding-gates/': '/automatic-sliding-gates',
+  // Driveway Gates (Direct to dedicated /driveway-gates landing page)
+  '/gates/driveway-gates': '/driveway-gates',
+  '/gates/driveway-gates/': '/driveway-gates',
+  '/gates/automatic-gates': '/driveway-gates',
+  '/gates/automatic-gates/': '/driveway-gates',
+
+  // Sliding Gates (Direct to dedicated /automatic-sliding-gates landing page)
+  '/sliding-gates': '/automatic-sliding-gates',
+  '/sliding-gates/': '/automatic-sliding-gates',
   '/automatic-sliding-gates-2': '/automatic-sliding-gates',
   '/automatic-sliding-gates-2/': '/automatic-sliding-gates',
-  '/gates/automatic-sliding-gates-brisbane': '/gates-brisbane',
-  '/gates/automatic-sliding-gates-brisbane/': '/gates-brisbane',
+  '/gates/automatic-sliding-gates-brisbane': '/automatic-sliding-gates',
+  '/gates/automatic-sliding-gates-brisbane/': '/automatic-sliding-gates',
   '/automated-gates-brisbane': '/gates-brisbane',
   '/automated-gates-brisbane/': '/gates-brisbane',
-  '/gates/automatic-gates': '/automatic-sliding-gates',
-  '/gates/automatic-gates/': '/automatic-sliding-gates',
   '/gates/slide-swing-bi-fold-telescopic': '/automatic-sliding-gates',
   '/slide-swing-bi-fold-telescopic': '/automatic-sliding-gates',
   '/slide-swing-bi-fold-telescopic/': '/automatic-sliding-gates',
 
-  // Solar Automatic Gates (Direct to dedicated landing page)
+  // Solar Automatic Gates (Direct to dedicated /solar-gates landing page)
   '/gate-automation/solar-automatic-gates': '/solar-gates',
   '/gate-automation/solar-automatic-gates/': '/solar-gates',
   '/solar-automatic-gates': '/solar-gates',
   '/solar-automatic-gates/': '/solar-gates',
-  '/solar-gates/': '/solar-gates',
 
-  // Swing Gates (Direct to dedicated landing page)
+  // Swing Gates (Direct to dedicated /swing-gates landing page)
   '/gates/swing-gates': '/swing-gates',
   '/gates/swing-gates/': '/swing-gates',
-  '/swing-gates/': '/swing-gates',
   '/automatic-swing-gates': '/swing-gates',
   '/automatic-swing-gates/': '/swing-gates',
+
+  // Pricing & Cost Guides (Direct to dedicated /pricing-guide landing page)
+  '/gate-cost-guide': '/pricing-guide',
+  '/gate-cost-guide/': '/pricing-guide',
+  '/automatic-gates-brisbane-price': '/pricing-guide',
+  '/automatic-gates-brisbane-price/': '/pricing-guide',
 
   // Gallery
   '/gates/gallery-gates': '/#gallery',
@@ -124,17 +129,33 @@ const LEGACY_301_REDIRECTS = {
   '/gallery': '/#gallery',
   '/gallery/': '/#gallery',
 
-  // Commercial & Boom Gates
-  '/gates/security-commercial-electric-gates': '/#boom-gates',
-  '/gates/security-commercial-electric-gates/': '/#boom-gates',
-  '/gates/secuirty-commercial-electric-gates': '/#boom-gates',
-  '/gates/secuirty-commercial-electric-gates/': '/#boom-gates',
-  '/gate-automation/automatic-boom-gates': '/#boom-gates',
-  '/gate-automation/automatic-boom-gates/': '/#boom-gates',
-  '/gate-automation-boom-gates-road-barriers': '/#boom-gates',
-  '/gate-automation-boom-gates-road-barriers/': '/#boom-gates',
+  // Commercial & Boom Gates (Direct to dedicated /commercial-gates landing page)
+  '/gates/security-commercial-electric-gates': '/commercial-gates',
+  '/gates/security-commercial-electric-gates/': '/commercial-gates',
+  '/gates/secuirty-commercial-electric-gates': '/commercial-gates',
+  '/gates/secuirty-commercial-electric-gates/': '/commercial-gates',
+  '/gate-automation/automatic-boom-gates': '/commercial-gates',
+  '/gate-automation/automatic-boom-gates/': '/commercial-gates',
+  '/gate-automation-boom-gates-road-barriers': '/commercial-gates',
+  '/gate-automation-boom-gates-road-barriers/': '/commercial-gates',
+  '/boom-gates': '/commercial-gates',
+  '/boom-gates/': '/commercial-gates',
+  '/commercial-boom-gates': '/commercial-gates',
+  '/commercial-boom-gates/': '/commercial-gates',
+  '/commercial-security-gates': '/commercial-gates',
+  '/commercial-security-gates/': '/commercial-gates',
   '/security-fencing': '/#fencing',
   '/security-fencing/': '/#fencing',
+
+  // Gate Repairs & Service Silos
+  '/gate-repairs': '/service',
+  '/gate-repairs/': '/service',
+  '/gate-repairs-brisbane': '/service',
+  '/gate-repairs-brisbane/': '/service',
+  '/electric-gate-repairs': '/service',
+  '/electric-gate-repairs/': '/service',
+  '/automatic-gate-repairs': '/service',
+  '/automatic-gate-repairs/': '/service',
 
   // Motors & Automation
   '/automation-accessories/motors': '/#motor-showcase',
@@ -168,14 +189,18 @@ const LEGACY_301_REDIRECTS = {
 };
 
 app.use((req, res, next) => {
-  const normalizedPath = req.path.toLowerCase().replace(/\/$/, '');
-  const withTrailingSlash = `${normalizedPath}/`;
+  const normalizedPath = req.path.toLowerCase().replace(/\/$/, '') || '/';
   
   const targetRedirect = LEGACY_301_REDIRECTS[req.path] || 
-                         LEGACY_301_REDIRECTS[normalizedPath] || 
-                         LEGACY_301_REDIRECTS[withTrailingSlash];
+                         LEGACY_301_REDIRECTS[normalizedPath];
 
-  if (targetRedirect) {
+  // Prevent infinite self-redirect loops: Never redirect if already on target URL
+  if (
+    targetRedirect && 
+    targetRedirect !== req.path && 
+    targetRedirect !== normalizedPath &&
+    targetRedirect !== `${normalizedPath}/`
+  ) {
     return res.redirect(301, targetRedirect);
   }
   next();

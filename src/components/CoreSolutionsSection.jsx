@@ -129,7 +129,7 @@ export default function CoreSolutionsSection({ onSelectService, onOpenQuote }) {
             lineHeight: 1.7,
             margin: 0
           }}>
-            Our team designs, manufactures and installs gates and fences in Brisbane, Logan and Ipswich. We specialise in <strong style={{ color: 'var(--text-heading)' }}>Automatic Gate Installation</strong> and gate motors, we build traditional <strong style={{ color: 'var(--text-heading)' }}>Automatic Sliding Gate</strong> & fences, and we customise to meet even highly unique requirements. Choose Custom Auto Gates to add real <span style={{ textDecoration: 'underline', color: 'var(--text-heading)', fontWeight: '600' }}>value for money</span> value to your home.
+            Our team designs, manufactures and installs gates and fences across Brisbane, Logan, Gold Coast and Ipswich. We specialise in <a href="/driveway-gates" style={{ color: 'var(--accent-gold)', fontWeight: '700', textDecoration: 'none' }}>Automatic Driveway Gates</a> and smart gate motors, build heavy-duty <a href="/automatic-sliding-gates" style={{ color: 'var(--accent-gold)', fontWeight: '700', textDecoration: 'none' }}>Automatic Sliding Gates</a>, <a href="/swing-gates" style={{ color: 'var(--accent-gold)', fontWeight: '700', textDecoration: 'none' }}>Swing Gates</a> &amp; <a href="/solar-gates" style={{ color: 'var(--accent-gold)', fontWeight: '700', textDecoration: 'none' }}>Solar Acreage Gates</a>, and offer upfront estimates in our <a href="/pricing-guide" style={{ color: 'var(--accent-gold)', fontWeight: '700', textDecoration: 'underline' }}>Gate Pricing Guide</a>. Choose Custom Auto Gates for factory direct savings direct from our Yamanto workshop.
           </p>
         </div>
 

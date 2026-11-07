@@ -35,3 +35,6 @@ lerna-debug.log*
 # Uploaded user files
 public/uploads/*
 !public/uploads/.gitkeep
+
+# IDE & Agent scratch
+.agents/

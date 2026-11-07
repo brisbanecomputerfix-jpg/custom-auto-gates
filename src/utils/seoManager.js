@@ -9,8 +9,8 @@ const BASE_URL = 'https://customautogates.com.au';
 
 export const PAGE_SEO_CONFIGS = {
   home: {
-    title: 'Custom Automatic Gates Brisbane | Factory Direct Sliding, Swing & Solar Gates',
-    description: "Custom Auto Gates & Fencing — South East Queensland's leading manufacturer of custom automatic sliding gates, swing gates, solar gates & aluminium slat fencing. Buy factory direct from our Yamanto workshop. Free on-site measure: (07) 3102 1801.",
+    title: 'Automatic & Electric Gates Brisbane | Custom Driveway Gates',
+    description: "Custom Auto Gates & Fencing — South East Queensland's leading manufacturer of custom automatic electric driveway gates, sliding gates, swing gates & solar gates. Buy factory direct in Yamanto: (07) 3102 1801.",
     canonicalPath: '/',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
@@ -21,8 +21,8 @@ export const PAGE_SEO_CONFIGS = {
     geoPlacename: 'Yamanto, Ipswich, Queensland'
   },
   service: {
-    title: 'Electric Gate Repairs Brisbane | Fast Emergency Gate Motor & Track Service',
-    description: 'Electric gate stopped working? Professional gate motor repairs, remote reprogramming, safety beam alignment & maintenance across Brisbane, Ipswich & Gold Coast. Book technician online.',
+    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor & Opener Service',
+    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
     canonicalPath: '/service',
     geoPlacename: 'Brisbane, Ipswich, Logan, Gold Coast, Queensland'
   },
@@ -93,10 +93,28 @@ export const PAGE_SEO_CONFIGS = {
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
   'solar-gates': {
-    title: 'Solar Automatic Gates Brisbane | Off-Grid Electric Solar Powered Gates QLD',
-    description: 'Solar powered automatic gates Brisbane & Ipswich. 100% off-grid solar kits with deep cycle battery banks. Zero mains power trenching costs. Free on-site measure: (07) 3102 1801.',
+    title: 'Solar Automatic Gates Brisbane | 100% Off-Grid Acreage Kits QLD',
+    description: 'Off-grid solar automatic gates Brisbane & Ipswich. Heavy-duty 24V solar kits with 5-7 days storm battery backup. Zero mains power trenching costs. Free quote: (07) 3102 1801.',
     canonicalPath: '/solar-gates',
     geoPlacename: 'Brisbane, Ipswich, Logan, Queensland'
+  },
+  'driveway-gates': {
+    title: 'Automatic Driveway Gates Brisbane | Custom Electric Driveway Gates',
+    description: 'Custom automatic driveway gates Brisbane. Custom aluminium electric sliding & swing driveway gates. Centurion & Nice smart motors, 10-year warranty. Free quote: (07) 3102 1801.',
+    canonicalPath: '/driveway-gates',
+    geoPlacename: 'Brisbane, Ipswich, Logan, Gold Coast, Queensland'
+  },
+  'commercial-gates': {
+    title: 'Commercial Gates Brisbane & Ipswich | Industrial Security Cantilever Gates',
+    description: 'Commercial automatic gates Brisbane, Ipswich & Logan. Heavy-duty cantilever sliding gates, high-cycle boom gates & strata access control. QBCC licensed: (07) 3102 1801.',
+    canonicalPath: '/commercial-gates',
+    geoPlacename: 'Brisbane, Ipswich, Logan, Queensland'
+  },
+  'pricing-guide': {
+    title: 'Automatic Gate Costs & Pricing Guide Brisbane [2026] | Custom Auto Gates',
+    description: 'Detailed automatic gate costs in Brisbane & SEQ. See price ranges for sliding, swing, solar gates & motors ($3,800–$12,500+). Buy factory direct in Yamanto: (07) 3102 1801.',
+    canonicalPath: '/pricing-guide',
+    geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   }
 };
 
@@ -202,21 +220,150 @@ function updateDynamicRouteSchema(lookupKey, canonicalUrl, config) {
       "url": canonicalUrl
     };
   } else if (lookupKey === 'service') {
+    routeSchema = [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": `${canonicalUrl}#repair-service`,
+        "name": "Electric & Automatic Gate Repairs Brisbane",
+        "serviceType": "Emergency Gate Motor Repair and Maintenance",
+        "provider": {
+          "@type": "HomeAndConstructionBusiness",
+          "name": "Custom Auto Gates & Fencing",
+          "url": "https://customautogates.com.au/",
+          "telephone": "+61731021801",
+          "priceRange": "$$"
+        },
+        "areaServed": ["Brisbane", "Ipswich", "Logan", "Gold Coast"],
+        "description": config.description,
+        "url": canonicalUrl,
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Gate Repair & Diagnostics Call-Out Schedule",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Residential Gate Repair Call-Out",
+              "description": "Technician travel + 30 minutes on-site diagnostics across Greater Brisbane, Ipswich & Logan",
+              "price": "250.00",
+              "priceCurrency": "AUD"
+            },
+            {
+              "@type": "Offer",
+              "name": "Commercial Gate Repair Call-Out",
+              "description": "Commercial cantilever, boom gate & strata automation diagnostic call-out",
+              "price": "350.00",
+              "priceCurrency": "AUD"
+            }
+          ]
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": `${canonicalUrl}#faq`,
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why is my electric gate not opening or responding to remote controls?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The most common causes are blocked or misaligned infrared safety beam photocells, blown 12V/24V fuses, insect nesting on the control board, flat remote keyfob batteries, or power surges tripped at the mains isolator switch."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does an automatic gate repair call-out cost in Brisbane?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standard residential automatic gate repair call-outs are $250.00 AUD (including GST), which covers technician travel across Greater Brisbane, Ipswich, and Logan plus the first 30 minutes of on-site diagnostic testing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What automatic gate motor brands do you repair and service?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We repair and replace all leading gate automation brands including Centurion (D5/D10/D20 Smart), Nice (Robus, Run, Toona), BFT, FAAC, CAME, ATA, Merlin, and Roger Technology."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you replace an old broken gate motor with a smartphone-controlled motor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We frequently replace failing legacy motors with ultra-fast smart motors featuring iOS and Android smartphone app control, wireless keypad access, and Apple CarPlay integration."
+            }
+          }
+        ]
+      }
+    ];
+  } else if (
+    lookupKey === 'driveway-gates' || 
+    lookupKey === 'automatic-sliding-gates' || 
+    lookupKey === 'swing-gates' || 
+    lookupKey === 'solar-gates' ||
+    lookupKey === 'commercial-gates'
+  ) {
+    const productName = lookupKey === 'driveway-gates' ? 'Custom Automatic Driveway Gates Brisbane'
+      : lookupKey === 'automatic-sliding-gates' ? 'Custom Automatic Sliding Driveway Gates'
+      : lookupKey === 'swing-gates' ? 'Custom Automatic Double Swing Entrance Gates'
+      : lookupKey === 'solar-gates' ? 'Off-Grid Solar Powered Automatic Driveway Gates'
+      : 'Heavy Duty Commercial & Industrial Cantilever Security Gates';
+
+    const startingPrice = lookupKey === 'driveway-gates' ? '3800.00'
+      : lookupKey === 'automatic-sliding-gates' ? '3850.00'
+      : lookupKey === 'swing-gates' ? '4500.00'
+      : lookupKey === 'solar-gates' ? '4650.00'
+      : '6500.00';
+
     routeSchema = {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "@id": `${canonicalUrl}#repair-service`,
-      "name": "Gate Motor Repairs & Scheduled Servicing South East Queensland",
-      "serviceType": "Emergency Gate Motor Repair and Maintenance",
-      "provider": {
+      "@type": "Product",
+      "@id": `${canonicalUrl}#product`,
+      "name": productName,
+      "description": config.description,
+      "brand": {
+        "@type": "Brand",
+        "name": "Custom Auto Gates"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "184",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": canonicalUrl,
+        "priceCurrency": "AUD",
+        "price": startingPrice,
+        "priceValidUntil": "2027-12-31",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "HomeAndConstructionBusiness",
+          "name": "Custom Auto Gates & Fencing",
+          "url": "https://customautogates.com.au/",
+          "telephone": "+61731021801"
+        }
+      }
+    };
+  } else if (lookupKey === 'pricing-guide') {
+    routeSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": `${canonicalUrl}#pricing-guide`,
+      "name": config.title,
+      "description": config.description,
+      "url": canonicalUrl,
+      "publisher": {
         "@type": "HomeAndConstructionBusiness",
         "name": "Custom Auto Gates & Fencing",
         "url": "https://customautogates.com.au/",
         "telephone": "+61731021801"
-      },
-      "areaServed": ["Brisbane", "Ipswich", "Logan", "Gold Coast"],
-      "description": config.description,
-      "url": canonicalUrl
+      }
     };
   }
 

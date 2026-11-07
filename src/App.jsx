@@ -25,6 +25,7 @@ const CouncilGuide = lazy(() => import('./components/CouncilGuide'));
 const TradeBuilders = lazy(() => import('./components/TradeBuilders'));
 const SuburbLandingPage = lazy(() => import('./components/SuburbLandingPage'));
 const DedicatedServicePage = lazy(() => import('./components/DedicatedServicePage'));
+const PricingGuide = lazy(() => import('./components/PricingGuide'));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
 const ContactModal = lazy(() => import('./components/ContactModal'));
 const TroubleshooterModal = lazy(() => import('./components/TroubleshooterModal'));
@@ -65,56 +66,97 @@ export default function App() {
         setIsPaymentSuccessOpen(true);
       }
 
-      if (hash === '#about' || path === '/about-us') {
+      const cleanPath = path.toLowerCase().replace(/\/$/, '');
+      const cleanHash = hash.toLowerCase();
+
+      if (cleanHash === '#about' || cleanPath === '/about-us' || cleanPath === '/about') {
         setCurrentPage('about');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#book-service' || hash === '#book-technician' || hash === '#service-booking' || hash === '#repairs-booking') {
+      } else if (cleanHash === '#book-service' || cleanHash === '#book-technician' || cleanHash === '#service-booking' || cleanHash === '#repairs-booking') {
         setCurrentPage('service');
         setTimeout(() => {
           const el = document.getElementById('book-service');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }, 150);
-      } else if (hash === '#service' || hash === '#repairs' || path === '/service' || path === '/service/' || path === '/repairs') {
+      } else if (
+        cleanHash === '#service' || 
+        cleanHash === '#repairs' || 
+        cleanHash === '#gate-repairs' ||
+        cleanPath === '/service' || 
+        cleanPath === '/repairs' ||
+        cleanPath === '/gate-repairs' ||
+        cleanPath === '/gate-repairs-brisbane' ||
+        cleanPath === '/electric-gate-repairs' ||
+        cleanPath === '/automatic-gate-repairs'
+      ) {
         setCurrentPage('service');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#contact' || hash === '#contact-us' || path === '/contact-us' || path === '/contact-us/' || path === '/contact') {
+      } else if (cleanHash === '#contact' || cleanHash === '#contact-us' || cleanPath === '/contact-us' || cleanPath === '/contact') {
         setCurrentPage('contact');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#testimonials' || hash === '#reviews' || path === '/testimonials' || path === '/testimonials/' || path === '/reviews') {
+      } else if (cleanHash === '#testimonials' || cleanHash === '#reviews' || cleanPath === '/testimonials' || cleanPath === '/reviews') {
         setCurrentPage('testimonials');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#council-guide' || hash === '#council' || hash === '#pool-safety' || path === '/council-guide' || path === '/council-guide/' || path === '/planning-rules') {
+      } else if (cleanHash === '#council-guide' || cleanHash === '#council' || cleanHash === '#pool-safety' || cleanPath === '/council-guide' || cleanPath === '/planning-rules') {
         setCurrentPage('council-guide');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#gates-brisbane' || hash === '#brisbane' || path === '/gates-brisbane' || path === '/gates-brisbane/' || path === '/automatic-gates-brisbane') {
+      } else if (cleanHash === '#gates-brisbane' || cleanHash === '#brisbane' || cleanPath === '/gates-brisbane' || cleanPath === '/automatic-gates-brisbane') {
         setSelectedRegion('brisbane');
         setCurrentPage('suburbs');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#gates-ipswich' || hash === '#ipswich' || path === '/gates-ipswich' || path === '/gates-ipswich/' || path === '/automatic-gates-ipswich') {
+      } else if (cleanHash === '#gates-ipswich' || cleanHash === '#ipswich' || cleanPath === '/gates-ipswich' || cleanPath === '/automatic-gates-ipswich') {
         setSelectedRegion('ipswich');
         setCurrentPage('suburbs');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#gates-logan' || hash === '#logan' || path === '/gates-logan' || path === '/gates-logan/' || path === '/automatic-gates-logan') {
+      } else if (cleanHash === '#gates-logan' || cleanHash === '#logan' || cleanPath === '/gates-logan' || cleanPath === '/automatic-gates-logan') {
         setSelectedRegion('logan');
         setCurrentPage('suburbs');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#gates-gold-coast' || hash === '#goldcoast' || hash === '#gates-goldcoast' || path === '/gates-gold-coast' || path === '/gates-gold-coast/' || path === '/automatic-gates-gold-coast') {
+      } else if (cleanHash === '#gates-gold-coast' || cleanHash === '#goldcoast' || cleanHash === '#gates-goldcoast' || cleanPath === '/gates-gold-coast' || cleanPath === '/automatic-gates-gold-coast') {
         setSelectedRegion('goldcoast');
         setCurrentPage('suburbs');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#sliding-gates' || hash === '#automatic-sliding-gates' || hash === '#driveway-gates' || path === '/automatic-sliding-gates' || path === '/automatic-sliding-gates/' || path === '/driveway-gates' || path === '/driveway-gates/') {
+      } else if (cleanHash === '#driveway-gates' || cleanPath === '/driveway-gates' || cleanPath === '/gates/driveway-gates' || cleanPath === '/gates/automatic-gates') {
+        setCurrentPage('driveway-gates');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (cleanHash === '#sliding-gates' || cleanHash === '#automatic-sliding-gates' || cleanPath === '/automatic-sliding-gates' || cleanPath === '/sliding-gates' || cleanPath === '/gates/automatic-sliding-gates-brisbane') {
         setCurrentPage('automatic-sliding-gates');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#swing-gates' || hash === '#automatic-swing-gates' || path === '/swing-gates' || path === '/swing-gates/' || path === '/automatic-swing-gates') {
+      } else if (cleanHash === '#swing-gates' || cleanHash === '#automatic-swing-gates' || cleanPath === '/swing-gates' || cleanPath === '/gates/swing-gates' || cleanPath === '/automatic-swing-gates') {
         setCurrentPage('swing-gates');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#solar-gates' || hash === '#solar-automatic-gates' || path === '/solar-gates' || path === '/solar-gates/' || path === '/solar-automatic-gates') {
+      } else if (cleanHash === '#solar-gates' || cleanHash === '#solar-automatic-gates' || cleanPath === '/solar-gates' || cleanPath === '/solar-automatic-gates' || cleanPath === '/gate-automation/solar-automatic-gates') {
         setCurrentPage('solar-gates');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#privacy' || hash === '#privacy-policy' || path === '/privacy' || path === '/privacy-policy' || path === '/privacy-policy/') {
+      } else if (cleanHash === '#pricing-guide' || cleanHash === '#pricing' || cleanPath === '/pricing-guide' || cleanPath === '/gate-cost-guide' || cleanPath === '/pricing') {
+        setCurrentPage('pricing-guide');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (
+        cleanHash === '#commercial-gates' || 
+        cleanHash === '#industrial-gates' || 
+        cleanHash === '#boom-gates' ||
+        cleanHash === '#boom-barriers' ||
+        cleanHash === '#commercial' ||
+        cleanPath === '/commercial-gates' || 
+        cleanPath === '/commercial-security-gates' || 
+        cleanPath === '/gates/commercial-gates' ||
+        cleanPath === '/gates/security-commercial-electric-gates' ||
+        cleanPath === '/boom-gates' ||
+        cleanPath === '/commercial-boom-gates' ||
+        cleanPath === '/gate-automation/automatic-boom-gates'
+      ) {
+        setCurrentPage('commercial-gates');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (cleanHash === '#gallery' || cleanHash === '#gallery-gates' || cleanPath === '/gates/gallery-gates') {
+        setCurrentPage('home');
+        setTimeout(() => {
+          const el = document.getElementById('gallery');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      } else if (cleanHash === '#privacy' || cleanHash === '#privacy-policy' || cleanPath === '/privacy' || cleanPath === '/privacy-policy') {
         setCurrentPage('privacy-policy');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#suburbs' || path === '/service-areas') {
+      } else if (cleanHash === '#suburbs' || cleanPath === '/service-areas') {
         setSelectedRegion('brisbane');
         setCurrentPage('suburbs');
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -153,12 +195,16 @@ export default function App() {
       window.location.hash = 'trade';
     } else if (page === 'privacy-policy' || page === 'privacy') {
       window.location.hash = 'privacy-policy';
+    } else if (page === 'driveway-gates') {
+      window.location.hash = 'driveway-gates';
     } else if (page === 'automatic-sliding-gates' || page === 'sliding-gates') {
       window.location.hash = 'automatic-sliding-gates';
     } else if (page === 'swing-gates') {
       window.location.hash = 'swing-gates';
     } else if (page === 'solar-gates') {
       window.location.hash = 'solar-gates';
+    } else if (page === 'pricing-guide' || page === 'pricing') {
+      window.location.hash = 'pricing-guide';
     } else if (page === 'suburbs') {
       setSelectedRegion(region);
       window.location.hash = `gates-${region}`;
@@ -282,7 +328,7 @@ export default function App() {
               onNavigateHome={() => navigateTo('home')}
               onNavigateCouncilGuide={() => navigateTo('council-guide')}
             />
-          ) : currentPage === 'automatic-sliding-gates' || currentPage === 'swing-gates' || currentPage === 'solar-gates' ? (
+          ) : currentPage === 'driveway-gates' || currentPage === 'automatic-sliding-gates' || currentPage === 'swing-gates' || currentPage === 'solar-gates' || currentPage === 'commercial-gates' ? (
             /* Dedicated Comprehensive Service & Gate Style Guides */
             <DedicatedServicePage 
               serviceKey={currentPage}
@@ -290,6 +336,13 @@ export default function App() {
               onOpenContact={() => setIsContactOpen(true)}
               onNavigateHome={() => navigateTo('home')}
               onNavigateService={() => navigateTo('service')}
+            />
+          ) : currentPage === 'pricing-guide' ? (
+            /* Dedicated Automatic Gate Cost & Pricing Guide (2026) */
+            <PricingGuide 
+              onOpenQuote={handleOpenQuote}
+              onOpenContact={() => setIsContactOpen(true)}
+              onNavigateHome={() => navigateTo('home')}
             />
           ) : (
             /* Main Home Page Experience */

@@ -14,6 +14,12 @@ const expectedRoutes = [
   { key: 'suburbs-logan', expectedCanonical: 'https://customautogates.com.au/gates-logan' },
   { key: 'suburbs-goldcoast', expectedCanonical: 'https://customautogates.com.au/gates-gold-coast' },
   { key: 'privacy-policy', expectedCanonical: 'https://customautogates.com.au/privacy-policy' },
+  { key: 'driveway-gates', expectedCanonical: 'https://customautogates.com.au/driveway-gates' },
+  { key: 'automatic-sliding-gates', expectedCanonical: 'https://customautogates.com.au/automatic-sliding-gates' },
+  { key: 'swing-gates', expectedCanonical: 'https://customautogates.com.au/swing-gates' },
+  { key: 'solar-gates', expectedCanonical: 'https://customautogates.com.au/solar-gates' },
+  { key: 'pricing-guide', expectedCanonical: 'https://customautogates.com.au/pricing-guide' },
+  { key: 'commercial-gates', expectedCanonical: 'https://customautogates.com.au/commercial-gates' },
 ];
 
 let allPassed = true;

@@ -24,7 +24,8 @@ import {
   ChevronRight, 
   Flame, 
   CheckCircle2,
-  CreditCard 
+  CreditCard,
+  DollarSign 
 } from 'lucide-react';
 import { InstagramIcon, FacebookIcon, LinkedInIcon } from './SocialIcons';
 import { COMPANY_INFO } from '../data/siteData';
@@ -380,10 +381,12 @@ export default function Navbar({
                     onMouseEnter={() => setServicesDropdown(true)}
                   >
                     {[
+                      { name: 'Automatic Driveway Gates', id: 'driveway-gates', isRoute: true, href: '/driveway-gates' },
                       { name: 'Automatic Sliding Gates', id: 'automatic-sliding-gates', isRoute: true, href: '/automatic-sliding-gates' },
                       { name: 'Automatic Swing & Bi-Fold', id: 'swing-gates', isRoute: true, href: '/swing-gates' },
                       { name: 'Off-Grid Solar Gates', id: 'solar-gates', isRoute: true, href: '/solar-gates' },
-                      { name: 'Commercial Boom & Barriers', id: 'boom-gates', href: '/#boom-gates' },
+                      { name: 'Commercial & Cantilever Gates', id: 'commercial-gates', isRoute: true, href: '/commercial-gates' },
+                      { name: 'Gate Pricing & Cost Guide (2026)', id: 'pricing-guide', isRoute: true, href: '/pricing-guide' },
                       { name: 'Aluminium Slat Fencing', id: 'fencing', href: '/#fencing' },
                       { name: 'Service, Repairs & Warranty', id: 'service', isRoute: true, href: '/service' },
                       { name: 'QLD Council & Pool Safety Guide', id: 'council-guide', isRoute: true, href: '/council-guide' }
@@ -506,7 +509,31 @@ export default function Navbar({
                 </a>
               </li>
 
-              {/* 5. Contact Us */}
+              {/* 5. Pricing Guide (2026 Price Matrix) */}
+              <li>
+                <a 
+                  href="/pricing-guide"
+                  className="nav-link-btn" 
+                  onClick={(e) => { e.preventDefault(); handleRouteClick('pricing-guide'); }}
+                  style={{
+                    color: currentPage === 'pricing-guide' ? 'var(--accent-gold)' : 'var(--text-heading)',
+                    fontFamily: 'Outfit, sans-serif',
+                    fontWeight: currentPage === 'pricing-guide' ? '800' : '700',
+                    fontSize: '0.94rem',
+                    padding: '0.5rem 0.25rem',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    transition: 'color 0.2s ease'
+                  }}
+                >
+                  <DollarSign size={14} style={{ color: 'var(--accent-gold)' }} />
+                  <span>Pricing Guide</span>
+                </a>
+              </li>
+
+              {/* 6. Contact Us */}
               <li>
                 <a 
                   href="/contact-us"
@@ -810,18 +837,22 @@ export default function Navbar({
                 </span>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.45rem' }}>
                   {[
-                    { name: 'Sliding Gates', id: 'sliding-gates' },
-                    { name: 'Swing & Bi-Fold', id: 'swing-gates' },
-                    { name: 'Solar Acreage', id: 'solar-gates' },
-                    { name: 'Slat Fencing', id: 'fencing' },
-                    { name: 'Boom Barriers', id: 'boom-gates' },
-                    { name: 'Commercial Gates', id: 'commercial-gates' }
+                    { name: 'Driveway Gates', id: 'driveway-gates', isRoute: true },
+                    { name: 'Sliding Gates', id: 'automatic-sliding-gates', isRoute: true },
+                    { name: 'Swing & Bi-Fold', id: 'swing-gates', isRoute: true },
+                    { name: 'Solar Acreage', id: 'solar-gates', isRoute: true },
+                    { name: 'Commercial Gates', id: 'commercial-gates', isRoute: true },
+                    { name: 'Pricing Guide', id: 'pricing-guide', isRoute: true }
                   ].map((style) => (
                     <button
                       key={style.id}
                       onClick={() => {
-                        onSelectCategory && onSelectCategory(style.id);
-                        handleNavClick('services');
+                        if (style.isRoute) {
+                          handleRouteClick(style.id);
+                        } else {
+                          onSelectCategory && onSelectCategory(style.id);
+                          handleNavClick('services');
+                        }
                       }}
                       style={{
                         padding: '0.55rem 0.75rem',
@@ -852,6 +883,15 @@ export default function Navbar({
                   Technical & Research
                 </span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                  <a 
+                    href="/pricing-guide" 
+                    className="mobile-nav-item" 
+                    onClick={(e) => { e.preventDefault(); handleRouteClick('pricing-guide'); }} 
+                    style={{ padding: '0.55rem 0', color: currentPage === 'pricing-guide' ? 'var(--accent-gold)' : 'var(--text-heading)', textDecoration: 'none' }}
+                  >
+                    <span style={{ fontSize: '0.92rem', fontWeight: '700' }}>Gate Costs &amp; Pricing Guide (2026)</span>
+                    <DollarSign size={15} style={{ color: 'var(--accent-gold)' }} />
+                  </a>
                   <button className="mobile-nav-item" onClick={() => handleNavClick('gallery')} style={{ padding: '0.55rem 0' }}>
                     <span style={{ fontSize: '0.92rem' }}>Our Project Gallery (600+ Builds)</span>
                     <Sparkles size={15} style={{ color: 'var(--accent-gold)' }} />

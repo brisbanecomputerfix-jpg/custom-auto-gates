@@ -4,7 +4,7 @@
   <!-- 1. Homepage -->
   <url>
     <loc>https://customautogates.com.au/</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -15,6 +15,35 @@
   </url>
 
   <!-- 2. Dedicated Gate Style Landing Pages (High Search Volume Silos) -->
+  <url>
+    <loc>https://customautogates.com.au/driveway-gates</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.98</priority>
+    <image:image>
+      <image:loc>https://customautogates.com.au/images/custom-automated-sliding-gate-brisbane.jpg</image:loc>
+      <image:title>Automatic Driveway Gates Brisbane Custom Electric Driveway Gates</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://customautogates.com.au/pricing-guide</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://customautogates.com.au/commercial-gates</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.96</priority>
+    <image:image>
+      <image:loc>https://customautogates.com.au/images/Sliding-Gates.jpg</image:loc>
+      <image:title>Commercial Gates Brisbane &amp; Industrial Cantilever Gates</image:title>
+    </image:image>
+  </url>
+
   <url>
     <loc>https://customautogates.com.au/automatic-sliding-gates</loc>
     <lastmod>2026-09-18</lastmod>

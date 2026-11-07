@@ -22,6 +22,76 @@ import {
 import { COMPANY_INFO } from '../data/siteData';
 
 export const SERVICE_PAGES_DATA = {
+  'driveway-gates': {
+    id: 'driveway-gates',
+    slug: 'driveway-gates',
+    categoryName: 'Driveway Gates',
+    badge: 'Brisbane & SEQ #1 Driveway Choice',
+    h1: 'Automatic Driveway Gates Brisbane | Custom Electric Driveway Gates',
+    subtitle: 'Custom designed, manufactured and automated electric driveway gates for Brisbane, Ipswich and Gold Coast homes. Sliding, double swing, and space-saving telescopic designs engineered with a 10-year structural warranty.',
+    metaTitle: 'Automatic Driveway Gates Brisbane | Custom Electric Driveway Gates',
+    metaDescription: 'Custom automatic driveway gates Brisbane. Custom aluminium electric sliding & swing driveway gates. Centurion & Nice smart motors, 10-year warranty. Free quote: (07) 3102 1801.',
+    heroImage: '/images/custom-automated-sliding-gate-brisbane.jpg',
+    galleryImages: [
+      { src: '/images/custom-automated-sliding-gate-brisbane.jpg', alt: 'Automatic driveway gate installation Brisbane' },
+      { src: '/images/Sliding-Gates.jpg', alt: 'Custom aluminium electric driveway gate' },
+      { src: '/images/Swinging-Gates.jpg', alt: 'Grand double swing driveway gate entrance' },
+      { src: '/images/Dayboro-Design-Slide.webp', alt: 'Architectural residential driveway gate' }
+    ],
+    overviewHeading: 'Factory-Direct Electric Driveway Gates Tailored to Your Property & Gradient',
+    overviewParagraphs: [
+      'Your driveway gate is both the primary security perimeter and the architectural focal point of your property. At Custom Auto Gates, we engineer custom electric driveway gates specifically designed to handle South East Queensland conditions—from high-wind bayside properties and sloping Brisbane driveways to wide acreage entrances.',
+      'Every driveway gate is fabricated in-house at our Yamanto workshop from heavy-wall, marine-grade structural aluminium. Unlike cheap imported kit gates, our gates never rust, sag, or warp under Queensland summer heat. Whether you need an ultra-fast ground-track sliding gate, a trackless cantilever gate, an elegant double swing gate, or a space-saving telescopic gate, we build and automate your gate to exact millimeter tolerances backed by a 10-year structural warranty.'
+    ],
+    configurationTypes: [
+      {
+        title: 'Automatic Sliding Driveway Gates',
+        bestFor: 'Driveways with shallow depth, street-facing slopes, or maximum parking requirements',
+        features: 'Runs smoothly along a flush ground track or suspended trackless cantilever system. Opens parallel to your boundary, maximizing 100% of usable driveway parking space.'
+      },
+      {
+        title: 'Double & Single Swing Driveway Gates',
+        bestFor: 'Level to sloping driveways with ample yard depth and architectural homes',
+        features: 'Classic grand aesthetic powered by Italian linear rams or articulated arms. Engineered with reinforced hinge stiles and optional 500kg electromagnetic shear locks.'
+      },
+      {
+        title: 'Telescopic Space-Saving Driveway Gates',
+        bestFor: 'Wide driveway openings with limited slide-back boundary wall space',
+        features: 'Two or three interlocking panels that slide simultaneously via synchronous cable drives. Requires only half the slide-back clearance of a traditional single-leaf sliding gate.'
+      },
+      {
+        title: 'Off-Grid Solar Powered Driveway Gates',
+        bestFor: 'Rural, acreage, and long private driveways where 240V power trenching is costly',
+        features: 'Equipped with heavy-duty monocrystalline solar panels and deep-cycle battery banks providing 5 to 7 days of reserve battery backup during stormy weather.'
+      }
+    ],
+    specifications: [
+      { label: 'Frame Construction', value: 'Heavy-duty 50x50mm, 65x65mm or 100x50mm structural marine aluminium' },
+      { label: 'Infill Finishes', value: 'Horizontal/vertical slats, 3D battens, laser cut architectural screens, louvres' },
+      { label: 'Driveway Automation', value: 'Centurion D5/D10 Smart, Nice Robus, BFT & FAAC high-speed motors' },
+      { label: 'Opening Speed', value: 'Up to 400mm/sec with soft-start & soft-stop obstruction sensing' },
+      { label: 'Smart Access Control', value: 'Smartphone app (iOS/Android), Apple CarPlay, wireless 4G intercom & keypads' },
+      { label: 'Safety Systems', value: 'Dual infrared safety beams, auto-reverse obstruction detection, manual release key' }
+    ],
+    faqs: [
+      {
+        q: 'What is the best automatic gate design for a wide driveway?',
+        a: 'For driveway openings wider than 5 to 6 metres, a telescopic sliding gate or a cantilever trackless sliding gate is typically best. Telescopic gates split the span across two or three overlapping panels, cutting required slide-back clearance in half. For rural properties, double swing gates spanning up to 8 metres provide a grand entrance without ground tracks.'
+      },
+      {
+        q: 'Can an electric driveway gate be installed on a steep incline?',
+        a: 'Yes. For sideways driveway crossfalls, we fabricate raked sliding gates where the bottom rail matches the exact slope of your driveway. For upward inclines, we engineer outward-swinging double gates (where legal), bi-fold folding gates, or trackless cantilever sliding systems.'
+      },
+      {
+        q: 'How much does a custom automatic driveway gate cost in Brisbane?',
+        a: 'Fully installed custom automatic driveway gates in Brisbane typically range from $3,800 to $7,500 for standard 4m–5m sliding gates, and $4,500 to $9,000 for automated double swing gates. Buying factory-direct from our Yamanto workshop eliminates middleman reseller markups, saving homeowners between $1,200 and $2,500.'
+      },
+      {
+        q: 'What happens to my electric driveway gate during a power outage?',
+        a: 'All our electric gate motors are equipped with internal 12V or 24V rechargeable battery backups that seamlessly power the gate for 30 to 50 cycles during blackouts. Every motor also includes a mechanical keyed override for instant manual release.'
+      }
+    ]
+  },
   'automatic-sliding-gates': {
     id: 'automatic-sliding-gates',
     slug: 'automatic-sliding-gates',
@@ -203,6 +273,76 @@ export const SERVICE_PAGES_DATA = {
         a: 'Yes! We install 4G cellular wireless intercoms directly into the solar gate pillar. When a visitor presses the intercom, it dials your mobile phone or landline directly. You can speak with them and press a button on your phone to open the gate.'
       }
     ]
+  },
+  'commercial-gates': {
+    id: 'commercial-gates',
+    slug: 'commercial-gates',
+    categoryName: 'Commercial Gates',
+    badge: 'Industrial & High-Cycle Security',
+    h1: 'Commercial Gates Brisbane & Ipswich | Industrial Security & Cantilever Gates',
+    subtitle: 'Heavy-duty commercial cantilever gates, automated boom gates, high-cycle sliding gates and industrial access control. Custom engineered and fabricated in Yamanto for logistics depots, commercial properties, and industrial sites across Brisbane, Ipswich & Logan.',
+    metaTitle: 'Commercial Gates Brisbane & Ipswich | Industrial Security Cantilever Gates',
+    metaDescription: 'Commercial automatic gates Brisbane, Ipswich & Logan. Heavy-duty cantilever sliding gates, high-cycle boom gates & strata access control. QBCC licensed: (07) 3102 1801.',
+    heroImage: '/images/Sliding-Gates.jpg',
+    galleryImages: [
+      { src: '/images/Sliding-Gates.jpg', alt: 'Heavy duty commercial cantilever sliding gate' },
+      { src: '/images/custom-automated-sliding-gate-brisbane.jpg', alt: 'Commercial security perimeter gate Brisbane' },
+      { src: '/images/Swinging-Gates.jpg', alt: 'Industrial security double swing gates' },
+      { src: '/images/Dayboro-Design-Slide.webp', alt: 'Strata complex automatic access gate' }
+    ],
+    overviewHeading: 'AS 1725 Engineered Commercial Gates for Continuous Duty & Maximum Site Security',
+    overviewParagraphs: [
+      'Commercial logistics depots, body corporate car parks, and industrial facilities require automated gates engineered for continuous duty cycles, heavy vehicle impacts, and unyielding perimeter protection. At Custom Auto Gates, we fabricate and install heavy-duty trackless cantilever sliding gates, industrial automated boom barriers, high-speed track sliding gates, and commercial double swing gates tailored for commercial clients across Brisbane, Ipswich, and Logan.',
+      'Unlike lightweight residential systems, our commercial installations are crafted from oversized Australian structural aluminium box sections and hot-dip galvanised structural steel. Powered by 100% continuous duty Italian and South African industrial drive systems (rated up to 1,000+ opening cycles per day), our gates feature multi-layer safety beam photocells, pneumatic resistive edges, ground vehicle induction loops, and seamless integration with RFID access control, ANPR number plate recognition, and emergency fire alarm overrides.'
+    ],
+    configurationTypes: [
+      {
+        title: 'Cantilever (Trackless) Commercial Gates',
+        bestFor: 'Heavy vehicle depots, transport hubs, gravel yards, and high-security distribution centres',
+        features: 'Zero ground track across the driveway opening. The gate leaf is suspended in mid-air using heavy-duty internal sealed bearing carriages and an extended counterbalance tail. Completely immune to rocks, asphalt deformities, dirt, and heavy B-double semi-trailers, spanning openings up to 15 metres.'
+      },
+      {
+        title: 'Commercial Boom Gates & Traffic Barriers',
+        bestFor: 'Commercial parking facilities, strata developments, corporate offices, and transport checkpoints',
+        features: 'High-speed 1.5 to 3.0 second opening cycles with continuous 100% duty cycle 24V brushless drive units. Includes ground loop detectors, LED boom lighting, break-away arm joints, and integration with ticketing or RFID access readers.'
+      },
+      {
+        title: 'High-Cycle Track Sliding Security Gates',
+        bestFor: 'Factory perimeters, council depots, equipment yards, and commercial business parks',
+        features: 'Reinforced ground track set in heavy concrete footings. Powered by continuous-rated commercial drive units (such as Centurion D20 Smart and Nice Run 2500) capable of smoothly moving gates weighing up to 2,000kg with intelligent speed ramping.'
+      },
+      {
+        title: 'Strata & Car Park Security Gates',
+        bestFor: 'Apartment complexes, multi-unit developments, basement carparks, and gated communities',
+        features: 'Engineered with acoustic vibration dampening, fire alarm dry-contact auto-open triggers, 24V storm battery backup, and cloud-managed 4G mobile intercom systems for building managers and residents.'
+      }
+    ],
+    specifications: [
+      { label: 'Structural Fabrication', value: 'Heavy structural marine-grade aluminium (up to 150x100mm) or hot-dip galvanised steel' },
+      { label: 'Industrial Motors', value: 'Centurion D10/D20 Smart (2000kg rating), Nice Run 2500, FAAC C851 high-speed industrial' },
+      { label: 'Duty Cycle Rating', value: '100% continuous duty (engineered for 500 to 1,500+ daily vehicle movements)' },
+      { label: 'Access Control Systems', value: 'RFID card readers, dual vehicle induction ground loops, ANPR number plate recognition, 4G GSM' },
+      { label: 'WHS Safety Features', value: 'Dual through-beam photocells, pneumatic resistive safety edges, warning strobe & audible chime' },
+      { label: 'Compliance & Licensing', value: 'AS 1725 security fencing standards, AS/NZS 3000 electrical compliance, QBCC Licensed (#15579753)' }
+    ],
+    faqs: [
+      {
+        q: 'Why is a cantilever gate preferred over a ground track gate for commercial sites?',
+        a: 'Commercial distribution facilities and transport yards frequently see heavy semi-trailers, excavators, and forklifts crossing the entryway. Ground tracks can collect rocks, gravel, and mud, or bend under heavy axle loads. A cantilever gate requires zero ground track across the driveway—the entire gate is suspended in mid-air, guaranteeing reliable operation regardless of gravel, surface water, or heavy truck traffic.'
+      },
+      {
+        q: 'How fast do commercial automatic gates open and close?',
+        a: 'Standard commercial sliding gates operate at 200mm to 300mm per second. For high-traffic commercial sites, our high-speed inverter drive systems open at up to 450mm to 500mm per second with soft-start acceleration, minimizing vehicle queue times during morning and afternoon shift changes.'
+      },
+      {
+        q: 'Can your commercial gates integrate with building fire alarms and emergency services?',
+        a: 'Yes. All our commercial control systems include emergency dry-contact fire alarm trigger inputs. Upon receiving a signal from the building fire system, the gate automatically opens and locks in the open position until cleared. We also install Queensland Fire & Emergency Services (QFES) 000 keyed override switches.'
+      },
+      {
+        q: 'Do you offer scheduled preventative maintenance for commercial and strata gates in Brisbane?',
+        a: 'Yes. We provide scheduled quarterly, bi-annual, and annual commercial maintenance service agreements across Greater Brisbane, Ipswich, and Logan. This includes safety photocell testing, ground loop calibration, mechanical roller inspection, battery load testing, and WHS compliance logging.'
+      }
+    ]
   }
 };
 
@@ -269,6 +409,8 @@ export default function DedicatedServicePage({
               Gate Categories:
             </span>
             {[
+              { id: 'commercial-gates', label: 'Commercial & Cantilever' },
+              { id: 'driveway-gates', label: 'Driveway Gates' },
               { id: 'automatic-sliding-gates', label: 'Sliding Gates' },
               { id: 'swing-gates', label: 'Swing & Bi-Fold' },
               { id: 'solar-gates', label: 'Solar Acreage' }

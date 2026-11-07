@@ -174,12 +174,14 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.86rem' }}>
               {[
+                { name: 'Automatic Driveway Gates', href: '/driveway-gates', isRoute: 'driveway-gates' },
                 { name: 'Automatic Sliding Gates', href: '/automatic-sliding-gates', isRoute: 'automatic-sliding-gates' },
                 { name: 'Double Swing Gates', href: '/swing-gates', isRoute: 'swing-gates' },
                 { name: 'Off-Grid Solar Gates', href: '/solar-gates', isRoute: 'solar-gates' },
-                { name: 'Commercial & Boom Gates', href: '/#boom-gates', id: 'boom-gates' },
+                { name: 'Commercial & Cantilever Gates', href: '/commercial-gates', isRoute: 'commercial-gates' },
+                { name: 'Gate Cost & Pricing Guide', href: '/pricing-guide', isRoute: 'pricing-guide' },
                 { name: 'Aluminium Slat Fencing', href: '/#fencing', id: 'fencing' },
-                { name: 'Gate Servicing & Repairs', href: '/service', isRoute: 'service' }
+                { name: 'Gate Repairs & Motor Service', href: '/service', isRoute: 'service' }
               ].map((item, i) => (
                 <li key={i}>
                   <a
@@ -235,6 +237,15 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
                   style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
                 >
                   <ChevronRight size={13} /> Contact Us
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/pricing-guide"
+                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('pricing-guide'); }} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                >
+                  <ChevronRight size={13} /> Gate Pricing &amp; Cost Guide (2026)
                 </a>
               </li>
               <li>
