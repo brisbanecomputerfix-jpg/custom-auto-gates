@@ -29,6 +29,7 @@ import {
 import { COMPANY_INFO } from '../data/siteData';
 import FileUploadField from './FileUploadField';
 import { uploadFormFiles } from '../utils/uploadHelper';
+import { trackFormLead } from '../utils/analytics';
 
 export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateHome, onNavigateService }) {
   // Gate Simulation State
@@ -112,7 +113,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
         uploadedFiles = await uploadFormFiles(files);
       }
 
-      await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -128,11 +129,16 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
           files: uploadedFiles
         })
       });
+
+      if (!res.ok) {
+        throw new Error('Failed to submit enquiry');
+      }
+
       setFormSubmitted(true);
+      trackFormLead(formData.email, formData.phone, 'contact');
     } catch (err) {
       console.error('Contact submit error:', err);
-      // Graceful fallback to success screen
-      setFormSubmitted(true);
+      alert('There was an issue sending your message. Please try again or call us at (07) 3102 1801.');
     } finally {
       setIsSubmitting(false);
     }

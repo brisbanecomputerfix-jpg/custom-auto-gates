@@ -25,13 +25,16 @@ import {
   Truck,
   Percent,
   Check,
-  AlertCircle
+  AlertCircle,
+  Loader2
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
+import { trackFormLead } from '../utils/analytics';
 
 export default function TradeBuilders({ onOpenQuote, onOpenContact, onNavigateHome }) {
   const [activeTab, setActiveTab] = useState('lead-times'); // 'lead-times' | 'spec-sheets' | 'pricing-tiers'
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [downloadingDoc, setDownloadingDoc] = useState(null);
 
   const [tradeForm, setTradeForm] = useState({
@@ -185,9 +188,38 @@ Yamanto Workshop: Shed 2, 43-45 Belar Street, Yamanto QLD 4305
     }, 600);
   };
 
-  const handleTradeSubmit = (e) => {
+  const handleTradeSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: `${tradeForm.contactName || ''} (${tradeForm.companyName || 'Trade'})`.trim(),
+          phone: tradeForm.phone,
+          email: tradeForm.email,
+          address: tradeForm.projectAddress,
+          suburb: tradeForm.projectAddress,
+          serviceType: `Trade Wholesale: ${tradeForm.tradeType}`,
+          preferredTime: tradeForm.projectDueDate ? `Required by: ${tradeForm.projectDueDate}` : 'Standard Lead Time',
+          notes: `Company: ${tradeForm.companyName} | ABN: ${tradeForm.abn || 'N/A'} | Annual Volume: ${tradeForm.annualVolume} gates/yr | Details: ${tradeForm.comments || 'None'}`,
+          source: 'Trade & Builders Wholesale Portal'
+        })
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to submit trade inquiry');
+      }
+
+      setFormSubmitted(true);
+      trackFormLead(tradeForm.email, tradeForm.phone, 'trade');
+    } catch (err) {
+      console.error('Trade submit error:', err);
+      alert('There was an issue sending your trade inquiry. Please call our Yamanto workshop directly at (07) 3102 1801.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -1095,6 +1127,7 @@ Yamanto Workshop: Shed 2, 43-45 Belar Street, Yamanto QLD 4305
                 {/* Submit CTA */}
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="btn btn-gold btn-lg btn-pulse"
                   style={{
                     width: '100%',
@@ -1105,10 +1138,20 @@ Yamanto Workshop: Shed 2, 43-45 Belar Street, Yamanto QLD 4305
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '0.5rem',
-                    marginTop: '0.5rem'
+                    marginTop: '0.5rem',
+                    opacity: isSubmitting ? 0.75 : 1,
+                    cursor: isSubmitting ? 'not-allowed' : 'pointer'
                   }}
                 >
-                  <Send size={19} /> Submit for Wholesale Trade Quote & 30-Day Account Review
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={19} className="animate-spin" /> Transmitting Wholesale Inquiry...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={19} /> Submit for Wholesale Trade Quote & 30-Day Account Review
+                    </>
+                  )}
                 </button>
 
                 <div style={{ textAlign: 'center', fontSize: '0.76rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>

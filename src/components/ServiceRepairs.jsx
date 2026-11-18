@@ -34,6 +34,7 @@ import { COMPANY_INFO } from '../data/siteData';
 import { createStripeCheckout } from '../utils/stripeClient';
 import FileUploadField from './FileUploadField';
 import { uploadFormFiles } from '../utils/uploadHelper';
+import { trackServiceBooking } from '../utils/analytics';
 
 export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateHome }) {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -135,6 +136,18 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
           serviceType: serviceRequirement === 'repair' ? 'Urgent Repair Call Out' : serviceRequirement === 'routine-service' ? 'Routine Preventative Service' : 'Warranty Diagnostic'
         });
         setFormSubmitted(true);
+        trackServiceBooking({
+          receiptNumber: receiptId,
+          amount: basePrice,
+          gst: gstAmount,
+          serviceType: serviceRequirement === 'repair' ? 'Urgent Repair Call Out' : serviceRequirement === 'routine-service' ? 'Routine Preventative Service' : 'Warranty Diagnostic',
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          address: fullAddress,
+          suburb: formData.suburb,
+          postcode: formData.postcode
+        });
         setIsProcessingPayment(false);
         return;
       }
@@ -204,6 +217,18 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
         serviceType: serviceRequirement === 'repair' ? 'Urgent Repair Call Out' : serviceRequirement === 'routine-service' ? 'Routine Preventative Service' : 'Warranty Diagnostic'
       });
       setFormSubmitted(true);
+      trackServiceBooking({
+        receiptNumber: receiptId,
+        amount: basePrice,
+        gst: gstAmount,
+        serviceType: serviceRequirement === 'repair' ? 'Urgent Repair Call Out' : serviceRequirement === 'routine-service' ? 'Routine Preventative Service' : 'Warranty Diagnostic',
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        address: fullAddress,
+        suburb: formData.suburb,
+        postcode: formData.postcode
+      });
     }
   };
 

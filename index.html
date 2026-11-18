@@ -35,6 +35,31 @@
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="eP45qRiRbkU78rfvNNbl4zQZD7xw9E_ig9f7UN8nxiI" />
 
+    <!-- Google Tag Manager, Google Analytics & Google Ads Preconnects -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+    <!-- Google Tag (gtag.js) for Google Ads & GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-991707394"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-991707394');
+      gtag('config', 'G-X3D8100CMF');
+
+      // Global Phone Click Conversion Listener for tel: links
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+        if (a && window.gtag) {
+          gtag('event', 'conversion', { send_to: 'AW-991707394/TvEuCPuLs7odEIKC8dgD' });
+          gtag('event', 'phone_click');
+        }
+      });
+    </script>
+
     <!-- Geo-Location Meta Tags for Brisbane & SE Queensland -->
     <meta name="geo.region" content="AU-QLD" />
     <meta name="geo.placename" content="Brisbane, Yamanto, Ipswich, Queensland" />

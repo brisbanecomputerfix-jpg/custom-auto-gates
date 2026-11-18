@@ -26,6 +26,7 @@ import { COMPANY_INFO } from '../data/siteData';
 import { createStripeCheckout } from '../utils/stripeClient';
 import FileUploadField from './FileUploadField';
 import { uploadFormFiles } from '../utils/uploadHelper';
+import { trackFormLead } from '../utils/analytics';
 
 export default function GateVisualizerQuote() {
   const [step, setStep] = useState(1);
@@ -325,7 +326,7 @@ export default function GateVisualizerQuote() {
         uploadedFiles = await uploadFormFiles(files);
       }
 
-      await fetch('/api/quote', {
+      const res = await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -352,10 +353,16 @@ export default function GateVisualizerQuote() {
           files: uploadedFiles
         })
       });
+
+      if (!res.ok) {
+        throw new Error('Failed to generate quote. Please try again.');
+      }
+
       setIsSubmitted(true);
+      trackFormLead(formData.email, formData.phone, 'quote');
     } catch (err) {
       console.error('Quote submit error:', err);
-      setIsSubmitted(true);
+      alert('There was an issue processing your estimate. Please call (07) 3102 1801 directly.');
     } finally {
       setIsSubmitting(false);
     }

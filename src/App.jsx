@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 import QuickActionBar from './components/QuickActionBar';
 import RemoteCursorEffect from './components/RemoteCursorEffect';
 import { updateSeoMetadata } from './utils/seoManager';
+import { trackPageView } from './utils/analytics';
 import { useTheme } from './utils/useTheme';
 
 // Code-split subpages & modals with React.lazy for high Core Web Vitals (LCP & TBT)
@@ -173,6 +174,7 @@ export default function App() {
   // Update dynamic canonical tag, title, meta description, and social graph
   useEffect(() => {
     updateSeoMetadata(currentPage, selectedRegion);
+    trackPageView();
   }, [currentPage, selectedRegion]);
 
   // Central Navigation Handler

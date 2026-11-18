@@ -13,6 +13,7 @@ import {
 import { COMPANY_INFO } from '../data/siteData';
 import FileUploadField from './FileUploadField';
 import { uploadFormFiles } from '../utils/uploadHelper';
+import { trackFormLead } from '../utils/analytics';
 
 export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
   const [formData, setFormData] = useState({
@@ -65,10 +66,10 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
       }
 
       setIsSubmitted(true);
+      trackFormLead(formData.email, formData.phone, 'site_visit');
     } catch (err) {
       console.error('Contact form submission error:', err);
-      // Even if network fails, we still allow friendly fallback
-      setIsSubmitted(true);
+      setErrorMessage(err.message || 'There was an issue sending your booking. Please try again or call (07) 3102 1801.');
     } finally {
       setIsSubmitting(false);
     }
