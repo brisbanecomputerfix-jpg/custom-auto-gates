@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import GateVisualizerQuote from './components/GateVisualizerQuote';
+import MinimalPricingSection from './components/MinimalPricingSection';
 import ServicesSection from './components/ServicesSection';
 import CoreSolutionsSection from './components/CoreSolutionsSection';
 import ProjectGallery from './components/ProjectGallery';
@@ -30,6 +30,7 @@ const PricingGuide = lazy(() => import('./components/PricingGuide'));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
 const ContactModal = lazy(() => import('./components/ContactModal'));
 const TroubleshooterModal = lazy(() => import('./components/TroubleshooterModal'));
+const EstimatorModal = lazy(() => import('./components/EstimatorModal'));
 const PaymentSuccessModal = lazy(() => import('./components/PaymentSuccessModal'));
 
 const PageLoader = () => (
@@ -229,27 +230,18 @@ export default function App() {
     }
   };
 
-  const handleOpenQuote = () => {
-    if (currentPage !== 'home') {
-      setCurrentPage('home');
-      window.location.hash = '';
-      setTimeout(() => {
-        const elem = document.getElementById('gate-visualizer');
-        if (elem) {
-          elem.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    } else {
-      const elem = document.getElementById('gate-visualizer');
-      if (elem) {
-        elem.scrollIntoView({ behavior: 'smooth' });
-      }
+  const handleOpenQuote = (serviceId) => {
+    if (serviceId && typeof serviceId === 'string') {
+      setSelectedServiceId(serviceId);
     }
+    setIsQuoteOpen(true);
   };
 
   const handleConfigureGate = (serviceId) => {
-    setSelectedServiceId(serviceId);
-    handleOpenQuote();
+    if (serviceId && typeof serviceId === 'string') {
+      setSelectedServiceId(serviceId);
+    }
+    setIsQuoteOpen(true);
   };
 
   const handleOpenQuoteWithProject = (project) => {
@@ -368,8 +360,15 @@ export default function App() {
                 onOpenQuoteWithProject={handleOpenQuoteWithProject}
               />
 
-              {/* Live Custom Gate Cost Estimator */}
-              <GateVisualizerQuote />
+              {/* Minimal 3-Tier Upfront Pricing & Cost Snapshot */}
+              <MinimalPricingSection 
+                onOpenEstimator={(catId) => {
+                  if (catId && typeof catId === 'string') setSelectedServiceId(catId);
+                  setIsQuoteOpen(true);
+                }}
+                onNavigatePricing={() => navigateTo('pricing-guide')}
+                onOpenContact={() => setIsContactOpen(true)}
+              />
 
               {/* Comprehensive Services Deep Dive */}
               <ServicesSection 
@@ -448,6 +447,15 @@ export default function App() {
               setIsTroubleshootOpen(false);
               setIsContactOpen(true);
             }}
+          />
+        )}
+
+        {/* Interactive 5-Step Gate Cost Builder Modal */}
+        {isQuoteOpen && (
+          <EstimatorModal 
+            isOpen={isQuoteOpen}
+            onClose={() => setIsQuoteOpen(false)}
+            defaultCategory={selectedServiceId}
           />
         )}
 

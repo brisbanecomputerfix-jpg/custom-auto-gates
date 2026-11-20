@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import SeeMoreWrapper from './SeeMoreWrapper';
 
 const SOLUTIONS = [
   {
@@ -133,91 +134,98 @@ export default function CoreSolutionsSection({ onSelectService, onOpenQuote }) {
           </p>
         </div>
 
-        {/* 8-Card Grid (4 across on desktop, 2 on tablet, 1 on mobile) */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
-          gap: '1.75rem',
-          marginBottom: '3rem'
-        }}
-        className="core-solutions-grid"
+        {/* 8-Card Grid (4 across on desktop, progressive disclosure on mobile/tablet) */}
+        <SeeMoreWrapper
+          initialHeight={460}
+          expandLabel="+ View 4 More Gate & Fencing Solutions"
+          collapseLabel="Show Fewer Solutions"
+          gradientBg="var(--bg-card-subtle)"
         >
-          {SOLUTIONS.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => handleCardClick(item)}
-              className="card-themed group"
-              style={{
-                borderRadius: '16px',
-                overflow: 'hidden',
-                background: 'var(--bg-card)',
-                border: '1px solid var(--border-light)',
-                boxShadow: 'var(--shadow-sm)',
-                display: 'flex',
-                flexDirection: 'column',
-                cursor: 'pointer',
-                transition: 'transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
-                textAlign: 'center'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-5px)';
-                e.currentTarget.style.boxShadow = 'var(--shadow-lg)';
-                e.currentTarget.style.borderColor = 'var(--accent-gold)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
-                e.currentTarget.style.borderColor = 'var(--border-light)';
-              }}
-            >
-              {/* Card Image */}
-              <div style={{
-                position: 'relative',
-                width: '100%',
-                height: '185px',
-                overflow: 'hidden',
-                background: '#090e1a'
-              }}>
-                <img
-                  src={item.image}
-                  alt={item.alt || item.title}
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.src = '/images/Sliding-Gates.jpg';
-                  }}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                    transition: 'transform 0.4s ease'
-                  }}
-                />
-              </div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+            gap: '1.75rem',
+            marginBottom: '1rem'
+          }}
+          className="core-solutions-grid"
+          >
+            {SOLUTIONS.map((item) => (
+              <div
+                key={item.id}
+                onClick={() => handleCardClick(item)}
+                className="card-themed group"
+                style={{
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  background: 'var(--bg-card)',
+                  border: '1px solid var(--border-light)',
+                  boxShadow: 'var(--shadow-sm)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  cursor: 'pointer',
+                  transition: 'transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
+                  textAlign: 'center'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-5px)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-lg)';
+                  e.currentTarget.style.borderColor = 'var(--accent-gold)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
+                  e.currentTarget.style.borderColor = 'var(--border-light)';
+                }}
+              >
+                {/* Card Image */}
+                <div style={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '185px',
+                  overflow: 'hidden',
+                  background: '#090e1a'
+                }}>
+                  <img
+                    src={item.image}
+                    alt={item.alt || item.title}
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.src = '/images/Sliding-Gates.jpg';
+                    }}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.4s ease'
+                    }}
+                  />
+                </div>
 
-              {/* Card Content */}
-              <div style={{ padding: '1.4rem 1.25rem 1.6rem 1.25rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '800',
-                  color: 'var(--text-heading)',
-                  marginBottom: '0.65rem'
-                }}>
-                  {item.title}
-                </h3>
-                <p style={{
-                  fontSize: '0.88rem',
-                  lineHeight: 1.6,
-                  color: 'var(--text-muted)',
-                  margin: 0,
-                  flex: 1
-                }}>
-                  {item.desc}
-                </p>
+                {/* Card Content */}
+                <div style={{ padding: '1.4rem 1.25rem 1.6rem 1.25rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <h3 style={{
+                    fontSize: '1.25rem',
+                    fontWeight: '800',
+                    color: 'var(--text-heading)',
+                    marginBottom: '0.65rem'
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p style={{
+                    fontSize: '0.88rem',
+                    lineHeight: 1.6,
+                    color: 'var(--text-muted)',
+                    margin: 0,
+                    flex: 1
+                  }}>
+                    {item.desc}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </SeeMoreWrapper>
 
         {/* Bottom CTA Button */}
         <div style={{ textAlign: 'center' }}>

@@ -29,7 +29,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [visibleCount, setVisibleCount] = useState(6);
 
   // Filter and search logic
   const filteredItems = useMemo(() => {
@@ -247,11 +247,11 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
         {visibleCount < filteredItems.length && (
           <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
             <button
-              onClick={() => setVisibleCount((prev) => prev + 8)}
+              onClick={() => setVisibleCount((prev) => prev + 6)}
               className="btn btn-outline-dark btn-md"
               style={{ fontWeight: '800' }}
             >
-              Load 8 More Projects ({filteredItems.length - visibleCount} remaining)
+              Load 6 More Projects ({filteredItems.length - visibleCount} remaining)
             </button>
 
             <button

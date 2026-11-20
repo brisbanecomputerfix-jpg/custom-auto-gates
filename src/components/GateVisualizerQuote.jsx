@@ -28,15 +28,21 @@ import FileUploadField from './FileUploadField';
 import { uploadFormFiles } from '../utils/uploadHelper';
 import { trackFormLead } from '../utils/analytics';
 
-export default function GateVisualizerQuote() {
+export default function GateVisualizerQuote({ defaultCategory, isModal = false, onClose }) {
   const [step, setStep] = useState(1);
   
   // Gate Configuration State
   const [selectedDesign, setSelectedDesign] = useState('horizontal-slat');
-  const [gateType, setGateType] = useState('sliding');
+  const [gateType, setGateType] = useState(() => {
+    if (defaultCategory === 'swing-gates') return 'swing';
+    return 'sliding';
+  });
   const [width, setWidth] = useState(4.0); // meters (4000mm)
   const [height, setHeight] = useState(1.8); // meters (1800mm)
-  const [powerSupply, setPowerSupply] = useState('240v-plugin');
+  const [powerSupply, setPowerSupply] = useState(() => {
+    if (defaultCategory === 'solar-gates') return 'solar-complete';
+    return '240v-plugin';
+  });
   const [motor, setMotor] = useState('standard-slide');
   const [timeline, setTimeline] = useState('2-weeks');
   const [accessories, setAccessories] = useState(['phone-app']);
@@ -56,14 +62,19 @@ export default function GateVisualizerQuote() {
   // Helper to change step and smoothly scroll without page jumping or shrinking
   const goToStep = (newStep) => {
     setStep(newStep);
-    setTimeout(() => {
-      const el = document.getElementById('gate-visualizer');
-      if (el) {
-        const yOffset = -75;
-        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    }, 50);
+    if (!isModal) {
+      setTimeout(() => {
+        const el = document.getElementById('gate-visualizer');
+        if (el) {
+          const yOffset = -75;
+          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 50);
+    } else {
+      const modalEl = document.querySelector('.modal-content-themed');
+      if (modalEl) modalEl.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   // 1. GATE DESIGNS & INFILL STYLES (Extracted from WordPress Stylish Cost Calculator)
@@ -376,10 +387,10 @@ export default function GateVisualizerQuote() {
     { num: 5, label: '5. Instant Quote' },
   ];
 
-  return (
-    <section id="gate-visualizer" className="section" style={{ backgroundColor: 'var(--bg-surface)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
-      <div className="container">
-        {/* Section Header */}
+  const innerContent = (
+    <div className={isModal ? "estimator-modal-body" : "container"}>
+      {/* Section Header (Only show when not in modal) */}
+      {!isModal && (
         <div className="section-header">
           <span className="badge-tag badge-gold">
             <Calculator size={14} />
@@ -393,6 +404,7 @@ export default function GateVisualizerQuote() {
             Configure your gate design, exact millimeter dimensions, opening track kit, power supply, and automation motor for an instant price estimate range.
           </p>
         </div>
+      )}
 
         {/* Step Indicator Navigation */}
         <div style={{
@@ -1170,6 +1182,15 @@ export default function GateVisualizerQuote() {
           </div>
         </div>
       </div>
+  );
+
+  if (isModal) {
+    return <div className="estimator-modal-inner">{innerContent}</div>;
+  }
+
+  return (
+    <section id="gate-visualizer" className="section" style={{ backgroundColor: 'var(--bg-surface)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
+      {innerContent}
     </section>
   );
 }
