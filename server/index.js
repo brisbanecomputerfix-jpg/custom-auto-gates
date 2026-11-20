@@ -15,7 +15,7 @@ import {
   formatLeadForGravityForms 
 } from './emailHandler.js';
 import { generateQuotePdf, generateBookingReceiptPdf } from './pdfGenerator.js';
-import { getRouteSchemaData } from './seoMetadata.js';
+import { getRouteSchemaData, PAGE_SEO_CONFIGS } from './seoMetadata.js';
 
 dotenv.config();
 
@@ -780,242 +780,48 @@ const distPath = path.resolve(__dirname, '../dist');
 app.use(express.static(distPath));
 
 // Page SEO Metadata Dictionary for Server-Side Pre-rendering
+// Derived directly from PAGE_SEO_CONFIGS to prevent drift between SSR and Client SPA
 // Strictly enforces canonical tags with no www and no trailing slash
 const PAGE_METADATA = {
-  '/': {
-    title: 'Automatic & Electric Gates Brisbane | Custom Driveway Gates',
-    description: "South East Queensland's top-rated automatic & electric driveway gates. Factory direct sliding, swing & solar gates in Yamanto. 10-Yr warranty: (07) 3102 1801.",
-    canonical: 'https://customautogates.com.au',
-    key: 'home'
-  },
-  '/about-us': {
-    title: 'About Our Team & Yamanto Gate Workshop | Custom Auto Gates QLD',
-    description: 'Learn about Custom Auto Gates & Fencing. Over 20 years fabricating Australian-made automatic gates, TIG-welded aluminium, and QBCC licensed (#15579753) automation in Yamanto, QLD.',
-    canonical: 'https://customautogates.com.au/about-us',
-    key: 'about'
-  },
-  '/about': {
-    title: 'About Our Team & Yamanto Gate Workshop | Custom Auto Gates QLD',
-    description: 'Learn about Custom Auto Gates & Fencing. Over 20 years fabricating Australian-made automatic gates, TIG-welded aluminium, and QBCC licensed (#15579753) automation in Yamanto, QLD.',
-    canonical: 'https://customautogates.com.au/about-us',
-    key: 'about'
-  },
-  '/service': {
-    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor Service',
-    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/service',
-    key: 'service'
-  },
-  '/repairs': {
-    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor Service',
-    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/service',
-    key: 'service'
-  },
-  '/gate-repairs': {
-    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor Service',
-    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/service',
-    key: 'service'
-  },
-  '/gate-repairs-brisbane': {
-    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor Service',
-    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/service',
-    key: 'service'
-  },
-  '/electric-gate-repairs': {
-    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor Service',
-    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/service',
-    key: 'service'
-  },
-  '/automatic-gate-repairs': {
-    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor Service',
-    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/service',
-    key: 'service'
-  },
-  '/contact-us': {
-    title: 'Contact Electric Gate Installers Brisbane & Ipswich | Free Measure',
-    description: 'Book a free on-site measure with licensed electric gate installers in Brisbane & Ipswich. Factory direct workshop in Yamanto. Call (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/contact-us',
-    key: 'contact'
-  },
-  '/contact': {
-    title: 'Contact Electric Gate Installers Brisbane & Ipswich | Free Measure',
-    description: 'Book a free on-site measure with licensed electric gate installers in Brisbane & Ipswich. Factory direct workshop in Yamanto. Call (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/contact-us',
-    key: 'contact'
-  },
-  '/driveway-gates': {
-    title: 'Driveway Gates Brisbane | Custom Automatic & Electric Gates [10-Yr Warranty]',
-    description: 'Custom electric & automatic driveway gates Brisbane. Factory direct sliding & swing gates, Centurion smart motors & 10-yr warranty. Free quote: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/driveway-gates',
-    key: 'driveway-gates'
-  },
-  '/automatic-sliding-gates': {
-    title: 'Automatic Sliding Gates Brisbane | Factory Direct [From $3,850]',
-    description: 'Custom automatic sliding gates Brisbane. Heavy-duty track & cantilever systems, high-speed Centurion motors & 10-yr warranty. 180+ 5★ reviews. Call (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/automatic-sliding-gates',
-    key: 'automatic-sliding-gates'
-  },
-  '/sliding-gates': {
-    title: 'Automatic Sliding Gates Brisbane | Factory Direct [From $3,850]',
-    description: 'Custom automatic sliding gates Brisbane. Heavy-duty track & cantilever systems, high-speed Centurion motors & 10-yr warranty. 180+ 5★ reviews. Call (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/automatic-sliding-gates',
-    key: 'automatic-sliding-gates'
-  },
-  '/swing-gates': {
-    title: 'Automatic Swing Gates Brisbane | Custom Double Swing & Bi-Fold Electric Gates',
-    description: 'Automatic swing gates Brisbane & Gold Coast. Single leaf, double swing & bi-fold folding gates. 10-Year Factory Structural Warranty. Free on-site measure: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/swing-gates',
-    key: 'swing-gates'
-  },
-  '/automatic-swing-gates': {
-    title: 'Automatic Swing Gates Brisbane | Custom Double Swing & Bi-Fold Electric Gates',
-    description: 'Automatic swing gates Brisbane & Gold Coast. Single leaf, double swing & bi-fold folding gates. 10-Year Factory Structural Warranty. Free on-site measure: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/swing-gates',
-    key: 'swing-gates'
-  },
-  '/solar-gates': {
-    title: 'Solar Automatic Gates Brisbane | 100% Off-Grid Electric Acreage Gates',
-    description: '100% off-grid solar automatic gates for Brisbane & Ipswich acreage properties. Heavy-duty 24V kits with 5-7 day battery backup. Free quote: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/solar-gates',
-    key: 'solar-gates'
-  },
-  '/solar-automatic-gates': {
-    title: 'Solar Automatic Gates Brisbane | 100% Off-Grid Electric Acreage Gates',
-    description: '100% off-grid solar automatic gates for Brisbane & Ipswich acreage properties. Heavy-duty 24V kits with 5-7 day battery backup. Free quote: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/solar-gates',
-    key: 'solar-gates'
-  },
-  '/pricing-guide': {
-    title: 'Automatic Gate Costs & Pricing Guide Brisbane [2026 Prices]',
-    description: 'Complete 2026 automatic gate price guide for Brisbane & SEQ. Transparent costs for sliding, swing, solar gates & motors ($3,800–$12,500+). Call (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/pricing-guide',
-    key: 'pricing-guide'
-  },
-  '/pricing': {
-    title: 'Automatic Gate Costs & Pricing Guide Brisbane [2026 Prices]',
-    description: 'Complete 2026 automatic gate price guide for Brisbane & SEQ. Transparent costs for sliding, swing, solar gates & motors ($3,800–$12,500+). Call (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/pricing-guide',
-    key: 'pricing-guide'
-  },
-  '/commercial-gates': {
-    title: 'Commercial Gates Brisbane & Ipswich | Security Cantilever Gates',
-    description: 'Heavy-duty commercial automatic gates Brisbane & Ipswich. Industrial cantilever gates, high-cycle boom gates & strata access. QBCC licensed: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/commercial-gates',
-    key: 'commercial-gates'
-  },
-  '/commercial-security-gates': {
-    title: 'Commercial Gates Brisbane & Ipswich | Security Cantilever Gates',
-    description: 'Heavy-duty commercial automatic gates Brisbane & Ipswich. Industrial cantilever gates, high-cycle boom gates & strata access. QBCC licensed: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/commercial-gates',
-    key: 'commercial-gates'
-  },
-  '/gates-brisbane': {
-    title: 'Automatic Gates Brisbane | Licensed Electric Gate Installers Near Me',
-    description: 'Looking for electric gate installers near you in Brisbane? QBCC licensed (#15579753) automatic sliding & swing gates. Free on-site quotes: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/gates-brisbane',
-    key: 'suburbs-brisbane'
-  },
-  '/automatic-gates-brisbane': {
-    title: 'Automatic Gates Brisbane | Licensed Electric Gate Installers Near Me',
-    description: 'Looking for electric gate installers near you in Brisbane? QBCC licensed (#15579753) automatic sliding & swing gates. Free on-site quotes: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/gates-brisbane',
-    key: 'suburbs-brisbane'
-  },
-  '/gates-ipswich': {
-    title: 'Automatic Gates Ipswich | Factory Direct Electric Driveway Gates',
-    description: "Ipswich's local automatic gate manufacturer at Shed 2, Belar St, Yamanto. Custom sliding, swing & solar gates with zero middleman markup. Call (07) 3102 1801.",
-    canonical: 'https://customautogates.com.au/gates-ipswich',
-    key: 'suburbs-ipswich'
-  },
-  '/automatic-gates-ipswich': {
-    title: 'Automatic Gates Ipswich | Factory Direct Electric Driveway Gates',
-    description: "Ipswich's local automatic gate manufacturer at Shed 2, Belar St, Yamanto. Custom sliding, swing & solar gates with zero middleman markup. Call (07) 3102 1801.",
-    canonical: 'https://customautogates.com.au/gates-ipswich',
-    key: 'suburbs-ipswich'
-  },
-  '/gates-logan': {
-    title: 'Automatic Gates & Security Fencing Logan & Redland Bay QLD',
-    description: 'Custom commercial security cantilever gates, residential sliding gates, and off-grid solar acreage gates across Logan, Berrinba, Springwood, Greenbank, and Cleveland.',
-    canonical: 'https://customautogates.com.au/gates-logan',
-    key: 'suburbs-logan'
-  },
-  '/automatic-gates-logan': {
-    title: 'Automatic Gates & Security Fencing Logan & Redland Bay QLD',
-    description: 'Custom commercial security cantilever gates, residential sliding gates, and off-grid solar acreage gates across Logan, Berrinba, Springwood, Greenbank, and Cleveland.',
-    canonical: 'https://customautogates.com.au/gates-logan',
-    key: 'suburbs-logan'
-  },
-  '/gates-gold-coast': {
-    title: 'Custom Automatic Gates Gold Coast | Marine Grade Aluminium Automation',
-    description: '100% corrosion-resistant marine grade aluminium automatic gates for Gold Coast, Hope Island, Sanctuary Cove, Coomera, Southport, and Hinterland properties.',
-    canonical: 'https://customautogates.com.au/gates-gold-coast',
-    key: 'suburbs-goldcoast'
-  },
-  '/automatic-gates-gold-coast': {
-    title: 'Custom Automatic Gates Gold Coast | Marine Grade Aluminium Automation',
-    description: '100% corrosion-resistant marine grade aluminium automatic gates for Gold Coast, Hope Island, Sanctuary Cove, Coomera, Southport, and Hinterland properties.',
-    canonical: 'https://customautogates.com.au/gates-gold-coast',
-    key: 'suburbs-goldcoast'
-  },
-  '/council-guide': {
-    title: 'Queensland Council Fence & Pool Safety Gate Guide (AS1926.1)',
-    description: 'Official guide to Brisbane City Council (BCC), Ipswich City Council (ICC), and Gold Coast fence height rules, 50% slat permeability, and AS1926.1 pool gate laws.',
-    canonical: 'https://customautogates.com.au/council-guide',
-    key: 'council-guide'
-  },
-  '/planning-rules': {
-    title: 'Queensland Council Fence & Pool Safety Gate Guide (AS1926.1)',
-    description: 'Official guide to Brisbane City Council (BCC), Ipswich City Council (ICC), and Gold Coast fence height rules, 50% slat permeability, and AS1926.1 pool gate laws.',
-    canonical: 'https://customautogates.com.au/council-guide',
-    key: 'council-guide'
-  },
-  '/testimonials': {
-    title: 'Customer Reviews & Gate Projects (4.9★) | Custom Auto Gates QLD',
-    description: 'Read 180+ verified 5-star customer reviews and detailed engineering case studies from homeowners across Brisbane, Ipswich, Logan, and Gold Coast.',
-    canonical: 'https://customautogates.com.au/testimonials',
-    key: 'testimonials'
-  },
-  '/reviews': {
-    title: 'Customer Reviews & Gate Projects (4.9★) | Custom Auto Gates QLD',
-    description: 'Read 180+ verified 5-star customer reviews and detailed engineering case studies from homeowners across Brisbane, Ipswich, Logan, and Gold Coast.',
-    canonical: 'https://customautogates.com.au/testimonials',
-    key: 'testimonials'
-  },
-  '/trade': {
-    title: 'Trade & Builders Gate Portal | Wholesale Gate Fabrication SEQ',
-    description: 'Wholesale custom automated gates and aluminium slat fencing for South East Queensland builders, fencing contractors, and developers. Fast 7–10 day lead times, CAD specs, 30-day accounts.',
-    canonical: 'https://customautogates.com.au/trade',
-    key: 'trade'
-  },
-  '/privacy-policy': {
-    title: 'Privacy Policy | Custom Auto Gates & Fencing Brisbane & Ipswich',
-    description: 'Official Privacy Policy for Custom Auto Gates Pty Ltd. Learn how we collect, protect, and manage your personal and property data in strict compliance with the Australian Privacy Principles (Privacy Act 1988).',
-    canonical: 'https://customautogates.com.au/privacy-policy',
-    key: 'privacy-policy'
-  },
-  '/privacy': {
-    title: 'Privacy Policy | Custom Auto Gates & Fencing Brisbane & Ipswich',
-    description: 'Official Privacy Policy for Custom Auto Gates Pty Ltd. Learn how we collect, protect, and manage your personal and property data in strict compliance with the Australian Privacy Principles (Privacy Act 1988).',
-    canonical: 'https://customautogates.com.au/privacy-policy',
-    key: 'privacy-policy'
-  },
-  '/gates/gallery-gates': {
-    title: 'Automatic & Electric Gates Brisbane | Custom Driveway Gates',
-    description: "South East Queensland's top-rated automatic & electric driveway gates. Factory direct sliding, swing & solar gates in Yamanto. 10-Yr warranty: (07) 3102 1801.",
-    canonical: 'https://customautogates.com.au',
-    key: 'home'
-  },
-  '/service-areas': {
-    title: 'Automatic Gates Brisbane | Licensed Electric Gate Installers Near Me',
-    description: 'Looking for electric gate installers near you in Brisbane? QBCC licensed (#15579753) automatic sliding & swing gates. Free on-site quotes: (07) 3102 1801.',
-    canonical: 'https://customautogates.com.au/gates-brisbane',
-    key: 'suburbs-brisbane'
-  }
+  '/': { ...PAGE_SEO_CONFIGS.home, canonical: 'https://customautogates.com.au', key: 'home' },
+  '/about-us': { ...PAGE_SEO_CONFIGS.about, canonical: 'https://customautogates.com.au/about-us', key: 'about' },
+  '/about': { ...PAGE_SEO_CONFIGS.about, canonical: 'https://customautogates.com.au/about-us', key: 'about' },
+  '/service': { ...PAGE_SEO_CONFIGS.service, canonical: 'https://customautogates.com.au/service', key: 'service' },
+  '/repairs': { ...PAGE_SEO_CONFIGS.service, canonical: 'https://customautogates.com.au/service', key: 'service' },
+  '/gate-repairs': { ...PAGE_SEO_CONFIGS.service, canonical: 'https://customautogates.com.au/service', key: 'service' },
+  '/gate-repairs-brisbane': { ...PAGE_SEO_CONFIGS.service, canonical: 'https://customautogates.com.au/service', key: 'service' },
+  '/electric-gate-repairs': { ...PAGE_SEO_CONFIGS.service, canonical: 'https://customautogates.com.au/service', key: 'service' },
+  '/automatic-gate-repairs': { ...PAGE_SEO_CONFIGS.service, canonical: 'https://customautogates.com.au/service', key: 'service' },
+  '/contact-us': { ...PAGE_SEO_CONFIGS.contact, canonical: 'https://customautogates.com.au/contact-us', key: 'contact' },
+  '/contact': { ...PAGE_SEO_CONFIGS.contact, canonical: 'https://customautogates.com.au/contact-us', key: 'contact' },
+  '/driveway-gates': { ...PAGE_SEO_CONFIGS['driveway-gates'], canonical: 'https://customautogates.com.au/driveway-gates', key: 'driveway-gates' },
+  '/automatic-sliding-gates': { ...PAGE_SEO_CONFIGS['automatic-sliding-gates'], canonical: 'https://customautogates.com.au/automatic-sliding-gates', key: 'automatic-sliding-gates' },
+  '/sliding-gates': { ...PAGE_SEO_CONFIGS['automatic-sliding-gates'], canonical: 'https://customautogates.com.au/automatic-sliding-gates', key: 'automatic-sliding-gates' },
+  '/swing-gates': { ...PAGE_SEO_CONFIGS['swing-gates'], canonical: 'https://customautogates.com.au/swing-gates', key: 'swing-gates' },
+  '/automatic-swing-gates': { ...PAGE_SEO_CONFIGS['swing-gates'], canonical: 'https://customautogates.com.au/swing-gates', key: 'swing-gates' },
+  '/solar-gates': { ...PAGE_SEO_CONFIGS['solar-gates'], canonical: 'https://customautogates.com.au/solar-gates', key: 'solar-gates' },
+  '/solar-automatic-gates': { ...PAGE_SEO_CONFIGS['solar-gates'], canonical: 'https://customautogates.com.au/solar-gates', key: 'solar-gates' },
+  '/pricing-guide': { ...PAGE_SEO_CONFIGS['pricing-guide'], canonical: 'https://customautogates.com.au/pricing-guide', key: 'pricing-guide' },
+  '/pricing': { ...PAGE_SEO_CONFIGS['pricing-guide'], canonical: 'https://customautogates.com.au/pricing-guide', key: 'pricing-guide' },
+  '/commercial-gates': { ...PAGE_SEO_CONFIGS['commercial-gates'], canonical: 'https://customautogates.com.au/commercial-gates', key: 'commercial-gates' },
+  '/commercial-security-gates': { ...PAGE_SEO_CONFIGS['commercial-gates'], canonical: 'https://customautogates.com.au/commercial-gates', key: 'commercial-gates' },
+  '/gates-brisbane': { ...PAGE_SEO_CONFIGS['suburbs-brisbane'], canonical: 'https://customautogates.com.au/gates-brisbane', key: 'suburbs-brisbane' },
+  '/automatic-gates-brisbane': { ...PAGE_SEO_CONFIGS['suburbs-brisbane'], canonical: 'https://customautogates.com.au/gates-brisbane', key: 'suburbs-brisbane' },
+  '/service-areas': { ...PAGE_SEO_CONFIGS['suburbs-brisbane'], canonical: 'https://customautogates.com.au/gates-brisbane', key: 'suburbs-brisbane' },
+  '/gates-ipswich': { ...PAGE_SEO_CONFIGS['suburbs-ipswich'], canonical: 'https://customautogates.com.au/gates-ipswich', key: 'suburbs-ipswich' },
+  '/automatic-gates-ipswich': { ...PAGE_SEO_CONFIGS['suburbs-ipswich'], canonical: 'https://customautogates.com.au/gates-ipswich', key: 'suburbs-ipswich' },
+  '/gates-logan': { ...PAGE_SEO_CONFIGS['suburbs-logan'], canonical: 'https://customautogates.com.au/gates-logan', key: 'suburbs-logan' },
+  '/automatic-gates-logan': { ...PAGE_SEO_CONFIGS['suburbs-logan'], canonical: 'https://customautogates.com.au/gates-logan', key: 'suburbs-logan' },
+  '/gates-gold-coast': { ...PAGE_SEO_CONFIGS['suburbs-goldcoast'], canonical: 'https://customautogates.com.au/gates-gold-coast', key: 'suburbs-goldcoast' },
+  '/automatic-gates-gold-coast': { ...PAGE_SEO_CONFIGS['suburbs-goldcoast'], canonical: 'https://customautogates.com.au/gates-gold-coast', key: 'suburbs-goldcoast' },
+  '/council-guide': { ...PAGE_SEO_CONFIGS['council-guide'], canonical: 'https://customautogates.com.au/council-guide', key: 'council-guide' },
+  '/planning-rules': { ...PAGE_SEO_CONFIGS['council-guide'], canonical: 'https://customautogates.com.au/council-guide', key: 'council-guide' },
+  '/testimonials': { ...PAGE_SEO_CONFIGS.testimonials, canonical: 'https://customautogates.com.au/testimonials', key: 'testimonials' },
+  '/reviews': { ...PAGE_SEO_CONFIGS.testimonials, canonical: 'https://customautogates.com.au/testimonials', key: 'testimonials' },
+  '/trade': { ...PAGE_SEO_CONFIGS.trade, canonical: 'https://customautogates.com.au/trade', key: 'trade' },
+  '/privacy-policy': { ...PAGE_SEO_CONFIGS['privacy-policy'], canonical: 'https://customautogates.com.au/privacy-policy', key: 'privacy-policy' },
+  '/privacy': { ...PAGE_SEO_CONFIGS['privacy-policy'], canonical: 'https://customautogates.com.au/privacy-policy', key: 'privacy-policy' },
+  '/gates/gallery-gates': { ...PAGE_SEO_CONFIGS.home, canonical: 'https://customautogates.com.au', key: 'home' }
 };
 
 // Branded 404 HTML Page Generator

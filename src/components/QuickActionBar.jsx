@@ -6,22 +6,54 @@ export default function QuickActionBar({ onOpenQuote, onOpenTroubleshoot }) {
   return (
     <>
       {/* Mobile Floating Bottom Bar */}
-      <div className="floating-mobile-bar">
+      <div className="floating-mobile-bar" role="navigation" aria-label="Mobile Quick Action Bar">
         <a 
           href={COMPANY_INFO.tel} 
           className="btn btn-blue btn-md"
-          style={{ width: '100%', padding: '0.75rem 0.5rem', fontSize: '0.9375rem' }}
+          style={{ 
+            width: '100%', 
+            padding: '0.6rem 0.35rem', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            gap: '2px', 
+            fontWeight: '700',
+            lineHeight: 1.15
+          }}
+          aria-label="Call Workshop at (07) 3102 1801"
         >
-          <Phone size={18} />
-          Call Direct
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <Phone size={15} />
+            <span style={{ fontSize: '0.85rem' }}>Call Workshop</span>
+          </div>
+          <span style={{ fontSize: '0.75rem', opacity: 0.95, fontWeight: '600', letterSpacing: '-0.01em' }}>
+            (07) 3102 1801
+          </span>
         </a>
         <button 
           onClick={onOpenQuote} 
           className="btn btn-gold btn-md"
-          style={{ width: '100%', padding: '0.75rem 0.5rem', fontSize: '0.9375rem', fontWeight: '800' }}
+          style={{ 
+            width: '100%', 
+            padding: '0.6rem 0.35rem', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            gap: '2px', 
+            fontWeight: '800',
+            lineHeight: 1.15
+          }}
+          aria-label="Request Instant Estimate with Factory Direct Pricing"
         >
-          <Calculator size={18} />
-          Instant Quote
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <Calculator size={15} />
+            <span style={{ fontSize: '0.85rem' }}>Instant Estimate</span>
+          </div>
+          <span style={{ fontSize: '0.75rem', opacity: 0.95, fontWeight: '700', letterSpacing: '-0.01em' }}>
+            Factory Direct Pricing
+          </span>
         </button>
       </div>
 
