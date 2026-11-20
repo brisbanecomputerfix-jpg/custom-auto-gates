@@ -15,7 +15,7 @@ import {
   formatLeadForGravityForms 
 } from './emailHandler.js';
 import { generateQuotePdf, generateBookingReceiptPdf } from './pdfGenerator.js';
-import { getRouteSchemaData } from '../src/utils/seoManager.js';
+import { getRouteSchemaData } from './seoMetadata.js';
 
 dotenv.config();
 
