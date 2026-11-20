@@ -2,11 +2,9 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import MinimalPricingSection from './components/MinimalPricingSection';
-import ServicesSection from './components/ServicesSection';
 import CoreSolutionsSection from './components/CoreSolutionsSection';
 import ProjectGallery from './components/ProjectGallery';
 import WhyFactoryDirect from './components/WhyFactoryDirect';
-import MotorShowcase from './components/MotorShowcase';
 import ServiceAreaChecker from './components/ServiceAreaChecker';
 import ReviewsSection from './components/ReviewsSection';
 import FaqSection from './components/FaqSection';
@@ -30,7 +28,7 @@ const PricingGuide = lazy(() => import('./components/PricingGuide'));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
 const ContactModal = lazy(() => import('./components/ContactModal'));
 const TroubleshooterModal = lazy(() => import('./components/TroubleshooterModal'));
-const EstimatorModal = lazy(() => import('./components/EstimatorModal'));
+const FastQuoteModal = lazy(() => import('./components/FastQuoteModal'));
 const PaymentSuccessModal = lazy(() => import('./components/PaymentSuccessModal'));
 
 const PageLoader = () => (
@@ -349,15 +347,11 @@ export default function App() {
                 onNavigateAbout={() => navigateTo('about')}
               />
 
-              {/* Core Custom Gates and Fencing Solutions (8-Card Grid) */}
+              {/* Core Custom Gates and Fencing Solutions (Gateway Cards) */}
               <CoreSolutionsSection 
                 onSelectService={(id) => setSelectedServiceId(id)}
                 onOpenQuote={handleOpenQuote}
-              />
-
-              {/* 600+ Real Project Gallery - High-Trust Visual Proof Section */}
-              <ProjectGallery 
-                onOpenQuoteWithProject={handleOpenQuoteWithProject}
+                onNavigate={navigateTo}
               />
 
               {/* Minimal 3-Tier Upfront Pricing & Cost Snapshot */}
@@ -370,23 +364,15 @@ export default function App() {
                 onOpenContact={() => setIsContactOpen(true)}
               />
 
-              {/* Comprehensive Services Deep Dive */}
-              <ServicesSection 
-                selectedServiceId={selectedServiceId}
-                onSelectService={(id) => setSelectedServiceId(id)}
-                onConfigureGate={handleConfigureGate}
-                onOpenContact={() => setIsContactOpen(true)}
+              {/* 600+ Real Project Gallery - High-Trust Visual Proof Section */}
+              <ProjectGallery 
+                onOpenQuoteWithProject={handleOpenQuoteWithProject}
               />
 
               {/* Why Factory Direct Yamanto Comparison */}
               <WhyFactoryDirect 
                 onOpenQuote={handleOpenQuote}
                 onNavigateAbout={() => navigateTo('about')}
-              />
-
-              {/* Motor Hardware Automation Specs */}
-              <MotorShowcase 
-                onOpenQuote={handleOpenQuote}
               />
 
               {/* Brisbane Inner Suburbs & SE QLD Area Checker */}
@@ -450,12 +436,12 @@ export default function App() {
           />
         )}
 
-        {/* Interactive 5-Step Gate Cost Builder Modal */}
+        {/* Fast 30-Second Fixed Quote & Free Measure Modal */}
         {isQuoteOpen && (
-          <EstimatorModal 
+          <FastQuoteModal 
             isOpen={isQuoteOpen}
             onClose={() => setIsQuoteOpen(false)}
-            defaultCategory={selectedServiceId}
+            defaultGateStyle={selectedServiceId}
           />
         )}
 

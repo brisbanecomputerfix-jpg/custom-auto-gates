@@ -8,7 +8,8 @@ import {
   CheckCircle2, 
   Calculator, 
   MapPin,
-  Award
+  Award,
+  Send
 } from 'lucide-react';
 
 export default function WhyFactoryDirect({ onOpenQuote, onNavigateAbout }) {
@@ -193,8 +194,8 @@ export default function WhyFactoryDirect({ onOpenQuote, onNavigateAbout }) {
               className="btn btn-gold btn-lg"
               style={{ fontWeight: '800' }}
             >
-              <Calculator size={18} />
-              Calculate Instant Price
+              <Send size={18} />
+              Request Free Measure &amp; Quote
             </button>
             <button
               onClick={onNavigateAbout}

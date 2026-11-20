@@ -186,8 +186,8 @@ export default function MinimalPricingSection({ onOpenEstimator, onNavigatePrici
                   className="btn btn-gold btn-md"
                   style={{ width: '100%', fontWeight: '800', justifyContent: 'center' }}
                 >
-                  <Sliders size={16} />
-                  Customize {tier.category.split(' ')[1] || 'Gate'}
+                  <Send size={15} />
+                  Get Quote &amp; Free Measure
                 </button>
               </div>
             </div>
@@ -210,15 +210,15 @@ export default function MinimalPricingSection({ onOpenEstimator, onNavigatePrici
           <div style={{ maxWidth: '600px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
               <span className="badge-tag badge-gold" style={{ margin: 0, fontSize: '0.72rem' }}>
-                <Calculator size={12} /> Live Cost Builder
+                <ShieldCheck size={12} /> Fixed Pricing • Zero Sales Pressure
               </span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Millimeter-accurate estimates</span>
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Free on-site laser measure</span>
             </div>
             <h3 style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.55rem)', fontWeight: '800', color: 'var(--text-heading)', margin: '0 0 0.4rem 0' }}>
-              Need an exact price for your specific driveway width?
+              Need an exact fixed quote for your driveway?
             </h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', margin: 0, lineHeight: 1.5 }}>
-              Use our 5-step visual cost builder to select slat profiles, motor brands, solar kits, and accessories in under 60 seconds.
+              Request a fast 30-second quote or book a free on-site consultation with our Yamanto workshop team.
             </p>
           </div>
 
@@ -229,8 +229,8 @@ export default function MinimalPricingSection({ onOpenEstimator, onNavigatePrici
               className="btn btn-gold btn-lg"
               style={{ fontWeight: '800' }}
             >
-              <Calculator size={18} />
-              Launch Interactive Cost Builder
+              <Send size={18} />
+              Request Fast Quote &amp; Free Measure
             </button>
 
             {onNavigatePricing ? (

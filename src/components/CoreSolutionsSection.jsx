@@ -69,32 +69,36 @@ const SOLUTIONS = [
   }
 ];
 
-export default function CoreSolutionsSection({ onSelectService, onOpenQuote }) {
+export default function CoreSolutionsSection({ onSelectService, onOpenQuote, onNavigate }) {
   const handleCardClick = (solution) => {
-    if (solution.category === 'repairs' || solution.id === 'gate-motors-automation') {
-      const elem = document.getElementById('motors');
-      if (elem) {
-        elem.scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-    }
-
-    if (onSelectService) {
-      onSelectService(solution.category);
-    }
-    
-    const elem = document.getElementById('services');
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
+    if (solution.id === 'sliding-gates') {
+      if (onNavigate) onNavigate('automatic-sliding-gates');
+      else window.location.href = '/automatic-sliding-gates';
+    } else if (solution.id === 'swing-gates') {
+      if (onNavigate) onNavigate('swing-gates');
+      else window.location.href = '/swing-gates';
+    } else if (solution.id === 'solar-gates') {
+      if (onNavigate) onNavigate('solar-gates');
+      else window.location.href = '/solar-gates';
+    } else if (solution.id === 'commercial-gates' || solution.id === 'security-fencing') {
+      if (onNavigate) onNavigate('commercial-gates');
+      else window.location.href = '/commercial-gates';
+    } else if (solution.id === 'gate-motors-automation') {
+      if (onNavigate) onNavigate('service');
+      else window.location.href = '/service';
+    } else if (solution.id === 'pool-fencing' || solution.id === 'aluminum-fencing') {
+      if (onNavigate) onNavigate('council-guide');
+      else window.location.href = '/council-guide';
+    } else if (onOpenQuote) {
+      onOpenQuote(solution.id);
     }
   };
 
   const handleLearnMore = () => {
-    const elem = document.getElementById('services');
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
-    } else if (onOpenQuote) {
+    if (onOpenQuote) {
       onOpenQuote();
+    } else if (onNavigate) {
+      onNavigate('driveway-gates');
     }
   };
 
@@ -242,7 +246,7 @@ export default function CoreSolutionsSection({ onSelectService, onOpenQuote }) {
               boxShadow: '0 4px 15px var(--accent-gold-glow)'
             }}
           >
-            LEARN MORE ABOUT OUR SERVICES
+            REQUEST A FREE ON-SITE MEASURE &amp; QUOTE
           </button>
         </div>
       </div>
