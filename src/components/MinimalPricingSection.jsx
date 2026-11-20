@@ -12,7 +12,8 @@ import {
   Sparkles, 
   Layers, 
   Clock,
-  HelpCircle
+  HelpCircle,
+  Send
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/siteData';
 
