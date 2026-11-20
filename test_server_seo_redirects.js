@@ -147,6 +147,20 @@ server.listen(0, '127.0.0.1', async () => {
       t16.statusCode === 301 && t16.headers.location === '/driveway-gates',
       `got status ${t16.statusCode}, location ${t16.headers.location}`);
 
+    // 6. Server-Side Pre-Rendered Rich CTR Snippets & Schema
+    assert('6a. /driveway-gates has pre-rendered high-CTR title',
+      t14.body.includes('<title>Driveway Gates Brisbane | Custom Automatic & Electric Gates [10-Yr Warranty]</title>'),
+      'missing expected optimized title');
+
+    assert('6b. /driveway-gates has server-rendered JSON-LD schema with Product & FAQPage',
+      t14.body.includes('id="dynamic-route-schema"') && t14.body.includes('"@type": "Product"') && t14.body.includes('"@type": "FAQPage"'),
+      'missing expected dynamic route schema in HTML');
+
+    const t17 = await testReq('Valid Subpage /automatic-sliding-gates', '/automatic-sliding-gates', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('6c. /automatic-sliding-gates has pre-rendered title [From $3,850] and FAQ schema',
+      t17.body.includes('<title>Automatic Sliding Gates Brisbane | Factory Direct [From $3,850]</title>') && t17.body.includes('"@type": "FAQPage"'),
+      'missing sliding gate title or schema');
+
     console.log(`\n=== RESULTS: ${passedCount} PASSED, ${failedCount} FAILED ===`);
   } catch (err) {
     console.error('Test execution error:', err);
