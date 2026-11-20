@@ -25,6 +25,33 @@ const app = express();
 const HOST = process.env.HOST || '0.0.0.0';
 const PORT = parseInt(process.env.PORT, 10) || 3000;
 
+// Enable trust proxy for correct protocol, host & IP detection behind Traefik/Coolify
+app.set('trust proxy', true);
+
+// 0. Enforce HTTPS & Canonical Domain (301 Redirect www to non-www and http to https)
+app.use((req, res, next) => {
+  const hostHeader = (req.headers['x-forwarded-host'] || req.headers.host || '').toLowerCase();
+  const hostname = hostHeader.split(':')[0];
+  const protoHeader = (req.headers['x-forwarded-proto'] || req.protocol || 'http').toLowerCase();
+  const isHttp = protoHeader === 'http';
+
+  // 1. Primary Production Domain (customautogates.com.au)
+  if (hostname === 'www.customautogates.com.au' || hostname === 'customautogates.com.au') {
+    if (hostname === 'www.customautogates.com.au' || isHttp) {
+      return res.redirect(301, `https://customautogates.com.au${req.originalUrl}`);
+    }
+  }
+
+  // 2. Secondary Staging Domain (gates.4pxl.com)
+  if (hostname === 'www.gates.4pxl.com' || hostname === 'gates.4pxl.com') {
+    if (hostname === 'www.gates.4pxl.com' || isHttp) {
+      return res.redirect(301, `https://gates.4pxl.com${req.originalUrl}`);
+    }
+  }
+
+  next();
+});
+
 // Ensure public/uploads directory exists
 const uploadsDir = path.resolve(__dirname, '../public/uploads');
 if (!fs.existsSync(uploadsDir)) {
@@ -84,15 +111,17 @@ app.use((req, res, next) => {
 
 // 1c. 301 Permanent Redirects for Legacy WordPress URLs (Preserve Search Authority & Link Equity)
 const LEGACY_301_REDIRECTS = {
-  // Driveway Gates (Direct to dedicated /driveway-gates landing page)
+  // Driveway Gates & General Gates (Direct to dedicated /driveway-gates landing page)
+  '/gates': '/driveway-gates',
+  '/gates/': '/driveway-gates',
   '/gates/driveway-gates': '/driveway-gates',
   '/gates/driveway-gates/': '/driveway-gates',
   '/gates/automatic-gates': '/driveway-gates',
   '/gates/automatic-gates/': '/driveway-gates',
 
-  // Sliding Gates (Direct to dedicated /automatic-sliding-gates landing page)
-  '/sliding-gates': '/automatic-sliding-gates',
-  '/sliding-gates/': '/automatic-sliding-gates',
+  // Sliding Gates (Direct to dedicated sliding gates landing page)
+  '/gates/sliding-gates': '/sliding-gates',
+  '/gates/sliding-gates/': '/sliding-gates',
   '/automatic-sliding-gates-2': '/automatic-sliding-gates',
   '/automatic-sliding-gates-2/': '/automatic-sliding-gates',
   '/gates/automatic-sliding-gates-brisbane': '/automatic-sliding-gates',
@@ -121,9 +150,9 @@ const LEGACY_301_REDIRECTS = {
   '/automatic-gates-brisbane-price': '/pricing-guide',
   '/automatic-gates-brisbane-price/': '/pricing-guide',
 
-  // Gallery
-  '/gates/gallery-gates': '/#gallery',
-  '/gates/gallery-gates/': '/#gallery',
+  // Gallery & Balustrade Redirects
+  '/lp/balustrade': '/gates/gallery-gates',
+  '/lp/balustrade/': '/gates/gallery-gates',
   '/gallery-gates': '/#gallery',
   '/gallery-gates/': '/#gallery',
   '/gallery': '/#gallery',
@@ -158,6 +187,8 @@ const LEGACY_301_REDIRECTS = {
   '/automatic-gate-repairs/': '/service',
 
   // Motors & Automation
+  '/gate-automation/automation-accessories': '/#motor-showcase',
+  '/gate-automation/automation-accessories/': '/#motor-showcase',
   '/automation-accessories/motors': '/#motor-showcase',
   '/automation-accessories/motors/': '/#motor-showcase',
   '/automation-accessories': '/#motor-showcase',
@@ -170,6 +201,8 @@ const LEGACY_301_REDIRECTS = {
   '/gate-automation/nice-swing-gate-automation/': '/#motor-showcase',
 
   // Fencing
+  '/gallery-and-design/fencing': '/#fencing',
+  '/gallery-and-design/fencing/': '/#fencing',
   '/fencing': '/#fencing',
   '/fencing/': '/#fencing',
   '/fencing/colorbond-fencing': '/#fencing',
@@ -189,20 +222,46 @@ const LEGACY_301_REDIRECTS = {
 };
 
 app.use((req, res, next) => {
-  const normalizedPath = req.path.toLowerCase().replace(/\/$/, '') || '/';
+  const cleanPath = req.path.toLowerCase();
+  const normalizedPath = cleanPath.replace(/\/$/, '') || '/';
   
   const targetRedirect = LEGACY_301_REDIRECTS[req.path] || 
+                         LEGACY_301_REDIRECTS[cleanPath] ||
                          LEGACY_301_REDIRECTS[normalizedPath];
 
-  // Prevent infinite self-redirect loops: Never redirect if already on target URL
-  if (
-    targetRedirect && 
-    targetRedirect !== req.path && 
-    targetRedirect !== normalizedPath &&
-    targetRedirect !== `${normalizedPath}/`
-  ) {
-    return res.redirect(301, targetRedirect);
+  if (targetRedirect) {
+    // Preserve query parameters if present (critical for Google Ads UTM/gclid tracking)
+    const queryIndex = req.originalUrl.indexOf('?');
+    let finalTarget = targetRedirect;
+    if (queryIndex !== -1) {
+      const qs = req.originalUrl.slice(queryIndex);
+      if (finalTarget.includes('#')) {
+        const [base, hash] = finalTarget.split('#');
+        finalTarget = `${base}${qs}#${hash}`;
+      } else {
+        finalTarget = `${finalTarget}${qs}`;
+      }
+    }
+
+    // Prevent infinite self-redirect loops: Never redirect if already on target URL
+    if (
+      finalTarget !== req.originalUrl &&
+      targetRedirect !== req.path && 
+      targetRedirect !== normalizedPath &&
+      targetRedirect !== `${normalizedPath}/`
+    ) {
+      return res.redirect(301, finalTarget);
+    }
   }
+
+  // Trailing slash normalization: 301 redirect paths like /driveway-gates/ -> /driveway-gates
+  if (req.path.length > 1 && req.path.endsWith('/')) {
+    const strippedPath = req.path.slice(0, -1);
+    const queryIndex = req.originalUrl.indexOf('?');
+    const qs = queryIndex !== -1 ? req.originalUrl.slice(queryIndex) : '';
+    return res.redirect(301, strippedPath + qs);
+  }
+
   next();
 });
 
@@ -719,9 +778,463 @@ app.get('/api/leads/:id', verifyApiKey, handleGetSingleEntry);
 const distPath = path.resolve(__dirname, '../dist');
 app.use(express.static(distPath));
 
-// Catch-all route for Single Page Application (Express 5 compatible)
+// Page SEO Metadata Dictionary for Server-Side Pre-rendering
+// Strictly enforces canonical tags with no www and no trailing slash
+const PAGE_METADATA = {
+  '/': {
+    title: 'Automatic & Electric Gates Brisbane | Custom Driveway Gates',
+    description: "Custom Auto Gates & Fencing — South East Queensland's leading manufacturer of custom automatic electric driveway gates, sliding gates, swing gates & solar gates. Buy factory direct in Yamanto: (07) 3102 1801.",
+    canonical: 'https://customautogates.com.au'
+  },
+  '/about-us': {
+    title: 'About Our Team & Yamanto Gate Workshop | Custom Auto Gates QLD',
+    description: 'Learn about Custom Auto Gates & Fencing. Over 20 years fabricating Australian-made automatic gates, TIG-welded aluminium, and QBCC licensed (#15579753) automation in Yamanto, QLD.',
+    canonical: 'https://customautogates.com.au/about-us'
+  },
+  '/about': {
+    title: 'About Our Team & Yamanto Gate Workshop | Custom Auto Gates QLD',
+    description: 'Learn about Custom Auto Gates & Fencing. Over 20 years fabricating Australian-made automatic gates, TIG-welded aluminium, and QBCC licensed (#15579753) automation in Yamanto, QLD.',
+    canonical: 'https://customautogates.com.au/about-us'
+  },
+  '/service': {
+    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor & Opener Service',
+    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/service'
+  },
+  '/repairs': {
+    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor & Opener Service',
+    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/service'
+  },
+  '/gate-repairs': {
+    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor & Opener Service',
+    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/service'
+  },
+  '/gate-repairs-brisbane': {
+    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor & Opener Service',
+    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/service'
+  },
+  '/electric-gate-repairs': {
+    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor & Opener Service',
+    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/service'
+  },
+  '/automatic-gate-repairs': {
+    title: 'Electric & Automatic Gate Repairs Brisbane | Gate Motor & Opener Service',
+    description: 'Fast electric & automatic gate repairs Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT), remote reprogramming & track repairs. Book online: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/service'
+  },
+  '/contact-us': {
+    title: 'Contact Us & Showroom Workshop | Custom Auto Gates Yamanto Brisbane',
+    description: 'Contact Custom Auto Gates & Fencing at Shed 2, 43-45 Belar St, Yamanto QLD 4305. Book a free on-site design consult or call (07) 3102 1801 for factory direct advice.',
+    canonical: 'https://customautogates.com.au/contact-us'
+  },
+  '/contact': {
+    title: 'Contact Us & Showroom Workshop | Custom Auto Gates Yamanto Brisbane',
+    description: 'Contact Custom Auto Gates & Fencing at Shed 2, 43-45 Belar St, Yamanto QLD 4305. Book a free on-site design consult or call (07) 3102 1801 for factory direct advice.',
+    canonical: 'https://customautogates.com.au/contact-us'
+  },
+  '/driveway-gates': {
+    title: 'Automatic Driveway Gates Brisbane | Custom Electric Driveway Gates',
+    description: 'Custom automatic driveway gates Brisbane. Custom aluminium electric sliding & swing driveway gates. Centurion & Nice smart motors, 10-year warranty. Free quote: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/driveway-gates'
+  },
+  '/automatic-sliding-gates': {
+    title: 'Automatic Sliding Gates Brisbane | Factory Direct Sliding Driveway Gates',
+    description: 'Custom automatic sliding gates Brisbane. Premium aluminium ground track & cantilever trackless systems. High-speed smart motors with 10-year structural warranty. Free on-site visit: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/automatic-sliding-gates'
+  },
+  '/sliding-gates': {
+    title: 'Automatic Sliding Gates Brisbane | Factory Direct Sliding Driveway Gates',
+    description: 'Custom automatic sliding gates Brisbane. Premium aluminium ground track & cantilever trackless systems. High-speed smart motors with 10-year structural warranty. Free on-site visit: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/automatic-sliding-gates'
+  },
+  '/swing-gates': {
+    title: 'Automatic Swing Gates Brisbane | Custom Double Swing & Bi-Fold Electric Gates',
+    description: 'Automatic swing gates Brisbane & Gold Coast. Single leaf, double swing & bi-fold folding gates. 10-Year Factory Structural Warranty. Free on-site measure: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/swing-gates'
+  },
+  '/automatic-swing-gates': {
+    title: 'Automatic Swing Gates Brisbane | Custom Double Swing & Bi-Fold Electric Gates',
+    description: 'Automatic swing gates Brisbane & Gold Coast. Single leaf, double swing & bi-fold folding gates. 10-Year Factory Structural Warranty. Free on-site measure: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/swing-gates'
+  },
+  '/solar-gates': {
+    title: 'Solar Automatic Gates Brisbane | 100% Off-Grid Acreage Kits QLD',
+    description: 'Off-grid solar automatic gates Brisbane & Ipswich. Heavy-duty 24V solar kits with 5-7 days storm battery backup. Zero mains power trenching costs. Free quote: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/solar-gates'
+  },
+  '/solar-automatic-gates': {
+    title: 'Solar Automatic Gates Brisbane | 100% Off-Grid Acreage Kits QLD',
+    description: 'Off-grid solar automatic gates Brisbane & Ipswich. Heavy-duty 24V solar kits with 5-7 days storm battery backup. Zero mains power trenching costs. Free quote: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/solar-gates'
+  },
+  '/pricing-guide': {
+    title: 'Automatic Gate Costs & Pricing Guide Brisbane [2026] | Custom Auto Gates',
+    description: 'Detailed automatic gate costs in Brisbane & SEQ. See price ranges for sliding, swing, solar gates & motors ($3,800–$12,500+). Buy factory direct in Yamanto: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/pricing-guide'
+  },
+  '/pricing': {
+    title: 'Automatic Gate Costs & Pricing Guide Brisbane [2026] | Custom Auto Gates',
+    description: 'Detailed automatic gate costs in Brisbane & SEQ. See price ranges for sliding, swing, solar gates & motors ($3,800–$12,500+). Buy factory direct in Yamanto: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/pricing-guide'
+  },
+  '/commercial-gates': {
+    title: 'Commercial Gates Brisbane & Ipswich | Industrial Security Cantilever Gates',
+    description: 'Commercial automatic gates Brisbane, Ipswich & Logan. Heavy-duty cantilever sliding gates, high-cycle boom gates & strata access control. QBCC licensed: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/commercial-gates'
+  },
+  '/commercial-security-gates': {
+    title: 'Commercial Gates Brisbane & Ipswich | Industrial Security Cantilever Gates',
+    description: 'Commercial automatic gates Brisbane, Ipswich & Logan. Heavy-duty cantilever sliding gates, high-cycle boom gates & strata access control. QBCC licensed: (07) 3102 1801.',
+    canonical: 'https://customautogates.com.au/commercial-gates'
+  },
+  '/gates-brisbane': {
+    title: 'Custom Automatic Gates Brisbane | Factory Direct Sliding & Swing Gates',
+    description: 'Custom designed and fabricated automatic gates across Brisbane Northside, Southside, and Western suburbs. Free on-site visits in Ascot, New Farm, Indooroopilly, and Pullenvale.',
+    canonical: 'https://customautogates.com.au/gates-brisbane'
+  },
+  '/automatic-gates-brisbane': {
+    title: 'Custom Automatic Gates Brisbane | Factory Direct Sliding & Swing Gates',
+    description: 'Custom designed and fabricated automatic gates across Brisbane Northside, Southside, and Western suburbs. Free on-site visits in Ascot, New Farm, Indooroopilly, and Pullenvale.',
+    canonical: 'https://customautogates.com.au/gates-brisbane'
+  },
+  '/gates-ipswich': {
+    title: 'Automatic Gates Ipswich & Yamanto | Factory Direct from Belar St Workshop',
+    description: 'Buy factory direct from our Yamanto workshop facility! Eliminating middleman markups for Ipswich, Springfield Lakes, Brookwater, Brassall, and Karalee property owners.',
+    canonical: 'https://customautogates.com.au/gates-ipswich'
+  },
+  '/automatic-gates-ipswich': {
+    title: 'Automatic Gates Ipswich & Yamanto | Factory Direct from Belar St Workshop',
+    description: 'Buy factory direct from our Yamanto workshop facility! Eliminating middleman markups for Ipswich, Springfield Lakes, Brookwater, Brassall, and Karalee property owners.',
+    canonical: 'https://customautogates.com.au/gates-ipswich'
+  },
+  '/gates-logan': {
+    title: 'Automatic Gates & Security Fencing Logan & Redland Bay QLD',
+    description: 'Custom commercial security cantilever gates, residential sliding gates, and off-grid solar acreage gates across Logan, Berrinba, Springwood, Greenbank, and Cleveland.',
+    canonical: 'https://customautogates.com.au/gates-logan'
+  },
+  '/automatic-gates-logan': {
+    title: 'Automatic Gates & Security Fencing Logan & Redland Bay QLD',
+    description: 'Custom commercial security cantilever gates, residential sliding gates, and off-grid solar acreage gates across Logan, Berrinba, Springwood, Greenbank, and Cleveland.',
+    canonical: 'https://customautogates.com.au/gates-logan'
+  },
+  '/gates-gold-coast': {
+    title: 'Custom Automatic Gates Gold Coast | Marine Grade Aluminium Automation',
+    description: '100% corrosion-resistant marine grade aluminium automatic gates for Gold Coast, Hope Island, Sanctuary Cove, Coomera, Southport, and Hinterland properties.',
+    canonical: 'https://customautogates.com.au/gates-gold-coast'
+  },
+  '/automatic-gates-gold-coast': {
+    title: 'Custom Automatic Gates Gold Coast | Marine Grade Aluminium Automation',
+    description: '100% corrosion-resistant marine grade aluminium automatic gates for Gold Coast, Hope Island, Sanctuary Cove, Coomera, Southport, and Hinterland properties.',
+    canonical: 'https://customautogates.com.au/gates-gold-coast'
+  },
+  '/council-guide': {
+    title: 'Queensland Council Fence & Pool Safety Gate Guide (AS1926.1)',
+    description: 'Official guide to Brisbane City Council (BCC), Ipswich City Council (ICC), and Gold Coast fence height rules, 50% slat permeability, and AS1926.1 pool gate laws.',
+    canonical: 'https://customautogates.com.au/council-guide'
+  },
+  '/planning-rules': {
+    title: 'Queensland Council Fence & Pool Safety Gate Guide (AS1926.1)',
+    description: 'Official guide to Brisbane City Council (BCC), Ipswich City Council (ICC), and Gold Coast fence height rules, 50% slat permeability, and AS1926.1 pool gate laws.',
+    canonical: 'https://customautogates.com.au/council-guide'
+  },
+  '/testimonials': {
+    title: 'Customer Reviews & Gate Projects (4.9★) | Custom Auto Gates QLD',
+    description: 'Read 180+ verified 5-star customer reviews and detailed engineering case studies from homeowners across Brisbane, Ipswich, Logan, and Gold Coast.',
+    canonical: 'https://customautogates.com.au/testimonials'
+  },
+  '/reviews': {
+    title: 'Customer Reviews & Gate Projects (4.9★) | Custom Auto Gates QLD',
+    description: 'Read 180+ verified 5-star customer reviews and detailed engineering case studies from homeowners across Brisbane, Ipswich, Logan, and Gold Coast.',
+    canonical: 'https://customautogates.com.au/testimonials'
+  },
+  '/trade': {
+    title: 'Trade & Builders Gate Portal | Wholesale Gate Fabrication SEQ',
+    description: 'Wholesale custom automated gates and aluminium slat fencing for South East Queensland builders, fencing contractors, and developers. Fast 7–10 day lead times, CAD specs, 30-day accounts.',
+    canonical: 'https://customautogates.com.au/trade'
+  },
+  '/privacy-policy': {
+    title: 'Privacy Policy | Custom Auto Gates & Fencing Brisbane & Ipswich',
+    description: 'Official Privacy Policy for Custom Auto Gates Pty Ltd. Learn how we collect, protect, and manage your personal and property data in strict compliance with the Australian Privacy Principles (Privacy Act 1988).',
+    canonical: 'https://customautogates.com.au/privacy-policy'
+  },
+  '/privacy': {
+    title: 'Privacy Policy | Custom Auto Gates & Fencing Brisbane & Ipswich',
+    description: 'Official Privacy Policy for Custom Auto Gates Pty Ltd. Learn how we collect, protect, and manage your personal and property data in strict compliance with the Australian Privacy Principles (Privacy Act 1988).',
+    canonical: 'https://customautogates.com.au/privacy-policy'
+  },
+  '/gates/gallery-gates': {
+    title: 'Automatic & Electric Gates Brisbane | Custom Driveway Gates',
+    description: "Custom Auto Gates & Fencing — South East Queensland's leading manufacturer of custom automatic electric driveway gates, sliding gates, swing gates & solar gates. Buy factory direct in Yamanto: (07) 3102 1801.",
+    canonical: 'https://customautogates.com.au'
+  },
+  '/service-areas': {
+    title: 'Custom Automatic Gates Brisbane | Factory Direct Sliding & Swing Gates',
+    description: 'Custom designed and fabricated automatic gates across Brisbane Northside, Southside, and Western suburbs. Free on-site visits in Ascot, New Farm, Indooroopilly, and Pullenvale.',
+    canonical: 'https://customautogates.com.au/gates-brisbane'
+  }
+};
+
+// Branded 404 HTML Page Generator
+const render404Page = () => `<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Page Not Found | Custom Auto Gates Brisbane</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #0b1120;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 16px;
+      text-align: center;
+    }
+    .header {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 40px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .brand span { color: #d4a359; }
+    .phone-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      background: rgba(212, 163, 89, 0.12);
+      border: 1px solid rgba(212, 163, 89, 0.3);
+      color: #d4a359;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .phone-pill:hover {
+      background: #d4a359;
+      color: #0b1120;
+    }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .code {
+      font-size: clamp(5rem, 15vw, 8rem);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, #d4a359 0%, #fef08a 50%, #d4a359 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    p {
+      color: #94a3b8;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #d4a359;
+      color: #0b1120;
+      box-shadow: 0 4px 14px rgba(212, 163, 89, 0.25);
+    }
+    .btn-primary:hover {
+      background: #e5b56d;
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #e2e8f0;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .callout {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(212, 163, 89, 0.2);
+      border-radius: 14px;
+      padding: 20px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .callout-title {
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+    .callout-sub {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-bottom: 14px;
+    }
+    .footer {
+      width: 100%;
+      max-width: 800px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+      color: #64748b;
+      font-size: 0.85rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="/" class="brand">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4a359" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
+      CUSTOM AUTO <span>GATES</span>
+    </a>
+    <a href="tel:0731021801" class="phone-pill">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (07) 3102 1801
+    </a>
+  </div>
+
+  <div class="container">
+    <span class="badge">HTTP 404 &bull; Not Found</span>
+    <div class="code">404</div>
+    <h1>Page Not Found</h1>
+    <p>Sorry, the page you are looking for doesn't exist, has been moved, or the link may be outdated.</p>
+
+    <div class="actions">
+      <a href="/" class="btn btn-primary">Return to Homepage</a>
+      <a href="/driveway-gates" class="btn btn-secondary">Automatic Gates</a>
+      <a href="/sliding-gates" class="btn btn-secondary">Sliding Gates</a>
+      <a href="/service" class="btn btn-secondary">Gate Repairs</a>
+      <a href="/pricing-guide" class="btn btn-secondary">Pricing Guide</a>
+      <a href="/contact-us" class="btn btn-secondary">Contact Us</a>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">Need Immediate Assistance?</div>
+      <div class="callout-sub">Speak with our Yamanto workshop team for instant help with gates, parts & repairs:</div>
+      <a href="tel:0731021801" class="btn btn-primary" style="width: 100%;">(07) 3102 1801</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; ${new Date().getFullYear()} Custom Auto Gates &amp; Fencing Pty Ltd &bull; Shed 2, 43-45 Belar St, Yamanto QLD 4305 &bull; QBCC #15579753
+  </div>
+</body>
+</html>`;
+
+let cachedIndexHtml = null;
+const getIndexHtml = () => {
+  const indexPath = path.join(distPath, 'index.html');
+  if (!fs.existsSync(indexPath)) return null;
+  if (!cachedIndexHtml || process.env.NODE_ENV !== 'production') {
+    cachedIndexHtml = fs.readFileSync(indexPath, 'utf-8');
+  }
+  return cachedIndexHtml;
+};
+
+// SPA Route & 404 Handler
 app.use((req, res) => {
-  res.sendFile(path.join(distPath, 'index.html'));
+  // Return plain 404 for missing static assets to prevent sending full HTML
+  if (req.path.match(/\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|map|json|txt|xml)$/i)) {
+    return res.status(404).send('Asset not found');
+  }
+
+  const cleanPath = req.path.toLowerCase();
+  const normalizedPath = cleanPath.replace(/\/$/, '') || '/';
+
+  const meta = PAGE_METADATA[normalizedPath];
+
+  if (meta) {
+    let html = getIndexHtml();
+    if (html) {
+      // Inject route-specific canonical tag with no www and no trailing slash
+      html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${meta.canonical}" />`);
+      // Inject route-specific OpenGraph URL
+      html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${meta.canonical}" />`);
+      // Inject route-specific Title & Description
+      html = html.replace(/<title>.*?<\/title>/, `<title>${meta.title}</title>`);
+      html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${meta.title}" />`);
+      html = html.replace(/<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${meta.description}" />`);
+      html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${meta.description}" />`);
+
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      return res.status(200).send(html);
+    }
+    return res.sendFile(path.join(distPath, 'index.html'));
+  }
+
+  // Route does NOT exist: Return proper HTTP 404 status and branded 404 page
+  res.status(404);
+  res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  return res.send(render404Page());
 });
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === __filename;

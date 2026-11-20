@@ -3,7 +3,7 @@ import { PAGE_SEO_CONFIGS } from './src/utils/seoManager.js';
 console.log("=== VERIFYING CANONICAL & SEO TAG INTEGRITY ===");
 
 const expectedRoutes = [
-  { key: 'home', expectedCanonical: 'https://customautogates.com.au/' },
+  { key: 'home', expectedCanonical: 'https://customautogates.com.au' },
   { key: 'about', expectedCanonical: 'https://customautogates.com.au/about-us' },
   { key: 'service', expectedCanonical: 'https://customautogates.com.au/service' },
   { key: 'contact', expectedCanonical: 'https://customautogates.com.au/contact-us' },

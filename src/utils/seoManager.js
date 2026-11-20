@@ -11,7 +11,7 @@ export const PAGE_SEO_CONFIGS = {
   home: {
     title: 'Automatic & Electric Gates Brisbane | Custom Driveway Gates',
     description: "Custom Auto Gates & Fencing — South East Queensland's leading manufacturer of custom automatic electric driveway gates, sliding gates, swing gates & solar gates. Buy factory direct in Yamanto: (07) 3102 1801.",
-    canonicalPath: '/',
+    canonicalPath: '',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
   about: {
@@ -130,7 +130,8 @@ export function updateSeoMetadata(pageKey, regionKey = 'brisbane') {
   }
 
   const config = PAGE_SEO_CONFIGS[lookupKey] || PAGE_SEO_CONFIGS.home;
-  const canonicalUrl = `${BASE_URL}${config.canonicalPath}`;
+  const cleanPath = config.canonicalPath ? config.canonicalPath.replace(/\/$/, '') : '';
+  const canonicalUrl = `${BASE_URL}${cleanPath}`;
 
   // 1. Update Title
   document.title = config.title;
