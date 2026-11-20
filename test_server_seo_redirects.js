@@ -109,6 +109,11 @@ server.listen(0, '127.0.0.1', async () => {
       t10.statusCode === 301 && t10.headers.location === '/driveway-gates?gclid=test1234&utm_source=adwords',
       `got status ${t10.statusCode}, location ${t10.headers.location}`);
 
+    const tTrade = await testReq('Redirect /trade', '/trade', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('3h. /trade -> 301 to /commercial-gates', 
+      tTrade.statusCode === 301 && tTrade.headers.location === '/commercial-gates',
+      `got status ${tTrade.statusCode}, location ${tTrade.headers.location}`);
+
     // 4. Unknown Pages 404 Tests
     const t11 = await testReq('Unknown Page', '/some-random-unknown-page', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
     assert('4a. /some-random-unknown-page returns 404 status', 

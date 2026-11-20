@@ -21,7 +21,6 @@ const ServiceRepairs = lazy(() => import('./components/ServiceRepairs'));
 const ContactUs = lazy(() => import('./components/ContactUs'));
 const Testimonials = lazy(() => import('./components/Testimonials'));
 const CouncilGuide = lazy(() => import('./components/CouncilGuide'));
-const TradeBuilders = lazy(() => import('./components/TradeBuilders'));
 const SuburbLandingPage = lazy(() => import('./components/SuburbLandingPage'));
 const DedicatedServicePage = lazy(() => import('./components/DedicatedServicePage'));
 const PricingGuide = lazy(() => import('./components/PricingGuide'));
@@ -150,6 +149,8 @@ export default function App() {
         cleanHash === '#boom-gates' ||
         cleanHash === '#boom-barriers' ||
         cleanHash === '#commercial' ||
+        cleanHash === '#trade' ||
+        cleanPath === '/trade' ||
         cleanPath === '/commercial-gates' || 
         cleanPath === '/commercial-security-gates' || 
         cleanPath === '/gates/commercial-gates' ||
@@ -205,8 +206,6 @@ export default function App() {
       window.location.hash = 'testimonials';
     } else if (page === 'council-guide') {
       window.location.hash = 'council-guide';
-    } else if (page === 'trade') {
-      window.location.hash = 'trade';
     } else if (page === 'privacy-policy' || page === 'privacy') {
       window.location.hash = 'privacy-policy';
     } else if (page === 'driveway-gates') {

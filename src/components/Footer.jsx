@@ -268,15 +268,6 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
               </li>
               <li>
                 <a 
-                  href="/trade"
-                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('trade'); }} 
-                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
-                >
-                  <ChevronRight size={13} /> Trade & Builders Portal
-                </a>
-              </li>
-              <li>
-                <a 
                   href="/#pricing"
                   onClick={(e) => { e.preventDefault(); if (onOpenQuote) onOpenQuote(); else handleLinkClick('pricing'); }} 
                   style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}

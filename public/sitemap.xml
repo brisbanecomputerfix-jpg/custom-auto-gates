@@ -154,15 +154,7 @@
     <priority>0.75</priority>
   </url>
 
-  <!-- 8. Trade & Builders Wholesale Portal -->
-  <url>
-    <loc>https://customautogates.com.au/trade</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-
-  <!-- 9. Contact Us & Showroom -->
+  <!-- 8. Contact Us & Showroom -->
   <url>
     <loc>https://customautogates.com.au/contact-us</loc>
     <lastmod>2026-11-20</lastmod>

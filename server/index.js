@@ -174,6 +174,8 @@ const LEGACY_301_REDIRECTS = {
   '/commercial-boom-gates/': '/commercial-gates',
   '/commercial-security-gates': '/commercial-gates',
   '/commercial-security-gates/': '/commercial-gates',
+  '/trade': '/commercial-gates',
+  '/trade/': '/commercial-gates',
   '/security-fencing': '/#fencing',
   '/security-fencing/': '/#fencing',
 
@@ -818,7 +820,6 @@ const PAGE_METADATA = {
   '/planning-rules': { ...PAGE_SEO_CONFIGS['council-guide'], canonical: 'https://customautogates.com.au/council-guide', key: 'council-guide' },
   '/testimonials': { ...PAGE_SEO_CONFIGS.testimonials, canonical: 'https://customautogates.com.au/testimonials', key: 'testimonials' },
   '/reviews': { ...PAGE_SEO_CONFIGS.testimonials, canonical: 'https://customautogates.com.au/testimonials', key: 'testimonials' },
-  '/trade': { ...PAGE_SEO_CONFIGS.trade, canonical: 'https://customautogates.com.au/trade', key: 'trade' },
   '/privacy-policy': { ...PAGE_SEO_CONFIGS['privacy-policy'], canonical: 'https://customautogates.com.au/privacy-policy', key: 'privacy-policy' },
   '/privacy': { ...PAGE_SEO_CONFIGS['privacy-policy'], canonical: 'https://customautogates.com.au/privacy-policy', key: 'privacy-policy' },
   '/gates/gallery-gates': { ...PAGE_SEO_CONFIGS.home, canonical: 'https://customautogates.com.au', key: 'home' }

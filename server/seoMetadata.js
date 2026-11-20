@@ -42,12 +42,6 @@ export const PAGE_SEO_CONFIGS = {
     canonicalPath: '/council-guide',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
-  trade: {
-    title: 'Trade & Builders Gate Portal | Wholesale Gate Fabrication SEQ',
-    description: 'Wholesale custom automated gates and aluminium slat fencing for South East Queensland builders, fencing contractors, and developers. Fast 7–10 day lead times, CAD specs, 30-day accounts.',
-    canonicalPath: '/trade',
-    geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
-  },
   'suburbs-brisbane': {
     title: 'Automatic Gates Brisbane | Licensed Electric Gate Installers Near Me',
     description: 'Looking for electric gate installers near you in Brisbane? Buy factory direct & save $1,200+ | QBCC #15579753 licensed installers. Free on-site measure: (07) 3102 1801.',

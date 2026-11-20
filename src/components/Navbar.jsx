@@ -789,19 +789,6 @@ export default function Navbar({
                   </a>
 
                   <a 
-                    href="/trade"
-                    className="mobile-nav-item" 
-                    onClick={(e) => { e.preventDefault(); handleRouteClick('trade'); }}
-                    style={{ color: currentPage === 'trade' ? 'var(--accent-gold)' : 'var(--text-heading)', padding: '0.65rem 0', textDecoration: 'none' }}
-                  >
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-                      <Building2 size={17} style={{ color: 'var(--accent-gold)' }} />
-                      Trade & Builders Portal
-                    </span>
-                    <ChevronRight size={16} style={{ color: 'var(--border-subtle)' }} />
-                  </a>
-
-                  <a 
                     href="/contact-us"
                     className="mobile-nav-item" 
                     onClick={(e) => { e.preventDefault(); handleRouteClick('contact'); }}
