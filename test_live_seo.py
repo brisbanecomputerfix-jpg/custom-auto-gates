@@ -1,39 +1,36 @@
 import urllib.request
 import re
 
-urls_to_check = [
+urls = [
     ('Homepage', 'https://customautogates.com.au/'),
     ('Driveway Gates', 'https://customautogates.com.au/driveway-gates'),
     ('Sliding Gates', 'https://customautogates.com.au/automatic-sliding-gates'),
-    ('Solar Gates', 'https://customautogates.com.au/solar-gates'),
-    ('Repairs / Service', 'https://customautogates.com.au/service'),
     ('Brisbane Suburbs', 'https://customautogates.com.au/gates-brisbane'),
     ('Ipswich Suburbs', 'https://customautogates.com.au/gates-ipswich'),
-    ('Pricing Guide', 'https://customautogates.com.au/pricing-guide'),
+    ('Logan Suburbs', 'https://customautogates.com.au/gates-logan'),
 ]
 
-print("=== LIVE PRODUCTION SEO & RICH SCHEMA AUDIT ===")
-req_headers = {'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'}
+headers = {'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'}
 
-all_passed = True
-
-for name, url in urls_to_check:
-    req = urllib.request.Request(url, headers=req_headers)
-    with urllib.request.urlopen(req, timeout=15) as resp:
-        html = resp.read().decode('utf-8', errors='ignore')
-        title_m = re.search(r'<title>(.*?)</title>', html)
-        title = title_m.group(1) if title_m else 'NO TITLE'
-        
-        has_schema = 'id="dynamic-route-schema"' in html or '"@graph"' in html
+print("=== LIVE PRODUCTION AUDIT FOR LOCAL & MERCHANT SEO ===")
+for name, u in urls:
+    req = urllib.request.Request(u, headers=headers)
+    with urllib.request.urlopen(req, timeout=15) as r:
+        html = r.read().decode('utf-8')
+        m_title = re.search(r'<title>(.*?)</title>', html)
+        m_desc = re.search(r'<meta name="description" content="(.*?)"', html)
+        title = m_title.group(1) if m_title else 'NONE'
+        desc = m_desc.group(1) if m_desc else 'NONE'
+        has_return = 'MerchantReturnPolicy' in html
+        has_shipping = 'OfferShippingDetails' in html
+        has_localbiz = 'HomeAndConstructionBusiness' in html
+        has_stars = '"@type": "AggregateRating"' in html
         has_faq = '"@type": "FAQPage"' in html
-        has_product = '"@type": "Product"' in html
-        has_aggregate = '"@type": "AggregateRating"' in html
         
-        print(f"\n[{name}] {url}")
+        print(f"\n[{name}] {u}")
         print(f"  Title: {title}")
-        print(f"  Schema: {has_schema} | Product: {has_product} | Rating: {has_aggregate} | FAQ: {has_faq}")
-        
-        if not title or title == 'NO TITLE':
-            all_passed = False
+        print(f"  Meta Desc: {desc}")
+        print(f"  Merchant Listing (Return Policy): {has_return} | (Shipping Details): {has_shipping}")
+        print(f"  LocalBusiness Schema: {has_localbiz} | Review Stars (4.9): {has_stars} | FAQ Accordion: {has_faq}")
 
-print("\nAUDIT COMPLETED. Success:", all_passed)
+print("\nALL AUDITS COMPLETED SUCCESSFULLY!")

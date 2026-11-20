@@ -12,7 +12,7 @@ import ReviewsSection from './components/ReviewsSection';
 import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
 import QuickActionBar from './components/QuickActionBar';
-import RemoteCursorEffect from './components/RemoteCursorEffect';
+
 import { updateSeoMetadata } from './utils/seoManager';
 import { trackPageView } from './utils/analytics';
 import { useTheme } from './utils/useTheme';
@@ -468,8 +468,7 @@ export default function App() {
         )}
       </Suspense>
 
-      {/* Luxury Garage Remote Click Effect for Pointer Devices */}
-      <RemoteCursorEffect />
+
     </div>
   );
 }
