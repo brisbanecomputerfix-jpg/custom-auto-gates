@@ -68,10 +68,16 @@ assert(siteDataContent.includes('White Vertical Blade Aluminium Fencing & Gate')
 assert(siteDataContent.includes('"category": "fencing"'), 'New project is classified under fencing category');
 assert(siteDataContent.includes('hours: "Monday – Friday: 9:00 AM – 4:00 PM"'), 'siteData.js COMPANY_INFO.hours is Monday – Friday: 9:00 AM – 4:00 PM');
 
-// 7. Check GateVisualizerQuote GST Inclusion & Pricing
-const quotePath = path.join(rootDir, 'src', 'components', 'GateVisualizerQuote.jsx');
+// 7. Check FastQuoteModal & MinimalPricingSection
+const quotePath = path.join(rootDir, 'src', 'components', 'FastQuoteModal.jsx');
 const quoteContent = fs.readFileSync(quotePath, 'utf8');
-assert(quoteContent.includes('All Prices Include GST'), 'GateVisualizerQuote.jsx explicitly confirms All Prices Include GST');
+assert(quoteContent.includes('FastQuoteModal'), 'FastQuoteModal.jsx component exists');
+assert(quoteContent.includes('DRIVEWAY_WIDTHS'), 'FastQuoteModal defines driveway width options');
+
+const pricingPath = path.join(rootDir, 'src', 'components', 'MinimalPricingSection.jsx');
+const pricingContent = fs.readFileSync(pricingPath, 'utf8');
+assert(pricingContent.includes('MinimalPricingSection'), 'MinimalPricingSection.jsx component exists');
+assert(pricingContent.includes('$3,850'), 'MinimalPricingSection displays transparent base pricing');
 
 console.log(`\n=== RESULTS: ${passCount} PASSED, ${failCount} FAILED ===\n`);
 

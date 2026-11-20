@@ -192,7 +192,7 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
                         onNavigate && onNavigate(item.isRoute);
                       } else {
                         onSelectCategory && onSelectCategory(item.id);
-                        handleLinkClick('services');
+                        handleLinkClick(item.id || 'custom-solutions');
                       }
                     }}
                     style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center', gap: '0.4rem', textAlign: 'left' }}
@@ -277,11 +277,11 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
               </li>
               <li>
                 <a 
-                  href="/#gate-visualizer"
-                  onClick={(e) => { e.preventDefault(); handleLinkClick('gate-visualizer'); }} 
+                  href="/#pricing"
+                  onClick={(e) => { e.preventDefault(); if (onOpenQuote) onOpenQuote(); else handleLinkClick('pricing'); }} 
                   style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
                 >
-                  <ChevronRight size={13} /> Custom Gate Configurator & Quote
+                  <ChevronRight size={13} /> Fast Quote & Free Measure
                 </a>
               </li>
               <li>

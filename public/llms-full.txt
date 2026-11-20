@@ -78,13 +78,13 @@
 ---
 
 ## 6. Official URLs & Sitemap Links
-- Main Website: https://customautogates.com.au/
-- Sliding Gates: https://customautogates.com.au/#sliding-gates
-- Swing Gates: https://customautogates.com.au/#swing-gates
-- Solar Gates: https://customautogates.com.au/#solar-gates
-- Slat Fencing: https://customautogates.com.au/#slat-fencing
-- Motors: https://customautogates.com.au/#motor-showcase
-- Price Estimator: https://customautogates.com.au/#gate-visualizer
+- Main Website: https://customautogates.com.au
+- Sliding Gates: https://customautogates.com.au/automatic-sliding-gates
+- Swing Gates: https://customautogates.com.au/swing-gates
+- Solar Gates: https://customautogates.com.au/solar-gates
+- Slat Fencing: https://customautogates.com.au/#fencing
+- Motors & Automation: https://customautogates.com.au/service
+- Price Estimator & Guide: https://customautogates.com.au/pricing-guide
 - Service & Repairs: https://customautogates.com.au/service
 - Council Guide: https://customautogates.com.au/council-guide
 - Trade Portal: https://customautogates.com.au/trade

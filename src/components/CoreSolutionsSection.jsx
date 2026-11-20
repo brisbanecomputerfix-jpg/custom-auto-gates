@@ -103,7 +103,10 @@ export default function CoreSolutionsSection({ onSelectService, onOpenQuote, onN
   };
 
   return (
-    <section id="custom-solutions" className="section" style={{ backgroundColor: 'var(--bg-card-subtle)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
+    <section id="custom-solutions" className="section" style={{ backgroundColor: 'var(--bg-card-subtle)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)', position: 'relative' }}>
+      {/* Anchor targets for direct deep-linking and backward compatibility */}
+      <div id="services" style={{ position: 'absolute', top: '-85px', left: 0 }} />
+      <div id="fencing" style={{ position: 'absolute', top: '-85px', left: 0 }} />
       <div className="container">
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '860px', margin: '0 auto 3rem auto' }}>

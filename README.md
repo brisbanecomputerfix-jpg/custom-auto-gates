@@ -52,11 +52,12 @@ custom-auto-gates/
 │   │   ├── Navbar.jsx               # Sticky header & top notification bar
 │   │   ├── Hero.jsx                 # Ambient background video & quick estimator
 │   │   ├── AboutUs.jsx              # Dedicated About Us page with Vimeo hero video
-│   │   ├── GateVisualizerQuote.jsx  # 5-step live gate cost builder
-│   │   ├── ServicesSection.jsx      # Tabbed gate category deep dive
+│   │   ├── CoreSolutionsSection.jsx # 8-card responsive gateway grid with progressive disclosure
+│   │   ├── MinimalPricingSection.jsx# Minimal 3-tier upfront transparent pricing snapshot
+│   │   ├── FastQuoteModal.jsx       # 30-second streamlined fixed quote & photo upload modal
+│   │   ├── SeeMoreWrapper.jsx       # Collapsible mobile/desktop height disclosure wrapper
 │   │   ├── WhyFactoryDirect.jsx     # Comparison table & 3D value badges
 │   │   ├── ProjectGallery.jsx       # 630+ image gallery with search & lightbox
-│   │   ├── MotorShowcase.jsx        # Centurion & Smart automation specs
 │   │   ├── ServiceAreaChecker.jsx   # Suburb coverage & instant postcode checker
 │   │   ├── ReviewsSection.jsx       # 5-Star customer testimonials
 │   │   ├── FaqSection.jsx           # Accordion FAQ

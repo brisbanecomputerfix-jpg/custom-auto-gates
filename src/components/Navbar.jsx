@@ -355,7 +355,7 @@ export default function Navbar({
                     cursor: 'pointer',
                     transition: 'color 0.2s ease'
                   }}
-                  onClick={() => handleNavClick('services')}
+                  onClick={() => handleNavClick('custom-solutions')}
                   onMouseEnter={() => setServicesDropdown(true)}
                 >
                   <span>Services & Gate Styles</span>
@@ -401,7 +401,7 @@ export default function Navbar({
                             handleRouteClick(s.id);
                           } else {
                             onSelectCategory && onSelectCategory(s.id);
-                            handleNavClick('services');
+                            handleNavClick(s.id || 'custom-solutions');
                           }
                         }}
                         style={{
@@ -851,7 +851,7 @@ export default function Navbar({
                           handleRouteClick(style.id);
                         } else {
                           onSelectCategory && onSelectCategory(style.id);
-                          handleNavClick('services');
+                          handleNavClick(style.id || 'custom-solutions');
                         }
                       }}
                       style={{
@@ -896,9 +896,15 @@ export default function Navbar({
                     <span style={{ fontSize: '0.92rem' }}>Our Project Gallery (600+ Builds)</span>
                     <Sparkles size={15} style={{ color: 'var(--accent-gold)' }} />
                   </button>
-                  <button className="mobile-nav-item" onClick={() => handleNavClick('motors')} style={{ padding: '0.55rem 0' }}>
+                  <a 
+                    href="/service" 
+                    className="mobile-nav-item" 
+                    onClick={(e) => { e.preventDefault(); handleRouteClick('service'); }} 
+                    style={{ padding: '0.55rem 0', color: currentPage === 'service' ? 'var(--accent-gold)' : 'var(--text-heading)', textDecoration: 'none' }}
+                  >
                     <span style={{ fontSize: '0.92rem' }}>Gate Motors & Automation</span>
-                  </button>
+                    <ChevronRight size={15} style={{ color: 'var(--text-muted)' }} />
+                  </a>
                   <button className="mobile-nav-item" onClick={() => handleNavClick('why-factory-direct')} style={{ padding: '0.55rem 0' }}>
                     <span style={{ fontSize: '0.92rem' }}>Why Buy Factory Direct</span>
                   </button>

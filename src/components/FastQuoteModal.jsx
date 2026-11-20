@@ -54,7 +54,10 @@ export default function FastQuoteModal({ isOpen, onClose, defaultGateStyle = 'sl
 
   useEffect(() => {
     if (defaultGateStyle) {
-      const match = GATE_STYLES.find(g => g.id === defaultGateStyle);
+      let key = defaultGateStyle;
+      if (key === 'automatic-sliding-gates' || key === 'driveway-gates') key = 'sliding-gates';
+      if (key === 'pool-fencing' || key === 'aluminum-fencing' || key === 'security-fencing') key = 'fencing';
+      const match = GATE_STYLES.find(g => g.id === key);
       if (match) setSelectedStyle(match.id);
     }
   }, [defaultGateStyle]);

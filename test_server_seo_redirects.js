@@ -90,8 +90,8 @@ server.listen(0, '127.0.0.1', async () => {
       `got status ${t6.statusCode}, location ${t6.headers.location}`);
 
     const t7 = await testReq('Redirect /gate-automation/automation-accessories/', '/gate-automation/automation-accessories/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('3d. /gate-automation/automation-accessories/ -> 301 to /#motor-showcase', 
-      t7.statusCode === 301 && t7.headers.location === '/#motor-showcase',
+    assert('3d. /gate-automation/automation-accessories/ -> 301 to /service', 
+      t7.statusCode === 301 && t7.headers.location === '/service',
       `got status ${t7.statusCode}, location ${t7.headers.location}`);
 
     const t8 = await testReq('Redirect /lp/balustrade/', '/lp/balustrade/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });

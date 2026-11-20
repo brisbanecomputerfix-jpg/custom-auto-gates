@@ -179,7 +179,7 @@ export default function PricingGuide({ onOpenQuote, onOpenContact, onNavigateHom
     },
     {
       q: 'How can I get an accurate price for my driveway gate?',
-      a: 'You can use our Live Gate Visualizer & Price Estimator on this website for an instant 5-step estimate, or call our team at (07) 3102 1801 to schedule a 100% free on-site laser measure consultation with no obligation.'
+      a: 'You can use our online Fast Quote tool for an instant 30-second estimate, or call our team at (07) 3102 1801 to schedule a 100% free on-site laser measure consultation with no obligation.'
     }
   ];
 
@@ -551,7 +551,7 @@ export default function PricingGuide({ onOpenQuote, onOpenContact, onNavigateHom
               Ready for an Exact, Fixed-Price Quote?
             </h2>
             <p style={{ fontSize: '1.05rem', color: '#cbd5e1', maxWidth: '650px', margin: '0 auto 2rem auto', lineHeight: 1.6 }}>
-              Configure your gate in 60 seconds with our online gate estimator, or schedule a 100% free on-site laser measure and design consultation anywhere in South East Queensland.
+              Get a custom estimate in 30 seconds with our online quote tool, or schedule a 100% free on-site laser measure and design consultation anywhere in South East Queensland.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <button
@@ -560,7 +560,7 @@ export default function PricingGuide({ onOpenQuote, onOpenContact, onNavigateHom
                 style={{ fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.6rem' }}
               >
                 <Calculator size={18} />
-                <span>Instant 5-Step Gate Estimator</span>
+                <span>Fast Online Quote (30 Sec)</span>
               </button>
               <button
                 onClick={onOpenContact}

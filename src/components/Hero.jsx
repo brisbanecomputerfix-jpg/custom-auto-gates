@@ -369,7 +369,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
 
               {/* Action Button inside Card */}
               <button
-                onClick={onOpenQuote}
+                onClick={() => onOpenQuote && onOpenQuote(selectedQuickGate)}
                 className="btn btn-gold btn-lg"
                 style={{ width: '100%', marginBottom: '0.75rem', fontWeight: '800' }}
               >

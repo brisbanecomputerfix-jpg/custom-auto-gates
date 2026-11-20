@@ -82,6 +82,10 @@ export default function App() {
         cleanHash === '#service' || 
         cleanHash === '#repairs' || 
         cleanHash === '#gate-repairs' ||
+        cleanHash === '#motors' ||
+        cleanHash === '#motor-showcase' ||
+        cleanHash === '#gate-motors' ||
+        cleanHash === '#gate-automation' ||
         cleanPath === '/service' || 
         cleanPath === '/repairs' ||
         cleanPath === '/gate-repairs' ||
@@ -91,6 +95,15 @@ export default function App() {
       ) {
         setCurrentPage('service');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (cleanHash === '#fencing' || cleanHash === '#custom-solutions' || cleanHash === '#services') {
+        setCurrentPage('home');
+        setTimeout(() => {
+          const targetId = cleanHash === '#fencing' ? 'fencing' : 'custom-solutions';
+          const el = document.getElementById(targetId) || document.getElementById('custom-solutions');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      } else if (cleanHash === '#quote' || cleanHash === '#fast-quote' || cleanHash === '#get-quote') {
+        setIsQuoteOpen(true);
       } else if (cleanHash === '#contact' || cleanHash === '#contact-us' || cleanPath === '/contact-us' || cleanPath === '/contact') {
         setCurrentPage('contact');
         window.scrollTo({ top: 0, behavior: 'smooth' });

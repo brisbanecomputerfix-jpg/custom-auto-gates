@@ -470,7 +470,7 @@ export default function DedicatedServicePage({
               {/* Action Buttons */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
                 <button
-                  onClick={onOpenQuote}
+                  onClick={() => onOpenQuote && onOpenQuote(serviceKey)}
                   className="btn btn-gold btn-lg btn-pulse"
                   style={{ fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.6rem' }}
                 >
@@ -670,12 +670,12 @@ export default function DedicatedServicePage({
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <button
-                onClick={onOpenQuote}
+                onClick={() => onOpenQuote && onOpenQuote(serviceKey)}
                 className="btn btn-gold btn-lg btn-pulse"
                 style={{ fontWeight: '800' }}
               >
                 <Calculator size={18} />
-                <span>Configure & Price Online</span>
+                <span>Get Fast 30-Sec Quote</span>
               </button>
               <button
                 onClick={onOpenContact}
