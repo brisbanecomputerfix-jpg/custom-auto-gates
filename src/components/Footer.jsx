@@ -295,11 +295,11 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
               </li>
               <li>
                 <a 
-                  href="/#motors"
-                  onClick={(e) => { e.preventDefault(); handleLinkClick('motors'); }} 
+                  href="/service"
+                  onClick={(e) => { e.preventDefault(); if (onNavigate) onNavigate('service'); }} 
                   style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
                 >
-                  <ChevronRight size={13} /> Motors & Automation
+                  <ChevronRight size={13} /> Motors &amp; Automation
                 </a>
               </li>
               <li>
