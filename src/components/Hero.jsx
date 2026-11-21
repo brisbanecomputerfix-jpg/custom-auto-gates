@@ -97,8 +97,7 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
                 objectFit: 'cover',
                 objectPosition: 'center',
                 opacity: activeSlide === idx ? 0.92 : 0,
-                transform: activeSlide === idx ? 'scale(1.08) translate(-1%, -1%)' : 'scale(1.0)',
-                transition: 'opacity 1.6s ease-in-out, transform 6s ease-out',
+                transition: 'opacity 0.8s ease-in-out',
                 filter: 'brightness(0.98) contrast(1.08)',
                 pointerEvents: 'none'
               }}
