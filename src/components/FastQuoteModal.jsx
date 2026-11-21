@@ -141,6 +141,9 @@ export default function FastQuoteModal({ isOpen, onClose, defaultGateStyle = 'sl
 
       setIsSubmitted(true);
       trackFormLead(email, phone, 'fast_quote');
+      try {
+        window.history.pushState({}, '', '/quote-confirmation');
+      } catch (e) {}
     } catch (err) {
       console.error('Fast quote submission error:', err);
       setErrorMessage('There was a slight connection issue. Please call our Yamanto workshop directly on (07) 3102 1801.');

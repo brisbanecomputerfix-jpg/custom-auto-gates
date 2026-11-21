@@ -16,6 +16,7 @@ import {
 } from './emailHandler.js';
 import { generateQuotePdf, generateBookingReceiptPdf } from './pdfGenerator.js';
 import { getRouteSchemaData, PAGE_SEO_CONFIGS } from './seoMetadata.js';
+import { renderRouteHtml } from './prerender.js';
 
 dotenv.config();
 
@@ -29,23 +30,28 @@ const PORT = parseInt(process.env.PORT, 10) || 3000;
 // Enable trust proxy for correct protocol, host & IP detection behind Traefik/Coolify
 app.set('trust proxy', true);
 
-// 0. Enforce HTTPS & Canonical Domain (301 Redirect www to non-www and http to https)
+// 0. Enforce HTTPS & Canonical Domain (301 Redirect www to non-www, http to https, and subdomains)
 app.use((req, res, next) => {
   const hostHeader = (req.headers['x-forwarded-host'] || req.headers.host || '').toLowerCase();
   const hostname = hostHeader.split(':')[0];
   const protoHeader = (req.headers['x-forwarded-proto'] || req.protocol || 'http').toLowerCase();
-  const isHttp = protoHeader === 'http';
+  const isHttp = protoHeader.split(',')[0].trim() === 'http' || !req.secure;
+
+  // 0a. Subdomain redirect: brisbane.customautogates.com.au -> https://customautogates.com.au/gates-brisbane
+  if (hostname === 'brisbane.customautogates.com.au' || hostname.startsWith('brisbane.')) {
+    return res.redirect(301, `https://customautogates.com.au/gates-brisbane`);
+  }
 
   // 1. Primary Production Domain (customautogates.com.au)
   if (hostname === 'www.customautogates.com.au' || hostname === 'customautogates.com.au') {
-    if (hostname === 'www.customautogates.com.au' || isHttp) {
+    if (hostname.startsWith('www.') || isHttp) {
       return res.redirect(301, `https://customautogates.com.au${req.originalUrl}`);
     }
   }
 
   // 2. Secondary Staging Domain (gates.4pxl.com)
   if (hostname === 'www.gates.4pxl.com' || hostname === 'gates.4pxl.com') {
-    if (hostname === 'www.gates.4pxl.com' || isHttp) {
+    if (hostname.startsWith('www.') || isHttp) {
       return res.redirect(301, `https://gates.4pxl.com${req.originalUrl}`);
     }
   }
@@ -89,7 +95,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// 1b. Spam URL & Hack Parameter Interceptor (Returns HTTP 410 Gone to purge Google index)
+// 1b. Spam URL & Junk Parameter Sanitizer (301 Redirects junk query params to clean canonical URL)
 app.use((req, res, next) => {
   const urlPath = req.path.toLowerCase();
   const queryKeys = Object.keys(req.query || {});
@@ -100,11 +106,18 @@ app.use((req, res, next) => {
     return res.status(410).send('Gone - Scraped collection URL does not exist.');
   }
 
-  // Check for spam parameter injections (?h=, ?y=, ?l=, ?k=)
-  const hasSpamQuery = queryKeys.some(key => /^[hylk]$/i.test(key) || /^h\d+/i.test(key));
+  // Check for spam parameter injections (?h=, ?y=, ?l=, ?k=, ?gsessionid=)
+  const hasSpamQuery = queryKeys.some(key => /^[hylk]$/i.test(key) || /^h\d+/i.test(key) || /gsessionid/i.test(key));
   if (hasSpamQuery) {
-    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
-    return res.status(410).send('Gone - Invalid spam query parameters.');
+    // Strip junk parameters and preserve valid marketing tracking parameters (utm_*, gclid, etc.)
+    const cleanParams = new URLSearchParams();
+    for (const [k, v] of Object.entries(req.query)) {
+      if (!/^[hylk]$/i.test(k) && !/^h\d+/i.test(k) && !/gsessionid/i.test(k)) {
+        cleanParams.append(k, v);
+      }
+    }
+    const cleanQs = cleanParams.toString() ? `?${cleanParams.toString()}` : '';
+    return res.redirect(301, `${req.path}${cleanQs}`);
   }
 
   next();
@@ -119,6 +132,8 @@ const LEGACY_301_REDIRECTS = {
   '/gates/driveway-gates/': '/driveway-gates',
   '/gates/automatic-gates': '/driveway-gates',
   '/gates/automatic-gates/': '/driveway-gates',
+  '/gates/automatic-gates/sliding-gates': '/sliding-gates',
+  '/gates/automatic-gates/sliding-gates/': '/sliding-gates',
 
   // Sliding Gates (Direct to dedicated sliding gates landing page)
   '/gates/sliding-gates': '/sliding-gates',
@@ -150,6 +165,8 @@ const LEGACY_301_REDIRECTS = {
   '/gate-cost-guide/': '/pricing-guide',
   '/automatic-gates-brisbane-price': '/pricing-guide',
   '/automatic-gates-brisbane-price/': '/pricing-guide',
+  '/instant-online-quote': '/#quote',
+  '/instant-online-quote/': '/#quote',
 
   // Gallery & Balustrade Redirects
   '/lp/balustrade': '/gates/gallery-gates',
@@ -777,9 +794,9 @@ app.get('/api/v2/entries/:id', verifyApiKey, handleGetSingleEntry);
 app.get('/wp-json/gf/v2/entries/:id', verifyApiKey, handleGetSingleEntry);
 app.get('/api/leads/:id', verifyApiKey, handleGetSingleEntry);
 
-// Serve static assets in production if dist exists
+// Serve static assets in production if dist exists (index: false prevents intercepting '/' before SSR pre-rendering)
 const distPath = path.resolve(__dirname, '../dist');
-app.use(express.static(distPath));
+app.use(express.static(distPath, { index: false }));
 
 // Page SEO Metadata Dictionary for Server-Side Pre-rendering
 // Derived directly from PAGE_SEO_CONFIGS to prevent drift between SSR and Client SPA
@@ -822,6 +839,7 @@ const PAGE_METADATA = {
   '/reviews': { ...PAGE_SEO_CONFIGS.testimonials, canonical: 'https://customautogates.com.au/testimonials', key: 'testimonials' },
   '/privacy-policy': { ...PAGE_SEO_CONFIGS['privacy-policy'], canonical: 'https://customautogates.com.au/privacy-policy', key: 'privacy-policy' },
   '/privacy': { ...PAGE_SEO_CONFIGS['privacy-policy'], canonical: 'https://customautogates.com.au/privacy-policy', key: 'privacy-policy' },
+  '/quote-confirmation': { ...PAGE_SEO_CONFIGS['quote-confirmation'], canonical: 'https://customautogates.com.au/quote-confirmation', key: 'quote-confirmation' },
   '/gates/gallery-gates': { ...PAGE_SEO_CONFIGS.home, canonical: 'https://customautogates.com.au', key: 'home' }
 };
 
@@ -1081,6 +1099,16 @@ app.use((req, res) => {
         } catch (e) {
           console.error('Error generating server-rendered schema:', e.message);
         }
+      }
+
+      // SERVER-SIDE PRE-RENDERING: Inject full semantic HTML body into <div id="root">
+      try {
+        const prerenderedBody = renderRouteHtml(normalizedPath);
+        if (prerenderedBody) {
+          html = html.replace('<div id="root"></div>', `<div id="root">${prerenderedBody}</div>`);
+        }
+      } catch (prerenderErr) {
+        console.error('Server pre-rendering error for path ' + normalizedPath + ':', prerenderErr.message);
       }
 
       res.setHeader('Content-Type', 'text/html; charset=utf-8');

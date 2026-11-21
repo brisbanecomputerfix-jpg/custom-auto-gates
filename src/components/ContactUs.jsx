@@ -136,6 +136,9 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
 
       setFormSubmitted(true);
       trackFormLead(formData.email, formData.phone, 'contact');
+      try {
+        window.history.pushState({}, '', '/quote-confirmation');
+      } catch (e) {}
     } catch (err) {
       console.error('Contact submit error:', err);
       alert('There was an issue sending your message. Please try again or call us at (07) 3102 1801.');

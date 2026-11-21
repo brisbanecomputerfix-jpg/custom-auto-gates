@@ -67,6 +67,9 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
 
       setIsSubmitted(true);
       trackFormLead(formData.email, formData.phone, 'site_visit');
+      try {
+        window.history.pushState({}, '', '/quote-confirmation');
+      } catch (e) {}
     } catch (err) {
       console.error('Contact form submission error:', err);
       setErrorMessage(err.message || 'There was an issue sending your booking. Please try again or call (07) 3102 1801.');

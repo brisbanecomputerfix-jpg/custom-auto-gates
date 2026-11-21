@@ -107,6 +107,12 @@ export const PAGE_SEO_CONFIGS = {
     description: '2026 automatic gate price guide for Brisbane & SEQ ($3,800–$12,500+). Buy factory direct & save $1,200+ on sliding & swing gates. Call (07) 3102 1801.',
     canonicalPath: '/pricing-guide',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
+  },
+  'quote-confirmation': {
+    title: 'Quote Request Received | Custom Auto Gates & Fencing Brisbane',
+    description: 'Thank you for requesting a quote. Our Yamanto workshop team will contact you shortly to confirm your project specifications and free measure.',
+    canonicalPath: '/quote-confirmation',
+    geoPlacename: 'Yamanto, Brisbane, Ipswich, Queensland'
   }
 };
 

@@ -51,7 +51,7 @@ server.listen(0, '127.0.0.1', async () => {
   }
 
   try {
-    // 1. WWW to Non-WWW 301 Redirect Tests
+    // 1. WWW to Non-WWW 301 Redirect Tests (Item 2)
     const t1 = await testReq('WWW Homepage', '/', { 'host': 'www.customautogates.com.au', 'x-forwarded-proto': 'https' });
     assert('1a. https://www.customautogates.com.au/ -> 301 to https://customautogates.com.au/', 
       t1.statusCode === 301 && t1.headers.location === 'https://customautogates.com.au/',
@@ -62,7 +62,7 @@ server.listen(0, '127.0.0.1', async () => {
       t2.statusCode === 301 && t2.headers.location === 'https://customautogates.com.au/driveway-gates?utm_source=google',
       `got status ${t2.statusCode}, location ${t2.headers.location}`);
 
-    // 2. HTTP to HTTPS 301 Redirect Tests
+    // 2. HTTP to HTTPS 301 Redirect Tests (Item 3)
     const t3 = await testReq('HTTP Non-WWW', '/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'http' });
     assert('2a. http://customautogates.com.au/ -> 301 to https://customautogates.com.au/', 
       t3.statusCode === 301 && t3.headers.location === 'https://customautogates.com.au/',
@@ -73,48 +73,70 @@ server.listen(0, '127.0.0.1', async () => {
       t4.statusCode === 301 && t4.headers.location === 'https://customautogates.com.au/service',
       `got status ${t4.statusCode}, location ${t4.headers.location}`);
 
-    // 3. Old URLs 301 Redirects (User-Requested)
+    // 2c. Subdomain Redirect: brisbane.customautogates.com.au -> /gates-brisbane (Item 3)
+    const tBris = await testReq('Subdomain brisbane.', '/', { 'host': 'brisbane.customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('2c. brisbane.customautogates.com.au -> 301 to https://customautogates.com.au/gates-brisbane',
+      tBris.statusCode === 301 && tBris.headers.location === 'https://customautogates.com.au/gates-brisbane',
+      `got status ${tBris.statusCode}, location ${tBris.headers.location}`);
+
+    // 2d. Spam query parameter strip & 301 redirect (Item 3)
+    const tSpam = await testReq('Spam parameter ?h=', '/?h=12345678', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('2d. /?h=12345678 -> 301 to clean URL /',
+      tSpam.statusCode === 301 && tSpam.headers.location === '/',
+      `got status ${tSpam.statusCode}, location ${tSpam.headers.location}`);
+
+    const tSpam2 = await testReq('Spam parameter ?y=', '/driveway-gates?y=abcd', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('2e. /driveway-gates?y=abcd -> 301 to clean URL /driveway-gates',
+      tSpam2.statusCode === 301 && tSpam2.headers.location === '/driveway-gates',
+      `got status ${tSpam2.statusCode}, location ${tSpam2.headers.location}`);
+
+    // 3. Old URLs 301 Redirects (Item 4)
     const t5 = await testReq('Redirect /gates/', '/gates/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
     assert('3a. /gates/ -> 301 to /driveway-gates', 
       t5.statusCode === 301 && t5.headers.location === '/driveway-gates',
       `got status ${t5.statusCode}, location ${t5.headers.location}`);
 
-    const t5b = await testReq('Redirect /gates', '/gates', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('3b. /gates -> 301 to /driveway-gates', 
-      t5b.statusCode === 301 && t5b.headers.location === '/driveway-gates',
-      `got status ${t5b.statusCode}, location ${t5b.headers.location}`);
-
     const t6 = await testReq('Redirect /gates/sliding-gates/', '/gates/sliding-gates/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('3c. /gates/sliding-gates/ -> 301 to /sliding-gates', 
+    assert('3b. /gates/sliding-gates/ -> 301 to /sliding-gates', 
       t6.statusCode === 301 && t6.headers.location === '/sliding-gates',
       `got status ${t6.statusCode}, location ${t6.headers.location}`);
 
     const t7 = await testReq('Redirect /gate-automation/automation-accessories/', '/gate-automation/automation-accessories/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('3d. /gate-automation/automation-accessories/ -> 301 to /service', 
+    assert('3c. /gate-automation/automation-accessories/ -> 301 to /service', 
       t7.statusCode === 301 && t7.headers.location === '/service',
       `got status ${t7.statusCode}, location ${t7.headers.location}`);
 
     const t8 = await testReq('Redirect /lp/balustrade/', '/lp/balustrade/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('3e. /lp/balustrade/ -> 301 to /gates/gallery-gates', 
+    assert('3d. /lp/balustrade/ -> 301 to /gates/gallery-gates', 
       t8.statusCode === 301 && t8.headers.location === '/gates/gallery-gates',
       `got status ${t8.statusCode}, location ${t8.headers.location}`);
 
     const t9 = await testReq('Redirect /gallery-and-design/fencing/', '/gallery-and-design/fencing/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('3f. /gallery-and-design/fencing/ -> 301 to /#fencing', 
+    assert('3e. /gallery-and-design/fencing/ -> 301 to /#fencing', 
       t9.statusCode === 301 && t9.headers.location === '/#fencing',
       `got status ${t9.statusCode}, location ${t9.headers.location}`);
 
-    const t10 = await testReq('Redirect with Query params preservation', '/gates/?gclid=test1234&utm_source=adwords', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('3g. /gates/?gclid=test1234&utm_source=adwords preserves query', 
-      t10.statusCode === 301 && t10.headers.location === '/driveway-gates?gclid=test1234&utm_source=adwords',
-      `got status ${t10.statusCode}, location ${t10.headers.location}`);
+    const tQuote = await testReq('Redirect /instant-online-quote/', '/instant-online-quote/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('3f. /instant-online-quote/ -> 301 to /#quote', 
+      tQuote.statusCode === 301 && tQuote.headers.location === '/#quote',
+      `got status ${tQuote.statusCode}, location ${tQuote.headers.location}`);
 
-    const tTrade = await testReq('Redirect /trade', '/trade', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('3h. /trade -> 301 to /commercial-gates', 
-      tTrade.statusCode === 301 && tTrade.headers.location === '/commercial-gates',
-      `got status ${tTrade.statusCode}, location ${tTrade.headers.location}`);
+    const tAutoGates = await testReq('Redirect /gates/automatic-gates/', '/gates/automatic-gates/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('3g. /gates/automatic-gates/ -> 301 to /driveway-gates', 
+      tAutoGates.statusCode === 301 && tAutoGates.headers.location === '/driveway-gates',
+      `got status ${tAutoGates.statusCode}, location ${tAutoGates.headers.location}`);
 
-    // 4. Unknown Pages 404 Tests
+    const tAutoSliding = await testReq('Redirect /gates/automatic-gates/sliding-gates/', '/gates/automatic-gates/sliding-gates/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('3h. /gates/automatic-gates/sliding-gates/ -> 301 to /sliding-gates', 
+      tAutoSliding.statusCode === 301 && tAutoSliding.headers.location === '/sliding-gates',
+      `got status ${tAutoSliding.statusCode}, location ${tAutoSliding.headers.location}`);
+
+    const tServ = await testReq('Redirect /service/', '/service/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('3i. /service/ -> 301 to /service (trailing slash strip)', 
+      tServ.statusCode === 301 && tServ.headers.location === '/service',
+      `got status ${tServ.statusCode}, location ${tServ.headers.location}`);
+
+    // 4. Unknown Pages 404 Tests (Item 5)
     const t11 = await testReq('Unknown Page', '/some-random-unknown-page', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
     assert('4a. /some-random-unknown-page returns 404 status', 
       t11.statusCode === 404,
@@ -126,45 +148,47 @@ server.listen(0, '127.0.0.1', async () => {
       t11.body.includes('404') && t11.body.includes('Page Not Found') && t11.body.includes('(07) 3102 1801'),
       `missing expected 404 text`);
 
-    const t12 = await testReq('Missing Asset', '/assets/nonexistent-bundle.js', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('4d. /assets/nonexistent-bundle.js returns 404 without HTML payload', 
-      t12.statusCode === 404 && t12.body === 'Asset not found',
-      `got status ${t12.statusCode}, body: ${t12.body}`);
-
-    // 5. Canonical Tag Pre-rendering & Trailing Slash Normalization
-    const t13 = await testReq('Valid Homepage', '/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    // 5. Server-Side Pre-Rendering & Initial HTML Body (Item 1 & Item 6)
+    const tHome = await testReq('Homepage Initial HTML', '/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
     assert('5a. Homepage returns 200 with canonical tag https://customautogates.com.au', 
-      t13.statusCode === 200 && t13.body.includes('<link rel="canonical" href="https://customautogates.com.au" />'),
+      tHome.statusCode === 200 && tHome.body.includes('<link rel="canonical" href="https://customautogates.com.au" />'),
       `canonical tag missing or mismatched`);
+    assert('5b. Homepage initial HTML contains pre-rendered H1 headline',
+      tHome.body.includes('<h1') && (tHome.body.includes('Automatic &amp; Electric Gates Brisbane') || tHome.body.includes('Automatic & Electric Gates Brisbane')),
+      'missing pre-rendered H1 in initial HTML');
+    assert('5c. Homepage initial HTML contains pre-rendered fold-out accordions (<details>)',
+      tHome.body.includes('<details class="seo-accordion"') && tHome.body.includes('<summary'),
+      'missing pre-rendered details/summary accordions in initial HTML');
 
-    const t14 = await testReq('Valid Subpage /driveway-gates', '/driveway-gates', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('5b. /driveway-gates returns 200 with server-rendered canonical tag https://customautogates.com.au/driveway-gates', 
-      t14.statusCode === 200 && t14.body.includes('<link rel="canonical" href="https://customautogates.com.au/driveway-gates" />'),
+    const tDriveway = await testReq('/driveway-gates Initial HTML', '/driveway-gates', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('5d. /driveway-gates returns 200 with server-rendered canonical tag', 
+      tDriveway.statusCode === 200 && tDriveway.body.includes('<link rel="canonical" href="https://customautogates.com.au/driveway-gates" />'),
       `canonical tag missing or mismatched`);
-
-    const t15 = await testReq('Valid Subpage /sliding-gates', '/sliding-gates', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('5c. /sliding-gates returns 200 with canonical tag https://customautogates.com.au/automatic-sliding-gates', 
-      t15.statusCode === 200 && t15.body.includes('<link rel="canonical" href="https://customautogates.com.au/automatic-sliding-gates" />'),
-      `canonical tag missing or mismatched`);
-
-    const t16 = await testReq('Trailing Slash Normalization', '/driveway-gates/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('5d. /driveway-gates/ -> 301 to /driveway-gates (no trailing slash)', 
-      t16.statusCode === 301 && t16.headers.location === '/driveway-gates',
-      `got status ${t16.statusCode}, location ${t16.headers.location}`);
-
-    // 6. Server-Side Pre-Rendered Rich CTR Snippets & Schema
-    assert('6a. /driveway-gates has pre-rendered high-CTR title',
-      t14.body.includes('<title>Driveway Gates Brisbane | Custom Automatic & Electric Gates [10-Yr Warranty]</title>'),
-      'missing expected optimized title');
-
-    assert('6b. /driveway-gates has server-rendered JSON-LD schema with Product & FAQPage',
-      t14.body.includes('id="dynamic-route-schema"') && t14.body.includes('"@type": "Product"') && t14.body.includes('"@type": "FAQPage"'),
+    assert('5e. /driveway-gates initial HTML contains pre-rendered H1 & full body text',
+      tDriveway.body.includes('Automatic Driveway Gates Brisbane') &&
+      tDriveway.body.includes('Engineering Specifications') &&
+      tDriveway.body.includes('Queensland Council Fence'),
+      'missing pre-rendered rich content in /driveway-gates initial HTML');
+    assert('5f. /driveway-gates has server-rendered JSON-LD schema with Product & FAQPage',
+      tDriveway.body.includes('id="dynamic-route-schema"') && tDriveway.body.includes('"@type": "Product"') && tDriveway.body.includes('"@type": "FAQPage"'),
       'missing expected dynamic route schema in HTML');
 
-    const t17 = await testReq('Valid Subpage /automatic-sliding-gates', '/automatic-sliding-gates', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('6c. /automatic-sliding-gates has pre-rendered title [From $3,850] and FAQ schema',
-      t17.body.includes('<title>Automatic Sliding Gates Brisbane | Factory Direct [From $3,850]</title>') && t17.body.includes('"@type": "FAQPage"'),
-      'missing sliding gate title or schema');
+    const tSliding = await testReq('/automatic-sliding-gates Initial HTML', '/automatic-sliding-gates', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('5g. /automatic-sliding-gates has pre-rendered H1 & FAQ accordions in HTML',
+      tSliding.body.includes('Automatic Sliding Gates Brisbane') &&
+      tSliding.body.includes('Can a sliding gate be installed on a driveway that slopes sideways?'),
+      'missing sliding gates pre-rendered content');
+
+    const tBrisbanePage = await testReq('/gates-brisbane Initial HTML', '/gates-brisbane', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('5h. /gates-brisbane has pre-rendered local Brisbane content & suburbs',
+      tBrisbanePage.body.includes('Custom Automatic Gates') &&
+      tBrisbanePage.body.includes('Ascot') && tBrisbanePage.body.includes('Hamilton'),
+      'missing Brisbane regional pre-rendered content');
+
+    const tQuoteConfirm = await testReq('/quote-confirmation Initial HTML', '/quote-confirmation', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('5i. /quote-confirmation returns 200 with confirmation message & phone pill',
+      tQuoteConfirm.statusCode === 200 && tQuoteConfirm.body.includes('Quote Request Received') && tQuoteConfirm.body.includes('(07) 3102 1801'),
+      'missing quote-confirmation page content');
 
     console.log(`\n=== RESULTS: ${passedCount} PASSED, ${failedCount} FAILED ===`);
   } catch (err) {

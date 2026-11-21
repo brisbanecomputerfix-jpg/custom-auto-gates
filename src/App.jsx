@@ -25,6 +25,7 @@ const SuburbLandingPage = lazy(() => import('./components/SuburbLandingPage'));
 const DedicatedServicePage = lazy(() => import('./components/DedicatedServicePage'));
 const PricingGuide = lazy(() => import('./components/PricingGuide'));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
+const QuoteConfirmation = lazy(() => import('./components/QuoteConfirmation'));
 const ContactModal = lazy(() => import('./components/ContactModal'));
 const TroubleshooterModal = lazy(() => import('./components/TroubleshooterModal'));
 const FastQuoteModal = lazy(() => import('./components/FastQuoteModal'));
@@ -169,6 +170,9 @@ export default function App() {
         }, 150);
       } else if (cleanHash === '#privacy' || cleanHash === '#privacy-policy' || cleanPath === '/privacy' || cleanPath === '/privacy-policy') {
         setCurrentPage('privacy-policy');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (cleanHash === '#quote-confirmation' || cleanPath === '/quote-confirmation' || cleanPath === '/thank-you') {
+        setCurrentPage('quote-confirmation');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (cleanHash === '#suburbs' || cleanPath === '/service-areas') {
         setSelectedRegion('brisbane');
@@ -322,6 +326,11 @@ export default function App() {
               onNavigateHome={() => navigateTo('home')}
               onOpenQuote={handleOpenQuote}
               onOpenContact={() => setIsContactOpen(true)}
+            />
+          ) : currentPage === 'quote-confirmation' ? (
+            /* Dedicated Google Ads Verified Conversion Landing Page */
+            <QuoteConfirmation 
+              onNavigateHome={() => navigateTo('home')}
             />
           ) : currentPage === 'suburbs' ? (
             /* Dedicated Suburb Silo Landing Pages (Brisbane, Ipswich, Logan, Gold Coast) */

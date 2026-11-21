@@ -33,12 +33,29 @@ export function formatE164Phone(rawPhone) {
 
 /**
  * Page views on route changes for React Single Page Application (SPA)
+ * Filters out admin & junk parameters to keep GA4 reporting accurate
  */
 export function trackPageView() {
   if (typeof window !== 'undefined' && window.gtag) {
+    const path = (window.location.pathname || '').toLowerCase();
+    const search = (window.location.search || '').toLowerCase();
+    const hash = (window.location.hash || '').toLowerCase();
+
+    // Filter out junk paths, wp-admin, and session ID parameters
+    if (path.includes('/wp-admin') || 
+        path.includes('gsessionid') || 
+        search.includes('gsessionid') || 
+        hash.includes('gsessionid')) {
+      return;
+    }
+
+    const cleanLocation = window.location.origin 
+      ? (window.location.origin + window.location.pathname)
+      : (window.location.href ? window.location.href.split('?')[0].split('#')[0] : '');
+
     window.gtag('event', 'page_view', {
       page_path: window.location.pathname,
-      page_location: window.location.href
+      page_location: cleanLocation
     });
   }
 }
@@ -61,8 +78,16 @@ export function trackFormLead(email, phone, formName = 'contact') {
     if (Object.keys(userData).length > 0) {
       window.gtag('set', 'user_data', userData);
     }
-    window.gtag('event', 'conversion', { send_to: GOOGLE_ADS_CONVERSION_LABEL });
-    window.gtag('event', 'generate_lead', { form_name: formName });
+    window.gtag('event', 'conversion', { 
+      send_to: GOOGLE_ADS_CONVERSION_LABEL,
+      value: 1.0,
+      currency: 'AUD'
+    });
+    window.gtag('event', 'generate_lead', { 
+      form_name: formName,
+      value: 1.0,
+      currency: 'AUD'
+    });
   }
 }
 

@@ -1,6 +1,25 @@
 # Custom Auto Gates & Fencing - robots.txt
 # https://customautogates.com.au
 
+# Explicitly allow Google & AI Search Assistants
+User-agent: Googlebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 User-agent: *
 Allow: /
 Allow: /images/
@@ -12,21 +31,9 @@ Disallow: /api/
 Disallow: /server/
 Disallow: /*.json$
 Disallow: /*?session_id=*
-
-# Block spam hack query parameters & scraped e-commerce collections
-Disallow: /*?*h=*
-Disallow: /*?*y=*
-Disallow: /*?*l=*
-Disallow: /*?*k=*
-Disallow: /*?h=*
-Disallow: /*?y=*
-Disallow: /*?l=*
-Disallow: /*?k=*
-Disallow: /collections/
-Disallow: /wp-content/
-Disallow: /wp-includes/
 Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /collections/
 
 # XML Sitemap Location
 Sitemap: https://customautogates.com.au/sitemap.xml
-

@@ -523,136 +523,150 @@ export default function DedicatedServicePage({
         </div>
       </section>
 
-      {/* 2. IN-DEPTH TECHNICAL GUIDE (800+ Words SEO Grounding) */}
-      <section className="section" style={{ padding: '4.5rem 0' }}>
+      {/* 2. GALLERY SHOWCASE (Immediately below Hero for high visual impact) */}
+      <section className="section" style={{ padding: '3.5rem 0 2rem 0' }}>
         <div className="container">
-          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-            <span className="badge-tag badge-blue" style={{ marginBottom: '0.75rem' }}>
-              <FileText size={14} /> Comprehensive Gate Engineering Guide
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3.2vw, 2.4rem)', fontWeight: '800', marginBottom: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>
-              {service.overviewHeading}
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <span className="badge-tag badge-gold" style={{ marginBottom: '0.5rem' }}>Completed Installations</span>
+            <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: '800', fontFamily: 'Outfit, sans-serif' }}>
+              Recent {service.categoryName} Builds in South East QLD
             </h2>
-            {service.overviewParagraphs.map((p, idx) => (
-              <p key={idx} style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--text-muted)', marginBottom: '1.25rem' }}>
-                {p}
-              </p>
-            ))}
           </div>
-
-          {/* Configuration Cards Grid */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '1.5rem',
-            marginTop: '3rem',
-            marginBottom: '3.5rem'
-          }}>
-            {service.configurationTypes.map((config, i) => (
-              <div 
-                key={i}
-                style={{
-                  background: 'var(--bg-card)',
-                  border: '1.5px solid var(--border-subtle)',
-                  borderRadius: '16px',
-                  padding: '1.75rem',
-                  boxShadow: 'var(--shadow-md)',
-                  transition: 'transform 0.2s ease, border-color 0.2s ease'
-                }}
-              >
-                <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(212, 163, 89, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-gold)', marginBottom: '1rem', fontWeight: '800' }}>
-                  {i + 1}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem', marginBottom: '3.5rem' }}>
+            {service.galleryImages.map((img, gidx) => (
+              <div key={gidx} style={{ borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)' }}>
+                <img src={img.src} alt={img.alt} style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} />
+                <div style={{ padding: '0.65rem 0.85rem', fontSize: '0.8rem', fontWeight: '600', color: 'var(--text-muted)', background: 'var(--bg-card)' }}>
+                  {img.alt}
                 </div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '0.5rem', color: 'var(--text-heading)' }}>
-                  {config.title}
-                </h3>
-                <div style={{ fontSize: '0.82rem', fontWeight: '700', color: 'var(--accent-blue)', marginBottom: '0.85rem' }}>
-                  Best suited for: {config.bestFor}
-                </div>
-                <p style={{ fontSize: '0.92rem', lineHeight: 1.6, color: 'var(--text-muted)' }}>
-                  {config.features}
-                </p>
               </div>
             ))}
           </div>
 
-          {/* 3. TECHNICAL SPECIFICATIONS TABLE */}
-          <div style={{
-            background: 'var(--bg-card)',
-            border: '1.5px solid var(--border-subtle)',
-            borderRadius: '16px',
-            padding: '2rem',
-            boxShadow: 'var(--shadow-lg)',
-            marginBottom: '4rem'
-          }}>
-            <h3 style={{ fontSize: '1.35rem', fontWeight: '800', marginBottom: '1.5rem', color: 'var(--text-heading)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Sliders size={20} style={{ color: 'var(--accent-gold)' }} />
-              Engineering Specifications & Capabilities
-            </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
-              {service.specifications.map((spec, sidx) => (
-                <div key={sidx} style={{ padding: '0.85rem', background: 'var(--bg-body)', borderRadius: '10px', border: '1px solid var(--border-light)' }}>
-                  <span style={{ display: 'block', fontSize: '0.78rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>
-                    {spec.label}
-                  </span>
-                  <span style={{ fontSize: '0.94rem', fontWeight: '600', color: 'var(--text-heading)' }}>
-                    {spec.value}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 4. GALLERY SHOWCASE */}
-          <div style={{ marginBottom: '4rem' }}>
+          {/* 3. MINIMALIST COLLAPSIBLE ACCORDIONS (100% Crawlable HTML & Clean Mobile UX) */}
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-              <span className="badge-tag badge-gold" style={{ marginBottom: '0.5rem' }}>Completed Installations</span>
-              <h3 style={{ fontSize: '1.8rem', fontWeight: '800', fontFamily: 'Outfit, sans-serif' }}>
-                Recent {service.categoryName} Builds in South East QLD
+              <span className="badge-tag badge-blue" style={{ marginBottom: '0.5rem' }}>
+                <FileText size={14} /> Full Technical Details & FAQs
+              </span>
+              <h3 style={{ fontSize: 'clamp(1.5rem, 2.8vw, 2rem)', fontWeight: '800', fontFamily: 'Outfit, sans-serif' }}>
+                Engineering Specs, Pricing & Local Council Rules
               </h3>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
-              {service.galleryImages.map((img, gidx) => (
-                <div key={gidx} style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)' }}>
-                  <img src={img.src} alt={img.alt} style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} />
-                  <div style={{ padding: '0.65rem 0.85rem', fontSize: '0.8rem', fontWeight: '600', color: 'var(--text-muted)', background: 'var(--bg-card)' }}>
-                    {img.alt}
+
+            {/* Accordion 1: Comprehensive Engineering Guide & Configurations */}
+            <details className="seo-accordion">
+              <summary>
+                <span>⚙️ Gate Configurations & Design Options ({service.categoryName})</span>
+              </summary>
+              <div className="accordion-body">
+                <h4 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '0.75rem', color: 'var(--text-heading)' }}>
+                  {service.overviewHeading}
+                </h4>
+                {service.overviewParagraphs.map((p, idx) => (
+                  <p key={idx} style={{ fontSize: '0.95rem', lineHeight: 1.7, color: 'var(--text-muted)', marginBottom: '1rem' }}>
+                    {p}
+                  </p>
+                ))}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem', marginTop: '1.5rem' }}>
+                  {service.configurationTypes.map((config, i) => (
+                    <div key={i} style={{ background: 'var(--bg-body)', padding: '1.25rem', borderRadius: '10px', border: '1px solid var(--border-light)' }}>
+                      <h5 style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--text-heading)', margin: '0 0 0.4rem 0' }}>{config.title}</h5>
+                      <div style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--accent-blue)', marginBottom: '0.5rem' }}>Best for: {config.bestFor}</div>
+                      <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>{config.features}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </details>
+
+            {/* Accordion 2: Technical Specifications & Capabilities */}
+            <details className="seo-accordion">
+              <summary>
+                <span>📐 Engineering Specifications & Materials</span>
+              </summary>
+              <div className="accordion-body">
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0.85rem' }}>
+                  {service.specifications.map((spec, sidx) => (
+                    <div key={sidx} style={{ padding: '0.85rem 1rem', background: 'var(--bg-body)', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
+                      <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--accent-gold)', marginBottom: '0.2rem' }}>
+                        {spec.label}
+                      </span>
+                      <span style={{ fontSize: '0.92rem', fontWeight: '600', color: 'var(--text-heading)' }}>
+                        {spec.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </details>
+
+            {/* Accordion 3: Pricing Guide & Cost Estimates */}
+            <details className="seo-accordion">
+              <summary>
+                <span>💰 Transparent Pricing Guide & Factory-Direct Savings</span>
+              </summary>
+              <div className="accordion-body">
+                <p style={{ margin: '0 0 1rem 0', color: 'var(--text-muted)' }}>
+                  Buying factory-direct from our Yamanto workshop eliminates middleman reseller markups, saving homeowners between $1,200 and $2,500 on custom automatic gates.
+                </p>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
+                  <div style={{ background: 'var(--bg-body)', padding: '1rem', borderRadius: '10px', border: '1px solid var(--border-light)' }}>
+                    <div style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--text-muted)' }}>Single Sliding Gates</div>
+                    <div style={{ fontSize: '1.35rem', fontWeight: '900', color: 'var(--accent-gold)', margin: '0.25rem 0' }}>$3,850 – $7,200</div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Includes motor, track/cantilever & 2 remotes</div>
+                  </div>
+                  <div style={{ background: 'var(--bg-body)', padding: '1rem', borderRadius: '10px', border: '1px solid var(--border-light)' }}>
+                    <div style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--text-muted)' }}>Double Swing Gates</div>
+                    <div style={{ fontSize: '1.35rem', fontWeight: '900', color: 'var(--accent-gold)', margin: '0.25rem 0' }}>$4,200 – $8,800</div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Dual high-torque linear rams & stops</div>
+                  </div>
+                  <div style={{ background: 'var(--bg-body)', padding: '1rem', borderRadius: '10px', border: '1px solid var(--border-light)' }}>
+                    <div style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--text-muted)' }}>Solar Acreage Kits</div>
+                    <div style={{ fontSize: '1.35rem', fontWeight: '900', color: 'var(--accent-gold)', margin: '0.25rem 0' }}>$5,200 – $9,500</div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>100% off-grid with 5-7 days battery reserve</div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+            </details>
 
-          {/* 5. FAQS & ANSWERS */}
-          <div style={{ maxWidth: '840px', margin: '0 auto', marginBottom: '4rem' }}>
-            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', fontFamily: 'Outfit, sans-serif' }}>
-                Frequently Asked Questions About {service.categoryName}
-              </h3>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {service.faqs.map((faq, fidx) => (
-                <div 
-                  key={fidx} 
-                  style={{
-                    background: 'var(--bg-card)',
-                    border: '1px solid var(--border-subtle)',
-                    borderRadius: '12px',
-                    padding: '1.5rem'
-                  }}
-                >
-                  <h4 style={{ fontSize: '1.05rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>
-                    {faq.q}
-                  </h4>
-                  <p style={{ fontSize: '0.92rem', lineHeight: 1.7, color: 'var(--text-muted)', margin: 0 }}>
-                    {faq.a}
-                  </p>
+            {/* Accordion 4: Queensland Council & Pool Safety Regulations */}
+            <details className="seo-accordion">
+              <summary>
+                <span>🏛️ Queensland Council Fence & Boundary Regulations (BCC, ICC & AS1926.1)</span>
+              </summary>
+              <div className="accordion-body">
+                <ul style={{ paddingLeft: '1.25rem', margin: 0, lineHeight: 1.7, color: 'var(--text-muted)' }}>
+                  <li><strong>Front Boundary Height:</strong> Solid front fence structures cannot exceed 1.2m along street frontages in Brisbane and Ipswich. Gates up to 1.8m are permitted provided they maintain at least <strong>50% visual permeability</strong>.</li>
+                  <li><strong>Road Footpaths:</strong> Automatic gates must never swing outwards over pedestrian footpaths or public road reserves.</li>
+                  <li><strong>Pool Safety Compliance (AS 1926.1):</strong> Driveway or pedestrian gates forming part of a pool barrier must swing outwards away from the pool, self-close and latch from any open position, with latches at 1,500mm+.</li>
+                </ul>
+              </div>
+            </details>
+
+            {/* Accordion 5: Frequently Asked Questions */}
+            <details className="seo-accordion" open>
+              <summary>
+                <span>❓ Frequently Asked Questions About {service.categoryName}</span>
+              </summary>
+              <div className="accordion-body">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                  {service.faqs.map((faq, fidx) => (
+                    <div key={fidx} style={{ paddingBottom: fidx < service.faqs.length - 1 ? '1.25rem' : '0', borderBottom: fidx < service.faqs.length - 1 ? '1px solid var(--border-light)' : 'none' }}>
+                      <h5 style={{ fontSize: '1.05rem', fontWeight: '800', color: 'var(--accent-gold)', marginBottom: '0.4rem' }}>
+                        {faq.q}
+                      </h5>
+                      <p style={{ fontSize: '0.92rem', lineHeight: 1.6, color: 'var(--text-muted)', margin: 0 }}>
+                        {faq.a}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            </details>
           </div>
 
-          {/* 6. CALL TO ACTION BANNER */}
+          {/* 4. CALL TO ACTION BANNER */}
           <div style={{
             background: 'linear-gradient(135deg, #090e1a 0%, #1e293b 100%)',
             borderRadius: '20px',
@@ -660,7 +674,8 @@ export default function DedicatedServicePage({
             textAlign: 'center',
             color: '#ffffff',
             border: '1.5px solid rgba(212, 163, 89, 0.3)',
-            boxShadow: '0 20px 40px -15px rgba(0,0,0,0.5)'
+            boxShadow: '0 20px 40px -15px rgba(0,0,0,0.5)',
+            marginTop: '3.5rem'
           }}>
             <h3 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: '900', marginBottom: '1rem', fontFamily: 'Outfit, sans-serif' }}>
               Ready To Design Your Custom {service.categoryName}?
