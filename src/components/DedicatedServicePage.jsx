@@ -343,6 +343,76 @@ export const SERVICE_PAGES_DATA = {
         a: 'Yes. We provide scheduled quarterly, bi-annual, and annual commercial maintenance service agreements across Greater Brisbane, Ipswich, and Logan. This includes safety photocell testing, ground loop calibration, mechanical roller inspection, battery load testing, and WHS compliance logging.'
       }
     ]
+  },
+  'fencing': {
+    id: 'fencing',
+    slug: 'fencing',
+    categoryName: 'Architectural Fencing',
+    badge: 'Factory-Direct Aluminium Slat & Boundary Fencing',
+    h1: 'Architectural Fencing Brisbane | Aluminium Slat & Boundary Fences',
+    subtitle: 'Custom designed and manufactured architectural aluminium boundary fencing, privacy slat screens, pool safety fencing, and matching pedestrian gates. Engineered for Brisbane, Ipswich, and Gold Coast homes with a 10-year structural warranty.',
+    metaTitle: 'Architectural Fencing Brisbane | Custom Aluminium Slat & Privacy Fences',
+    metaDescription: 'Custom architectural aluminium fencing in Brisbane & SEQ. Horizontal slat fences, vertical battens, pool-safe fencing & pedestrian gates. Free quote: (07) 3102 1801.',
+    heroImage: '/images/aluminum-fencing.jpg',
+    galleryImages: [
+      { src: '/images/aluminum-fencing.jpg', alt: 'Architectural aluminium horizontal slat fencing Brisbane' },
+      { src: '/images/gallery/imgur-01-KvcLWwl.jpeg', alt: 'Modern boundary fence with integrated pedestrian gate' },
+      { src: '/images/gallery/imgur-06-ic4DkjV.jpeg', alt: 'Black powdercoated privacy slat boundary fence' },
+      { src: '/images/gallery/imgur-10-HBAhNBc.jpeg', alt: 'Vertical blade architectural screen fencing' }
+    ],
+    overviewHeading: 'Architectural Aluminium Fencing & Privacy Screens Built for Queensland Homes',
+    overviewParagraphs: [
+      'Front boundary fencing defines the street appeal, privacy, and security of your home. At Custom Auto Gates, we manufacture premium architectural aluminium slat fencing, vertical blade panels, decorative privacy screens, and pool safety fences directly from our Yamanto workshop. Unlike timber fencing that rots, warps, and suffers termite damage, or Colorbond steel that can rust near coastal areas, our marine-grade structural aluminium fencing never rusts or degrades.',
+      'We tailor every fencing panel to your property’s exact dimensions, slopes, and architectural style. Whether you are modernising a post-war home, building a new contemporary masterpiece, or enclosing your front yard to give children and pets a safe play area, our fencing seamlessly integrates with our custom automated driveway sliding and swing gates for a cohesive, factory-matched aesthetic.'
+    ],
+    configurationTypes: [
+      {
+        title: 'Horizontal Aluminium Slat Privacy Fencing',
+        bestFor: 'Modern front boundaries, courtyard enclosures, and rendered pillar infills',
+        features: 'Crafted with premium 65x16mm or 90x16mm heavy-gauge aluminium slats with customizable 10mm, 20mm, or fully private gaps. Complies with Brisbane City Council 50% transparency guidelines.'
+      },
+      {
+        title: 'Vertical 3D Blade & Batten Fencing',
+        bestFor: 'Architectural character homes, Hamptons designs, and luxury contemporary residences',
+        features: 'Bold vertical aerofoil fins and rectangular battens that deliver dynamic shadowlines and high privacy when viewed from an angle while preserving forward visibility.'
+      },
+      {
+        title: 'Certified Pool Safety Fencing & Side Gates',
+        bestFor: 'Pool surrounds, side passages, and internal yard zoning compliant with AS1926.1',
+        features: 'Engineered with non-climbable vertical geometry, magnetic self-latching safety hardware, and heavy-duty self-closing hydraulic hinges meeting strict Queensland pool inspection standards.'
+      },
+      {
+        title: 'Rendered Pillar Infill Panels & Pedestrian Walkways',
+        bestFor: 'Brick, blockwork, or stone pillar streetscapes requiring matching privacy infills',
+        features: 'Laser-measured infill panels with concealed fixing channels, integrated lock boxes, 4G video intercom mounts, and keyless digital pin keypad pedestrian gates.'
+      }
+    ],
+    specifications: [
+      { label: 'Aluminium Material', value: 'Marine-grade 6060-T6 architectural structural alloy (100% rust-proof & non-combustible)' },
+      { label: 'Slat Profiles', value: '65mm x 16mm or 90mm x 16mm extruded aluminium slats with reinforced internal ribs' },
+      { label: 'Spacing & Gaps', value: '10mm, 20mm, 40mm, or solid tongue-and-groove louvres (custom spacing available)' },
+      { label: 'Powdercoat Finish', value: 'Dulux / Interpon architectural powdercoating (Monument, Surfmist, Black, Basalt) or DecoWood timber grain' },
+      { label: 'Pedestrian Hardware', value: 'D&D Technologies MagnaLatch, LokkLatch, Locinox mechanical keypads & electric release strikes' },
+      { label: 'Structural Warranty', value: '10-Year Factory Structural Warranty on all fabrication and welding' }
+    ],
+    faqs: [
+      {
+        q: 'How does aluminium slat fencing compare to timber or Colorbond steel in Brisbane?',
+        a: 'Aluminium slat fencing is vastly superior in South East Queensland’s harsh climate. Timber requires annual staining, rots in summer rains, and attracts termites. Colorbond sheet fencing acts like a solid sail in storms and can rust at ground contact. Marine-grade aluminium never rots, warps, or rusts, withstands gale winds with ease, and requires zero painting maintenance for decades.'
+      },
+      {
+        q: 'Does your front slat fencing comply with Brisbane City Council rules?',
+        a: 'Yes. Brisbane City Council allows front boundary fencing up to 1.8 metres high as long as it maintains at least 50% open visual transparency (or 1.2m if solid). Our 65mm slats spaced with 10mm to 20mm gaps meet BCC requirements while blocking sightlines into your living areas from the street.'
+      },
+      {
+        q: 'Can our front fencing match our automatic driveway gate exactly?',
+        a: 'Yes! Because Custom Auto Gates manufactures both the automated driveway gate and the boundary fencing in our Yamanto factory, we ensure exact matching slat dimensions, gap spacing, post sections, and genuine Dulux powdercoating colour codes.'
+      },
+      {
+        q: 'How much does custom aluminium slat fencing cost in Brisbane?',
+        a: 'Custom aluminium slat fencing typically ranges from $220 to $380 per linear metre fully fabricated and installed, depending on fence height, slat gap spacing, and whether concrete core-drilling or post footings are required. Buying factory-direct from our workshop eliminates middleman builder markups.'
+      }
+    ]
   }
 };
 
@@ -409,11 +479,12 @@ export default function DedicatedServicePage({
               Gate Categories:
             </span>
             {[
-              { id: 'commercial-gates', label: 'Commercial & Cantilever' },
               { id: 'driveway-gates', label: 'Driveway Gates' },
               { id: 'automatic-sliding-gates', label: 'Sliding Gates' },
               { id: 'swing-gates', label: 'Swing & Bi-Fold' },
-              { id: 'solar-gates', label: 'Solar Acreage' }
+              { id: 'fencing', label: 'Slat & Pool Fencing' },
+              { id: 'solar-gates', label: 'Solar Acreage' },
+              { id: 'commercial-gates', label: 'Commercial & Cantilever' }
             ].map((cat) => (
               <a
                 key={cat.id}

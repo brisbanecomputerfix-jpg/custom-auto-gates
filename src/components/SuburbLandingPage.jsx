@@ -525,6 +525,83 @@ export default function SuburbLandingPage({
               4. COMPREHENSIVE SUBURB DIRECTORY & SEARCH
               ===================================================================== */}
           <div style={{ marginBottom: '3.5rem' }}>
+            {activeRegion === 'brisbane' && (
+              <div style={{
+                background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+                borderRadius: '16px',
+                padding: '1.75rem',
+                border: '1px solid rgba(251, 191, 36, 0.3)',
+                marginBottom: '2rem'
+              }}>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <span style={{ fontSize: '0.78rem', color: '#fbbf24', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    Dedicated Suburb Guides &bull; Residential Work Focus
+                  </span>
+                  <h3 style={{ fontSize: '1.35rem', fontWeight: '900', color: '#ffffff', margin: '0.25rem 0 0.5rem 0', fontFamily: 'Outfit, sans-serif' }}>
+                    Featured Inner &amp; East Brisbane Residential Gate &amp; Fencing Pages
+                  </h3>
+                  <p style={{ fontSize: '0.88rem', color: '#cbd5e1', margin: 0, lineHeight: 1.5 }}>
+                    Explore dedicated residential specifications, Brisbane City Council front fence regulations, and local photo galleries for your suburb:
+                  </p>
+                </div>
+
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                  gap: '0.85rem'
+                }}>
+                  {[
+                    { name: 'Carindale', slug: 'gates-fencing-carindale', desc: 'Sliding gates, double swing & horizontal privacy slat fences' },
+                    { name: 'Camp Hill', slug: 'gates-fencing-camp-hill', desc: 'Hamptons gates, vertical blade fencing & character home security' },
+                    { name: 'Rochedale', slug: 'gates-fencing-rochedale', desc: 'Modern sliding gates, estate boundary fences & smartphone control' },
+                    { name: 'Wishart', slug: 'gates-fencing-wishart', desc: 'Family front yard enclosures, pet safety & automated driveway gates' },
+                    { name: 'Mansfield', slug: 'gates-fencing-mansfield', desc: 'School catchment security gates, slat fencing & high-speed motors' },
+                    { name: 'Capalaba', slug: 'gates-fencing-capalaba', desc: 'Corrosion-proof marine aluminium gates, acreage & boat access' },
+                    { name: 'Gumdale', slug: 'gates-fencing-gumdale', desc: '100% off-grid solar acreage gates & post-and-rail horse fencing' },
+                    { name: 'Wavell Heights', slug: 'gates-fencing-wavell-heights', desc: 'Precision-raked sliding gates & stepped fences for steep hills' },
+                    { name: 'Pullenvale', slug: 'gates-fencing-pullenvale', desc: 'Grand double swing estate gates, solar automation & acreage fences' }
+                  ].map((sub) => (
+                    <a
+                      key={sub.slug}
+                      href={`/${sub.slug}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.location.hash = sub.slug;
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      style={{
+                        display: 'block',
+                        background: '#090e1a',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        borderRadius: '10px',
+                        padding: '1rem',
+                        textDecoration: 'none',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = '#fbbf24';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
+                        <strong style={{ color: '#fbbf24', fontSize: '0.98rem', fontWeight: '800' }}>
+                          {sub.name}
+                        </strong>
+                        <span style={{ color: '#fbbf24', fontSize: '0.85rem' }}>&rarr;</span>
+                      </div>
+                      <p style={{ margin: 0, fontSize: '0.8rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                        {sub.desc}
+                      </p>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',

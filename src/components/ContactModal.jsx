@@ -65,8 +65,8 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
         throw new Error(data.error || 'Failed to submit request.');
       }
 
+      await trackFormLead(formData.email, formData.phone, 'site_visit');
       setIsSubmitted(true);
-      trackFormLead(formData.email, formData.phone, 'site_visit');
       try {
         window.history.pushState({}, '', '/quote-confirmation');
       } catch (e) {}

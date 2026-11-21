@@ -134,8 +134,8 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
         throw new Error('Failed to submit enquiry');
       }
 
+      await trackFormLead(formData.email, formData.phone, 'contact');
       setFormSubmitted(true);
-      trackFormLead(formData.email, formData.phone, 'contact');
       try {
         window.history.pushState({}, '', '/quote-confirmation');
       } catch (e) {}

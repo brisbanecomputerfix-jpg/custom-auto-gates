@@ -61,34 +61,84 @@ export function trackPageView() {
 }
 
 /**
- * Track form leads after /api/contact or /api/quote returns OK
- * Enhanced conversions with email & phone in +61 format
+ * Track form leads directly after successful /api/contact or /api/quote submission
+ * Forces immediate loading of gtag.js if not yet loaded
+ * Sends Enhanced Conversions user data (email & E.164 phone)
+ * Awaits conversion dispatch before resolving
  *
  * @param {string} email - Customer email
  * @param {string} phone - Customer phone number
- * @param {'contact' | 'quote' | 'site_visit' | string} formName - Form identifier
+ * @param {'contact' | 'quote' | 'fast_quote' | 'site_visit' | string} formName - Form identifier
  */
-export function trackFormLead(email, phone, formName = 'contact') {
-  if (typeof window !== 'undefined' && window.gtag) {
-    const formattedPhone = formatE164Phone(phone);
-    const userData = {};
-    if (email) userData.email = String(email).trim().toLowerCase();
-    if (formattedPhone) userData.phone_number = formattedPhone;
+export async function trackFormLead(email, phone, formName = 'contact') {
+  if (typeof window === 'undefined') return;
 
-    if (Object.keys(userData).length > 0) {
-      window.gtag('set', 'user_data', userData);
+  // 1. Force immediate tag script load if not already loaded
+  try {
+    if (typeof window.loadGtagScript === 'function') {
+      window.loadGtagScript();
+    } else if (!window._gtagLoaded) {
+      window._gtagLoaded = true;
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`;
+      document.head.appendChild(s);
     }
-    window.gtag('event', 'conversion', { 
-      send_to: GOOGLE_ADS_CONVERSION_LABEL,
-      value: 1.0,
-      currency: 'AUD'
-    });
-    window.gtag('event', 'generate_lead', { 
-      form_name: formName,
-      value: 1.0,
-      currency: 'AUD'
-    });
+  } catch (e) {
+    console.warn('gtag loader error:', e);
   }
+
+  // 2. Ensure dataLayer and gtag exist
+  window.dataLayer = window.dataLayer || [];
+  if (typeof window.gtag !== 'function') {
+    window.gtag = function() { window.dataLayer.push(arguments); };
+  }
+
+  // 3. Set Enhanced Conversion user data (email and normalized +61 phone)
+  const formattedPhone = formatE164Phone(phone);
+  const userData = {};
+  if (email) userData.email = String(email).trim().toLowerCase();
+  if (formattedPhone) userData.phone_number = formattedPhone;
+
+  if (Object.keys(userData).length > 0) {
+    window.gtag('set', 'user_data', userData);
+  }
+
+  // 4. Fire Google Ads conversion (AW-991707394 / KfedCPiLs7odEIKC8dgD) and GA4 lead event with callback guarantee
+  return new Promise((resolve) => {
+    let resolved = false;
+    const finish = () => {
+      if (!resolved) {
+        resolved = true;
+        resolve(true);
+      }
+    };
+
+    // Safety timeout ensures user is never blocked longer than 600ms even on slow connections
+    const timer = setTimeout(finish, 600);
+
+    try {
+      window.gtag('event', 'conversion', { 
+        send_to: GOOGLE_ADS_CONVERSION_LABEL,
+        value: 1.0,
+        currency: 'AUD',
+        event_callback: () => {
+          clearTimeout(timer);
+          finish();
+        }
+      });
+
+      window.gtag('event', 'generate_lead', { 
+        form_name: formName,
+        value: 1.0,
+        currency: 'AUD'
+      });
+    } catch (err) {
+      console.warn('Conversion dispatch error:', err);
+      clearTimeout(timer);
+      finish();
+    }
+  });
 }
 
 /**
@@ -113,10 +163,10 @@ export function trackQuoteRequest(quoteData = {}) {
 /**
  * Track service & repair bookings / payments
  */
-export function trackServiceBooking(bookingData = {}) {
+export async function trackServiceBooking(bookingData = {}) {
   const email = bookingData.email || '';
   const phone = bookingData.phone || '';
-  trackFormLead(email, phone, 'service_booking');
+  await trackFormLead(email, phone, 'service_booking');
 
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'purchase', {

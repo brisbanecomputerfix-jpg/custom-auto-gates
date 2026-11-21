@@ -22,7 +22,9 @@ const ContactUs = lazy(() => import('./components/ContactUs'));
 const Testimonials = lazy(() => import('./components/Testimonials'));
 const CouncilGuide = lazy(() => import('./components/CouncilGuide'));
 const SuburbLandingPage = lazy(() => import('./components/SuburbLandingPage'));
+const ResidentialSuburbPage = lazy(() => import('./components/ResidentialSuburbPage'));
 const DedicatedServicePage = lazy(() => import('./components/DedicatedServicePage'));
+import { RESIDENTIAL_SUBURBS_LIST } from './data/residentialSuburbsData';
 const PricingGuide = lazy(() => import('./components/PricingGuide'));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
 const QuoteConfirmation = lazy(() => import('./components/QuoteConfirmation'));
@@ -94,6 +96,9 @@ export default function App() {
         cleanPath === '/automatic-gate-repairs'
       ) {
         setCurrentPage('service');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (cleanPath === '/fencing' || cleanPath === '/fencing/' || cleanPath === '/aluminium-fencing' || cleanHash === '#fencing-page') {
+        setCurrentPage('fencing');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (cleanHash === '#fencing' || cleanHash === '#custom-solutions' || cleanHash === '#services') {
         setCurrentPage('home');
@@ -179,7 +184,17 @@ export default function App() {
         setCurrentPage('suburbs');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        setCurrentPage('home');
+        const suburbSlug = cleanPath.startsWith('/gates-fencing-') 
+          ? cleanPath.replace('/gates-fencing-', '') 
+          : cleanHash.startsWith('#gates-fencing-') 
+            ? cleanHash.replace('#gates-fencing-', '') 
+            : null;
+        if (suburbSlug && RESIDENTIAL_SUBURBS_LIST.includes(suburbSlug)) {
+          setCurrentPage(`suburb-res-${suburbSlug}`);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          setCurrentPage('home');
+        }
       }
     };
 
@@ -214,6 +229,11 @@ export default function App() {
       window.location.hash = 'privacy-policy';
     } else if (page === 'driveway-gates') {
       window.location.hash = 'driveway-gates';
+    } else if (page === 'fencing') {
+      window.location.hash = 'fencing-page';
+    } else if (page.startsWith('suburb-res-')) {
+      const subSlug = page.replace('suburb-res-', '');
+      window.location.hash = `gates-fencing-${subSlug}`;
     } else if (page === 'automatic-sliding-gates' || page === 'sliding-gates') {
       window.location.hash = 'automatic-sliding-gates';
     } else if (page === 'swing-gates') {
@@ -341,7 +361,7 @@ export default function App() {
               onNavigateHome={() => navigateTo('home')}
               onNavigateCouncilGuide={() => navigateTo('council-guide')}
             />
-          ) : currentPage === 'driveway-gates' || currentPage === 'automatic-sliding-gates' || currentPage === 'swing-gates' || currentPage === 'solar-gates' || currentPage === 'commercial-gates' ? (
+          ) : currentPage === 'fencing' || currentPage === 'driveway-gates' || currentPage === 'automatic-sliding-gates' || currentPage === 'swing-gates' || currentPage === 'solar-gates' || currentPage === 'commercial-gates' ? (
             /* Dedicated Comprehensive Service & Gate Style Guides */
             <DedicatedServicePage 
               serviceKey={currentPage}
@@ -349,6 +369,15 @@ export default function App() {
               onOpenContact={() => setIsContactOpen(true)}
               onNavigateHome={() => navigateTo('home')}
               onNavigateService={() => navigateTo('service')}
+            />
+          ) : currentPage.startsWith('suburb-res-') ? (
+            /* Dedicated Residential Suburb Landing Pages (Carindale, Camp Hill, Rochedale, etc.) */
+            <ResidentialSuburbPage 
+              suburbId={currentPage.replace('suburb-res-', '')}
+              onOpenQuote={handleOpenQuote}
+              onOpenContact={() => setIsContactOpen(true)}
+              onNavigateHome={() => navigateTo('home')}
+              onNavigateBrisbane={() => navigateTo('suburbs', 'brisbane')}
             />
           ) : currentPage === 'pricing-guide' ? (
             /* Dedicated Automatic Gate Cost & Pricing Guide (2026) */

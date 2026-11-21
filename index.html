@@ -64,6 +64,7 @@
         s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-991707394';
         document.head.appendChild(s);
       }
+      window.loadGtagScript = loadGtagScript;
 
       // Load on first real user gesture or after idle delay (12s)
       ['scroll', 'keydown', 'touchstart', 'pointerdown', 'mousemove', 'click'].forEach(function(ev) {

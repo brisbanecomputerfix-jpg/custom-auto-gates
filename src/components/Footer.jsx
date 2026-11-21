@@ -234,6 +234,15 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
               </li>
               <li>
                 <a 
+                  href="/fencing"
+                  onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('fencing'); }} 
+                  style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                >
+                  <ChevronRight size={13} /> Architectural Slat Fencing
+                </a>
+              </li>
+              <li>
+                <a 
                   href="/contact-us"
                   onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('contact'); }} 
                   style={{ color: '#fbbf24', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
@@ -381,6 +390,50 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
             <button onClick={onOpenQuote} className="btn btn-gold btn-sm" style={{ width: '100%', padding: '0.65rem' }}>
               Get Instant Online Quote
             </button>
+          </div>
+        </div>
+
+        {/* Service Areas & Residential Suburbs Link Block */}
+        <div style={{
+          borderTop: '1px solid rgba(255,255,255,0.08)',
+          paddingTop: '1.75rem',
+          paddingBottom: '1.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.75rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+            <span style={{ fontSize: '0.82rem', fontWeight: '800', color: '#fbbf24', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              Residential Gates &amp; Fencing Suburbs:
+            </span>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1rem', fontSize: '0.82rem' }}>
+              {[
+                { name: 'Carindale', slug: 'gates-fencing-carindale' },
+                { name: 'Camp Hill', slug: 'gates-fencing-camp-hill' },
+                { name: 'Rochedale', slug: 'gates-fencing-rochedale' },
+                { name: 'Wishart', slug: 'gates-fencing-wishart' },
+                { name: 'Mansfield', slug: 'gates-fencing-mansfield' },
+                { name: 'Capalaba', slug: 'gates-fencing-capalaba' },
+                { name: 'Gumdale', slug: 'gates-fencing-gumdale' },
+                { name: 'Wavell Heights', slug: 'gates-fencing-wavell-heights' },
+                { name: 'Pullenvale', slug: 'gates-fencing-pullenvale' }
+              ].map((sub) => (
+                <a
+                  key={sub.slug}
+                  href={`/${sub.slug}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.hash = sub.slug;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s ease' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#fbbf24'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
+                >
+                  {sub.name}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 

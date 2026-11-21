@@ -2,6 +2,7 @@
  * SEO Metadata & Structured Data Generator for Custom Auto Gates & Fencing
  * Self-contained in server/ to guarantee availability in production Docker containers.
  */
+import { RESIDENTIAL_SUBURBS_DATA } from '../src/data/residentialSuburbsData.js';
 
 export const BASE_URL = 'https://customautogates.com.au';
 
@@ -113,6 +114,66 @@ export const PAGE_SEO_CONFIGS = {
     description: 'Thank you for requesting a quote. Our Yamanto workshop team will contact you shortly to confirm your project specifications and free measure.',
     canonicalPath: '/quote-confirmation',
     geoPlacename: 'Yamanto, Brisbane, Ipswich, Queensland'
+  },
+  'fencing': {
+    title: 'Architectural Fencing Brisbane | Aluminium Slat & Boundary Fences',
+    description: 'Custom architectural aluminium fencing in Brisbane & SEQ. Horizontal slat fences, vertical battens, pool-safe fencing & pedestrian gates. Free quote: (07) 3102 1801.',
+    canonicalPath: '/fencing',
+    geoPlacename: 'Brisbane, Ipswich, Logan, Gold Coast, Queensland'
+  },
+  'suburb-res-carindale': {
+    title: 'Gates and Fencing Carindale | Custom Automatic Gates & Slat Fencing',
+    description: 'Custom residential gates and aluminium fencing in Carindale. Sliding gates, double swing gates, slat fencing & pool gates. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    canonicalPath: '/gates-fencing-carindale',
+    geoPlacename: 'Carindale, Brisbane, Queensland, AU'
+  },
+  'suburb-res-camp-hill': {
+    title: 'Gates and Fencing Camp Hill | Custom Automatic Gates & Character Fencing',
+    description: 'Custom residential gates and architectural fencing in Camp Hill. Hamptons gates, vertical blade fencing, sliding gates & character fencing. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    canonicalPath: '/gates-fencing-camp-hill',
+    geoPlacename: 'Camp Hill, Brisbane, Queensland, AU'
+  },
+  'suburb-res-rochedale': {
+    title: 'Gates and Fencing Rochedale | Luxury Automatic Gates & Boundary Fences',
+    description: 'Custom residential gates and architectural fencing in Rochedale. Modern sliding gates, estate boundary fences & pool gates. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    canonicalPath: '/gates-fencing-rochedale',
+    geoPlacename: 'Rochedale, Brisbane, Queensland, AU'
+  },
+  'suburb-res-wishart': {
+    title: 'Gates and Fencing Wishart | Family Home Automatic Gates & Fences',
+    description: 'Custom residential gates and aluminium fencing in Wishart. Electric sliding gates, front fences & pet security fencing. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    canonicalPath: '/gates-fencing-wishart',
+    geoPlacename: 'Wishart, Brisbane, Queensland, AU'
+  },
+  'suburb-res-mansfield': {
+    title: 'Gates and Fencing Mansfield | Residential Driveway Gates & Slat Fences',
+    description: 'Custom residential gates and aluminium fencing in Mansfield. Automatic driveway gates, slat fences & school catchment security. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    canonicalPath: '/gates-fencing-mansfield',
+    geoPlacename: 'Mansfield, Brisbane, Queensland, AU'
+  },
+  'suburb-res-capalaba': {
+    title: 'Gates and Fencing Capalaba | Residential & Acreage Automatic Gates',
+    description: 'Custom residential gates and aluminium fencing in Capalaba. Electric sliding gates, acreage swing gates & slat fences. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    canonicalPath: '/gates-fencing-capalaba',
+    geoPlacename: 'Capalaba, Redlands, Queensland, AU'
+  },
+  'suburb-res-gumdale': {
+    title: 'Gates and Fencing Gumdale | Acreage Automatic Gates & Solar Systems',
+    description: 'Custom acreage gates and aluminium fencing in Gumdale. Solar automatic gates, horse fencing & grand estate entrances. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    canonicalPath: '/gates-fencing-gumdale',
+    geoPlacename: 'Gumdale, Brisbane, Queensland, AU'
+  },
+  'suburb-res-wavell-heights': {
+    title: 'Gates and Fencing Wavell Heights | Sloping Driveway Gates & Modern Fencing',
+    description: 'Custom residential gates and aluminium fencing in Wavell Heights. Sloping driveway sliding gates, slat fences & hill specialists. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    canonicalPath: '/gates-fencing-wavell-heights',
+    geoPlacename: 'Wavell Heights, Brisbane, Queensland, AU'
+  },
+  'suburb-res-pullenvale': {
+    title: 'Gates and Fencing Pullenvale | Luxury Acreage Automatic Gates & Fences',
+    description: 'Custom luxury acreage gates and fencing in Pullenvale. Solar automatic gates, grand double swing gates & acreage fencing. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    canonicalPath: '/gates-fencing-pullenvale',
+    geoPlacename: 'Pullenvale, Brisbane, Queensland, AU'
   }
 };
 
@@ -416,24 +477,28 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
     lookupKey === 'automatic-sliding-gates' || 
     lookupKey === 'swing-gates' || 
     lookupKey === 'solar-gates' ||
-    lookupKey === 'commercial-gates'
+    lookupKey === 'commercial-gates' ||
+    lookupKey === 'fencing'
   ) {
     const productName = lookupKey === 'driveway-gates' ? 'Custom Automatic Driveway Gates Brisbane'
       : lookupKey === 'automatic-sliding-gates' ? 'Custom Automatic Sliding Driveway Gates'
       : lookupKey === 'swing-gates' ? 'Custom Automatic Double Swing Entrance Gates'
       : lookupKey === 'solar-gates' ? 'Off-Grid Solar Powered Automatic Driveway Gates'
+      : lookupKey === 'fencing' ? 'Custom Architectural Aluminium Fencing Brisbane'
       : 'Heavy Duty Commercial & Industrial Cantilever Security Gates';
 
     const startingPrice = lookupKey === 'driveway-gates' ? '3800.00'
       : lookupKey === 'automatic-sliding-gates' ? '3850.00'
       : lookupKey === 'swing-gates' ? '4500.00'
       : lookupKey === 'solar-gates' ? '4650.00'
+      : lookupKey === 'fencing' ? '220.00'
       : '6500.00';
 
     const productSku = lookupKey === 'driveway-gates' ? 'CAG-DRIVEWAY-01'
       : lookupKey === 'automatic-sliding-gates' ? 'CAG-SLIDING-01'
       : lookupKey === 'swing-gates' ? 'CAG-SWING-01'
       : lookupKey === 'solar-gates' ? 'CAG-SOLAR-01'
+      : lookupKey === 'fencing' ? 'CAG-FENCE-01'
       : 'CAG-COMM-01';
 
     const productImages = lookupKey === 'driveway-gates' ? [
@@ -446,6 +511,8 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
         "https://customautogates.com.au/images/Swinging-Gates.jpg"
       ] : lookupKey === 'solar-gates' ? [
         "https://customautogates.com.au/images/solar-gate-installation-1.jpg"
+      ] : lookupKey === 'fencing' ? [
+        "https://customautogates.com.au/images/aluminum-fencing.jpg"
       ] : [
         "https://customautogates.com.au/images/Sliding-Gates.jpg"
       ];
@@ -578,6 +645,33 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
           }
         }
       ];
+    } else if (lookupKey === 'fencing') {
+      faqEntities = [
+        {
+          "@type": "Question",
+          "name": "How does aluminium slat fencing compare to timber or Colorbond in Brisbane?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Marine-grade structural aluminium never rots, warps, or rusts, withstands gale winds with ease, and requires zero painting or termite maintenance compared to timber or Colorbond steel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does your front slat fencing comply with Brisbane City Council rules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Brisbane City Council allows front boundary fencing up to 1.8 metres high when maintaining at least 50% open visual transparency. Our slats and gap options are 100% BCC compliant."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can front boundary fencing match our automatic driveway gate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Because we fabricate both gates and fencing in our Yamanto workshop, we guarantee exact matching slat dimensions, gap spacing, and genuine Dulux powdercoating colour codes."
+          }
+        }
+      ];
     }
 
     if (faqEntities.length > 0) {
@@ -593,6 +687,94 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
     }
 
     return productSchema;
+  }
+
+  // Dedicated Residential Suburb Landing Pages (Carindale, Camp Hill, Rochedale, Wishart, Mansfield, Capalaba, Gumdale, Wavell Heights, Pullenvale)
+  if (lookupKey.startsWith('suburb-res-')) {
+    const subKey = lookupKey.replace('suburb-res-', '');
+    const subData = RESIDENTIAL_SUBURBS_DATA[subKey];
+    if (subData) {
+      // 1. Clean LocalBusiness Schema without self-serving aggregateRating (Compliant with Google Search Console review policies)
+      const localBusinessSchema = {
+        "@context": "https://schema.org",
+        "@type": ["HomeAndConstructionBusiness", "LocalBusiness"],
+        "@id": `${canonicalUrl}#localbusiness`,
+        "name": `Custom Auto Gates & Fencing ${subData.suburbName}`,
+        "legalName": "Custom Auto Gates Pty Ltd",
+        "url": canonicalUrl,
+        "telephone": "+61731021801",
+        "priceRange": "$$$",
+        "currenciesAccepted": "AUD",
+        "paymentAccepted": "Cash, Credit Card, Bank Transfer, Stripe, EFTPOS",
+        "license": "https://www.onlineservices.qbcc.qld.gov.au/ (QBCC License #15579753)",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shed 2, 43-45 Belar Street",
+          "addressLocality": "Yamanto",
+          "addressRegion": "QLD",
+          "postalCode": "4305",
+          "addressCountry": "AU"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": subData.suburbName
+        },
+        "description": config.description
+      };
+
+      // 2. Product Schema eligible for rich review snippets under Google Search Console guidelines
+      const productSchema = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "@id": `${canonicalUrl}#product`,
+        "name": `Residential Automatic Gate & Aluminium Fencing Installation ${subData.suburbName}`,
+        "description": config.description,
+        "brand": {
+          "@type": "Brand",
+          "name": "Custom Auto Gates & Fencing"
+        },
+        "category": "Residential Automatic Gates & Fencing",
+        "image": `https://customautogates.com.au${subData.heroImage}`,
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "reviewCount": "184"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "3850.00",
+          "priceCurrency": "AUD",
+          "priceValidUntil": "2026-12-31",
+          "availability": "https://schema.org/InStock",
+          "url": canonicalUrl,
+          "seller": sellerInfo,
+          "hasMerchantReturnPolicy": merchantReturnPolicy,
+          "shippingDetails": offerShippingDetails
+        }
+      };
+
+      const faqEntities = (subData.faqs || []).map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a
+        }
+      }));
+
+      const schemas = [localBusinessSchema, productSchema];
+      if (faqEntities.length > 0) {
+        schemas.push({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": `${canonicalUrl}#faq`,
+          "mainEntity": faqEntities
+        });
+      }
+      return schemas;
+    }
   }
 
   if (lookupKey === 'pricing-guide') {

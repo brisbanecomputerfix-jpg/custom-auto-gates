@@ -135,8 +135,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
           address: fullAddress,
           serviceType: serviceRequirement === 'repair' ? 'Urgent Repair Call Out' : serviceRequirement === 'routine-service' ? 'Routine Preventative Service' : 'Warranty Diagnostic'
         });
-        setFormSubmitted(true);
-        trackServiceBooking({
+        await trackServiceBooking({
           receiptNumber: receiptId,
           amount: basePrice,
           gst: gstAmount,
@@ -144,10 +143,9 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
           name: formData.fullName,
           email: formData.email,
           phone: formData.phone,
-          address: fullAddress,
-          suburb: formData.suburb,
-          postcode: formData.postcode
+          address: fullAddress
         });
+        setFormSubmitted(true);
         setIsProcessingPayment(false);
         return;
       }
@@ -216,8 +214,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
         address: fullAddress,
         serviceType: serviceRequirement === 'repair' ? 'Urgent Repair Call Out' : serviceRequirement === 'routine-service' ? 'Routine Preventative Service' : 'Warranty Diagnostic'
       });
-      setFormSubmitted(true);
-      trackServiceBooking({
+      await trackServiceBooking({
         receiptNumber: receiptId,
         amount: basePrice,
         gst: gstAmount,
@@ -225,10 +222,9 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
         name: formData.fullName,
         email: formData.email,
         phone: formData.phone,
-        address: fullAddress,
-        suburb: formData.suburb,
-        postcode: formData.postcode
+        address: fullAddress
       });
+      setFormSubmitted(true);
     }
   };
 

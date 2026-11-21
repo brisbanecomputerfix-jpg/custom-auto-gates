@@ -112,8 +112,8 @@ server.listen(0, '127.0.0.1', async () => {
       `got status ${t8.statusCode}, location ${t8.headers.location}`);
 
     const t9 = await testReq('Redirect /gallery-and-design/fencing/', '/gallery-and-design/fencing/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('3e. /gallery-and-design/fencing/ -> 301 to /#fencing', 
-      t9.statusCode === 301 && t9.headers.location === '/#fencing',
+    assert('3e. /gallery-and-design/fencing/ -> 301 to /fencing', 
+      t9.statusCode === 301 && t9.headers.location === '/fencing',
       `got status ${t9.statusCode}, location ${t9.headers.location}`);
 
     const tQuote = await testReq('Redirect /instant-online-quote/', '/instant-online-quote/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
@@ -189,6 +189,37 @@ server.listen(0, '127.0.0.1', async () => {
     assert('5i. /quote-confirmation returns 200 with confirmation message & phone pill',
       tQuoteConfirm.statusCode === 200 && tQuoteConfirm.body.includes('Quote Request Received') && tQuoteConfirm.body.includes('(07) 3102 1801'),
       'missing quote-confirmation page content');
+
+    // 6. Dedicated Fencing & 9 Residential Suburbs
+    const tFencing = await testReq('/fencing Initial HTML', '/fencing', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('6a. /fencing returns 200 with pre-rendered H1 & canonical',
+      tFencing.statusCode === 200 && tFencing.body.includes('Architectural Fencing Brisbane') && tFencing.body.includes('canonical" href="https://customautogates.com.au/fencing"'),
+      'missing fencing page content');
+
+    const tSecFencing = await testReq('/security-fencing 301', '/security-fencing', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+    assert('6b. /security-fencing 301 redirects to /fencing',
+      tSecFencing.statusCode === 301 && tSecFencing.headers.location === '/fencing',
+      `got status ${tSecFencing.statusCode}, location ${tSecFencing.headers.location}`);
+
+    const resSuburbs = [
+      ['carindale', 'Gates and Fencing Carindale | Custom Auto Gates', 'Carindale'],
+      ['camp-hill', 'Gates and Fencing Camp Hill | Custom Auto Gates', 'Camp Hill'],
+      ['rochedale', 'Gates and Fencing Rochedale | Custom Auto Gates', 'Rochedale'],
+      ['wishart', 'Gates and Fencing Wishart | Custom Auto Gates', 'Wishart'],
+      ['mansfield', 'Gates and Fencing Mansfield | Custom Auto Gates', 'Mansfield'],
+      ['capalaba', 'Gates and Fencing Capalaba | Custom Auto Gates', 'Capalaba'],
+      ['gumdale', 'Gates and Fencing Gumdale | Custom Auto Gates', 'Gumdale'],
+      ['wavell-heights', 'Gates and Fencing Wavell Heights | Custom Auto Gates', 'Wavell Heights'],
+      ['pullenvale', 'Gates and Fencing Pullenvale | Custom Auto Gates', 'Pullenvale']
+    ];
+
+    for (let i = 0; i < resSuburbs.length; i++) {
+      const [slug, h1, name] = resSuburbs[i];
+      const tSub = await testReq(`/gates-fencing-${slug}`, `/gates-fencing-${slug}`, { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
+      assert(`6c.${i+1} /gates-fencing-${slug} returns 200 with full HTML & schema`,
+        tSub.statusCode === 200 && tSub.body.includes(h1) && tSub.body.includes(`canonical" href="https://customautogates.com.au/gates-fencing-${slug}"`) && tSub.body.includes('LocalBusiness'),
+        `failed verification for ${slug}`);
+    }
 
     console.log(`\n=== RESULTS: ${passedCount} PASSED, ${failedCount} FAILED ===`);
   } catch (err) {

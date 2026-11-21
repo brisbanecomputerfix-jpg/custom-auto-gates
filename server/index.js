@@ -204,8 +204,12 @@ const LEGACY_301_REDIRECTS = {
   '/commercial-security-gates/': '/commercial-gates',
   '/trade': '/commercial-gates',
   '/trade/': '/commercial-gates',
-  '/security-fencing': '/#fencing',
-  '/security-fencing/': '/#fencing',
+  '/security-fencing': '/fencing',
+  '/security-fencing/': '/fencing',
+  '/fencing/aluminium-fencing': '/fencing',
+  '/fencing/aluminium-fencing/': '/fencing',
+  '/gallery-and-design/fencing': '/fencing',
+  '/gallery-and-design/fencing/': '/fencing',
 
   // Gate Repairs & Service Silos
   '/gate-repairs': '/service',
@@ -232,18 +236,13 @@ const LEGACY_301_REDIRECTS = {
   '/gate-automation/nice-swing-gate-automation/': '/service',
 
   // Fencing
-  '/gallery-and-design/fencing': '/#fencing',
-  '/gallery-and-design/fencing/': '/#fencing',
-  '/fencing': '/#fencing',
-  '/fencing/': '/#fencing',
-  '/fencing/colorbond-fencing': '/#fencing',
-  '/fencing/colorbond-fencing/': '/#fencing',
-  '/fencing/aluminium-fencing': '/#fencing',
-  '/fencing/aluminium-fencing/': '/#fencing',
-  '/fencing/timber-fencing': '/#fencing',
-  '/fencing/timber-fencing/': '/#fencing',
-  '/balustrade': '/#fencing',
-  '/balustrade/': '/#fencing',
+  '/fencing/': '/fencing',
+  '/fencing/colorbond-fencing': '/fencing',
+  '/fencing/colorbond-fencing/': '/fencing',
+  '/fencing/timber-fencing': '/fencing',
+  '/fencing/timber-fencing/': '/fencing',
+  '/balustrade': '/fencing',
+  '/balustrade/': '/fencing',
 
   // Legacy Bookings / Contact
   '/book-an-appointment': '/contact-us',
@@ -914,7 +913,17 @@ const PAGE_METADATA = {
   '/privacy-policy': { ...PAGE_SEO_CONFIGS['privacy-policy'], canonical: 'https://customautogates.com.au/privacy-policy', key: 'privacy-policy' },
   '/privacy': { ...PAGE_SEO_CONFIGS['privacy-policy'], canonical: 'https://customautogates.com.au/privacy-policy', key: 'privacy-policy' },
   '/quote-confirmation': { ...PAGE_SEO_CONFIGS['quote-confirmation'], canonical: 'https://customautogates.com.au/quote-confirmation', key: 'quote-confirmation' },
-  '/gates/gallery-gates': { ...PAGE_SEO_CONFIGS.home, canonical: 'https://customautogates.com.au', key: 'home' }
+  '/gates/gallery-gates': { ...PAGE_SEO_CONFIGS.home, canonical: 'https://customautogates.com.au', key: 'home' },
+  '/fencing': { ...PAGE_SEO_CONFIGS['fencing'], canonical: 'https://customautogates.com.au/fencing', key: 'fencing' },
+  '/gates-fencing-carindale': { ...PAGE_SEO_CONFIGS['suburb-res-carindale'], canonical: 'https://customautogates.com.au/gates-fencing-carindale', key: 'suburb-res-carindale' },
+  '/gates-fencing-camp-hill': { ...PAGE_SEO_CONFIGS['suburb-res-camp-hill'], canonical: 'https://customautogates.com.au/gates-fencing-camp-hill', key: 'suburb-res-camp-hill' },
+  '/gates-fencing-rochedale': { ...PAGE_SEO_CONFIGS['suburb-res-rochedale'], canonical: 'https://customautogates.com.au/gates-fencing-rochedale', key: 'suburb-res-rochedale' },
+  '/gates-fencing-wishart': { ...PAGE_SEO_CONFIGS['suburb-res-wishart'], canonical: 'https://customautogates.com.au/gates-fencing-wishart', key: 'suburb-res-wishart' },
+  '/gates-fencing-mansfield': { ...PAGE_SEO_CONFIGS['suburb-res-mansfield'], canonical: 'https://customautogates.com.au/gates-fencing-mansfield', key: 'suburb-res-mansfield' },
+  '/gates-fencing-capalaba': { ...PAGE_SEO_CONFIGS['suburb-res-capalaba'], canonical: 'https://customautogates.com.au/gates-fencing-capalaba', key: 'suburb-res-capalaba' },
+  '/gates-fencing-gumdale': { ...PAGE_SEO_CONFIGS['suburb-res-gumdale'], canonical: 'https://customautogates.com.au/gates-fencing-gumdale', key: 'suburb-res-gumdale' },
+  '/gates-fencing-wavell-heights': { ...PAGE_SEO_CONFIGS['suburb-res-wavell-heights'], canonical: 'https://customautogates.com.au/gates-fencing-wavell-heights', key: 'suburb-res-wavell-heights' },
+  '/gates-fencing-pullenvale': { ...PAGE_SEO_CONFIGS['suburb-res-pullenvale'], canonical: 'https://customautogates.com.au/gates-fencing-pullenvale', key: 'suburb-res-pullenvale' }
 };
 
 // Branded 404 HTML Page Generator

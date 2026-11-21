@@ -2,13 +2,8 @@
  * High-Performance Server-Side Pre-Renderer for Custom Auto Gates & Fencing
  * Injects complete, semantic, keyword-optimized HTML directly into <div id="root">
  * Ensures 100% indexability by Googlebot, Bingbot, ChatGPT, Claude, Perplexity & AI Crawlers
- * 
- * Follows the Minimalist Mobile-First architecture:
- * 1. Top of page: 1 photo, 1 headline, main gate types grid, clear "Get a Quote" and "Call (07) 3102 1801" CTAs.
- * 2. Lower on page: Semantic <details> fold-out accordions containing full specifications, pricing guide,
- *    Queensland council regulations, suburbs/service areas, and comprehensive FAQs.
- * 3. 100% of content is present in the initial HTML DOM before JavaScript execution.
  */
+import { RESIDENTIAL_SUBURBS_DATA } from '../src/data/residentialSuburbsData.js';
 
 const BASE_URL = 'https://customautogates.com.au';
 const PHONE_NUMBER = '(07) 3102 1801';
@@ -21,6 +16,7 @@ const GATE_CATEGORIES = [
   { href: '/driveway-gates', label: 'Driveway Gates', desc: 'Custom electric driveway systems' },
   { href: '/automatic-sliding-gates', label: 'Sliding Gates', desc: 'Space-saving track & cantilever' },
   { href: '/swing-gates', label: 'Swing & Bi-Fold', desc: 'Single, double & fast-folding' },
+  { href: '/fencing', label: 'Slat & Pool Fencing', desc: 'Architectural aluminium privacy screens' },
   { href: '/solar-gates', label: 'Solar Acreage', desc: '100% off-grid battery backed' },
   { href: '/commercial-gates', label: 'Commercial & Cantilever', desc: 'Heavy-duty security & boom gates' },
   { href: '/service', label: 'Repairs & Motors', desc: 'Motor replacements & diagnostics' }
@@ -227,6 +223,7 @@ function renderFooter() {
             <li><a href="/driveway-gates" style="color:#cbd5e1;text-decoration:none;">Automatic Driveway Gates</a></li>
             <li><a href="/automatic-sliding-gates" style="color:#cbd5e1;text-decoration:none;">Sliding Gates</a></li>
             <li><a href="/swing-gates" style="color:#cbd5e1;text-decoration:none;">Swing & Bi-Fold Gates</a></li>
+            <li><a href="/fencing" style="color:#cbd5e1;text-decoration:none;">Slat & Pool Fencing</a></li>
             <li><a href="/solar-gates" style="color:#cbd5e1;text-decoration:none;">Solar Acreage Gates</a></li>
             <li><a href="/commercial-gates" style="color:#cbd5e1;text-decoration:none;">Commercial Cantilever Gates</a></li>
             <li><a href="/service" style="color:#cbd5e1;text-decoration:none;">Gate Repairs & Motor Service</a></li>
@@ -241,6 +238,20 @@ function renderFooter() {
             <li><a href="/gates-gold-coast" style="color:#cbd5e1;text-decoration:none;">Gold Coast Automatic Gates</a></li>
             <li><a href="/pricing-guide" style="color:#cbd5e1;text-decoration:none;">2026 Pricing Guide</a></li>
             <li><a href="/council-guide" style="color:#cbd5e1;text-decoration:none;">QLD Council & Pool Rules</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color:#ffffff;font-size:1rem;font-weight:800;margin-bottom:0.75rem;font-family:Outfit,sans-serif;">Residential Suburbs</h4>
+          <ul style="list-style:none;padding:0;margin:0;line-height:1.9;">
+            <li><a href="/gates-fencing-carindale" style="color:#cbd5e1;text-decoration:none;">Carindale Gates &amp; Fencing</a></li>
+            <li><a href="/gates-fencing-camp-hill" style="color:#cbd5e1;text-decoration:none;">Camp Hill Gates &amp; Fencing</a></li>
+            <li><a href="/gates-fencing-rochedale" style="color:#cbd5e1;text-decoration:none;">Rochedale Gates &amp; Fencing</a></li>
+            <li><a href="/gates-fencing-wishart" style="color:#cbd5e1;text-decoration:none;">Wishart Gates &amp; Fencing</a></li>
+            <li><a href="/gates-fencing-mansfield" style="color:#cbd5e1;text-decoration:none;">Mansfield Gates &amp; Fencing</a></li>
+            <li><a href="/gates-fencing-capalaba" style="color:#cbd5e1;text-decoration:none;">Capalaba Gates &amp; Fencing</a></li>
+            <li><a href="/gates-fencing-gumdale" style="color:#cbd5e1;text-decoration:none;">Gumdale Gates &amp; Fencing</a></li>
+            <li><a href="/gates-fencing-wavell-heights" style="color:#cbd5e1;text-decoration:none;">Wavell Heights Gates &amp; Fencing</a></li>
+            <li><a href="/gates-fencing-pullenvale" style="color:#cbd5e1;text-decoration:none;">Pullenvale Gates &amp; Fencing</a></li>
           </ul>
         </div>
       </div>
@@ -284,6 +295,176 @@ export function renderRouteHtml(path) {
     { name: 'Browns Plains', postcode: '4118' }, { name: 'Greenbank', postcode: '4124' }, { name: 'Hope Island', postcode: '4212' },
     { name: 'Southport', postcode: '4215' }, { name: 'Coomera', postcode: '4209' }, { name: 'Surfers Paradise', postcode: '4217' }
   ];
+
+  // =========================================================================
+  // ROUTE 0: ARCHITECTURAL FENCING (/fencing)
+  // =========================================================================
+  if (cleanPath === '/fencing') {
+    const h1 = 'Architectural Fencing Brisbane | Aluminium Slat & Boundary Fences';
+    const subtitle = 'Custom designed and manufactured architectural aluminium boundary fencing, privacy slat screens, pool safety fencing, and matching pedestrian gates. Engineered for Brisbane, Ipswich, and Gold Coast homes with a 10-year structural warranty.';
+    const heroImage = '/images/aluminum-fencing.jpg';
+    const galleryImages = [
+      { src: '/images/aluminum-fencing.jpg', alt: 'Architectural aluminium horizontal slat fencing Brisbane' },
+      { src: '/images/gallery/imgur-01-KvcLWwl.jpeg', alt: 'Modern boundary fence with integrated pedestrian gate' },
+      { src: '/images/gallery/imgur-06-ic4DkjV.jpeg', alt: 'Black powdercoated privacy slat boundary fence' },
+      { src: '/images/gallery/imgur-10-HBAhNBc.jpeg', alt: 'Vertical blade architectural screen fencing' }
+    ];
+    const specs = [
+      { label: 'Aluminium Material', value: 'Marine-grade 6060-T6 architectural structural alloy (100% rust-proof & non-combustible)' },
+      { label: 'Slat Profiles', value: '65mm x 16mm or 90mm x 16mm extruded aluminium slats with reinforced internal ribs' },
+      { label: 'Spacing & Gaps', value: '10mm, 20mm, 40mm, or solid tongue-and-groove louvres (custom spacing available)' },
+      { label: 'Powdercoat Finish', value: 'Dulux / Interpon architectural powdercoating (Monument, Surfmist, Black, Basalt) or DecoWood timber grain' },
+      { label: 'Pedestrian Hardware', value: 'D&D Technologies MagnaLatch, LokkLatch, Locinox mechanical keypads & electric release strikes' },
+      { label: 'Structural Warranty', value: '10-Year Factory Structural Warranty on all fabrication and welding' }
+    ];
+    const faqs = [
+      { q: 'How does aluminium slat fencing compare to timber or Colorbond steel in Brisbane?', a: 'Aluminium slat fencing is vastly superior in South East Queensland’s harsh climate. Timber requires annual staining, rots in summer rains, and attracts termites. Colorbond sheet fencing acts like a solid sail in storms and can rust at ground contact. Marine-grade aluminium never rots, warps, or rusts, withstands gale winds with ease, and requires zero painting maintenance for decades.' },
+      { q: 'Does your front slat fencing comply with Brisbane City Council rules?', a: 'Yes. Brisbane City Council allows front boundary fencing up to 1.8 metres high as long as it maintains at least 50% open visual transparency (or 1.2m if solid). Our 65mm slats spaced with 10mm to 20mm gaps meet BCC requirements while blocking sightlines into your living areas from the street.' },
+      { q: 'Can our front fencing match our automatic driveway gate exactly?', a: 'Yes! Because Custom Auto Gates manufactures both the automated driveway gate and the boundary fencing in our Yamanto factory, we ensure exact matching slat dimensions, gap spacing, post sections, and genuine Dulux powdercoating colour codes.' },
+      { q: 'How much does custom aluminium slat fencing cost in Brisbane?', a: 'Custom aluminium slat fencing typically ranges from $220 to $380 per linear metre fully fabricated and installed, depending on fence height, slat gap spacing, and whether concrete core-drilling or post footings are required. Buying factory-direct from our workshop eliminates middleman builder markups.' }
+    ];
+
+    return `
+      <div class="prerendered-page" style="background:#090e1a;min-height:100vh;color:#e2e8f0;font-family:Inter,system-ui,sans-serif;">
+        ${renderHeader()}
+        <main class="page-container" style="max-width:1200px;margin:0 auto;padding:2rem 1.5rem;">
+          <section class="minimal-hero" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2.5rem;align-items:center;margin-bottom:2.5rem;">
+            <div>
+              <span style="display:inline-block;padding:0.35rem 0.85rem;background:rgba(251,191,36,0.18);color:#fbbf24;border:1px solid rgba(251,191,36,0.35);border-radius:20px;font-size:0.8rem;font-weight:800;text-transform:uppercase;margin-bottom:1rem;">Factory Direct Architectural Slat Fencing</span>
+              <h1 style="font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#ffffff;line-height:1.2;margin:0 0 1rem 0;font-family:Outfit,sans-serif;">${h1}</h1>
+              <p style="font-size:1.1rem;line-height:1.6;color:#94a3b8;margin-bottom:1.75rem;">${subtitle}</p>
+              <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+                <a href="/#quote" style="display:inline-flex;align-items:center;padding:0.85rem 1.75rem;background:#fbbf24;color:#090e1a;font-weight:800;border-radius:12px;text-decoration:none;font-size:1rem;">Get Instant Online Quote</a>
+                <a href="${PHONE_TEL}" style="display:inline-flex;align-items:center;padding:0.85rem 1.75rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#ffffff;font-weight:700;border-radius:12px;text-decoration:none;font-size:1rem;">Call ${PHONE_NUMBER}</a>
+              </div>
+              <div style="display:flex;gap:1.5rem;margin-top:1.5rem;font-size:0.85rem;color:#94a3b8;flex-wrap:wrap;">
+                <span>🛡️ 10-Yr Structural Warranty</span>
+                <span>🏭 100% Rust-Proof Marine Aluminium</span>
+                <span>⭐ 4.9★ Over 180 Verified Reviews</span>
+              </div>
+            </div>
+            <div>
+              <div style="border-radius:16px;overflow:hidden;border:2px solid rgba(255,255,255,0.12);box-shadow:0 20px 40px rgba(0,0,0,0.5);">
+                <img src="${heroImage}" alt="${h1}" width="800" height="450" loading="eager" fetchpriority="high" decoding="sync" style="width:100%;height:auto;display:block;" />
+              </div>
+            </div>
+          </section>
+
+          ${renderGateCategories(cleanPath)}
+          ${renderProjectGallery(galleryImages)}
+
+          <section class="overview-section" style="margin:3rem 0;background:#111a2e;border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:2rem;">
+            <h2 style="font-size:1.5rem;font-weight:800;color:#ffffff;font-family:Outfit,sans-serif;margin-top:0;margin-bottom:1rem;">Architectural Aluminium Fencing & Privacy Screens Built for Queensland Homes</h2>
+            <p style="font-size:1rem;line-height:1.7;color:#cbd5e1;margin-bottom:1rem;">Front boundary fencing defines the street appeal, privacy, and security of your home. At Custom Auto Gates, we manufacture premium architectural aluminium slat fencing, vertical blade panels, decorative privacy screens, and pool safety fences directly from our Yamanto workshop. Unlike timber fencing that rots, warps, and attracts termites, or Colorbond steel that can rust near coastal areas, our marine-grade structural aluminium fencing never rusts or degrades.</p>
+            <p style="font-size:1rem;line-height:1.7;color:#cbd5e1;margin-bottom:1rem;">We tailor every fencing panel to your property’s exact dimensions, slopes, and architectural style. Whether you are modernising a post-war home, building a new contemporary masterpiece, or enclosing your front yard to give children and pets a safe play area, our fencing seamlessly integrates with our custom automated driveway sliding and swing gates for a cohesive, factory-matched aesthetic.</p>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2rem;">
+              <div style="background:#090e1a;padding:1.25rem;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">
+                <h3 style="font-size:1rem;font-weight:800;color:#fbbf24;margin-top:0;margin-bottom:0.4rem;">Horizontal Slat Fencing</h3>
+                <p style="font-size:0.88rem;color:#94a3b8;line-height:1.6;margin:0;">65mm or 90mm slat profiles with customizable 10mm–20mm spacing meeting BCC 50% transparency rules.</p>
+              </div>
+              <div style="background:#090e1a;padding:1.25rem;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">
+                <h3 style="font-size:1rem;font-weight:800;color:#fbbf24;margin-top:0;margin-bottom:0.4rem;">Vertical Blade & 3D Battens</h3>
+                <p style="font-size:0.88rem;color:#94a3b8;line-height:1.6;margin:0;">Contemporary aerofoil fins and box battens offering dynamic shadow lines and premium Hamptons curb appeal.</p>
+              </div>
+              <div style="background:#090e1a;padding:1.25rem;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">
+                <h3 style="font-size:1rem;font-weight:800;color:#fbbf24;margin-top:0;margin-bottom:0.4rem;">Certified Pool Safety Fencing</h3>
+                <p style="font-size:0.88rem;color:#94a3b8;line-height:1.6;margin:0;">AS1926.1 compliant safety fencing with MagnaLatch magnetic latches and hydraulic self-closing hinges.</p>
+              </div>
+              <div style="background:#090e1a;padding:1.25rem;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">
+                <h3 style="font-size:1rem;font-weight:800;color:#fbbf24;margin-top:0;margin-bottom:0.4rem;">Rendered Pier Infills & Pedestrian Gates</h3>
+                <p style="font-size:0.88rem;color:#94a3b8;line-height:1.6;margin:0;">Custom infill panels fitted between brick pillars, with integrated keyless digital keypads and intercom pillars.</p>
+              </div>
+            </div>
+          </section>
+
+          ${renderAccordions({ specs, pricing: defaultPricing, council: defaultCouncil, suburbs: seqSuburbs, faqs })}
+        </main>
+        ${renderFooter()}
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // ROUTE: RESIDENTIAL SUBURBS (/gates-fencing-carindale, etc.)
+  // =========================================================================
+  if (cleanPath.startsWith('/gates-fencing-')) {
+    const suburbSlug = cleanPath.replace('/gates-fencing-', '');
+    const data = RESIDENTIAL_SUBURBS_DATA[suburbSlug];
+    if (data) {
+      const heroImage = data.heroImage || '/images/custom-automated-sliding-gate-brisbane.jpg';
+      const galleryImages = data.galleryImages || [];
+      const specs = [
+        { label: 'Aluminium Alloy', value: 'Marine-Grade 6060-T6 Architectural Structural Alloy (Rust-Proof)' },
+        { label: 'Slat Dimensions', value: '65mm x 16mm or 90mm x 16mm with 10mm–20mm compliant spacing' },
+        { label: 'Automation Motors', value: 'Centurion D5 Smart, Nice Robus, Italian linear actuators with dual battery backup' },
+        { label: 'Finishes', value: 'Dulux Architectural Powdercoat (Monument, Surfmist, Black) & DecoWood' },
+        { label: 'Local Council', value: data.council },
+        { label: 'Warranty', value: '10-Year Factory Structural Warranty' }
+      ];
+
+      return `
+        <div class="prerendered-page" style="background:#090e1a;min-height:100vh;color:#e2e8f0;font-family:Inter,system-ui,sans-serif;">
+          ${renderHeader()}
+          <main class="page-container" style="max-width:1200px;margin:0 auto;padding:2rem 1.5rem;">
+            <nav aria-label="Breadcrumb" style="font-size:0.85rem;color:#94a3b8;margin-bottom:1.5rem;">
+              <a href="/" style="color:#94a3b8;text-decoration:none;">Home</a> &gt; 
+              <a href="/gates-brisbane" style="color:#94a3b8;text-decoration:none;">Brisbane</a> &gt; 
+              <span style="color:#fbbf24;font-weight:700;">${data.suburbName}</span>
+            </nav>
+
+            <section class="minimal-hero" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2.5rem;align-items:center;margin-bottom:2.5rem;">
+              <div>
+                <span style="display:inline-block;padding:0.35rem 0.85rem;background:rgba(251,191,36,0.18);color:#fbbf24;border:1px solid rgba(251,191,36,0.35);border-radius:20px;font-size:0.8rem;font-weight:800;text-transform:uppercase;margin-bottom:1rem;">${data.badge}</span>
+                <h1 style="font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#ffffff;line-height:1.2;margin:0 0 1rem 0;font-family:Outfit,sans-serif;">${data.h1}</h1>
+                <p style="font-size:1.1rem;line-height:1.6;color:#94a3b8;margin-bottom:1.75rem;">${data.subtitle}</p>
+                <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+                  <a href="/#quote" style="display:inline-flex;align-items:center;padding:0.85rem 1.75rem;background:#fbbf24;color:#090e1a;font-weight:800;border-radius:12px;text-decoration:none;font-size:1rem;">Get Instant Online Quote</a>
+                  <a href="${PHONE_TEL}" style="display:inline-flex;align-items:center;padding:0.85rem 1.75rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#ffffff;font-weight:700;border-radius:12px;text-decoration:none;font-size:1rem;">Call ${PHONE_NUMBER}</a>
+                </div>
+                <div style="display:flex;gap:1.5rem;margin-top:1.5rem;font-size:0.85rem;color:#94a3b8;flex-wrap:wrap;">
+                  <span>🛡️ 10-Yr Structural Warranty</span>
+                  <span>🏭 Yamanto Workshop Direct</span>
+                  <span>⭐ 4.9★ Over 180 Verified Reviews</span>
+                </div>
+              </div>
+              <div>
+                <div style="border-radius:16px;overflow:hidden;border:2px solid rgba(255,255,255,0.12);box-shadow:0 20px 40px rgba(0,0,0,0.5);">
+                  <img src="${heroImage}" alt="${data.h1}" width="800" height="450" loading="eager" fetchpriority="high" decoding="sync" style="width:100%;height:auto;display:block;" />
+                </div>
+              </div>
+            </section>
+
+            ${renderGateCategories(cleanPath)}
+            ${renderProjectGallery(galleryImages)}
+
+            <section class="overview-section" style="margin:3rem 0;background:#111a2e;border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:2rem;">
+              <h2 style="font-size:1.5rem;font-weight:800;color:#ffffff;font-family:Outfit,sans-serif;margin-top:0;margin-bottom:1rem;">${data.overviewHeading}</h2>
+              ${data.overviewParagraphs.map(p => `<p style="font-size:1rem;line-height:1.7;color:#cbd5e1;margin-bottom:1rem;">${p}</p>`).join('')}
+              
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2rem;">
+                ${data.popularSolutions.map(sol => `
+                  <div style="background:#090e1a;padding:1.25rem;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">
+                    <h3 style="font-size:1rem;font-weight:800;color:#fbbf24;margin-top:0;margin-bottom:0.4rem;">${sol.title}</h3>
+                    <p style="font-size:0.88rem;color:#94a3b8;line-height:1.6;margin:0;">${sol.description}</p>
+                  </div>
+                `).join('')}
+              </div>
+            </section>
+
+            ${renderAccordions({
+              specs,
+              pricing: defaultPricing,
+              council: `<p><strong>${data.council} Fencing Regulations for ${data.suburbName}:</strong></p><p>${data.councilRules}</p>`,
+              suburbs: (data.localStreets || []).map(st => ({ name: st, postcode: data.postcode })),
+              faqs: data.faqs
+            })}
+          </main>
+          ${renderFooter()}
+        </div>
+      `;
+    }
+  }
 
   // =========================================================================
   // ROUTE 1: DRIVEWAY GATES (/driveway-gates)

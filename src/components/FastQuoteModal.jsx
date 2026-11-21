@@ -139,8 +139,8 @@ export default function FastQuoteModal({ isOpen, onClose, defaultGateStyle = 'sl
         });
       }
 
+      await trackFormLead(email, phone, 'fast_quote');
       setIsSubmitted(true);
-      trackFormLead(email, phone, 'fast_quote');
       try {
         window.history.pushState({}, '', '/quote-confirmation');
       } catch (e) {}
