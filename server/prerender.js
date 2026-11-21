@@ -777,7 +777,8 @@ export function renderRouteHtml(path) {
   // =========================================================================
   const homeH1 = 'Automatic & Electric Gates Brisbane | Custom Driveway Gates Yamanto Factory Direct';
   const homeSubtitle = 'Buy factory direct and save $1,200+ on premium custom electric driveway, sliding, and swing gates in Yamanto. 10-Year structural warranty, QBCC licensed (#15579753), Australian aluminium, Centurion & Nice smart motors.';
-  const homeHeroImage = '/images/Sliding-Gates.jpg';
+  const homeHeroImage = '/images/hero-monument-sliding.webp';
+  const homeHeroImageMobile = '/images/hero-monument-sliding-mobile.webp';
   const homeGallery = [
     { src: '/images/Sliding-Gates.jpg', alt: 'Automatic sliding driveway gate Brisbane' },
     { src: '/images/Swinging-Gates.jpg', alt: 'Grand double swing electric gate' },
@@ -818,7 +819,10 @@ export function renderRouteHtml(path) {
           </div>
           <div>
             <div style="border-radius:16px;overflow:hidden;border:2px solid rgba(255,255,255,0.12);box-shadow:0 20px 40px rgba(0,0,0,0.5);">
-              <img src="${homeHeroImage}" alt="${homeH1}" width="800" height="450" loading="eager" style="width:100%;height:auto;display:block;" />
+              <picture>
+                <source media="(max-width: 768px)" srcset="${homeHeroImageMobile}" type="image/webp" />
+                <img src="${homeHeroImage}" alt="${homeH1}" width="800" height="450" loading="eager" fetchpriority="high" decoding="sync" style="width:100%;height:auto;display:block;" />
+              </picture>
             </div>
           </div>
         </section>

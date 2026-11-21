@@ -25,11 +25,11 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
   const [activeSlide, setActiveSlide] = useState(0);
 
   const BACKGROUND_SLIDES = [
-    { url: '/images/hero-monument-sliding.webp', title: 'Automated Monument Slat Sliding Gate', loc: 'Brisbane' },
-    { url: '/images/hero-swing-gates.webp', title: 'Custom Architectural Double Swing Gate', loc: 'Yamanto' },
-    { url: '/images/hero-decowood-slat.webp', title: 'DecoWood Timber & Aluminium Security Gate', loc: 'Brookfield' },
-    { url: '/images/hero-solar-entry.webp', title: 'Solar Automated Entry Gate System', loc: 'Redland Bay' },
-    { url: '/images/hero-factory-slat.webp', title: 'Factory Direct Slat & Pedestrian System', loc: 'Workshop Direct' }
+    { url: '/images/hero-monument-sliding.webp', mobileUrl: '/images/hero-monument-sliding-mobile.webp', title: 'Automated Monument Slat Sliding Gate', loc: 'Brisbane' },
+    { url: '/images/hero-swing-gates.webp', mobileUrl: '/images/hero-swing-gates-mobile.webp', title: 'Custom Architectural Double Swing Gate', loc: 'Yamanto' },
+    { url: '/images/hero-decowood-slat.webp', mobileUrl: '/images/hero-decowood-slat-mobile.webp', title: 'DecoWood Timber & Aluminium Security Gate', loc: 'Brookfield' },
+    { url: '/images/hero-solar-entry.webp', mobileUrl: '/images/hero-solar-entry-mobile.webp', title: 'Solar Automated Entry Gate System', loc: 'Redland Bay' },
+    { url: '/images/hero-factory-slat.webp', mobileUrl: '/images/hero-factory-slat-mobile.webp', title: 'Factory Direct Slat & Pedestrian System', loc: 'Workshop Direct' }
   ];
 
   // Rotate background showcase images smoothly
@@ -71,31 +71,33 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
           pointerEvents: 'none'
         }}
       >
-        {/* Animated High-Definition Photo Showcase with LCP High Priority */}
+        {/* Animated High-Definition Photo Showcase with Responsive Picture & LCP High Priority */}
         {BACKGROUND_SLIDES.map((slide, idx) => (
-          <img
-            key={slide.url}
-            src={slide.url}
-            alt={slide.title}
-            width="1920"
-            height="1080"
-            fetchPriority={idx === 0 ? "high" : "low"}
-            loading={idx === 0 ? "eager" : "lazy"}
-            decoding={idx === 0 ? "sync" : "async"}
-            style={{
-              position: 'absolute',
-              inset: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center',
-              opacity: activeSlide === idx ? 0.92 : 0,
-              transform: activeSlide === idx ? 'scale(1.08) translate(-1%, -1%)' : 'scale(1.0)',
-              transition: 'opacity 1.6s ease-in-out, transform 6s ease-out',
-              filter: 'brightness(0.98) contrast(1.08)',
-              pointerEvents: 'none'
-            }}
-          />
+          <picture key={slide.url}>
+            <source media="(max-width: 768px)" srcSet={slide.mobileUrl} type="image/webp" />
+            <img
+              src={slide.url}
+              alt={slide.title}
+              width="1920"
+              height="1080"
+              fetchPriority={idx === 0 ? "high" : "low"}
+              loading={idx === 0 ? "eager" : "lazy"}
+              decoding={idx === 0 ? "sync" : "async"}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                opacity: activeSlide === idx ? 0.92 : 0,
+                transform: activeSlide === idx ? 'scale(1.08) translate(-1%, -1%)' : 'scale(1.0)',
+                transition: 'opacity 1.6s ease-in-out, transform 6s ease-out',
+                filter: 'brightness(0.98) contrast(1.08)',
+                pointerEvents: 'none'
+              }}
+            />
+          </picture>
         ))}
 
         {/* Clean Translucent Gradient Overlays - Feathered for Crisp Text Readability & Max Video Visibility */}

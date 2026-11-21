@@ -319,6 +319,8 @@ export default function Navbar({
             <img 
               src={theme === 'light' ? '/images/custom-auto-gates-logo-horizontal-light.png' : '/images/custom-auto-gates-logo-horizontal-dark.png'} 
               alt="Custom Auto Gates & Fencing" 
+              width="240"
+              height="48"
               style={{
                 height: 'clamp(38px, 5.2vw, 48px)',
                 width: 'auto',
@@ -666,6 +668,8 @@ export default function Navbar({
                 <img 
                   src={theme === 'light' ? '/images/custom-auto-gates-logo-horizontal-light.png' : '/images/custom-auto-gates-logo-horizontal-dark.png'} 
                   alt="Custom Auto Gates" 
+                  width="240"
+                  height="48"
                   style={{ 
                     height: 'clamp(32px, 5vw, 40px)', 
                     width: 'auto', 

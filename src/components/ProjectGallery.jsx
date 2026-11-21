@@ -137,7 +137,7 @@ export default function ProjectGallery({ onOpenQuoteWithProject }) {
                     fontWeight: '700',
                     fontSize: '0.82rem',
                     background: isActive ? 'var(--accent-gold)' : 'var(--bg-card)',
-                    color: isActive ? '#090e1a' : 'var(--text-muted)',
+                    color: isActive ? '#090e1a' : 'var(--text-primary)',
                     border: isActive ? '1.5px solid var(--accent-gold)' : '1px solid var(--border-light)',
                     boxShadow: isActive ? 'var(--shadow-md)' : 'var(--shadow-xs)',
                     transition: 'all 0.2s ease',

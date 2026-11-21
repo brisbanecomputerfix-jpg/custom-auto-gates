@@ -57,6 +57,8 @@ export default function Footer({ onOpenQuote, onOpenContact, onSelectCategory, o
                 src="/images/custom-auto-gates-footer-logo.png" 
                 srcSet="/images/custom-auto-gates-footer-logo.png 1x, /images/custom-auto-gates-footer-logo@2x.png 2x"
                 alt="Custom Auto Gates & Fencing" 
+                width="260"
+                height="56"
                 style={{ 
                   height: 'clamp(44px, 5.5vw, 56px)', 
                   width: 'auto', 
