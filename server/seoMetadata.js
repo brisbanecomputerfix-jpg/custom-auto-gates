@@ -2,7 +2,7 @@
  * SEO Metadata & Structured Data Generator for Custom Auto Gates & Fencing
  * Self-contained in server/ to guarantee availability in production Docker containers.
  */
-import { RESIDENTIAL_SUBURBS_DATA } from '../src/data/residentialSuburbsData.js';
+import { RESIDENTIAL_SUBURBS_DATA } from './residentialSuburbsData.js';
 
 export const BASE_URL = 'https://customautogates.com.au';
 

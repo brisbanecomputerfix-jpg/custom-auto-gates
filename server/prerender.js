@@ -3,7 +3,7 @@
  * Injects complete, semantic, keyword-optimized HTML directly into <div id="root">
  * Ensures 100% indexability by Googlebot, Bingbot, ChatGPT, Claude, Perplexity & AI Crawlers
  */
-import { RESIDENTIAL_SUBURBS_DATA } from '../src/data/residentialSuburbsData.js';
+import { RESIDENTIAL_SUBURBS_DATA } from './residentialSuburbsData.js';
 
 const BASE_URL = 'https://customautogates.com.au';
 const PHONE_NUMBER = '(07) 3102 1801';

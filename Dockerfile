@@ -39,6 +39,7 @@ COPY --from=builder /app/dist ./dist
 # Copy backend server code
 COPY server ./server
 COPY src/utils ./src/utils
+COPY src/data ./src/data
 
 # Expose standard Node container port
 EXPOSE 3000
