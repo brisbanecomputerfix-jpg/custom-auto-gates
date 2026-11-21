@@ -228,13 +228,6 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
         "addressCountry": "AU"
       },
       "areaServed": suburbsList.map(s => ({ "@type": "City", "name": s })),
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "184",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
       "description": config.description,
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -353,13 +346,6 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
         "serviceType": "Emergency Gate Motor Repair and Maintenance",
         "provider": sellerInfo,
         "areaServed": ["Brisbane", "Ipswich", "Logan", "Gold Coast"],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "184",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
         "description": config.description,
         "url": canonicalUrl,
         "hasOfferCatalog": {
