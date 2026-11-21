@@ -80,9 +80,9 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
         {/* Animated High-Definition Photo Showcase with Responsive Picture & LCP High Priority */}
         {BACKGROUND_SLIDES.map((slide, idx) => (
           <picture key={slide.url}>
-            <source media="(max-width: 768px)" srcSet={slide.mobileUrl} type="image/webp" />
+            <source media="(min-width: 769px)" srcSet={slide.url} type="image/webp" />
             <img
-              src={slide.url}
+              src={slide.mobileUrl}
               alt={slide.title}
               width="1920"
               height="1080"

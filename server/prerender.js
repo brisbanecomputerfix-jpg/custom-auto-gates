@@ -820,8 +820,8 @@ export function renderRouteHtml(path) {
           <div>
             <div style="border-radius:16px;overflow:hidden;border:2px solid rgba(255,255,255,0.12);box-shadow:0 20px 40px rgba(0,0,0,0.5);">
               <picture>
-                <source media="(max-width: 768px)" srcset="${homeHeroImageMobile}" type="image/webp" />
-                <img src="${homeHeroImage}" alt="${homeH1}" width="800" height="450" loading="eager" fetchpriority="high" decoding="sync" style="width:100%;height:auto;display:block;" />
+                <source media="(min-width: 769px)" srcset="${homeHeroImage}" type="image/webp" />
+                <img src="${homeHeroImageMobile}" alt="${homeH1}" width="800" height="450" loading="eager" fetchpriority="high" decoding="sync" style="width:100%;height:auto;display:block;" />
               </picture>
             </div>
           </div>
