@@ -34,10 +34,16 @@ export default function Hero({ onOpenQuote, onOpenContact, onExploreVisualizer, 
 
   // Rotate background showcase images smoothly
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % BACKGROUND_SLIDES.length);
-    }, 5000);
-    return () => clearInterval(interval);
+    let interval;
+    const timeout = setTimeout(() => {
+      interval = setInterval(() => {
+        setActiveSlide((prev) => (prev + 1) % BACKGROUND_SLIDES.length);
+      }, 7000);
+    }, 9000);
+    return () => {
+      clearTimeout(timeout);
+      if (interval) clearInterval(interval);
+    };
   }, []);
 
   const GATE_STYLES_PREVIEW = [

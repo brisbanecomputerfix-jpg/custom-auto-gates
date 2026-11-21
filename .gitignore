@@ -38,3 +38,6 @@ public/uploads/*
 
 # IDE & Agent scratch
 .agents/
+lighthouse*.json
+*_audit.py
+inspect_*.py

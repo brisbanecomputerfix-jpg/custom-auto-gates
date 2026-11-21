@@ -21,7 +21,6 @@ export default function QuickActionBar({ onOpenQuote, onOpenTroubleshoot }) {
             fontWeight: '700',
             lineHeight: 1.15
           }}
-          aria-label="Call Workshop (07) 3102 1801"
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
             <Phone size={15} />
@@ -45,7 +44,6 @@ export default function QuickActionBar({ onOpenQuote, onOpenTroubleshoot }) {
             fontWeight: '800',
             lineHeight: 1.15
           }}
-          aria-label="Instant Estimate Factory Direct Pricing"
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
             <Calculator size={15} />

@@ -48,21 +48,42 @@
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-    <!-- Google Tag (gtag.js) for Google Ads & GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-991707394"></script>
+    <!-- Google Tag (gtag.js) for Google Ads & GA4 - Non-blocking high performance loader -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'AW-991707394', { allow_enhanced_conversions: true });
-      gtag('config', 'G-X3D8100CMF');
+      gtag('config', 'AW-991707394', { allow_enhanced_conversions: true, cookie_flags: 'SameSite=None;Secure' });
+      gtag('config', 'G-X3D8100CMF', { cookie_flags: 'SameSite=None;Secure' });
+
+      function loadGtagScript() {
+        if (window._gtagLoaded) return;
+        window._gtagLoaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-991707394';
+        document.head.appendChild(s);
+      }
+
+      // Load after initial render or immediately on any user interaction
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() { setTimeout(loadGtagScript, 2000); });
+      } else {
+        window.addEventListener('load', function() { setTimeout(loadGtagScript, 2000); });
+      }
+      ['scroll', 'keydown', 'touchstart', 'click'].forEach(function(ev) {
+        window.addEventListener(ev, loadGtagScript, { once: true, passive: true });
+      });
 
       // Global Phone Click Conversion Listener for tel: links
       document.addEventListener('click', function (e) {
         var a = e.target.closest && e.target.closest('a[href^="tel:"]');
-        if (a && window.gtag) {
-          gtag('event', 'conversion', { send_to: 'AW-991707394/TvEuCPuLs7odEIKC8dgD' });
-          gtag('event', 'phone_click');
+        if (a) {
+          loadGtagScript();
+          if (window.gtag) {
+            gtag('event', 'conversion', { send_to: 'AW-991707394/TvEuCPuLs7odEIKC8dgD' });
+            gtag('event', 'phone_click');
+          }
         }
       });
     </script>
