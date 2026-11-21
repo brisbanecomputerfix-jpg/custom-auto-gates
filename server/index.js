@@ -17,6 +17,17 @@ import {
 import { generateQuotePdf, generateBookingReceiptPdf } from './pdfGenerator.js';
 import { getRouteSchemaData, PAGE_SEO_CONFIGS } from './seoMetadata.js';
 import { renderRouteHtml } from './prerender.js';
+import { 
+  submitSitemap as bingSubmitSitemap,
+  submitUrlBatch as bingSubmitUrlBatch,
+  submitIndexNow,
+  getQueryStats as bingGetQueryStats,
+  getPageStats as bingGetPageStats,
+  getCrawlStats as bingGetCrawlStats,
+  getSubmissionQuota as bingGetQuota,
+  getFeeds as bingGetFeeds,
+  CANONICAL_ROUTES
+} from './bingWebmaster.js';
 
 dotenv.config();
 
@@ -793,6 +804,69 @@ app.get('/api/leads', verifyApiKey, handleGetEntries);
 app.get('/api/v2/entries/:id', verifyApiKey, handleGetSingleEntry);
 app.get('/wp-json/gf/v2/entries/:id', verifyApiKey, handleGetSingleEntry);
 app.get('/api/leads/:id', verifyApiKey, handleGetSingleEntry);
+
+// Bing Webmaster Tools & IndexNow API Integration
+app.get('/BingSiteAuth.xml', (req, res) => {
+  const filePath = path.resolve(__dirname, '../public/BingSiteAuth.xml');
+  if (fs.existsSync(filePath)) {
+    res.type('application/xml').sendFile(filePath);
+  } else {
+    res.type('application/xml').send(`<?xml version="1.0"?>\n<users>\n\t<user>7367D14C8A984D1BED188A0994D6A6D2</user>\n\t<user>e03d2af542ca4ff89b26e2d3a81b2d23</user>\n</users>`);
+  }
+});
+
+app.get('/api/bing/stats', async (req, res) => {
+  try {
+    const [quota, queries, pages, crawl, feeds] = await Promise.allSettled([
+      bingGetQuota(),
+      bingGetQueryStats(),
+      bingGetPageStats(),
+      bingGetCrawlStats(),
+      bingGetFeeds()
+    ]);
+
+    res.json({
+      success: true,
+      timestamp: new Date().toISOString(),
+      quota: quota.status === 'fulfilled' ? quota.value : null,
+      queries: queries.status === 'fulfilled' ? queries.value.slice(0, 50) : [],
+      pages: pages.status === 'fulfilled' ? pages.value.slice(0, 50) : [],
+      crawl: crawl.status === 'fulfilled' ? crawl.value : [],
+      feeds: feeds.status === 'fulfilled' ? feeds.value : []
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/bing/push-sitemap', async (req, res) => {
+  try {
+    const feedUrl = req.body?.feedUrl || 'https://customautogates.com.au/sitemap.xml';
+    const result = await bingSubmitSitemap(feedUrl);
+    res.json({ success: true, message: 'Sitemap submitted to Bing Webmaster Tools', result });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/bing/submit-urls', async (req, res) => {
+  try {
+    const urls = req.body?.urls && Array.isArray(req.body.urls) ? req.body.urls : CANONICAL_ROUTES;
+    const [bingResult, indexNowResult] = await Promise.allSettled([
+      bingSubmitUrlBatch(urls),
+      submitIndexNow(urls)
+    ]);
+
+    res.json({
+      success: true,
+      submittedCount: urls.length,
+      bing: bingResult.status === 'fulfilled' ? bingResult.value : { error: bingResult.reason?.message },
+      indexNow: indexNowResult.status === 'fulfilled' ? indexNowResult.value : { error: indexNowResult.reason?.message }
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
 
 // Serve static assets in production if dist exists (index: false prevents intercepting '/' before SSR pre-rendering)
 const distPath = path.resolve(__dirname, '../dist');

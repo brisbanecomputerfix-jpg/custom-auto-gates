@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "node server/index.js",
-    "sync-gallery": "node scripts/sync_imgur_gallery.cjs"
+    "sync-gallery": "node scripts/sync_imgur_gallery.cjs",
+    "bing:sync": "node scripts/bingSync.js sync",
+    "bing:stats": "node scripts/bingSync.js stats"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^6.8.2",
