@@ -563,8 +563,8 @@ export default function Navbar({
             <button
               onClick={onToggleTheme}
               className="theme-toggle-switch"
-              aria-label={`Switch to ${theme === 'dark' ? 'Day' : 'Dark'} Mode`}
-              title={`Currently in ${theme === 'dark' ? 'Dark' : 'Day'} Mode. Click to switch to ${theme === 'dark' ? 'Day' : 'Dark'} Mode.`}
+              aria-label={theme === 'dark' ? 'Dark Mode' : 'Day Mode'}
+              title={`Toggle display theme (currently ${theme === 'dark' ? 'Dark' : 'Day'} Mode)`}
             >
               <div className="theme-toggle-indicator">
                 {theme === 'dark' ? <Moon size={13} /> : <Sun size={13} />}

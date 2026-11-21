@@ -244,8 +244,8 @@ function renderFooter() {
           </ul>
         </div>
       </div>
-      <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;text-align:center;font-size:0.8rem;color:#64748b;">
-        &copy; ${new Date().getFullYear()} Custom Auto Gates Pty Ltd &bull; All Rights Reserved &bull; <a href="/privacy-policy" style="color:#64748b;text-decoration:underline;">Privacy Policy</a> &bull; <a href="/llms.txt" style="color:#64748b;text-decoration:underline;">AI Context (llms.txt)</a>
+      <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;text-align:center;font-size:0.8rem;color:#94a3b8;">
+        &copy; ${new Date().getFullYear()} Custom Auto Gates Pty Ltd &bull; All Rights Reserved &bull; <a href="/privacy-policy" style="color:#cbd5e1;text-decoration:underline;">Privacy Policy</a> &bull; <a href="/llms.txt" style="color:#cbd5e1;text-decoration:underline;">AI Context (llms.txt)</a>
       </div>
     </footer>
   `;
