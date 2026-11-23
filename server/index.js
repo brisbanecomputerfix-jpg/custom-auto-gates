@@ -15,7 +15,7 @@ import {
   formatLeadForGravityForms 
 } from './emailHandler.js';
 import { generateQuotePdf, generateBookingReceiptPdf } from './pdfGenerator.js';
-import { getRouteSchemaData, PAGE_SEO_CONFIGS } from './seoMetadata.js';
+import { getRouteSchemaData, generateUnifiedSchema, PAGE_SEO_CONFIGS } from './seoMetadata.js';
 import { renderRouteHtml } from './prerender.js';
 import { 
   submitSitemap as bingSubmitSitemap,
@@ -40,6 +40,14 @@ const PORT = parseInt(process.env.PORT, 10) || 3000;
 
 // Enable trust proxy for correct protocol, host & IP detection behind Traefik/Coolify
 app.set('trust proxy', true);
+
+// Fast-path: Serve robots.txt directly with 200 OK across ALL origins/protocols without 301 redirects
+// Fixes Ahrefs & Bing crawler REP audits testing http:// and www. hostnames
+app.get('/robots.txt', (req, res) => {
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=86400');
+  res.sendFile(path.resolve(__dirname, '../public/robots.txt'));
+});
 
 // 0. Enforce HTTPS & Canonical Domain (301 Redirect www to non-www, http to https, and subdomains)
 app.use((req, res, next) => {
@@ -103,6 +111,7 @@ app.use((req, res, next) => {
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   next();
 });
 
@@ -1172,16 +1181,21 @@ app.use((req, res) => {
       html = html.replace(/<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${meta.description}" />`);
       html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${meta.description}" />`);
 
-      // Inject server-rendered JSON-LD schema for rich search results (Product, AggregateRating, Offers, FAQPage)
-      if (meta.key) {
-        try {
-          const routeSchema = getRouteSchemaData(meta.key, meta.canonical, meta);
-          if (routeSchema) {
-            html = html.replace('</head>', `<script type="application/ld+json" id="dynamic-route-schema">\n${JSON.stringify(routeSchema, null, 2)}\n</script>\n</head>`);
+      // Inject server-rendered unified JSON-LD schema graph (Organization, LocalBusiness, WebSite, Products/Services, FAQs)
+      try {
+        const unifiedGraph = generateUnifiedSchema(meta.key || 'home', meta.canonical, meta);
+        if (unifiedGraph) {
+          const scriptTag = `<script type="application/ld+json" id="master-schema-graph">\n${JSON.stringify(unifiedGraph, null, 2)}\n</script>`;
+          if (html.includes('id="master-schema-graph"')) {
+            html = html.replace(/<script type="application\/ld\+json" id="master-schema-graph">[\s\S]*?<\/script>/, scriptTag);
+          } else if (html.includes('type="application/ld+json"')) {
+            html = html.replace(/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/, scriptTag);
+          } else {
+            html = html.replace('</head>', `${scriptTag}\n</head>`);
           }
-        } catch (e) {
-          console.error('Error generating server-rendered schema:', e.message);
         }
+      } catch (e) {
+        console.error('Error generating server-rendered unified schema:', e.message);
       }
 
       // SERVER-SIDE PRE-RENDERING: Inject full semantic HTML body into <div id="root">

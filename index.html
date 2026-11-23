@@ -126,16 +126,47 @@
     <meta name="ai-service" content="Custom Automatic Gate & Fencing Fabrication Brisbane QLD" />
 
 
-    <!-- Schema.org Comprehensive LocalBusiness, Services, Reviews & FAQ Graph -->
-    <script type="application/ld+json">
+        <!-- Schema.org Unified Knowledge Graph (Organization, LocalBusiness, WebSite) -->
+    <script type="application/ld+json" id="master-schema-graph">
     {
       "@context": "https://schema.org",
       "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://customautogates.com.au/#organization",
+          "name": "Custom Auto Gates & Fencing",
+          "legalName": "Custom Auto Gates Pty Ltd",
+          "url": "https://customautogates.com.au/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://customautogates.com.au/#logo",
+            "url": "https://customautogates.com.au/images/CAG-and-Blondies-xero-logo.jpg",
+            "caption": "Custom Auto Gates & Fencing"
+          },
+          "telephone": "+61731021801",
+          "email": "office@customautogates.com.au",
+          "taxID": "ABN 88 642 795 819",
+          "sameAs": [
+            "https://www.facebook.com/profile.php?id=61593825539148",
+            "https://www.instagram.com/customautogates/",
+            "https://au.linkedin.com/company/customautogates"
+          ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+61-7-3102-1801",
+              "contactType": "customer service",
+              "areaServed": "AU",
+              "availableLanguage": "English"
+            }
+          ]
+        },
         {
           "@type": ["HomeAndConstructionBusiness", "LocalBusiness"],
           "@id": "https://customautogates.com.au/#business",
           "name": "Custom Auto Gates & Fencing",
           "legalName": "Custom Auto Gates Pty Ltd",
+          "parentOrganization": { "@id": "https://customautogates.com.au/#organization" },
           "url": "https://customautogates.com.au/",
           "logo": "https://customautogates.com.au/images/CAG-and-Blondies-xero-logo.jpg",
           "image": "https://customautogates.com.au/images/Sliding-Gates.jpg",
@@ -144,7 +175,6 @@
           "priceRange": "$$$",
           "currenciesAccepted": "AUD",
           "paymentAccepted": "Cash, Credit Card, Bank Transfer, Stripe, EFTPOS",
-          "taxID": "ABN 88 642 795 819",
           "license": "https://www.onlineservices.qbcc.qld.gov.au/ (QBCC License #15579753)",
           "hasMap": "https://maps.google.com/?cid=1264879283749281729",
           "sameAs": [
@@ -175,293 +205,17 @@
           ],
           "areaServed": [
             { "@type": "City", "name": "Brisbane" },
-            { "@type": "AdministrativeArea", "name": "Brisbane Inner Suburbs", "description": "New Farm, Teneriffe, Fortitude Valley, Ascot, Hamilton, Paddington, Red Hill, Rosalie, Milton, Bardon, Spring Hill, Kangaroo Point, South Brisbane, Highgate Hill, West End, Woolloongabba, East Brisbane, Hawthorne, Bulimba, Balmoral, Morningside, Norman Park, Coorparoo, Camp Hill, Greenslopes, Dutton Park, Fairfield, Annerley, Yeronga, St Lucia, Toowong, Taringa, Indooroopilly, Ashgrove, Kelvin Grove, Wilston, Windsor, Grange, Newmarket, Alderley, Lutwyche, Albion, Clayfield, Hendra" },
-            { "@type": "AdministrativeArea", "name": "Brisbane Northside" },
-            { "@type": "AdministrativeArea", "name": "Brisbane Southside" },
             { "@type": "City", "name": "Ipswich" },
             { "@type": "City", "name": "Logan City" },
-            { "@type": "City", "name": "Gold Coast" },
-            { "@type": "City", "name": "Moreton Bay" },
-            { "@type": "City", "name": "Redland Bay" }
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Custom Gate & Fencing Manufacturing Services",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Automatic Driveway Gates Brisbane",
-                  "description": "Custom fabricated aluminium and steel electric driveway gates. Sliding, double swing, and telescopic space-saving designs with 10-year warranty.",
-                  "provider": { "@id": "https://customautogates.com.au/#business" },
-                  "areaServed": "Brisbane, Ipswich & Gold Coast"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Automatic Sliding Gates",
-                  "description": "Custom fabricated track and cantilever trackless sliding gates with Centurion high-speed smart automation.",
-                  "provider": { "@id": "https://customautogates.com.au/#business" },
-                  "areaServed": "Brisbane & South East Queensland"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Automatic Swing Gates",
-                  "description": "Custom single, double leaf and bi-fold automated swing gates with 10-year structural warranty.",
-                  "provider": { "@id": "https://customautogates.com.au/#business" },
-                  "areaServed": "Brisbane & South East Queensland"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Off-Grid Solar Powered Gates",
-                  "description": "100% solar powered automatic gates for rural and acreage properties across South East Queensland.",
-                  "provider": { "@id": "https://customautogates.com.au/#business" },
-                  "areaServed": "Brisbane & South East Queensland"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Commercial Security & Boom Gates",
-                  "description": "Heavy-duty continuous cycle industrial gates, road barriers and access control systems.",
-                  "provider": { "@id": "https://customautogates.com.au/#business" },
-                  "areaServed": "Brisbane & South East Queensland"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Aluminium Slat Fencing & Privacy Screens",
-                  "description": "Factory-direct powdercoated aluminium slat fencing and timber-look DecoWood finishes.",
-                  "provider": { "@id": "https://customautogates.com.au/#business" },
-                  "areaServed": "Brisbane & South East Queensland"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Gate Motor Repairs, Servicing & Warranty Support",
-                  "description": "On-site troubleshooting, safety beam alignment, remote reprogramming, and motor repairs for Centurion, Nice, BFT, and FAAC systems.",
-                  "provider": { "@id": "https://customautogates.com.au/#business" },
-                  "areaServed": "Brisbane, Ipswich & Logan"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "@type": "Product",
-          "@id": "https://customautogates.com.au/#product-sliding-gate",
-          "name": "Custom Automatic Driveway Sliding Gate System",
-          "image": "https://customautogates.com.au/images/Sliding-Gates.jpg",
-          "description": "Australian manufactured marine-grade aluminium automatic sliding driveway gate with high-speed Centurion D5 Smart motor, dual battery backup, safety infrared beams, and 10-year structural warranty.",
-          "brand": {
-            "@type": "Brand",
-            "name": "Custom Auto Gates"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "184",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
-          "review": [
-            {
-              "@type": "Review",
-              "author": { "@type": "Person", "name": "Marcus & Cheryl Davies" },
-              "datePublished": "2025-11-14",
-              "reviewBody": "Custom Auto Gates fabricated a 5.2m telescopic sliding gate in Monument for our New Farm home. Dealing factory direct saved us over $1,800 compared to other quotes.",
-              "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-            },
-            {
-              "@type": "Review",
-              "author": { "@type": "Person", "name": "Trent Henderson" },
-              "datePublished": "2026-01-20",
-              "reviewBody": "Centurion D5 Smart motor installed on our sliding gate in Brookwater. The speed and mobile app notifications are fantastic.",
-              "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-            }
-          ],
-          "offers": {
-            "@type": "Offer",
-            "url": "https://customautogates.com.au/driveway-gates",
-            "priceCurrency": "AUD",
-            "price": "3850.00",
-            "priceValidUntil": "2027-12-31",
-            "itemCondition": "https://schema.org/NewCondition",
-            "availability": "https://schema.org/InStock",
-            "seller": {
-              "@id": "https://customautogates.com.au/#business"
-            }
-          }
-        },
-        {
-          "@type": "Product",
-          "@id": "https://customautogates.com.au/#product-solar-gate",
-          "name": "Off-Grid Solar Powered Automatic Gate Package",
-          "image": "https://customautogates.com.au/images/solar-gate-installation-1.jpg",
-          "description": "100% off-grid solar automatic gate system for rural, acreage, and long residential driveways. Includes high-efficiency monocrystalline solar panels, deep-cycle AGM batteries, and commercial actuators.",
-          "brand": {
-            "@type": "Brand",
-            "name": "Custom Auto Gates"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "184",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
-          "review": [
-            {
-              "@type": "Review",
-              "author": { "@type": "Person", "name": "Marcus & Cheryl Davies" },
-              "datePublished": "2025-11-14",
-              "reviewBody": "Custom Auto Gates fabricated a 5.2m telescopic sliding gate in Monument for our New Farm home. Dealing factory direct saved us over $1,800 compared to other quotes.",
-              "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-            },
-            {
-              "@type": "Review",
-              "author": { "@type": "Person", "name": "Trent Henderson" },
-              "datePublished": "2026-01-20",
-              "reviewBody": "Centurion D5 Smart motor installed on our sliding gate in Brookwater. The speed and mobile app notifications are fantastic.",
-              "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-            }
-          ],
-          "offers": {
-            "@type": "Offer",
-            "url": "https://customautogates.com.au/solar-gates",
-            "priceCurrency": "AUD",
-            "price": "4650.00",
-            "priceValidUntil": "2027-12-31",
-            "itemCondition": "https://schema.org/NewCondition",
-            "availability": "https://schema.org/InStock",
-            "seller": {
-              "@id": "https://customautogates.com.au/#business"
-            }
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://customautogates.com.au/#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Why should I buy factory direct from Custom Auto Gates instead of a generic contractor?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "When you buy from us, you deal directly with the manufacturers. We fabricate every gate in our Yamanto workshop using premium Australian-standard aluminium and steel. This eliminates middleman markups and gives you direct access to the engineers building your gate with a 10-year structural warranty."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do you service Brisbane inner suburbs like New Farm, Paddington, Ascot, and Bulimba?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, we regularly service all Brisbane inner suburbs including New Farm, Teneriffe, Paddington, Ascot, Hamilton, Bulimba, Hawthorne, West End, St Lucia, and Indooroopilly. We provide free on-site visits and custom designs tailored to character and modern properties."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Will an automatic gate work on a sloping driveway?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes! We specialize in challenging terrain. For driveways with sideways slopes, we design custom raked sliding gates or cantilever (trackless) systems. For steep upward driveways, we offer outward-opening swing gates, bi-fold folding gates, or telescopic sliding panels that clear the incline."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How much does it cost to install an automatic sliding gate in Brisbane?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "In Brisbane and South East Queensland, installing a custom automatic sliding gate typically costs between $3,800 and $7,500 for standard residential driveways (4m to 5m wide), including fabrication, Dulux powdercoating, ground track installation, and a high-speed smart motor with battery backup. Premium telescopic sliding gates or architectural batten designs generally range from $6,800 to $12,500. Buying factory direct from our Yamanto workshop eliminates middleman reseller markups, saving homeowners $1,200 to $2,500."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is the best gate design for wide driveways?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "For wide driveways exceeding 5 to 6 metres, the best gate designs are telescopic automatic sliding gates or cantilever (trackless) sliding gates. Telescopic gates use 2 or 3 overlapping leaves that slide simultaneously, requiring only half the slide-back clearance of a single leaf gate. For rural acreage driveways wider than 6 metres, a heavy-duty dual swing gate powered by 24V linear ram actuators provides maximum opening width without requiring a ground track."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How does a solar-powered automatic gate work on cloudy days?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Our custom solar kits feature high-capacity deep-cycle battery banks and oversized monocrystalline panels. Even during extended cloudy or rainy periods in South East Queensland, the battery bank holds enough reserve power for 5 to 7 days of normal daily operation."
-              }
-            }
+            { "@type": "City", "name": "Gold Coast" }
           ]
         },
         {
-          "@type": "HowTo",
-          "@id": "https://customautogates.com.au/#howto-council",
-          "name": "How to Verify Automatic Gate Compliance with Brisbane & Ipswich Council Laws",
-          "description": "Step-by-step guide to ensuring your front automatic gate and fencing comply with QLD road boundary setbacks, 1.2m-1.8m height limits, and 50% transparency rules.",
-          "step": [
-            {
-              "@type": "HowToStep",
-              "position": 1,
-              "name": "Check Front Boundary Setback",
-              "text": "Ensure your gate does not open outwards over the council pedestrian footpath or road boundary."
-            },
-            {
-              "@type": "HowToStep",
-              "position": 2,
-              "name": "Verify Permeability Requirements",
-              "text": "For front fences above 1.2m, ensure aluminium slats meet the 50% visual transparency ratio required by Brisbane City Council."
-            },
-            {
-              "@type": "HowToStep",
-              "position": 3,
-              "name": "Book a Free Site Visit",
-              "text": "Have a licensed QBCC gate fabricator verify site levels, underground services (Dial Before You Dig), and council zoning."
-            }
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://customautogates.com.au/#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://customautogates.com.au/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Automatic Sliding Gates",
-              "item": "https://customautogates.com.au/#sliding-gates"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Automatic Swing Gates",
-              "item": "https://customautogates.com.au/#swing-gates"
-            },
-            {
-              "@type": "ListItem",
-              "position": 4,
-              "name": "Project Gallery",
-              "item": "https://customautogates.com.au/#gallery"
-            }
-          ]
+          "@type": "WebSite",
+          "@id": "https://customautogates.com.au/#website",
+          "url": "https://customautogates.com.au/",
+          "name": "Custom Auto Gates & Fencing",
+          "publisher": { "@id": "https://customautogates.com.au/#organization" }
         }
       ]
     }

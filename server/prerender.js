@@ -30,12 +30,22 @@ function renderHeader() {
         <span style="display:inline-block;width:34px;height:34px;background:#fbbf24;border-radius:8px;color:#090e1a;font-weight:900;text-align:center;line-height:34px;font-size:1.1rem;">C</span>
         <span>CUSTOM AUTO <span style="color:#fbbf24;">GATES</span></span>
       </a>
+      <nav style="display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap;">
+        <a href="/driveway-gates" style="color:#ffffff;text-decoration:none;font-weight:700;font-size:0.9rem;">Driveway Gates</a>
+        <a href="/automatic-sliding-gates" style="color:#cbd5e1;text-decoration:none;font-size:0.9rem;">Sliding Gates</a>
+        <a href="/swing-gates" style="color:#cbd5e1;text-decoration:none;font-size:0.9rem;">Swing Gates</a>
+        <a href="/fencing" style="color:#cbd5e1;text-decoration:none;font-size:0.9rem;">Fencing</a>
+        <a href="/service" style="color:#cbd5e1;text-decoration:none;font-size:0.9rem;">Repairs</a>
+        <a href="/about-us" style="color:#cbd5e1;text-decoration:none;font-size:0.9rem;">About Us</a>
+        <a href="/testimonials" style="color:#cbd5e1;text-decoration:none;font-size:0.9rem;">Reviews</a>
+        <a href="/contact-us" style="color:#cbd5e1;text-decoration:none;font-size:0.9rem;">Contact</a>
+      </nav>
       <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
         <a href="${PHONE_TEL}" class="phone-pill" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.1rem;background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.35);border-radius:10px;color:#fbbf24;font-weight:800;text-decoration:none;font-size:0.95rem;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           ${PHONE_NUMBER}
         </a>
-        <a href="/#quote" class="quote-btn" style="display:inline-flex;align-items:center;padding:0.6rem 1.25rem;background:#fbbf24;color:#090e1a;font-weight:800;border-radius:10px;text-decoration:none;font-size:0.95rem;">
+        <a href="/contact-us" class="quote-btn" style="display:inline-flex;align-items:center;padding:0.6rem 1.25rem;background:#fbbf24;color:#090e1a;font-weight:800;border-radius:10px;text-decoration:none;font-size:0.95rem;">
           Get Instant Quote
         </a>
       </div>
@@ -208,7 +218,12 @@ function renderFooter() {
         <div>
           <h4 style="color:#ffffff;font-size:1rem;font-weight:800;margin-bottom:0.75rem;font-family:Outfit,sans-serif;">CUSTOM AUTO GATES</h4>
           <p style="line-height:1.6;margin-bottom:1rem;">South East Queensland's factory-direct gate manufacturer. Fabricating custom automatic sliding, swing, and solar gates in Yamanto.</p>
-          <p style="margin:0;color:#fbbf24;font-weight:700;">QBCC Lic: ${QBCC_LICENSE} &bull; ABN 88 642 795 819</p>
+          <p style="margin:0 0 0.5rem 0;color:#fbbf24;font-weight:700;">QBCC Lic: ${QBCC_LICENSE} &bull; ABN 88 642 795 819</p>
+          <ul style="list-style:none;padding:0;margin:0.75rem 0 0 0;line-height:2.0;">
+            <li><a href="/about-us" style="color:#cbd5e1;text-decoration:none;">&rarr; About Our Team &amp; Workshop</a></li>
+            <li><a href="/testimonials" style="color:#cbd5e1;text-decoration:none;">&rarr; Customer Reviews (4.9★)</a></li>
+            <li><a href="/contact-us" style="color:#cbd5e1;text-decoration:none;">&rarr; Contact Us &amp; Free Measure</a></li>
+          </ul>
         </div>
         <div>
           <h4 style="color:#ffffff;font-size:1rem;font-weight:800;margin-bottom:0.75rem;font-family:Outfit,sans-serif;">Workshop & Contact</h4>
