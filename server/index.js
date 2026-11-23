@@ -46,7 +46,15 @@ app.set('trust proxy', true);
 app.get('/robots.txt', (req, res) => {
   res.setHeader('Content-Type', 'text/plain; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=86400');
-  res.sendFile(path.resolve(__dirname, '../public/robots.txt'));
+  const distRobots = path.resolve(__dirname, '../dist/robots.txt');
+  const pubRobots = path.resolve(__dirname, '../public/robots.txt');
+  if (fs.existsSync(distRobots)) {
+    return res.sendFile(distRobots);
+  }
+  if (fs.existsSync(pubRobots)) {
+    return res.sendFile(pubRobots);
+  }
+  res.send('User-agent: *\nAllow: /\nSitemap: https://customautogates.com.au/sitemap.xml');
 });
 
 // 0. Enforce HTTPS & Canonical Domain (301 Redirect www to non-www, http to https, and subdomains)

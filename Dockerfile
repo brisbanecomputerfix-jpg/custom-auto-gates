@@ -35,6 +35,7 @@ RUN npm install --omit=dev
 
 # Copy built frontend static assets
 COPY --from=builder /app/dist ./dist
+COPY public ./public
 
 # Copy backend server code
 COPY server ./server
