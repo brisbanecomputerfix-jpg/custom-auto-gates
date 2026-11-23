@@ -182,6 +182,24 @@ function renderAccordions({ specs = [], pricing = [], council = '', suburbs = []
               </span>
             `).join('')}
           </div>
+          <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);">
+            <strong style="display:block;font-size:0.9rem;color:#fbbf24;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.5px;">Dedicated Suburb & Regional Gate Guides:</strong>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem 1rem;">
+              <a href="/gates-brisbane" style="color:#ffffff;text-decoration:none;font-weight:700;font-size:0.88rem;">&bull; Brisbane Gates</a>
+              <a href="/gates-ipswich" style="color:#ffffff;text-decoration:none;font-weight:700;font-size:0.88rem;">&bull; Ipswich Gates</a>
+              <a href="/gates-logan" style="color:#ffffff;text-decoration:none;font-weight:700;font-size:0.88rem;">&bull; Logan Gates</a>
+              <a href="/gates-gold-coast" style="color:#ffffff;text-decoration:none;font-weight:700;font-size:0.88rem;">&bull; Gold Coast Gates</a>
+              <a href="/gates-fencing-carindale" style="color:#cbd5e1;text-decoration:none;font-size:0.88rem;">&bull; Carindale</a>
+              <a href="/gates-fencing-camp-hill" style="color:#cbd5e1;text-decoration:none;font-size:0.88rem;">&bull; Camp Hill</a>
+              <a href="/gates-fencing-rochedale" style="color:#cbd5e1;text-decoration:none;font-size:0.88rem;">&bull; Rochedale</a>
+              <a href="/gates-fencing-wishart" style="color:#cbd5e1;text-decoration:none;font-size:0.88rem;">&bull; Wishart</a>
+              <a href="/gates-fencing-mansfield" style="color:#cbd5e1;text-decoration:none;font-size:0.88rem;">&bull; Mansfield</a>
+              <a href="/gates-fencing-capalaba" style="color:#cbd5e1;text-decoration:none;font-size:0.88rem;">&bull; Capalaba</a>
+              <a href="/gates-fencing-gumdale" style="color:#cbd5e1;text-decoration:none;font-size:0.88rem;">&bull; Gumdale</a>
+              <a href="/gates-fencing-wavell-heights" style="color:#cbd5e1;text-decoration:none;font-size:0.88rem;">&bull; Wavell Heights</a>
+              <a href="/gates-fencing-pullenvale" style="color:#cbd5e1;text-decoration:none;font-size:0.88rem;">&bull; Pullenvale</a>
+            </div>
+          </div>
         </div>
       </details>
     `;
