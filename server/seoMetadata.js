@@ -9,55 +9,55 @@ export const BASE_URL = 'https://customautogates.com.au';
 export const PAGE_SEO_CONFIGS = {
   home: {
     title: 'Automatic & Electric Gates Brisbane | Custom Driveway Gates',
-    description: "Buy factory direct & save $1,200+! Custom automatic electric driveway, sliding & swing gates in Yamanto. 10-Yr warranty | QBCC #15579753. Free quote: (07) 3102 1801.",
+    description: "Buy factory direct & save $1,200+! Custom automatic electric driveway, sliding & swing gates. 10-Yr warranty | QBCC #15579753. Free quote: (07) 3102 1801.",
     canonicalPath: '',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
   about: {
     title: 'About Custom Auto Gates | Yamanto Workshop & Team',
-    description: 'Learn about Custom Auto Gates & Fencing. Over 20 years fabricating Australian-made automatic gates, TIG-welded aluminium, and QBCC licensed (#15579753) automation in Yamanto, QLD.',
+    description: 'Custom Auto Gates & Fencing: 20+ years fabricating Australian-made automatic gates, TIG aluminium & QBCC (#15579753) automation in Yamanto. Call (07) 3102 1801.',
     canonicalPath: '/about-us',
     geoPlacename: 'Yamanto, Ipswich, Queensland'
   },
   service: {
     title: 'Automatic Gate Repairs Brisbane | Motor Service & Fix',
-    description: 'Fast electric gate repairs across Brisbane, Ipswich & Logan. Specialist motor replacements (Centurion, Nice, BFT) & emergency service | QBCC #15579753: (07) 3102 1801.',
+    description: 'Fast electric gate repairs in Brisbane, Ipswich & Logan. Centurion, Nice & BFT motor replacements & emergency fix | QBCC #15579753. Call (07) 3102 1801.',
     canonicalPath: '/service',
     geoPlacename: 'Brisbane, Ipswich, Logan, Gold Coast, Queensland'
   },
   contact: {
     title: 'Contact Custom Auto Gates Brisbane | Free On-Site Measure',
-    description: 'Book a free on-site measure with licensed electric gate installers in Brisbane & Ipswich. Buy factory direct & save $1,200+ | QBCC #15579753. Call (07) 3102 1801.',
+    description: 'Book a free on-site measure with electric gate installers in Brisbane & Ipswich. Buy factory direct & save $1,200+ | QBCC #15579753. Call (07) 3102 1801.',
     canonicalPath: '/contact-us',
     geoPlacename: 'Shed 2, 43-45 Belar St, Yamanto, QLD 4305'
   },
   testimonials: {
-    title: 'Customer Reviews & Gate Projects (4.9★) | Custom Auto Gates',
+    title: 'Customer Reviews & Gate Projects (4.9/5) | Custom Auto Gates',
     description: 'Read 180+ verified 5-star customer reviews and detailed engineering case studies from homeowners across Brisbane, Ipswich, Logan, and Gold Coast.',
     canonicalPath: '/testimonials',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
   'council-guide': {
-    title: 'Queensland Council Fence & Pool Safety Gate Guide (AS1926.1)',
-    description: 'Official guide to Brisbane City Council (BCC), Ipswich City Council (ICC), and Gold Coast fence height rules, 50% slat permeability, and AS1926.1 pool gate laws.',
+    title: 'QLD Council Fence & Pool Gate Guide | Custom Auto Gates',
+    description: 'Official guide to Brisbane (BCC), Ipswich (ICC) & Gold Coast fence height rules, 50% slat permeability & AS1926.1 pool gate laws. Call (07) 3102 1801.',
     canonicalPath: '/council-guide',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
   'suburbs-brisbane': {
     title: 'Automatic Gates Brisbane | Licensed Electric Gate Builders',
-    description: 'Looking for electric gate installers near you in Brisbane? Buy factory direct & save $1,200+ | QBCC #15579753 licensed installers. Free on-site measure: (07) 3102 1801.',
+    description: 'Electric gate installers near you in Brisbane. Buy factory direct & save $1,200+ | QBCC #15579753 licensed installers. Free on-site measure: (07) 3102 1801.',
     canonicalPath: '/gates-brisbane',
     geoPlacename: 'Brisbane, Queensland, AU'
   },
   'suburbs-ipswich': {
     title: 'Automatic Gates Ipswich | Factory Direct Electric Gates',
-    description: "Buy factory direct from our Yamanto workshop & save $1,200+! Custom sliding, swing & solar gates for Ipswich & Springfield | QBCC #15579753. Call (07) 3102 1801.",
+    description: "Buy factory direct in Yamanto & save $1,200+! Custom sliding, swing & solar gates for Ipswich & Springfield | QBCC #15579753. Call (07) 3102 1801.",
     canonicalPath: '/gates-ipswich',
     geoPlacename: 'Yamanto, Ipswich, Springfield, Queensland, AU'
   },
   'suburbs-logan': {
     title: 'Automatic Gates Logan | Commercial & Residential Gates',
-    description: 'Commercial cantilever security gates & residential sliding gates across Logan & Redlands. Buy factory direct & save $1,200+ | QBCC #15579753. Call (07) 3102 1801.',
+    description: 'Cantilever security gates & residential sliding gates across Logan & Redlands. Buy factory direct & save $1,200+ | QBCC #15579753. Call (07) 3102 1801.',
     canonicalPath: '/gates-logan',
     geoPlacename: 'Logan City, Redland Bay, Queensland, AU'
   },
@@ -69,31 +69,31 @@ export const PAGE_SEO_CONFIGS = {
   },
   'privacy-policy': {
     title: 'Privacy Policy | Custom Auto Gates & Fencing QLD',
-    description: 'Official Privacy Policy for Custom Auto Gates Pty Ltd. Learn how we collect, protect, and manage your personal and property data in strict compliance with the Australian Privacy Principles (Privacy Act 1988).',
+    description: 'Official Privacy Policy for Custom Auto Gates Pty Ltd. How we manage and protect personal data under the Australian Privacy Principles (Privacy Act 1988).',
     canonicalPath: '/privacy-policy',
     geoPlacename: 'Yamanto, Brisbane, Ipswich, Queensland'
   },
   'automatic-sliding-gates': {
     title: 'Automatic Sliding Gates Brisbane | Factory Direct Gates',
-    description: 'Custom automatic sliding gates Brisbane from $3,850. Heavy-duty track & cantilever systems. Buy factory direct & save $1,200+ | QBCC #15579753. Call (07) 3102 1801.',
+    description: 'Automatic sliding gates Brisbane from $3,850. Heavy-duty track & cantilever systems. Buy factory direct & save $1,200+ | QBCC #15579753. Call (07) 3102 1801.',
     canonicalPath: '/automatic-sliding-gates',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
   'swing-gates': {
     title: 'Automatic Swing Gates Brisbane | Custom Double Swing Gates',
-    description: 'Custom double swing & bi-fold automatic gates Brisbane. Buy factory direct & save $1,200+ | QBCC #15579753 | 10-Yr structural warranty. Free measure: (07) 3102 1801.',
+    description: 'Double swing & bi-fold automatic gates Brisbane. Buy factory direct & save $1,200+ | QBCC #15579753 | 10-Yr warranty. Free measure: (07) 3102 1801.',
     canonicalPath: '/swing-gates',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
   },
   'solar-gates': {
     title: 'Solar Automatic Gates Brisbane | Off-Grid Electric Gates',
-    description: '100% off-grid solar automatic gates for Brisbane & Ipswich acreage. Zero trenching fees. Buy factory direct & save $1,200+ | QBCC #15579753. Call (07) 3102 1801.',
+    description: '100% off-grid solar automatic gates for Brisbane & Ipswich acreage. Zero trenching fees. Factory direct savings | QBCC #15579753. Call (07) 3102 1801.',
     canonicalPath: '/solar-gates',
     geoPlacename: 'Brisbane, Ipswich, Logan, Queensland'
   },
   'driveway-gates': {
     title: 'Driveway Gates Brisbane | Custom Automatic Electric Gates',
-    description: 'Buy factory direct & save $1,200+ on custom electric driveway gates. Sliding, swing & solar gates | QBCC #15579753 | 10-Yr warranty. Free measure: (07) 3102 1801.',
+    description: 'Save $1,200+ factory direct on custom electric driveway gates. Sliding, swing & solar gates | QBCC #15579753 | 10-Yr warranty. Free measure: (07) 3102 1801.',
     canonicalPath: '/driveway-gates',
     geoPlacename: 'Brisbane, Ipswich, Logan, Gold Coast, Queensland'
   },
@@ -104,7 +104,7 @@ export const PAGE_SEO_CONFIGS = {
     geoPlacename: 'Brisbane, Ipswich, Logan, Queensland'
   },
   'pricing-guide': {
-    title: 'Automatic Gate Costs & Pricing Guide Brisbane [2026 Prices]',
+    title: 'Automatic Gate Costs & Pricing Guide Brisbane | Custom Auto Gates',
     description: '2026 automatic gate price guide for Brisbane & SEQ ($3,800–$12,500+). Buy factory direct & save $1,200+ on sliding & swing gates. Call (07) 3102 1801.',
     canonicalPath: '/pricing-guide',
     geoPlacename: 'Brisbane, Ipswich, Gold Coast, Queensland'
@@ -117,61 +117,61 @@ export const PAGE_SEO_CONFIGS = {
   },
   'fencing': {
     title: 'Architectural Fencing Brisbane | Aluminium Slat Fences',
-    description: 'Custom architectural aluminium fencing in Brisbane & SEQ. Horizontal slat fences, vertical battens, pool-safe fencing & pedestrian gates. Free quote: (07) 3102 1801.',
+    description: 'Architectural aluminium fencing Brisbane & SEQ. Slat fences, vertical battens, pool fencing & pedestrian gates. Free measure & quote: (07) 3102 1801.',
     canonicalPath: '/fencing',
     geoPlacename: 'Brisbane, Ipswich, Logan, Gold Coast, Queensland'
   },
   'suburb-res-carindale': {
     title: 'Gates & Fencing Carindale | Custom Automatic Gates',
-    description: 'Custom residential gates and aluminium fencing in Carindale. Sliding gates, double swing gates, slat fencing & pool gates. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    description: 'Residential automatic gates & aluminium fencing in Carindale. Sliding & swing gates, slat fences. 10-Yr warranty. Free on-site quote: (07) 3102 1801.',
     canonicalPath: '/gates-fencing-carindale',
     geoPlacename: 'Carindale, Brisbane, Queensland, AU'
   },
   'suburb-res-camp-hill': {
     title: 'Gates & Fencing Camp Hill | Custom Automatic Gates',
-    description: 'Custom residential gates and architectural fencing in Camp Hill. Hamptons gates, vertical blade fencing, sliding gates & character fencing. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    description: 'Residential gates & architectural fencing in Camp Hill. Hamptons gates, vertical blades & sliding gates. 10-Yr warranty. Free quote: (07) 3102 1801.',
     canonicalPath: '/gates-fencing-camp-hill',
     geoPlacename: 'Camp Hill, Brisbane, Queensland, AU'
   },
   'suburb-res-rochedale': {
     title: 'Gates & Fencing Rochedale | Custom Automatic Gates',
-    description: 'Custom residential gates and architectural fencing in Rochedale. Modern sliding gates, estate boundary fences & pool gates. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    description: 'Residential gates & architectural fencing in Rochedale. Modern sliding gates, boundary fences & pool gates. 10-Yr warranty. Free quote: (07) 3102 1801.',
     canonicalPath: '/gates-fencing-rochedale',
     geoPlacename: 'Rochedale, Brisbane, Queensland, AU'
   },
   'suburb-res-wishart': {
     title: 'Gates & Fencing Wishart | Custom Automatic Gates',
-    description: 'Custom residential gates and aluminium fencing in Wishart. Electric sliding gates, front fences & pet security fencing. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    description: 'Residential gates & aluminium fencing in Wishart. Electric sliding gates, front fences & pet security. 10-Yr warranty. Free quote: (07) 3102 1801.',
     canonicalPath: '/gates-fencing-wishart',
     geoPlacename: 'Wishart, Brisbane, Queensland, AU'
   },
   'suburb-res-mansfield': {
     title: 'Gates & Fencing Mansfield | Custom Automatic Gates',
-    description: 'Custom residential gates and aluminium fencing in Mansfield. Automatic driveway gates, slat fences & school catchment security. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    description: 'Residential gates & aluminium fencing in Mansfield. Automatic driveway gates, slat fences & security. 10-Yr warranty. Free quote: (07) 3102 1801.',
     canonicalPath: '/gates-fencing-mansfield',
     geoPlacename: 'Mansfield, Brisbane, Queensland, AU'
   },
   'suburb-res-capalaba': {
     title: 'Gates & Fencing Capalaba | Custom Automatic Gates',
-    description: 'Custom residential gates and aluminium fencing in Capalaba. Electric sliding gates, acreage swing gates & slat fences. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    description: 'Residential gates & aluminium fencing in Capalaba. Electric sliding gates, acreage swing gates & slat fences. 10-Yr warranty. Free quote: (07) 3102 1801.',
     canonicalPath: '/gates-fencing-capalaba',
     geoPlacename: 'Capalaba, Redlands, Queensland, AU'
   },
   'suburb-res-gumdale': {
     title: 'Gates & Fencing Gumdale | Custom Solar Acreage Gates',
-    description: 'Custom acreage gates and aluminium fencing in Gumdale. Solar automatic gates, horse fencing & grand estate entrances. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    description: 'Acreage gates & aluminium fencing in Gumdale. Solar automatic gates, horse fencing & estate entrances. 10-Yr warranty. Free quote: (07) 3102 1801.',
     canonicalPath: '/gates-fencing-gumdale',
     geoPlacename: 'Gumdale, Brisbane, Queensland, AU'
   },
   'suburb-res-wavell-heights': {
     title: 'Gates & Fencing Wavell Heights | Automatic Gates',
-    description: 'Custom residential gates and aluminium fencing in Wavell Heights. Sloping driveway sliding gates, slat fences & hill specialists. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    description: 'Residential gates & aluminium fencing in Wavell Heights. Sloping driveway sliding gates & slat fences. 10-Yr warranty. Free quote: (07) 3102 1801.',
     canonicalPath: '/gates-fencing-wavell-heights',
     geoPlacename: 'Wavell Heights, Brisbane, Queensland, AU'
   },
   'suburb-res-pullenvale': {
     title: 'Gates & Fencing Pullenvale | Custom Solar Gates',
-    description: 'Custom luxury acreage gates and fencing in Pullenvale. Solar automatic gates, grand double swing gates & acreage fencing. 10-Yr warranty. Free quote: (07) 3102 1801.',
+    description: 'Luxury acreage gates & fencing in Pullenvale. Solar automatic gates, grand double swing gates & fences. 10-Yr warranty. Free quote: (07) 3102 1801.',
     canonicalPath: '/gates-fencing-pullenvale',
     geoPlacename: 'Pullenvale, Brisbane, Queensland, AU'
   }
@@ -271,11 +271,21 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
       "name": `Custom Automatic Gates ${regionName}`,
       "legalName": "Custom Auto Gates Pty Ltd",
       "url": canonicalUrl,
+      "image": `${BASE_URL}/images/Sliding-Gates.jpg`,
       "telephone": "+61731021801",
       "priceRange": "$$$",
       "currenciesAccepted": "AUD",
       "paymentAccepted": "Cash, Credit Card, Bank Transfer, Stripe, EFTPOS",
-      "license": "https://www.onlineservices.qbcc.qld.gov.au/ (QBCC License #15579753)",
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "QBCC Licence #15579753",
+        "credentialCategory": "Trade Contractor Licence",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Queensland Building and Construction Commission",
+          "url": "https://www.qbcc.qld.gov.au/"
+        }
+      },
       "geo": {
         "@type": "GeoCoordinates",
         ...geoPosition
@@ -702,11 +712,21 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
         "name": `Custom Auto Gates & Fencing ${subData.suburbName}`,
         "legalName": "Custom Auto Gates Pty Ltd",
         "url": canonicalUrl,
+        "image": `https://customautogates.com.au${subData.heroImage}`,
         "telephone": "+61731021801",
         "priceRange": "$$$",
         "currenciesAccepted": "AUD",
         "paymentAccepted": "Cash, Credit Card, Bank Transfer, Stripe, EFTPOS",
-        "license": "https://www.onlineservices.qbcc.qld.gov.au/ (QBCC License #15579753)",
+        "hasCredential": {
+          "@type": "EducationalOccupationalCredential",
+          "name": "QBCC Licence #15579753",
+          "credentialCategory": "Trade Contractor Licence",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Queensland Building and Construction Commission",
+            "url": "https://www.qbcc.qld.gov.au/"
+          }
+        },
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Shed 2, 43-45 Belar Street",
@@ -868,7 +888,16 @@ export function generateUnifiedSchema(lookupKey, canonicalUrl, config) {
     "priceRange": "$$$",
     "currenciesAccepted": "AUD",
     "paymentAccepted": "Cash, Credit Card, Bank Transfer, Stripe, EFTPOS",
-    "license": "https://www.onlineservices.qbcc.qld.gov.au/ (QBCC License #15579753)",
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "QBCC Licence #15579753",
+      "credentialCategory": "Trade Contractor Licence",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Queensland Building and Construction Commission",
+        "url": "https://www.qbcc.qld.gov.au/"
+      }
+    },
     "hasMap": "https://maps.google.com/?cid=1264879283749281729",
     "address": {
       "@type": "PostalAddress",

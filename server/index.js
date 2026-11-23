@@ -160,12 +160,14 @@ const LEGACY_301_REDIRECTS = {
   '/gates/driveway-gates/': '/driveway-gates',
   '/gates/automatic-gates': '/driveway-gates',
   '/gates/automatic-gates/': '/driveway-gates',
-  '/gates/automatic-gates/sliding-gates': '/sliding-gates',
-  '/gates/automatic-gates/sliding-gates/': '/sliding-gates',
+  '/gates/automatic-gates/sliding-gates': '/automatic-sliding-gates',
+  '/gates/automatic-gates/sliding-gates/': '/automatic-sliding-gates',
 
   // Sliding Gates (Direct to dedicated sliding gates landing page)
-  '/gates/sliding-gates': '/sliding-gates',
-  '/gates/sliding-gates/': '/sliding-gates',
+  '/gates/sliding-gates': '/automatic-sliding-gates',
+  '/gates/sliding-gates/': '/automatic-sliding-gates',
+  '/sliding-gates': '/automatic-sliding-gates',
+  '/sliding-gates/': '/automatic-sliding-gates',
   '/automatic-sliding-gates-2': '/automatic-sliding-gates',
   '/automatic-sliding-gates-2/': '/automatic-sliding-gates',
   '/gates/automatic-sliding-gates-brisbane': '/automatic-sliding-gates',
@@ -197,8 +199,10 @@ const LEGACY_301_REDIRECTS = {
   '/instant-online-quote/': '/#quote',
 
   // Gallery & Balustrade Redirects
-  '/lp/balustrade': '/gates/gallery-gates',
-  '/lp/balustrade/': '/gates/gallery-gates',
+  '/lp/balustrade': '/fencing',
+  '/lp/balustrade/': '/fencing',
+  '/gates/gallery-gates': '/#gallery',
+  '/gates/gallery-gates/': '/#gallery',
   '/gallery-gates': '/#gallery',
   '/gallery-gates/': '/#gallery',
   '/gallery': '/#gallery',

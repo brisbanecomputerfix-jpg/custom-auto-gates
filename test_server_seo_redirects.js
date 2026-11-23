@@ -97,8 +97,8 @@ server.listen(0, '127.0.0.1', async () => {
       `got status ${t5.statusCode}, location ${t5.headers.location}`);
 
     const t6 = await testReq('Redirect /gates/sliding-gates/', '/gates/sliding-gates/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('3b. /gates/sliding-gates/ -> 301 to /sliding-gates', 
-      t6.statusCode === 301 && t6.headers.location === '/sliding-gates',
+    assert('3b. /gates/sliding-gates/ -> 301 to /automatic-sliding-gates', 
+      t6.statusCode === 301 && t6.headers.location === '/automatic-sliding-gates',
       `got status ${t6.statusCode}, location ${t6.headers.location}`);
 
     const t7 = await testReq('Redirect /gate-automation/automation-accessories/', '/gate-automation/automation-accessories/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
@@ -107,8 +107,8 @@ server.listen(0, '127.0.0.1', async () => {
       `got status ${t7.statusCode}, location ${t7.headers.location}`);
 
     const t8 = await testReq('Redirect /lp/balustrade/', '/lp/balustrade/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('3d. /lp/balustrade/ -> 301 to /gates/gallery-gates', 
-      t8.statusCode === 301 && t8.headers.location === '/gates/gallery-gates',
+    assert('3d. /lp/balustrade/ -> 301 to /fencing', 
+      t8.statusCode === 301 && t8.headers.location === '/fencing',
       `got status ${t8.statusCode}, location ${t8.headers.location}`);
 
     const t9 = await testReq('Redirect /gallery-and-design/fencing/', '/gallery-and-design/fencing/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
@@ -127,8 +127,8 @@ server.listen(0, '127.0.0.1', async () => {
       `got status ${tAutoGates.statusCode}, location ${tAutoGates.headers.location}`);
 
     const tAutoSliding = await testReq('Redirect /gates/automatic-gates/sliding-gates/', '/gates/automatic-gates/sliding-gates/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
-    assert('3h. /gates/automatic-gates/sliding-gates/ -> 301 to /sliding-gates', 
-      tAutoSliding.statusCode === 301 && tAutoSliding.headers.location === '/sliding-gates',
+    assert('3h. /gates/automatic-gates/sliding-gates/ -> 301 to /automatic-sliding-gates', 
+      tAutoSliding.statusCode === 301 && tAutoSliding.headers.location === '/automatic-sliding-gates',
       `got status ${tAutoSliding.statusCode}, location ${tAutoSliding.headers.location}`);
 
     const tServ = await testReq('Redirect /service/', '/service/', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
@@ -170,7 +170,7 @@ server.listen(0, '127.0.0.1', async () => {
       tDriveway.body.includes('Queensland Council Fence'),
       'missing pre-rendered rich content in /driveway-gates initial HTML');
     assert('5f. /driveway-gates has server-rendered JSON-LD schema with Product & FAQPage',
-      tDriveway.body.includes('id="dynamic-route-schema"') && tDriveway.body.includes('"@type": "Product"') && tDriveway.body.includes('"@type": "FAQPage"'),
+      (tDriveway.body.includes('id="master-schema-graph"') || tDriveway.body.includes('id="dynamic-route-schema"')) && tDriveway.body.includes('"@type": "Product"') && tDriveway.body.includes('"@type": "FAQPage"'),
       'missing expected dynamic route schema in HTML');
 
     const tSliding = await testReq('/automatic-sliding-gates Initial HTML', '/automatic-sliding-gates', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });
