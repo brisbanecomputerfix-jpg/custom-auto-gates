@@ -84,7 +84,15 @@ export function formatLeadForGravityForms(lead, index = 1) {
     source: lead.source || '',
     files: lead.files || [],
     file_urls: fileUrls,
-    payment_details: lead.paymentDetails || null
+    payment_details: lead.paymentDetails || null,
+    gclid: lead.gclid || '',
+    gad_source: lead.gad_source || '',
+    utm_source: lead.utm_source || '',
+    utm_medium: lead.utm_medium || '',
+    utm_campaign: lead.utm_campaign || '',
+    utm_term: lead.utm_term || '',
+    utm_content: lead.utm_content || '',
+    landing_page: lead.landing_page || ''
   };
 }
 
@@ -274,7 +282,15 @@ export async function sendLeadNotification(lead) {
     estimatedPrice,
     source = 'Website Contact Form',
     files = [],
-    paymentDetails = null
+    paymentDetails = null,
+    gclid,
+    gad_source,
+    utm_source,
+    utm_medium,
+    utm_campaign,
+    utm_term,
+    utm_content,
+    landing_page
   } = lead;
 
   // 1. Always save lead locally first
@@ -358,6 +374,24 @@ export async function sendLeadNotification(lead) {
     </div>
   ` : '';
 
+  // Build Ad Attribution HTML section if tracking parameters exist
+  const hasAdAttribution = !!(gclid || utm_source || utm_campaign || utm_term || utm_medium || landing_page);
+  const adAttributionHtml = hasAdAttribution ? `
+    <div style="margin-top: 18px; padding: 14px; background-color: #f0fdf4; border: 1.5px solid #86efac; border-radius: 6px;">
+      <strong style="color: #166534; display: block; margin-bottom: 8px; font-size: 14px;">
+        🎯 Google Ads / Campaign Attribution:
+      </strong>
+      <table style="width: 100%; border-collapse: collapse; font-size: 13px; color: #166534;">
+        ${utm_campaign ? `<tr style="border-bottom: 1px solid #dcfce7;"><td style="padding: 5px 0; font-weight: bold; width: 35%;">Campaign:</td><td style="font-weight: 600;">${utm_campaign}</td></tr>` : ''}
+        ${utm_source ? `<tr style="border-bottom: 1px solid #dcfce7;"><td style="padding: 5px 0; font-weight: bold;">Source / Medium:</td><td>${utm_source} ${utm_medium ? `(${utm_medium})` : ''}</td></tr>` : ''}
+        ${utm_term ? `<tr style="border-bottom: 1px solid #dcfce7;"><td style="padding: 5px 0; font-weight: bold;">Search Keyword (Term):</td><td style="font-weight: 600; color: #15803d;">${utm_term}</td></tr>` : ''}
+        ${utm_content ? `<tr style="border-bottom: 1px solid #dcfce7;"><td style="padding: 5px 0; font-weight: bold;">Ad Content:</td><td>${utm_content}</td></tr>` : ''}
+        ${landing_page ? `<tr style="border-bottom: 1px solid #dcfce7;"><td style="padding: 5px 0; font-weight: bold;">Landing Page:</td><td>${landing_page}</td></tr>` : ''}
+        ${gclid ? `<tr><td style="padding: 5px 0; font-weight: bold;">Google Click ID (GCLID):</td><td style="font-family: monospace; font-size: 11px; word-break: break-all; color: #047857;">${gclid}</td></tr>` : ''}
+      </table>
+    </div>
+  ` : '';
+
   if (!transporter) {
     console.warn('⚠️ SMTP credentials not yet configured in .env. Lead saved locally to server/leads.json.');
     return {
@@ -423,6 +457,8 @@ export async function sendLeadNotification(lead) {
         </table>
 
         ${paymentSectionHtml}
+
+        ${adAttributionHtml}
 
         ${filesSectionHtml}
 

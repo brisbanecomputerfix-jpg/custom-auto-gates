@@ -409,7 +409,15 @@ app.post('/api/contact', async (req, res) => {
       estimatedPrice,
       source,
       files,
-      paymentDetails
+      paymentDetails,
+      gclid,
+      gad_source,
+      utm_source,
+      utm_medium,
+      utm_campaign,
+      utm_term,
+      utm_content,
+      landing_page
     } = req.body;
 
     if (!name || !phone) {
@@ -430,6 +438,14 @@ app.post('/api/contact', async (req, res) => {
       source: source || 'Contact Modal',
       files: Array.isArray(files) ? files : [],
       paymentDetails: paymentDetails || null,
+      gclid: gclid ? String(gclid).trim() : undefined,
+      gad_source: gad_source ? String(gad_source).trim() : undefined,
+      utm_source: utm_source ? String(utm_source).trim() : undefined,
+      utm_medium: utm_medium ? String(utm_medium).trim() : undefined,
+      utm_campaign: utm_campaign ? String(utm_campaign).trim() : undefined,
+      utm_term: utm_term ? String(utm_term).trim() : undefined,
+      utm_content: utm_content ? String(utm_content).trim() : undefined,
+      landing_page: landing_page ? String(landing_page).trim() : undefined,
       ip: req.ip,
     });
 
@@ -496,7 +512,15 @@ app.post('/api/quote', async (req, res) => {
       totalPriceRange,
       estimatedTotal,
       notes,
-      files
+      files,
+      gclid,
+      gad_source,
+      utm_source,
+      utm_medium,
+      utm_campaign,
+      utm_term,
+      utm_content,
+      landing_page
     } = req.body;
 
     if (!phone && !email) {
@@ -545,6 +569,14 @@ app.post('/api/quote', async (req, res) => {
       source: 'Gate Visualizer & Cost Estimator',
       files: Array.isArray(files) ? files : [],
       pdfBuffer,
+      gclid: gclid ? String(gclid).trim() : undefined,
+      gad_source: gad_source ? String(gad_source).trim() : undefined,
+      utm_source: utm_source ? String(utm_source).trim() : undefined,
+      utm_medium: utm_medium ? String(utm_medium).trim() : undefined,
+      utm_campaign: utm_campaign ? String(utm_campaign).trim() : undefined,
+      utm_term: utm_term ? String(utm_term).trim() : undefined,
+      utm_content: utm_content ? String(utm_content).trim() : undefined,
+      landing_page: landing_page ? String(landing_page).trim() : undefined,
       ip: req.ip,
     });
 

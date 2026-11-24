@@ -169,8 +169,8 @@ server.listen(0, '127.0.0.1', async () => {
       tDriveway.body.includes('Engineering Specifications') &&
       tDriveway.body.includes('Queensland Council Fence'),
       'missing pre-rendered rich content in /driveway-gates initial HTML');
-    assert('5f. /driveway-gates has server-rendered JSON-LD schema with Product & FAQPage',
-      (tDriveway.body.includes('id="master-schema-graph"') || tDriveway.body.includes('id="dynamic-route-schema"')) && tDriveway.body.includes('"@type": "Product"') && tDriveway.body.includes('"@type": "FAQPage"'),
+    assert('5f. /driveway-gates has server-rendered JSON-LD schema with Service & FAQPage',
+      (tDriveway.body.includes('id="master-schema-graph"') || tDriveway.body.includes('id="dynamic-route-schema"')) && tDriveway.body.includes('"@type": "Service"') && tDriveway.body.includes('"@type": "FAQPage"'),
       'missing expected dynamic route schema in HTML');
 
     const tSliding = await testReq('/automatic-sliding-gates Initial HTML', '/automatic-sliding-gates', { 'host': 'customautogates.com.au', 'x-forwarded-proto': 'https' });

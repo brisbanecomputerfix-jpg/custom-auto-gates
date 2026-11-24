@@ -20,7 +20,7 @@ import {
 import { COMPANY_INFO } from '../data/siteData';
 import FileUploadField from './FileUploadField';
 import { uploadFormFiles } from '../utils/uploadHelper';
-import { trackFormLead } from '../utils/analytics';
+import { trackFormLead, getAdTrackingData } from '../utils/analytics';
 
 const GATE_STYLES = [
   { id: 'sliding-gates', name: 'Automatic Sliding Gate', priceTag: 'From $3,850', icon: Sliders },
@@ -99,6 +99,7 @@ export default function FastQuoteModal({ isOpen, onClose, defaultGateStyle = 'sl
       const styleObj = GATE_STYLES.find(s => s.id === selectedStyle) || GATE_STYLES[0];
       const widthObj = DRIVEWAY_WIDTHS.find(w => w.id === selectedWidth) || DRIVEWAY_WIDTHS[1];
 
+      const adData = getAdTrackingData();
       const res = await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -115,7 +116,8 @@ export default function FastQuoteModal({ isOpen, onClose, defaultGateStyle = 'sl
           totalPriceRange: styleObj.priceTag,
           notes: `Driveway Width: ${widthObj.label}. Notes: ${notes}`,
           files: uploadedFiles,
-          source: 'Fast Quote & Free Measure Modal'
+          source: 'Fast Quote & Free Measure Modal',
+          ...adData
         })
       });
 
@@ -134,7 +136,8 @@ export default function FastQuoteModal({ isOpen, onClose, defaultGateStyle = 'sl
             preferredTime: widthObj.label,
             notes: `Gate Style: ${styleObj.name}. Driveway Width: ${widthObj.label}. Additional: ${notes}`,
             files: uploadedFiles,
-            source: 'Fast Quote & Free Measure Modal'
+            source: 'Fast Quote & Free Measure Modal',
+            ...adData
           })
         });
       }

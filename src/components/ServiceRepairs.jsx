@@ -34,7 +34,7 @@ import { COMPANY_INFO } from '../data/siteData';
 import { createStripeCheckout } from '../utils/stripeClient';
 import FileUploadField from './FileUploadField';
 import { uploadFormFiles } from '../utils/uploadHelper';
-import { trackServiceBooking } from '../utils/analytics';
+import { trackServiceBooking, getAdTrackingData } from '../utils/analytics';
 
 export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateHome }) {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -105,6 +105,7 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
 
       // 2. Handle 'Pay On Dispatch / Direct Invoice' without Stripe redirection
       if (paymentMethod === 'invoice') {
+        const adData = getAdTrackingData();
         await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -117,7 +118,8 @@ export default function ServiceRepairs({ onOpenQuote, onOpenContact, onNavigateH
             serviceType: `Service Booking (Pay on Dispatch): ${serviceRequirement} (${propertyType} - $${basePrice} callout)`,
             notes: `[PAY ON DISPATCH / INVOICE REQUESTED]\n${detailedNotes}`,
             source: 'Service & Warranty Booking Form',
-            files: uploadedFiles
+            files: uploadedFiles,
+            ...adData
           })
         });
 

@@ -199,45 +199,6 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
     }
   };
 
-  // Google Merchant Listings compliant return & shipping policies
-  const merchantReturnPolicy = {
-    "@type": "MerchantReturnPolicy",
-    "applicableCountry": "AU",
-    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-    "merchantReturnDays": 30,
-    "returnMethod": "https://schema.org/ReturnInStore",
-    "returnFees": "https://schema.org/FreeReturn"
-  };
-
-  const offerShippingDetails = {
-    "@type": "OfferShippingDetails",
-    "shippingRate": {
-      "@type": "MonetaryAmount",
-      "value": "0.00",
-      "currency": "AUD"
-    },
-    "shippingDestination": {
-      "@type": "DefinedRegion",
-      "addressCountry": "AU",
-      "addressRegion": ["QLD"]
-    },
-    "deliveryTime": {
-      "@type": "ShippingDeliveryTime",
-      "handlingTime": {
-        "@type": "QuantitativeValue",
-        "minValue": 5,
-        "maxValue": 10,
-        "unitCode": "d"
-      },
-      "transitTime": {
-        "@type": "QuantitativeValue",
-        "minValue": 1,
-        "maxValue": 3,
-        "unitCode": "d"
-      }
-    }
-  };
-
   if (lookupKey.startsWith('suburbs-')) {
     const isBrisbane = lookupKey === 'suburbs-brisbane';
     const isIpswich = lookupKey === 'suburbs-ipswich';
@@ -527,20 +488,24 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
         "https://customautogates.com.au/images/Sliding-Gates.jpg"
       ];
 
-    // Merchant Listings & Google Free Listings Compliant Product Schema
-    const productSchema = {
+    // Service Schema for On-Site Custom Gate Fabrication & Installation
+    const serviceSchema = {
       "@context": "https://schema.org",
-      "@type": "Product",
-      "@id": `${canonicalUrl}#product`,
+      "@type": "Service",
+      "@id": `${canonicalUrl}#service`,
       "name": productName,
+      "serviceType": "Automatic Gate & Fencing Fabrication & Installation",
       "description": config.description,
       "image": productImages,
-      "sku": productSku,
-      "mpn": productSku,
-      "brand": {
-        "@type": "Brand",
-        "name": "Custom Auto Gates"
+      "provider": {
+        "@id": `${BASE_URL}/#business`
       },
+      "areaServed": [
+        { "@type": "City", "name": "Brisbane" },
+        { "@type": "City", "name": "Ipswich" },
+        { "@type": "City", "name": "Logan City" },
+        { "@type": "City", "name": "Gold Coast" }
+      ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
@@ -554,11 +519,8 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
         "priceCurrency": "AUD",
         "price": startingPrice,
         "priceValidUntil": "2027-12-31",
-        "itemCondition": "https://schema.org/NewCondition",
         "availability": "https://schema.org/InStock",
-        "seller": sellerInfo,
-        "hasMerchantReturnPolicy": merchantReturnPolicy,
-        "shippingDetails": offerShippingDetails
+        "description": "Custom on-site fabrication & licensed installation quotation"
       }
     };
 
@@ -686,7 +648,7 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
 
     if (faqEntities.length > 0) {
       return [
-        productSchema,
+        serviceSchema,
         {
           "@context": "https://schema.org",
           "@type": "FAQPage",
@@ -696,7 +658,7 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
       ];
     }
 
-    return productSchema;
+    return serviceSchema;
   }
 
   // Dedicated Residential Suburb Landing Pages (Carindale, Camp Hill, Rochedale, Wishart, Mansfield, Capalaba, Gumdale, Wavell Heights, Pullenvale)
@@ -742,18 +704,21 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
         "description": config.description
       };
 
-      // 2. Product Schema eligible for rich review snippets under Google Search Console guidelines
-      const productSchema = {
+      // 2. Service Schema for On-Site Custom Gate Fabrication & Installation
+      const serviceSchema = {
         "@context": "https://schema.org",
-        "@type": "Product",
-        "@id": `${canonicalUrl}#product`,
+        "@type": "Service",
+        "@id": `${canonicalUrl}#service`,
         "name": `Residential Automatic Gate & Aluminium Fencing Installation ${subData.suburbName}`,
+        "serviceType": "Automatic Gate & Fencing Installation",
         "description": config.description,
-        "brand": {
-          "@type": "Brand",
-          "name": "Custom Auto Gates & Fencing"
+        "provider": {
+          "@id": `${BASE_URL}/#business`
         },
-        "category": "Residential Automatic Gates & Fencing",
+        "areaServed": {
+          "@type": "City",
+          "name": subData.suburbName
+        },
         "image": `https://customautogates.com.au${subData.heroImage}`,
         "aggregateRating": {
           "@type": "AggregateRating",
@@ -766,12 +731,10 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
           "@type": "Offer",
           "price": "3850.00",
           "priceCurrency": "AUD",
-          "priceValidUntil": "2026-12-31",
+          "priceValidUntil": "2027-12-31",
           "availability": "https://schema.org/InStock",
           "url": canonicalUrl,
-          "seller": sellerInfo,
-          "hasMerchantReturnPolicy": merchantReturnPolicy,
-          "shippingDetails": offerShippingDetails
+          "description": `Custom automatic gate & fencing fabrication and installation in ${subData.suburbName}`
         }
       };
 
@@ -784,7 +747,7 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
         }
       }));
 
-      const schemas = [localBusinessSchema, productSchema];
+      const schemas = [localBusinessSchema, serviceSchema];
       if (faqEntities.length > 0) {
         schemas.push({
           "@context": "https://schema.org",

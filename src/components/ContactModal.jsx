@@ -13,7 +13,7 @@ import {
 import { COMPANY_INFO } from '../data/siteData';
 import FileUploadField from './FileUploadField';
 import { uploadFormFiles } from '../utils/uploadHelper';
-import { trackFormLead } from '../utils/analytics';
+import { trackFormLead, getAdTrackingData } from '../utils/analytics';
 
 export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
   const [formData, setFormData] = useState({
@@ -43,6 +43,7 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
         uploadedFiles = await uploadFormFiles(files);
       }
 
+      const adData = getAdTrackingData();
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -56,7 +57,8 @@ export default function ContactModal({ isOpen, onClose, defaultGateStyle }) {
           preferredTime: formData.preferredTime,
           notes: formData.notes,
           source: 'Website On-Site Measure Modal',
-          files: uploadedFiles
+          files: uploadedFiles,
+          ...adData
         })
       });
 

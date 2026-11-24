@@ -29,7 +29,7 @@ import {
 import { COMPANY_INFO } from '../data/siteData';
 import FileUploadField from './FileUploadField';
 import { uploadFormFiles } from '../utils/uploadHelper';
-import { trackFormLead } from '../utils/analytics';
+import { trackFormLead, getAdTrackingData } from '../utils/analytics';
 
 export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateHome, onNavigateService }) {
   // Gate Simulation State
@@ -113,6 +113,7 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
         uploadedFiles = await uploadFormFiles(files);
       }
 
+      const adData = getAdTrackingData();
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -126,7 +127,8 @@ export default function ContactUs({ onOpenQuote, onOpenTroubleshoot, onNavigateH
           preferredTime: formData.preferredTime,
           notes: formData.message,
           source: 'Contact Page Inquiry Form',
-          files: uploadedFiles
+          files: uploadedFiles,
+          ...adData
         })
       });
 

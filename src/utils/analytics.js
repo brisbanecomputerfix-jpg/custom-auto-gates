@@ -178,6 +178,63 @@ export async function trackServiceBooking(bookingData = {}) {
 }
 
 /**
+ * Capture Google Ads GCLID and UTM campaign attribution parameters from URL
+ * Persists in sessionStorage so multi-page user journeys are credited to the ad click
+ */
+export function initAdTracking() {
+  if (typeof window === 'undefined') return;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const gclid = params.get('gclid');
+    const gadSource = params.get('gad_source');
+    const utmSource = params.get('utm_source');
+    const utmMedium = params.get('utm_medium');
+    const utmCampaign = params.get('utm_campaign');
+    const utmTerm = params.get('utm_term');
+    const utmContent = params.get('utm_content');
+
+    let stored = {};
+    try {
+      const raw = sessionStorage.getItem('cag_ad_attribution');
+      if (raw) stored = JSON.parse(raw);
+    } catch (e) {}
+
+    const updated = { ...stored };
+    if (gclid) updated.gclid = gclid;
+    if (gadSource) updated.gad_source = gadSource;
+    if (utmSource) updated.utm_source = utmSource;
+    if (utmMedium) updated.utm_medium = utmMedium;
+    if (utmCampaign) updated.utm_campaign = utmCampaign;
+    if (utmTerm) updated.utm_term = utmTerm;
+    if (utmContent) updated.utm_content = utmContent;
+
+    if (!updated.landing_page && window.location.pathname) {
+      updated.landing_page = window.location.pathname;
+    }
+
+    if (Object.keys(updated).length > 0) {
+      sessionStorage.setItem('cag_ad_attribution', JSON.stringify(updated));
+    }
+  } catch (err) {
+    console.warn('Ad tracking init warning:', err);
+  }
+}
+
+/**
+ * Retrieve current user's Google Ads & campaign attribution data for form submission
+ */
+export function getAdTrackingData() {
+  if (typeof window === 'undefined') return {};
+  try {
+    initAdTracking();
+    const raw = sessionStorage.getItem('cag_ad_attribution');
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+/**
  * Track Phone Call Clicks (tel: links)
  */
 export function trackPhoneClick() {
@@ -203,5 +260,6 @@ function attachGlobalClickListeners() {
 }
 
 if (typeof window !== 'undefined') {
+  initAdTracking();
   attachGlobalClickListeners();
 }
