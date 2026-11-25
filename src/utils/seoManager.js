@@ -75,6 +75,13 @@ export function updateSeoMetadata(pageKey, regionKey = 'brisbane') {
 function updateDynamicRouteSchema(lookupKey, canonicalUrl, config) {
   const schemaId = 'dynamic-route-schema';
   let scriptElem = document.getElementById(schemaId);
+  const masterGraph = document.getElementById('master-schema-graph');
+
+  // If SSR already rendered #master-schema-graph for this exact URL, avoid injecting a duplicate script tag
+  if (masterGraph && masterGraph.textContent && masterGraph.textContent.includes(canonicalUrl)) {
+    if (scriptElem) scriptElem.remove();
+    return;
+  }
 
   const routeSchema = getRouteSchemaData(lookupKey, canonicalUrl, config);
 

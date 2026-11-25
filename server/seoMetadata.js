@@ -506,13 +506,6 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
         { "@type": "City", "name": "Logan City" },
         { "@type": "City", "name": "Gold Coast" }
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "184",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
       "offers": {
         "@type": "Offer",
         "url": canonicalUrl,
@@ -720,13 +713,6 @@ export function getRouteSchemaData(lookupKey, canonicalUrl, config) {
           "name": subData.suburbName
         },
         "image": `https://customautogates.com.au${subData.heroImage}`,
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "bestRating": "5",
-          "worstRating": "1",
-          "reviewCount": "184"
-        },
         "offers": {
           "@type": "Offer",
           "price": "3850.00",
